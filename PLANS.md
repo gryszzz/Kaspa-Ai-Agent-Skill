@@ -1,68 +1,64 @@
-# ExecPlan: Ship Kaspa Wallet Fullstack v1 Revenue-Ready
+# ExecPlan: Upgrade Kaspa Researcher + Engineer Skill v1.4.0
 
 ## Goal
-Deliver a production-ready Kaspa wallet fullstack where users can connect via Kasware/Kaspium, query balances, and generate payment intents with a transparent platform fee routed to the configured operator wallet.
+
+Upgrade the existing `kaspa-sovereign-architect-engine` package into a sharper, current-aware, source-grounded Kaspa researcher and engineering skill without breaking its package-first structure or adapter compatibility.
 
 ## Success Metrics
-- Activation: wallet challenge + session completion succeeds for both Kasware and Kaspium flows.
-- Retention: balance refresh + payment quote happy path remains stable under repeated requests.
-- Revenue: platform fee quote is generated on every eligible payment intent and points to configured fee recipient.
+
+- Skill supports efficient response modes and no longer forces deep audit output for tiny questions.
+- Current/future Kaspa claims use freshness checks, source hierarchy, absolute dates, and commit hashes where applicable.
+- KIPs, Kdapp, WASM/TypeScript, indexers, wallet safety, and future features have explicit handling rules.
+- Adapters reference the same core policies and pass compatibility validation.
+- README, manifest, release notes, and references describe the v1.4.0 behavior clearly.
 
 ## Constraints
-- Timebox: ship in this execution session with verified commands.
-- Tech constraints:
-  - Keep Kaspa UTXO-first and wallet-signing separation intact.
-  - No hidden fees; fees must be explicit in API response and UI.
-  - Preserve both wallet flows (Kasware/Kaspium).
-  - Validate both `kaspa:` and `kaspatest:` prefixes.
 
-## Milestones (PR-sized)
-1. Planning rails and repo alignment
-- [x] Add/update `AGENTS.md` and `PLANS.md` with enforceable execution rules.
-- [x] Ensure required docs references are present or documented if missing.
+- Preserve the existing package layout under `skills/public/kaspa-sovereign-architect-engine/`.
+- Modify existing skill/docs instead of creating a new project.
+- Do not remove adapter compatibility or validator-required metadata.
+- Do not present roadmap or research discussion as live protocol behavior.
 
-2. Monetization spine (transparent platform fee)
-- [x] Add backend pricing config (fee recipient, bps, min fee, enable toggle).
-- [x] Add fee quote endpoint for payment intents.
-- [x] Add frontend payment quote UI + fee breakdown + deeplink outputs.
+## Milestones
 
-3. Analytics/telemetry minimums
-- [x] Add backend analytics event counters for signup, activation, payment intent.
-- [x] Expose telemetry through existing metrics endpoint.
+1. Inspect current repository structure and stale defaults.
+- [x] Review README, README.dev, AGENTS, PLANS, CONTRIBUTING, manifest, skill, references, adapters, workflows, docs, release notes, and training corpus.
 
-4. Tests and verification hardening
-- [x] Add backend unit tests for fee math and validation.
-- [x] Add frontend tests for fee/deeplink logic.
-- [x] Run lint/typecheck/tests for backend and frontend.
+2. Refresh source baseline.
+- [x] Check primary Kaspa source families and record repository snapshot hashes.
 
-5. Deployment + docs completeness
-- [x] Update README + env docs + troubleshooting + pricing config.
-- [x] Verify Docker path exists and is documented.
-- [x] Run one end-to-end happy path command sequence and record result.
+3. Upgrade the core skill.
+- [x] Add Freshness & Verification Protocol.
+- [x] Add Source Trust Policy pointer.
+- [x] Add Research Radar pointer.
+- [x] Add Efficient Response Modes.
+- [x] Add KIP, Kdapp, WASM/TypeScript, indexer, wallet, and future-feature disciplines.
+- [x] Scope deep audit skeleton to Deep Protocol Audit mode.
 
-## Definition of Done Checklist
-- [x] Clean clone -> one command runs (`docker compose up --build` in `kaspa-wallet-fullstack/`)
-- [x] Tests/lint/typecheck pass
-- [x] Deploy documented and reproducible
-- [x] Monetization live (transparent platform fee config + quote flow)
-- [x] Analytics events tracked (signup/activation/payment)
-- [x] README complete (setup, env vars, run, test, deploy, troubleshooting)
+4. Update package assets.
+- [x] Add `source-trust-policy.md`.
+- [x] Add `kaspa-research-radar.md`.
+- [x] Refresh source inventory.
+- [x] Update adapters.
+- [x] Update README examples and manifest metadata.
+- [x] Add v1.4.0 release notes.
+
+5. Validate and ship branch.
+- [x] Run compatibility validation.
+- [x] Run available markdown/link checks if present.
+- [x] Confirm adapter references and required files.
+- [ ] Commit changes.
+- [ ] Push branch if remote is available.
 
 ## Commands to Verify
-- `cd kaspa-wallet-fullstack/backend && npm ci && npm run build && npm run lint && npm test`
-- `cd kaspa-wallet-fullstack/frontend && npm ci && npm run build && npm run lint && npm test`
-- `cd kaspa-wallet-fullstack && docker compose config`
-- Happy path API run:
-  - `cd kaspa-wallet-fullstack/backend && npm run build && node dist/server.js`
-  - `curl -s http://localhost:8080/v1/payments/quote -X POST -H 'content-type: application/json' -d '{...}'`
 
-## Progress Log
-- [x] Initial scan of repository and target app (`kaspa-wallet-fullstack`).
-- [x] Milestone 1 complete.
-- [x] Milestone 2 complete.
-- [x] Milestone 3 complete.
-- [x] Milestone 4 complete.
-- [x] Milestone 5 complete.
+- `node skills/public/kaspa-sovereign-architect-engine/scripts/validate-compatibility.mjs --all`
+- `rg -n "Freshness & Verification Protocol|Source Trust Policy|Research Radar|Efficient Response Modes|KIP Status Discipline|Wallet Safety Discipline" skills/public/kaspa-sovereign-architect-engine/agents`
+- `rg -n "kaspa-sovereign-architect-engine" skills/public/kaspa-sovereign-architect-engine/agents`
+- `test -f skills/public/kaspa-sovereign-architect-engine/references/source-trust-policy.md`
+- `test -f skills/public/kaspa-sovereign-architect-engine/references/kaspa-research-radar.md`
+- `test -f release-notes/v1.4.0.md`
 
 ## Blockers / TODOs
-- TODO(issue:LOCAL-DOCKER-VERIFY): Docker binary is unavailable in this execution environment, so local Docker smoke execution could not be run here. Follow-up: run `docker compose up --build` in `kaspa-wallet-fullstack/` and verify `GET /healthz` plus frontend boot at `http://localhost:3000`.
+
+- No markdown lint or broken-link checker was present in repo metadata or workflows; compatibility, package, adapter export, and targeted search checks were run instead.

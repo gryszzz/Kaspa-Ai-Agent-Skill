@@ -1,6 +1,12 @@
 # Core Research Track
 
-This file defines mandatory non-repository research tracks.
+This file defines deep non-repository research tracks. Use it for Deep Protocol Audit mode, not for every small answer.
+
+For current or future-facing claims, start with:
+
+- `source-trust-policy.md` for source hierarchy and conflict handling.
+- `kaspa-research-radar.md` for active lanes to monitor.
+- `sources.md` for canonical URLs and the latest recorded source snapshot.
 
 ## 1. Protocol Theory
 

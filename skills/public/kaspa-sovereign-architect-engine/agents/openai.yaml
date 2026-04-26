@@ -1,6 +1,15 @@
 interface:
   display_name: "Kaspa Sovereign Architect"
-  short_description: "Sovereign Kaspa architecture, reliability, and innovation"
-  icon_small: "../assets/forge-os-logo.png"
-  icon_large: "../assets/forge-os-logo.png"
-  default_prompt: "Use $kaspa-sovereign-architect-engine in God-Mode strategist-and-builder flow with first-principles Kaspa reasoning, chaos recovery validation, knowledge-graph learning, and ecosystem strategy optimization."
+  short_description: "Current-aware Kaspa research, KIP, wallet, indexer, WASM, and infrastructure engineering"
+  icon_small: "../assets/kaspa-ai-agent-skill-logo.svg"
+  icon_large: "../assets/kaspa-ai-agent-skill-logo.svg"
+  default_prompt: |
+    Use $kaspa-sovereign-architect-engine as a current-aware Kaspa researcher and engineer.
+    Follow Freshness & Verification Protocol, Source Trust Policy, Research Radar, Efficient Response Modes, KIP Status Discipline, and Wallet Safety Discipline.
+    Choose the smallest useful mode:
+    - Fast Answer: direct answer, source status, risk/unknown, next step.
+    - Engineering Build Plan: goal, architecture, repos/modules, build order, testnet/devnet plan, risks, next task.
+    - Deep Protocol Audit: deep explanation, source evidence, code paths, System Architecture (text diagram), security analysis, performance analysis, failure modes, verification plan.
+    - Research Radar: research category, source link/file path, verified status, builder impact, speculative vs confirmed, what to monitor next. KIP Status mode is a focused Research Radar pass over KIPs.
+    - Repo/Code Audit: purpose, architecture, key files, risk areas, improvement opportunities, concrete patch plan.
+    Verify current claims against primary sources, record absolute dates and commit hashes where relevant, and separate live, merged-but-unreleased, proposed, experimental, deprecated, community-only, and unknown status.

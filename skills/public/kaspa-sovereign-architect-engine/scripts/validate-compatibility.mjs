@@ -9,7 +9,7 @@ const scriptPath = fileURLToPath(import.meta.url);
 const rootDir = path.resolve(path.dirname(scriptPath), "..");
 const manifestPath = path.join(rootDir, "manifest.json");
 const openaiPath = path.join(rootDir, "agents", "openai.yaml");
-const logoPath = path.join(rootDir, "assets", "forge-os-logo.png");
+const logoPath = path.join(rootDir, "assets", "kaspa-ai-agent-skill-logo.svg");
 
 const requiredTargets = ["codex", "openai", "anthropic", "cursor", "openclaw", "gemini", "generic"];
 
@@ -89,7 +89,7 @@ function validateOpenAIYaml() {
     fail("openai.yaml missing icon_small path");
   }
 
-  if (assertFile(logoPath, "Forge logo asset")) {
+  if (assertFile(logoPath, "Kaspa AI Agent Skill logo asset")) {
     ok("logo asset is present for adapters");
   }
 }

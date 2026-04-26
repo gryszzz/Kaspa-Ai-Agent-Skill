@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 320" role="img" aria-labelledby="title desc">
+  <title id="title">Kaspa AI Agent Skill logo</title>
+  <desc id="desc">A dedicated Kaspa AI Agent Skill mark with teal circuit lines and wordmark.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#07111f"/>
+      <stop offset="1" stop-color="#0c1d2a"/>
+    </linearGradient>
+    <linearGradient id="kaspa" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#70f2d4"/>
+      <stop offset="1" stop-color="#1fc7a6"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="320" rx="34" fill="url(#bg)"/>
+  <g fill="none" stroke="url(#kaspa)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M122 202 196 82h94l-70 112h92"/>
+    <path d="M270 118h74M234 160h110M198 202h146"/>
+    <path d="M122 202h74l42-70"/>
+    <circle cx="196" cy="82" r="8" fill="#70f2d4"/>
+    <circle cx="290" cy="82" r="8" fill="#1fc7a6"/>
+    <circle cx="344" cy="202" r="8" fill="#1fc7a6"/>
+  </g>
+  <text x="400" y="143" fill="#eef7fb" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="56" font-weight="800" letter-spacing="0">Kaspa</text>
+  <text x="400" y="205" fill="#70f2d4" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="42" font-weight="650" letter-spacing="0">AI Agent Skill</text>
+  <text x="402" y="244" fill="#9eb8c5" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22" letter-spacing="0">source-grounded research + engineering</text>
+</svg>

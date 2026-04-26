@@ -1,25 +1,29 @@
 # 🧠 Kaspa Sovereign Architect Engine
 
-**Codex-native Kaspa engineering skill** with **cross-platform adapters** for OpenAI, Claude, Cursor, OpenClaw, Gemini CLI, and generic LLM workflows.
+**Kaspa researcher + engineering skill** with **cross-platform adapters** for Codex, OpenAI-style agents, Claude, Cursor, OpenClaw, Gemini CLI, and generic LLM workflows.
 
 ## 🚀 What This Is
 
-This repository publishes a reusable AI skill package for serious Kaspa engineering.
+This repository publishes a reusable AI skill package for serious Kaspa research and engineering.
 
 - **Skill ID:** `$kaspa-sovereign-architect-engine`
 - **Main skill file:** [`SKILL.md`](skills/public/kaspa-sovereign-architect-engine/SKILL.md)
-- **Release downloads:** [GitHub Releases](https://github.com/gryszzz/Top-Ai-Agent-Developer-For-Kaspa/releases)
+- **Release downloads:** [GitHub Releases](https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases)
 - **Positioning:** package-first distribution (not a website product)
+- **Freshness model:** current-aware, source-grounded, KIP-aware, and research-radar aware
+- **Build scope:** Kaspa protocol, wallet, indexer, WASM, dApp, Kdapp, and infrastructure work
 
 ## 🔥 What This Agent Is Good At
 
 `$kaspa-sovereign-architect-engine` focuses on:
 
-- **Protocol engineering:** BlockDAG, GHOSTDAG, mempool, UTXO semantics
-- **Indexer architecture:** DAG-aware indexing, conflict handling, consistency flows
-- **Backend reliability:** APIs, workers, retries, caching, validation, observability
-- **Wallet + UX:** wallet-aware transaction lifecycle and confirmation state UX
-- **Security rigor:** threat modeling, key boundaries, replay and double-spend controls
+- **Kaspa research radar:** economics, L1/L2, consensus, mining, KIPs, papers, and ecosystem engineering
+- **Protocol engineering:** BlockDAG, GHOSTDAG, DAGKNIGHT status checks, mempool, UTXO semantics, and future-feature handling
+- **KIP-aware analysis:** separates research ideas, KIP proposals, merged code, activation, wallet/indexer support, and app usability
+- **Indexer architecture:** DAG-aware ordering, idempotent ingestion, dedupe, checkpoints, retries, sync lag, and query-layer separation
+- **WASM + TypeScript apps:** browser/Node separation, watch-only prototypes, wallet-provider signing, RPC trust assumptions
+- **Wallet + UX safety:** signing boundaries, custody warnings, phishing, UI spoofing, RPC hijacking, replay, and supply-chain risk
+- **Backend and infrastructure reliability:** APIs, workers, retries, caching, validation, observability, deployment, and recovery plans
 
 ## ⚡ Quick Start (Codex)
 
@@ -34,6 +38,24 @@ Or embed it directly:
 
 ```text
 Use $kaspa-sovereign-architect-engine to audit my wallet backend for replay, nonce, and signing risks.
+```
+
+## 🛰 Example Prompts
+
+```text
+Use $kaspa-sovereign-architect-engine in Research Radar mode. Check what is new across Kaspa Research categories and identify builder-relevant changes.
+```
+
+```text
+Use $kaspa-sovereign-architect-engine in Engineering Build Plan mode. Design a testnet-first Kaspa WASM wallet dashboard with watch-only mode and safe signing boundaries.
+```
+
+```text
+Use $kaspa-sovereign-architect-engine in Deep Protocol Audit mode. Audit a Kaspa indexer design for DAG-aware ordering, idempotency, replay handling, and sync lag.
+```
+
+```text
+Use $kaspa-sovereign-architect-engine in KIP Status mode. Build a table of relevant KIPs, their activation status, builder impact, and what must be verified.
 ```
 
 ## 🧩 Compatibility Matrix
@@ -51,10 +73,12 @@ Use $kaspa-sovereign-architect-engine to audit my wallet backend for replay, non
 Compatibility metadata:
 
 - [`manifest.json`](skills/public/kaspa-sovereign-architect-engine/manifest.json)
+- Source trust policy: [`source-trust-policy.md`](skills/public/kaspa-sovereign-architect-engine/references/source-trust-policy.md)
+- Research radar: [`kaspa-research-radar.md`](skills/public/kaspa-sovereign-architect-engine/references/kaspa-research-radar.md)
 
 Automated verification:
 
-- [Compatibility Matrix workflow](https://github.com/gryszzz/Top-Ai-Agent-Developer-For-Kaspa/actions/workflows/compatibility-matrix.yml)
+- [Compatibility Matrix workflow](https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/actions/workflows/compatibility-matrix.yml)
 - Release gating validation is enforced in [`.github/workflows/release-skill.yml`](.github/workflows/release-skill.yml)
 
 ## 🛠 Install
@@ -64,7 +88,7 @@ Automated verification:
 ```bash
 mkdir -p "$CODEX_HOME/skills"
 curl -L -o /tmp/kaspa-sovereign-architect-engine.zip \
-  https://github.com/gryszzz/Top-Ai-Agent-Developer-For-Kaspa/releases/latest/download/kaspa-sovereign-architect-engine.zip
+  https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases/latest/download/kaspa-sovereign-architect-engine.zip
 unzip -o /tmp/kaspa-sovereign-architect-engine.zip -d "$CODEX_HOME/skills"
 ```
 
@@ -72,7 +96,7 @@ Verify artifact integrity:
 
 ```bash
 curl -L -o /tmp/SHA256SUMS.txt \
-  https://github.com/gryszzz/Top-Ai-Agent-Developer-For-Kaspa/releases/latest/download/SHA256SUMS.txt
+  https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases/latest/download/SHA256SUMS.txt
 (cd /tmp && grep "kaspa-sovereign-architect-engine.zip$" SHA256SUMS.txt | shasum -a 256 -c -)
 ```
 
@@ -80,7 +104,7 @@ Alternative tarball install:
 
 ```bash
 curl -L -o /tmp/kaspa-sovereign-architect-engine.tar.gz \
-  https://github.com/gryszzz/Top-Ai-Agent-Developer-For-Kaspa/releases/latest/download/kaspa-sovereign-architect-engine.tar.gz
+  https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases/latest/download/kaspa-sovereign-architect-engine.tar.gz
 tar -xzf /tmp/kaspa-sovereign-architect-engine.tar.gz -C "$CODEX_HOME/skills"
 ```
 
@@ -160,13 +184,13 @@ Design a Kaspa DAG-aware indexer for 100k users with failure recovery and replay
 
 ## 📦 Releases
 
-- Download packages: [Releases](https://github.com/gryszzz/Top-Ai-Agent-Developer-For-Kaspa/releases)
+- Download packages: [Releases](https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases)
 - Automated packaging workflow: [`.github/workflows/release-skill.yml`](.github/workflows/release-skill.yml)
 
 ## 🌐 Deploy + Marketing
 
 - Auto-deploy workflow: [`.github/workflows/pages.yml`](.github/workflows/pages.yml)
-- GitHub Pages landing page: [Live Site](https://gryszzz.github.io/Top-Ai-Agent-Developer-For-Kaspa/)
+- GitHub Pages landing page: [Live Site](https://gryszzz.github.io/Kaspa-Ai-Agent-Skill/)
 - Custom domain support: set repo variable `GH_PAGES_CNAME` (for example `skill.yourdomain.com`); workflow writes `CNAME` automatically
 - Domain setup guide: [`docs/domain-setup.md`](docs/domain-setup.md)
 - Launch copy + channel templates: [`docs/launch-kit.html`](docs/launch-kit.html)

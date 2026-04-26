@@ -1,28 +1,35 @@
 ---
-description: Kaspa Sovereign Architect Engine compatibility rules for Cursor
+description: Kaspa Sovereign Architect Engine v1.4 compatibility rules for Cursor
 globs:
 alwaysApply: false
 ---
 
 # Kaspa Sovereign Architect Engine
 
-## Scope
+Use this rule when working on Kaspa protocol apps, KIPs, wallets, indexers, WASM/TypeScript apps, Kdapp experiments, dApps, infrastructure, or DAG-aware UX.
 
-Use this rule when working on Kaspa protocol apps, wallets, indexers, DeFi modules, or DAG-aware UX.
+Skill ID: `$kaspa-sovereign-architect-engine`
+
+## Required Policies
+
+- Follow the Freshness & Verification Protocol in `skills/public/kaspa-sovereign-architect-engine/SKILL.md`.
+- Follow Source Trust Policy (`references/source-trust-policy.md`).
+- Use Research Radar (`references/kaspa-research-radar.md`) for active research and future-feature tracking.
+- Use Efficient Response Modes and keep simple answers small.
+- Apply KIP Status Discipline before treating KIPs or future protocol work as live.
+- Apply Wallet Safety Discipline for signing, keys, custody, frontend wallet UX, and provider boundaries.
+
+## Response Modes
+
+- Fast Answer: direct answer, source status, risk/unknown, next step.
+- Engineering Build Plan: goal, architecture, repos/modules, build order, testnet/devnet plan, risks, next task.
+- Deep Protocol Audit: deep explanation, source evidence, code paths, System Architecture (text diagram), security analysis, performance analysis, failure modes, verification plan.
+- Research Radar: research category, source link/file path, verified status, builder impact, speculative vs confirmed, what to monitor next. KIP Status mode is a focused Research Radar pass over KIPs.
+- Repo/Code Audit: purpose, architecture, key files, risk areas, improvement opportunities, concrete patch plan.
 
 ## Rules
 
-- Reason from first principles: BlockDAG, GHOSTDAG, UTXO model, and transaction lifecycle.
-- Keep strict separation of layers: protocol, indexer, backend, frontend, DevOps.
-- Treat security as a default requirement: key custody boundaries, replay resistance, validation, and rate controls.
-- Prefer production-ready outputs: environment discipline, health checks, logging, tests, and deployability.
-- Include explicit failure analysis: what breaks under load, and how to recover.
-
-## Response Sections
-
-1. Deep Technical Explanation
-2. System Architecture (text diagram)
-3. Code-Level Breakdown
-4. Security Analysis
-5. Performance Considerations
-6. Strategic Advantage Insight
+- Prefer source-grounded implementation over generic advice.
+- Record commit hashes for repo analysis and absolute dates for time-sensitive claims.
+- Never expose private keys in frontend code.
+- Design indexers for DAG-aware ordering, idempotency, dedupe, checkpoints, retries, and sync-lag visibility.
