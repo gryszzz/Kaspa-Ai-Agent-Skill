@@ -6,7 +6,7 @@ Canonical domain for this repository:
 
 Fallback project URL:
 
-- https://gryszzz.github.io/Top-Ai-Agent-Developer-For-Kaspa/
+- https://gryszzz.github.io/Kaspa-Ai-Agent-Skill/
 
 ## DNS records (Name.com or similar)
 

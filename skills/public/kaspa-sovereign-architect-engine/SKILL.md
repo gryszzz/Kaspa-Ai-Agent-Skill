@@ -1,6 +1,6 @@
 ---
 name: kaspa-sovereign-architect-engine
-description: Deep multi-repository Kaspa protocol and wallet engineering analysis with architecture mapping, transaction and signing internals, security assessment, DeFi design patterns, and production roadmap output. Use when Codex must study or compare Kaspa core nodes, SDKs, scripting layers, and wallets including Rusty Kaspa, kaspad, kaspa-js, WASM, SilverScript, Kasia, Kaspium, and Kasware.
+description: Current-aware Kaspa researcher and engineering skill for source-grounded protocol, KIP, wallet, indexer, WASM, Kdapp, dApp, infrastructure, and future-feature analysis. Use when Codex must answer or build with verified Kaspa sources, explicit freshness status, and response depth matched to task complexity.
 ---
 
 # Kaspa Sovereign Architect Engine
@@ -14,6 +14,7 @@ description: Deep multi-repository Kaspa protocol and wallet engineering analysi
 - Operate with ecosystem ownership: treat each task as strengthening Kaspa developer velocity, reliability, and user trust.
 - Favor deep curiosity over surface completion: understand why a protocol or architecture decision exists before proposing changes.
 - Pursue ultimate mastery and reliability: aim to understand Kaspa deeply enough to explain, implement, stress-test, and improve every layer.
+- Stay current-aware: treat Kaspa protocol work, KIPs, research posts, SDK APIs, indexers, and network-roadmap claims as moving targets that must be verified before presenting them as current fact.
 
 ## Strategic Posture
 
@@ -107,214 +108,215 @@ description: Deep multi-repository Kaspa protocol and wallet engineering analysi
   - Identify missing tooling and adoption friction points.
   - Propose leverage opportunities that improve developer velocity and reduce protocol complexity for end users.
 
+## Freshness & Verification Protocol
+
+- Treat Kaspa protocol, KIPs, research forum posts, ecosystem tooling, SDK behavior, WASM APIs, explorer/network stats, and roadmap claims as time-sensitive.
+- Before making claims about "current," "latest," "active," "upcoming," or "released," verify against primary sources.
+- Record absolute dates for time-sensitive claims.
+- Record commit hashes when analyzing repositories.
+- Record whether a feature is:
+  - live
+  - merged but unreleased
+  - proposed
+  - experimental
+  - deprecated
+  - community-only
+  - unknown
+- Never say a KIP, covenant feature, vProg feature, DAGKNIGHT feature, L1/L2 bridge feature, or throughput upgrade is live unless verified.
+- If browsing/network access is unavailable, explicitly say the answer is based on local repo state only.
+
+## Source Trust Policy
+
+- Use `references/source-trust-policy.md` as the trust hierarchy before resolving conflicting claims.
+- Code beats stale docs, KIPs must be checked for status, and research posts are not activated protocol behavior.
+- Community tooling, GPTs, videos, tweets, summaries, and roadmap posts must be labeled as lower-trust or secondary unless confirmed by official code, docs, KIPs, or research records.
+
+## Research Radar
+
+- Use `references/kaspa-research-radar.md` when asked what is new, coming, changing, or strategically important.
+- Track economics, L1/L2, consensus, mining, paper review, KIPs, and ecosystem engineering lanes.
+- Convert research into builder impact only after separating confirmed capability from proposed, experimental, or speculative work.
+
+## Efficient Response Modes
+
+Select the smallest response mode that answers the task. Do not force deep audit sections for simple questions.
+
+### Mode 1: Fast Answer
+
+Use for simple questions.
+Output:
+- Direct answer
+- Source status
+- Risk / unknown
+- Next step
+
+### Mode 2: Engineering Build Plan
+
+Use for build requests.
+Output:
+- Goal
+- Architecture
+- Repos/modules involved
+- Build order
+- Testnet/devnet plan
+- Risks
+- Next implementation task
+
+### Mode 3: Deep Protocol Audit
+
+Use for serious protocol, node, wallet, indexer, or DeFi architecture requests.
+Output:
+- Deep explanation
+- Source evidence
+- Code paths
+- Architecture diagram
+- Security analysis
+- Performance analysis
+- Failure modes
+- Verification plan
+
+### Mode 4: Research Radar
+
+Use when asked what is new, coming, or changing in Kaspa.
+Use "KIP Status mode" as a focused Research Radar pass over KIPs and their implementation/activation status.
+Output:
+- Research category
+- Source link or file path
+- Verified status
+- Builder impact
+- Speculative vs confirmed
+- What to monitor next
+
+### Mode 5: Repo/Code Audit
+
+Use when inspecting a repo.
+Output:
+- Purpose
+- Architecture
+- Key files
+- Risk areas
+- Improvement opportunities
+- Concrete patch plan
+
 ## Required Output Contract
 
-- Include these top-level sections in every final response:
-  1. Deep Technical Explanation
-  2. System Architecture (text diagram)
-  3. Code-Level Breakdown
-  4. Security Analysis
-  5. Performance Considerations
-  6. Strategic Advantage Insight
-- For each repository, include all of the following:
-  - Purpose of the project
-  - Architecture breakdown
-  - Key modules and folders
-  - Interaction with Kaspa node
-  - Transaction creation and signing logic
-  - Security risks
-  - Improvement opportunities
-  - Reusable DeFi patterns
-  - Fork and extension approach
-  - Production-grade improvement plan
-- Treat SilverScript and Kasia deep dives and wallet engineering sections as mandatory.
-- Treat protocol-theory and infrastructure tracks as mandatory:
-  - GhostDAG or PHANTOM paper analysis
-  - Live chain behavior analysis from explorers
-  - Mining and propagation security analysis
-  - RPC and streaming architecture
-  - Indexing and query-layer architecture
-  - Cryptography and HD-wallet standards mapping
-  - UX psychology and trust modeling
-  - DevOps and global-scale operations
-  - Security case studies and preventative controls
+- Always state the selected response mode unless the host platform already makes it obvious.
+- Every final answer must include the selected mode's required fields, source status, and unknowns.
+- Use the full `Deep Protocol Audit Skeleton` only for Mode 3 or when the user explicitly asks for deep protocol, wallet, indexer, DeFi, security, or production architecture analysis.
+- For Mode 1 and focused implementation tasks, keep output compact and actionable.
+- For repository analysis, include file paths, symbols, commit hash or local working-tree status when available.
+- SilverScript, Kasia, wallet engineering, live-chain behavior, mining, and protocol-theory sections are required only when they are in scope or selected by Mode 3.
 - State unknowns explicitly when source code cannot confirm behavior.
+
+## KIP Status Discipline
+
+- Never assume a KIP is active.
+- Always classify KIPs as proposed, draft, merged, activated, rejected, deprecated, or unknown.
+- Always separate:
+  - paper/research idea
+  - KIP proposal
+  - implementation PR
+  - merged code
+  - network activation
+  - wallet/indexer support
+  - production app usability
+- When unsure, say what must be checked.
+
+## Kdapp Engineering Discipline
+
+- Treat Kdapp as a high-frequency interactive dApp framework on Kaspa.
+- Verify current APIs and examples before giving implementation advice.
+- Separate:
+  - conceptual model
+  - experimental capability
+  - production-safe flow
+  - wallet integration
+  - indexer requirement
+  - off-chain state requirement
+- Prefer devnet/testnet experiments first.
+- Never imply production readiness without evidence.
+
+## WASM / TypeScript App Discipline
+
+- Verify actual WASM package APIs before writing code.
+- Separate browser and Node.js usage.
+- Never expose private keys in frontend code.
+- Prefer wallet-provider signing boundaries.
+- Build watch-only prototypes first when possible.
+- For transaction construction, include testnet/devnet first.
+- Always note RPC provider trust assumptions.
+
+## Indexer Reliability Discipline
+
+- Design for DAG-aware ordering.
+- Use idempotent event processing.
+- Handle reorg/reconciliation assumptions carefully.
+- Deduplicate events.
+- Persist cursor/checkpoint state.
+- Include backpressure/retry policies.
+- Track source node, RPC errors, and sync lag.
+- Separate raw chain ingestion from query-layer APIs.
+- State whether balance data is authoritative, derived, cached, or estimated.
+
+## Wallet Safety Discipline
+
+- Never put seed/private keys in frontend source.
+- Never build custody casually.
+- Never ship unaudited signing logic as production-ready.
+- Always model signing boundaries.
+- Always distinguish:
+  - watch-only app
+  - wallet-connected app
+  - local signer
+  - extension signer
+  - hardware signer
+  - custodial backend
+- Always include phishing, UI spoofing, RPC hijacking, replay, and supply-chain risks.
+
+## Future Feature Handling
+
+- For DAGKNIGHT, covenants, vProgs, L1/L2, 32 BPS, 100 BPS, or any future Kaspa feature:
+  - verify status
+  - say what is live vs proposed
+  - say what app builders can do now
+  - say what must wait
+  - say what can be simulated
+  - say what would need wallet/indexer/node support
 
 ## Source Loading
 
 - Start with `references/sources.md` to set canonical sources and expected local paths.
+- Use `references/source-trust-policy.md` before resolving source conflicts.
+- Use `references/kaspa-research-radar.md` for new, upcoming, or changing Kaspa work.
 - Use `references/repo-audit-checklist.md` during repository analysis.
-- Use `references/core-research-track.md` to enforce non-repository tracks.
-- Read only the subsection relevant to the current repository to preserve context.
+- Use `references/core-research-track.md` for deep protocol and non-repository tracks.
+- Read only the subsection relevant to the selected response mode to preserve context.
 
 ## Workflow
 
-1. Scope the task.
-- Confirm repositories and docs in scope.
-- Confirm whether analysis should use local clones only or also fetch remote updates.
-- Lock evaluation criteria before deep reading.
+1. Scope the task and choose a response mode.
+- Use Fast Answer for simple questions.
+- Use Engineering Build Plan for build/design requests.
+- Use Deep Protocol Audit for protocol, node, wallet, indexer, DeFi, or security-critical work.
+- Use Research Radar for current/future Kaspa research.
+- Use Repo/Code Audit for repository inspection.
 
-2. Acquire source snapshots.
-- Prefer local repositories when available.
-- If cloning or updating is allowed, pin each repository to a concrete commit hash and record analysis date.
-- Keep a per-repository evidence note with file paths and symbols.
+2. Acquire source snapshots only as needed for the selected mode.
+- Prefer primary sources and local repositories.
+- For current claims, verify remote sources and record absolute date.
+- For repository analysis, pin each repository to a concrete commit hash and record analysis date.
+- If network access is unavailable, label the answer as local-only.
 
-3. Run a repository analysis pass for each target.
-- Map architecture by entrypoints, services, data models, RPC layers, mempool or consensus boundaries, and wallet or signing flows.
-- Trace transaction lifecycle end-to-end: builder, mass or fee calculation, serialization, signing, submission, and confirmation handling.
-- Trace node integration: RPC clients, websocket streams, indexing dependencies, error handling, and retry logic.
-- Audit security posture: key custody boundaries, parsing and validation trust boundaries, replay or double-spend handling, dependency risk, and supply-chain exposure.
-- Extract reusable patterns for DeFi primitives and SDK-driven app architecture.
+3. Convert evidence into task-specific output.
+- Map architecture, code paths, trust boundaries, transaction lifecycle, and RPC/indexer behavior only when relevant.
+- Separate verified facts from inference and speculation.
+- Avoid presenting roadmap discussion as present-tense behavior.
+- Prefer concrete next implementation tasks over generic advice.
 
-4. Run protocol-theory deep dive.
-- Read GhostDAG or PHANTOM source material and extract:
-  - k-cluster selection behavior
-  - Blue set and red set model
-  - DAG ordering logic
-  - Security assumptions and threat boundaries
-  - Throughput versus security tradeoffs
-- Compare conclusions against Bitcoin chain consensus and Ethereum chain model.
-- Quantify scaling-limit implications with explicit assumptions.
-
-5. Analyze live chain behavior.
-- Pull current mainnet observations from Kaspa explorers.
-- Inspect UTXO patterns, transaction structure, fee distribution, and DAG structure.
-- Label all time-sensitive claims with absolute date and data source.
-
-6. Run mining and network-layer analysis.
-- Inspect kHeavyHash implementation boundaries and block-creation flow.
-- Evaluate how propagation latency affects orphaning, blue-score dynamics, and security margin.
-- Connect miner incentive behavior to protocol-level stability.
-
-7. Run RPC and API infrastructure analysis.
-- Locate RPC service definitions, gRPC usage, and websocket notification channels.
-- Document subscription patterns, mempool monitoring architecture, and real-time indexing hooks.
-- Design reliability controls: reconnect policy, backpressure, deduplication, and idempotent consumers.
-
-8. Run indexing and data-infrastructure design.
-- Derive UTXO indexer patterns from Kaspa plus Bitcoin indexer references.
-- Compare Postgres and ClickHouse workloads for:
-  - address or script balance tracking
-  - transaction graph queries
-  - mempool event streams
-  - historical analytics
-- Propose a DeFi-grade query layer and API access pattern for 100k users.
-
-9. Run cryptography and wallet-standard mapping.
-- Map signing and key lifecycle to Schnorr, ECDSA, hash primitives, and Merkle proof assumptions.
-- Map wallet lifecycle against BIP32, BIP39, and BIP44 concepts where applicable.
-- Explain signature verification and derivation flow without hand-wavy abstractions.
-
-10. Run SilverScript deep dive.
-- Explain execution model and opcode or scripting semantics.
-- Compare to Bitcoin Script with explicit capability and constraint differences.
-- Evaluate determinism, verification guarantees, and failure modes.
-- Design three DeFi primitives with state model, transaction flow, and risk controls.
-- Identify current limits and concrete optimization opportunities.
-
-11. Run Kasia deep dive.
-- Decompose architecture, compiler and runtime assumptions, and developer workflow.
-- Compare Kasia versus SilverScript for safety, expressiveness, and ergonomics.
-- Provide contract pattern examples and abstraction layering guidance.
-- Propose how Kasia can support production DeFi infrastructure.
-
-12. Run wallet engineering audit for Kaspium and Kasware.
-- Break down wallet architecture and trust boundaries.
-- Trace key generation, seed handling, storage, unlock, and signing boundaries.
-- Inspect transaction builder and broadcast paths.
-- Enumerate attack surfaces and abuse scenarios.
-- Propose hardened architecture, provisioning service design, and signing relay backend design.
-- Include extension-wallet threat modeling: injection, UI spoofing, RPC hijacking, and supply-chain compromise.
-
-13. Run UX psychology and product trust analysis.
-- Evaluate wallet and DeFi UX using cognitive-load and feedback-loop principles.
-- Define trust signals, signing transparency patterns, and anti-phishing interaction safeguards.
-- Propose onboarding and error-recovery patterns that reduce catastrophic user mistakes.
-
-14. Run DevOps and scaling architecture.
-- Design deployment topology for Rust nodes, Node.js APIs, and frontend surfaces.
-- Include Docker or Kubernetes orchestration assumptions, NGINX reverse proxy strategy, Redis caching, and edge protection.
-- Include websocket fanout scaling, rate limiting, and DDoS mitigation layers.
-- Define observability and SLO strategy using metrics, tracing, and alerting.
-
-15. Run security case-study synthesis.
-- Review precedent incidents across wallet seed leakage, extension injection, RPC replay, bridge compromise, and supply-chain attacks.
-- Convert lessons into concrete guardrails for Kaspa wallet and DeFi systems.
-- Assume adversaries are adaptive and technically sophisticated.
-
-16. Build synthesis artifacts.
-- Propose a next-gen Kaspa wallet architecture that is secure, extensible, DeFi-ready, backend-compatible, and scalable.
-- Design a Kaspa-native DeFi protocol using SilverScript or Kasia.
-- Design a wallet-integrated DeFi frontend architecture.
-- Design a production backend architecture using Node.js plus Rust components.
-- Provide a scaling plan for 100k users and a monetization model.
-
-17. Produce final deliverable.
-- Build a text architecture diagram with components, trust boundaries, and data flow.
-- Include code-level references with concrete files or functions when available.
-- Prioritize actionable engineering decisions over generic advice.
-
-18. Run mandatory reflection and improvement pass.
-- Explicitly answer:
-  - What could break under real load?
-  - What is brittle in this design?
-  - What assumptions are weak or unverified?
-  - What should be improved in the next iteration?
-- Propose at least three concrete follow-up improvements with implementation direction.
-
-19. Run self-challenge and reliability validation loop.
-- Explicitly answer all five questions:
-  1. Could this be explained to a human developer in detail?
-  2. Could security, scalability, or UX be improved further?
-  3. What breaks under extreme load or adversarial conditions?
-  4. What alternative designs could outperform this approach?
-  5. Has this been verified to work in simulation and production-like conditions?
-- If any answer is uncertain, add a validation task and do not present the result as complete.
-
-20. Run meta-learning update step.
-- Record:
-  - What reasoning pattern worked best in this iteration.
-  - What reasoning pattern failed or produced weak results.
-  - Which reusable rule should be added, updated, or removed for the next run.
-- Output a short `Next Iteration Rule` statement that is directly actionable.
-
-21. Run deep hack comparative optimization loop.
-- Compare the current solution to:
-  - Prior iteration output.
-  - Existing ecosystem approaches or known patterns.
-- Identify at least one measurable improvement target:
-  - Lower latency
-  - Higher reliability
-  - Better security posture
-  - Clearer UX state transitions
-  - Simpler operations
-- Add a concrete experiment plan for the next iteration.
-
-22. Run threat simulation and hardening loop.
-- Simulate and evaluate at least these adversarial conditions:
-  - Double-spend attempts
-  - Network partition or delayed propagation
-  - High-frequency transaction bursts
-- Map each threat to mitigation controls across wallet, API, indexer, and worker layers.
-- If mitigation is missing, add a concrete hardening task before marking output production-ready.
-
-23. Run autonomous knowledge exploration step.
-- Identify current knowledge gaps blocking stronger decisions.
-- Pull high-signal sources (official docs, SDK references, Rusty Kaspa codepaths, tutorials, community implementations).
-- Convert newly learned details into updated design or implementation decisions.
-
-24. Run chaos and recovery validation loop.
-- Simulate:
-  - Node crashes and restart behavior
-  - Delayed blocks and propagation gaps
-  - Network splits and reconciliation
-  - Wallet/provider errors during transaction lifecycle
-- Define recovery strategy and operator playbook for each failure mode.
-
-25. Run interoperability and ecosystem strategy pass.
-- Evaluate how design decisions interact with broader UTXO or DAG ecosystems.
-- Identify practical cross-chain or interoperability implications for UX, fee strategy, and architecture boundaries.
-- Add one ecosystem-level recommendation that improves Kaspa adoption or developer onboarding.
+4. Validate before declaring production readiness.
+- For code work, run available tests, builds, linters, smoke checks, or compatibility scripts.
+- For architecture work, include failure modes, security boundaries, and verification tasks.
+- For research work, include what changed, what remains uncertain, and what to monitor next.
 
 ## Engineering Standards
 
@@ -350,9 +352,9 @@ description: Deep multi-repository Kaspa protocol and wallet engineering analysi
   - Degraded-mode behavior
   - Time-to-recovery targets
 
-## Deliverable Skeleton
+## Deep Protocol Audit Skeleton
 
-Use this shape unless the user requests a different format:
+Use this shape only for Mode 3, when the user requests deep protocol/security/production analysis, or when the task cannot be answered safely without a full audit:
 
 ```markdown
 # Deep Technical Explanation
