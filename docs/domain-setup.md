@@ -1,44 +1,28 @@
-# Custom Domain Setup (GitHub Pages)
+# GitHub Pages Setup
 
-Canonical domain for this repository:
+This repository is dedicated to Kaspa AI Agent Skill.
 
-- https://forge-os.xyz
-
-Fallback project URL:
+Default project URL:
 
 - https://gryszzz.github.io/Kaspa-Ai-Agent-Skill/
 
-## DNS records (Name.com or similar)
+## Optional Custom Domain
 
-Set these records:
+The Pages workflow uses the default GitHub Pages project URL unless you set a repository Actions variable:
 
-1. Apex `A` records for `forge-os.xyz`:
-   - `185.199.108.153`
-   - `185.199.109.153`
-   - `185.199.110.153`
-   - `185.199.111.153`
-2. `CNAME` for `www`:
-   - `www -> gryszzz.github.io`
-3. Remove conflicting `www` `A`/`AAAA`/URL redirect records.
+- `GH_PAGES_CNAME`
 
-## GitHub Pages settings
+When `GH_PAGES_CNAME` is set, the workflow writes that value into the deployed `CNAME` artifact. No custom domain is hard-coded in this repository.
+
+## GitHub Pages Settings
 
 1. Repo -> `Settings` -> `Pages`.
-2. Set `Custom domain` to `forge-os.xyz` and save.
-3. Wait for certificate provisioning.
-4. Enable `Enforce HTTPS`.
+2. Use GitHub Actions as the Pages source.
+3. Leave custom domain blank unless you intentionally configure `GH_PAGES_CNAME`.
+4. Enable `Enforce HTTPS` when GitHub allows it.
 
-## Repo behavior
-
-- `docs/CNAME` is committed as `forge-os.xyz`.
-- Pages workflow always writes a `CNAME` into the deploy artifact.
-- Optional Actions variable `GH_PAGES_CNAME` can override if needed.
-
-## Quick verification commands
+## Quick Verification
 
 ```bash
-dig +short forge-os.xyz A
-dig +short www.forge-os.xyz CNAME
-curl -I https://forge-os.xyz
-curl -I https://www.forge-os.xyz
+curl -I https://gryszzz.github.io/Kaspa-Ai-Agent-Skill/
 ```

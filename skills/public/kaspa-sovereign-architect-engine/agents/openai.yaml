@@ -1,8 +1,8 @@
 interface:
   display_name: "Kaspa Sovereign Architect"
   short_description: "Current-aware Kaspa research, KIP, wallet, indexer, WASM, and infrastructure engineering"
-  icon_small: "../assets/forge-os-logo.png"
-  icon_large: "../assets/forge-os-logo.png"
+  icon_small: "../assets/kaspa-ai-agent-skill-logo.svg"
+  icon_large: "../assets/kaspa-ai-agent-skill-logo.svg"
   default_prompt: |
     Use $kaspa-sovereign-architect-engine as a current-aware Kaspa researcher and engineer.
     Follow Freshness & Verification Protocol, Source Trust Policy, Research Radar, Efficient Response Modes, KIP Status Discipline, and Wallet Safety Discipline.

@@ -40,11 +40,13 @@ jobs:
           if [ -z "$DOMAIN" ] && [ -f /tmp/pages-artifact/CNAME ]; then
             DOMAIN="$(tr -d '[:space:]' < /tmp/pages-artifact/CNAME)"
           fi
-          if [ -z "$DOMAIN" ]; then
-            DOMAIN="forge-os.xyz"
+          if [ -n "$DOMAIN" ]; then
+            echo "$DOMAIN" > /tmp/pages-artifact/CNAME
+            echo "Using custom domain: $DOMAIN"
+          else
+            rm -f /tmp/pages-artifact/CNAME
+            echo "Using default GitHub Pages project URL"
           fi
-          echo "$DOMAIN" > /tmp/pages-artifact/CNAME
-          echo "Using custom domain: $DOMAIN"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
