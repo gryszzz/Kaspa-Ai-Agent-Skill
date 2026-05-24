@@ -55,6 +55,8 @@ These hashes are a freshness baseline, not a permanent truth. Re-run `git ls-rem
 - Rusty Kaspa Toccata branch: `https://github.com/kaspanet/rusty-kaspa/tree/toccata`
 - Rusty Kaspa Toccata PR: `https://github.com/kaspanet/rusty-kaspa/pull/1000`
 - Rusty Kaspa ZK opcode updates PR: `https://github.com/kaspanet/rusty-kaspa/pull/1013`
+- Rusty Kaspa ZK SDK PR: `https://github.com/kaspanet/rusty-kaspa/pull/953`
+- Rusty Kaspa ZK rollup covenant example PR: `https://github.com/kaspanet/rusty-kaspa/pull/858`
 - Kaspa vision and roadmap context: `https://kaspa.org/vision/`
 - Kaspa builder/development page: `https://kaspa.org/build`
 - Kaspa programmability overview: `https://docs.kaspa.org/programmability`
@@ -68,11 +70,18 @@ These hashes are a freshness baseline, not a permanent truth. Re-run `git ls-rem
 - KIP-17 PR: `https://github.com/kaspanet/kips/pull/32`
 - KIP-20 PR: `https://github.com/kaspanet/kips/pull/35`
 - KIP-21 PR: `https://github.com/kaspanet/kips/pull/36`
+- KIP-22 PR for adjacent quantum-resistance tracking: `https://github.com/kaspanet/kips/pull/37`
+- KIP-23 PR for adjacent DNS peer-address tracking: `https://github.com/kaspanet/kips/pull/40`
 - SilverScript: `https://github.com/kaspanet/silverscript`
 - vProgs: `https://github.com/kaspanet/vprogs`
 - KIPs: `https://github.com/kaspanet/kips`
 - TN10 REST blockDAG endpoint: `https://api-tn10.kaspa.org/info/blockdag`
 - TN12 REST blockDAG endpoint: `https://api-tn12.kaspa.org/info/blockdag`
+- Formal vProg computation DAG model: `https://research.kas.pa/t/zoom-in-a-formal-backbone-model-for-the-vprog-computation-dag/407`
+- Pruning safety in vProgs: `https://research.kas.pa/t/pruning-safety-in-the-vprogs-architecture/411`
+- Proof stitching framework: `https://research.kas.pa/t/a-basic-framework-for-proofs-stitching/323`
+- Based ZK rollups over Kaspa UTXO DAG consensus: `https://research.kas.pa/t/on-the-design-of-based-zk-rollups-over-kaspas-utxo-based-dag-consensus/208`
+- Inclusion-time proving tension in multileader consensus: `https://research.kas.pa/t/on-the-inherent-tension-between-multileader-consensus-and-inclusion-time-proving/347`
 
 ## Secondary Sources
 

@@ -9,6 +9,7 @@ This repository publishes a reusable AI skill package for serious Kaspa research
 - **Skill ID:** `$kaspa-sovereign-architect-engine`
 - **Main skill file:** [`SKILL.md`](skills/public/kaspa-sovereign-architect-engine/SKILL.md)
 - **Release downloads:** [GitHub Releases](https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases)
+- **Current release:** `v1.5.0` - Toccata R&D Intelligence
 - **Positioning:** package-first distribution (not a website product)
 - **Freshness model:** current-aware, source-grounded, KIP-aware, and research-radar aware
 - **Build scope:** Kaspa protocol, wallet, indexer, WASM, dApp, Kdapp, and infrastructure work
@@ -18,6 +19,7 @@ This repository publishes a reusable AI skill package for serious Kaspa research
 `$kaspa-sovereign-architect-engine` focuses on:
 
 - **Kaspa research radar:** economics, L1/L2, consensus, mining, KIPs, papers, and ecosystem engineering
+- **Toccata R&D intelligence:** branch-aware tracking for covenants, ZK opcodes, sequencing commitments, SilverScript, Based Apps, and vProgs
 - **Protocol engineering:** BlockDAG, GHOSTDAG, DAGKNIGHT status checks, mempool, UTXO semantics, and future-feature handling
 - **KIP-aware analysis:** separates research ideas, KIP proposals, merged code, activation, wallet/indexer support, and app usability
 - **Indexer architecture:** DAG-aware ordering, idempotent ingestion, dedupe, checkpoints, retries, sync lag, and query-layer separation
@@ -58,6 +60,10 @@ Use $kaspa-sovereign-architect-engine in Deep Protocol Audit mode. Audit a Kaspa
 Use $kaspa-sovereign-architect-engine in KIP Status mode. Build a table of relevant KIPs, their activation status, builder impact, and what must be verified.
 ```
 
+```text
+Use $kaspa-sovereign-architect-engine in Toccata R&D Intelligence mode. Re-check Rusty Kaspa PR #1000, PR #1013, KIP-16/17/20/21, TN10/TN12 activation, and produce the next covenant/indexer/wallet build plan.
+```
+
 ## 🧩 Compatibility Matrix
 
 | Platform | Status | Adapter |
@@ -75,7 +81,9 @@ Compatibility metadata:
 - [`manifest.json`](skills/public/kaspa-sovereign-architect-engine/manifest.json)
 - Source trust policy: [`source-trust-policy.md`](skills/public/kaspa-sovereign-architect-engine/references/source-trust-policy.md)
 - Research radar: [`kaspa-research-radar.md`](skills/public/kaspa-sovereign-architect-engine/references/kaspa-research-radar.md)
+- Toccata R&D playbook: [`toccata-rd-playbook.md`](skills/public/kaspa-sovereign-architect-engine/references/toccata-rd-playbook.md)
 - Toccata mastery map: [`kaspa-toccata-2026.md`](training-corpus/kaspa-toccata-2026.md)
+- Toccata R&D intelligence corpus: [`kaspa-toccata-rd-intelligence-2026.md`](training-corpus/kaspa-toccata-rd-intelligence-2026.md)
 
 Automated verification:
 
@@ -186,6 +194,7 @@ Design a Kaspa DAG-aware indexer for 100k users with failure recovery and replay
 ## 📦 Releases
 
 - Download packages: [Releases](https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases)
+- Latest release notes: [`v1.5.0`](release-notes/v1.5.0.md)
 - Automated packaging workflow: [`.github/workflows/release-skill.yml`](.github/workflows/release-skill.yml)
 
 ## 🌐 Deploy + Marketing
@@ -202,5 +211,7 @@ Design a Kaspa DAG-aware indexer for 100k users with failure recovery and replay
 
 - [`skills/public/kaspa-sovereign-architect-engine/`](skills/public/kaspa-sovereign-architect-engine/) - core skill package
 - [`training-corpus/kaspa-pdf-markdown/`](training-corpus/kaspa-pdf-markdown/) - normalized Kaspa corpus
+- [`training-corpus/kaspa-toccata-2026.md`](training-corpus/kaspa-toccata-2026.md) - source-gated Toccata mastery map
+- [`training-corpus/kaspa-toccata-rd-intelligence-2026.md`](training-corpus/kaspa-toccata-rd-intelligence-2026.md) - deeper Toccata R&D intelligence and development roadmap
 - [`kaspa-balance-api/`](kaspa-balance-api/) - production-oriented Kaspa API sample
 - [`kaspa-codex-evolution-loop/`](kaspa-codex-evolution-loop/) - autonomous iteration framework

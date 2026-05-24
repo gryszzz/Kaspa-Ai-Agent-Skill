@@ -1,7 +1,7 @@
 {
   "name": "kaspa-sovereign-architect-engine",
-  "version": "1.4.0",
-  "description": "Current-aware Kaspa researcher and engineering skill with freshness verification, research radar, KIP discipline, wallet safety, WASM, indexer, and infrastructure focus.",
+  "version": "1.5.0",
+  "description": "Current-aware Kaspa researcher and engineering skill with Toccata R&D intelligence, freshness verification, research radar, KIP discipline, wallet safety, WASM, indexer, and infrastructure focus.",
   "license": "MIT",
   "targets": [
     {

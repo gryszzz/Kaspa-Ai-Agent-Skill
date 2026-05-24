@@ -24,6 +24,8 @@ Track:
 Track:
 - activation status by network, release tag, DAA score, and UTC date
 - Rusty Kaspa branch status: `master`, `toccata`, `tn12`, release tags, and PR base branches
+- open ZK SDK and ZK rollup example PRs
+- vProg computation DAG, proof cadence, scope cost, and pruning safety research
 - covenant script behavior
 - extended script opcodes
 - covenant IDs

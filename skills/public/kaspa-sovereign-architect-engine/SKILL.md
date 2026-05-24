@@ -137,6 +137,44 @@ description: Current-aware Kaspa researcher and engineering skill for source-gro
 - Track economics, L1/L2, consensus, mining, paper review, KIPs, and ecosystem engineering lanes.
 - Convert research into builder impact only after separating confirmed capability from proposed, experimental, or speculative work.
 
+## Toccata R&D Intelligence
+
+- Use `references/toccata-rd-playbook.md` for Toccata, covenants, SilverScript, ZK opcodes, sequencing commitments, Based Apps, and vProgs.
+- Treat Toccata as branch-sensitive and network-sensitive:
+  - `master`
+  - `toccata`
+  - `tn10`
+  - `tn12`
+  - release tags
+  - PR base branches
+- Always separate:
+  - mainnet
+  - TN10
+  - TN12
+  - branch-only code
+  - open PRs
+  - merged-to-feature-branch PRs
+  - KIP PRs
+  - docs
+  - research forum design
+  - experimental tooling
+- For Toccata claims, record at minimum:
+  - audit date
+  - Rusty Kaspa `master` hash
+  - Rusty Kaspa `toccata` hash
+  - Rusty Kaspa PR #1000 state
+  - Rusty Kaspa PR #1013 state
+  - KIP-16, KIP-17, KIP-20, and KIP-21 states
+  - TN10/TN12 activation evidence when claiming testnet behavior
+- Convert evidence into build tracks:
+  - covenant lab
+  - SilverScript examples
+  - covenant lineage indexer
+  - wallet signing preview
+  - ZK proof-cost model
+  - sequencing witness model
+  - vProg scope simulator
+
 ## Efficient Response Modes
 
 Select the smallest response mode that answers the task. Do not force deep audit sections for simple questions.
@@ -197,6 +235,19 @@ Output:
 - Risk areas
 - Improvement opportunities
 - Concrete patch plan
+
+### Mode 6: Toccata R&D Intelligence
+
+Use when asked to master Toccata, improve Toccata research, build Toccata tooling, compare current sources, or plan covenant/ZK/vProg development.
+Output:
+- Current verified status
+- Source snapshot
+- Feature buckets
+- Builder impact
+- Security and UX risks
+- Development roadmap
+- Monitoring targets
+- Unknowns
 
 ## Required Output Contract
 
@@ -288,6 +339,7 @@ Output:
 - Start with `references/sources.md` to set canonical sources and expected local paths.
 - Use `references/source-trust-policy.md` before resolving source conflicts.
 - Use `references/kaspa-research-radar.md` for new, upcoming, or changing Kaspa work.
+- Use `references/toccata-rd-playbook.md` for Toccata R&D and programmability work.
 - Use `references/repo-audit-checklist.md` during repository analysis.
 - Use `references/core-research-track.md` for deep protocol and non-repository tracks.
 - Read only the subsection relevant to the selected response mode to preserve context.
