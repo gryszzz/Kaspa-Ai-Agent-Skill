@@ -49,6 +49,31 @@ These hashes are a freshness baseline, not a permanent truth. Re-run `git ls-rem
 - Kaspium Wallet: `https://github.com/azbuky/kaspium_wallet`
 - Kasware Wallet Extension: `https://github.com/kasware-wallet/extension`
 
+## Toccata Programmability Sources
+
+- Rusty Kaspa releases: `https://github.com/kaspanet/rusty-kaspa/releases`
+- Rusty Kaspa Toccata branch: `https://github.com/kaspanet/rusty-kaspa/tree/toccata`
+- Rusty Kaspa Toccata PR: `https://github.com/kaspanet/rusty-kaspa/pull/1000`
+- Rusty Kaspa ZK opcode updates PR: `https://github.com/kaspanet/rusty-kaspa/pull/1013`
+- Kaspa vision and roadmap context: `https://kaspa.org/vision/`
+- Kaspa builder/development page: `https://kaspa.org/build`
+- Kaspa programmability overview: `https://docs.kaspa.org/programmability`
+- Kaspa docs programmability source files: `https://github.com/kaspanet/docs/tree/main/content/docs/programmability`
+- Kaspa Research vProgs architecture proposal: `https://research.kas.pa/t/concrete-proposal-for-a-synchronously-composable-verifiable-programs-architecture/387`
+- Covenants guide: `https://docs.kaspa.org/programmability/covenants`
+- Based Apps guide: `https://docs.kaspa.org/programmability/based-apps`
+- Inline ZK guide: `https://docs.kaspa.org/programmability/inline-zk`
+- Full vProgs guide: `https://docs.kaspa.org/programmability/full-vprogs`
+- KIP-16 PR: `https://github.com/kaspanet/kips/pull/31`
+- KIP-17 PR: `https://github.com/kaspanet/kips/pull/32`
+- KIP-20 PR: `https://github.com/kaspanet/kips/pull/35`
+- KIP-21 PR: `https://github.com/kaspanet/kips/pull/36`
+- SilverScript: `https://github.com/kaspanet/silverscript`
+- vProgs: `https://github.com/kaspanet/vprogs`
+- KIPs: `https://github.com/kaspanet/kips`
+- TN10 REST blockDAG endpoint: `https://api-tn10.kaspa.org/info/blockdag`
+- TN12 REST blockDAG endpoint: `https://api-tn12.kaspa.org/info/blockdag`
+
 ## Secondary Sources
 
 - DeepWiki for Rusty Kaspa: `https://deepwiki.com/kaspanet/rusty-kaspa`

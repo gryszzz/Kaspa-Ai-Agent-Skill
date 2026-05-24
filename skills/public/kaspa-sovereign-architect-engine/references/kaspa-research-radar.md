@@ -19,6 +19,22 @@ Track:
 - security boundaries
 - app developer implications
 
+## Toccata Programmability
+
+Track:
+- activation status by network, release tag, DAA score, and UTC date
+- Rusty Kaspa branch status: `master`, `toccata`, `tn12`, release tags, and PR base branches
+- covenant script behavior
+- extended script opcodes
+- covenant IDs
+- ZK opcodes and verifier precompile boundaries
+- sequencing commitments
+- SilverScript syntax, compiler status, and emitted Kaspa Script
+- Based Apps and vProgs architecture
+- wallet signing UX for covenant spends and proof-bearing transactions
+- indexer schema impact for covenant lineage, app state, proof metadata, and sequencing commitments
+- production readiness labels: live, merged but unreleased, testnet-only, experimental, proposed, unknown
+
 ## Consensus
 
 Track:
