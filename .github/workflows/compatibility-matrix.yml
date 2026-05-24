@@ -6,11 +6,17 @@ on:
       - main
     paths:
       - "skills/public/kaspa-sovereign-architect-engine/**"
+      - "scripts/toccata-source-monitor.mjs"
+      - "research-snapshots/toccata/**"
       - ".github/workflows/compatibility-matrix.yml"
+      - ".github/workflows/toccata-source-monitor.yml"
   pull_request:
     paths:
       - "skills/public/kaspa-sovereign-architect-engine/**"
+      - "scripts/toccata-source-monitor.mjs"
+      - "research-snapshots/toccata/**"
       - ".github/workflows/compatibility-matrix.yml"
+      - ".github/workflows/toccata-source-monitor.yml"
   workflow_dispatch:
 
 env:
