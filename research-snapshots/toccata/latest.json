@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-05-24T23:31:38.136Z",
+  "checkedAt": "2026-05-24T23:40:08.271Z",
   "policy": {
     "sourceTier": "primary-source-first",
     "mainnetClaimRule": "mainnet activation requires explicit mainnet release, activation, or merged production evidence",
@@ -252,13 +252,13 @@
       "url": "https://api-tn10.kaspa.org/info/blockdag",
       "ok": true,
       "status": 200,
-      "virtualDaaScore": "473045012",
-      "blockCount": "1463722",
-      "headerCount": "1463722",
+      "virtualDaaScore": "473050186",
+      "blockCount": "1468896",
+      "headerCount": "1468896",
       "tipHashes": [
-        "91a60dbb605064fa7eaef7a90b220ce3ed9b3d8f50561c5e809d3bd0d641c6cf",
-        "f0388a984fb93841b4f993e002042f9dac010c3eeb5bde2c34f572331e10ff90",
-        "908cb18befd3fa9a5ca14bb573baf527cad393310c1ef0c1b5f3884adfb5a922"
+        "d734569d1f140804f48ed0c75567a840f9692488fe63961ac3b267b874820a77",
+        "96c3be4f84815a0c585962f98fcff5f224ab66a4cc873fac238cd4cef2b49b16",
+        "f0388a984fb93841b4f993e002042f9dac010c3eeb5bde2c34f572331e10ff90"
       ]
     },
     {
@@ -266,12 +266,12 @@
       "url": "https://api-tn12.kaspa.org/info/blockdag",
       "ok": true,
       "status": 200,
-      "virtualDaaScore": "20556018",
-      "blockCount": "1349785",
-      "headerCount": "1349785",
+      "virtualDaaScore": "20561030",
+      "blockCount": "1354797",
+      "headerCount": "1354797",
       "tipHashes": [
-        "291b0bc6c7c8c5418fad15f166586b692483488de1fb677132ccf46dc15ddfda",
-        "32abe4a964cca4bbbe0e0e1caf9fab9448dda6176e50ad789e0b05324ef9f91e"
+        "6aa5eb519b7b9c979d129799b7c676ffe6010b51d52ecd38d46aa5af9dbefe93",
+        "0088a95035b61a69f72913948896fb1564181ba070c1a234f749248733ea4a8c"
       ]
     }
   ],
@@ -334,7 +334,7 @@
       "etag": null,
       "lastModified": "Tue, 19 Aug 2025 21:04:05 GMT",
       "contentLength": 46722,
-      "contentSha256": "902562ef14b28aa7c452b937773e9d8dce100a68bf956ac56d7663dc0b503c68"
+      "contentSha256": "2bdfd87fedfd03a7e5855695b511a48ae0199517b1d2d221ca9eeab2e5bfcdd6"
     },
     {
       "label": "vProgs pruning safety",
@@ -344,7 +344,7 @@
       "etag": null,
       "lastModified": "Fri, 26 Sep 2025 01:10:08 GMT",
       "contentLength": 24937,
-      "contentSha256": "a22e9c7f1e01e246a3d4970cf38390e3505da634e2b86213c81d9faf2ad36a0f"
+      "contentSha256": "2ff7e6f09021424fa94f07b093f6ceee77b967bddb8a7672ed37da39157669ed"
     },
     {
       "label": "Proof stitching framework",
@@ -354,7 +354,7 @@
       "etag": null,
       "lastModified": "Sun, 24 Aug 2025 16:16:12 GMT",
       "contentLength": 32618,
-      "contentSha256": "5423463a74f2516166231bad5883f2bd0dc905e2d70ece4752a04b474a6e64db"
+      "contentSha256": "31f70a2f9dd27f1dc334ce16aafaa5eedd4abd2be1f28a853256c6296eaa801c"
     },
     {
       "label": "Based ZK rollups over Kaspa",
@@ -364,7 +364,7 @@
       "etag": null,
       "lastModified": "Sun, 23 Feb 2025 15:17:32 GMT",
       "contentLength": 56014,
-      "contentSha256": "86de71f80fdc239a24bacd4f3e33297c983de908d9d444b9c90e90b2da695651"
+      "contentSha256": "b09fb4aa05e6753de5eb9b53edcb4773c27a2707f9d5aa7f5df4df9f770b1467"
     }
   ],
   "verdict": {
@@ -377,7 +377,7 @@
       "Use branch hashes, PR base refs, KIP merge state, and docs hashes together before making claims."
     ]
   },
-  "factsHash": "57bdacc34f8f4f0703a5751198f1ae834e5b311a2722b437f995185a0acb8f24",
-  "previousFactsHash": null,
+  "factsHash": "30159921b3f79330bb61d6a5d3c34ccf97d90deccd9ba7a67d529161d23a4a12",
+  "previousFactsHash": "57bdacc34f8f4f0703a5751198f1ae834e5b311a2722b437f995185a0acb8f24",
   "changedSincePrevious": true
 }
