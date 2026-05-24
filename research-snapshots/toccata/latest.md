@@ -1,8 +1,8 @@
 # Toccata Source Snapshot
 
-Generated: 2026-05-24T23:41:58.913Z
+Generated: 2026-05-24T23:47:15.938Z
 
-Facts hash: `ab17ac9c6ac827f8084404ad18e2734989b8346ad4d8382c94c6494800cf5a84`
+Facts hash: `992cd4502451bee4276ac8c1180c3de77b2b9d981df1a347b7050e4e6ec4626a`
 
 ## Verdict
 
@@ -43,8 +43,8 @@ Facts hash: `ab17ac9c6ac827f8084404ad18e2734989b8346ad4d8382c94c6494800cf5a84`
 
 | Source | Status | Virtual DAA | Block count |
 | --- | --- | --- | --- |
-| TN10 blockdag | ok | 473051314 | 1470024 |
-| TN12 blockdag | ok | 20562109 | 1355876 |
+| TN10 blockdag | ok | 473054385 | 1473095 |
+| TN12 blockdag | ok | 20565350 | 1359117 |
 
 ## Web Source Fingerprints
 
