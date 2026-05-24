@@ -1,0 +1,383 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-05-24T23:31:38.136Z",
+  "policy": {
+    "sourceTier": "primary-source-first",
+    "mainnetClaimRule": "mainnet activation requires explicit mainnet release, activation, or merged production evidence",
+    "testnetClaimRule": "TN10/TN12 observations are testnet-only until corroborated by mainnet evidence"
+  },
+  "github": {
+    "pulls": [
+      {
+        "repo": "kaspanet/rusty-kaspa",
+        "number": 1000,
+        "label": "Toccata implementation",
+        "interpretation": "Main branch-aware implementation signal. Open PR is not mainnet activation.",
+        "ok": true,
+        "state": "open",
+        "merged": false,
+        "draft": true,
+        "title": "Toccata",
+        "url": "https://github.com/kaspanet/rusty-kaspa/pull/1000",
+        "baseRefName": "master",
+        "headRefName": "toccata",
+        "headSha": "f1d1a1ae6a4131a3d6124fef443192323c1c382f",
+        "updatedAt": "2026-05-21T08:45:01Z",
+        "createdAt": "2026-05-14T12:16:51Z",
+        "mergedAt": null
+      },
+      {
+        "repo": "kaspanet/rusty-kaspa",
+        "number": 1013,
+        "label": "ZK opcode updates",
+        "interpretation": "Fast testnet hard-fork signal for ZK opcode consensus deltas.",
+        "ok": true,
+        "state": "open",
+        "merged": false,
+        "draft": false,
+        "title": "ZK opcode updates",
+        "url": "https://github.com/kaspanet/rusty-kaspa/pull/1013",
+        "baseRefName": "tn10",
+        "headRefName": "zk-updates",
+        "headSha": "0d811dfd75b3a038dab4f7b482bdb3903d1f63da",
+        "updatedAt": "2026-05-24T23:19:57Z",
+        "createdAt": "2026-05-21T09:20:12Z",
+        "mergedAt": null
+      },
+      {
+        "repo": "kaspanet/kips",
+        "number": 31,
+        "label": "KIP-16",
+        "interpretation": "KIP proposal status must be separated from merged protocol behavior.",
+        "ok": true,
+        "state": "open",
+        "merged": false,
+        "draft": false,
+        "title": "Add kip16",
+        "url": "https://github.com/kaspanet/kips/pull/31",
+        "baseRefName": "master",
+        "headRefName": "kip16",
+        "headSha": "c5ec7ff1060de4192b4092cdee3523088d76d8af",
+        "updatedAt": "2026-05-17T17:16:38Z",
+        "createdAt": "2025-12-07T07:05:13Z",
+        "mergedAt": null
+      },
+      {
+        "repo": "kaspanet/kips",
+        "number": 32,
+        "label": "KIP-17",
+        "interpretation": "KIP proposal status must be separated from merged protocol behavior.",
+        "ok": true,
+        "state": "open",
+        "merged": false,
+        "draft": false,
+        "title": "KIP 17",
+        "url": "https://github.com/kaspanet/kips/pull/32",
+        "baseRefName": "master",
+        "headRefName": "kip17",
+        "headSha": "6fc7a1b20bfe22a316dec76ebd20fe7d9e18722c",
+        "updatedAt": "2026-05-13T16:00:54Z",
+        "createdAt": "2025-12-16T07:01:49Z",
+        "mergedAt": null
+      },
+      {
+        "repo": "kaspanet/kips",
+        "number": 35,
+        "label": "KIP-20",
+        "interpretation": "KIP proposal status must be separated from merged protocol behavior.",
+        "ok": true,
+        "state": "open",
+        "merged": false,
+        "draft": false,
+        "title": "KIP-20: Covenant IDs (Consensus-Traced Covenant Lineage)",
+        "url": "https://github.com/kaspanet/kips/pull/35",
+        "baseRefName": "master",
+        "headRefName": "kip20",
+        "headSha": "0581f55487ed7c471fbd3615684ebba7bae47e63",
+        "updatedAt": "2026-02-11T13:56:06Z",
+        "createdAt": "2026-02-11T13:56:06Z",
+        "mergedAt": null
+      },
+      {
+        "repo": "kaspanet/kips",
+        "number": 36,
+        "label": "KIP-21",
+        "interpretation": "KIP proposal status must be separated from merged protocol behavior.",
+        "ok": true,
+        "state": "open",
+        "merged": false,
+        "draft": false,
+        "title": "KIP-21: Partitioned sequencing commitment with O(activity) proving",
+        "url": "https://github.com/kaspanet/kips/pull/36",
+        "baseRefName": "master",
+        "headRefName": "kip21",
+        "headSha": "bd4cfe43a6035ef1c3335ff16ea1f0bd11f98cf7",
+        "updatedAt": "2026-03-12T20:56:21Z",
+        "createdAt": "2026-02-24T23:20:01Z",
+        "mergedAt": null
+      },
+      {
+        "repo": "kaspanet/kips",
+        "number": 37,
+        "label": "KIP-22",
+        "interpretation": "Adjacent proposal signal for Toccata-era programmability tracking.",
+        "ok": true,
+        "state": "open",
+        "merged": false,
+        "draft": false,
+        "title": "KIP22 - P2MR ScriptPublicKey for quantum resistance",
+        "url": "https://github.com/kaspanet/kips/pull/37",
+        "baseRefName": "master",
+        "headRefName": "master",
+        "headSha": "cdafc96705eb5dc619e7f8fefaaf492949d6698f",
+        "updatedAt": "2026-03-10T16:31:00Z",
+        "createdAt": "2026-03-06T20:43:49Z",
+        "mergedAt": null
+      },
+      {
+        "repo": "kaspanet/kips",
+        "number": 40,
+        "label": "KIP-23",
+        "interpretation": "Adjacent proposal signal for Toccata-era programmability tracking.",
+        "ok": true,
+        "state": "open",
+        "merged": false,
+        "draft": false,
+        "title": "Add KIP-0023: DNS-resolved peer addresses",
+        "url": "https://github.com/kaspanet/kips/pull/40",
+        "baseRefName": "master",
+        "headRefName": "kip-0016-addpeer-hostnames",
+        "headSha": "bdd3abd55ab8ab8926c4a086ac632a16e571f4d4",
+        "updatedAt": "2026-05-06T08:03:20Z",
+        "createdAt": "2026-05-06T07:52:54Z",
+        "mergedAt": null
+      }
+    ],
+    "refs": [
+      {
+        "repo": "kaspanet/rusty-kaspa",
+        "kind": "heads",
+        "name": "master",
+        "ok": true,
+        "sha": "a07d8b38d45f38a02a1f35f601e874358f6c7846",
+        "objectType": "commit",
+        "url": "https://github.com/kaspanet/rusty-kaspa/tree/master"
+      },
+      {
+        "repo": "kaspanet/rusty-kaspa",
+        "kind": "heads",
+        "name": "toccata",
+        "ok": true,
+        "sha": "f1d1a1ae6a4131a3d6124fef443192323c1c382f",
+        "objectType": "commit",
+        "url": "https://github.com/kaspanet/rusty-kaspa/tree/toccata"
+      },
+      {
+        "repo": "kaspanet/rusty-kaspa",
+        "kind": "heads",
+        "name": "tn10",
+        "ok": true,
+        "sha": "f1d1a1ae6a4131a3d6124fef443192323c1c382f",
+        "objectType": "commit",
+        "url": "https://github.com/kaspanet/rusty-kaspa/tree/tn10"
+      },
+      {
+        "repo": "kaspanet/rusty-kaspa",
+        "kind": "heads",
+        "name": "tn12",
+        "ok": true,
+        "sha": "7b1e18cc6e7098d83927049781c91740b90e7754",
+        "objectType": "commit",
+        "url": "https://github.com/kaspanet/rusty-kaspa/tree/tn12"
+      },
+      {
+        "repo": "kaspanet/rusty-kaspa",
+        "kind": "tags",
+        "name": "tn10-toc2",
+        "ok": true,
+        "sha": "97415b689462bec8a1a36f1665302529ea8a3108",
+        "objectType": "commit",
+        "url": "https://github.com/kaspanet/rusty-kaspa/tree/tn10-toc2"
+      },
+      {
+        "repo": "kaspanet/rusty-kaspa",
+        "kind": "tags",
+        "name": "v1.1.0",
+        "ok": true,
+        "sha": "e97070faa3826c590f477e327c82daaddd6178f4",
+        "objectType": "commit",
+        "url": "https://github.com/kaspanet/rusty-kaspa/tree/v1.1.0"
+      },
+      {
+        "repo": "kaspanet/kips",
+        "kind": "heads",
+        "name": "master",
+        "ok": true,
+        "sha": "2a77c954b2241bce7954ba5fecad0ac7694ce195",
+        "objectType": "commit",
+        "url": "https://github.com/kaspanet/kips/tree/master"
+      },
+      {
+        "repo": "kaspanet/docs",
+        "kind": "heads",
+        "name": "main",
+        "ok": true,
+        "sha": "6aa5e9f52995f53dc85ef3e8c7c71bab9a359b3e",
+        "objectType": "commit",
+        "url": "https://github.com/kaspanet/docs/tree/main"
+      },
+      {
+        "repo": "kaspanet/silverscript",
+        "kind": "heads",
+        "name": "master",
+        "ok": true,
+        "sha": "2c4623124d75bd8a9a7f87ded9413ef9f6b17acd",
+        "objectType": "commit",
+        "url": "https://github.com/kaspanet/silverscript/tree/master"
+      },
+      {
+        "repo": "kaspanet/vprogs",
+        "kind": "heads",
+        "name": "master",
+        "ok": true,
+        "sha": "57039db09ea958689aee2ae89f81ba40c8cc3e6d",
+        "objectType": "commit",
+        "url": "https://github.com/kaspanet/vprogs/tree/master"
+      }
+    ]
+  },
+  "kaspaNetwork": [
+    {
+      "label": "TN10 blockdag",
+      "url": "https://api-tn10.kaspa.org/info/blockdag",
+      "ok": true,
+      "status": 200,
+      "virtualDaaScore": "473045012",
+      "blockCount": "1463722",
+      "headerCount": "1463722",
+      "tipHashes": [
+        "91a60dbb605064fa7eaef7a90b220ce3ed9b3d8f50561c5e809d3bd0d641c6cf",
+        "f0388a984fb93841b4f993e002042f9dac010c3eeb5bde2c34f572331e10ff90",
+        "908cb18befd3fa9a5ca14bb573baf527cad393310c1ef0c1b5f3884adfb5a922"
+      ]
+    },
+    {
+      "label": "TN12 blockdag",
+      "url": "https://api-tn12.kaspa.org/info/blockdag",
+      "ok": true,
+      "status": 200,
+      "virtualDaaScore": "20556018",
+      "blockCount": "1349785",
+      "headerCount": "1349785",
+      "tipHashes": [
+        "291b0bc6c7c8c5418fad15f166586b692483488de1fb677132ccf46dc15ddfda",
+        "32abe4a964cca4bbbe0e0e1caf9fab9448dda6176e50ad789e0b05324ef9f91e"
+      ]
+    }
+  ],
+  "webSources": [
+    {
+      "label": "Kaspa programmability overview",
+      "url": "https://docs.kaspa.org/programmability",
+      "ok": true,
+      "status": 200,
+      "etag": "W/\"ca70735e3d333d9651b8460ee51942a6\"",
+      "lastModified": "Sat, 23 May 2026 16:56:20 GMT",
+      "contentLength": 55397,
+      "contentSha256": "91c3aed0ca1f4e4e71ec2b5d0389544f26cc9ae63e9d4312b6aadad4723d1193"
+    },
+    {
+      "label": "Kaspa covenants docs",
+      "url": "https://docs.kaspa.org/programmability/covenants",
+      "ok": true,
+      "status": 200,
+      "etag": "W/\"55416d21d8471f24dc8f4263ffbc2355\"",
+      "lastModified": "Sat, 23 May 2026 15:05:29 GMT",
+      "contentLength": 54726,
+      "contentSha256": "a0ff4aabae8ff91bce7d378c0b8f89542dff1511141c7f4ab2463205b7deb591"
+    },
+    {
+      "label": "Kaspa inline ZK docs",
+      "url": "https://docs.kaspa.org/programmability/inline-zk",
+      "ok": true,
+      "status": 200,
+      "etag": "W/\"c2cc7ed8524ad41e3be8c61bc8ba4c6f\"",
+      "lastModified": "Sat, 23 May 2026 20:08:35 GMT",
+      "contentLength": 53928,
+      "contentSha256": "e3d253d2e33c0fa322c4ff2d5ce9f377f73ae9b2ec4adee63666ddbb7ff52a3a"
+    },
+    {
+      "label": "Kaspa based apps docs",
+      "url": "https://docs.kaspa.org/programmability/based-apps",
+      "ok": true,
+      "status": 200,
+      "etag": "W/\"b79cca6b00eb45041542e76a055078e8\"",
+      "lastModified": "Sun, 24 May 2026 06:28:24 GMT",
+      "contentLength": 52059,
+      "contentSha256": "4a1aef3bf9bc0d17b6e45b4e943c9912971624c5475c5a7ab2305c7af77b0013"
+    },
+    {
+      "label": "Kaspa full vProgs docs",
+      "url": "https://docs.kaspa.org/programmability/full-vprogs",
+      "ok": true,
+      "status": 200,
+      "etag": "W/\"82a557b4d8cbd2036bf69309d6132f73\"",
+      "lastModified": "Fri, 24 Apr 2026 23:48:56 GMT",
+      "contentLength": 45792,
+      "contentSha256": "44b4a8fa0027271f7767dcfaecd13f352e7499156b460e05d7e1ba32c39e1682"
+    },
+    {
+      "label": "Formal vProg computation DAG model",
+      "url": "https://research.kas.pa/t/zoom-in-a-formal-backbone-model-for-the-vprog-computation-dag/407",
+      "ok": true,
+      "status": 200,
+      "etag": null,
+      "lastModified": "Tue, 19 Aug 2025 21:04:05 GMT",
+      "contentLength": 46722,
+      "contentSha256": "902562ef14b28aa7c452b937773e9d8dce100a68bf956ac56d7663dc0b503c68"
+    },
+    {
+      "label": "vProgs pruning safety",
+      "url": "https://research.kas.pa/t/pruning-safety-in-the-vprogs-architecture/411",
+      "ok": true,
+      "status": 200,
+      "etag": null,
+      "lastModified": "Fri, 26 Sep 2025 01:10:08 GMT",
+      "contentLength": 24937,
+      "contentSha256": "a22e9c7f1e01e246a3d4970cf38390e3505da634e2b86213c81d9faf2ad36a0f"
+    },
+    {
+      "label": "Proof stitching framework",
+      "url": "https://research.kas.pa/t/a-basic-framework-for-proofs-stitching/323",
+      "ok": true,
+      "status": 200,
+      "etag": null,
+      "lastModified": "Sun, 24 Aug 2025 16:16:12 GMT",
+      "contentLength": 32618,
+      "contentSha256": "5423463a74f2516166231bad5883f2bd0dc905e2d70ece4752a04b474a6e64db"
+    },
+    {
+      "label": "Based ZK rollups over Kaspa",
+      "url": "https://research.kas.pa/t/on-the-design-of-based-zk-rollups-over-kaspas-utxo-based-dag-consensus/208",
+      "ok": true,
+      "status": 200,
+      "etag": null,
+      "lastModified": "Sun, 23 Feb 2025 15:17:32 GMT",
+      "contentLength": 56014,
+      "contentSha256": "86de71f80fdc239a24bacd4f3e33297c983de908d9d444b9c90e90b2da695651"
+    }
+  ],
+  "verdict": {
+    "mainnetActivation": "not_verified_by_monitor",
+    "implementationStatus": "PR #1000 is open against master.",
+    "branchStatus": "rusty-kaspa master a07d8b38d45f, toccata f1d1a1ae6a41.",
+    "caution": [
+      "Do not equate open PRs with merged production behavior.",
+      "Do not equate TN10/TN12 observations with mainnet activation.",
+      "Use branch hashes, PR base refs, KIP merge state, and docs hashes together before making claims."
+    ]
+  },
+  "factsHash": "57bdacc34f8f4f0703a5751198f1ae834e5b311a2722b437f995185a0acb8f24",
+  "previousFactsHash": null,
+  "changedSincePrevious": true
+}
