@@ -16,6 +16,81 @@ Confirmed evidence as of 2026-05-24:
 - Kaspa builder docs split programmability into Covenants, Based Apps, Inline ZK, and future Full vProgs.
 - The vProgs repository is explicitly early/prototype-stage and models based computation through layered Rust crates for core types, storage, state, scheduling, transaction runtime, node integration, and zk.
 
+## Second-Pass Source Audit
+
+Audit time: 2026-05-24T22:36:54Z
+
+### Rusty Kaspa Branch State
+
+- `kaspanet/rusty-kaspa` `master`: `a07d8b38d45f38a02a1f35f601e874358f6c7846`
+- `kaspanet/rusty-kaspa` `toccata`: `f1d1a1ae6a4131a3d6124fef443192323c1c382f`
+- `kaspanet/rusty-kaspa` `tn12`: `7b1e18cc6e7098d83927049781c91740b90e7754`
+- `kaspanet/rusty-kaspa` tag `tn10-toc2`: `97415b689462bec8a1a36f1665302529ea8a3108`
+
+The decisive implementation signal is Rusty Kaspa PR #1000, `Toccata`, which is an open PR from branch `toccata` into `master`.
+
+Do not treat all GitHub PRs marked `MERGED` as merged into `master`. Several important Toccata PRs were merged into feature branches such as `covpp`, `covpp-reset1`, `covpp-reset2`, or `toccata`. Record `baseRefName` whenever using GitHub PR evidence.
+
+### Activation Evidence
+
+Evidence from the `toccata` branch `consensus/core/src/config/params.rs`:
+
+- Mainnet: `toccata_activation: ForkActivation::never()`
+- Testnet-10: `toccata_activation: ForkActivation::new(467_579_632)`, with code comment `~16:00 UTC, May 18, 2026`
+- Testnet-12: `toccata_activation: ForkActivation::always()`
+- Simnet: `toccata_activation: ForkActivation::always()`
+- Devnet: `toccata_activation: ForkActivation::never()`
+
+Live REST check:
+
+- `https://api-tn10.kaspa.org/info/blockdag` returned `networkName = kaspa-testnet-10` and `virtualDaaScore = 473012180` at 2026-05-24T22:36:54Z. This is above the `tn10-toc2` activation DAA score of 467,579,632.
+- `https://api-tn12.kaspa.org/info/blockdag` returned `networkName = kaspa-testnet-12` and `virtualDaaScore = 20523315` at the same audit pass.
+
+Conclusion:
+
+- Toccata should be described as active on TN12 and activated/past activation on TN10.
+- Toccata should not be described as active on mainnet until a mainnet activation release, DAA score, and code path are verified.
+
+### KIP Status Evidence
+
+The public `kaspanet/kips` `master` branch is still `2a77c954b2241bce7954ba5fecad0ac7694ce195`.
+
+The Toccata-related KIPs are currently visible as open PRs, not merged files on `master`:
+
+- KIP-16: PR #31, `Add kip16`, file `kip-0016.md`, status in document: `Proposed`. Title: `New Transaction Opcodes for Verifiable Computation`. Introduces `OpZkPrecompile`.
+- KIP-17: PR #32, `KIP 17`, file `kip-0017.md`, status in document: `Draft`. Title: `Covenants and Improved Scripting Capabilities`.
+- KIP-20: PR #35, `KIP-20: Covenant IDs (Consensus-Traced Covenant Lineage)`, file `kip-0020.md`, status in document: `Proposed, Implemented, Activated in TN12`.
+- KIP-21: PR #36, `KIP-21: Partitioned sequencing commitment with O(activity) proving`, file `kip-0021.md`, status in document: `Draft`.
+
+Treat these as high-signal proposal/spec sources, but not final merged KIPs until the PRs land in `kaspanet/kips` `master`.
+
+### Implementation PR Map
+
+Important Rusty Kaspa PRs:
+
+- PR #797: `KIP 17 implementation`, merged into base branch `covpp`, not `master`.
+- PR #813: `Covenant id scheme + Seq commit opcode`, merged into base branch `covpp-reset1`.
+- PR #835: `Add Covenant Related fields in Transactions, UTXOs, PSKT, RPC, and JS Bindings; Resolve Related TODOs`, merged into base branch `covpp-reset1`.
+- PR #884: `Add more granular script pricing and compute_budget field for v1 transactions`, merged into base branch `covpp-reset2`.
+- PR #943: `Kip21 impl`, merged into base branch `covpp-reset2`.
+- PR #963: `Add Toccata lane/gas limits to consensus and implement corresponding mempool policies`, merged into base branch `covpp-reset2`.
+- PR #995: `Toccata transient mass activation and mempool policy refinement`, merged into base branch `toccata`.
+- PR #997: `Bump P2P protocol version and guard Toccata IBD`, merged into base branch `toccata`.
+- PR #998: `Bump the header version for Toccata`, merged into base branch `toccata`.
+- PR #1005: `Toccata`, merged into base branch `toccata`.
+- PR #1011: `Clarify seqcommit tx validation contexts`, merged into base branch `toccata`.
+- PR #1013: `ZK opcode updates`, open PR. Its body says it is a pending PR for small zk opcode consensus changes that require a fast TN10 hard fork.
+
+Code found on the `toccata` branch includes:
+
+- `TransactionInput` carrying `TxInputMass`, with `ComputeBudget` for version >= 1 transactions.
+- `TransactionOutput` carrying `Option<CovenantBinding>`.
+- `UtxoEntry` carrying `Option<Hash>` covenant ID.
+- WASM opcode exposure for `OpZkPrecompile`, `OpTxPayloadSubstr`, `OpTxPayloadLen`, `OpInputCovenantId`, `OpCovInputCount`, `OpCovInputIdx`, `OpCovOutputCount`, `OpCovOutputIdx`, `OpChainblockSeqCommit`, and `OpOutputCovenantId`.
+- Post-Toccata transient mass and lane/gas limit parameters.
+
+This branch-level evidence is stronger than roadmap copy, but still distinct from a final stable/mainnet release.
+
 ## Verification Ladder
 
 Use these labels in all future Toccata research.
@@ -181,8 +256,8 @@ Programmability Surface
 
 - What exact Rusty Kaspa release will schedule mainnet Toccata?
 - What final DAA score and UTC timestamp will define mainnet activation?
-- Which KIP numbers are final for the Toccata bundle? Official Kaspa build references KIP-16, KIP-17, KIP-20, and KIP-21, while the public KIPs repository index currently shows up to KIP-15 on `master`.
-- Which Toccata components are already merged in Rusty Kaspa master versus living in branches or pull requests?
+- When will KIP-16, KIP-17, KIP-20, and KIP-21 merge into `kaspanet/kips` `master`, and will their document statuses change before activation?
+- When will Rusty Kaspa PR #1000 merge into `master`, and will PR #1013 or later ZK changes be part of the same activation bundle?
 - What verifier systems are included in the first activation, and what verification costs/mass rules apply?
 - How will wallets expose covenant state and proof semantics safely to non-technical users?
 - What explorer/indexer schema changes are needed for covenant IDs and sequencing commitment proofs?
@@ -191,6 +266,8 @@ Programmability Surface
 
 - Rusty Kaspa releases: https://github.com/kaspanet/rusty-kaspa/releases
 - Rusty Kaspa repository: https://github.com/kaspanet/rusty-kaspa
+- Rusty Kaspa Toccata PR: https://github.com/kaspanet/rusty-kaspa/pull/1000
+- Rusty Kaspa ZK opcode updates PR: https://github.com/kaspanet/rusty-kaspa/pull/1013
 - Kaspa vision page: https://kaspa.org/vision/
 - Kaspa build page: https://kaspa.org/build
 - Kaspa docs programmability overview: https://docs.kaspa.org/programmability
@@ -198,6 +275,14 @@ Programmability Surface
 - Kaspa docs based apps: https://docs.kaspa.org/programmability/based-apps
 - Kaspa docs inline ZK: https://docs.kaspa.org/programmability/inline-zk
 - Kaspa docs full vProgs: https://docs.kaspa.org/programmability/full-vprogs
+- Kaspa docs repository programmability sources: https://github.com/kaspanet/docs/tree/main/content/docs/programmability
+- Kaspa Research vProgs architecture proposal: https://research.kas.pa/t/concrete-proposal-for-a-synchronously-composable-verifiable-programs-architecture/387
+- KIP-16 PR: https://github.com/kaspanet/kips/pull/31
+- KIP-17 PR: https://github.com/kaspanet/kips/pull/32
+- KIP-20 PR: https://github.com/kaspanet/kips/pull/35
+- KIP-21 PR: https://github.com/kaspanet/kips/pull/36
 - SilverScript: https://github.com/kaspanet/silverscript
 - vProgs: https://github.com/kaspanet/vprogs
 - KIPs repository: https://github.com/kaspanet/kips
+- TN10 REST blockDAG endpoint: https://api-tn10.kaspa.org/info/blockdag
+- TN12 REST blockDAG endpoint: https://api-tn12.kaspa.org/info/blockdag
