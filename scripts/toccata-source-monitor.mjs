@@ -440,9 +440,7 @@ function buildFactsHash(snapshot) {
     url: source.url,
     ok: source.ok,
     status: source.status,
-    etag: source.etag || null,
-    lastModified: source.lastModified || null,
-    contentLength: source.contentLength || null,
+    fingerprintBasis: source.fingerprintBasis || null,
     sourceFingerprint: source.sourceFingerprint || null,
     error: source.error || null,
   }));
