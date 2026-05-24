@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-05-24T23:31:38.136Z",
+  "checkedAt": "2026-05-24T23:41:58.913Z",
   "policy": {
     "sourceTier": "primary-source-first",
     "mainnetClaimRule": "mainnet activation requires explicit mainnet release, activation, or merged production evidence",
@@ -252,13 +252,13 @@
       "url": "https://api-tn10.kaspa.org/info/blockdag",
       "ok": true,
       "status": 200,
-      "virtualDaaScore": "473045012",
-      "blockCount": "1463722",
-      "headerCount": "1463722",
+      "virtualDaaScore": "473051314",
+      "blockCount": "1470024",
+      "headerCount": "1470026",
       "tipHashes": [
-        "91a60dbb605064fa7eaef7a90b220ce3ed9b3d8f50561c5e809d3bd0d641c6cf",
-        "f0388a984fb93841b4f993e002042f9dac010c3eeb5bde2c34f572331e10ff90",
-        "908cb18befd3fa9a5ca14bb573baf527cad393310c1ef0c1b5f3884adfb5a922"
+        "479f85da244de641f3258473a9a22969e200efd8102915381b1359284ee5b020",
+        "cd952024ddee88ba8e18134bc661d1de6ff61be1c719248b334f02833cb7064a",
+        "f0388a984fb93841b4f993e002042f9dac010c3eeb5bde2c34f572331e10ff90"
       ]
     },
     {
@@ -266,12 +266,12 @@
       "url": "https://api-tn12.kaspa.org/info/blockdag",
       "ok": true,
       "status": 200,
-      "virtualDaaScore": "20556018",
-      "blockCount": "1349785",
-      "headerCount": "1349785",
+      "virtualDaaScore": "20562109",
+      "blockCount": "1355876",
+      "headerCount": "1355876",
       "tipHashes": [
-        "291b0bc6c7c8c5418fad15f166586b692483488de1fb677132ccf46dc15ddfda",
-        "32abe4a964cca4bbbe0e0e1caf9fab9448dda6176e50ad789e0b05324ef9f91e"
+        "0fcab87e95707e2917d61142191cb324a8f5e947cc592c2757cac3f31b572786",
+        "442cdae07753954bcc3e1b6c3cb7eeda78b8df4b391b9d1ce747933fa6547929"
       ]
     }
   ],
@@ -284,7 +284,9 @@
       "etag": "W/\"ca70735e3d333d9651b8460ee51942a6\"",
       "lastModified": "Sat, 23 May 2026 16:56:20 GMT",
       "contentLength": 55397,
-      "contentSha256": "91c3aed0ca1f4e4e71ec2b5d0389544f26cc9ae63e9d4312b6aadad4723d1193"
+      "contentSha256": "91c3aed0ca1f4e4e71ec2b5d0389544f26cc9ae63e9d4312b6aadad4723d1193",
+      "fingerprintBasis": "etag:W/\"ca70735e3d333d9651b8460ee51942a6\"",
+      "sourceFingerprint": "8a4394dc92661d122b40ae23c1f31c885306916529b71f55b01cfaf623774aae"
     },
     {
       "label": "Kaspa covenants docs",
@@ -294,7 +296,9 @@
       "etag": "W/\"55416d21d8471f24dc8f4263ffbc2355\"",
       "lastModified": "Sat, 23 May 2026 15:05:29 GMT",
       "contentLength": 54726,
-      "contentSha256": "a0ff4aabae8ff91bce7d378c0b8f89542dff1511141c7f4ab2463205b7deb591"
+      "contentSha256": "a0ff4aabae8ff91bce7d378c0b8f89542dff1511141c7f4ab2463205b7deb591",
+      "fingerprintBasis": "etag:W/\"55416d21d8471f24dc8f4263ffbc2355\"",
+      "sourceFingerprint": "73e4a4a4676b8dfa50203247c09ba039af838b6cc4ff7dd5bf0e98fb36d15f31"
     },
     {
       "label": "Kaspa inline ZK docs",
@@ -304,7 +308,9 @@
       "etag": "W/\"c2cc7ed8524ad41e3be8c61bc8ba4c6f\"",
       "lastModified": "Sat, 23 May 2026 20:08:35 GMT",
       "contentLength": 53928,
-      "contentSha256": "e3d253d2e33c0fa322c4ff2d5ce9f377f73ae9b2ec4adee63666ddbb7ff52a3a"
+      "contentSha256": "e3d253d2e33c0fa322c4ff2d5ce9f377f73ae9b2ec4adee63666ddbb7ff52a3a",
+      "fingerprintBasis": "etag:W/\"c2cc7ed8524ad41e3be8c61bc8ba4c6f\"",
+      "sourceFingerprint": "f0935b1651d6376c19c68affbadabffdcefccae2331b7409779e17a1468a64f4"
     },
     {
       "label": "Kaspa based apps docs",
@@ -314,7 +320,9 @@
       "etag": "W/\"b79cca6b00eb45041542e76a055078e8\"",
       "lastModified": "Sun, 24 May 2026 06:28:24 GMT",
       "contentLength": 52059,
-      "contentSha256": "4a1aef3bf9bc0d17b6e45b4e943c9912971624c5475c5a7ab2305c7af77b0013"
+      "contentSha256": "4a1aef3bf9bc0d17b6e45b4e943c9912971624c5475c5a7ab2305c7af77b0013",
+      "fingerprintBasis": "etag:W/\"b79cca6b00eb45041542e76a055078e8\"",
+      "sourceFingerprint": "618bd928125d8c09f242fd9a443b8d6093d4cc97d5e8e9348a9d78db81821da9"
     },
     {
       "label": "Kaspa full vProgs docs",
@@ -324,7 +332,9 @@
       "etag": "W/\"82a557b4d8cbd2036bf69309d6132f73\"",
       "lastModified": "Fri, 24 Apr 2026 23:48:56 GMT",
       "contentLength": 45792,
-      "contentSha256": "44b4a8fa0027271f7767dcfaecd13f352e7499156b460e05d7e1ba32c39e1682"
+      "contentSha256": "44b4a8fa0027271f7767dcfaecd13f352e7499156b460e05d7e1ba32c39e1682",
+      "fingerprintBasis": "etag:W/\"82a557b4d8cbd2036bf69309d6132f73\"",
+      "sourceFingerprint": "a33718dab8525dba4fe7f6c97e4f07133ceb646a229a3c94024713c58a7267be"
     },
     {
       "label": "Formal vProg computation DAG model",
@@ -334,7 +344,9 @@
       "etag": null,
       "lastModified": "Tue, 19 Aug 2025 21:04:05 GMT",
       "contentLength": 46722,
-      "contentSha256": "902562ef14b28aa7c452b937773e9d8dce100a68bf956ac56d7663dc0b503c68"
+      "contentSha256": "28eda00bb986b72edd5e88ce5df134c80d0e51112348ff579856b06a6e71b0d4",
+      "fingerprintBasis": "last-modified:Tue, 19 Aug 2025 21:04:05 GMT;bytes:46722",
+      "sourceFingerprint": "0d01364b7b4050414ae64384d32e51f11cb58b186bb7e78fc3ee1e90c29eaff6"
     },
     {
       "label": "vProgs pruning safety",
@@ -344,7 +356,9 @@
       "etag": null,
       "lastModified": "Fri, 26 Sep 2025 01:10:08 GMT",
       "contentLength": 24937,
-      "contentSha256": "a22e9c7f1e01e246a3d4970cf38390e3505da634e2b86213c81d9faf2ad36a0f"
+      "contentSha256": "36e62efbfb1db3597fee63ced63f500b00ef2f9633be37084b2d110f39df1138",
+      "fingerprintBasis": "last-modified:Fri, 26 Sep 2025 01:10:08 GMT;bytes:24937",
+      "sourceFingerprint": "647b4d92432f01cb389d744c3c0ffa74e2e64b0cb27228bdb488fd708f2d4b57"
     },
     {
       "label": "Proof stitching framework",
@@ -354,7 +368,9 @@
       "etag": null,
       "lastModified": "Sun, 24 Aug 2025 16:16:12 GMT",
       "contentLength": 32618,
-      "contentSha256": "5423463a74f2516166231bad5883f2bd0dc905e2d70ece4752a04b474a6e64db"
+      "contentSha256": "23c161519236cd7a7fc941bf8b9d2c34d79fee7fefda9608dc3015f4e7763436",
+      "fingerprintBasis": "last-modified:Sun, 24 Aug 2025 16:16:12 GMT;bytes:32618",
+      "sourceFingerprint": "cc44adf3732df5175a21643170a28cd7192daaec27c4e995d9ac4efecd489b0b"
     },
     {
       "label": "Based ZK rollups over Kaspa",
@@ -364,7 +380,9 @@
       "etag": null,
       "lastModified": "Sun, 23 Feb 2025 15:17:32 GMT",
       "contentLength": 56014,
-      "contentSha256": "86de71f80fdc239a24bacd4f3e33297c983de908d9d444b9c90e90b2da695651"
+      "contentSha256": "cdf22b085048c88e7a4b7be976a04f96db9b952709b33cc194b34a9952c5aff5",
+      "fingerprintBasis": "last-modified:Sun, 23 Feb 2025 15:17:32 GMT;bytes:56014",
+      "sourceFingerprint": "57a1692460057531288a423923221b10db000ae774f0c41a69256278d4a0dd98"
     }
   ],
   "verdict": {
@@ -377,7 +395,7 @@
       "Use branch hashes, PR base refs, KIP merge state, and docs hashes together before making claims."
     ]
   },
-  "factsHash": "57bdacc34f8f4f0703a5751198f1ae834e5b311a2722b437f995185a0acb8f24",
-  "previousFactsHash": null,
+  "factsHash": "ab17ac9c6ac827f8084404ad18e2734989b8346ad4d8382c94c6494800cf5a84",
+  "previousFactsHash": "57bdacc34f8f4f0703a5751198f1ae834e5b311a2722b437f995185a0acb8f24",
   "changedSincePrevious": true
 }
