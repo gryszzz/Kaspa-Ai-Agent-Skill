@@ -49,6 +49,20 @@ These hashes are a freshness baseline, not a permanent truth. Re-run `git ls-rem
 - Kaspium Wallet: `https://github.com/azbuky/kaspium_wallet`
 - Kasware Wallet Extension: `https://github.com/kasware-wallet/extension`
 
+## Toccata Programmability Sources
+
+- Rusty Kaspa releases: `https://github.com/kaspanet/rusty-kaspa/releases`
+- Kaspa vision and roadmap context: `https://kaspa.org/vision/`
+- Kaspa builder/development page: `https://kaspa.org/build`
+- Kaspa programmability overview: `https://docs.kaspa.org/programmability`
+- Covenants guide: `https://docs.kaspa.org/programmability/covenants`
+- Based Apps guide: `https://docs.kaspa.org/programmability/based-apps`
+- Inline ZK guide: `https://docs.kaspa.org/programmability/inline-zk`
+- Full vProgs guide: `https://docs.kaspa.org/programmability/full-vprogs`
+- SilverScript: `https://github.com/kaspanet/silverscript`
+- vProgs: `https://github.com/kaspanet/vprogs`
+- KIPs: `https://github.com/kaspanet/kips`
+
 ## Secondary Sources
 
 - DeepWiki for Rusty Kaspa: `https://deepwiki.com/kaspanet/rusty-kaspa`

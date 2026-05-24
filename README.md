@@ -75,6 +75,7 @@ Compatibility metadata:
 - [`manifest.json`](skills/public/kaspa-sovereign-architect-engine/manifest.json)
 - Source trust policy: [`source-trust-policy.md`](skills/public/kaspa-sovereign-architect-engine/references/source-trust-policy.md)
 - Research radar: [`kaspa-research-radar.md`](skills/public/kaspa-sovereign-architect-engine/references/kaspa-research-radar.md)
+- Toccata mastery map: [`kaspa-toccata-2026.md`](training-corpus/kaspa-toccata-2026.md)
 
 Automated verification:
 
