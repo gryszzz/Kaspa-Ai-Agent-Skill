@@ -32,7 +32,7 @@ jobs:
           node-version: "24"
 
       - name: Run Toccata source monitor
-        run: node scripts/toccata-source-monitor.mjs
+        run: node scripts/toccata-source-monitor.mjs --write-if-changed
         env:
           GITHUB_TOKEN: ${{ github.token }}
 

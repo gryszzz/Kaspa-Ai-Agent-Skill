@@ -10,6 +10,7 @@ const LATEST_JSON = path.join(OUTPUT_DIR, "latest.json");
 const LATEST_MD = path.join(OUTPUT_DIR, "latest.md");
 const CHECKED_AT = new Date().toISOString();
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN || process.env.GH_TOKEN || "";
+const WRITE_IF_CHANGED = process.argv.includes("--write-if-changed");
 
 const githubPulls = [
   {
@@ -148,6 +149,16 @@ function shortSha(value) {
   return value ? value.slice(0, 12) : "";
 }
 
+function webFingerprintBasis({ etag, lastModified, contentLength, contentSha256 }) {
+  if (etag) {
+    return `etag:${etag}`;
+  }
+  if (lastModified) {
+    return `last-modified:${lastModified};bytes:${contentLength}`;
+  }
+  return `sha256:${contentSha256}`;
+}
+
 async function fetchWithTimeout(url, options = {}, timeoutMs = 25_000) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), timeoutMs);
@@ -210,14 +221,27 @@ async function fetchTextFingerprint(source) {
       },
     });
     const text = await response.text();
+    const etag = response.headers.get("etag") || null;
+    const lastModified = response.headers.get("last-modified") || null;
+    const contentLength = text.length;
+    const contentSha256 = sha256(text);
+    const fingerprintBasis = webFingerprintBasis({
+      etag,
+      lastModified,
+      contentLength,
+      contentSha256,
+    });
+
     return {
       ...source,
       ok: response.ok,
       status: response.status,
-      etag: response.headers.get("etag") || null,
-      lastModified: response.headers.get("last-modified") || null,
-      contentLength: text.length,
-      contentSha256: sha256(text),
+      etag,
+      lastModified,
+      contentLength,
+      contentSha256,
+      fingerprintBasis,
+      sourceFingerprint: sha256(fingerprintBasis),
     };
   } catch (error) {
     return {
@@ -358,7 +382,7 @@ function buildMarkdown(snapshot) {
     source.label,
     source.ok ? source.status : "error",
     source.ok ? source.contentLength : source.error,
-    source.ok ? shortSha(source.contentSha256) : "",
+    source.ok ? shortSha(source.sourceFingerprint) : "",
     `[source](${source.url})`,
   ]);
 
@@ -389,7 +413,7 @@ ${markdownTable(["Source", "Status", "Virtual DAA", "Block count"], networkRows)
 
 ## Web Source Fingerprints
 
-${markdownTable(["Source", "HTTP", "Bytes", "SHA-256", "Link"], webRows)}
+${markdownTable(["Source", "HTTP", "Bytes", "Fingerprint", "Link"], webRows)}
 `;
 }
 
@@ -403,10 +427,30 @@ async function loadPreviousFactsHash() {
 }
 
 function buildFactsHash(snapshot) {
+  const stableNetworkFacts = snapshot.kaspaNetwork.map((source) => ({
+    label: source.label,
+    url: source.url,
+    ok: source.ok,
+    status: source.status,
+    error: source.error || null,
+  }));
+
+  const stableWebFacts = snapshot.webSources.map((source) => ({
+    label: source.label,
+    url: source.url,
+    ok: source.ok,
+    status: source.status,
+    etag: source.etag || null,
+    lastModified: source.lastModified || null,
+    contentLength: source.contentLength || null,
+    sourceFingerprint: source.sourceFingerprint || null,
+    error: source.error || null,
+  }));
+
   const comparable = {
     github: snapshot.github,
-    kaspaNetwork: snapshot.kaspaNetwork,
-    webSources: snapshot.webSources,
+    kaspaNetwork: stableNetworkFacts,
+    webSources: stableWebFacts,
     verdict: snapshot.verdict,
   };
   return sha256(JSON.stringify(comparable));
@@ -436,6 +480,12 @@ async function main() {
   snapshot.factsHash = buildFactsHash(snapshot);
   snapshot.previousFactsHash = await loadPreviousFactsHash();
   snapshot.changedSincePrevious = snapshot.previousFactsHash !== snapshot.factsHash;
+
+  if (WRITE_IF_CHANGED && !snapshot.changedSincePrevious) {
+    console.log("No monitored fact changes; leaving existing snapshot files untouched.");
+    console.log(`Facts hash: ${snapshot.factsHash}`);
+    return;
+  }
 
   await mkdir(OUTPUT_DIR, { recursive: true });
   await writeFile(LATEST_JSON, `${JSON.stringify(snapshot, null, 2)}\n`);

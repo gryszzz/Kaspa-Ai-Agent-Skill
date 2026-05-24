@@ -1,8 +1,8 @@
 # Toccata Source Snapshot
 
-Generated: 2026-05-24T23:31:38.136Z
+Generated: 2026-05-24T23:41:58.913Z
 
-Facts hash: `57bdacc34f8f4f0703a5751198f1ae834e5b311a2722b437f995185a0acb8f24`
+Facts hash: `ab17ac9c6ac827f8084404ad18e2734989b8346ad4d8382c94c6494800cf5a84`
 
 ## Verdict
 
@@ -43,19 +43,19 @@ Facts hash: `57bdacc34f8f4f0703a5751198f1ae834e5b311a2722b437f995185a0acb8f24`
 
 | Source | Status | Virtual DAA | Block count |
 | --- | --- | --- | --- |
-| TN10 blockdag | ok | 473045012 | 1463722 |
-| TN12 blockdag | ok | 20556018 | 1349785 |
+| TN10 blockdag | ok | 473051314 | 1470024 |
+| TN12 blockdag | ok | 20562109 | 1355876 |
 
 ## Web Source Fingerprints
 
-| Source | HTTP | Bytes | SHA-256 | Link |
+| Source | HTTP | Bytes | Fingerprint | Link |
 | --- | --- | --- | --- | --- |
-| Kaspa programmability overview | 200 | 55397 | 91c3aed0ca1f | [source](https://docs.kaspa.org/programmability) |
-| Kaspa covenants docs | 200 | 54726 | a0ff4aabae8f | [source](https://docs.kaspa.org/programmability/covenants) |
-| Kaspa inline ZK docs | 200 | 53928 | e3d253d2e33c | [source](https://docs.kaspa.org/programmability/inline-zk) |
-| Kaspa based apps docs | 200 | 52059 | 4a1aef3bf9bc | [source](https://docs.kaspa.org/programmability/based-apps) |
-| Kaspa full vProgs docs | 200 | 45792 | 44b4a8fa0027 | [source](https://docs.kaspa.org/programmability/full-vprogs) |
-| Formal vProg computation DAG model | 200 | 46722 | 902562ef14b2 | [source](https://research.kas.pa/t/zoom-in-a-formal-backbone-model-for-the-vprog-computation-dag/407) |
-| vProgs pruning safety | 200 | 24937 | a22e9c7f1e01 | [source](https://research.kas.pa/t/pruning-safety-in-the-vprogs-architecture/411) |
-| Proof stitching framework | 200 | 32618 | 5423463a74f2 | [source](https://research.kas.pa/t/a-basic-framework-for-proofs-stitching/323) |
-| Based ZK rollups over Kaspa | 200 | 56014 | 86de71f80fdc | [source](https://research.kas.pa/t/on-the-design-of-based-zk-rollups-over-kaspas-utxo-based-dag-consensus/208) |
+| Kaspa programmability overview | 200 | 55397 | 8a4394dc9266 | [source](https://docs.kaspa.org/programmability) |
+| Kaspa covenants docs | 200 | 54726 | 73e4a4a4676b | [source](https://docs.kaspa.org/programmability/covenants) |
+| Kaspa inline ZK docs | 200 | 53928 | f0935b1651d6 | [source](https://docs.kaspa.org/programmability/inline-zk) |
+| Kaspa based apps docs | 200 | 52059 | 618bd928125d | [source](https://docs.kaspa.org/programmability/based-apps) |
+| Kaspa full vProgs docs | 200 | 45792 | a33718dab852 | [source](https://docs.kaspa.org/programmability/full-vprogs) |
+| Formal vProg computation DAG model | 200 | 46722 | 0d01364b7b40 | [source](https://research.kas.pa/t/zoom-in-a-formal-backbone-model-for-the-vprog-computation-dag/407) |
+| vProgs pruning safety | 200 | 24937 | 647b4d92432f | [source](https://research.kas.pa/t/pruning-safety-in-the-vprogs-architecture/411) |
+| Proof stitching framework | 200 | 32618 | cc44adf3732d | [source](https://research.kas.pa/t/a-basic-framework-for-proofs-stitching/323) |
+| Based ZK rollups over Kaspa | 200 | 56014 | 57a169246005 | [source](https://research.kas.pa/t/on-the-design-of-based-zk-rollups-over-kaspas-utxo-based-dag-consensus/208) |
