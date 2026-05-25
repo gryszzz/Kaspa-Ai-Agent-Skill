@@ -14,5 +14,6 @@ Snapshot rules:
 
 - `latest.json` is the machine-readable state.
 - `latest.md` is the reviewer-friendly state.
+- `rpc-smoke-tests.md` documents manual TN10/TN12 endpoint smoke checks.
 - A testnet signal is not treated as mainnet activation.
 - An open PR, branch hash, or docs page is not treated as merged production behavior.
