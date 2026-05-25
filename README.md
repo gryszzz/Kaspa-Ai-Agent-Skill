@@ -101,6 +101,7 @@ Toccata source monitoring:
 - TN10/TN12 RPC smoke-test notes: [`research-snapshots/toccata/rpc-smoke-tests.md`](research-snapshots/toccata/rpc-smoke-tests.md)
 - Monitor script: [`scripts/toccata-source-monitor.mjs`](scripts/toccata-source-monitor.mjs)
 - Local knowledge drill: `node scripts/kaspa-knowledge-drill.mjs`
+- Covenant lineage prototype: `node scripts/covenant-lineage-prototype.mjs --check`
 - Claim rule: testnet signals, open PRs, docs, and branch hashes are tracked as evidence, not treated as mainnet activation by themselves
 
 ## 🛠 Install

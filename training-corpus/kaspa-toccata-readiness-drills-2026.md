@@ -112,9 +112,8 @@ vProgs:
 
 High leverage:
 
-- Add a PR #1013 diff summary generator for changed files and changed opcode behavior.
-- Add KIP document-status extraction so the monitor records `Draft`, `Proposed`, `Implemented`, or `Activated` directly from PR files.
-- Add a covenant lineage indexer design note with schema, invariants, and failure cases.
+- Extend PR diff summaries from changed-file signals into focused changed-behavior notes.
+- Add adversarial covenant lineage fixtures for wrong network, duplicate continuation, missing metadata, and reorg rollback.
 - Add wallet signing preview examples for covenant spends.
 - Add a proof-cost matrix for ZK verifier options.
 - Add a sequencing witness API sketch.

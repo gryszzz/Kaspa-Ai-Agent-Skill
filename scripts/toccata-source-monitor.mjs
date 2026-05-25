@@ -213,6 +213,63 @@ async function fetchJson(url, options = {}) {
   }
 }
 
+async function fetchText(url, options = {}) {
+  try {
+    const response = await fetchWithTimeout(url, options);
+    const text = await response.text();
+
+    if (!response.ok) {
+      return {
+        ok: false,
+        status: response.status,
+        url,
+        error: response.statusText,
+        bodyHash: sha256(text),
+      };
+    }
+
+    return {
+      ok: true,
+      status: response.status,
+      url,
+      text,
+    };
+  } catch (error) {
+    return {
+      ok: false,
+      status: 0,
+      url,
+      error: error.message,
+    };
+  }
+}
+
+async function fetchGithubPages(url) {
+  const results = [];
+  let page = 1;
+
+  while (page <= 10) {
+    const separator = url.includes("?") ? "&" : "?";
+    const result = await fetchJson(`${url}${separator}per_page=100&page=${page}`, { headers: apiHeaders });
+    if (!result.ok) {
+      return result;
+    }
+
+    results.push(...result.data);
+    if (!Array.isArray(result.data) || result.data.length < 100) {
+      break;
+    }
+    page += 1;
+  }
+
+  return {
+    ok: true,
+    status: 200,
+    url,
+    data: results,
+  };
+}
+
 async function fetchTextFingerprint(source) {
   try {
     const response = await fetchWithTimeout(source.url, {
@@ -253,6 +310,167 @@ async function fetchTextFingerprint(source) {
   }
 }
 
+function addSignal(signals, condition, label) {
+  if (condition) {
+    signals.add(label);
+  }
+}
+
+function detectFileSignals(file) {
+  const filename = file.filename || "";
+  const haystack = `${filename}\n${file.patch || ""}`.toLowerCase();
+  const signals = new Set();
+
+  addSignal(signals, haystack.includes("params.rs") || haystack.includes("forkactivation") || haystack.includes("activation"), "consensus activation/config");
+  addSignal(signals, haystack.includes("transaction_validator") || haystack.includes("utxo_context"), "transaction validation");
+  addSignal(signals, haystack.includes("txscript") || haystack.includes("opcode") || haystack.includes("engineflags"), "txscript opcode/runtime");
+  addSignal(signals, haystack.includes("zk_precompile") || haystack.includes("opzkprecompile"), "ZK precompile");
+  addSignal(signals, haystack.includes("groth16"), "Groth16 verifier");
+  addSignal(signals, haystack.includes("risc0") || haystack.includes("succinct"), "RISC0/Succinct verifier");
+  addSignal(signals, haystack.includes("pricing") || haystack.includes("resource_meter") || haystack.includes("script_units"), "pricing/resource meter");
+  addSignal(signals, filename.includes("/tests/") || filename.includes("/benches/") || filename.endsWith("_test.rs"), "tests/benches");
+  addSignal(signals, haystack.includes("rpc") || haystack.includes("wasm") || haystack.includes("js-bindings") || haystack.includes("protowire"), "RPC/WASM bindings");
+  addSignal(signals, /^kip-\d+\.md$/i.test(filename), "KIP document");
+  addSignal(signals, filename.toLowerCase().endsWith(".md") || filename.toLowerCase() === "readme.md", "docs");
+
+  return [...signals];
+}
+
+function summarizePullFiles(files) {
+  const contentSignals = new Set();
+  let additions = 0;
+  let deletions = 0;
+
+  const summarizedFiles = files.map((file) => {
+    additions += file.additions || 0;
+    deletions += file.deletions || 0;
+    for (const signal of detectFileSignals(file)) {
+      contentSignals.add(signal);
+    }
+
+    return {
+      filename: file.filename,
+      status: file.status,
+      additions: file.additions || 0,
+      deletions: file.deletions || 0,
+      changes: file.changes || 0,
+    };
+  });
+
+  const topFiles = [...summarizedFiles]
+    .sort((a, b) => b.changes - a.changes)
+    .slice(0, 6);
+
+  return {
+    fileCount: summarizedFiles.length,
+    additions,
+    deletions,
+    contentSignals: [...contentSignals].sort(),
+    topFiles,
+    fileFingerprint: sha256(
+      JSON.stringify(
+        summarizedFiles.map((file) => ({
+          filename: file.filename,
+          status: file.status,
+          additions: file.additions,
+          deletions: file.deletions,
+          changes: file.changes,
+        })),
+      ),
+    ),
+  };
+}
+
+function parseKipMetadata(text) {
+  const metadata = {};
+  const keys = {
+    KIP: "kip",
+    Layer: "layer",
+    Title: "title",
+    Authors: "authors",
+    Status: "status",
+    Created: "created",
+  };
+  for (const [key, property] of Object.entries(keys)) {
+    const match = text.match(new RegExp(`^\\s*${key}:\\s*(.+?)\\s*$`, "im"));
+    if (match) {
+      metadata[property] = match[1].trim();
+    }
+  }
+  return metadata;
+}
+
+async function readKipDocumentStatus(files) {
+  const kipFile = files.find((file) => /^kip-\d+\.md$/i.test(file.filename));
+  if (!kipFile?.raw_url) {
+    return null;
+  }
+
+  const result = await fetchText(kipFile.raw_url, {
+    headers: {
+      "User-Agent": "gryszzz-kaspa-toccata-source-monitor",
+    },
+  });
+
+  if (!result.ok) {
+    return {
+      filename: kipFile.filename,
+      ok: false,
+      status: result.status,
+      error: result.error,
+    };
+  }
+
+  const metadata = parseKipMetadata(result.text);
+  return {
+    filename: kipFile.filename,
+    ok: true,
+    kip: metadata.kip || null,
+    layer: metadata.layer || null,
+    title: metadata.title || null,
+    documentStatus: metadata.status || null,
+    created: metadata.created || null,
+  };
+}
+
+async function readGithubPullFiles(entry) {
+  const { owner, name } = splitRepo(entry.repo);
+  const result = await fetchGithubPages(`https://api.github.com/repos/${owner}/${name}/pulls/${entry.number}/files`);
+
+  if (!result.ok) {
+    return {
+      ok: false,
+      status: result.status,
+      error: result.error,
+      summary: {
+        fileCount: 0,
+        additions: 0,
+        deletions: 0,
+        contentSignals: [],
+        topFiles: [],
+        fileFingerprint: null,
+      },
+      kipDocument: null,
+    };
+  }
+
+  const files = result.data.map((file) => ({
+    filename: file.filename,
+    status: file.status,
+    additions: file.additions || 0,
+    deletions: file.deletions || 0,
+    changes: file.changes || 0,
+    raw_url: file.raw_url || null,
+    patch: file.patch || "",
+  }));
+
+  return {
+    ok: true,
+    summary: summarizePullFiles(files),
+    kipDocument: entry.repo === "kaspanet/kips" ? await readKipDocumentStatus(files) : null,
+  };
+}
+
 async function readGithubPull(entry) {
   const { owner, name } = splitRepo(entry.repo);
   const result = await fetchJson(
@@ -265,6 +483,7 @@ async function readGithubPull(entry) {
   }
 
   const pull = result.data;
+  const files = await readGithubPullFiles(entry);
   return {
     ...entry,
     ok: true,
@@ -279,6 +498,10 @@ async function readGithubPull(entry) {
     updatedAt: pull.updated_at,
     createdAt: pull.created_at,
     mergedAt: pull.merged_at,
+    diffSummary: files.summary,
+    diffSummaryOk: files.ok,
+    diffSummaryError: files.error || null,
+    kipDocument: files.kipDocument,
   };
 }
 
@@ -349,6 +572,65 @@ function buildVerdict({ pulls, refs }) {
   };
 }
 
+function applyPreviousPullMetadataFallback(snapshot, previousSnapshot) {
+  if (!previousSnapshot?.github?.pulls) {
+    return;
+  }
+
+  const previousPulls = keyedMap(previousSnapshot.github.pulls, (pull) => `${pull.repo}#${pull.number}`);
+  for (const pull of snapshot.github.pulls) {
+    const previousPull = previousPulls.get(`${pull.repo}#${pull.number}`);
+    if (!previousPull || previousPull.headSha !== pull.headSha) {
+      continue;
+    }
+
+    if (!pull.diffSummaryOk && previousPull.diffSummaryOk && previousPull.diffSummary) {
+      pull.diffSummary = previousPull.diffSummary;
+      pull.diffSummaryOk = true;
+      pull.diffSummaryError = `reused previous summary after fetch failure: ${pull.diffSummaryError || "unknown"}`;
+    }
+
+    if (!pull.kipDocument?.ok && previousPull.kipDocument?.ok) {
+      pull.kipDocument = previousPull.kipDocument;
+    }
+  }
+}
+
+function applyPreviousGithubFetchFallback({ pulls, refs }, previousSnapshot) {
+  const warnings = [];
+  if (!previousSnapshot?.github) {
+    return warnings;
+  }
+
+  const previousPulls = keyedMap(previousSnapshot.github.pulls, (pull) => `${pull.repo}#${pull.number}`);
+  for (let index = 0; index < pulls.length; index += 1) {
+    const pull = pulls[index];
+    if (pull.ok) {
+      continue;
+    }
+    const previousPull = previousPulls.get(`${pull.repo}#${pull.number}`);
+    if (previousPull?.ok) {
+      warnings.push(`${pull.label}: reused previous PR state after fetch failure (${pull.error || pull.status || "unknown"}).`);
+      pulls[index] = previousPull;
+    }
+  }
+
+  const previousRefs = keyedMap(previousSnapshot.github.refs, (ref) => `${ref.repo}:${ref.kind}/${ref.name}`);
+  for (let index = 0; index < refs.length; index += 1) {
+    const ref = refs[index];
+    if (ref.ok) {
+      continue;
+    }
+    const previousRef = previousRefs.get(`${ref.repo}:${ref.kind}/${ref.name}`);
+    if (previousRef?.ok) {
+      warnings.push(`${ref.repo} ${ref.kind}/${ref.name}: reused previous ref after fetch failure (${ref.error || ref.status || "unknown"}).`);
+      refs[index] = previousRef;
+    }
+  }
+
+  return warnings;
+}
+
 function markdownTable(headers, rows) {
   const headerLine = `| ${headers.join(" | ")} |`;
   const divider = `| ${headers.map(() => "---").join(" | ")} |`;
@@ -416,6 +698,9 @@ function buildChangeSummary(previous, current) {
     maybeAddChange(changes, "base", previousPull.baseRefName, pull.baseRefName);
     maybeAddChange(changes, "head", shortSha(previousPull.headSha), shortSha(pull.headSha));
     maybeAddChange(changes, "updated", previousPull.updatedAt, pull.updatedAt);
+    maybeAddChange(changes, "fileFingerprint", shortSha(previousPull.diffSummary?.fileFingerprint), shortSha(pull.diffSummary?.fileFingerprint));
+    maybeAddChange(changes, "contentSignals", (previousPull.diffSummary?.contentSignals || []).join(", "), (pull.diffSummary?.contentSignals || []).join(", "));
+    maybeAddChange(changes, "KIP document status", previousPull.kipDocument?.documentStatus, pull.kipDocument?.documentStatus);
 
     if (changes.length) {
       sections.githubPulls.push(`${pull.label}: ${changes.join("; ")}.`);
@@ -496,6 +781,38 @@ function markdownList(items) {
   return items.length ? items.map((item) => `- ${item}`).join("\n") : "- No changes detected.";
 }
 
+function fileSummaryCell(summary) {
+  if (!summary) {
+    return "";
+  }
+  const fileLabel = summary.fileCount === 1 ? "file" : "files";
+  return `${summary.fileCount} ${fileLabel}, +${summary.additions}/-${summary.deletions}`;
+}
+
+function signalsCell(summary) {
+  return summary?.contentSignals?.length ? summary.contentSignals.join(", ") : "";
+}
+
+function topFilesCell(summary) {
+  if (!summary?.topFiles?.length) {
+    return "";
+  }
+  return summary.topFiles
+    .map((file) => `${file.filename} (+${file.additions}/-${file.deletions})`)
+    .join("; ");
+}
+
+function kipStatusCell(pull) {
+  if (!pull.kipDocument) {
+    return "";
+  }
+  if (!pull.kipDocument.ok) {
+    return `error: ${pull.kipDocument.error || pull.kipDocument.status || "unknown"}`;
+  }
+  const status = pull.kipDocument.documentStatus || "unknown";
+  return `${pull.kipDocument.filename}: ${status}`;
+}
+
 function buildChangeSummaryMarkdown(summary) {
   return `## Changes Since Previous Snapshot
 
@@ -525,6 +842,18 @@ ${markdownList(summary.sections.webSources)}
 `;
 }
 
+function buildFetchWarningsMarkdown(warnings) {
+  if (!warnings?.length) {
+    return "";
+  }
+
+  return `## Fetch Warnings
+
+${markdownList(warnings)}
+
+`;
+}
+
 function buildMarkdown(snapshot) {
   const pullRows = snapshot.github.pulls.map((pull) => [
     pull.label,
@@ -533,6 +862,14 @@ function buildMarkdown(snapshot) {
     pull.ok ? shortSha(pull.headSha) : "",
     pull.ok ? pull.updatedAt : "",
     pull.ok ? `[source](${pull.url})` : "",
+  ]);
+
+  const diffRows = snapshot.github.pulls.map((pull) => [
+    pull.label,
+    pull.diffSummaryOk ? fileSummaryCell(pull.diffSummary) : `error: ${pull.diffSummaryError || "unknown"}`,
+    pull.diffSummaryOk ? signalsCell(pull.diffSummary) : "",
+    pull.diffSummaryOk ? topFilesCell(pull.diffSummary) : "",
+    kipStatusCell(pull),
   ]);
 
   const refRows = snapshot.github.refs.map((ref) => [
@@ -570,11 +907,16 @@ Facts hash: \`${snapshot.factsHash}\`
 - Branch status: ${snapshot.verdict.branchStatus}
 - Caution: ${snapshot.verdict.caution.join(" ")}
 
+${buildFetchWarningsMarkdown(snapshot.fetchWarnings)}
 ${buildChangeSummaryMarkdown(snapshot.changeSummary)}
 
 ## GitHub Pull Requests
 
 ${markdownTable(["Signal", "State", "Base", "Head SHA", "Updated", "Link"], pullRows)}
+
+## PR Diff Summaries
+
+${markdownTable(["Signal", "Files", "Content signals", "Top changed files", "KIP document status"], diffRows)}
 
 ## GitHub References
 
@@ -635,6 +977,7 @@ async function main() {
     Promise.all(networkSources.map(readNetworkSource)),
     Promise.all(webSources.map(fetchTextFingerprint)),
   ]);
+  const fetchWarnings = applyPreviousGithubFetchFallback({ pulls, refs }, previousSnapshot);
 
   const snapshot = {
     schemaVersion: 1,
@@ -647,8 +990,10 @@ async function main() {
     github: { pulls, refs },
     kaspaNetwork,
     webSources: fingerprints,
+    fetchWarnings,
     verdict: buildVerdict({ pulls, refs }),
   };
+  applyPreviousPullMetadataFallback(snapshot, previousSnapshot);
   snapshot.factsHash = buildFactsHash(snapshot);
   snapshot.previousFactsHash = previousSnapshot?.factsHash || null;
   snapshot.changedSincePrevious = snapshot.previousFactsHash !== snapshot.factsHash;

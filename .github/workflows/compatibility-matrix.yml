@@ -8,6 +8,8 @@ on:
       - "skills/public/kaspa-sovereign-architect-engine/**"
       - "scripts/toccata-source-monitor.mjs"
       - "scripts/kaspa-knowledge-drill.mjs"
+      - "scripts/covenant-lineage-prototype.mjs"
+      - "fixtures/toccata/**"
       - "research-snapshots/toccata/**"
       - "training-corpus/kaspa-toccata-*.md"
       - ".github/workflows/compatibility-matrix.yml"
@@ -17,6 +19,8 @@ on:
       - "skills/public/kaspa-sovereign-architect-engine/**"
       - "scripts/toccata-source-monitor.mjs"
       - "scripts/kaspa-knowledge-drill.mjs"
+      - "scripts/covenant-lineage-prototype.mjs"
+      - "fixtures/toccata/**"
       - "research-snapshots/toccata/**"
       - "training-corpus/kaspa-toccata-*.md"
       - ".github/workflows/compatibility-matrix.yml"
@@ -49,6 +53,9 @@ jobs:
         run: |
           node scripts/kaspa-knowledge-drill.mjs > "$RUNNER_TEMP/kaspa-knowledge-drill.md"
           test -s "$RUNNER_TEMP/kaspa-knowledge-drill.md"
+
+      - name: Run covenant lineage prototype
+        run: node scripts/covenant-lineage-prototype.mjs --check
 
   target-matrix:
     name: Target ${{ matrix.target }}

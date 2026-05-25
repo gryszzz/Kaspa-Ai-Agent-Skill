@@ -148,13 +148,15 @@ Already in place:
 - Evidence ladder docs.
 - TN10/TN12 smoke-test notes.
 - Covenant lineage indexer notes.
+- PR diff summaries with changed-file counts and semantic content signals.
+- KIP document-status extraction from tracked KIP PR files.
+- Covenant lineage prototype reducer with a checked fixture.
 - Local knowledge drill.
 - Compatibility CI that runs the drill.
 
 Next high-leverage upgrades:
 
-- KIP document-status extraction into the source monitor.
-- PR #1013 diff summaries by changed files and changed opcode behavior.
+- Adversarial covenant lineage fixtures for wrong network, duplicate continuation, missing metadata, and reorg rollback.
 - A wallet covenant-signing preview doc.
 - A ZK proof-cost matrix.
 - A sequencing witness API sketch.

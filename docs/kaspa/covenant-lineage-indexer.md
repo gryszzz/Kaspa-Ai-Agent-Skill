@@ -188,3 +188,12 @@ GET /covenants/:covenant_id/reorgs
 2. Implement a pure reducer that turns fixtures into `covenant_lineage` and `covenant_transition` rows.
 3. Add adversarial fixtures for wrong network, missing metadata, duplicate transitions, and reorg rollback.
 4. Connect the reducer to TN10/TN12 data only after the field shape is verified from current source snapshots.
+
+Current prototype:
+
+```bash
+node scripts/covenant-lineage-prototype.mjs --check
+node scripts/covenant-lineage-prototype.mjs
+```
+
+The default fixture is `fixtures/toccata/covenant-lineage-basic.json`. It models a genesis covenant output followed by two accepted continuation transitions on `kaspa-testnet-12`.

@@ -1,0 +1,87 @@
+{
+  "network": "kaspa-testnet-12",
+  "transactions": [
+    {
+      "txId": "tx-genesis",
+      "accepted": {
+        "blockHash": "block-a",
+        "daaScore": 100
+      },
+      "inputs": [
+        {
+          "previousOutpoint": {
+            "txId": "funding-tx",
+            "index": 0
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "valueSompi": 100000000,
+          "scriptPublicKeyHash": "script-state-v0",
+          "covenantBindingHash": "binding-genesis",
+          "covenantId": "cov-demo-001",
+          "authorizingInputIndex": 0
+        }
+      ]
+    },
+    {
+      "txId": "tx-step-1",
+      "accepted": {
+        "blockHash": "block-b",
+        "daaScore": 120
+      },
+      "inputs": [
+        {
+          "previousOutpoint": {
+            "txId": "tx-genesis",
+            "index": 0
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "valueSompi": 100000000,
+          "scriptPublicKeyHash": "script-state-v1",
+          "covenantBindingHash": "binding-step-1",
+          "covenantId": "cov-demo-001",
+          "authorizingInputIndex": 0
+        }
+      ]
+    },
+    {
+      "txId": "tx-step-2",
+      "accepted": {
+        "blockHash": "block-c",
+        "daaScore": 140
+      },
+      "inputs": [
+        {
+          "previousOutpoint": {
+            "txId": "tx-step-1",
+            "index": 0
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "valueSompi": 100000000,
+          "scriptPublicKeyHash": "script-state-v2",
+          "covenantBindingHash": "binding-step-2",
+          "covenantId": "cov-demo-001",
+          "authorizingInputIndex": 0
+        }
+      ]
+    }
+  ],
+  "expected": {
+    "lineageCount": 1,
+    "transitionCount": 2,
+    "currentTips": {
+      "cov-demo-001": "tx-step-2:0"
+    }
+  }
+}

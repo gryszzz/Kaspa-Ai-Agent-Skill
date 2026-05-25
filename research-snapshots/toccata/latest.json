@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-05-25T13:06:39.439Z",
+  "checkedAt": "2026-05-25T13:25:09.843Z",
   "policy": {
     "sourceTier": "primary-source-first",
     "mainnetClaimRule": "mainnet activation requires explicit mainnet release, activation, or merged production evidence",
@@ -24,7 +24,72 @@
         "headSha": "f1d1a1ae6a4131a3d6124fef443192323c1c382f",
         "updatedAt": "2026-05-21T08:45:01Z",
         "createdAt": "2026-05-14T12:16:51Z",
-        "mergedAt": null
+        "mergedAt": null,
+        "diffSummary": {
+          "fileCount": 357,
+          "additions": 43272,
+          "deletions": 3729,
+          "contentSignals": [
+            "Groth16 verifier",
+            "RISC0/Succinct verifier",
+            "RPC/WASM bindings",
+            "ZK precompile",
+            "consensus activation/config",
+            "docs",
+            "pricing/resource meter",
+            "tests/benches",
+            "transaction validation",
+            "txscript opcode/runtime"
+          ],
+          "topFiles": [
+            {
+              "filename": "crypto/txscript/test-data/script_tests_covenants.json",
+              "status": "added",
+              "additions": 6026,
+              "deletions": 0,
+              "changes": 6026
+            },
+            {
+              "filename": "crypto/smt/src/tree.rs",
+              "status": "added",
+              "additions": 2196,
+              "deletions": 0,
+              "changes": 2196
+            },
+            {
+              "filename": "crypto/txscript/src/opcodes/mod.rs",
+              "status": "modified",
+              "additions": 1757,
+              "deletions": 309,
+              "changes": 2066
+            },
+            {
+              "filename": "consensus/smt-store/tests/integration.rs",
+              "status": "added",
+              "additions": 1589,
+              "deletions": 0,
+              "changes": 1589
+            },
+            {
+              "filename": "crypto/txscript/benches/pricing.rs",
+              "status": "added",
+              "additions": 1586,
+              "deletions": 0,
+              "changes": 1586
+            },
+            {
+              "filename": "Cargo.lock",
+              "status": "modified",
+              "additions": 1186,
+              "deletions": 286,
+              "changes": 1472
+            }
+          ],
+          "fileFingerprint": "8ba06232d49b7c58c8eaa98f31ae7d127aacfb8f70e648f043fae7166e140291"
+        },
+        "diffSummaryOk": true,
+        "diffSummaryError": null,
+        "kipDocument": null
       },
       {
         "repo": "kaspanet/rusty-kaspa",
@@ -39,10 +104,73 @@
         "url": "https://github.com/kaspanet/rusty-kaspa/pull/1013",
         "baseRefName": "tn10",
         "headRefName": "zk-updates",
-        "headSha": "89f8caca5f8e9edcbe99f5e5f447ce8d420aa603",
-        "updatedAt": "2026-05-25T09:45:52Z",
+        "headSha": "3201436e8e134aca8250c2c231d92c50de8b594d",
+        "updatedAt": "2026-05-25T13:20:24Z",
         "createdAt": "2026-05-21T09:20:12Z",
-        "mergedAt": null
+        "mergedAt": null,
+        "diffSummary": {
+          "fileCount": 17,
+          "additions": 1283,
+          "deletions": 138,
+          "contentSignals": [
+            "Groth16 verifier",
+            "RISC0/Succinct verifier",
+            "ZK precompile",
+            "consensus activation/config",
+            "pricing/resource meter",
+            "tests/benches",
+            "transaction validation",
+            "txscript opcode/runtime"
+          ],
+          "topFiles": [
+            {
+              "filename": "crypto/txscript/src/zk_precompiles/tests/mod.rs",
+              "status": "modified",
+              "additions": 362,
+              "deletions": 22,
+              "changes": 384
+            },
+            {
+              "filename": "crypto/txscript/src/zk_precompiles/groth16/mod.rs",
+              "status": "modified",
+              "additions": 312,
+              "deletions": 42,
+              "changes": 354
+            },
+            {
+              "filename": "crypto/txscript/benches/pricing.rs",
+              "status": "modified",
+              "additions": 312,
+              "deletions": 29,
+              "changes": 341
+            },
+            {
+              "filename": "crypto/txscript/src/zk_precompiles/tests/helpers.rs",
+              "status": "modified",
+              "additions": 122,
+              "deletions": 23,
+              "changes": 145
+            },
+            {
+              "filename": "crypto/txscript/src/zk_precompiles/fields/mod.rs",
+              "status": "modified",
+              "additions": 83,
+              "deletions": 2,
+              "changes": 85
+            },
+            {
+              "filename": "crypto/txscript/src/runtime_resource_meter.rs",
+              "status": "modified",
+              "additions": 26,
+              "deletions": 3,
+              "changes": 29
+            }
+          ],
+          "fileFingerprint": "e9ec38100423fbf840607d8768dc4501af7202f258b389032cdc108a4664ebb7"
+        },
+        "diffSummaryOk": true,
+        "diffSummaryError": null,
+        "kipDocument": null
       },
       {
         "repo": "kaspanet/kips",
@@ -60,7 +188,50 @@
         "headSha": "c5ec7ff1060de4192b4092cdee3523088d76d8af",
         "updatedAt": "2026-05-17T17:16:38Z",
         "createdAt": "2025-12-07T07:05:13Z",
-        "mergedAt": null
+        "mergedAt": null,
+        "diffSummary": {
+          "fileCount": 2,
+          "additions": 221,
+          "deletions": 1,
+          "contentSignals": [
+            "Groth16 verifier",
+            "KIP document",
+            "RISC0/Succinct verifier",
+            "ZK precompile",
+            "consensus activation/config",
+            "docs",
+            "pricing/resource meter",
+            "txscript opcode/runtime"
+          ],
+          "topFiles": [
+            {
+              "filename": "kip-0016.md",
+              "status": "added",
+              "additions": 219,
+              "deletions": 0,
+              "changes": 219
+            },
+            {
+              "filename": "README.md",
+              "status": "modified",
+              "additions": 2,
+              "deletions": 1,
+              "changes": 3
+            }
+          ],
+          "fileFingerprint": "25b369de661adb859695bfa18faac0452fd05522681ffa516dd3265ea5cade2e"
+        },
+        "diffSummaryOk": true,
+        "diffSummaryError": null,
+        "kipDocument": {
+          "filename": "kip-0016.md",
+          "ok": true,
+          "kip": "16",
+          "layer": "Script Engine, ZK",
+          "title": "New Transaction Opcodes for Verifiable Computation",
+          "documentStatus": "Proposed",
+          "created": null
+        }
       },
       {
         "repo": "kaspanet/kips",
@@ -78,7 +249,39 @@
         "headSha": "6fc7a1b20bfe22a316dec76ebd20fe7d9e18722c",
         "updatedAt": "2026-05-13T16:00:54Z",
         "createdAt": "2025-12-16T07:01:49Z",
-        "mergedAt": null
+        "mergedAt": null,
+        "diffSummary": {
+          "fileCount": 1,
+          "additions": 142,
+          "deletions": 0,
+          "contentSignals": [
+            "KIP document",
+            "consensus activation/config",
+            "docs",
+            "txscript opcode/runtime"
+          ],
+          "topFiles": [
+            {
+              "filename": "kip-0017.md",
+              "status": "added",
+              "additions": 142,
+              "deletions": 0,
+              "changes": 142
+            }
+          ],
+          "fileFingerprint": "a4e7d6bf813934fe0072e442ce38ddeda2bc3479cc627e5bcedbd8d9e059a1f9"
+        },
+        "diffSummaryOk": true,
+        "diffSummaryError": null,
+        "kipDocument": {
+          "filename": "kip-0017.md",
+          "ok": true,
+          "kip": "17",
+          "layer": "Consensus, Script Engine",
+          "title": "Covenants and Improved Scripting Capabilities",
+          "documentStatus": "Draft",
+          "created": null
+        }
       },
       {
         "repo": "kaspanet/kips",
@@ -96,7 +299,39 @@
         "headSha": "0581f55487ed7c471fbd3615684ebba7bae47e63",
         "updatedAt": "2026-02-11T13:56:06Z",
         "createdAt": "2026-02-11T13:56:06Z",
-        "mergedAt": null
+        "mergedAt": null,
+        "diffSummary": {
+          "fileCount": 1,
+          "additions": 343,
+          "deletions": 0,
+          "contentSignals": [
+            "KIP document",
+            "consensus activation/config",
+            "docs",
+            "txscript opcode/runtime"
+          ],
+          "topFiles": [
+            {
+              "filename": "kip-0020.md",
+              "status": "added",
+              "additions": 343,
+              "deletions": 0,
+              "changes": 343
+            }
+          ],
+          "fileFingerprint": "8a5fe48130b0308401d30f2cbf976cc4a42f0c9e5a9504534f04412a595cc45d"
+        },
+        "diffSummaryOk": true,
+        "diffSummaryError": null,
+        "kipDocument": {
+          "filename": "kip-0020.md",
+          "ok": true,
+          "kip": "20",
+          "layer": "Consensus, Script Engine",
+          "title": "Covenant IDs",
+          "documentStatus": "Proposed, Implemented, Activated in TN12",
+          "created": null
+        }
       },
       {
         "repo": "kaspanet/kips",
@@ -114,7 +349,39 @@
         "headSha": "bd4cfe43a6035ef1c3335ff16ea1f0bd11f98cf7",
         "updatedAt": "2026-03-12T20:56:21Z",
         "createdAt": "2026-02-24T23:20:01Z",
-        "mergedAt": null
+        "mergedAt": null,
+        "diffSummary": {
+          "fileCount": 1,
+          "additions": 699,
+          "deletions": 0,
+          "contentSignals": [
+            "KIP document",
+            "consensus activation/config",
+            "docs",
+            "txscript opcode/runtime"
+          ],
+          "topFiles": [
+            {
+              "filename": "kip-0021.md",
+              "status": "added",
+              "additions": 699,
+              "deletions": 0,
+              "changes": 699
+            }
+          ],
+          "fileFingerprint": "146dd1495738b4a2a6511e4a18c6455af356a96070e450caa6ea9b00ef703eb8"
+        },
+        "diffSummaryOk": true,
+        "diffSummaryError": null,
+        "kipDocument": {
+          "filename": "kip-0021.md",
+          "ok": true,
+          "kip": "21",
+          "layer": "Consensus (hard fork), Chain-Block UTXO Validation",
+          "title": "Partitioned Sequencing Commitment with O(activity) Proving",
+          "documentStatus": "Draft",
+          "created": "2026-02-17"
+        }
       },
       {
         "repo": "kaspanet/kips",
@@ -132,7 +399,26 @@
         "headSha": "cdafc96705eb5dc619e7f8fefaaf492949d6698f",
         "updatedAt": "2026-03-10T16:31:00Z",
         "createdAt": "2026-03-06T20:43:49Z",
-        "mergedAt": null
+        "mergedAt": null,
+        "diffSummary": {
+          "fileCount": 1,
+          "additions": 13,
+          "deletions": 0,
+          "contentSignals": [],
+          "topFiles": [
+            {
+              "filename": "KIP22-P2MR-qr",
+              "status": "added",
+              "additions": 13,
+              "deletions": 0,
+              "changes": 13
+            }
+          ],
+          "fileFingerprint": "dbcff2ff94028d5bb2bea876f5f3dcfc76fea330570cd001c960a83903645f3e"
+        },
+        "diffSummaryOk": true,
+        "diffSummaryError": null,
+        "kipDocument": null
       },
       {
         "repo": "kaspanet/kips",
@@ -150,7 +436,46 @@
         "headSha": "bdd3abd55ab8ab8926c4a086ac632a16e571f4d4",
         "updatedAt": "2026-05-06T08:03:20Z",
         "createdAt": "2026-05-06T07:52:54Z",
-        "mergedAt": null
+        "mergedAt": null,
+        "diffSummary": {
+          "fileCount": 2,
+          "additions": 294,
+          "deletions": 1,
+          "contentSignals": [
+            "KIP document",
+            "RPC/WASM bindings",
+            "docs",
+            "txscript opcode/runtime"
+          ],
+          "topFiles": [
+            {
+              "filename": "kip-0023.md",
+              "status": "added",
+              "additions": 292,
+              "deletions": 0,
+              "changes": 292
+            },
+            {
+              "filename": "README.md",
+              "status": "modified",
+              "additions": 2,
+              "deletions": 1,
+              "changes": 3
+            }
+          ],
+          "fileFingerprint": "0e920128e9e65ec7c687d895bde32c2de8986384578abd10f2c1076e90b329af"
+        },
+        "diffSummaryOk": true,
+        "diffSummaryError": null,
+        "kipDocument": {
+          "filename": "kip-0023.md",
+          "ok": true,
+          "kip": "23",
+          "layer": "Node, API/RPC",
+          "title": "DNS-resolved peer addresses",
+          "documentStatus": "Proposed",
+          "created": "2026-05-03"
+        }
       }
     ],
     "refs": [
@@ -253,12 +578,11 @@
       "ok": true,
       "status": 200,
       "networkName": "kaspa-testnet-10",
-      "virtualDaaScore": "473536041",
-      "blockCount": "1518797",
-      "headerCount": "1518797",
+      "virtualDaaScore": "473547254",
+      "blockCount": "1530010",
+      "headerCount": "1530010",
       "tipHashes": [
-        "84718fa2e27650e9a62bee654fd98e729a34923f0609309fcc67e796a5d9ea2f",
-        "75a8e169b853956d661c3d32c4a065ae39ca0f3e716a9559ddc748b2858802e8",
+        "7bc7a181f5071cb50930c2f6952015df63706140ff877e4d54034b48b5db669b",
         "f0388a984fb93841b4f993e002042f9dac010c3eeb5bde2c34f572331e10ff90"
       ]
     },
@@ -268,11 +592,12 @@
       "ok": true,
       "status": 200,
       "networkName": "kaspa-testnet-12",
-      "virtualDaaScore": "21044088",
-      "blockCount": "1404079",
-      "headerCount": "1404079",
+      "virtualDaaScore": "21055042",
+      "blockCount": "1415033",
+      "headerCount": "1415033",
       "tipHashes": [
-        "9e25e694825916ce1f7433c5a3602f5f51672fa1cacfc3f56212de7a52a865c8"
+        "48eef698aeb4ff315efcefdf3f3369ba45bcd3e024d87e0919c96b567fe9c5ba",
+        "c6afad0ee9a0a794550cb292a314e8589eac7283d2ed172d442274c93be6c8ea"
       ]
     }
   ],
@@ -345,7 +670,7 @@
       "etag": null,
       "lastModified": "Tue, 19 Aug 2025 21:04:05 GMT",
       "contentLength": 46722,
-      "contentSha256": "06fadaa9e8fec41484b7788e1fcee5d201e6e17191469bac8a73beb337e6f90f",
+      "contentSha256": "164afedd01f7baa740ed97d76950720cc2fcfda9507b0b02c9e9aaa4cabe7feb",
       "fingerprintBasis": "last-modified:Tue, 19 Aug 2025 21:04:05 GMT;bytes:46722",
       "sourceFingerprint": "0d01364b7b4050414ae64384d32e51f11cb58b186bb7e78fc3ee1e90c29eaff6"
     },
@@ -357,7 +682,7 @@
       "etag": null,
       "lastModified": "Fri, 26 Sep 2025 01:10:08 GMT",
       "contentLength": 24937,
-      "contentSha256": "2f4c44f18a7fe7357800ba3dd4430316fb5baaf9d5a0b45c38df4bf6ec92d8ad",
+      "contentSha256": "ccea586ef7e66da80d850526ebfa0e4b0d53d387d20fbc5ec0fa08f0b9d85dfe",
       "fingerprintBasis": "last-modified:Fri, 26 Sep 2025 01:10:08 GMT;bytes:24937",
       "sourceFingerprint": "647b4d92432f01cb389d744c3c0ffa74e2e64b0cb27228bdb488fd708f2d4b57"
     },
@@ -369,7 +694,7 @@
       "etag": null,
       "lastModified": "Sun, 24 Aug 2025 16:16:12 GMT",
       "contentLength": 32618,
-      "contentSha256": "e7697011f4103c59ca0335f2ede9c014c9258b238dfbbae17b0fad2ec12e5016",
+      "contentSha256": "c891ec05201ad2e01463fc5e2ea4f63950c479b7dac55c372c14d7b452a70eea",
       "fingerprintBasis": "last-modified:Sun, 24 Aug 2025 16:16:12 GMT;bytes:32618",
       "sourceFingerprint": "cc44adf3732df5175a21643170a28cd7192daaec27c4e995d9ac4efecd489b0b"
     },
@@ -381,11 +706,12 @@
       "etag": null,
       "lastModified": "Sun, 23 Feb 2025 15:17:32 GMT",
       "contentLength": 56014,
-      "contentSha256": "751642db4e26fb28d0abcc8066853140c93e5636ffb616e247d5f19c6394f101",
+      "contentSha256": "1215d45230eab9a3a6b228346841e345b54edc2a7782efccc1c6feb40e98155c",
       "fingerprintBasis": "last-modified:Sun, 23 Feb 2025 15:17:32 GMT;bytes:56014",
       "sourceFingerprint": "57a1692460057531288a423923221b10db000ae774f0c41a69256278d4a0dd98"
     }
   ],
+  "fetchWarnings": [],
   "verdict": {
     "mainnetActivation": "not_verified_by_monitor",
     "implementationStatus": "PR #1000 is open against master.",
@@ -396,24 +722,24 @@
       "Use branch hashes, PR base refs, KIP merge state, and docs hashes together before making claims."
     ]
   },
-  "factsHash": "1265c79cc15ac2933916c802308bafc78e32d0eebd01e08004457e1e2d6b6bf7",
-  "previousFactsHash": "cd43f33278d225f257e15feb88bbdd0e5e6ec8dae0b1f68476b99905c4ba341f",
-  "changedSincePrevious": true,
+  "factsHash": "ec8440c8f32601e8b6b3a64114d0f447c81a0c5ec9f07e45330b909da44473f3",
+  "previousFactsHash": "ec8440c8f32601e8b6b3a64114d0f447c81a0c5ec9f07e45330b909da44473f3",
+  "changedSincePrevious": false,
   "changeSummary": {
-    "previousCheckedAt": "2026-05-25T13:01:06.357Z",
-    "currentCheckedAt": "2026-05-25T13:06:39.439Z",
-    "previousFactsHash": "cd43f33278d225f257e15feb88bbdd0e5e6ec8dae0b1f68476b99905c4ba341f",
-    "currentFactsHash": "1265c79cc15ac2933916c802308bafc78e32d0eebd01e08004457e1e2d6b6bf7",
-    "changedSincePrevious": true,
+    "previousCheckedAt": "2026-05-25T13:23:53.253Z",
+    "currentCheckedAt": "2026-05-25T13:25:09.843Z",
+    "previousFactsHash": "ec8440c8f32601e8b6b3a64114d0f447c81a0c5ec9f07e45330b909da44473f3",
+    "currentFactsHash": "ec8440c8f32601e8b6b3a64114d0f447c81a0c5ec9f07e45330b909da44473f3",
+    "changedSincePrevious": false,
     "sections": {
       "facts": [
-        "factsHash cd43f33278d225f257e15feb88bbdd0e5e6ec8dae0b1f68476b99905c4ba341f -> 1265c79cc15ac2933916c802308bafc78e32d0eebd01e08004457e1e2d6b6bf7"
+        "No stable monitored fact changes detected."
       ],
       "githubPulls": [],
       "refs": [],
       "network": [
-        "TN10 blockdag: networkName none -> kaspa-testnet-10; virtualDaaScore 473532811 -> 473536041; blockCount 1515567 -> 1518797; headerCount 1515567 -> 1518797.",
-        "TN12 blockdag: networkName none -> kaspa-testnet-12; virtualDaaScore 21040740 -> 21044088; blockCount 1400731 -> 1404079; headerCount 1400731 -> 1404079."
+        "TN10 blockdag: virtualDaaScore 473546380 -> 473547254; blockCount 1529136 -> 1530010; headerCount 1529136 -> 1530010.",
+        "TN12 blockdag: virtualDaaScore 21054275 -> 21055042; blockCount 1414266 -> 1415033; headerCount 1414266 -> 1415033."
       ],
       "webSources": []
     }
