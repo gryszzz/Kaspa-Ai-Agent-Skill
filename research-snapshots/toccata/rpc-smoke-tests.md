@@ -82,3 +82,31 @@ node scripts/toccata-source-monitor.mjs
 ```
 
 Do not commit refreshed `latest.json` or `latest.md` only because live counters changed. The monitor's facts hash intentionally ignores the moving block counters and focuses on endpoint availability, source fingerprints, GitHub source state, and verdict rules.
+
+## Multi-Endpoint Check
+
+Use the deterministic fixture check in CI and the live check when comparing additional source nodes:
+
+```bash
+node scripts/toccata-network-check.mjs --check
+node scripts/toccata-network-check.mjs --live
+```
+
+By default, the live check uses:
+
+- `https://api-tn10.kaspa.org/info/blockdag`
+- `https://api-tn12.kaspa.org/info/blockdag`
+
+To compare more than one endpoint per network, pass comma-separated endpoint lists:
+
+```bash
+TOCCATA_TN10_ENDPOINTS="https://api-tn10.kaspa.org/info/blockdag,https://source-node.example/tn10/info/blockdag" \
+TOCCATA_TN12_ENDPOINTS="https://api-tn12.kaspa.org/info/blockdag,https://source-node.example/tn12/info/blockdag" \
+node scripts/toccata-network-check.mjs --live
+```
+
+The check flags:
+
+- `network_name_mismatch`: the endpoint returned a different `networkName` than expected.
+- `stale_endpoint`: the endpoint's `virtualDaaScore` lags the freshest healthy endpoint in its group beyond the configured threshold.
+- `single_endpoint_group`: only one healthy endpoint is configured, so freshness cannot be cross-checked.

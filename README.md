@@ -96,12 +96,20 @@ Toccata source monitoring:
 - Toccata evidence ladder: [`docs/toccata-evidence-ladder.md`](docs/toccata-evidence-ladder.md)
 - Toccata upgrade readiness: [`docs/kaspa/toccata-upgrade-readiness.md`](docs/kaspa/toccata-upgrade-readiness.md)
 - Covenant lineage indexer notes: [`docs/kaspa/covenant-lineage-indexer.md`](docs/kaspa/covenant-lineage-indexer.md)
+- Wallet covenant-signing preview: [`docs/kaspa/wallet-covenant-signing-preview.md`](docs/kaspa/wallet-covenant-signing-preview.md)
+- ZK proof-cost matrix: [`docs/kaspa/zk-proof-cost-matrix.md`](docs/kaspa/zk-proof-cost-matrix.md)
+- Sequencing witness API sketch: [`docs/kaspa/sequencing-witness-api.md`](docs/kaspa/sequencing-witness-api.md)
+- vProg scope simulator notes: [`docs/kaspa/vprog-scope-simulator.md`](docs/kaspa/vprog-scope-simulator.md)
+- Mainnet readiness gate: [`docs/kaspa/mainnet-readiness-gate.md`](docs/kaspa/mainnet-readiness-gate.md)
 - Machine-readable snapshot: [`research-snapshots/toccata/latest.json`](research-snapshots/toccata/latest.json)
 - Reviewer snapshot: [`research-snapshots/toccata/latest.md`](research-snapshots/toccata/latest.md)
 - TN10/TN12 RPC smoke-test notes: [`research-snapshots/toccata/rpc-smoke-tests.md`](research-snapshots/toccata/rpc-smoke-tests.md)
 - Monitor script: [`scripts/toccata-source-monitor.mjs`](scripts/toccata-source-monitor.mjs)
 - Local knowledge drill: `node scripts/kaspa-knowledge-drill.mjs`
-- Covenant lineage prototype: `node scripts/covenant-lineage-prototype.mjs --check`
+- Covenant lineage prototype: `node scripts/covenant-lineage-prototype.mjs --check-all`
+- vProg scope simulator: `node scripts/vprog-scope-simulator.mjs --check`
+- Network endpoint checker: `node scripts/toccata-network-check.mjs --check`
+- Mainnet readiness gate: `node scripts/toccata-mainnet-readiness-gate.mjs --check`
 - Claim rule: testnet signals, open PRs, docs, and branch hashes are tracked as evidence, not treated as mainnet activation by themselves
 
 ## 🛠 Install

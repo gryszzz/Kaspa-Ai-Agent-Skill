@@ -1,0 +1,107 @@
+{
+  "network": "kaspa-testnet-12",
+  "transactions": [
+    {
+      "txId": "tx-genesis",
+      "accepted": {
+        "blockHash": "block-a",
+        "daaScore": 100
+      },
+      "inputs": [
+        {
+          "previousOutpoint": {
+            "txId": "funding-tx",
+            "index": 0
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "valueSompi": 100000000,
+          "scriptPublicKeyHash": "script-state-v0",
+          "covenantBindingHash": "binding-genesis",
+          "covenantId": "cov-reorg-001",
+          "authorizingInputIndex": 0
+        }
+      ]
+    },
+    {
+      "txId": "tx-step-1",
+      "accepted": {
+        "blockHash": "block-b",
+        "daaScore": 120
+      },
+      "inputs": [
+        {
+          "previousOutpoint": {
+            "txId": "tx-genesis",
+            "index": 0
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "valueSompi": 100000000,
+          "scriptPublicKeyHash": "script-state-v1",
+          "covenantBindingHash": "binding-step-1",
+          "covenantId": "cov-reorg-001",
+          "authorizingInputIndex": 0
+        }
+      ]
+    },
+    {
+      "txId": "tx-step-2",
+      "accepted": {
+        "blockHash": "block-c",
+        "daaScore": 140
+      },
+      "inputs": [
+        {
+          "previousOutpoint": {
+            "txId": "tx-step-1",
+            "index": 0
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "valueSompi": 100000000,
+          "scriptPublicKeyHash": "script-state-v2",
+          "covenantBindingHash": "binding-step-2",
+          "covenantId": "cov-reorg-001",
+          "authorizingInputIndex": 0
+        }
+      ]
+    }
+  ],
+  "reorgs": [
+    {
+      "id": "reorg-001",
+      "removedOutpoints": ["tx-step-2:0"],
+      "rollbackToOutpoint": "tx-step-1:0",
+      "accepted": {
+        "blockHash": "block-reorg",
+        "daaScore": 150
+      }
+    }
+  ],
+  "expected": {
+    "lineageCount": 1,
+    "transitionCount": 2,
+    "reorgCount": 1,
+    "hardIssueCount": 0,
+    "warningIssueCount": 0,
+    "currentTips": {
+      "cov-reorg-001": "tx-step-1:0"
+    },
+    "outputStatuses": {
+      "tx-step-2:0": "reorged"
+    },
+    "transitionStatuses": {
+      "tx-step-2:0": "reorged"
+    }
+  }
+}

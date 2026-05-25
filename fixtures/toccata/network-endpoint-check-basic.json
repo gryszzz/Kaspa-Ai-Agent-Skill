@@ -1,0 +1,68 @@
+{
+  "staleThresholdDaaScore": 1000,
+  "endpoints": [
+    {
+      "group": "TN10",
+      "label": "tn10-primary",
+      "url": "https://api-tn10.kaspa.org/info/blockdag",
+      "expectedNetworkName": "kaspa-testnet-10",
+      "response": {
+        "ok": true,
+        "status": 200,
+        "networkName": "kaspa-testnet-10",
+        "virtualDaaScore": 500000,
+        "blockCount": 200000,
+        "headerCount": 200000
+      }
+    },
+    {
+      "group": "TN10",
+      "label": "tn10-stale-peer",
+      "url": "https://source-node.example/tn10/info/blockdag",
+      "expectedNetworkName": "kaspa-testnet-10",
+      "response": {
+        "ok": true,
+        "status": 200,
+        "networkName": "kaspa-testnet-10",
+        "virtualDaaScore": 498500,
+        "blockCount": 198500,
+        "headerCount": 198500
+      }
+    },
+    {
+      "group": "TN12",
+      "label": "tn12-primary",
+      "url": "https://api-tn12.kaspa.org/info/blockdag",
+      "expectedNetworkName": "kaspa-testnet-12",
+      "response": {
+        "ok": true,
+        "status": 200,
+        "networkName": "kaspa-testnet-12",
+        "virtualDaaScore": 300000,
+        "blockCount": 150000,
+        "headerCount": 150000
+      }
+    },
+    {
+      "group": "TN12",
+      "label": "tn12-miswired-peer",
+      "url": "https://source-node.example/tn12/info/blockdag",
+      "expectedNetworkName": "kaspa-testnet-12",
+      "response": {
+        "ok": true,
+        "status": 200,
+        "networkName": "kaspa-testnet-10",
+        "virtualDaaScore": 300050,
+        "blockCount": 150050,
+        "headerCount": 150050
+      }
+    }
+  ],
+  "expected": {
+    "endpointCount": 4,
+    "hardIssueCount": 1,
+    "warningIssueCount": 1,
+    "staleEndpointCount": 1,
+    "networkMismatchCount": 1
+  }
+}

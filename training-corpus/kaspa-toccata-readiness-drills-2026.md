@@ -113,11 +113,11 @@ vProgs:
 High leverage:
 
 - Extend PR diff summaries from changed-file signals into focused changed-behavior notes.
-- Add adversarial covenant lineage fixtures for wrong network, duplicate continuation, missing metadata, and reorg rollback.
-- Add wallet signing preview examples for covenant spends.
-- Add a proof-cost matrix for ZK verifier options.
-- Add a sequencing witness API sketch.
-- Add a vProg scope simulator note or small prototype.
+- Add wallet-preview golden tests that consume covenant lineage fixture output.
+- Add live source-node lists for the multi-endpoint TN10/TN12 checker.
+- Add proof-cost benchmark snapshots when verifier pricing stabilizes.
+- Add witness API contract tests once an indexer implementation exists.
+- Add source-monitor changed-behavior notes for PR #1000 and PR #1013.
 
 Guardrails:
 

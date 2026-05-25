@@ -1,0 +1,38 @@
+{
+  "network": "kaspa-testnet-12",
+  "transactions": [
+    {
+      "txId": "tx-minimal-genesis",
+      "accepted": {
+        "blockHash": "block-minimal",
+        "daaScore": 100
+      },
+      "inputs": [
+        {
+          "previousOutpoint": {
+            "txId": "funding-tx",
+            "index": 0
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "valueSompi": 100000000,
+          "covenantId": "cov-minimal-001",
+          "authorizingInputIndex": 0
+        }
+      ]
+    }
+  ],
+  "expected": {
+    "lineageCount": 1,
+    "transitionCount": 0,
+    "reorgCount": 0,
+    "hardIssueCount": 0,
+    "warningIssueCount": 0,
+    "currentTips": {
+      "cov-minimal-001": "tx-minimal-genesis:0"
+    }
+  }
+}

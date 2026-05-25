@@ -1,0 +1,90 @@
+{
+  "network": "kaspa-testnet-12",
+  "transactions": [
+    {
+      "txId": "tx-genesis",
+      "accepted": {
+        "blockHash": "block-a",
+        "daaScore": 100
+      },
+      "inputs": [
+        {
+          "previousOutpoint": {
+            "txId": "funding-tx",
+            "index": 0
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "valueSompi": 100000000,
+          "scriptPublicKeyHash": "script-state-v0",
+          "covenantBindingHash": "binding-genesis",
+          "covenantId": "cov-duplicate-001",
+          "authorizingInputIndex": 0
+        }
+      ]
+    },
+    {
+      "txId": "tx-step-a",
+      "accepted": {
+        "blockHash": "block-b",
+        "daaScore": 120
+      },
+      "inputs": [
+        {
+          "previousOutpoint": {
+            "txId": "tx-genesis",
+            "index": 0
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "valueSompi": 100000000,
+          "scriptPublicKeyHash": "script-state-v1a",
+          "covenantBindingHash": "binding-step-a",
+          "covenantId": "cov-duplicate-001",
+          "authorizingInputIndex": 0
+        }
+      ]
+    },
+    {
+      "txId": "tx-step-b",
+      "accepted": {
+        "blockHash": "block-c",
+        "daaScore": 130
+      },
+      "inputs": [
+        {
+          "previousOutpoint": {
+            "txId": "tx-genesis",
+            "index": 0
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "valueSompi": 100000000,
+          "scriptPublicKeyHash": "script-state-v1b",
+          "covenantBindingHash": "binding-step-b",
+          "covenantId": "cov-duplicate-001",
+          "authorizingInputIndex": 0
+        }
+      ]
+    }
+  ],
+  "expected": {
+    "lineageCount": 1,
+    "transitionCount": 1,
+    "reorgCount": 0,
+    "hardIssueCount": 1,
+    "warningIssueCount": 0,
+    "currentTips": {
+      "cov-duplicate-001": "tx-step-a:0"
+    }
+  }
+}

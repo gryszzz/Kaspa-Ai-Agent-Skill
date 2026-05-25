@@ -193,7 +193,15 @@ Current prototype:
 
 ```bash
 node scripts/covenant-lineage-prototype.mjs --check
+node scripts/covenant-lineage-prototype.mjs --check-all
 node scripts/covenant-lineage-prototype.mjs
 ```
 
 The default fixture is `fixtures/toccata/covenant-lineage-basic.json`. It models a genesis covenant output followed by two accepted continuation transitions on `kaspa-testnet-12`.
+
+Adversarial fixtures now cover:
+
+- Wrong network rejection.
+- Duplicate continuation detection.
+- Missing app metadata without losing covenant lineage.
+- Reorg rollback from a successor output back to the prior current tip.

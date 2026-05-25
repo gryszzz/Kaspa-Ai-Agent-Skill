@@ -150,22 +150,33 @@ Already in place:
 - Covenant lineage indexer notes.
 - PR diff summaries with changed-file counts and semantic content signals.
 - KIP document-status extraction from tracked KIP PR files.
-- Covenant lineage prototype reducer with a checked fixture.
+- Covenant lineage prototype reducer with adversarial fixtures and reorg rollback checks.
+- Wallet covenant-signing preview mock.
+- ZK proof-cost matrix.
+- Sequencing witness API sketch.
+- vProg scope simulator.
+- Multi-endpoint network checker.
+- Mainnet readiness gate.
 - Local knowledge drill.
-- Compatibility CI that runs the drill.
+- Compatibility CI that runs the drill, lineage checks, vProg simulator, endpoint checker, and mainnet gate.
 
 Next high-leverage upgrades:
 
-- Adversarial covenant lineage fixtures for wrong network, duplicate continuation, missing metadata, and reorg rollback.
-- A wallet covenant-signing preview doc.
-- A ZK proof-cost matrix.
-- A sequencing witness API sketch.
-- A vProg scope simulator prototype.
+- Extend PR diff summaries from changed-file signals into focused changed-behavior notes.
+- Add wallet-preview golden test cases from the covenant lineage fixtures.
+- Add live multi-endpoint source-node lists once trusted TN10/TN12 peers are available.
+- Add proof-cost benchmark snapshots when verifier pricing stabilizes.
+- Add witness API contract tests once an indexer implementation exists.
 
 ## References
 
 - Toccata source snapshot: [`../../research-snapshots/toccata/latest.md`](../../research-snapshots/toccata/latest.md)
 - Evidence ladder: [`../toccata-evidence-ladder.md`](../toccata-evidence-ladder.md)
 - Covenant lineage indexer notes: [`./covenant-lineage-indexer.md`](./covenant-lineage-indexer.md)
+- Wallet covenant-signing preview: [`./wallet-covenant-signing-preview.md`](./wallet-covenant-signing-preview.md)
+- ZK proof-cost matrix: [`./zk-proof-cost-matrix.md`](./zk-proof-cost-matrix.md)
+- Sequencing witness API sketch: [`./sequencing-witness-api.md`](./sequencing-witness-api.md)
+- vProg scope simulator: [`./vprog-scope-simulator.md`](./vprog-scope-simulator.md)
+- Mainnet readiness gate: [`./mainnet-readiness-gate.md`](./mainnet-readiness-gate.md)
 - TN10/TN12 smoke tests: [`../../research-snapshots/toccata/rpc-smoke-tests.md`](../../research-snapshots/toccata/rpc-smoke-tests.md)
 - Readiness drills: [`../../training-corpus/kaspa-toccata-readiness-drills-2026.md`](../../training-corpus/kaspa-toccata-readiness-drills-2026.md)

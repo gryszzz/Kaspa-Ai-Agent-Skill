@@ -1,0 +1,67 @@
+{
+  "scenario": "toccata-vprog-scope-basic",
+  "limits": {
+    "maxScopeKeys": 10,
+    "maxWitnessBytes": 12000,
+    "maxDependencyApps": 3,
+    "maxWriteKeys": 8,
+    "maxProofCadenceActions": 5
+  },
+  "actions": [
+    {
+      "id": "amm-swap-small",
+      "app": "dex",
+      "readSet": [
+        "dex:pools:kas-usdc",
+        "oracle:prices:kas-usdc",
+        "dex:accounts:alice"
+      ],
+      "writeSet": [
+        "dex:pools:kas-usdc",
+        "dex:accounts:alice"
+      ],
+      "proofCadence": {
+        "mode": "per-action",
+        "actionsPerProof": 1
+      },
+      "witnessBytes": 2200
+    },
+    {
+      "id": "composed-liquidation",
+      "app": "lending",
+      "readSet": [
+        "lending:positions:alice",
+        "lending:markets:kas",
+        "lending:markets:usdc",
+        "oracle:prices:kas-usdc",
+        "dex:pools:kas-usdc",
+        "risk:params:ltv",
+        "sequencer:lane:lending",
+        "identity:account:alice",
+        "governance:params:fee",
+        "bridge:inventory:kas-usdc",
+        "settlement:lane:shared"
+      ],
+      "writeSet": [
+        "lending:positions:alice",
+        "lending:markets:kas",
+        "lending:markets:usdc",
+        "dex:pools:kas-usdc",
+        "risk:events:liquidations",
+        "bridge:inventory:kas-usdc",
+        "settlement:receipts:alice"
+      ],
+      "proofCadence": {
+        "mode": "batch",
+        "actionsPerProof": 10
+      },
+      "witnessBytes": 16000
+    }
+  ],
+  "expected": {
+    "actionCount": 2,
+    "riskCount": 4,
+    "maxScopeKeys": 13,
+    "maxWitnessBytes": 16000
+  }
+}

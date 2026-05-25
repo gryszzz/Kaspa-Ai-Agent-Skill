@@ -1,0 +1,38 @@
+{
+  "network": "kaspa-testnet-12",
+  "transactions": [
+    {
+      "txId": "tx-wrong-network",
+      "network": "kaspa-testnet-10",
+      "accepted": {
+        "blockHash": "block-wrong-network",
+        "daaScore": 100
+      },
+      "inputs": [
+        {
+          "previousOutpoint": {
+            "txId": "funding-tx",
+            "index": 0
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "valueSompi": 100000000,
+          "scriptPublicKeyHash": "script-state-v0",
+          "covenantBindingHash": "binding-wrong-network",
+          "covenantId": "cov-wrong-network",
+          "authorizingInputIndex": 0
+        }
+      ]
+    }
+  ],
+  "expected": {
+    "lineageCount": 0,
+    "transitionCount": 0,
+    "reorgCount": 0,
+    "hardIssueCount": 1,
+    "warningIssueCount": 0
+  }
+}

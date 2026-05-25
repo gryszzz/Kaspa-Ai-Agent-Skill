@@ -9,6 +9,10 @@ on:
       - "scripts/toccata-source-monitor.mjs"
       - "scripts/kaspa-knowledge-drill.mjs"
       - "scripts/covenant-lineage-prototype.mjs"
+      - "scripts/vprog-scope-simulator.mjs"
+      - "scripts/toccata-network-check.mjs"
+      - "scripts/toccata-mainnet-readiness-gate.mjs"
+      - "docs/kaspa/**"
       - "fixtures/toccata/**"
       - "research-snapshots/toccata/**"
       - "training-corpus/kaspa-toccata-*.md"
@@ -20,6 +24,10 @@ on:
       - "scripts/toccata-source-monitor.mjs"
       - "scripts/kaspa-knowledge-drill.mjs"
       - "scripts/covenant-lineage-prototype.mjs"
+      - "scripts/vprog-scope-simulator.mjs"
+      - "scripts/toccata-network-check.mjs"
+      - "scripts/toccata-mainnet-readiness-gate.mjs"
+      - "docs/kaspa/**"
       - "fixtures/toccata/**"
       - "research-snapshots/toccata/**"
       - "training-corpus/kaspa-toccata-*.md"
@@ -55,7 +63,16 @@ jobs:
           test -s "$RUNNER_TEMP/kaspa-knowledge-drill.md"
 
       - name: Run covenant lineage prototype
-        run: node scripts/covenant-lineage-prototype.mjs --check
+        run: node scripts/covenant-lineage-prototype.mjs --check-all
+
+      - name: Run vProg scope simulator
+        run: node scripts/vprog-scope-simulator.mjs --check
+
+      - name: Run Toccata network endpoint checker
+        run: node scripts/toccata-network-check.mjs --check
+
+      - name: Run mainnet readiness gate
+        run: node scripts/toccata-mainnet-readiness-gate.mjs --check
 
   target-matrix:
     name: Target ${{ matrix.target }}

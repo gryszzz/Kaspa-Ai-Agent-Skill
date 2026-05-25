@@ -1,10 +1,11 @@
 #!/usr/bin/env node
-import { readFile } from "node:fs/promises";
+import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 
 const ROOT_DIR = process.cwd();
 const DEFAULT_FIXTURE = path.join(ROOT_DIR, "fixtures", "toccata", "covenant-lineage-basic.json");
+const FIXTURE_DIR = path.join(ROOT_DIR, "fixtures", "toccata");
 
 function readArgValue(name) {
   const index = process.argv.indexOf(name);
@@ -32,6 +33,7 @@ function reduceFixture(fixture) {
   const outputs = new Map();
   const lineages = new Map();
   const transitions = [];
+  const reorgEvents = [];
   const issues = [];
 
   for (const tx of sortByDaa(fixture.transactions || [])) {
@@ -133,8 +135,66 @@ function reduceFixture(fixture) {
         genesisOutpoint,
         acceptingBlockHash: tx.accepted?.blockHash ?? null,
         acceptingDaaScore: tx.accepted?.daaScore ?? null,
+        status: "active",
         spentBy: null,
       });
+    }
+  }
+
+  for (const reorg of fixture.reorgs || []) {
+    const removedOutpoints = reorg.removedOutpoints || [];
+    reorgEvents.push({
+      id: reorg.id || null,
+      removedOutpoints,
+      rollbackToOutpoint: reorg.rollbackToOutpoint || null,
+      acceptingBlockHash: reorg.accepted?.blockHash ?? null,
+      acceptingDaaScore: reorg.accepted?.daaScore ?? null,
+    });
+
+    for (const outpoint of removedOutpoints) {
+      const output = outputs.get(outpoint);
+      if (!output) {
+        issues.push({
+          level: "warning",
+          outpoint,
+          message: "reorg removed an outpoint that is not present in the fixture output set",
+        });
+        continue;
+      }
+
+      output.status = "reorged";
+      output.reorgId = reorg.id || null;
+
+      for (const transition of transitions) {
+        if (transition.successorOutpoint === outpoint) {
+          transition.transitionStatus = "reorged";
+        }
+      }
+
+      const lineage = lineages.get(output.covenantId);
+      if (!lineage || lineage.currentTip !== outpoint) {
+        continue;
+      }
+
+      const rollbackToOutpoint = reorg.rollbackToOutpoint || output.authorizingPreviousOutpoint;
+      const rollbackOutput = outputs.get(rollbackToOutpoint);
+      if (!rollbackOutput) {
+        lineage.status = "reorged_tip_unresolved";
+        issues.push({
+          level: "error",
+          covenantId: output.covenantId,
+          outpoint,
+          message: `reorg could not resolve rollback outpoint ${rollbackToOutpoint || "unknown"}`,
+        });
+        continue;
+      }
+
+      if (rollbackOutput.spentBy === outpoint) {
+        rollbackOutput.spentBy = null;
+      }
+      lineage.currentTip = rollbackToOutpoint;
+      lineage.status = "active_after_reorg";
+      lineage.lastSeenDaaScore = reorg.accepted?.daaScore ?? lineage.lastSeenDaaScore;
     }
   }
 
@@ -142,9 +202,14 @@ function reduceFixture(fixture) {
     network,
     lineages: [...lineages.values()],
     transitions,
+    reorgEvents,
     outputs: [...outputs.values()],
     issues,
   };
+}
+
+function countIssues(report, level) {
+  return report.issues.filter((issue) => issue.level === level).length;
 }
 
 function assertExpected(report, expected) {
@@ -161,6 +226,18 @@ function assertExpected(report, expected) {
     errors.push(`expected ${expected.transitionCount} transitions, got ${report.transitions.length}`);
   }
 
+  if (expected.reorgCount !== undefined && report.reorgEvents.length !== expected.reorgCount) {
+    errors.push(`expected ${expected.reorgCount} reorg events, got ${report.reorgEvents.length}`);
+  }
+
+  if (expected.hardIssueCount !== undefined && countIssues(report, "error") !== expected.hardIssueCount) {
+    errors.push(`expected ${expected.hardIssueCount} hard issues, got ${countIssues(report, "error")}`);
+  }
+
+  if (expected.warningIssueCount !== undefined && countIssues(report, "warning") !== expected.warningIssueCount) {
+    errors.push(`expected ${expected.warningIssueCount} warnings, got ${countIssues(report, "warning")}`);
+  }
+
   for (const [covenantId, expectedTip] of Object.entries(expected.currentTips || {})) {
     const lineage = report.lineages.find((entry) => entry.covenantId === covenantId);
     if (!lineage) {
@@ -172,30 +249,97 @@ function assertExpected(report, expected) {
     }
   }
 
+  for (const [outpoint, expectedStatus] of Object.entries(expected.outputStatuses || {})) {
+    const output = report.outputs.find((entry) => entry.outpoint === outpoint);
+    if (!output) {
+      errors.push(`missing output ${outpoint}`);
+      continue;
+    }
+    if (output.status !== expectedStatus) {
+      errors.push(`expected output ${outpoint} status ${expectedStatus}, got ${output.status}`);
+    }
+  }
+
+  for (const [outpoint, expectedStatus] of Object.entries(expected.transitionStatuses || {})) {
+    const transition = report.transitions.find((entry) => entry.successorOutpoint === outpoint);
+    if (!transition) {
+      errors.push(`missing transition to ${outpoint}`);
+      continue;
+    }
+    if (transition.transitionStatus !== expectedStatus) {
+      errors.push(`expected transition to ${outpoint} status ${expectedStatus}, got ${transition.transitionStatus}`);
+    }
+  }
+
   return errors;
+}
+
+async function checkFixture(fixturePath) {
+  const fixture = JSON.parse(await readFile(fixturePath, "utf8"));
+  const report = reduceFixture(fixture);
+  const errors = assertExpected(report, fixture.expected);
+  const hardIssues = report.issues.filter((issue) => issue.level === "error");
+  const expectedHardIssues = fixture.expected?.hardIssueCount;
+
+  if (expectedHardIssues === undefined && hardIssues.length) {
+    for (const issue of hardIssues) {
+      errors.push(issue.message);
+    }
+  }
+
+  return { fixture, report, errors };
+}
+
+async function covenantFixturePaths() {
+  const entries = await readdir(FIXTURE_DIR);
+  return entries
+    .filter((entry) => /^covenant-lineage-.+\.json$/.test(entry))
+    .sort()
+    .map((entry) => path.join(FIXTURE_DIR, entry));
 }
 
 async function main() {
   const fixturePath = readArgValue("--fixture") || DEFAULT_FIXTURE;
   const check = process.argv.includes("--check");
-  const fixture = JSON.parse(await readFile(fixturePath, "utf8"));
-  const report = reduceFixture(fixture);
+  const checkAll = process.argv.includes("--check-all");
+
+  if (checkAll) {
+    const fixturePaths = await covenantFixturePaths();
+    const failures = [];
+    for (const currentFixturePath of fixturePaths) {
+      const { report, errors } = await checkFixture(currentFixturePath);
+      if (errors.length) {
+        failures.push({ fixturePath: currentFixturePath, errors });
+        continue;
+      }
+      console.log(
+        `ok ${path.relative(ROOT_DIR, currentFixturePath)}: ${report.lineages.length} lineage(s), ${report.transitions.length} transition(s), ${report.reorgEvents.length} reorg event(s).`,
+      );
+    }
+
+    if (failures.length) {
+      for (const failure of failures) {
+        for (const error of failure.errors) {
+          console.error(`${path.relative(ROOT_DIR, failure.fixturePath)}: ${error}`);
+        }
+      }
+      process.exitCode = 1;
+    }
+    return;
+  }
+
+  const { fixture, report, errors } = await checkFixture(fixturePath);
 
   if (check) {
-    const errors = assertExpected(report, fixture.expected);
-    const hardIssues = report.issues.filter((issue) => issue.level === "error");
-    if (errors.length || hardIssues.length) {
+    if (errors.length) {
       for (const error of errors) {
         console.error(`check failed: ${error}`);
-      }
-      for (const issue of hardIssues) {
-        console.error(`issue: ${issue.message}`);
       }
       process.exitCode = 1;
       return;
     }
     console.log(
-      `Covenant lineage prototype check passed: ${report.lineages.length} lineage(s), ${report.transitions.length} transition(s).`,
+      `Covenant lineage prototype check passed: ${report.lineages.length} lineage(s), ${report.transitions.length} transition(s), ${report.reorgEvents.length} reorg event(s).`,
     );
     return;
   }

@@ -114,10 +114,11 @@ Reject or qualify each claim:
 Today, build or update one small artifact:
 
 1. A source diff note for PR #1013 if its head changed.
-2. A covenant lineage schema note with failure cases.
-3. A wallet signing preview wireframe in text.
-4. A TN10/TN12 smoke-test run using \`research-snapshots/toccata/rpc-smoke-tests.md\`.
-5. A one-page "what can be built now vs what must wait" table.
+2. A covenant lineage fixture that stresses reorg, duplicate continuation, wrong-network, or missing-metadata behavior.
+3. A wallet signing preview golden case from covenant fixture output.
+4. A TN10/TN12 multi-endpoint run using \`scripts/toccata-network-check.mjs --live\`.
+5. A vProg scope simulation for one app idea.
+6. A mainnet readiness gate review using \`scripts/toccata-mainnet-readiness-gate.mjs\`.
 
 Carry-forward rule:
 
