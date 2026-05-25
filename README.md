@@ -240,3 +240,4 @@ Design a Kaspa DAG-aware indexer for 100k users with failure recovery and replay
 - [`research-snapshots/toccata/`](research-snapshots/toccata/) - automated source snapshots for Toccata PRs, KIPs, refs, docs, and TN10/TN12 signals
 - [`kaspa-balance-api/`](kaspa-balance-api/) - production-oriented Kaspa API sample
 - [`kaspa-codex-evolution-loop/`](kaspa-codex-evolution-loop/) - autonomous iteration framework
+
