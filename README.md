@@ -9,7 +9,7 @@ This repository publishes a reusable AI skill package for serious Kaspa research
 - **Skill ID:** `$kaspa-sovereign-architect-engine`
 - **Main skill file:** [`SKILL.md`](skills/public/kaspa-sovereign-architect-engine/SKILL.md)
 - **Release downloads:** [GitHub Releases](https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases)
-- **Current release:** `v1.5.0` - Toccata R&D Intelligence
+- **Current release:** `v1.6.0` - Toccata Builder Readiness Gates
 - **Positioning:** package-first distribution (not a website product)
 - **Freshness model:** current-aware, source-grounded, KIP-aware, and research-radar aware
 - **Build scope:** Kaspa protocol, wallet, indexer, WASM, dApp, Kdapp, and infrastructure work
@@ -110,6 +110,7 @@ Toccata source monitoring:
 - vProg scope simulator: `node scripts/vprog-scope-simulator.mjs --check`
 - Network endpoint checker: `node scripts/toccata-network-check.mjs --check`
 - Mainnet readiness gate: `node scripts/toccata-mainnet-readiness-gate.mjs --check`
+- Release packages bundle the skill plus Toccata readiness docs, fixtures, source snapshots, and helper scripts under the installed skill directory.
 - Claim rule: testnet signals, open PRs, docs, and branch hashes are tracked as evidence, not treated as mainnet activation by themselves
 
 ## 🛠 Install
@@ -216,7 +217,7 @@ Design a Kaspa DAG-aware indexer for 100k users with failure recovery and replay
 ## 📦 Releases
 
 - Download packages: [Releases](https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases)
-- Latest release notes: [`v1.5.0`](release-notes/v1.5.0.md)
+- Latest release notes: [`v1.6.0`](release-notes/v1.6.0.md)
 - Automated packaging workflow: [`.github/workflows/release-skill.yml`](.github/workflows/release-skill.yml)
 
 ## 🌐 Deploy + Marketing

@@ -174,12 +174,19 @@ description: Current-aware Kaspa researcher and engineering skill for source-gro
   - ZK proof-cost model
   - sequencing witness model
   - vProg scope simulator
-- For upgrade-preparation work, use `docs/kaspa/toccata-upgrade-readiness.md` to separate what is here, what is coming, what must wait for mainnet evidence, and what a master builder should prototype next.
+- For upgrade-preparation work, use `docs/kaspa/toccata-upgrade-readiness.md` in this repo, or `references/repo-docs/kaspa/toccata-upgrade-readiness.md` in release downloads, to separate what is here, what is coming, what must wait for mainnet evidence, and what a master builder should prototype next.
+- Release downloads bundle the Toccata readiness docs, fixtures, snapshots, and helper scripts under the installed skill directory so the skill remains usable without cloning this whole repository.
 - When asked to improve Kaspa knowledge, prepare for Toccata, or "train yourself," use the repo-local readiness loop:
   - refresh `research-snapshots/toccata/latest.json`
   - read `training-corpus/kaspa-toccata-readiness-drills-2026.md`
   - run `node scripts/kaspa-knowledge-drill.mjs`
   - convert uncertain answers into monitor, corpus, or playbook updates
+- In an installed release package, run the bundled helpers from the skill directory:
+  - `node scripts/kaspa-knowledge-drill.mjs`
+  - `node scripts/covenant-lineage-prototype.mjs --check-all`
+  - `node scripts/vprog-scope-simulator.mjs --check`
+  - `node scripts/toccata-network-check.mjs --check`
+  - `node scripts/toccata-mainnet-readiness-gate.mjs --check`
 
 ## Efficient Response Modes
 

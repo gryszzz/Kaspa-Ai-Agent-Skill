@@ -6,7 +6,7 @@ Use this playbook when analyzing Toccata, covenants, SilverScript, ZK opcodes, s
 
 Build an evidence-first Toccata research loop that is faster and sharper than surface-level ecosystem commentary.
 
-Upgrade-readiness docs page: `docs/kaspa/toccata-upgrade-readiness.md`.
+Upgrade-readiness docs page: `docs/kaspa/toccata-upgrade-readiness.md` in the repo, or `references/repo-docs/kaspa/toccata-upgrade-readiness.md` in release downloads.
 
 Do not claim superiority over upstream developers. The practical edge is:
 
@@ -18,7 +18,7 @@ Do not claim superiority over upstream developers. The practical edge is:
 
 ## Evidence Ladder
 
-Reader-facing docs page: `docs/toccata-evidence-ladder.md`.
+Reader-facing docs page: `docs/toccata-evidence-ladder.md` in the repo, or `references/repo-docs/toccata-evidence-ladder.md` in release downloads.
 
 1. Stable release notes and tags
 2. `rusty-kaspa` `master`, `toccata`, `tn10`, and `tn12` branch heads
@@ -102,7 +102,7 @@ Tooling:
 
 ### Covenants
 
-Builder-facing lineage note: `docs/kaspa/covenant-lineage-indexer.md`.
+Builder-facing lineage note: `docs/kaspa/covenant-lineage-indexer.md` in the repo, or `references/repo-docs/kaspa/covenant-lineage-indexer.md` in release downloads.
 
 Track:
 
@@ -120,6 +120,12 @@ Builder output:
 - covenant lineage indexer
 - wallet signing preview for successor outputs
 - invalid transition tests
+
+Bundled release checks:
+
+```bash
+node scripts/covenant-lineage-prototype.mjs --check-all
+```
 
 ### ZK
 
@@ -139,6 +145,10 @@ Builder output:
 - dependency risk notes for cryptographic libraries
 - proof system choice matrix
 
+Bundled release reference:
+
+- `references/repo-docs/kaspa/zk-proof-cost-matrix.md`
+
 ### Sequencing Commitments
 
 Track:
@@ -157,6 +167,10 @@ Builder output:
 - block context commitment explorer fields
 - app-lane monitoring dashboard
 
+Bundled release reference:
+
+- `references/repo-docs/kaspa/sequencing-witness-api.md`
+
 ### Based Apps and vProgs
 
 Track:
@@ -174,6 +188,12 @@ Builder output:
 - scope-cost estimator
 - proof cadence policy
 - app-to-app composability checklist
+
+Bundled release checks:
+
+```bash
+node scripts/vprog-scope-simulator.mjs --check
+```
 
 ## R&D Development Roadmap
 
