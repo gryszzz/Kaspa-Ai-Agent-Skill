@@ -1,8 +1,8 @@
 # Toccata Source Snapshot
 
-Generated: 2026-05-25T13:01:06.357Z
+Generated: 2026-05-25T13:06:39.439Z
 
-Facts hash: `cd43f33278d225f257e15feb88bbdd0e5e6ec8dae0b1f68476b99905c4ba341f`
+Facts hash: `1265c79cc15ac2933916c802308bafc78e32d0eebd01e08004457e1e2d6b6bf7`
 
 ## Verdict
 
@@ -13,13 +13,13 @@ Facts hash: `cd43f33278d225f257e15feb88bbdd0e5e6ec8dae0b1f68476b99905c4ba341f`
 
 ## Changes Since Previous Snapshot
 
-Previous snapshot: 2026-05-25T12:54:14.649Z
+Previous snapshot: 2026-05-25T13:01:06.357Z
 
-Current snapshot: 2026-05-25T13:01:06.357Z
+Current snapshot: 2026-05-25T13:06:39.439Z
 
 ### Stable Facts
 
-- No stable monitored fact changes detected.
+- factsHash cd43f33278d225f257e15feb88bbdd0e5e6ec8dae0b1f68476b99905c4ba341f -> 1265c79cc15ac2933916c802308bafc78e32d0eebd01e08004457e1e2d6b6bf7
 
 ### GitHub Pull Requests and KIP PR States
 
@@ -31,8 +31,8 @@ Current snapshot: 2026-05-25T13:01:06.357Z
 
 ### Testnet Signals
 
-- TN10 blockdag: virtualDaaScore 473528598 -> 473532811; blockCount 1511354 -> 1515567; headerCount 1511354 -> 1515567.
-- TN12 blockdag: virtualDaaScore 21036700 -> 21040740; blockCount 1396691 -> 1400731; headerCount 1396691 -> 1400731.
+- TN10 blockdag: networkName none -> kaspa-testnet-10; virtualDaaScore 473532811 -> 473536041; blockCount 1515567 -> 1518797; headerCount 1515567 -> 1518797.
+- TN12 blockdag: networkName none -> kaspa-testnet-12; virtualDaaScore 21040740 -> 21044088; blockCount 1400731 -> 1404079; headerCount 1400731 -> 1404079.
 
 ### Web Source Fingerprints
 
@@ -69,10 +69,10 @@ Current snapshot: 2026-05-25T13:01:06.357Z
 
 ## Testnet Signals
 
-| Source | Status | Virtual DAA | Block count |
-| --- | --- | --- | --- |
-| TN10 blockdag | ok | 473532811 | 1515567 |
-| TN12 blockdag | ok | 21040740 | 1400731 |
+| Source | Status | Network | Virtual DAA | Block count |
+| --- | --- | --- | --- | --- |
+| TN10 blockdag | ok | kaspa-testnet-10 | 473536041 | 1518797 |
+| TN12 blockdag | ok | kaspa-testnet-12 | 21044088 | 1404079 |
 
 ## Web Source Fingerprints
 

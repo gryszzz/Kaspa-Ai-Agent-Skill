@@ -6,6 +6,8 @@ Use this playbook when analyzing Toccata, covenants, SilverScript, ZK opcodes, s
 
 Build an evidence-first Toccata research loop that is faster and sharper than surface-level ecosystem commentary.
 
+Upgrade-readiness docs page: `docs/kaspa/toccata-upgrade-readiness.md`.
+
 Do not claim superiority over upstream developers. The practical edge is:
 
 - verifying earlier from primary code and PRs

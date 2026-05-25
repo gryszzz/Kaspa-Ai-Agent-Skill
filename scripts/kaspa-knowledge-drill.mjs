@@ -28,7 +28,8 @@ function formatNetwork(source) {
   if (!source.ok) {
     return `error: ${source.error || source.status || "unknown"}`;
   }
-  return `ok, virtualDaaScore ${source.virtualDaaScore}, blockCount ${source.blockCount}`;
+  const networkName = source.networkName || "unknown-network";
+  return `ok, network ${networkName}, virtualDaaScore ${source.virtualDaaScore}, blockCount ${source.blockCount}`;
 }
 
 function findPull(snapshot, repo, number) {
@@ -84,15 +85,17 @@ Answer these without opening notes, then check against the snapshot and corpus:
 3. What changed or needs attention in PR #1013? Current status: ${formatPull(zk)}.
 4. Which Toccata-related KIPs are still PRs rather than merged KIPs?
 5. What wallet UX would prevent a covenant spend from looking like an ordinary payment?
+6. What network names did the latest TN10/TN12 endpoints return, and why does that matter?
 
 ## Deep Drills
 
 1. Evidence ladder: Write a claim about Toccata, then label every supporting source as release, branch, PR, KIP PR, docs, research, tooling, or testnet signal.
-2. Covenant lineage: Sketch tables for covenant ID, genesis outpoint, continuation edge, authorizing input, accepted transaction, and reorg status.
-3. Wallet preview: Design the smallest signing screen that shows consumed covenant state, successor state, proof requirements, and irreversible constraints.
-4. ZK readiness: Compare Groth16-style and RISC0/Succinct-style verifier risks across proof size, verification cost, dependency maturity, and transaction payload shape.
-5. Sequencing commitments: Describe what a lane-aware indexer must store to serve an O(activity) witness API.
-6. vProg scope: Model one app with read sets, write sets, proof cadence, witness storage, pruning risk, and scope explosion risk.
+2. Network awareness: Build a table that separates mainnet, TN10, TN12, simnet, devnet, branch-only, and docs-only behavior.
+3. Covenant lineage: Sketch tables for covenant ID, genesis outpoint, continuation edge, authorizing input, accepted transaction, and reorg status.
+4. Wallet preview: Design the smallest signing screen that shows consumed covenant state, successor state, proof requirements, and irreversible constraints.
+5. ZK readiness: Compare Groth16-style and RISC0/Succinct-style verifier risks across proof size, verification cost, dependency maturity, and transaction payload shape.
+6. Sequencing commitments: Describe what a lane-aware indexer must store to serve an O(activity) witness API.
+7. vProg scope: Model one app with read sets, write sets, proof cadence, witness storage, pruning risk, and scope explosion risk.
 
 ## Red-Team Prompts
 
@@ -104,6 +107,7 @@ Reject or qualify each claim:
 4. "A covenant ID proves the state transition is semantically valid."
 5. "A testnet SilverScript demo is production wallet support."
 6. "A proof verifier opcode removes the need to reason about witness availability or verification cost."
+7. "A node endpoint is trustworthy without checking its returned network name."
 
 ## Builder Sprint
 

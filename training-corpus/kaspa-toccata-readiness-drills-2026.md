@@ -30,6 +30,7 @@ node scripts/kaspa-knowledge-drill.mjs
 4. Pick one deep drill and produce a short artifact.
 5. If an answer depends on current state, record the source URL, audit date, branch, PR base, and commit hash.
 6. If a source changed, update the relevant corpus or playbook instead of relying on memory.
+7. Check the endpoint `networkName` before trusting any TN10/TN12 result.
 
 ## Weekly Build Loop
 
@@ -38,6 +39,7 @@ Monday: source audit
 - Re-check Rusty Kaspa PR #1000 and PR #1013.
 - Re-check KIP-16, KIP-17, KIP-20, and KIP-21 PR status.
 - Re-check TN10 and TN12 `/info/blockdag` shape.
+- Confirm TN10/TN12 `networkName` values did not drift or get mixed by a proxy.
 - Record what changed since the previous snapshot.
 
 Tuesday: covenant lab
@@ -80,6 +82,7 @@ Evidence:
 - What would prove only TN10 activation?
 - What does a feature branch prove that an open PR does not?
 - What does a KIP PR prove that a merged KIP does not?
+- Which network name did each testnet endpoint return in the latest snapshot?
 
 Covenants:
 

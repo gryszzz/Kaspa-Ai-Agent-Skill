@@ -17,5 +17,6 @@ Research:
 
 Toccata preparation:
 - Evidence ladder: ../toccata-evidence-ladder.md
+- Upgrade readiness: ./toccata-upgrade-readiness.md
 - Covenant lineage indexer notes: ./covenant-lineage-indexer.md
 - Latest source snapshot: ../../research-snapshots/toccata/latest.md

@@ -319,6 +319,7 @@ async function readNetworkSource(entry) {
     ...entry,
     ok: true,
     status: result.status,
+    networkName: result.data.networkName ?? null,
     virtualDaaScore: result.data.virtualDaaScore ?? null,
     blockCount: result.data.blockCount ?? null,
     headerCount: result.data.headerCount ?? null,
@@ -449,6 +450,7 @@ function buildChangeSummary(previous, current) {
 
     const changes = [];
     maybeAddChange(changes, "status", statusLabel(previousSource), statusLabel(source));
+    maybeAddChange(changes, "networkName", previousSource.networkName, source.networkName);
     maybeAddChange(changes, "virtualDaaScore", previousSource.virtualDaaScore, source.virtualDaaScore);
     maybeAddChange(changes, "blockCount", previousSource.blockCount, source.blockCount);
     maybeAddChange(changes, "headerCount", previousSource.headerCount, source.headerCount);
@@ -542,6 +544,7 @@ function buildMarkdown(snapshot) {
   const networkRows = snapshot.kaspaNetwork.map((source) => [
     source.label,
     source.ok ? "ok" : "error",
+    source.ok ? source.networkName : "",
     source.ok ? source.virtualDaaScore : source.error,
     source.ok ? source.blockCount : "",
   ]);
@@ -579,7 +582,7 @@ ${markdownTable(["Reference", "SHA", "Type"], refRows)}
 
 ## Testnet Signals
 
-${markdownTable(["Source", "Status", "Virtual DAA", "Block count"], networkRows)}
+${markdownTable(["Source", "Status", "Network", "Virtual DAA", "Block count"], networkRows)}
 
 ## Web Source Fingerprints
 
@@ -601,6 +604,7 @@ function buildFactsHash(snapshot) {
     url: source.url,
     ok: source.ok,
     status: source.status,
+    networkName: source.networkName || null,
     error: source.error || null,
   }));
 

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-05-25T13:01:06.357Z",
+  "checkedAt": "2026-05-25T13:06:39.439Z",
   "policy": {
     "sourceTier": "primary-source-first",
     "mainnetClaimRule": "mainnet activation requires explicit mainnet release, activation, or merged production evidence",
@@ -252,11 +252,13 @@
       "url": "https://api-tn10.kaspa.org/info/blockdag",
       "ok": true,
       "status": 200,
-      "virtualDaaScore": "473532811",
-      "blockCount": "1515567",
-      "headerCount": "1515567",
+      "networkName": "kaspa-testnet-10",
+      "virtualDaaScore": "473536041",
+      "blockCount": "1518797",
+      "headerCount": "1518797",
       "tipHashes": [
-        "40b313a5746ba34ee1d627302819ab630f0563b28d52b963868a188b892b385d",
+        "84718fa2e27650e9a62bee654fd98e729a34923f0609309fcc67e796a5d9ea2f",
+        "75a8e169b853956d661c3d32c4a065ae39ca0f3e716a9559ddc748b2858802e8",
         "f0388a984fb93841b4f993e002042f9dac010c3eeb5bde2c34f572331e10ff90"
       ]
     },
@@ -265,12 +267,12 @@
       "url": "https://api-tn12.kaspa.org/info/blockdag",
       "ok": true,
       "status": 200,
-      "virtualDaaScore": "21040740",
-      "blockCount": "1400731",
-      "headerCount": "1400731",
+      "networkName": "kaspa-testnet-12",
+      "virtualDaaScore": "21044088",
+      "blockCount": "1404079",
+      "headerCount": "1404079",
       "tipHashes": [
-        "316eb9abd859a1a084484a0d90ac93784e07dc7fcea13d724dd61fe5b7631d58",
-        "e240b3636f2d813b5378eb2f1743f2af63ed0f291953ca81d7f5cc2da32d3a89"
+        "9e25e694825916ce1f7433c5a3602f5f51672fa1cacfc3f56212de7a52a865c8"
       ]
     }
   ],
@@ -343,7 +345,7 @@
       "etag": null,
       "lastModified": "Tue, 19 Aug 2025 21:04:05 GMT",
       "contentLength": 46722,
-      "contentSha256": "9185419d28e15a2e20f2c811b3aaeb4733aa7f81c43f602b11162d4639c679b0",
+      "contentSha256": "06fadaa9e8fec41484b7788e1fcee5d201e6e17191469bac8a73beb337e6f90f",
       "fingerprintBasis": "last-modified:Tue, 19 Aug 2025 21:04:05 GMT;bytes:46722",
       "sourceFingerprint": "0d01364b7b4050414ae64384d32e51f11cb58b186bb7e78fc3ee1e90c29eaff6"
     },
@@ -355,7 +357,7 @@
       "etag": null,
       "lastModified": "Fri, 26 Sep 2025 01:10:08 GMT",
       "contentLength": 24937,
-      "contentSha256": "e5f7c8a10c566d91a9ee1050ac81b3de44c220e095f9c13e6c1b85f25588dbeb",
+      "contentSha256": "2f4c44f18a7fe7357800ba3dd4430316fb5baaf9d5a0b45c38df4bf6ec92d8ad",
       "fingerprintBasis": "last-modified:Fri, 26 Sep 2025 01:10:08 GMT;bytes:24937",
       "sourceFingerprint": "647b4d92432f01cb389d744c3c0ffa74e2e64b0cb27228bdb488fd708f2d4b57"
     },
@@ -367,7 +369,7 @@
       "etag": null,
       "lastModified": "Sun, 24 Aug 2025 16:16:12 GMT",
       "contentLength": 32618,
-      "contentSha256": "08ca4202e5fcd6f43363c15f33025934f8a50117196a57c99a24189952c9ff8d",
+      "contentSha256": "e7697011f4103c59ca0335f2ede9c014c9258b238dfbbae17b0fad2ec12e5016",
       "fingerprintBasis": "last-modified:Sun, 24 Aug 2025 16:16:12 GMT;bytes:32618",
       "sourceFingerprint": "cc44adf3732df5175a21643170a28cd7192daaec27c4e995d9ac4efecd489b0b"
     },
@@ -379,7 +381,7 @@
       "etag": null,
       "lastModified": "Sun, 23 Feb 2025 15:17:32 GMT",
       "contentLength": 56014,
-      "contentSha256": "74bde296f3401ee7503a86ab7b4588f52d3b848d8b689f32ae163c87cacc4ffc",
+      "contentSha256": "751642db4e26fb28d0abcc8066853140c93e5636ffb616e247d5f19c6394f101",
       "fingerprintBasis": "last-modified:Sun, 23 Feb 2025 15:17:32 GMT;bytes:56014",
       "sourceFingerprint": "57a1692460057531288a423923221b10db000ae774f0c41a69256278d4a0dd98"
     }
@@ -394,24 +396,24 @@
       "Use branch hashes, PR base refs, KIP merge state, and docs hashes together before making claims."
     ]
   },
-  "factsHash": "cd43f33278d225f257e15feb88bbdd0e5e6ec8dae0b1f68476b99905c4ba341f",
+  "factsHash": "1265c79cc15ac2933916c802308bafc78e32d0eebd01e08004457e1e2d6b6bf7",
   "previousFactsHash": "cd43f33278d225f257e15feb88bbdd0e5e6ec8dae0b1f68476b99905c4ba341f",
-  "changedSincePrevious": false,
+  "changedSincePrevious": true,
   "changeSummary": {
-    "previousCheckedAt": "2026-05-25T12:54:14.649Z",
-    "currentCheckedAt": "2026-05-25T13:01:06.357Z",
+    "previousCheckedAt": "2026-05-25T13:01:06.357Z",
+    "currentCheckedAt": "2026-05-25T13:06:39.439Z",
     "previousFactsHash": "cd43f33278d225f257e15feb88bbdd0e5e6ec8dae0b1f68476b99905c4ba341f",
-    "currentFactsHash": "cd43f33278d225f257e15feb88bbdd0e5e6ec8dae0b1f68476b99905c4ba341f",
-    "changedSincePrevious": false,
+    "currentFactsHash": "1265c79cc15ac2933916c802308bafc78e32d0eebd01e08004457e1e2d6b6bf7",
+    "changedSincePrevious": true,
     "sections": {
       "facts": [
-        "No stable monitored fact changes detected."
+        "factsHash cd43f33278d225f257e15feb88bbdd0e5e6ec8dae0b1f68476b99905c4ba341f -> 1265c79cc15ac2933916c802308bafc78e32d0eebd01e08004457e1e2d6b6bf7"
       ],
       "githubPulls": [],
       "refs": [],
       "network": [
-        "TN10 blockdag: virtualDaaScore 473528598 -> 473532811; blockCount 1511354 -> 1515567; headerCount 1511354 -> 1515567.",
-        "TN12 blockdag: virtualDaaScore 21036700 -> 21040740; blockCount 1396691 -> 1400731; headerCount 1396691 -> 1400731."
+        "TN10 blockdag: networkName none -> kaspa-testnet-10; virtualDaaScore 473532811 -> 473536041; blockCount 1515567 -> 1518797; headerCount 1515567 -> 1518797.",
+        "TN12 blockdag: networkName none -> kaspa-testnet-12; virtualDaaScore 21040740 -> 21044088; blockCount 1400731 -> 1404079; headerCount 1400731 -> 1404079."
       ],
       "webSources": []
     }

@@ -94,6 +94,7 @@ Toccata source monitoring:
 
 - [Toccata Source Monitor workflow](https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/actions/workflows/toccata-source-monitor.yml)
 - Toccata evidence ladder: [`docs/toccata-evidence-ladder.md`](docs/toccata-evidence-ladder.md)
+- Toccata upgrade readiness: [`docs/kaspa/toccata-upgrade-readiness.md`](docs/kaspa/toccata-upgrade-readiness.md)
 - Covenant lineage indexer notes: [`docs/kaspa/covenant-lineage-indexer.md`](docs/kaspa/covenant-lineage-indexer.md)
 - Machine-readable snapshot: [`research-snapshots/toccata/latest.json`](research-snapshots/toccata/latest.json)
 - Reviewer snapshot: [`research-snapshots/toccata/latest.md`](research-snapshots/toccata/latest.md)
