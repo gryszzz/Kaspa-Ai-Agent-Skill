@@ -174,6 +174,11 @@ description: Current-aware Kaspa researcher and engineering skill for source-gro
   - ZK proof-cost model
   - sequencing witness model
   - vProg scope simulator
+- When asked to improve Kaspa knowledge, prepare for Toccata, or "train yourself," use the repo-local readiness loop:
+  - refresh `research-snapshots/toccata/latest.json`
+  - read `training-corpus/kaspa-toccata-readiness-drills-2026.md`
+  - run `node scripts/kaspa-knowledge-drill.mjs`
+  - convert uncertain answers into monitor, corpus, or playbook updates
 
 ## Efficient Response Modes
 
@@ -340,6 +345,7 @@ Output:
 - Use `references/source-trust-policy.md` before resolving source conflicts.
 - Use `references/kaspa-research-radar.md` for new, upcoming, or changing Kaspa work.
 - Use `references/toccata-rd-playbook.md` for Toccata R&D and programmability work.
+- Use `training-corpus/kaspa-toccata-readiness-drills-2026.md` and `scripts/kaspa-knowledge-drill.mjs` for local Toccata preparation and self-testing.
 - Use `references/repo-audit-checklist.md` during repository analysis.
 - Use `references/core-research-track.md` for deep protocol and non-repository tracks.
 - Read only the subsection relevant to the selected response mode to preserve context.

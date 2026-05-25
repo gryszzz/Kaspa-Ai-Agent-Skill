@@ -212,6 +212,25 @@ Phase 6: vProg simulator
 - Detect scope explosion and pruning risk.
 - Convert results into app architecture rules.
 
+## Local Knowledge Drill
+
+Use this loop when the task is to improve Kaspa knowledge, prepare for Toccata, or locally train the skill:
+
+```bash
+node scripts/toccata-source-monitor.mjs --write-if-changed
+node scripts/kaspa-knowledge-drill.mjs
+```
+
+The drill is retrieval practice over the current source snapshot. It should produce:
+
+- a current source pulse
+- recall questions
+- deep drills
+- red-team prompts
+- one builder sprint artifact
+
+Treat missed or uncertain answers as repo tasks. Update the monitor, corpus, or playbook so the next run gets sharper.
+
 ## Failure Modes To Study First
 
 - Confusing feature branch merges with `master` merges.
@@ -236,4 +255,3 @@ The fastest path to deep advantage is not to predict price or repeat "smart cont
 - What breaks for wallets and indexers?
 - Which app patterns are naturally Kaspa-native?
 - Which proof and state models create hidden operational costs?
-

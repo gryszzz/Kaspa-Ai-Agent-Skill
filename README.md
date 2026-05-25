@@ -97,6 +97,7 @@ Toccata source monitoring:
 - Reviewer snapshot: [`research-snapshots/toccata/latest.md`](research-snapshots/toccata/latest.md)
 - TN10/TN12 RPC smoke-test notes: [`research-snapshots/toccata/rpc-smoke-tests.md`](research-snapshots/toccata/rpc-smoke-tests.md)
 - Monitor script: [`scripts/toccata-source-monitor.mjs`](scripts/toccata-source-monitor.mjs)
+- Local knowledge drill: `node scripts/kaspa-knowledge-drill.mjs`
 - Claim rule: testnet signals, open PRs, docs, and branch hashes are tracked as evidence, not treated as mainnet activation by themselves
 
 ## 🛠 Install
@@ -222,6 +223,7 @@ Design a Kaspa DAG-aware indexer for 100k users with failure recovery and replay
 - [`training-corpus/kaspa-pdf-markdown/`](training-corpus/kaspa-pdf-markdown/) - normalized Kaspa corpus
 - [`training-corpus/kaspa-toccata-2026.md`](training-corpus/kaspa-toccata-2026.md) - source-gated Toccata mastery map
 - [`training-corpus/kaspa-toccata-rd-intelligence-2026.md`](training-corpus/kaspa-toccata-rd-intelligence-2026.md) - deeper Toccata R&D intelligence and development roadmap
+- [`training-corpus/kaspa-toccata-readiness-drills-2026.md`](training-corpus/kaspa-toccata-readiness-drills-2026.md) - local Toccata preparation and self-testing loop
 - [`research-snapshots/toccata/`](research-snapshots/toccata/) - automated source snapshots for Toccata PRs, KIPs, refs, docs, and TN10/TN12 signals
 - [`kaspa-balance-api/`](kaspa-balance-api/) - production-oriented Kaspa API sample
 - [`kaspa-codex-evolution-loop/`](kaspa-codex-evolution-loop/) - autonomous iteration framework

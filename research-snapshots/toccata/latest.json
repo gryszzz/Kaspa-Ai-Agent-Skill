@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-05-24T23:47:15.938Z",
+  "checkedAt": "2026-05-25T12:54:14.649Z",
   "policy": {
     "sourceTier": "primary-source-first",
     "mainnetClaimRule": "mainnet activation requires explicit mainnet release, activation, or merged production evidence",
@@ -39,8 +39,8 @@
         "url": "https://github.com/kaspanet/rusty-kaspa/pull/1013",
         "baseRefName": "tn10",
         "headRefName": "zk-updates",
-        "headSha": "0d811dfd75b3a038dab4f7b482bdb3903d1f63da",
-        "updatedAt": "2026-05-24T23:19:57Z",
+        "headSha": "89f8caca5f8e9edcbe99f5e5f447ce8d420aa603",
+        "updatedAt": "2026-05-25T09:45:52Z",
         "createdAt": "2026-05-21T09:20:12Z",
         "mergedAt": null
       },
@@ -252,13 +252,11 @@
       "url": "https://api-tn10.kaspa.org/info/blockdag",
       "ok": true,
       "status": 200,
-      "virtualDaaScore": "473054385",
-      "blockCount": "1473095",
-      "headerCount": "1473095",
+      "virtualDaaScore": "473528598",
+      "blockCount": "1511354",
+      "headerCount": "1511354",
       "tipHashes": [
-        "0270628d1e672c0d7f50af020bf2ec727984573f74632dfdd63c84e261fb1b3a",
-        "88c1148e3ea141652b0607947ee79cb6285c61a3c4fe55a7a144269f18f064c5",
-        "9b742cf9b233634df3a88f652a1888d198b5964c883342c52271eda105773589",
+        "6e0856a0609b10ee72a39b9d573a23f04e2cfaa7d57d0d6ea1c73b01cce79bd5",
         "f0388a984fb93841b4f993e002042f9dac010c3eeb5bde2c34f572331e10ff90"
       ]
     },
@@ -267,12 +265,13 @@
       "url": "https://api-tn12.kaspa.org/info/blockdag",
       "ok": true,
       "status": 200,
-      "virtualDaaScore": "20565350",
-      "blockCount": "1359117",
-      "headerCount": "1359117",
+      "virtualDaaScore": "21036700",
+      "blockCount": "1396691",
+      "headerCount": "1396691",
       "tipHashes": [
-        "d11b577a9450f539a07ba64b1998a94f44c580e3b6756dba32cb7c912929f550",
-        "a441a06c4465b5ae42b0853783283c33fe25e6df8d06ccdfc4c7ba31de04b1fa"
+        "e814ddb62108d7f5aa37f1f439b17930cd9bbbce5cd54f7d2b325b58966874f2",
+        "777e99d4eae23ff885da96433a310feebff9cbd228b3cc5a8d9512dc4b11470b",
+        "14cbdda018681f606f3063923fb7342780be0f34d4c00792ce0b0655c30bc7b9"
       ]
     }
   ],
@@ -345,7 +344,7 @@
       "etag": null,
       "lastModified": "Tue, 19 Aug 2025 21:04:05 GMT",
       "contentLength": 46722,
-      "contentSha256": "182a59c07353495d833d27879a9f2bb01c3b2231ff04c15bc40de78d77b038ee",
+      "contentSha256": "41897d7aeca9537aff7c5bdb5983b49ecefc768fc181abc2e7af212f66b4f11d",
       "fingerprintBasis": "last-modified:Tue, 19 Aug 2025 21:04:05 GMT;bytes:46722",
       "sourceFingerprint": "0d01364b7b4050414ae64384d32e51f11cb58b186bb7e78fc3ee1e90c29eaff6"
     },
@@ -357,7 +356,7 @@
       "etag": null,
       "lastModified": "Fri, 26 Sep 2025 01:10:08 GMT",
       "contentLength": 24937,
-      "contentSha256": "2c8a9b80d70790b268d934f1194997be9b604a8b9e66ae9fd9b32cea3bfab9fb",
+      "contentSha256": "e27ab3f5d1501ef6b85e9ee9c3653eb60c7c1874d2c0f7d551f774411779fb2a",
       "fingerprintBasis": "last-modified:Fri, 26 Sep 2025 01:10:08 GMT;bytes:24937",
       "sourceFingerprint": "647b4d92432f01cb389d744c3c0ffa74e2e64b0cb27228bdb488fd708f2d4b57"
     },
@@ -369,7 +368,7 @@
       "etag": null,
       "lastModified": "Sun, 24 Aug 2025 16:16:12 GMT",
       "contentLength": 32618,
-      "contentSha256": "a9e9cb1bf4e3d5cbc9e566f57df75ecd72b2194d70e4f477b27632caa6ccaef4",
+      "contentSha256": "a44c90bffa85cbeb45691acec187102577c4a0c4bccc290d94f6879e21c0405c",
       "fingerprintBasis": "last-modified:Sun, 24 Aug 2025 16:16:12 GMT;bytes:32618",
       "sourceFingerprint": "cc44adf3732df5175a21643170a28cd7192daaec27c4e995d9ac4efecd489b0b"
     },
@@ -381,7 +380,7 @@
       "etag": null,
       "lastModified": "Sun, 23 Feb 2025 15:17:32 GMT",
       "contentLength": 56014,
-      "contentSha256": "141949aa34d8fb904bb90e0b3a991dbd318528684d3393fa047987f09fddcc01",
+      "contentSha256": "906bdd8c49235c8463f94ad4a3ea5e8bd958ee8806e7538ce0d55074dba6c75e",
       "fingerprintBasis": "last-modified:Sun, 23 Feb 2025 15:17:32 GMT;bytes:56014",
       "sourceFingerprint": "57a1692460057531288a423923221b10db000ae774f0c41a69256278d4a0dd98"
     }
@@ -396,7 +395,7 @@
       "Use branch hashes, PR base refs, KIP merge state, and docs hashes together before making claims."
     ]
   },
-  "factsHash": "992cd4502451bee4276ac8c1180c3de77b2b9d981df1a347b7050e4e6ec4626a",
-  "previousFactsHash": "ab17ac9c6ac827f8084404ad18e2734989b8346ad4d8382c94c6494800cf5a84",
+  "factsHash": "cd43f33278d225f257e15feb88bbdd0e5e6ec8dae0b1f68476b99905c4ba341f",
+  "previousFactsHash": "992cd4502451bee4276ac8c1180c3de77b2b9d981df1a347b7050e4e6ec4626a",
   "changedSincePrevious": true
 }

@@ -7,14 +7,18 @@ on:
     paths:
       - "skills/public/kaspa-sovereign-architect-engine/**"
       - "scripts/toccata-source-monitor.mjs"
+      - "scripts/kaspa-knowledge-drill.mjs"
       - "research-snapshots/toccata/**"
+      - "training-corpus/kaspa-toccata-*.md"
       - ".github/workflows/compatibility-matrix.yml"
       - ".github/workflows/toccata-source-monitor.yml"
   pull_request:
     paths:
       - "skills/public/kaspa-sovereign-architect-engine/**"
       - "scripts/toccata-source-monitor.mjs"
+      - "scripts/kaspa-knowledge-drill.mjs"
       - "research-snapshots/toccata/**"
+      - "training-corpus/kaspa-toccata-*.md"
       - ".github/workflows/compatibility-matrix.yml"
       - ".github/workflows/toccata-source-monitor.yml"
   workflow_dispatch:
@@ -40,6 +44,11 @@ jobs:
 
       - name: Run compatibility validator (all targets)
         run: node skills/public/kaspa-sovereign-architect-engine/scripts/validate-compatibility.mjs --all
+
+      - name: Run local knowledge drill
+        run: |
+          node scripts/kaspa-knowledge-drill.mjs > "$RUNNER_TEMP/kaspa-knowledge-drill.md"
+          test -s "$RUNNER_TEMP/kaspa-knowledge-drill.md"
 
   target-matrix:
     name: Target ${{ matrix.target }}
