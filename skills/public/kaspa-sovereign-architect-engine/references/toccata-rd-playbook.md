@@ -16,6 +16,8 @@ Do not claim superiority over upstream developers. The practical edge is:
 
 ## Evidence Ladder
 
+Reader-facing docs page: `docs/toccata-evidence-ladder.md`.
+
 1. Stable release notes and tags
 2. `rusty-kaspa` `master`, `toccata`, `tn10`, and `tn12` branch heads
 3. Rusty Kaspa PRs, with `baseRefName` recorded
@@ -97,6 +99,8 @@ Tooling:
 ## Feature Buckets
 
 ### Covenants
+
+Builder-facing lineage note: `docs/kaspa/covenant-lineage-indexer.md`.
 
 Track:
 

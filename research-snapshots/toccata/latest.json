@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-05-25T12:54:14.649Z",
+  "checkedAt": "2026-05-25T13:01:06.357Z",
   "policy": {
     "sourceTier": "primary-source-first",
     "mainnetClaimRule": "mainnet activation requires explicit mainnet release, activation, or merged production evidence",
@@ -252,11 +252,11 @@
       "url": "https://api-tn10.kaspa.org/info/blockdag",
       "ok": true,
       "status": 200,
-      "virtualDaaScore": "473528598",
-      "blockCount": "1511354",
-      "headerCount": "1511354",
+      "virtualDaaScore": "473532811",
+      "blockCount": "1515567",
+      "headerCount": "1515567",
       "tipHashes": [
-        "6e0856a0609b10ee72a39b9d573a23f04e2cfaa7d57d0d6ea1c73b01cce79bd5",
+        "40b313a5746ba34ee1d627302819ab630f0563b28d52b963868a188b892b385d",
         "f0388a984fb93841b4f993e002042f9dac010c3eeb5bde2c34f572331e10ff90"
       ]
     },
@@ -265,13 +265,12 @@
       "url": "https://api-tn12.kaspa.org/info/blockdag",
       "ok": true,
       "status": 200,
-      "virtualDaaScore": "21036700",
-      "blockCount": "1396691",
-      "headerCount": "1396691",
+      "virtualDaaScore": "21040740",
+      "blockCount": "1400731",
+      "headerCount": "1400731",
       "tipHashes": [
-        "e814ddb62108d7f5aa37f1f439b17930cd9bbbce5cd54f7d2b325b58966874f2",
-        "777e99d4eae23ff885da96433a310feebff9cbd228b3cc5a8d9512dc4b11470b",
-        "14cbdda018681f606f3063923fb7342780be0f34d4c00792ce0b0655c30bc7b9"
+        "316eb9abd859a1a084484a0d90ac93784e07dc7fcea13d724dd61fe5b7631d58",
+        "e240b3636f2d813b5378eb2f1743f2af63ed0f291953ca81d7f5cc2da32d3a89"
       ]
     }
   ],
@@ -344,7 +343,7 @@
       "etag": null,
       "lastModified": "Tue, 19 Aug 2025 21:04:05 GMT",
       "contentLength": 46722,
-      "contentSha256": "41897d7aeca9537aff7c5bdb5983b49ecefc768fc181abc2e7af212f66b4f11d",
+      "contentSha256": "9185419d28e15a2e20f2c811b3aaeb4733aa7f81c43f602b11162d4639c679b0",
       "fingerprintBasis": "last-modified:Tue, 19 Aug 2025 21:04:05 GMT;bytes:46722",
       "sourceFingerprint": "0d01364b7b4050414ae64384d32e51f11cb58b186bb7e78fc3ee1e90c29eaff6"
     },
@@ -356,7 +355,7 @@
       "etag": null,
       "lastModified": "Fri, 26 Sep 2025 01:10:08 GMT",
       "contentLength": 24937,
-      "contentSha256": "e27ab3f5d1501ef6b85e9ee9c3653eb60c7c1874d2c0f7d551f774411779fb2a",
+      "contentSha256": "e5f7c8a10c566d91a9ee1050ac81b3de44c220e095f9c13e6c1b85f25588dbeb",
       "fingerprintBasis": "last-modified:Fri, 26 Sep 2025 01:10:08 GMT;bytes:24937",
       "sourceFingerprint": "647b4d92432f01cb389d744c3c0ffa74e2e64b0cb27228bdb488fd708f2d4b57"
     },
@@ -368,7 +367,7 @@
       "etag": null,
       "lastModified": "Sun, 24 Aug 2025 16:16:12 GMT",
       "contentLength": 32618,
-      "contentSha256": "a44c90bffa85cbeb45691acec187102577c4a0c4bccc290d94f6879e21c0405c",
+      "contentSha256": "08ca4202e5fcd6f43363c15f33025934f8a50117196a57c99a24189952c9ff8d",
       "fingerprintBasis": "last-modified:Sun, 24 Aug 2025 16:16:12 GMT;bytes:32618",
       "sourceFingerprint": "cc44adf3732df5175a21643170a28cd7192daaec27c4e995d9ac4efecd489b0b"
     },
@@ -380,7 +379,7 @@
       "etag": null,
       "lastModified": "Sun, 23 Feb 2025 15:17:32 GMT",
       "contentLength": 56014,
-      "contentSha256": "906bdd8c49235c8463f94ad4a3ea5e8bd958ee8806e7538ce0d55074dba6c75e",
+      "contentSha256": "74bde296f3401ee7503a86ab7b4588f52d3b848d8b689f32ae163c87cacc4ffc",
       "fingerprintBasis": "last-modified:Sun, 23 Feb 2025 15:17:32 GMT;bytes:56014",
       "sourceFingerprint": "57a1692460057531288a423923221b10db000ae774f0c41a69256278d4a0dd98"
     }
@@ -396,6 +395,25 @@
     ]
   },
   "factsHash": "cd43f33278d225f257e15feb88bbdd0e5e6ec8dae0b1f68476b99905c4ba341f",
-  "previousFactsHash": "992cd4502451bee4276ac8c1180c3de77b2b9d981df1a347b7050e4e6ec4626a",
-  "changedSincePrevious": true
+  "previousFactsHash": "cd43f33278d225f257e15feb88bbdd0e5e6ec8dae0b1f68476b99905c4ba341f",
+  "changedSincePrevious": false,
+  "changeSummary": {
+    "previousCheckedAt": "2026-05-25T12:54:14.649Z",
+    "currentCheckedAt": "2026-05-25T13:01:06.357Z",
+    "previousFactsHash": "cd43f33278d225f257e15feb88bbdd0e5e6ec8dae0b1f68476b99905c4ba341f",
+    "currentFactsHash": "cd43f33278d225f257e15feb88bbdd0e5e6ec8dae0b1f68476b99905c4ba341f",
+    "changedSincePrevious": false,
+    "sections": {
+      "facts": [
+        "No stable monitored fact changes detected."
+      ],
+      "githubPulls": [],
+      "refs": [],
+      "network": [
+        "TN10 blockdag: virtualDaaScore 473528598 -> 473532811; blockCount 1511354 -> 1515567; headerCount 1511354 -> 1515567.",
+        "TN12 blockdag: virtualDaaScore 21036700 -> 21040740; blockCount 1396691 -> 1400731; headerCount 1396691 -> 1400731."
+      ],
+      "webSources": []
+    }
+  }
 }

@@ -1,6 +1,6 @@
 # Toccata Source Snapshot
 
-Generated: 2026-05-25T12:54:14.649Z
+Generated: 2026-05-25T13:01:06.357Z
 
 Facts hash: `cd43f33278d225f257e15feb88bbdd0e5e6ec8dae0b1f68476b99905c4ba341f`
 
@@ -10,6 +10,34 @@ Facts hash: `cd43f33278d225f257e15feb88bbdd0e5e6ec8dae0b1f68476b99905c4ba341f`
 - Implementation status: PR #1000 is open against master.
 - Branch status: rusty-kaspa master a07d8b38d45f, toccata f1d1a1ae6a41.
 - Caution: Do not equate open PRs with merged production behavior. Do not equate TN10/TN12 observations with mainnet activation. Use branch hashes, PR base refs, KIP merge state, and docs hashes together before making claims.
+
+## Changes Since Previous Snapshot
+
+Previous snapshot: 2026-05-25T12:54:14.649Z
+
+Current snapshot: 2026-05-25T13:01:06.357Z
+
+### Stable Facts
+
+- No stable monitored fact changes detected.
+
+### GitHub Pull Requests and KIP PR States
+
+- No changes detected.
+
+### GitHub References
+
+- No changes detected.
+
+### Testnet Signals
+
+- TN10 blockdag: virtualDaaScore 473528598 -> 473532811; blockCount 1511354 -> 1515567; headerCount 1511354 -> 1515567.
+- TN12 blockdag: virtualDaaScore 21036700 -> 21040740; blockCount 1396691 -> 1400731; headerCount 1396691 -> 1400731.
+
+### Web Source Fingerprints
+
+- No changes detected.
+
 
 ## GitHub Pull Requests
 
@@ -43,8 +71,8 @@ Facts hash: `cd43f33278d225f257e15feb88bbdd0e5e6ec8dae0b1f68476b99905c4ba341f`
 
 | Source | Status | Virtual DAA | Block count |
 | --- | --- | --- | --- |
-| TN10 blockdag | ok | 473528598 | 1511354 |
-| TN12 blockdag | ok | 21036700 | 1396691 |
+| TN10 blockdag | ok | 473532811 | 1515567 |
+| TN12 blockdag | ok | 21040740 | 1400731 |
 
 ## Web Source Fingerprints
 

@@ -355,6 +355,174 @@ function markdownTable(headers, rows) {
   return [headerLine, divider, ...body].join("\n");
 }
 
+function keyedMap(items, keyFn) {
+  return new Map((items || []).map((item) => [keyFn(item), item]));
+}
+
+function statusLabel(item) {
+  if (!item) {
+    return "missing";
+  }
+  return item.ok ? "ok" : `error:${item.status || item.error || "unknown"}`;
+}
+
+function maybeAddChange(changes, label, before, after) {
+  if (before !== after) {
+    changes.push(`${label} ${before ?? "none"} -> ${after ?? "none"}`);
+  }
+}
+
+function buildChangeSummary(previous, current) {
+  if (!previous) {
+    return {
+      previousCheckedAt: null,
+      currentCheckedAt: current.checkedAt,
+      previousFactsHash: null,
+      currentFactsHash: current.factsHash,
+      changedSincePrevious: true,
+      sections: {
+        facts: ["No previous snapshot was available for comparison."],
+        githubPulls: [],
+        refs: [],
+        network: [],
+        webSources: [],
+      },
+    };
+  }
+
+  const sections = {
+    facts: [],
+    githubPulls: [],
+    refs: [],
+    network: [],
+    webSources: [],
+  };
+
+  maybeAddChange(sections.facts, "factsHash", previous.factsHash, current.factsHash);
+
+  const previousPulls = keyedMap(previous.github?.pulls, (pull) => `${pull.repo}#${pull.number}`);
+  for (const pull of current.github.pulls) {
+    const previousPull = previousPulls.get(`${pull.repo}#${pull.number}`);
+    if (!previousPull) {
+      sections.githubPulls.push(`${pull.label}: new tracked PR ${pull.repo}#${pull.number}.`);
+      continue;
+    }
+
+    const changes = [];
+    maybeAddChange(changes, "status", statusLabel(previousPull), statusLabel(pull));
+    maybeAddChange(changes, "state", previousPull.state, pull.state);
+    maybeAddChange(changes, "draft", previousPull.draft, pull.draft);
+    maybeAddChange(changes, "base", previousPull.baseRefName, pull.baseRefName);
+    maybeAddChange(changes, "head", shortSha(previousPull.headSha), shortSha(pull.headSha));
+    maybeAddChange(changes, "updated", previousPull.updatedAt, pull.updatedAt);
+
+    if (changes.length) {
+      sections.githubPulls.push(`${pull.label}: ${changes.join("; ")}.`);
+    }
+  }
+
+  const previousRefs = keyedMap(previous.github?.refs, (ref) => `${ref.repo}:${ref.kind}/${ref.name}`);
+  for (const ref of current.github.refs) {
+    const previousRef = previousRefs.get(`${ref.repo}:${ref.kind}/${ref.name}`);
+    if (!previousRef) {
+      sections.refs.push(`${ref.repo} ${ref.kind}/${ref.name}: new tracked reference.`);
+      continue;
+    }
+
+    const changes = [];
+    maybeAddChange(changes, "status", statusLabel(previousRef), statusLabel(ref));
+    maybeAddChange(changes, "sha", shortSha(previousRef.sha), shortSha(ref.sha));
+    maybeAddChange(changes, "type", previousRef.objectType, ref.objectType);
+
+    if (changes.length) {
+      sections.refs.push(`${ref.repo} ${ref.kind}/${ref.name}: ${changes.join("; ")}.`);
+    }
+  }
+
+  const previousNetwork = keyedMap(previous.kaspaNetwork, (source) => source.label);
+  for (const source of current.kaspaNetwork) {
+    const previousSource = previousNetwork.get(source.label);
+    if (!previousSource) {
+      sections.network.push(`${source.label}: new tracked endpoint.`);
+      continue;
+    }
+
+    const changes = [];
+    maybeAddChange(changes, "status", statusLabel(previousSource), statusLabel(source));
+    maybeAddChange(changes, "virtualDaaScore", previousSource.virtualDaaScore, source.virtualDaaScore);
+    maybeAddChange(changes, "blockCount", previousSource.blockCount, source.blockCount);
+    maybeAddChange(changes, "headerCount", previousSource.headerCount, source.headerCount);
+
+    if (changes.length) {
+      sections.network.push(`${source.label}: ${changes.join("; ")}.`);
+    }
+  }
+
+  const previousWebSources = keyedMap(previous.webSources, (source) => source.label);
+  for (const source of current.webSources) {
+    const previousSource = previousWebSources.get(source.label);
+    if (!previousSource) {
+      sections.webSources.push(`${source.label}: new tracked source.`);
+      continue;
+    }
+
+    const changes = [];
+    maybeAddChange(changes, "status", statusLabel(previousSource), statusLabel(source));
+    maybeAddChange(changes, "fingerprint", shortSha(previousSource.sourceFingerprint), shortSha(source.sourceFingerprint));
+    maybeAddChange(changes, "bytes", previousSource.contentLength, source.contentLength);
+
+    if (changes.length) {
+      sections.webSources.push(`${source.label}: ${changes.join("; ")}.`);
+    }
+  }
+
+  if (!sections.facts.length) {
+    sections.facts.push("No stable monitored fact changes detected.");
+  }
+
+  return {
+    previousCheckedAt: previous.checkedAt || null,
+    currentCheckedAt: current.checkedAt,
+    previousFactsHash: previous.factsHash || null,
+    currentFactsHash: current.factsHash,
+    changedSincePrevious: previous.factsHash !== current.factsHash,
+    sections,
+  };
+}
+
+function markdownList(items) {
+  return items.length ? items.map((item) => `- ${item}`).join("\n") : "- No changes detected.";
+}
+
+function buildChangeSummaryMarkdown(summary) {
+  return `## Changes Since Previous Snapshot
+
+Previous snapshot: ${summary.previousCheckedAt || "none"}
+
+Current snapshot: ${summary.currentCheckedAt}
+
+### Stable Facts
+
+${markdownList(summary.sections.facts)}
+
+### GitHub Pull Requests and KIP PR States
+
+${markdownList(summary.sections.githubPulls)}
+
+### GitHub References
+
+${markdownList(summary.sections.refs)}
+
+### Testnet Signals
+
+${markdownList(summary.sections.network)}
+
+### Web Source Fingerprints
+
+${markdownList(summary.sections.webSources)}
+`;
+}
+
 function buildMarkdown(snapshot) {
   const pullRows = snapshot.github.pulls.map((pull) => [
     pull.label,
@@ -399,6 +567,8 @@ Facts hash: \`${snapshot.factsHash}\`
 - Branch status: ${snapshot.verdict.branchStatus}
 - Caution: ${snapshot.verdict.caution.join(" ")}
 
+${buildChangeSummaryMarkdown(snapshot.changeSummary)}
+
 ## GitHub Pull Requests
 
 ${markdownTable(["Signal", "State", "Base", "Head SHA", "Updated", "Link"], pullRows)}
@@ -417,10 +587,9 @@ ${markdownTable(["Source", "HTTP", "Bytes", "Fingerprint", "Link"], webRows)}
 `;
 }
 
-async function loadPreviousFactsHash() {
+async function loadPreviousSnapshot() {
   try {
-    const previous = JSON.parse(await readFile(LATEST_JSON, "utf8"));
-    return previous.factsHash || null;
+    return JSON.parse(await readFile(LATEST_JSON, "utf8"));
   } catch {
     return null;
   }
@@ -455,6 +624,7 @@ function buildFactsHash(snapshot) {
 }
 
 async function main() {
+  const previousSnapshot = await loadPreviousSnapshot();
   const [pulls, refs, kaspaNetwork, fingerprints] = await Promise.all([
     Promise.all(githubPulls.map(readGithubPull)),
     Promise.all(githubRefs.map(readGithubRef)),
@@ -476,8 +646,9 @@ async function main() {
     verdict: buildVerdict({ pulls, refs }),
   };
   snapshot.factsHash = buildFactsHash(snapshot);
-  snapshot.previousFactsHash = await loadPreviousFactsHash();
+  snapshot.previousFactsHash = previousSnapshot?.factsHash || null;
   snapshot.changedSincePrevious = snapshot.previousFactsHash !== snapshot.factsHash;
+  snapshot.changeSummary = buildChangeSummary(previousSnapshot, snapshot);
 
   if (WRITE_IF_CHANGED && !snapshot.changedSincePrevious) {
     console.log("No monitored fact changes; leaving existing snapshot files untouched.");
