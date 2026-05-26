@@ -36,9 +36,9 @@ Publish a small, reviewable `kaspa-sovereign-architect-engine` package release w
 - [x] Run compatibility validation after edits.
 - [x] Build local release artifacts with the package script.
 - [x] Commit release metadata.
-- [ ] Tag `v1.6.1`.
-- [ ] Push commit and tag.
-- [ ] Verify GitHub Release assets and SHA256 digests.
+- [x] Tag `v1.6.1`.
+- [x] Push commit and tag.
+- [x] Verify GitHub Release assets and SHA256 digests.
 
 ## Commands to Verify
 
