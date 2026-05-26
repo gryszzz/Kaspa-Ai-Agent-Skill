@@ -9,7 +9,7 @@ This repository publishes a reusable AI skill package for serious Kaspa research
 - **Skill ID:** `$kaspa-sovereign-architect-engine`
 - **Main skill file:** [`SKILL.md`](skills/public/kaspa-sovereign-architect-engine/SKILL.md)
 - **Release downloads:** [GitHub Releases](https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases)
-- **Current release:** `v1.6.0` - Toccata Builder Readiness Gates
+- **Current release:** `v1.6.1` - Verified Skill Package Release
 - **Positioning:** package-first distribution (not a website product)
 - **Freshness model:** current-aware, source-grounded, KIP-aware, and research-radar aware
 - **Build scope:** Kaspa protocol, wallet, indexer, WASM, dApp, Kdapp, and infrastructure work
@@ -217,7 +217,7 @@ Design a Kaspa DAG-aware indexer for 100k users with failure recovery and replay
 ## 📦 Releases
 
 - Download packages: [Releases](https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases)
-- Latest release notes: [`v1.6.0`](release-notes/v1.6.0.md)
+- Latest release notes: [`v1.6.1`](release-notes/v1.6.1.md)
 - Automated packaging workflow: [`.github/workflows/release-skill.yml`](.github/workflows/release-skill.yml)
 
 ## 🌐 Deploy + Marketing
@@ -240,6 +240,5 @@ Design a Kaspa DAG-aware indexer for 100k users with failure recovery and replay
 - [`research-snapshots/toccata/`](research-snapshots/toccata/) - automated source snapshots for Toccata PRs, KIPs, refs, docs, and TN10/TN12 signals
 - [`kaspa-balance-api/`](kaspa-balance-api/) - production-oriented Kaspa API sample
 - [`kaspa-codex-evolution-loop/`](kaspa-codex-evolution-loop/) - autonomous iteration framework
-
 
 
