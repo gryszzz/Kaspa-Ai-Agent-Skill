@@ -38,9 +38,9 @@ Publish `kaspa-sovereign-architect-engine` to GitHub Packages so the repository 
 - [x] Run compatibility validation after release changes.
 - [x] Build local release artifacts.
 - [x] Run release-relevant Toccata checks.
-- [ ] Push commit and tag.
-- [ ] Verify GitHub Release assets.
-- [ ] Verify GitHub Packages entry/digest.
+- [x] Push commit and tag.
+- [x] Verify GitHub Release assets.
+- [x] Verify GitHub Packages entry/digest.
 
 ## Commands to Verify
 
