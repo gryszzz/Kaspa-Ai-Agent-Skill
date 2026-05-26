@@ -11,6 +11,7 @@ env:
 
 permissions:
   contents: write
+  packages: write
 
 jobs:
   release:
@@ -24,12 +25,38 @@ jobs:
         with:
           node-version: "24"
 
+      - name: Setup ORAS
+        uses: oras-project/setup-oras@v1
+        with:
+          version: 1.2.0
+
       - name: Validate compatibility (release gate)
         run: node skills/public/kaspa-sovereign-architect-engine/scripts/validate-compatibility.mjs --all
 
       - name: Package skill artifacts
         run: |
           skills/public/kaspa-sovereign-architect-engine/scripts/package-release.sh "$GITHUB_WORKSPACE/dist-artifacts" "${GITHUB_REF_NAME}"
+
+      - name: Login to GitHub Container Registry
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | oras login ghcr.io --username "${{ github.actor }}" --password-stdin
+
+      - name: Publish skill package to GitHub Packages
+        shell: bash
+        env:
+          PACKAGE_REF: ghcr.io/${{ github.repository_owner }}/kaspa-sovereign-architect-engine
+        run: |
+          oras push "$PACKAGE_REF:${GITHUB_REF_NAME}" \
+            --artifact-type application/vnd.kaspa.skill.package.v1 \
+            --annotation "org.opencontainers.image.title=Kaspa Sovereign Architect Engine" \
+            --annotation "org.opencontainers.image.description=Kaspa AI agent skill package with Codex, OpenAI, Claude, Cursor, OpenClaw, Gemini, and generic adapters." \
+            --annotation "org.opencontainers.image.source=https://github.com/${GITHUB_REPOSITORY}" \
+            --annotation "org.opencontainers.image.version=${GITHUB_REF_NAME}" \
+            --annotation "org.opencontainers.image.revision=${GITHUB_SHA}" \
+            "dist-artifacts/kaspa-sovereign-architect-engine-${GITHUB_REF_NAME}.zip:application/zip" \
+            "dist-artifacts/kaspa-sovereign-architect-engine-${GITHUB_REF_NAME}.tar.gz:application/gzip" \
+            "dist-artifacts/SHA256SUMS.txt:text/plain"
+          oras tag "$PACKAGE_REF:${GITHUB_REF_NAME}" latest
 
       - name: Resolve release notes
         id: notes

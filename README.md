@@ -9,7 +9,7 @@ This repository publishes a reusable AI skill package for serious Kaspa research
 - **Skill ID:** `$kaspa-sovereign-architect-engine`
 - **Main skill file:** [`SKILL.md`](skills/public/kaspa-sovereign-architect-engine/SKILL.md)
 - **Release downloads:** [GitHub Releases](https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases)
-- **Current release:** `v1.6.1` - Verified Skill Package Release
+- **Current release:** `v1.6.2` - GitHub Packages Release
 - **Positioning:** package-first distribution (not a website product)
 - **Freshness model:** current-aware, source-grounded, KIP-aware, and research-radar aware
 - **Build scope:** Kaspa protocol, wallet, indexer, WASM, dApp, Kdapp, and infrastructure work
@@ -140,14 +140,26 @@ curl -L -o /tmp/kaspa-sovereign-architect-engine.tar.gz \
 tar -xzf /tmp/kaspa-sovereign-architect-engine.tar.gz -C "$CODEX_HOME/skills"
 ```
 
-### Option B: Install from source
+### Option B: Pull from GitHub Packages
+
+The skill is also published as an OCI artifact in GitHub Packages:
+
+```bash
+oras pull ghcr.io/gryszzz/kaspa-sovereign-architect-engine:v1.6.2
+```
+
+The package contains the versioned ZIP, versioned tarball, and
+`SHA256SUMS.txt`. Use the GitHub Release ZIP install path when you want the
+simplest Codex installation flow.
+
+### Option C: Install from source
 
 ```bash
 mkdir -p "$CODEX_HOME/skills/public"
 cp -R skills/public/kaspa-sovereign-architect-engine "$CODEX_HOME/skills/public/"
 ```
 
-### Option C: Install scripts
+### Option D: Install scripts
 
 macOS/Linux:
 
@@ -167,7 +179,7 @@ Export adapter bundle:
 ./skills/public/kaspa-sovereign-architect-engine/scripts/export-adapters.sh
 ```
 
-### Option D: Install for OpenClaw
+### Option E: Install for OpenClaw
 
 OpenClaw loads AgentSkills-compatible folders from `~/.openclaw/skills` or `<workspace>/skills`.
 
@@ -184,7 +196,7 @@ mkdir -p ./skills
 cp -R skills/public/kaspa-sovereign-architect-engine ./skills/
 ```
 
-### Option E: Install for Gemini CLI
+### Option F: Install for Gemini CLI
 
 Gemini CLI loads context from `~/.gemini/GEMINI.md` and supports `@` imports.
 
@@ -217,7 +229,7 @@ Design a Kaspa DAG-aware indexer for 100k users with failure recovery and replay
 ## 📦 Releases
 
 - Download packages: [Releases](https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases)
-- Latest release notes: [`v1.6.1`](release-notes/v1.6.1.md)
+- Latest release notes: [`v1.6.2`](release-notes/v1.6.2.md)
 - Automated packaging workflow: [`.github/workflows/release-skill.yml`](.github/workflows/release-skill.yml)
 
 ## 🌐 Deploy + Marketing
@@ -240,5 +252,3 @@ Design a Kaspa DAG-aware indexer for 100k users with failure recovery and replay
 - [`research-snapshots/toccata/`](research-snapshots/toccata/) - automated source snapshots for Toccata PRs, KIPs, refs, docs, and TN10/TN12 signals
 - [`kaspa-balance-api/`](kaspa-balance-api/) - production-oriented Kaspa API sample
 - [`kaspa-codex-evolution-loop/`](kaspa-codex-evolution-loop/) - autonomous iteration framework
-
-
