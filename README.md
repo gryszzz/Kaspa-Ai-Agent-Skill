@@ -1,6 +1,6 @@
 <img width="1983" height="793" alt="ChatGPT Image May 30, 2026, 10_28_23 PM (1)" src="https://github.com/user-attachments/assets/cbfee1fb-2065-4853-b3bc-f365b5d9a741" />
 
-# 🧠 Kaspa Sovereign Architect Engine
+# 🧠 Kaspa Ai Agent skill 
 
 **Kaspa researcher + engineering skill** with **cross-platform adapters** for Codex, OpenAI-style agents, Claude, Cursor, OpenClaw, Gemini CLI, and generic LLM workflows.
 
