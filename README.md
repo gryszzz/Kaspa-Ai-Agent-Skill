@@ -1,4 +1,4 @@
-<img width="1983" height="793" alt="ChatGPT Image May 30, 2026, 10_28_23 PM (1)" src="https://github.com/user-attachments/assets/cbfee1fb-2065-4853-b3bc-f365b5d9a741" />
+<img width="1448" height="1086" alt="ChatGPT Image May 30, 2026, 10_39_25 PM" src="https://github.com/user-attachments/assets/c30876cf-c079-48ec-8603-a9b817caf6ac" />
 
 # 🧠 Kaspa Ai Agent Skill 
 
