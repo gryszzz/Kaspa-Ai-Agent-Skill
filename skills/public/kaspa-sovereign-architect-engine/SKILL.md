@@ -162,10 +162,17 @@ description: Current-aware Kaspa researcher and engineering skill for source-gro
   - audit date
   - Rusty Kaspa `master` hash
   - Rusty Kaspa `toccata` hash
+  - latest stable Rusty Kaspa release tag
+  - tracked Toccata release or pre-release tags, including whether they are activation or pre-activation evidence
   - Rusty Kaspa PR #1000 state
   - Rusty Kaspa PR #1013 state
-  - KIP-16, KIP-17, KIP-20, and KIP-21 states
+  - KIP-16, KIP-17, KIP-20, and KIP-21 PR states plus merged document statuses
   - TN10/TN12 activation evidence when claiming testnet behavior
+- As of the 2026-06-04 source snapshot:
+  - PR #1000 is closed and merged against `master`, but this is not by itself mainnet activation evidence.
+  - `v1.3.0-toc.5` is a mainnet pre-activation pre-release for sanity testing and explicitly does not activate Toccata on mainnet.
+  - `tn10-toc3` is TN10 Toccata ZK hardening evidence, not mainnet evidence.
+  - KIP-16, KIP-17, KIP-20, and KIP-21 are closed/merged in `kaspanet/kips` with document statuses indicating implemented/activated on TN10.
 - Convert evidence into build tracks:
   - covenant lab
   - SilverScript examples
@@ -180,6 +187,7 @@ description: Current-aware Kaspa researcher and engineering skill for source-gro
   - refresh `research-snapshots/toccata/latest.json`
   - read `training-corpus/kaspa-toccata-readiness-drills-2026.md`
   - run `node scripts/kaspa-knowledge-drill.mjs`
+  - run `node scripts/toccata-mainnet-readiness-gate.mjs --check`
   - convert uncertain answers into monitor, corpus, or playbook updates
 - In an installed release package, run the bundled helpers from the skill directory:
   - `node scripts/kaspa-knowledge-drill.mjs`

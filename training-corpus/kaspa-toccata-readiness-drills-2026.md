@@ -1,6 +1,6 @@
 # Kaspa Toccata Readiness Drills
 
-Generated: 2026-05-25
+Generated: 2026-06-04
 
 This file is the repo-local training loop for preparing the `kaspa-sovereign-architect-engine` skill for Toccata-era work. It does not train the base model. It trains the local skill package, retrieval corpus, and operator habits by forcing repeated source verification, recall, and build-oriented synthesis.
 
@@ -37,7 +37,8 @@ node scripts/kaspa-knowledge-drill.mjs
 Monday: source audit
 
 - Re-check Rusty Kaspa PR #1000 and PR #1013.
-- Re-check KIP-16, KIP-17, KIP-20, and KIP-21 PR status.
+- Re-check Rusty Kaspa releases `v1.3.0-toc.5`, `tn10-toc3`, `tn10-toc2`, and the latest stable tag.
+- Re-check KIP-16, KIP-17, KIP-20, and KIP-21 PR status plus the merged KIP file document status.
 - Re-check TN10 and TN12 `/info/blockdag` shape.
 - Confirm TN10/TN12 `networkName` values did not drift or get mixed by a proxy.
 - Record what changed since the previous snapshot.
@@ -79,10 +80,12 @@ Weekend: app strategy
 Evidence:
 
 - What would prove Toccata mainnet activation?
-- What would prove only TN10 activation?
+- What does `v1.3.0-toc.5` prove, and what does it explicitly not prove?
+- What does `tn10-toc3` prove, and why is it still not mainnet evidence?
 - What does a feature branch prove that an open PR does not?
-- What does a KIP PR prove that a merged KIP does not?
+- What does a merged KIP file prove that it still does not prove about mainnet?
 - Which network name did each testnet endpoint return in the latest snapshot?
+- Which readiness gate is currently complete, and which gates still block mainnet claims?
 
 Covenants:
 
@@ -112,6 +115,9 @@ vProgs:
 
 High leverage:
 
+- Add release-note behavior extraction for `v1.3.0-toc.5`: fee policy, RPC submission, P2P relay, gRPC/protobuf, and one-way DB upgrade risk.
+- Add a Toccata git-tag crate compatibility smoke fixture for SDK-facing Kaspa APIs.
+- Add wallet/indexer fixtures for covenant IDs, successor outputs, authorization inputs, sequencing commitments, and fee-policy previews.
 - Extend PR diff summaries from changed-file signals into focused changed-behavior notes.
 - Add wallet-preview golden tests that consume covenant lineage fixture output.
 - Add live source-node lists for the multi-endpoint TN10/TN12 checker.
@@ -122,6 +128,7 @@ High leverage:
 Guardrails:
 
 - Never collapse testnet evidence into mainnet claims.
-- Never treat KIP PRs as final merged KIPs.
+- Never treat merged KIP files or TN10 activation status as mainnet activation.
+- Never treat a pre-activation mainnet pre-release as final activation evidence.
 - Never assume wallet/indexer support follows automatically from protocol code.
 - Never treat a demo compiler or app as audited production readiness.

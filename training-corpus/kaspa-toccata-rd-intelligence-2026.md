@@ -1,6 +1,6 @@
 # Kaspa Toccata R&D Intelligence Upgrade
 
-Generated: 2026-05-24T22:45:31Z
+Generated: 2026-06-04T03:33:39Z
 
 ## Executive Verdict
 
@@ -14,33 +14,35 @@ The strategic path is to master three layers at once:
 
 Current high-confidence status:
 
-- Toccata is active or treated as always active on TN12.
-- Toccata has passed activation on TN10 according to the `tn10-toc2` release schedule and live TN10 DAA score.
-- Mainnet activation is not verified. On the Rusty Kaspa `toccata` branch, mainnet remains `ForkActivation::never()`.
-- The main Rusty implementation path is PR #1000, `Toccata`, from branch `toccata` into `master`.
-- KIP-16, KIP-17, KIP-20, and KIP-21 are open KIP PRs, not merged KIPs on `kaspanet/kips` `master`.
-- PR #1013, `ZK opcode updates`, is open against `tn10` and explicitly says it is for small ZK opcode consensus changes requiring a fast TN10 hard fork.
+- Mainnet activation is not verified by this repo. The latest tracked Toccata mainnet release, `v1.3.0-toc.5`, is a pre-activation pre-release for sanity testing and explicitly does not activate Toccata on mainnet.
+- PR #1000, `Toccata`, is closed and merged from `toccata` into `master`.
+- PR #1013, `ZK opcode updates`, is closed and merged into `tn10`.
+- `tn10-toc3` is TN10 Toccata ZK hardening evidence. Its release notes schedule TN10 activation for May 28, 2026 around 16:00 UTC at DAA score 476,232,000.
+- KIP-16, KIP-17, KIP-20, and KIP-21 are closed and merged to `kaspanet/kips` `master`; their document statuses indicate implemented/activated on TN10.
+- The mainnet readiness gate currently returns `do_not_claim_mainnet`, with only the merged-code-path gate complete.
 
 ## Source Snapshot
 
-Audit date: 2026-05-24T22:45:31Z
+Audit date: 2026-06-04T03:33:39Z
 
 Rusty Kaspa:
 
-- `master`: `a07d8b38d45f38a02a1f35f601e874358f6c7846`
-- `toccata`: `f1d1a1ae6a4131a3d6124fef443192323c1c382f`
-- `tn10`: `f1d1a1ae6a4131a3d6124fef443192323c1c382f`
-- `tn12`: `7b1e18cc6e7098d83927049781c91740b90e7754`
+- `master`: `d5205cc72ab7b811e88a23595dfac5b9facdeece`
+- `toccata`: `0ae28f939e61994a11eb8eb6dd775255e2924afb`
+- `tn10`: `6899ea75384c1f422fe4ab0e47c439442da3f4fa`
+- `tn12`: `ab4c51afde90dc6e0bce3f782d0a18af5da29434`
+- tag `v1.3.0-toc.5`: `04b0d135f8c8023676ea74dcf496c99d5d0bc2a5`
+- tag `tn10-toc3`: `1015a62359e0d06e0b3b3b7f7d06bc1bd4bf0c1b`
 - tag `tn10-toc2`: `97415b689462bec8a1a36f1665302529ea8a3108`
 - latest stable release tag observed: `v1.1.0`, commit `e97070faa3826c590f477e327c82daaddd6178f4`
 
 KIPs:
 
-- `kaspanet/kips` `master`: `2a77c954b2241bce7954ba5fecad0ac7694ce195`
-- KIP-16 PR #31: open, mergeable, head `c5ec7ff1060de4192b4092cdee3523088d76d8af`, document status `Proposed`
-- KIP-17 PR #32: open, mergeable, head `6fc7a1b20bfe22a316dec76ebd20fe7d9e18722c`, document status `Draft`
-- KIP-20 PR #35: open, mergeable, head `0581f55487ed7c471fbd3615684ebba7bae47e63`, document status `Proposed, Implemented, Activated in TN12`
-- KIP-21 PR #36: open, mergeable, head `bd4cfe43a6035ef1c3335ff16ea1f0bd11f98cf7`, document status `Draft`
+- `kaspanet/kips` `master`: `1aba3b8321c1d27e00b7d87bd7c74ef879efabdc`
+- KIP-16 PR #31: closed/merged, head `09d3615ef0c519b31f9eaf606f461267f1e98c75`, document status `Proposed, Implemented and activated in TN10`
+- KIP-17 PR #32: closed/merged, head `b9b11429fdfccc0f6c1340a8184f13e71b3a1c75`, document status `Implemented and activated in TN10`
+- KIP-20 PR #35: closed/merged, head `e747e0286adac97142467f300f62b3207e59468f`, document status `Proposed, Implemented and activated in TN10`
+- KIP-21 PR #36: closed/merged, head `5214505744ed621bc4692ab426b41fa27406bcd0`, document status `Implemented and activated in TN10`
 
 Docs and tooling:
 
@@ -50,8 +52,8 @@ Docs and tooling:
 
 Live network checks:
 
-- TN10 REST `info/blockdag`: `networkName = kaspa-testnet-10`, `virtualDaaScore = 473017445`
-- TN12 REST `info/blockdag`: `networkName = kaspa-testnet-12`, `virtualDaaScore = 20528361`
+- TN10 REST `info/blockdag`: `networkName = kaspa-testnet-10`, `virtualDaaScore = 481841011`
+- TN12 REST `info/blockdag`: `networkName = kaspa-testnet-12`, `virtualDaaScore = 29336303`
 
 ## Feature Intelligence
 
@@ -191,7 +193,9 @@ Risk:
 Run a current-status audit before any serious claim:
 
 ```bash
-git ls-remote --heads --tags https://github.com/kaspanet/rusty-kaspa.git master toccata tn10 tn12 refs/tags/tn10-toc2 refs/tags/v1.1.0
+git ls-remote --heads --tags https://github.com/kaspanet/rusty-kaspa.git master toccata tn10 tn12 refs/tags/v1.3.0-toc.5 refs/tags/tn10-toc3 refs/tags/tn10-toc2 refs/tags/v1.1.0
+gh release view -R kaspanet/rusty-kaspa v1.3.0-toc.5 --json tagName,isPrerelease,publishedAt,targetCommitish,body
+gh release view -R kaspanet/rusty-kaspa tn10-toc3 --json tagName,isPrerelease,publishedAt,targetCommitish,body
 gh pr view -R kaspanet/rusty-kaspa 1000 --json state,baseRefName,headRefName,updatedAt,mergeable,commits
 gh pr view -R kaspanet/rusty-kaspa 1013 --json state,baseRefName,headRefName,updatedAt,mergeable,commits
 gh pr view -R kaspanet/kips 31 --json state,title,updatedAt,mergeable,commits
@@ -294,4 +298,3 @@ Build these before most builders need them:
 - Inclusion-time proving tension: https://research.kas.pa/t/on-the-inherent-tension-between-multileader-consensus-and-inclusion-time-proving/347
 - TN10 REST blockDAG: https://api-tn10.kaspa.org/info/blockdag
 - TN12 REST blockDAG: https://api-tn12.kaspa.org/info/blockdag
-

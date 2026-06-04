@@ -21,15 +21,16 @@ Do not claim superiority over upstream developers. The practical edge is:
 Reader-facing docs page: `docs/toccata-evidence-ladder.md` in the repo, or `references/repo-docs/toccata-evidence-ladder.md` in release downloads.
 
 1. Stable release notes and tags
-2. `rusty-kaspa` `master`, `toccata`, `tn10`, and `tn12` branch heads
-3. Rusty Kaspa PRs, with `baseRefName` recorded
-4. KIP files merged to `kaspanet/kips` `master`
-5. KIP PRs, with document status recorded
-6. Official Kaspa docs and docs source files
-7. Kaspa Research posts
-8. SilverScript and vProgs repositories
-9. Live TN10/TN12 REST checks
-10. Community commentary, videos, posts, and summaries
+2. Toccata pre-release notes and tags, with activation/pre-activation wording preserved
+3. `rusty-kaspa` `master`, `toccata`, `tn10`, and `tn12` branch heads
+4. Rusty Kaspa PRs, with `baseRefName` recorded
+5. KIP files merged to `kaspanet/kips` `master`
+6. KIP PRs, with document status recorded
+7. Official Kaspa docs and docs source files
+8. Kaspa Research posts
+9. SilverScript and vProgs repositories
+10. Live TN10/TN12 REST checks
+11. Community commentary, videos, posts, and summaries
 
 Rules:
 
@@ -48,7 +49,7 @@ Every serious Toccata report must record:
 - `rusty-kaspa` `toccata` hash
 - `rusty-kaspa` `tn10` and `tn12` hashes when relevant
 - latest stable `rusty-kaspa` release tag
-- Toccata release or pre-release tags
+- Toccata release or pre-release tags, including whether each tag is activation or pre-activation evidence
 - state of Rusty Kaspa PR #1000
 - state of Rusty Kaspa PR #1013
 - KIP-16, KIP-17, KIP-20, KIP-21 PR states and document statuses
@@ -56,22 +57,33 @@ Every serious Toccata report must record:
 
 ## Current Source Watchlist
 
+Current June 4, 2026 posture from `research-snapshots/toccata/latest.md`:
+
+- `v1.3.0-toc.5` is a Rusty Kaspa Toccata mainnet pre-activation pre-release published on 2026-06-03. It is mainnet sanity-testing evidence and explicitly not mainnet activation evidence.
+- `tn10-toc3` is a TN10 Toccata ZK hardening pre-release published on 2026-05-27. Its notes schedule activation for May 28, 2026 around 16:00 UTC at DAA score 476,232,000.
+- PR #1000 is closed and merged against `master`.
+- PR #1013 is closed and merged against `tn10`.
+- KIP-16, KIP-17, KIP-20, and KIP-21 PRs are closed and merged to `kaspanet/kips` `master`; their merged document statuses indicate implemented/activated on TN10.
+- Mainnet activation is still `not_verified_by_monitor`; run the mainnet readiness gate before making any mainnet claim.
+
 Rusty Kaspa:
 
-- PR #1000: `Toccata`, branch `toccata` into `master`
-- PR #1013: `ZK opcode updates`, branch `zk-updates` into `tn10`
+- PR #1000: `Toccata`, branch `toccata` into `master`, closed/merged on 2026-06-02
+- PR #1013: `ZK opcode updates`, branch `zk-updates` into `tn10`, closed/merged on 2026-05-27
 - branch `toccata`
 - branch `tn10`
 - branch `tn12`
+- tag `v1.3.0-toc.5`
+- tag `tn10-toc3`
 - tag `tn10-toc2`
 - latest stable tag
 
 KIPs:
 
-- PR #31: KIP-16, ZK precompile opcodes
-- PR #32: KIP-17, covenants and improved scripting
-- PR #35: KIP-20, covenant IDs
-- PR #36: KIP-21, partitioned sequencing commitments
+- KIP-16 merged file and PR #31: ZK precompile opcodes
+- KIP-17 merged file and PR #32: covenants and improved scripting
+- KIP-20 merged file and PR #35: covenant IDs
+- KIP-21 merged file and PR #36: partitioned sequencing commitments
 
 Official docs:
 

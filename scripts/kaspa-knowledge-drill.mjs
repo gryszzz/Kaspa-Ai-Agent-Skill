@@ -49,6 +49,15 @@ function buildPullRows(snapshot) {
   });
 }
 
+function buildReleaseRows(snapshot) {
+  return (snapshot.github?.releases || []).map((release) => {
+    const status = release.ok ? (release.prerelease ? "pre-release" : "stable") : "error";
+    const published = release.ok ? release.publishedAt : "";
+    const target = release.ok ? release.targetCommitish : release.error;
+    return `| ${release.label} | ${release.tagName || release.tag} | ${status} | ${target} | ${published} |`;
+  });
+}
+
 function buildOutput(snapshot) {
   const zk = findPull(snapshot, "kaspanet/rusty-kaspa", 1013);
   const tn10 = findNetwork(snapshot, "TN10 blockdag");
@@ -65,6 +74,12 @@ Changed since previous: ${snapshot.changedSincePrevious}
 | Signal | State | Base | Head | Updated |
 | --- | --- | --- | --- | --- |
 ${buildPullRows(snapshot).join("\n")}
+
+Release pulse:
+
+| Signal | Tag | Status | Target | Published |
+| --- | --- | --- | --- | --- |
+${buildReleaseRows(snapshot).join("\n")}
 
 Testnet pulse:
 
@@ -83,9 +98,10 @@ Answer these without opening notes, then check against the snapshot and corpus:
 1. What exact evidence separates TN10/TN12 Toccata behavior from mainnet activation?
 2. What does PR #1000 currently prove, and what does it not prove?
 3. What changed or needs attention in PR #1013? Current status: ${formatPull(zk)}.
-4. Which Toccata-related KIPs are still PRs rather than merged KIPs?
-5. What wallet UX would prevent a covenant spend from looking like an ordinary payment?
-6. What network names did the latest TN10/TN12 endpoints return, and why does that matter?
+4. What does \`v1.3.0-toc.5\` prove, and what does it explicitly not prove?
+5. Which tracked KIP-16/17/20/21 documents are merged, and why does merged KIP status still not prove mainnet activation?
+6. What wallet UX would prevent a covenant spend from looking like an ordinary payment?
+7. What network names did the latest TN10/TN12 endpoints return, and why does that matter?
 
 ## Deep Drills
 
@@ -102,12 +118,13 @@ Answer these without opening notes, then check against the snapshot and corpus:
 Reject or qualify each claim:
 
 1. "Toccata is live on mainnet because TN10 passed its activation score."
-2. "A KIP PR marked open is final protocol behavior."
+2. "A pre-activation mainnet pre-release is final activation evidence."
 3. "A merged PR is merged to master even when its base branch is a feature branch."
-4. "A covenant ID proves the state transition is semantically valid."
-5. "A testnet SilverScript demo is production wallet support."
-6. "A proof verifier opcode removes the need to reason about witness availability or verification cost."
-7. "A node endpoint is trustworthy without checking its returned network name."
+4. "A merged KIP file proves mainnet activation."
+5. "A covenant ID proves the state transition is semantically valid."
+6. "A testnet SilverScript demo is production wallet support."
+7. "A proof verifier opcode removes the need to reason about witness availability or verification cost."
+8. "A node endpoint is trustworthy without checking its returned network name."
 
 ## Builder Sprint
 

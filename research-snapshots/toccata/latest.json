@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-05-25T13:25:09.843Z",
+  "checkedAt": "2026-06-04T03:33:39.389Z",
   "policy": {
     "sourceTier": "primary-source-first",
     "mainnetClaimRule": "mainnet activation requires explicit mainnet release, activation, or merged production evidence",
@@ -14,21 +14,21 @@
         "label": "Toccata implementation",
         "interpretation": "Main branch-aware implementation signal. Open PR is not mainnet activation.",
         "ok": true,
-        "state": "open",
-        "merged": false,
-        "draft": true,
+        "state": "closed",
+        "merged": true,
+        "draft": false,
         "title": "Toccata",
         "url": "https://github.com/kaspanet/rusty-kaspa/pull/1000",
         "baseRefName": "master",
         "headRefName": "toccata",
-        "headSha": "f1d1a1ae6a4131a3d6124fef443192323c1c382f",
-        "updatedAt": "2026-05-21T08:45:01Z",
+        "headSha": "0ae28f939e61994a11eb8eb6dd775255e2924afb",
+        "updatedAt": "2026-06-02T16:06:07Z",
         "createdAt": "2026-05-14T12:16:51Z",
-        "mergedAt": null,
+        "mergedAt": "2026-06-02T16:06:06Z",
         "diffSummary": {
           "fileCount": 357,
-          "additions": 43272,
-          "deletions": 3729,
+          "additions": 38666,
+          "deletions": 3734,
           "contentSignals": [
             "Groth16 verifier",
             "RISC0/Succinct verifier",
@@ -43,13 +43,6 @@
           ],
           "topFiles": [
             {
-              "filename": "crypto/txscript/test-data/script_tests_covenants.json",
-              "status": "added",
-              "additions": 6026,
-              "deletions": 0,
-              "changes": 6026
-            },
-            {
               "filename": "crypto/smt/src/tree.rs",
               "status": "added",
               "additions": 2196,
@@ -57,11 +50,18 @@
               "changes": 2196
             },
             {
+              "filename": "crypto/txscript/benches/pricing.rs",
+              "status": "added",
+              "additions": 2091,
+              "deletions": 0,
+              "changes": 2091
+            },
+            {
               "filename": "crypto/txscript/src/opcodes/mod.rs",
               "status": "modified",
-              "additions": 1757,
-              "deletions": 309,
-              "changes": 2066
+              "additions": 1755,
+              "deletions": 307,
+              "changes": 2062
             },
             {
               "filename": "consensus/smt-store/tests/integration.rs",
@@ -71,11 +71,11 @@
               "changes": 1589
             },
             {
-              "filename": "crypto/txscript/benches/pricing.rs",
-              "status": "added",
-              "additions": 1586,
-              "deletions": 0,
-              "changes": 1586
+              "filename": "crypto/txscript/src/lib.rs",
+              "status": "modified",
+              "additions": 1293,
+              "deletions": 190,
+              "changes": 1483
             },
             {
               "filename": "Cargo.lock",
@@ -85,7 +85,7 @@
               "changes": 1472
             }
           ],
-          "fileFingerprint": "8ba06232d49b7c58c8eaa98f31ae7d127aacfb8f70e648f043fae7166e140291"
+          "fileFingerprint": "30208d2c7660a33a18ef6ba8b0b1c2b81c0f51b8e25429b166010e7d7b183e36"
         },
         "diffSummaryOk": true,
         "diffSummaryError": null,
@@ -97,21 +97,21 @@
         "label": "ZK opcode updates",
         "interpretation": "Fast testnet hard-fork signal for ZK opcode consensus deltas.",
         "ok": true,
-        "state": "open",
-        "merged": false,
+        "state": "closed",
+        "merged": true,
         "draft": false,
         "title": "ZK opcode updates",
         "url": "https://github.com/kaspanet/rusty-kaspa/pull/1013",
         "baseRefName": "tn10",
         "headRefName": "zk-updates",
-        "headSha": "3201436e8e134aca8250c2c231d92c50de8b594d",
-        "updatedAt": "2026-05-25T13:20:24Z",
+        "headSha": "dd4c992dd6a762261b448ab47ce2a4e14e05eb37",
+        "updatedAt": "2026-05-27T09:23:36Z",
         "createdAt": "2026-05-21T09:20:12Z",
-        "mergedAt": null,
+        "mergedAt": "2026-05-27T09:23:36Z",
         "diffSummary": {
           "fileCount": 17,
-          "additions": 1283,
-          "deletions": 138,
+          "additions": 1793,
+          "deletions": 179,
           "contentSignals": [
             "Groth16 verifier",
             "RISC0/Succinct verifier",
@@ -124,11 +124,18 @@
           ],
           "topFiles": [
             {
+              "filename": "crypto/txscript/benches/pricing.rs",
+              "status": "modified",
+              "additions": 574,
+              "deletions": 69,
+              "changes": 643
+            },
+            {
               "filename": "crypto/txscript/src/zk_precompiles/tests/mod.rs",
               "status": "modified",
-              "additions": 362,
-              "deletions": 22,
-              "changes": 384
+              "additions": 545,
+              "deletions": 23,
+              "changes": 568
             },
             {
               "filename": "crypto/txscript/src/zk_precompiles/groth16/mod.rs",
@@ -138,18 +145,11 @@
               "changes": 354
             },
             {
-              "filename": "crypto/txscript/benches/pricing.rs",
-              "status": "modified",
-              "additions": 312,
-              "deletions": 29,
-              "changes": 341
-            },
-            {
               "filename": "crypto/txscript/src/zk_precompiles/tests/helpers.rs",
               "status": "modified",
-              "additions": 122,
+              "additions": 167,
               "deletions": 23,
-              "changes": 145
+              "changes": 190
             },
             {
               "filename": "crypto/txscript/src/zk_precompiles/fields/mod.rs",
@@ -159,14 +159,14 @@
               "changes": 85
             },
             {
-              "filename": "crypto/txscript/src/runtime_resource_meter.rs",
+              "filename": "crypto/txscript/src/zk_precompiles/risc0/mod.rs",
               "status": "modified",
-              "additions": 26,
+              "additions": 28,
               "deletions": 3,
-              "changes": 29
+              "changes": 31
             }
           ],
-          "fileFingerprint": "e9ec38100423fbf840607d8768dc4501af7202f258b389032cdc108a4664ebb7"
+          "fileFingerprint": "ded972a92fa70f001fd923d8cc80351ea5e58048be731ac64f4bc9f839ca3a83"
         },
         "diffSummaryOk": true,
         "diffSummaryError": null,
@@ -178,17 +178,17 @@
         "label": "KIP-16",
         "interpretation": "KIP proposal status must be separated from merged protocol behavior.",
         "ok": true,
-        "state": "open",
-        "merged": false,
+        "state": "closed",
+        "merged": true,
         "draft": false,
         "title": "Add kip16",
         "url": "https://github.com/kaspanet/kips/pull/31",
         "baseRefName": "master",
         "headRefName": "kip16",
-        "headSha": "c5ec7ff1060de4192b4092cdee3523088d76d8af",
-        "updatedAt": "2026-05-17T17:16:38Z",
+        "headSha": "09d3615ef0c519b31f9eaf606f461267f1e98c75",
+        "updatedAt": "2026-05-28T18:51:50Z",
         "createdAt": "2025-12-07T07:05:13Z",
-        "mergedAt": null,
+        "mergedAt": "2026-05-28T18:51:50Z",
         "diffSummary": {
           "fileCount": 2,
           "additions": 221,
@@ -229,7 +229,7 @@
           "kip": "16",
           "layer": "Script Engine, ZK",
           "title": "New Transaction Opcodes for Verifiable Computation",
-          "documentStatus": "Proposed",
+          "documentStatus": "Proposed, Implemented and activated in TN10",
           "created": null
         }
       },
@@ -239,23 +239,24 @@
         "label": "KIP-17",
         "interpretation": "KIP proposal status must be separated from merged protocol behavior.",
         "ok": true,
-        "state": "open",
-        "merged": false,
+        "state": "closed",
+        "merged": true,
         "draft": false,
         "title": "KIP 17",
         "url": "https://github.com/kaspanet/kips/pull/32",
         "baseRefName": "master",
         "headRefName": "kip17",
-        "headSha": "6fc7a1b20bfe22a316dec76ebd20fe7d9e18722c",
-        "updatedAt": "2026-05-13T16:00:54Z",
+        "headSha": "b9b11429fdfccc0f6c1340a8184f13e71b3a1c75",
+        "updatedAt": "2026-06-02T16:59:02Z",
         "createdAt": "2025-12-16T07:01:49Z",
-        "mergedAt": null,
+        "mergedAt": "2026-06-02T16:59:02Z",
         "diffSummary": {
-          "fileCount": 1,
-          "additions": 142,
+          "fileCount": 2,
+          "additions": 186,
           "deletions": 0,
           "contentSignals": [
             "KIP document",
+            "ZK precompile",
             "consensus activation/config",
             "docs",
             "txscript opcode/runtime"
@@ -264,12 +265,19 @@
             {
               "filename": "kip-0017.md",
               "status": "added",
-              "additions": 142,
+              "additions": 185,
               "deletions": 0,
-              "changes": 142
+              "changes": 185
+            },
+            {
+              "filename": "README.md",
+              "status": "modified",
+              "additions": 1,
+              "deletions": 0,
+              "changes": 1
             }
           ],
-          "fileFingerprint": "a4e7d6bf813934fe0072e442ce38ddeda2bc3479cc627e5bcedbd8d9e059a1f9"
+          "fileFingerprint": "44b35752dc920f59a7d12564a6d98191455ffc18cedace1b7a9b38c80d0a6998"
         },
         "diffSummaryOk": true,
         "diffSummaryError": null,
@@ -279,7 +287,7 @@
           "kip": "17",
           "layer": "Consensus, Script Engine",
           "title": "Covenants and Improved Scripting Capabilities",
-          "documentStatus": "Draft",
+          "documentStatus": "Implemented and activated in TN10",
           "created": null
         }
       },
@@ -289,21 +297,21 @@
         "label": "KIP-20",
         "interpretation": "KIP proposal status must be separated from merged protocol behavior.",
         "ok": true,
-        "state": "open",
-        "merged": false,
+        "state": "closed",
+        "merged": true,
         "draft": false,
         "title": "KIP-20: Covenant IDs (Consensus-Traced Covenant Lineage)",
         "url": "https://github.com/kaspanet/kips/pull/35",
         "baseRefName": "master",
         "headRefName": "kip20",
-        "headSha": "0581f55487ed7c471fbd3615684ebba7bae47e63",
-        "updatedAt": "2026-02-11T13:56:06Z",
+        "headSha": "e747e0286adac97142467f300f62b3207e59468f",
+        "updatedAt": "2026-05-28T19:01:14Z",
         "createdAt": "2026-02-11T13:56:06Z",
-        "mergedAt": null,
+        "mergedAt": "2026-05-28T19:01:14Z",
         "diffSummary": {
-          "fileCount": 1,
-          "additions": 343,
-          "deletions": 0,
+          "fileCount": 2,
+          "additions": 363,
+          "deletions": 1,
           "contentSignals": [
             "KIP document",
             "consensus activation/config",
@@ -314,12 +322,19 @@
             {
               "filename": "kip-0020.md",
               "status": "added",
-              "additions": 343,
+              "additions": 361,
               "deletions": 0,
-              "changes": 343
+              "changes": 361
+            },
+            {
+              "filename": "README.md",
+              "status": "modified",
+              "additions": 2,
+              "deletions": 1,
+              "changes": 3
             }
           ],
-          "fileFingerprint": "8a5fe48130b0308401d30f2cbf976cc4a42f0c9e5a9504534f04412a595cc45d"
+          "fileFingerprint": "baa6ce7117b0997efa29b1aa240944bbc0b78926409a4bed21ae808cb530ae16"
         },
         "diffSummaryOk": true,
         "diffSummaryError": null,
@@ -329,7 +344,7 @@
           "kip": "20",
           "layer": "Consensus, Script Engine",
           "title": "Covenant IDs",
-          "documentStatus": "Proposed, Implemented, Activated in TN12",
+          "documentStatus": "Proposed, Implemented and activated in TN10",
           "created": null
         }
       },
@@ -339,21 +354,21 @@
         "label": "KIP-21",
         "interpretation": "KIP proposal status must be separated from merged protocol behavior.",
         "ok": true,
-        "state": "open",
-        "merged": false,
+        "state": "closed",
+        "merged": true,
         "draft": false,
         "title": "KIP-21: Partitioned sequencing commitment with O(activity) proving",
         "url": "https://github.com/kaspanet/kips/pull/36",
         "baseRefName": "master",
         "headRefName": "kip21",
-        "headSha": "bd4cfe43a6035ef1c3335ff16ea1f0bd11f98cf7",
-        "updatedAt": "2026-03-12T20:56:21Z",
+        "headSha": "5214505744ed621bc4692ab426b41fa27406bcd0",
+        "updatedAt": "2026-05-28T20:25:33Z",
         "createdAt": "2026-02-24T23:20:01Z",
-        "mergedAt": null,
+        "mergedAt": "2026-05-28T20:25:32Z",
         "diffSummary": {
-          "fileCount": 1,
-          "additions": 699,
-          "deletions": 0,
+          "fileCount": 5,
+          "additions": 867,
+          "deletions": 1,
           "contentSignals": [
             "KIP document",
             "consensus activation/config",
@@ -364,12 +379,40 @@
             {
               "filename": "kip-0021.md",
               "status": "added",
-              "additions": 699,
+              "additions": 742,
               "deletions": 0,
-              "changes": 699
+              "changes": 742
+            },
+            {
+              "filename": "kip-0021/seqcommit-accessor.md",
+              "status": "added",
+              "additions": 95,
+              "deletions": 0,
+              "changes": 95
+            },
+            {
+              "filename": "kip-0021/proving-spec.md",
+              "status": "added",
+              "additions": 15,
+              "deletions": 0,
+              "changes": 15
+            },
+            {
+              "filename": "kip-0021/impl-spec.md",
+              "status": "added",
+              "additions": 13,
+              "deletions": 0,
+              "changes": 13
+            },
+            {
+              "filename": "README.md",
+              "status": "modified",
+              "additions": 2,
+              "deletions": 1,
+              "changes": 3
             }
           ],
-          "fileFingerprint": "146dd1495738b4a2a6511e4a18c6455af356a96070e450caa6ea9b00ef703eb8"
+          "fileFingerprint": "b33f0a9b8451cbb48674d9d59e0ffb7585ace261b7658c7d472a081d6ed7d984"
         },
         "diffSummaryOk": true,
         "diffSummaryError": null,
@@ -379,7 +422,7 @@
           "kip": "21",
           "layer": "Consensus (hard fork), Chain-Block UTXO Validation",
           "title": "Partitioned Sequencing Commitment with O(activity) Proving",
-          "documentStatus": "Draft",
+          "documentStatus": "Implemented and activated in TN10",
           "created": "2026-02-17"
         }
       },
@@ -484,7 +527,7 @@
         "kind": "heads",
         "name": "master",
         "ok": true,
-        "sha": "a07d8b38d45f38a02a1f35f601e874358f6c7846",
+        "sha": "d5205cc72ab7b811e88a23595dfac5b9facdeece",
         "objectType": "commit",
         "url": "https://github.com/kaspanet/rusty-kaspa/tree/master"
       },
@@ -493,7 +536,7 @@
         "kind": "heads",
         "name": "toccata",
         "ok": true,
-        "sha": "f1d1a1ae6a4131a3d6124fef443192323c1c382f",
+        "sha": "0ae28f939e61994a11eb8eb6dd775255e2924afb",
         "objectType": "commit",
         "url": "https://github.com/kaspanet/rusty-kaspa/tree/toccata"
       },
@@ -502,7 +545,7 @@
         "kind": "heads",
         "name": "tn10",
         "ok": true,
-        "sha": "f1d1a1ae6a4131a3d6124fef443192323c1c382f",
+        "sha": "6899ea75384c1f422fe4ab0e47c439442da3f4fa",
         "objectType": "commit",
         "url": "https://github.com/kaspanet/rusty-kaspa/tree/tn10"
       },
@@ -511,7 +554,7 @@
         "kind": "heads",
         "name": "tn12",
         "ok": true,
-        "sha": "7b1e18cc6e7098d83927049781c91740b90e7754",
+        "sha": "ab4c51afde90dc6e0bce3f782d0a18af5da29434",
         "objectType": "commit",
         "url": "https://github.com/kaspanet/rusty-kaspa/tree/tn12"
       },
@@ -527,6 +570,24 @@
       {
         "repo": "kaspanet/rusty-kaspa",
         "kind": "tags",
+        "name": "tn10-toc3",
+        "ok": true,
+        "sha": "1015a62359e0d06e0b3b3b7f7d06bc1bd4bf0c1b",
+        "objectType": "commit",
+        "url": "https://github.com/kaspanet/rusty-kaspa/tree/tn10-toc3"
+      },
+      {
+        "repo": "kaspanet/rusty-kaspa",
+        "kind": "tags",
+        "name": "v1.3.0-toc.5",
+        "ok": true,
+        "sha": "04b0d135f8c8023676ea74dcf496c99d5d0bc2a5",
+        "objectType": "commit",
+        "url": "https://github.com/kaspanet/rusty-kaspa/tree/v1.3.0-toc.5"
+      },
+      {
+        "repo": "kaspanet/rusty-kaspa",
+        "kind": "tags",
         "name": "v1.1.0",
         "ok": true,
         "sha": "e97070faa3826c590f477e327c82daaddd6178f4",
@@ -538,7 +599,7 @@
         "kind": "heads",
         "name": "master",
         "ok": true,
-        "sha": "2a77c954b2241bce7954ba5fecad0ac7694ce195",
+        "sha": "1aba3b8321c1d27e00b7d87bd7c74ef879efabdc",
         "objectType": "commit",
         "url": "https://github.com/kaspanet/kips/tree/master"
       },
@@ -569,6 +630,99 @@
         "objectType": "commit",
         "url": "https://github.com/kaspanet/vprogs/tree/master"
       }
+    ],
+    "releases": [
+      {
+        "repo": "kaspanet/rusty-kaspa",
+        "tag": "v1.3.0-toc.5",
+        "label": "Toccata mainnet pre-activation pre-release",
+        "interpretation": "Mainnet sanity-testing release; not mainnet activation.",
+        "ok": true,
+        "name": "v1.3.0-toc.5",
+        "tagName": "v1.3.0-toc.5",
+        "prerelease": true,
+        "draft": false,
+        "publishedAt": "2026-06-03T13:34:34Z",
+        "targetCommitish": "master",
+        "url": "https://github.com/kaspanet/rusty-kaspa/releases/tag/v1.3.0-toc.5",
+        "bodySha256": "f4b6badfd530bb4dcdcdc79d03078b2c61865548afadb056f5b582773c4d1393",
+        "bodyHighlights": [
+          "## Toccata Mainnet pre-activation pre-release",
+          "This pre-release is intended for community-wide mainnet sanity testing before the final Toccata rollout.",
+          "The main goal is to verify that pre-activation mainnet behavior remains fully compatible with the current master release across a wider range of real-world node histories, upgrade paths, pruning states, and operator setups.",
+          "This pre-release does **not** activate Toccata on mainnet. Operators who test it should expect one more upgrade when the final Toccata release is published.",
+          "- Node operators are encouraged to test this pre-release on mainnet, especially on nodes with different upgrade histories and pruning states.",
+          "- Operators, pools, and miners are encouraged to test with a limited subset of infrastructure rather than fully migrating operations.",
+          "- Miners may use this pre-release to sanity-test mining flows, but this does not replace testing on an activated testnet. Before activation, mainnet block templates only contain current transaction versions, so some Toccata-specific paths are only meaningfully exercised after activation.",
+          "- RPC transaction submission now applies the upcoming higher minimum standard fee rule: `100 sompi * max(compute grams, 2 * transaction bytes)`."
+        ]
+      },
+      {
+        "repo": "kaspanet/rusty-kaspa",
+        "tag": "tn10-toc3",
+        "label": "TN10 Toccata ZK hardening",
+        "interpretation": "Testnet-10 hardening activation evidence only.",
+        "ok": true,
+        "name": "tn10-toc3",
+        "tagName": "tn10-toc3",
+        "prerelease": true,
+        "draft": false,
+        "publishedAt": "2026-05-27T19:04:15Z",
+        "targetCommitish": "tn10",
+        "url": "https://github.com/kaspanet/rusty-kaspa/releases/tag/tn10-toc3",
+        "bodySha256": "d589b870ea275bcb589235cbbda589d59f21c4c7a9d870728a3d47bafdeede77",
+        "bodyHighlights": [
+          "This pre-release schedules the Toccata ZK hardening hard fork on testnet-10.",
+          "The release activates the final Toccata hardening layer on TN10, including Groth16 verifier hardening, updated ZK pricing behavior, and the SMT/seqcommit inactivity shortcut used by inactivity proofs. This activation is part of the final TN10 validation cycle before the accumulated Toccata logic is cleaned up and prepared for mainnet.",
+          "Activation is scheduled for:",
+          "DAA Score: 476,232,000",
+          "TN10 nodes should upgrade before the activation point."
+        ]
+      },
+      {
+        "repo": "kaspanet/rusty-kaspa",
+        "tag": "tn10-toc2",
+        "label": "TN10 Toccata hardfork rehearsal",
+        "interpretation": "Earlier Testnet-10 activation schedule evidence.",
+        "ok": true,
+        "name": "tn10-toc2",
+        "tagName": "tn10-toc2",
+        "prerelease": true,
+        "draft": false,
+        "publishedAt": "2026-05-16T19:09:09Z",
+        "targetCommitish": "master",
+        "url": "https://github.com/kaspanet/rusty-kaspa/releases/tag/tn10-toc2",
+        "bodySha256": "a4d7a18ed514d624b2d31655f1172cb415fc87b81f52b2255c3f89dcefeed8fe",
+        "bodyHighlights": [
+          "This release scheduled the Toccata hardofork in testnet-10 to:",
+          "DAA Score: 467,579,632"
+        ]
+      },
+      {
+        "repo": "kaspanet/rusty-kaspa",
+        "tag": "v1.1.0",
+        "label": "Latest stable non-Toccata line tracked by monitor",
+        "interpretation": "Stable integration baseline; do not confuse with Toccata pre-release.",
+        "ok": true,
+        "name": "Release v1.1.0",
+        "tagName": "v1.1.0",
+        "prerelease": false,
+        "draft": false,
+        "publishedAt": "2026-03-04T15:04:45Z",
+        "targetCommitish": "master",
+        "url": "https://github.com/kaspanet/rusty-kaspa/releases/tag/v1.1.0",
+        "bodySha256": "36088e96cfcdf3d67b4123ebd79984af74f8c80b4a2b7aefed69b11a2c65cc3b",
+        "bodyHighlights": [
+          "## Highlights",
+          "- **VSPC API v2 (`GetVirtualChainFromBlockV2`) (major integrator improvement)**",
+          "- **IBD catchup improvements (faster, safer recovery and sync progression)**",
+          "- **Performance + storage optimizations (significant practical gains)**",
+          "- **Pruning proof algorithm refactor + stability upgrades**",
+          "## VSPC API v2 Specification (`GetVirtualChainFromBlockV2`)",
+          "- Non-breaking addition: existing `GetVirtualChainFromBlock` is unchanged.",
+          "- Verbosity is incremental (`Full` includes `High`, `Low`, and `None`)."
+        ]
+      }
     ]
   },
   "kaspaNetwork": [
@@ -578,12 +732,13 @@
       "ok": true,
       "status": 200,
       "networkName": "kaspa-testnet-10",
-      "virtualDaaScore": "473547254",
-      "blockCount": "1530010",
-      "headerCount": "1530010",
+      "virtualDaaScore": "481841011",
+      "blockCount": "1110011",
+      "headerCount": "1110011",
       "tipHashes": [
-        "7bc7a181f5071cb50930c2f6952015df63706140ff877e4d54034b48b5db669b",
-        "f0388a984fb93841b4f993e002042f9dac010c3eeb5bde2c34f572331e10ff90"
+        "595eb092e0676c13b7913dfc89d6556862dd7e1cd021d8e1745a42e722e9cf0b",
+        "94d36fd682be4d05cec9710883f61ce0c903879c4b49ba0d48df0d80be2a2a35",
+        "942f3874868b00e4cb4f30a6d7e9db49c27627ba727b33274c7d207ff6e2f694"
       ]
     },
     {
@@ -592,12 +747,12 @@
       "ok": true,
       "status": 200,
       "networkName": "kaspa-testnet-12",
-      "virtualDaaScore": "21055042",
-      "blockCount": "1415033",
-      "headerCount": "1415033",
+      "virtualDaaScore": "29336303",
+      "blockCount": "1452275",
+      "headerCount": "1452275",
       "tipHashes": [
-        "48eef698aeb4ff315efcefdf3f3369ba45bcd3e024d87e0919c96b567fe9c5ba",
-        "c6afad0ee9a0a794550cb292a314e8589eac7283d2ed172d442274c93be6c8ea"
+        "5af440cbede140620ee8c000ba1c362215eb67d810edcf7b06091551aa711053",
+        "015d03c03287262269ceceaee2a3197ddfd4d2132a43276e720df5f8c38c9ca4"
       ]
     }
   ],
@@ -608,7 +763,7 @@
       "ok": true,
       "status": 200,
       "etag": "W/\"ca70735e3d333d9651b8460ee51942a6\"",
-      "lastModified": "Sat, 23 May 2026 16:56:20 GMT",
+      "lastModified": "Fri, 29 May 2026 05:54:37 GMT",
       "contentLength": 55397,
       "contentSha256": "91c3aed0ca1f4e4e71ec2b5d0389544f26cc9ae63e9d4312b6aadad4723d1193",
       "fingerprintBasis": "etag:W/\"ca70735e3d333d9651b8460ee51942a6\"",
@@ -620,7 +775,7 @@
       "ok": true,
       "status": 200,
       "etag": "W/\"55416d21d8471f24dc8f4263ffbc2355\"",
-      "lastModified": "Sat, 23 May 2026 15:05:29 GMT",
+      "lastModified": "Fri, 29 May 2026 12:18:57 GMT",
       "contentLength": 54726,
       "contentSha256": "a0ff4aabae8ff91bce7d378c0b8f89542dff1511141c7f4ab2463205b7deb591",
       "fingerprintBasis": "etag:W/\"55416d21d8471f24dc8f4263ffbc2355\"",
@@ -632,7 +787,7 @@
       "ok": true,
       "status": 200,
       "etag": "W/\"c2cc7ed8524ad41e3be8c61bc8ba4c6f\"",
-      "lastModified": "Sat, 23 May 2026 20:08:35 GMT",
+      "lastModified": "Fri, 29 May 2026 12:19:19 GMT",
       "contentLength": 53928,
       "contentSha256": "e3d253d2e33c0fa322c4ff2d5ce9f377f73ae9b2ec4adee63666ddbb7ff52a3a",
       "fingerprintBasis": "etag:W/\"c2cc7ed8524ad41e3be8c61bc8ba4c6f\"",
@@ -644,7 +799,7 @@
       "ok": true,
       "status": 200,
       "etag": "W/\"b79cca6b00eb45041542e76a055078e8\"",
-      "lastModified": "Sun, 24 May 2026 06:28:24 GMT",
+      "lastModified": "Fri, 29 May 2026 05:54:38 GMT",
       "contentLength": 52059,
       "contentSha256": "4a1aef3bf9bc0d17b6e45b4e943c9912971624c5475c5a7ab2305c7af77b0013",
       "fingerprintBasis": "etag:W/\"b79cca6b00eb45041542e76a055078e8\"",
@@ -656,7 +811,7 @@
       "ok": true,
       "status": 200,
       "etag": "W/\"82a557b4d8cbd2036bf69309d6132f73\"",
-      "lastModified": "Fri, 24 Apr 2026 23:48:56 GMT",
+      "lastModified": "Sat, 30 May 2026 08:00:29 GMT",
       "contentLength": 45792,
       "contentSha256": "44b4a8fa0027271f7767dcfaecd13f352e7499156b460e05d7e1ba32c39e1682",
       "fingerprintBasis": "etag:W/\"82a557b4d8cbd2036bf69309d6132f73\"",
@@ -670,7 +825,7 @@
       "etag": null,
       "lastModified": "Tue, 19 Aug 2025 21:04:05 GMT",
       "contentLength": 46722,
-      "contentSha256": "164afedd01f7baa740ed97d76950720cc2fcfda9507b0b02c9e9aaa4cabe7feb",
+      "contentSha256": "dc273b73ade523866a268d212e2ad0de868037d8e4711762604aaa875733cb51",
       "fingerprintBasis": "last-modified:Tue, 19 Aug 2025 21:04:05 GMT;bytes:46722",
       "sourceFingerprint": "0d01364b7b4050414ae64384d32e51f11cb58b186bb7e78fc3ee1e90c29eaff6"
     },
@@ -682,7 +837,7 @@
       "etag": null,
       "lastModified": "Fri, 26 Sep 2025 01:10:08 GMT",
       "contentLength": 24937,
-      "contentSha256": "ccea586ef7e66da80d850526ebfa0e4b0d53d387d20fbc5ec0fa08f0b9d85dfe",
+      "contentSha256": "a5d2724a625c53520f4e29ba6adfde74c558be01cbc1c81bc8076dda7b9eef67",
       "fingerprintBasis": "last-modified:Fri, 26 Sep 2025 01:10:08 GMT;bytes:24937",
       "sourceFingerprint": "647b4d92432f01cb389d744c3c0ffa74e2e64b0cb27228bdb488fd708f2d4b57"
     },
@@ -694,7 +849,7 @@
       "etag": null,
       "lastModified": "Sun, 24 Aug 2025 16:16:12 GMT",
       "contentLength": 32618,
-      "contentSha256": "c891ec05201ad2e01463fc5e2ea4f63950c479b7dac55c372c14d7b452a70eea",
+      "contentSha256": "cd89a9d867c5c38d88c1d4b4b045f5c5e0571e36a3ea8a4d1d590659e31b1244",
       "fingerprintBasis": "last-modified:Sun, 24 Aug 2025 16:16:12 GMT;bytes:32618",
       "sourceFingerprint": "cc44adf3732df5175a21643170a28cd7192daaec27c4e995d9ac4efecd489b0b"
     },
@@ -706,40 +861,41 @@
       "etag": null,
       "lastModified": "Sun, 23 Feb 2025 15:17:32 GMT",
       "contentLength": 56014,
-      "contentSha256": "1215d45230eab9a3a6b228346841e345b54edc2a7782efccc1c6feb40e98155c",
+      "contentSha256": "288c0f328c6329eb717804494ad84fa56834b41c1c1e1f208874b28878f9d4cf",
       "fingerprintBasis": "last-modified:Sun, 23 Feb 2025 15:17:32 GMT;bytes:56014",
       "sourceFingerprint": "57a1692460057531288a423923221b10db000ae774f0c41a69256278d4a0dd98"
     }
   ],
   "fetchWarnings": [],
   "verdict": {
-    "mainnetActivation": "not_verified_by_monitor",
-    "implementationStatus": "PR #1000 is open against master.",
-    "branchStatus": "rusty-kaspa master a07d8b38d45f, toccata f1d1a1ae6a41.",
+    "mainnetActivation": "not_verified_by_monitor; latest tracked Toccata mainnet release is pre-activation",
+    "implementationStatus": "PR #1000 is closed and merged against master.",
+    "branchStatus": "rusty-kaspa master d5205cc72ab7, toccata 0ae28f939e61.",
     "caution": [
       "Do not equate open PRs with merged production behavior.",
       "Do not equate TN10/TN12 observations with mainnet activation.",
       "Use branch hashes, PR base refs, KIP merge state, and docs hashes together before making claims."
     ]
   },
-  "factsHash": "ec8440c8f32601e8b6b3a64114d0f447c81a0c5ec9f07e45330b909da44473f3",
-  "previousFactsHash": "ec8440c8f32601e8b6b3a64114d0f447c81a0c5ec9f07e45330b909da44473f3",
-  "changedSincePrevious": false,
+  "factsHash": "1f3f260011d79cc6d36622835160dfdcf2080f2228304b4b496ffd468ed45fc0",
+  "previousFactsHash": "502d425b101943e3d47a4dab0564503989357cc14c8d003757dc2e2521d7f534",
+  "changedSincePrevious": true,
   "changeSummary": {
-    "previousCheckedAt": "2026-05-25T13:23:53.253Z",
-    "currentCheckedAt": "2026-05-25T13:25:09.843Z",
-    "previousFactsHash": "ec8440c8f32601e8b6b3a64114d0f447c81a0c5ec9f07e45330b909da44473f3",
-    "currentFactsHash": "ec8440c8f32601e8b6b3a64114d0f447c81a0c5ec9f07e45330b909da44473f3",
-    "changedSincePrevious": false,
+    "previousCheckedAt": "2026-06-04T03:31:13.507Z",
+    "currentCheckedAt": "2026-06-04T03:33:39.389Z",
+    "previousFactsHash": "502d425b101943e3d47a4dab0564503989357cc14c8d003757dc2e2521d7f534",
+    "currentFactsHash": "1f3f260011d79cc6d36622835160dfdcf2080f2228304b4b496ffd468ed45fc0",
+    "changedSincePrevious": true,
     "sections": {
       "facts": [
-        "No stable monitored fact changes detected."
+        "factsHash 502d425b101943e3d47a4dab0564503989357cc14c8d003757dc2e2521d7f534 -> 1f3f260011d79cc6d36622835160dfdcf2080f2228304b4b496ffd468ed45fc0"
       ],
       "githubPulls": [],
+      "releases": [],
       "refs": [],
       "network": [
-        "TN10 blockdag: virtualDaaScore 473546380 -> 473547254; blockCount 1529136 -> 1530010; headerCount 1529136 -> 1530010.",
-        "TN12 blockdag: virtualDaaScore 21054275 -> 21055042; blockCount 1414266 -> 1415033; headerCount 1414266 -> 1415033."
+        "TN10 blockdag: virtualDaaScore 481839338 -> 481841011; blockCount 1108338 -> 1110011; headerCount 1108338 -> 1110011.",
+        "TN12 blockdag: virtualDaaScore 29334710 -> 29336303; blockCount 1450682 -> 1452275; headerCount 1450682 -> 1452275."
       ],
       "webSources": []
     }

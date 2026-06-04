@@ -4,14 +4,24 @@ Use this inventory with `source-trust-policy.md`. Record absolute dates for time
 
 ## Verified Source Snapshot
 
-Snapshot date: 2026-04-26
+Snapshot date: 2026-06-04T03:33:39Z
 
-- Rusty Kaspa `master`: `3a8e9f00f748b2e0ac94c43efd7a0699800f1866`
-- Rusty Kaspa `stable`: `e97070faa3826c590f477e327c82daaddd6178f4`
+- Toccata monitor facts hash: `1f3f260011d79cc6d36622835160dfdcf2080f2228304b4b496ffd468ed45fc0`
+- Rusty Kaspa `master`: `d5205cc72ab7b811e88a23595dfac5b9facdeece`
+- Rusty Kaspa `toccata`: `0ae28f939e61994a11eb8eb6dd775255e2924afb`
+- Rusty Kaspa `tn10`: `6899ea75384c1f422fe4ab0e47c439442da3f4fa`
+- Rusty Kaspa `tn12`: `ab4c51afde90dc6e0bce3f782d0a18af5da29434`
+- Rusty Kaspa stable tag `v1.1.0`: `e97070faa3826c590f477e327c82daaddd6178f4`
+- Rusty Kaspa pre-activation tag `v1.3.0-toc.5`: `04b0d135f8c8023676ea74dcf496c99d5d0bc2a5`
+- Rusty Kaspa TN10 hardening tag `tn10-toc3`: `1015a62359e0d06e0b3b3b7f7d06bc1bd4bf0c1b`
+- Rusty Kaspa TN10 rehearsal tag `tn10-toc2`: `97415b689462bec8a1a36f1665302529ea8a3108`
 - Kaspa docs `main`: `6aa5e9f52995f53dc85ef3e8c7c71bab9a359b3e`
-- Kaspa KIPs `master`: `2a77c954b2241bce7954ba5fecad0ac7694ce195`
+- Kaspa KIPs `master`: `1aba3b8321c1d27e00b7d87bd7c74ef879efabdc`
+- SilverScript `master`: `2c4623124d75bd8a9a7f87ded9413ef9f6b17acd`
+- vProgs `master`: `57039db09ea958689aee2ae89f81ba40c8cc3e6d`
 - Kdapp `master`: `eade8531e5230409a53fdb17535ad52a6480880d`
 - Simply Kaspa Indexer `main`: `d97b9f486aa53a8c5ff5a7310cd8c46ffa7df23e`
+- Deprecated Go node `kaspad` `master`: `2adfc3240817707f8649d61c9230bcc24b740f4d`
 
 These hashes are a freshness baseline, not a permanent truth. Re-run `git ls-remote` or inspect local clones before making "latest" claims.
 
@@ -52,6 +62,9 @@ These hashes are a freshness baseline, not a permanent truth. Re-run `git ls-rem
 ## Toccata Programmability Sources
 
 - Rusty Kaspa releases: `https://github.com/kaspanet/rusty-kaspa/releases`
+- Rusty Kaspa Toccata mainnet pre-activation pre-release `v1.3.0-toc.5`: `https://github.com/kaspanet/rusty-kaspa/releases/tag/v1.3.0-toc.5`
+- Rusty Kaspa TN10 Toccata ZK hardening pre-release `tn10-toc3`: `https://github.com/kaspanet/rusty-kaspa/releases/tag/tn10-toc3`
+- Rusty Kaspa TN10 Toccata rehearsal pre-release `tn10-toc2`: `https://github.com/kaspanet/rusty-kaspa/releases/tag/tn10-toc2`
 - Rusty Kaspa Toccata branch: `https://github.com/kaspanet/rusty-kaspa/tree/toccata`
 - Rusty Kaspa Toccata PR: `https://github.com/kaspanet/rusty-kaspa/pull/1000`
 - Rusty Kaspa ZK opcode updates PR: `https://github.com/kaspanet/rusty-kaspa/pull/1013`
@@ -67,9 +80,13 @@ These hashes are a freshness baseline, not a permanent truth. Re-run `git ls-rem
 - Inline ZK guide: `https://docs.kaspa.org/programmability/inline-zk`
 - Full vProgs guide: `https://docs.kaspa.org/programmability/full-vprogs`
 - KIP-16 PR: `https://github.com/kaspanet/kips/pull/31`
+- KIP-16 merged file: `https://github.com/kaspanet/kips/blob/master/kip-0016.md`
 - KIP-17 PR: `https://github.com/kaspanet/kips/pull/32`
+- KIP-17 merged file: `https://github.com/kaspanet/kips/blob/master/kip-0017.md`
 - KIP-20 PR: `https://github.com/kaspanet/kips/pull/35`
+- KIP-20 merged file: `https://github.com/kaspanet/kips/blob/master/kip-0020.md`
 - KIP-21 PR: `https://github.com/kaspanet/kips/pull/36`
+- KIP-21 merged file: `https://github.com/kaspanet/kips/blob/master/kip-0021.md`
 - KIP-22 PR for adjacent quantum-resistance tracking: `https://github.com/kaspanet/kips/pull/37`
 - KIP-23 PR for adjacent DNS peer-address tracking: `https://github.com/kaspanet/kips/pull/40`
 - SilverScript: `https://github.com/kaspanet/silverscript`

@@ -15,17 +15,41 @@ function findPull(snapshot, repo, number) {
   return snapshot.github?.pulls?.find((pull) => pull.repo === repo && pull.number === number) || null;
 }
 
-function findToccataMainnetReleaseTag(snapshot) {
+function findTrackedMainnetToccataRelease(snapshot) {
+  const release = snapshot.github?.releases?.find(
+    (entry) =>
+      entry.repo === "kaspanet/rusty-kaspa" &&
+      entry.ok &&
+      !/^tn\d+/i.test(entry.tagName || entry.tag || "") &&
+      /toccata|toc\./i.test(`${entry.label || ""} ${entry.name || ""} ${entry.tagName || entry.tag || ""}`),
+  );
+  if (release) {
+    return release;
+  }
+
   return (
     snapshot.github?.refs?.find(
       (ref) =>
         ref.repo === "kaspanet/rusty-kaspa" &&
         ref.kind === "tags" &&
         ref.ok &&
-        /toccata/i.test(ref.name) &&
+        /toccata|toc\./i.test(ref.name) &&
         !/tn\d+/i.test(ref.name),
     ) || null
   );
+}
+
+function isActivationRelease(release) {
+  if (!release?.ok || release.prerelease || release.draft) {
+    return false;
+  }
+  const haystack = `${release.name || ""}\n${release.bodyHighlights?.join("\n") || ""}`.toLowerCase();
+  return !haystack.includes("pre-activation") && !haystack.includes("does not activate");
+}
+
+function hasVerifiedMainnetActivation(verdict) {
+  const value = verdict?.mainnetActivation || "";
+  return Boolean(value) && !value.startsWith("not_verified_by_monitor");
 }
 
 function gate(id, title, complete, evidence, requiredEvidence) {
@@ -40,7 +64,7 @@ function gate(id, title, complete, evidence, requiredEvidence) {
 
 function evaluate(snapshot) {
   const toccataPr = findPull(snapshot, "kaspanet/rusty-kaspa", 1000);
-  const releaseTag = findToccataMainnetReleaseTag(snapshot);
+  const releaseTag = findTrackedMainnetToccataRelease(snapshot);
   const testnetNetworks = (snapshot.kaspaNetwork || []).map((source) => source.networkName).filter(Boolean);
   const docsOk = (snapshot.webSources || []).some(
     (source) => source.ok && source.label === "Kaspa programmability overview",
@@ -50,14 +74,20 @@ function evaluate(snapshot) {
     gate(
       "release_tag",
       "Mainnet release tag",
-      Boolean(releaseTag),
-      releaseTag ? `${releaseTag.name} ${releaseTag.sha}` : "No non-testnet Toccata release tag is tracked.",
-      "A Rusty Kaspa release tag or signed release explicitly naming mainnet Toccata behavior.",
+      isActivationRelease(releaseTag),
+      releaseTag?.tagName
+        ? `${releaseTag.tagName} published ${releaseTag.publishedAt || "unknown date"}; ${
+            releaseTag.prerelease ? "pre-release/pre-activation evidence only" : "release evidence"
+          }.`
+        : releaseTag
+          ? `${releaseTag.name} ${releaseTag.sha}; release notes unavailable in snapshot.`
+          : "No non-testnet Toccata release or tag is tracked.",
+      "A final Rusty Kaspa release tag or signed release explicitly naming mainnet Toccata activation behavior.",
     ),
     gate(
       "activation_schedule",
       "Activation schedule",
-      snapshot.verdict?.mainnetActivation && snapshot.verdict.mainnetActivation !== "not_verified_by_monitor",
+      hasVerifiedMainnetActivation(snapshot.verdict),
       snapshot.verdict?.mainnetActivation || "not_verified_by_monitor",
       "An explicit mainnet activation height, DAA score, timestamp, or release note from primary sources.",
     ),

@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { createHash } from "node:crypto";
+import { execFileSync } from "node:child_process";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
@@ -9,8 +10,24 @@ const OUTPUT_DIR = path.join(ROOT_DIR, "research-snapshots", "toccata");
 const LATEST_JSON = path.join(OUTPUT_DIR, "latest.json");
 const LATEST_MD = path.join(OUTPUT_DIR, "latest.md");
 const CHECKED_AT = new Date().toISOString();
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN || process.env.GH_TOKEN || "";
 const WRITE_IF_CHANGED = process.argv.includes("--write-if-changed");
+
+function resolveGithubToken() {
+  if (process.env.GITHUB_TOKEN || process.env.GH_TOKEN) {
+    return process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
+  }
+
+  try {
+    return execFileSync("gh", ["auth", "token"], {
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "ignore"],
+    }).trim();
+  } catch {
+    return "";
+  }
+}
+
+const GITHUB_TOKEN = resolveGithubToken();
 
 const githubPulls = [
   {
@@ -69,11 +86,40 @@ const githubRefs = [
   { repo: "kaspanet/rusty-kaspa", kind: "heads", name: "tn10" },
   { repo: "kaspanet/rusty-kaspa", kind: "heads", name: "tn12" },
   { repo: "kaspanet/rusty-kaspa", kind: "tags", name: "tn10-toc2" },
+  { repo: "kaspanet/rusty-kaspa", kind: "tags", name: "tn10-toc3" },
+  { repo: "kaspanet/rusty-kaspa", kind: "tags", name: "v1.3.0-toc.5" },
   { repo: "kaspanet/rusty-kaspa", kind: "tags", name: "v1.1.0" },
   { repo: "kaspanet/kips", kind: "heads", name: "master" },
   { repo: "kaspanet/docs", kind: "heads", name: "main" },
   { repo: "kaspanet/silverscript", kind: "heads", name: "master" },
   { repo: "kaspanet/vprogs", kind: "heads", name: "master" },
+];
+
+const githubReleases = [
+  {
+    repo: "kaspanet/rusty-kaspa",
+    tag: "v1.3.0-toc.5",
+    label: "Toccata mainnet pre-activation pre-release",
+    interpretation: "Mainnet sanity-testing release; not mainnet activation.",
+  },
+  {
+    repo: "kaspanet/rusty-kaspa",
+    tag: "tn10-toc3",
+    label: "TN10 Toccata ZK hardening",
+    interpretation: "Testnet-10 hardening activation evidence only.",
+  },
+  {
+    repo: "kaspanet/rusty-kaspa",
+    tag: "tn10-toc2",
+    label: "TN10 Toccata hardfork rehearsal",
+    interpretation: "Earlier Testnet-10 activation schedule evidence.",
+  },
+  {
+    repo: "kaspanet/rusty-kaspa",
+    tag: "v1.1.0",
+    label: "Latest stable non-Toccata line tracked by monitor",
+    interpretation: "Stable integration baseline; do not confuse with Toccata pre-release.",
+  },
 ];
 
 const webSources = [
@@ -526,6 +572,51 @@ async function readGithubRef(entry) {
   };
 }
 
+function releaseHighlights(body) {
+  if (!body) {
+    return [];
+  }
+  const lines = body
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+  const priorityLines = lines.filter(
+    (line) =>
+      line.startsWith("- ") ||
+      line.startsWith("## ") ||
+      /activation|activate|hard fork|daa score|toccata|upgrade/i.test(line),
+  );
+  return (priorityLines.length ? priorityLines : lines).slice(0, 8);
+}
+
+async function readGithubRelease(entry) {
+  const { owner, name } = splitRepo(entry.repo);
+  const tag = encodeURIComponent(entry.tag);
+  const result = await fetchJson(`https://api.github.com/repos/${owner}/${name}/releases/tags/${tag}`, {
+    headers: apiHeaders,
+  });
+
+  if (!result.ok) {
+    return { ...entry, ok: false, status: result.status, error: result.error };
+  }
+
+  const release = result.data;
+  const body = release.body || "";
+  return {
+    ...entry,
+    ok: true,
+    name: release.name || null,
+    tagName: release.tag_name || entry.tag,
+    prerelease: Boolean(release.prerelease),
+    draft: Boolean(release.draft),
+    publishedAt: release.published_at || null,
+    targetCommitish: release.target_commitish || null,
+    url: release.html_url || `https://github.com/${entry.repo}/releases/tag/${entry.tag}`,
+    bodySha256: sha256(body),
+    bodyHighlights: releaseHighlights(body),
+  };
+}
+
 async function readNetworkSource(entry) {
   const result = await fetchJson(entry.url, {
     headers: {
@@ -550,13 +641,17 @@ async function readNetworkSource(entry) {
   };
 }
 
-function buildVerdict({ pulls, refs }) {
+function buildVerdict({ pulls, refs, releases }) {
   const toccataPr = pulls.find((pull) => pull.repo === "kaspanet/rusty-kaspa" && pull.number === 1000);
   const mainRef = refs.find((ref) => ref.repo === "kaspanet/rusty-kaspa" && ref.kind === "heads" && ref.name === "master");
   const toccataRef = refs.find((ref) => ref.repo === "kaspanet/rusty-kaspa" && ref.kind === "heads" && ref.name === "toccata");
+  const toccataPreRelease = releases.find((release) => release.repo === "kaspanet/rusty-kaspa" && release.tag === "v1.3.0-toc.5");
 
   return {
-    mainnetActivation: "not_verified_by_monitor",
+    mainnetActivation:
+      toccataPreRelease?.ok && toccataPreRelease.prerelease
+        ? "not_verified_by_monitor; latest tracked Toccata mainnet release is pre-activation"
+        : "not_verified_by_monitor",
     implementationStatus: toccataPr?.ok
       ? `PR #1000 is ${toccataPr.state}${toccataPr.merged ? " and merged" : ""} against ${toccataPr.baseRefName}.`
       : "PR #1000 status unavailable.",
@@ -631,6 +726,27 @@ function applyPreviousGithubFetchFallback({ pulls, refs }, previousSnapshot) {
   return warnings;
 }
 
+function applyPreviousReleaseFetchFallback({ releases }, previousSnapshot) {
+  const warnings = [];
+  if (!previousSnapshot?.github?.releases) {
+    return warnings;
+  }
+
+  const previousReleases = keyedMap(previousSnapshot.github.releases, (release) => `${release.repo}:${release.tag}`);
+  for (let index = 0; index < releases.length; index += 1) {
+    const release = releases[index];
+    if (release.ok) {
+      continue;
+    }
+    const previousRelease = previousReleases.get(`${release.repo}:${release.tag}`);
+    if (previousRelease?.ok) {
+      warnings.push(`${release.label}: reused previous release state after fetch failure (${release.error || release.status || "unknown"}).`);
+      releases[index] = previousRelease;
+    }
+  }
+  return warnings;
+}
+
 function markdownTable(headers, rows) {
   const headerLine = `| ${headers.join(" | ")} |`;
   const divider = `| ${headers.map(() => "---").join(" | ")} |`;
@@ -666,6 +782,7 @@ function buildChangeSummary(previous, current) {
       sections: {
         facts: ["No previous snapshot was available for comparison."],
         githubPulls: [],
+        releases: [],
         refs: [],
         network: [],
         webSources: [],
@@ -676,6 +793,7 @@ function buildChangeSummary(previous, current) {
   const sections = {
     facts: [],
     githubPulls: [],
+    releases: [],
     refs: [],
     network: [],
     webSources: [],
@@ -704,6 +822,26 @@ function buildChangeSummary(previous, current) {
 
     if (changes.length) {
       sections.githubPulls.push(`${pull.label}: ${changes.join("; ")}.`);
+    }
+  }
+
+  const previousReleases = keyedMap(previous.github?.releases, (release) => `${release.repo}:${release.tag}`);
+  for (const release of current.github.releases || []) {
+    const previousRelease = previousReleases.get(`${release.repo}:${release.tag}`);
+    if (!previousRelease) {
+      sections.releases.push(`${release.label}: new tracked release ${release.repo}@${release.tag}.`);
+      continue;
+    }
+
+    const changes = [];
+    maybeAddChange(changes, "status", statusLabel(previousRelease), statusLabel(release));
+    maybeAddChange(changes, "publishedAt", previousRelease.publishedAt, release.publishedAt);
+    maybeAddChange(changes, "prerelease", previousRelease.prerelease, release.prerelease);
+    maybeAddChange(changes, "target", previousRelease.targetCommitish, release.targetCommitish);
+    maybeAddChange(changes, "bodySha", shortSha(previousRelease.bodySha256), shortSha(release.bodySha256));
+
+    if (changes.length) {
+      sections.releases.push(`${release.label}: ${changes.join("; ")}.`);
     }
   }
 
@@ -828,6 +966,10 @@ ${markdownList(summary.sections.facts)}
 
 ${markdownList(summary.sections.githubPulls)}
 
+### GitHub Releases
+
+${markdownList(summary.sections.releases)}
+
 ### GitHub References
 
 ${markdownList(summary.sections.refs)}
@@ -878,6 +1020,16 @@ function buildMarkdown(snapshot) {
     ref.ok ? ref.objectType : ref.error,
   ]);
 
+  const releaseRows = (snapshot.github.releases || []).map((release) => [
+    release.label,
+    release.ok ? release.tagName : "error",
+    release.ok ? (release.prerelease ? "yes" : "no") : release.error,
+    release.ok ? release.publishedAt : "",
+    release.ok ? release.targetCommitish : "",
+    release.ok ? release.bodyHighlights.join("; ") : "",
+    release.ok ? `[source](${release.url})` : "",
+  ]);
+
   const networkRows = snapshot.kaspaNetwork.map((source) => [
     source.label,
     source.ok ? "ok" : "error",
@@ -917,6 +1069,10 @@ ${markdownTable(["Signal", "State", "Base", "Head SHA", "Updated", "Link"], pull
 ## PR Diff Summaries
 
 ${markdownTable(["Signal", "Files", "Content signals", "Top changed files", "KIP document status"], diffRows)}
+
+## GitHub Releases
+
+${markdownTable(["Signal", "Tag", "Pre-release", "Published", "Target", "Highlights", "Link"], releaseRows)}
 
 ## GitHub References
 
@@ -961,7 +1117,11 @@ function buildFactsHash(snapshot) {
   }));
 
   const comparable = {
-    github: snapshot.github,
+    github: {
+      pulls: snapshot.github.pulls,
+      refs: snapshot.github.refs,
+      releases: snapshot.github.releases,
+    },
     kaspaNetwork: stableNetworkFacts,
     webSources: stableWebFacts,
     verdict: snapshot.verdict,
@@ -971,13 +1131,15 @@ function buildFactsHash(snapshot) {
 
 async function main() {
   const previousSnapshot = await loadPreviousSnapshot();
-  const [pulls, refs, kaspaNetwork, fingerprints] = await Promise.all([
+  const [pulls, refs, releases, kaspaNetwork, fingerprints] = await Promise.all([
     Promise.all(githubPulls.map(readGithubPull)),
     Promise.all(githubRefs.map(readGithubRef)),
+    Promise.all(githubReleases.map(readGithubRelease)),
     Promise.all(networkSources.map(readNetworkSource)),
     Promise.all(webSources.map(fetchTextFingerprint)),
   ]);
   const fetchWarnings = applyPreviousGithubFetchFallback({ pulls, refs }, previousSnapshot);
+  fetchWarnings.push(...applyPreviousReleaseFetchFallback({ releases }, previousSnapshot));
 
   const snapshot = {
     schemaVersion: 1,
@@ -987,11 +1149,11 @@ async function main() {
       mainnetClaimRule: "mainnet activation requires explicit mainnet release, activation, or merged production evidence",
       testnetClaimRule: "TN10/TN12 observations are testnet-only until corroborated by mainnet evidence",
     },
-    github: { pulls, refs },
+    github: { pulls, refs, releases },
     kaspaNetwork,
     webSources: fingerprints,
     fetchWarnings,
-    verdict: buildVerdict({ pulls, refs }),
+    verdict: buildVerdict({ pulls, refs, releases }),
   };
   applyPreviousPullMetadataFallback(snapshot, previousSnapshot);
   snapshot.factsHash = buildFactsHash(snapshot);

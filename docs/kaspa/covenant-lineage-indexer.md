@@ -13,7 +13,7 @@ Goal:
 Non-goals:
 
 - Do not claim Toccata mainnet activation.
-- Do not treat KIP PRs as final merged KIPs.
+- Do not treat merged KIPs or TN10 activation as mainnet activation.
 - Do not assume a covenant ID proves semantic transition validity by itself.
 - Do not design custody or signing logic.
 
@@ -22,8 +22,8 @@ Non-goals:
 As of the local Toccata source-monitor workflow:
 
 - TN10 and TN12 observations are testnet-only evidence.
-- Rusty Kaspa PR and branch state must be checked before using any covenant field as current behavior.
-- KIP-17 and KIP-20 are high-signal covenant sources, but their PR and document status must be recorded separately from implementation and activation.
+- Rusty Kaspa PR, branch, tag, and release-note state must be checked before using any covenant field as current behavior.
+- KIP-17 and KIP-20 are merged high-signal covenant sources, but their document status must still be recorded separately from implementation, network activation, and wallet/indexer support.
 - Wallet and app support must be verified independently from node or protocol code.
 
 Use the evidence ladder in [`../toccata-evidence-ladder.md`](../toccata-evidence-ladder.md) before turning this note into production claims.

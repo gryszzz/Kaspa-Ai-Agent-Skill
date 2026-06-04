@@ -2,7 +2,7 @@
 
 Status: planning matrix for Toccata-era inline ZK and verifier readiness.
 
-This matrix is intentionally conservative. It records what the builder must compare before treating a proof path as wallet-ready, indexer-ready, or denial-of-service resistant. Current source-monitor evidence tracks ZK opcode changes, Groth16 verifier signals, RISC0/Succinct signals, pricing/resource-meter changes, and tests/benches in Rusty Kaspa PR #1013.
+This matrix is intentionally conservative. It records what the builder must compare before treating a proof path as wallet-ready, indexer-ready, or denial-of-service resistant. Current source-monitor evidence tracks ZK opcode changes, Groth16 verifier signals, RISC0/Succinct signals, pricing/resource-meter changes, and tests/benches in Rusty Kaspa PR #1013, which is closed and merged into `tn10`. Release `tn10-toc3` is TN10 hardening evidence; it is not mainnet evidence.
 
 ## Matrix
 
@@ -39,7 +39,7 @@ Before a proof path graduates from research to builder default, capture:
 Do not call any proof path mainnet-ready until all of these are true:
 
 - The verifier code path is merged into the production branch.
-- Activation schedule and pricing rules are explicit.
+- Activation schedule and pricing rules are explicit for the target network.
 - Test vectors cover valid, invalid, malformed, and maximum-size payloads.
 - Wallet preview copy identifies proof requirements.
 - Indexer storage can distinguish proof type, payload hash, public inputs, and verification status.

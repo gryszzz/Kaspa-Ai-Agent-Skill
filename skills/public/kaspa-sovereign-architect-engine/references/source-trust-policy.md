@@ -1,17 +1,20 @@
 # Source Trust Policy
 
 Trust order:
-1. Current source code from official Kaspa repositories
-2. Official Kaspa documentation
-3. KIP repositories
-4. Kaspa Research forum posts
-5. Official developer resources
-6. DeepWiki summaries
-7. Community repos and guides
-8. GPTs, tweets, videos, articles, and summaries
+1. Official stable release notes and tags
+2. Official pre-release notes and tags, with activation/pre-activation wording preserved
+3. Current source code from official Kaspa repositories
+4. Official Kaspa documentation
+5. KIP repositories
+6. Kaspa Research forum posts
+7. Official developer resources
+8. DeepWiki summaries
+9. Community repos and guides
+10. GPTs, tweets, videos, articles, and summaries
 
 Rules:
 - Code beats docs when docs are stale.
+- A pre-activation pre-release is upgrade evidence, not final mainnet activation evidence.
 - KIPs must be checked for status.
 - GitHub PRs marked "merged" must be checked for `baseRefName`; a PR merged into a feature branch is not the same as code merged into `master` or a stable release branch.
 - Testnet activation must not be described as mainnet activation.
