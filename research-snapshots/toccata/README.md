@@ -6,14 +6,17 @@ The monitor tracks:
 
 - Rusty Kaspa Toccata and ZK opcode pull requests.
 - KIP pull requests connected to the Toccata-era programmability stack.
-- Branch and tag hashes for Rusty Kaspa, KIPs, docs, SilverScript, and vProgs.
-- TN10 and TN12 blockdag endpoint signals.
+- Branch and tag hashes plus branch-to-branch engineering impact deltas for Rusty Kaspa, KIPs, docs, SilverScript, and vProgs.
+- Final/pre-release evidence and parsed activation schedules.
+- Mainnet, TN10, and TN12 blockdag endpoint signals.
 - Source fingerprints for Kaspa programmability docs and research forum threads.
 
 Snapshot rules:
 
 - `latest.json` is the machine-readable state.
 - `latest.md` is the reviewer-friendly state.
-- `rpc-smoke-tests.md` documents manual TN10/TN12 endpoint smoke checks.
+- `rpc-smoke-tests.md` documents manual mainnet/TN10/TN12 endpoint smoke checks.
 - A testnet signal is not treated as mainnet activation.
+- A final release with a future activation DAA is treated as scheduled, not active.
+- Protocol activation and wallet/indexer readiness are separate decisions.
 - An open PR, branch hash, or docs page is not treated as merged production behavior.

@@ -4,14 +4,17 @@ Use this inventory with `source-trust-policy.md`. Record absolute dates for time
 
 ## Verified Source Snapshot
 
-Snapshot date: 2026-06-04T03:33:39Z
+Snapshot date: 2026-06-06T01:39:16Z
 
-- Toccata monitor facts hash: `1f3f260011d79cc6d36622835160dfdcf2080f2228304b4b496ffd468ed45fc0`
-- Rusty Kaspa `master`: `d5205cc72ab7b811e88a23595dfac5b9facdeece`
+- Toccata monitor facts hash: `09fb9264350e6cf7c7e8882ebc1bf704383afea8878a8bb70a3ccab70e58bf4f`
+- Rusty Kaspa `master`: `90dbf074275d60c1fe74a3491883196f110970c0`
 - Rusty Kaspa `toccata`: `0ae28f939e61994a11eb8eb6dd775255e2924afb`
-- Rusty Kaspa `tn10`: `6899ea75384c1f422fe4ab0e47c439442da3f4fa`
+- Rusty Kaspa `tn10`: `e5f6d1f7c86f3a3afbe97dbb75e72a0a3ff66a57`
 - Rusty Kaspa `tn12`: `ab4c51afde90dc6e0bce3f782d0a18af5da29434`
-- Rusty Kaspa stable tag `v1.1.0`: `e97070faa3826c590f477e327c82daaddd6178f4`
+- Rusty Kaspa final Toccata tag `v2.0.0`: `90dbf074275d60c1fe74a3491883196f110970c0`
+- Mainnet activation state: `scheduled`
+- Mainnet activation DAA: `474165565`
+- Mainnet DAA observed in this snapshot: `452903728`
 - Rusty Kaspa pre-activation tag `v1.3.0-toc.5`: `04b0d135f8c8023676ea74dcf496c99d5d0bc2a5`
 - Rusty Kaspa TN10 hardening tag `tn10-toc3`: `1015a62359e0d06e0b3b3b7f7d06bc1bd4bf0c1b`
 - Rusty Kaspa TN10 rehearsal tag `tn10-toc2`: `97415b689462bec8a1a36f1665302529ea8a3108`
@@ -62,6 +65,8 @@ These hashes are a freshness baseline, not a permanent truth. Re-run `git ls-rem
 ## Toccata Programmability Sources
 
 - Rusty Kaspa releases: `https://github.com/kaspanet/rusty-kaspa/releases`
+- Rusty Kaspa final Toccata release `v2.0.0`: `https://github.com/kaspanet/rusty-kaspa/releases/tag/v2.0.0`
+- Rusty Kaspa Toccata node guide: `https://github.com/kaspanet/rusty-kaspa/blob/v2.0.0/docs/toccata-guide.md`
 - Rusty Kaspa Toccata mainnet pre-activation pre-release `v1.3.0-toc.5`: `https://github.com/kaspanet/rusty-kaspa/releases/tag/v1.3.0-toc.5`
 - Rusty Kaspa TN10 Toccata ZK hardening pre-release `tn10-toc3`: `https://github.com/kaspanet/rusty-kaspa/releases/tag/tn10-toc3`
 - Rusty Kaspa TN10 Toccata rehearsal pre-release `tn10-toc2`: `https://github.com/kaspanet/rusty-kaspa/releases/tag/tn10-toc2`
@@ -92,6 +97,7 @@ These hashes are a freshness baseline, not a permanent truth. Re-run `git ls-rem
 - SilverScript: `https://github.com/kaspanet/silverscript`
 - vProgs: `https://github.com/kaspanet/vprogs`
 - KIPs: `https://github.com/kaspanet/kips`
+- Mainnet REST blockDAG endpoint: `https://api.kaspa.org/info/blockdag`
 - TN10 REST blockDAG endpoint: `https://api-tn10.kaspa.org/info/blockdag`
 - TN12 REST blockDAG endpoint: `https://api-tn12.kaspa.org/info/blockdag`
 - Formal vProg computation DAG model: `https://research.kas.pa/t/zoom-in-a-formal-backbone-model-for-the-vprog-computation-dag/407`

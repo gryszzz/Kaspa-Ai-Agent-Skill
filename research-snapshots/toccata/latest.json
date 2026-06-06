@@ -1,9 +1,9 @@
 {
-  "schemaVersion": 1,
-  "checkedAt": "2026-06-04T03:33:39.389Z",
+  "schemaVersion": 2,
+  "checkedAt": "2026-06-06T01:39:16.315Z",
   "policy": {
     "sourceTier": "primary-source-first",
-    "mainnetClaimRule": "mainnet activation requires explicit mainnet release, activation, or merged production evidence",
+    "mainnetClaimRule": "mainnet activation requires a final release, explicit activation DAA, merged production code, and mainnet endpoint evidence at or above the threshold",
     "testnetClaimRule": "TN10/TN12 observations are testnet-only until corroborated by mainnet evidence"
   },
   "github": {
@@ -527,7 +527,7 @@
         "kind": "heads",
         "name": "master",
         "ok": true,
-        "sha": "d5205cc72ab7b811e88a23595dfac5b9facdeece",
+        "sha": "90dbf074275d60c1fe74a3491883196f110970c0",
         "objectType": "commit",
         "url": "https://github.com/kaspanet/rusty-kaspa/tree/master"
       },
@@ -545,7 +545,7 @@
         "kind": "heads",
         "name": "tn10",
         "ok": true,
-        "sha": "6899ea75384c1f422fe4ab0e47c439442da3f4fa",
+        "sha": "e5f6d1f7c86f3a3afbe97dbb75e72a0a3ff66a57",
         "objectType": "commit",
         "url": "https://github.com/kaspanet/rusty-kaspa/tree/tn10"
       },
@@ -584,6 +584,15 @@
         "sha": "04b0d135f8c8023676ea74dcf496c99d5d0bc2a5",
         "objectType": "commit",
         "url": "https://github.com/kaspanet/rusty-kaspa/tree/v1.3.0-toc.5"
+      },
+      {
+        "repo": "kaspanet/rusty-kaspa",
+        "kind": "tags",
+        "name": "v2.0.0",
+        "ok": true,
+        "sha": "90dbf074275d60c1fe74a3491883196f110970c0",
+        "objectType": "commit",
+        "url": "https://github.com/kaspanet/rusty-kaspa/tree/v2.0.0"
       },
       {
         "repo": "kaspanet/rusty-kaspa",
@@ -634,6 +643,31 @@
     "releases": [
       {
         "repo": "kaspanet/rusty-kaspa",
+        "tag": "v2.0.0",
+        "label": "Final Toccata mainnet release",
+        "interpretation": "Final release and activation schedule evidence; active behavior still requires the mainnet DAA threshold.",
+        "ok": true,
+        "name": "Mainnet Toccata Release - v2.0.0",
+        "tagName": "v2.0.0",
+        "prerelease": false,
+        "draft": false,
+        "publishedAt": "2026-06-05T12:09:13Z",
+        "targetCommitish": "master",
+        "url": "https://github.com/kaspanet/rusty-kaspa/releases/tag/v2.0.0",
+        "bodySha256": "a52e038dbf598db27d79fd57783c11e00e87ad05072c6d106406b311ec706db1",
+        "bodyHighlights": [
+          "This release introduces the **Toccata Hardfork**, marking a major milestone described in [KIP16](https://github.com/kaspanet/kips/blob/master/kip-0016.md), [KIP17](https://github.com/kaspanet/kips/blob/master/kip-0017.md), [KIP20](https://github.com/kaspanet/kips/blob/master/kip-0020.md), and [KIP21](https://github.com/kaspanet/kips/blob/master/kip-0021.md), bringing native L1 covenant programming and infrastructure for based ZK applications to Kaspa. The hard fork is scheduled to activate on mainnet at DAA score `474,165,565`, roughly on June 30, 2026, at 16:15 UTC.",
+          "Starting **24 hours before activation**, nodes will connect only to peers using the new **P2P protocol version 10**. Ensure your node is updated to maintain network connectivity.",
+          "## Node upgrade guide",
+          "Ensure your node is updated to stay compatible with the Toccata Hardfork. For detailed instructions on upgrading and configuring your node, refer to the [Toccata Guide](https://github.com/kaspanet/rusty-kaspa/blob/master/docs/toccata-guide.md)."
+        ],
+        "activation": {
+          "daaScore": 474165565,
+          "scheduleText": "June 30, 2026, at 16:15 UTC"
+        }
+      },
+      {
+        "repo": "kaspanet/rusty-kaspa",
         "tag": "v1.3.0-toc.5",
         "label": "Toccata mainnet pre-activation pre-release",
         "interpretation": "Mainnet sanity-testing release; not mainnet activation.",
@@ -655,7 +689,11 @@
           "- Operators, pools, and miners are encouraged to test with a limited subset of infrastructure rather than fully migrating operations.",
           "- Miners may use this pre-release to sanity-test mining flows, but this does not replace testing on an activated testnet. Before activation, mainnet block templates only contain current transaction versions, so some Toccata-specific paths are only meaningfully exercised after activation.",
           "- RPC transaction submission now applies the upcoming higher minimum standard fee rule: `100 sompi * max(compute grams, 2 * transaction bytes)`."
-        ]
+        ],
+        "activation": {
+          "daaScore": null,
+          "scheduleText": null
+        }
       },
       {
         "repo": "kaspanet/rusty-kaspa",
@@ -677,7 +715,11 @@
           "Activation is scheduled for:",
           "DAA Score: 476,232,000",
           "TN10 nodes should upgrade before the activation point."
-        ]
+        ],
+        "activation": {
+          "daaScore": null,
+          "scheduleText": "May 28, 2026, ~16:00 UTC"
+        }
       },
       {
         "repo": "kaspanet/rusty-kaspa",
@@ -696,12 +738,16 @@
         "bodyHighlights": [
           "This release scheduled the Toccata hardofork in testnet-10 to:",
           "DAA Score: 467,579,632"
-        ]
+        ],
+        "activation": {
+          "daaScore": null,
+          "scheduleText": "May 18, 2026, 16:00 UTC"
+        }
       },
       {
         "repo": "kaspanet/rusty-kaspa",
         "tag": "v1.1.0",
-        "label": "Latest stable non-Toccata line tracked by monitor",
+        "label": "Pre-Toccata stable baseline",
         "interpretation": "Stable integration baseline; do not confuse with Toccata pre-release.",
         "ok": true,
         "name": "Release v1.1.0",
@@ -721,42 +767,2330 @@
           "## VSPC API v2 Specification (`GetVirtualChainFromBlockV2`)",
           "- Non-breaking addition: existing `GetVirtualChainFromBlock` is unchanged.",
           "- Verbosity is incremental (`Full` includes `High`, `Low`, and `None`)."
-        ]
+        ],
+        "activation": {
+          "daaScore": null,
+          "scheduleText": null
+        }
+      }
+    ],
+    "branchDeltas": [
+      {
+        "repo": "kaspanet/rusty-kaspa",
+        "branch": "master",
+        "label": "kaspanet/rusty-kaspa master",
+        "beforeSha": "d5205cc72ab7b811e88a23595dfac5b9facdeece",
+        "afterSha": "90dbf074275d60c1fe74a3491883196f110970c0",
+        "ok": true,
+        "status": "last_observed_change",
+        "aheadBy": 12,
+        "behindBy": 0,
+        "totalCommits": 12,
+        "fileCount": 98,
+        "additions": 2206,
+        "deletions": 1156,
+        "filesTruncated": false,
+        "commits": [
+          {
+            "sha": "ae51b8a5072ed42984b58d32032569be9d2f7d22",
+            "committedAt": "2026-06-04T10:40:41Z",
+            "message": "Reenable TN10 (#1038)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/ae51b8a5072ed42984b58d32032569be9d2f7d22"
+          },
+          {
+            "sha": "770e3e9d4fd29e56869646193308bf39aeeac3e2",
+            "committedAt": "2026-06-04T16:35:37Z",
+            "message": "feat(rpc): get block reward by hash (#927)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/770e3e9d4fd29e56869646193308bf39aeeac3e2"
+          },
+          {
+            "sha": "a9451167d721fd9760582eedf34cec7b51c4f36a",
+            "committedAt": "2026-06-04T18:40:25Z",
+            "message": "Rename tx.mass -> tx.storage_mass (#1039)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/a9451167d721fd9760582eedf34cec7b51c4f36a"
+          },
+          {
+            "sha": "c26d517a80aaaf52b80cbb426355abbae3a470b6",
+            "committedAt": "2026-06-04T20:18:26Z",
+            "message": "Rename input.mass -> input.compute_commit, TxInputMass -> ComputeCommit (#1040)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/c26d517a80aaaf52b80cbb426355abbae3a470b6"
+          },
+          {
+            "sha": "9bd6581b9c25cb0940856d136924b1c644e4042e",
+            "committedAt": "2026-06-04T21:26:08Z",
+            "message": "Make storage_mass a required field in RpcTransaction when decoding JSON (#1043)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/9bd6581b9c25cb0940856d136924b1c644e4042e"
+          },
+          {
+            "sha": "36126503b812a5ea2e1a673cd3beea111a715e35",
+            "committedAt": "2026-06-04T22:02:49Z",
+            "message": "clean: remove consensus get current block color (#1042)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/36126503b812a5ea2e1a673cd3beea111a715e35"
+          },
+          {
+            "sha": "c1d8189303cd9cacbb39ef326ac4aa23a5971a70",
+            "committedAt": "2026-06-04T23:07:40Z",
+            "message": "feat(wasm/txscript): allows passing script builder flags (#999)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/c1d8189303cd9cacbb39ef326ac4aa23a5971a70"
+          },
+          {
+            "sha": "bbadf5e5717042ad30634f389505a3e2f8b6902a",
+            "committedAt": "2026-06-04T23:30:33Z",
+            "message": "fix(wallet/generator): include covenant bindings (#896)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/bbadf5e5717042ad30634f389505a3e2f8b6902a"
+          },
+          {
+            "sha": "580fa8b5d5a66b55db368cd47781784b8b631222",
+            "committedAt": "2026-06-04T23:48:07Z",
+            "message": "fix(wasm): mempool entries request args are required (#951)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/580fa8b5d5a66b55db368cd47781784b8b631222"
+          },
+          {
+            "sha": "b8deb638dab0b60806e1c32b3b9d53f1b07a78a1",
+            "committedAt": "2026-06-05T07:33:26Z",
+            "message": "Set Toccata to activate on mainnet (#1044)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/b8deb638dab0b60806e1c32b3b9d53f1b07a78a1"
+          },
+          {
+            "sha": "4e8f3135828d9c77146469424ba5a0801ea626e3",
+            "committedAt": "2026-06-05T11:02:07Z",
+            "message": "Fix script engine handling of unknown script versions (#1046)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/4e8f3135828d9c77146469424ba5a0801ea626e3"
+          },
+          {
+            "sha": "90dbf074275d60c1fe74a3491883196f110970c0",
+            "committedAt": "2026-06-05T11:55:30Z",
+            "message": "Add Toccata upgrade guide (#1045)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/90dbf074275d60c1fe74a3491883196f110970c0"
+          }
+        ],
+        "files": [
+          {
+            "filename": ".github/workflows/ci.yaml",
+            "status": "modified",
+            "additions": 3,
+            "deletions": 1,
+            "changes": 4
+          },
+          {
+            "filename": "Cargo.lock",
+            "status": "modified",
+            "additions": 69,
+            "deletions": 67,
+            "changes": 136
+          },
+          {
+            "filename": "Cargo.toml",
+            "status": "modified",
+            "additions": 62,
+            "deletions": 62,
+            "changes": 124
+          },
+          {
+            "filename": "cli/src/extensions/transaction.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "cli/src/modules/rpc.rs",
+            "status": "modified",
+            "additions": 9,
+            "deletions": 0,
+            "changes": 9
+          },
+          {
+            "filename": "components/consensusmanager/src/session.rs",
+            "status": "modified",
+            "additions": 4,
+            "deletions": 5,
+            "changes": 9
+          },
+          {
+            "filename": "consensus/benches/check_scripts.rs",
+            "status": "modified",
+            "additions": 3,
+            "deletions": 3,
+            "changes": 6
+          },
+          {
+            "filename": "consensus/client/src/block.rs",
+            "status": "added",
+            "additions": 11,
+            "deletions": 0,
+            "changes": 11
+          },
+          {
+            "filename": "consensus/client/src/input.rs",
+            "status": "modified",
+            "additions": 5,
+            "deletions": 5,
+            "changes": 10
+          },
+          {
+            "filename": "consensus/client/src/lib.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "consensus/client/src/serializable/numeric.rs",
+            "status": "modified",
+            "additions": 11,
+            "deletions": 11,
+            "changes": 22
+          },
+          {
+            "filename": "consensus/client/src/serializable/string.rs",
+            "status": "modified",
+            "additions": 11,
+            "deletions": 11,
+            "changes": 22
+          },
+          {
+            "filename": "consensus/client/src/signing.rs",
+            "status": "removed",
+            "additions": 0,
+            "deletions": 216,
+            "changes": 216
+          },
+          {
+            "filename": "consensus/client/src/transaction.rs",
+            "status": "modified",
+            "additions": 39,
+            "deletions": 16,
+            "changes": 55
+          },
+          {
+            "filename": "consensus/core/benches/serde_benchmark.rs",
+            "status": "modified",
+            "additions": 5,
+            "deletions": 5,
+            "changes": 10
+          },
+          {
+            "filename": "consensus/core/src/acceptance_data.rs",
+            "status": "modified",
+            "additions": 7,
+            "deletions": 0,
+            "changes": 7
+          },
+          {
+            "filename": "consensus/core/src/api/mod.rs",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4
+          },
+          {
+            "filename": "consensus/core/src/config/params.rs",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 1,
+            "changes": 3
+          },
+          {
+            "filename": "consensus/core/src/hashing/sighash.rs",
+            "status": "modified",
+            "additions": 11,
+            "deletions": 11,
+            "changes": 22
+          },
+          {
+            "filename": "consensus/core/src/hashing/tx.rs",
+            "status": "modified",
+            "additions": 10,
+            "deletions": 10,
+            "changes": 20
+          },
+          {
+            "filename": "consensus/core/src/mass/mod.rs",
+            "status": "modified",
+            "additions": 7,
+            "deletions": 5,
+            "changes": 12
+          },
+          {
+            "filename": "consensus/core/src/mass/units.rs",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4
+          },
+          {
+            "filename": "consensus/core/src/merkle.rs",
+            "status": "modified",
+            "additions": 7,
+            "deletions": 7,
+            "changes": 14
+          },
+          {
+            "filename": "consensus/core/src/sign.rs",
+            "status": "modified",
+            "additions": 13,
+            "deletions": 13,
+            "changes": 26
+          },
+          {
+            "filename": "consensus/core/src/tx.rs",
+            "status": "modified",
+            "additions": 59,
+            "deletions": 30,
+            "changes": 89
+          },
+          {
+            "filename": "consensus/core/src/tx/serde_impl.rs",
+            "status": "modified",
+            "additions": 21,
+            "deletions": 8,
+            "changes": 29
+          },
+          {
+            "filename": "consensus/core/tests/db_compat.rs",
+            "status": "modified",
+            "additions": 4,
+            "deletions": 4,
+            "changes": 8
+          },
+          {
+            "filename": "consensus/src/consensus/mod.rs",
+            "status": "modified",
+            "additions": 33,
+            "deletions": 28,
+            "changes": 61
+          },
+          {
+            "filename": "consensus/src/pipeline/body_processor/body_validation_in_isolation.rs",
+            "status": "modified",
+            "additions": 10,
+            "deletions": 10,
+            "changes": 20
+          },
+          {
+            "filename": "consensus/src/pipeline/virtual_processor/utxo_validation.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "consensus/src/processes/transaction_validator/tx_validation_in_isolation.rs",
+            "status": "modified",
+            "additions": 8,
+            "deletions": 8,
+            "changes": 16
+          },
+          {
+            "filename": "consensus/src/processes/transaction_validator/tx_validation_in_utxo_context.rs",
+            "status": "modified",
+            "additions": 26,
+            "deletions": 26,
+            "changes": 52
+          },
+          {
+            "filename": "consensus/wasm/src/utils.rs",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4
+          },
+          {
+            "filename": "crypto/txscript/Cargo.toml",
+            "status": "modified",
+            "additions": 3,
+            "deletions": 1,
+            "changes": 4
+          },
+          {
+            "filename": "crypto/txscript/benches/pricing.rs",
+            "status": "modified",
+            "additions": 38,
+            "deletions": 18,
+            "changes": 56
+          },
+          {
+            "filename": "crypto/txscript/examples/kip-10.rs",
+            "status": "modified",
+            "additions": 4,
+            "deletions": 4,
+            "changes": 8
+          },
+          {
+            "filename": "crypto/txscript/src/lib.rs",
+            "status": "modified",
+            "additions": 56,
+            "deletions": 19,
+            "changes": 75
+          },
+          {
+            "filename": "crypto/txscript/src/script_builder.rs",
+            "status": "modified",
+            "additions": 4,
+            "deletions": 0,
+            "changes": 4
+          },
+          {
+            "filename": "crypto/txscript/src/standard/multisig.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "crypto/txscript/src/wasm/builder.rs",
+            "status": "modified",
+            "additions": 120,
+            "deletions": 10,
+            "changes": 130
+          },
+          {
+            "filename": "docs/toccata-guide.md",
+            "status": "added",
+            "additions": 122,
+            "deletions": 0,
+            "changes": 122
+          },
+          {
+            "filename": "kaspad/src/daemon.rs",
+            "status": "modified",
+            "additions": 0,
+            "deletions": 6,
+            "changes": 6
+          },
+          {
+            "filename": "mining/src/manager.rs",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4
+          },
+          {
+            "filename": "mining/src/mempool/check_transaction_limits.rs",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4
+          },
+          {
+            "filename": "mining/src/mempool/check_transaction_standard.rs",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4
+          },
+          {
+            "filename": "mining/src/mempool/model/frontier/feerate_key.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "mining/src/testutils/consensus_mock.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "mining/src/toccata_transient_mass_activation_tests.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "protocol/p2p/proto/p2p.proto",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4
+          },
+          {
+            "filename": "protocol/p2p/src/convert/tx.rs",
+            "status": "modified",
+            "additions": 14,
+            "deletions": 14,
+            "changes": 28
+          },
+          {
+            "filename": "rothschild/benches/bench.rs",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4
+          },
+          {
+            "filename": "rothschild/src/main.rs",
+            "status": "modified",
+            "additions": 6,
+            "deletions": 2,
+            "changes": 8
+          },
+          {
+            "filename": "rpc/core/src/api/ops.rs",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 0,
+            "changes": 2
+          },
+          {
+            "filename": "rpc/core/src/api/rpc.rs",
+            "status": "modified",
+            "additions": 9,
+            "deletions": 0,
+            "changes": 9
+          },
+          {
+            "filename": "rpc/core/src/convert/tx.rs",
+            "status": "modified",
+            "additions": 13,
+            "deletions": 11,
+            "changes": 24
+          },
+          {
+            "filename": "rpc/core/src/convert/verbosity.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "rpc/core/src/model/message.rs",
+            "status": "modified",
+            "additions": 119,
+            "deletions": 0,
+            "changes": 119
+          },
+          {
+            "filename": "rpc/core/src/model/optional/tx.rs",
+            "status": "modified",
+            "additions": 93,
+            "deletions": 12,
+            "changes": 105
+          },
+          {
+            "filename": "rpc/core/src/model/optional/tx_serde_tests.rs",
+            "status": "modified",
+            "additions": 85,
+            "deletions": 2,
+            "changes": 87
+          },
+          {
+            "filename": "rpc/core/src/model/tests.rs",
+            "status": "modified",
+            "additions": 35,
+            "deletions": 7,
+            "changes": 42
+          },
+          {
+            "filename": "rpc/core/src/model/tx.rs",
+            "status": "modified",
+            "additions": 190,
+            "deletions": 9,
+            "changes": 199
+          },
+          {
+            "filename": "rpc/core/src/model/verbosity.rs",
+            "status": "modified",
+            "additions": 6,
+            "deletions": 6,
+            "changes": 12
+          },
+          {
+            "filename": "rpc/core/src/wasm/convert.rs",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4
+          },
+          {
+            "filename": "rpc/core/src/wasm/message.rs",
+            "status": "modified",
+            "additions": 46,
+            "deletions": 6,
+            "changes": 52
+          },
+          {
+            "filename": "rpc/grpc/client/src/lib.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "rpc/grpc/core/proto/messages.proto",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 0,
+            "changes": 2
+          },
+          {
+            "filename": "rpc/grpc/core/proto/rpc.proto",
+            "status": "modified",
+            "additions": 21,
+            "deletions": 1,
+            "changes": 22
+          },
+          {
+            "filename": "rpc/grpc/core/src/convert/kaspad.rs",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 0,
+            "changes": 2
+          },
+          {
+            "filename": "rpc/grpc/core/src/convert/message.rs",
+            "status": "modified",
+            "additions": 34,
+            "deletions": 0,
+            "changes": 34
+          },
+          {
+            "filename": "rpc/grpc/core/src/convert/optional/tx.rs",
+            "status": "modified",
+            "additions": 4,
+            "deletions": 4,
+            "changes": 8
+          },
+          {
+            "filename": "rpc/grpc/core/src/convert/tx.rs",
+            "status": "modified",
+            "additions": 6,
+            "deletions": 6,
+            "changes": 12
+          },
+          {
+            "filename": "rpc/grpc/core/src/ops.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "rpc/grpc/server/src/request_handler/factory.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "rpc/grpc/server/src/tests/rpc_core_mock.rs",
+            "status": "modified",
+            "additions": 8,
+            "deletions": 0,
+            "changes": 8
+          },
+          {
+            "filename": "rpc/service/src/converter/consensus.rs",
+            "status": "modified",
+            "additions": 9,
+            "deletions": 5,
+            "changes": 14
+          },
+          {
+            "filename": "rpc/service/src/service.rs",
+            "status": "modified",
+            "additions": 81,
+            "deletions": 3,
+            "changes": 84
+          },
+          {
+            "filename": "rpc/wrpc/client/src/client.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "rpc/wrpc/examples/simple_client/src/main.rs",
+            "status": "modified",
+            "additions": 8,
+            "deletions": 0,
+            "changes": 8
+          },
+          {
+            "filename": "rpc/wrpc/server/src/router.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "rpc/wrpc/wasm/src/client.rs",
+            "status": "modified",
+            "additions": 3,
+            "deletions": 0,
+            "changes": 3
+          },
+          {
+            "filename": "simpa/src/simulator/miner.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "testing/integration/src/common/utils.rs",
+            "status": "modified",
+            "additions": 6,
+            "deletions": 1,
+            "changes": 7
+          },
+          {
+            "filename": "testing/integration/src/consensus_integration_tests.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "testing/integration/src/daemon_integration_tests.rs",
+            "status": "modified",
+            "additions": 8,
+            "deletions": 8,
+            "changes": 16
+          },
+          {
+            "filename": "testing/integration/src/mempool_benchmarks.rs",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4
+          },
+          {
+            "filename": "testing/integration/src/rpc_tests.rs",
+            "status": "modified",
+            "additions": 13,
+            "deletions": 0,
+            "changes": 13
+          },
+          {
+            "filename": "wallet/core/src/tests/rpc_core_mock.rs",
+            "status": "modified",
+            "additions": 8,
+            "deletions": 0,
+            "changes": 8
+          },
+          {
+            "filename": "wallet/core/src/tx/generator/generator.rs",
+            "status": "modified",
+            "additions": 9,
+            "deletions": 3,
+            "changes": 12
+          },
+          {
+            "filename": "wallet/core/src/tx/generator/test.rs",
+            "status": "modified",
+            "additions": 21,
+            "deletions": 3,
+            "changes": 24
+          },
+          {
+            "filename": "wallet/core/src/tx/mass.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "wallet/core/src/wasm/tx/mass.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "wallet/pskt/src/convert.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "wallet/pskt/src/pskt.rs",
+            "status": "modified",
+            "additions": 3,
+            "deletions": 3,
+            "changes": 6
+          },
+          {
+            "filename": "wallet/pskt/src/wasm/pskt.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "wasm/examples/nodejs/javascript/general/get-block-reward.js",
+            "status": "added",
+            "additions": 39,
+            "deletions": 0,
+            "changes": 39
+          },
+          {
+            "filename": "wasm/examples/nodejs/javascript/general/mempool-entries.js",
+            "status": "added",
+            "additions": 25,
+            "deletions": 0,
+            "changes": 25
+          },
+          {
+            "filename": "wasm/examples/nodejs/javascript/zkproof/groth16.js",
+            "status": "modified",
+            "additions": 220,
+            "deletions": 197,
+            "changes": 417
+          },
+          {
+            "filename": "wasm/examples/nodejs/javascript/zkproof/risc0-succinct.js",
+            "status": "modified",
+            "additions": 222,
+            "deletions": 199,
+            "changes": 421
+          }
+        ],
+        "impacts": [
+          {
+            "id": "activation-p2p",
+            "label": "Activation and P2P compatibility",
+            "fileCount": 3,
+            "commitCount": 0,
+            "matchedFiles": [
+              "consensus/core/src/config/params.rs",
+              "docs/toccata-guide.md",
+              "mining/src/toccata_transient_mass_activation_tests.rs"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "Node operators must track the activation DAA, release line, P2P version cutoff, and one-way upgrade constraints."
+          },
+          {
+            "id": "transaction-wire-format",
+            "label": "Transaction and wire-format contracts",
+            "fileCount": 5,
+            "commitCount": 3,
+            "matchedFiles": [
+              "consensus/core/src/tx.rs",
+              "consensus/core/src/tx/serde_impl.rs",
+              "protocol/p2p/proto/p2p.proto",
+              "rpc/grpc/core/proto/messages.proto",
+              "rpc/grpc/core/proto/rpc.proto"
+            ],
+            "matchedCommits": [
+              "Rename tx.mass -> tx.storage_mass (#1039)",
+              "Rename input.mass -> input.compute_commit, TxInputMass -> ComputeCommit (#1040)",
+              "Make storage_mass a required field in RpcTransaction when decoding JSON (#1043)"
+            ],
+            "builderImpact": "RPC, protobuf, miner, pool, wallet, and indexer models must preserve v1 transaction fields without lossy renaming."
+          },
+          {
+            "id": "covenant-lineage",
+            "label": "Covenants and UTXO lineage",
+            "fileCount": 2,
+            "commitCount": 1,
+            "matchedFiles": [
+              "consensus/src/pipeline/virtual_processor/utxo_validation.rs",
+              "consensus/src/processes/transaction_validator/tx_validation_in_utxo_context.rs"
+            ],
+            "matchedCommits": [
+              "fix(wallet/generator): include covenant bindings (#896)"
+            ],
+            "builderImpact": "UTXO-first applications must preserve covenant bindings, authorizing inputs, covenant IDs, and successor lineage."
+          },
+          {
+            "id": "fees-mass-mempool",
+            "label": "Fee, mass, and mempool policy",
+            "fileCount": 10,
+            "commitCount": 4,
+            "matchedFiles": [
+              "consensus/core/src/mass/mod.rs",
+              "consensus/core/src/mass/units.rs",
+              "mining/src/mempool/check_transaction_limits.rs",
+              "mining/src/mempool/check_transaction_standard.rs",
+              "mining/src/mempool/model/frontier/feerate_key.rs",
+              "mining/src/toccata_transient_mass_activation_tests.rs",
+              "testing/integration/src/mempool_benchmarks.rs",
+              "wallet/core/src/tx/mass.rs"
+            ],
+            "matchedCommits": [
+              "Rename tx.mass -> tx.storage_mass (#1039)",
+              "Rename input.mass -> input.compute_commit, TxInputMass -> ComputeCommit (#1040)",
+              "Make storage_mass a required field in RpcTransaction when decoding JSON (#1043)",
+              "fix(wasm): mempool entries request args are required (#951)"
+            ],
+            "builderImpact": "Fee estimation must distinguish consensus validity from node relay policy and use current mass dimensions."
+          },
+          {
+            "id": "rpc-wasm-sdk",
+            "label": "RPC, WASM, and SDK surface",
+            "fileCount": 36,
+            "commitCount": 2,
+            "matchedFiles": [
+              "consensus/wasm/src/utils.rs",
+              "crypto/txscript/src/wasm/builder.rs",
+              "rpc/core/src/api/ops.rs",
+              "rpc/core/src/api/rpc.rs",
+              "rpc/core/src/convert/tx.rs",
+              "rpc/core/src/convert/verbosity.rs",
+              "rpc/core/src/model/message.rs",
+              "rpc/core/src/model/optional/tx.rs"
+            ],
+            "matchedCommits": [
+              "feat(wasm/txscript): allows passing script builder flags (#999)",
+              "fix(wasm): mempool entries request args are required (#951)"
+            ],
+            "builderImpact": "Integrators must regenerate or update client bindings and test required arguments, aliases, and serialization behavior."
+          },
+          {
+            "id": "wallet-pskt",
+            "label": "Wallet and PSKT construction",
+            "fileCount": 9,
+            "commitCount": 1,
+            "matchedFiles": [
+              "consensus/client/src/signing.rs",
+              "wallet/core/src/tests/rpc_core_mock.rs",
+              "wallet/core/src/tx/generator/generator.rs",
+              "wallet/core/src/tx/generator/test.rs",
+              "wallet/core/src/tx/mass.rs",
+              "wallet/core/src/wasm/tx/mass.rs",
+              "wallet/pskt/src/convert.rs",
+              "wallet/pskt/src/pskt.rs"
+            ],
+            "matchedCommits": [
+              "fix(wallet/generator): include covenant bindings (#896)"
+            ],
+            "builderImpact": "Wallet construction and signing previews must preserve covenant fields, compute commitments, storage mass, and explicit fees."
+          },
+          {
+            "id": "zk-verification",
+            "label": "ZK verification and pricing",
+            "fileCount": 2,
+            "commitCount": 0,
+            "matchedFiles": [
+              "wasm/examples/nodejs/javascript/zkproof/groth16.js",
+              "wasm/examples/nodejs/javascript/zkproof/risc0-succinct.js"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "Proof-system dependencies, verifier hardening, script-unit pricing, proof size, and failure behavior remain security-critical."
+          },
+          {
+            "id": "node-storage-ibd",
+            "label": "Node storage, pruning, and IBD",
+            "fileCount": 1,
+            "commitCount": 2,
+            "matchedFiles": [
+              "consensus/core/tests/db_compat.rs"
+            ],
+            "matchedCommits": [
+              "Rename tx.mass -> tx.storage_mass (#1039)",
+              "Make storage_mass a required field in RpcTransaction when decoding JSON (#1043)"
+            ],
+            "builderImpact": "Operators must plan database migrations, resync cost, retention, pruning compatibility, and recovery procedures."
+          },
+          {
+            "id": "security-hardening",
+            "label": "Security hardening",
+            "fileCount": 0,
+            "commitCount": 1,
+            "matchedFiles": [],
+            "matchedCommits": [
+              "Fix script engine handling of unknown script versions (#1046)"
+            ],
+            "builderImpact": "Consensus and network-facing fixes require adversarial regression tests and careful version-boundary review."
+          },
+          {
+            "id": "tests-docs",
+            "label": "Tests, benchmarks, and operator docs",
+            "fileCount": 8,
+            "commitCount": 0,
+            "matchedFiles": [
+              "consensus/benches/check_scripts.rs",
+              "consensus/core/benches/serde_benchmark.rs",
+              "consensus/core/tests/db_compat.rs",
+              "crypto/txscript/benches/pricing.rs",
+              "docs/toccata-guide.md",
+              "rothschild/benches/bench.rs",
+              "rpc/grpc/server/src/tests/rpc_core_mock.rs",
+              "wallet/core/src/tests/rpc_core_mock.rs"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "Changed examples, tests, and guides should become reproducible compatibility checks in downstream projects."
+          }
+        ],
+        "url": "https://github.com/kaspanet/rusty-kaspa/compare/d5205cc72ab7b811e88a23595dfac5b9facdeece...90dbf074275d60c1fe74a3491883196f110970c0"
+      },
+      {
+        "repo": "kaspanet/rusty-kaspa",
+        "branch": "toccata",
+        "label": "kaspanet/rusty-kaspa toccata",
+        "beforeSha": "0ae28f939e61994a11eb8eb6dd775255e2924afb",
+        "afterSha": "0ae28f939e61994a11eb8eb6dd775255e2924afb",
+        "ok": true,
+        "status": "unchanged",
+        "commits": [],
+        "files": [],
+        "impacts": []
+      },
+      {
+        "repo": "kaspanet/rusty-kaspa",
+        "branch": "tn10",
+        "label": "kaspanet/rusty-kaspa tn10",
+        "beforeSha": "6899ea75384c1f422fe4ab0e47c439442da3f4fa",
+        "afterSha": "e5f6d1f7c86f3a3afbe97dbb75e72a0a3ff66a57",
+        "ok": true,
+        "status": "last_observed_change",
+        "aheadBy": 27,
+        "behindBy": 0,
+        "totalCommits": 27,
+        "fileCount": 126,
+        "additions": 3584,
+        "deletions": 1616,
+        "filesTruncated": false,
+        "commits": [
+          {
+            "sha": "d7f9b1590ca68c95ebe9f7242b822ecdf867de7e",
+            "committedAt": "2026-05-24T03:28:53Z",
+            "message": "dashboard session (#1015)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/d7f9b1590ca68c95ebe9f7242b822ecdf867de7e"
+          },
+          {
+            "sha": "a07d8b38d45f38a02a1f35f601e874358f6c7846",
+            "committedAt": "2026-05-24T20:57:27Z",
+            "message": "fix  IPv4-looking worker labels display as unnamed-asic (#1014)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/a07d8b38d45f38a02a1f35f601e874358f6c7846"
+          },
+          {
+            "sha": "78fc1c16d9ae99f7ae788c52a6f88ef7ebc0c03d",
+            "committedAt": "2026-05-28T19:15:34Z",
+            "message": "fix/zero-share-worker-ui-retention (#1016)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/78fc1c16d9ae99f7ae788c52a6f88ef7ebc0c03d"
+          },
+          {
+            "sha": "3cef6adaf2c79cfa34704070a49fe10d712b5729",
+            "committedAt": "2026-05-29T21:07:21Z",
+            "message": "Fixes #1017 — unbounded Stratum input buffer allowing remote memory exhaustion (#1023)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/3cef6adaf2c79cfa34704070a49fe10d712b5729"
+          },
+          {
+            "sha": "34b6c3fe93edc765cd40af01d4a6c30dc7c55cad",
+            "committedAt": "2026-06-01T05:00:13Z",
+            "message": "SPM calculation Fix (#1033)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/34b6c3fe93edc765cd40af01d4a6c30dc7c55cad"
+          },
+          {
+            "sha": "72f814edb91419dee5bda0d503f85a3f95d0afa6",
+            "committedAt": "2026-06-01T12:29:18Z",
+            "message": "Integrate finalized ZK hardening and KIP-21 shortcut (#1027)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/72f814edb91419dee5bda0d503f85a3f95d0afa6"
+          },
+          {
+            "sha": "ee018ee6a04fd218db0cba02d63c64f73cc0ef6a",
+            "committedAt": "2026-06-01T14:40:33Z",
+            "message": "feat(mempool): allow p2p relayed tx with low fees before toccata activation (#1022)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/ee018ee6a04fd218db0cba02d63c64f73cc0ef6a"
+          },
+          {
+            "sha": "bac62c25d2ad7437257ae8107b4d63dac63a2499",
+            "committedAt": "2026-06-02T11:42:55Z",
+            "message": "Sig refactor (#1035)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/bac62c25d2ad7437257ae8107b4d63dac63a2499"
+          },
+          {
+            "sha": "6dea2bd7cc011f8e20809c71e76aa54f719128e6",
+            "committedAt": "2026-06-02T15:23:19Z",
+            "message": "Finalize Toccata cleanup before master merge (#1036)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/6dea2bd7cc011f8e20809c71e76aa54f719128e6"
+          },
+          {
+            "sha": "0ae28f939e61994a11eb8eb6dd775255e2924afb",
+            "committedAt": "2026-06-02T15:31:26Z",
+            "message": "Merge remote-tracking branch 'origin/master' into toccata",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/0ae28f939e61994a11eb8eb6dd775255e2924afb"
+          },
+          {
+            "sha": "af1b97244a98fc95583b8cbfc67df365ed6d93cd",
+            "committedAt": "2026-06-02T16:06:06Z",
+            "message": "Toccata (#1000)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/af1b97244a98fc95583b8cbfc67df365ed6d93cd"
+          },
+          {
+            "sha": "04b0d135f8c8023676ea74dcf496c99d5d0bc2a5",
+            "committedAt": "2026-06-03T13:30:20Z",
+            "message": "chore: 1.3.0 pre-release (#1037)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/04b0d135f8c8023676ea74dcf496c99d5d0bc2a5"
+          },
+          {
+            "sha": "d5205cc72ab7b811e88a23595dfac5b9facdeece",
+            "committedAt": "2026-06-03T17:32:36Z",
+            "message": "chore(docker): bump alpine rust version to 1.91 (#984)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/d5205cc72ab7b811e88a23595dfac5b9facdeece"
+          },
+          {
+            "sha": "ae51b8a5072ed42984b58d32032569be9d2f7d22",
+            "committedAt": "2026-06-04T10:40:41Z",
+            "message": "Reenable TN10 (#1038)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/ae51b8a5072ed42984b58d32032569be9d2f7d22"
+          },
+          {
+            "sha": "2156242e939316f72298e88c8d5abb37ca748c14",
+            "committedAt": "2026-06-04T11:21:52Z",
+            "message": "Merge branch 'master' into tn10",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/2156242e939316f72298e88c8d5abb37ca748c14"
+          },
+          {
+            "sha": "770e3e9d4fd29e56869646193308bf39aeeac3e2",
+            "committedAt": "2026-06-04T16:35:37Z",
+            "message": "feat(rpc): get block reward by hash (#927)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/770e3e9d4fd29e56869646193308bf39aeeac3e2"
+          },
+          {
+            "sha": "a9451167d721fd9760582eedf34cec7b51c4f36a",
+            "committedAt": "2026-06-04T18:40:25Z",
+            "message": "Rename tx.mass -> tx.storage_mass (#1039)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/a9451167d721fd9760582eedf34cec7b51c4f36a"
+          },
+          {
+            "sha": "c26d517a80aaaf52b80cbb426355abbae3a470b6",
+            "committedAt": "2026-06-04T20:18:26Z",
+            "message": "Rename input.mass -> input.compute_commit, TxInputMass -> ComputeCommit (#1040)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/c26d517a80aaaf52b80cbb426355abbae3a470b6"
+          },
+          {
+            "sha": "9bd6581b9c25cb0940856d136924b1c644e4042e",
+            "committedAt": "2026-06-04T21:26:08Z",
+            "message": "Make storage_mass a required field in RpcTransaction when decoding JSON (#1043)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/9bd6581b9c25cb0940856d136924b1c644e4042e"
+          },
+          {
+            "sha": "36126503b812a5ea2e1a673cd3beea111a715e35",
+            "committedAt": "2026-06-04T22:02:49Z",
+            "message": "clean: remove consensus get current block color (#1042)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/36126503b812a5ea2e1a673cd3beea111a715e35"
+          },
+          {
+            "sha": "c1d8189303cd9cacbb39ef326ac4aa23a5971a70",
+            "committedAt": "2026-06-04T23:07:40Z",
+            "message": "feat(wasm/txscript): allows passing script builder flags (#999)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/c1d8189303cd9cacbb39ef326ac4aa23a5971a70"
+          },
+          {
+            "sha": "bbadf5e5717042ad30634f389505a3e2f8b6902a",
+            "committedAt": "2026-06-04T23:30:33Z",
+            "message": "fix(wallet/generator): include covenant bindings (#896)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/bbadf5e5717042ad30634f389505a3e2f8b6902a"
+          },
+          {
+            "sha": "580fa8b5d5a66b55db368cd47781784b8b631222",
+            "committedAt": "2026-06-04T23:48:07Z",
+            "message": "fix(wasm): mempool entries request args are required (#951)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/580fa8b5d5a66b55db368cd47781784b8b631222"
+          },
+          {
+            "sha": "b8deb638dab0b60806e1c32b3b9d53f1b07a78a1",
+            "committedAt": "2026-06-05T07:33:26Z",
+            "message": "Set Toccata to activate on mainnet (#1044)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/b8deb638dab0b60806e1c32b3b9d53f1b07a78a1"
+          },
+          {
+            "sha": "4e8f3135828d9c77146469424ba5a0801ea626e3",
+            "committedAt": "2026-06-05T11:02:07Z",
+            "message": "Fix script engine handling of unknown script versions (#1046)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/4e8f3135828d9c77146469424ba5a0801ea626e3"
+          },
+          {
+            "sha": "90dbf074275d60c1fe74a3491883196f110970c0",
+            "committedAt": "2026-06-05T11:55:30Z",
+            "message": "Add Toccata upgrade guide (#1045)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/90dbf074275d60c1fe74a3491883196f110970c0"
+          },
+          {
+            "sha": "e5f6d1f7c86f3a3afbe97dbb75e72a0a3ff66a57",
+            "committedAt": "2026-06-05T14:30:53Z",
+            "message": "Merge branch 'master' into tn10",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/e5f6d1f7c86f3a3afbe97dbb75e72a0a3ff66a57"
+          }
+        ],
+        "files": [
+          {
+            "filename": ".github/workflows/ci.yaml",
+            "status": "modified",
+            "additions": 3,
+            "deletions": 1,
+            "changes": 4
+          },
+          {
+            "filename": "Cargo.lock",
+            "status": "modified",
+            "additions": 69,
+            "deletions": 67,
+            "changes": 136
+          },
+          {
+            "filename": "Cargo.toml",
+            "status": "modified",
+            "additions": 62,
+            "deletions": 62,
+            "changes": 124
+          },
+          {
+            "filename": "bridge/src/client_handler.rs",
+            "status": "modified",
+            "additions": 16,
+            "deletions": 78,
+            "changes": 94
+          },
+          {
+            "filename": "bridge/src/default_client.rs",
+            "status": "modified",
+            "additions": 7,
+            "deletions": 1,
+            "changes": 8
+          },
+          {
+            "filename": "bridge/src/prom.rs",
+            "status": "modified",
+            "additions": 73,
+            "deletions": 10,
+            "changes": 83
+          },
+          {
+            "filename": "bridge/src/share_handler.rs",
+            "status": "modified",
+            "additions": 112,
+            "deletions": 85,
+            "changes": 197
+          },
+          {
+            "filename": "bridge/src/stratum_context.rs",
+            "status": "modified",
+            "additions": 18,
+            "deletions": 0,
+            "changes": 18
+          },
+          {
+            "filename": "bridge/src/stratum_listener.rs",
+            "status": "modified",
+            "additions": 24,
+            "deletions": 1,
+            "changes": 25
+          },
+          {
+            "filename": "bridge/src/tests.rs",
+            "status": "modified",
+            "additions": 135,
+            "deletions": 20,
+            "changes": 155
+          },
+          {
+            "filename": "bridge/static/js/dashboard.js",
+            "status": "modified",
+            "additions": 4,
+            "deletions": 0,
+            "changes": 4
+          },
+          {
+            "filename": "cli/src/extensions/transaction.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "cli/src/modules/rpc.rs",
+            "status": "modified",
+            "additions": 9,
+            "deletions": 0,
+            "changes": 9
+          },
+          {
+            "filename": "components/consensusmanager/src/session.rs",
+            "status": "modified",
+            "additions": 4,
+            "deletions": 5,
+            "changes": 9
+          },
+          {
+            "filename": "consensus/benches/check_scripts.rs",
+            "status": "modified",
+            "additions": 3,
+            "deletions": 3,
+            "changes": 6
+          },
+          {
+            "filename": "consensus/client/src/block.rs",
+            "status": "added",
+            "additions": 11,
+            "deletions": 0,
+            "changes": 11
+          },
+          {
+            "filename": "consensus/client/src/input.rs",
+            "status": "modified",
+            "additions": 5,
+            "deletions": 5,
+            "changes": 10
+          },
+          {
+            "filename": "consensus/client/src/lib.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "consensus/client/src/serializable/numeric.rs",
+            "status": "modified",
+            "additions": 11,
+            "deletions": 11,
+            "changes": 22
+          },
+          {
+            "filename": "consensus/client/src/serializable/string.rs",
+            "status": "modified",
+            "additions": 11,
+            "deletions": 11,
+            "changes": 22
+          },
+          {
+            "filename": "consensus/client/src/signing.rs",
+            "status": "removed",
+            "additions": 0,
+            "deletions": 216,
+            "changes": 216
+          },
+          {
+            "filename": "consensus/client/src/transaction.rs",
+            "status": "modified",
+            "additions": 39,
+            "deletions": 16,
+            "changes": 55
+          },
+          {
+            "filename": "consensus/core/benches/serde_benchmark.rs",
+            "status": "modified",
+            "additions": 5,
+            "deletions": 5,
+            "changes": 10
+          },
+          {
+            "filename": "consensus/core/src/acceptance_data.rs",
+            "status": "modified",
+            "additions": 7,
+            "deletions": 0,
+            "changes": 7
+          },
+          {
+            "filename": "consensus/core/src/api/mod.rs",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4
+          },
+          {
+            "filename": "consensus/core/src/config/params.rs",
+            "status": "modified",
+            "additions": 12,
+            "deletions": 4,
+            "changes": 16
+          },
+          {
+            "filename": "consensus/core/src/hashing/sighash.rs",
+            "status": "modified",
+            "additions": 11,
+            "deletions": 11,
+            "changes": 22
+          },
+          {
+            "filename": "consensus/core/src/hashing/tx.rs",
+            "status": "modified",
+            "additions": 10,
+            "deletions": 10,
+            "changes": 20
+          },
+          {
+            "filename": "consensus/core/src/mass/mod.rs",
+            "status": "modified",
+            "additions": 7,
+            "deletions": 5,
+            "changes": 12
+          },
+          {
+            "filename": "consensus/core/src/mass/units.rs",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4
+          },
+          {
+            "filename": "consensus/core/src/merkle.rs",
+            "status": "modified",
+            "additions": 7,
+            "deletions": 7,
+            "changes": 14
+          },
+          {
+            "filename": "consensus/core/src/sign.rs",
+            "status": "modified",
+            "additions": 13,
+            "deletions": 13,
+            "changes": 26
+          },
+          {
+            "filename": "consensus/core/src/tx.rs",
+            "status": "modified",
+            "additions": 59,
+            "deletions": 30,
+            "changes": 89
+          },
+          {
+            "filename": "consensus/core/src/tx/serde_impl.rs",
+            "status": "modified",
+            "additions": 21,
+            "deletions": 8,
+            "changes": 29
+          },
+          {
+            "filename": "consensus/core/tests/db_compat.rs",
+            "status": "modified",
+            "additions": 4,
+            "deletions": 4,
+            "changes": 8
+          },
+          {
+            "filename": "consensus/src/consensus/mod.rs",
+            "status": "modified",
+            "additions": 33,
+            "deletions": 28,
+            "changes": 61
+          },
+          {
+            "filename": "consensus/src/pipeline/body_processor/body_validation_in_isolation.rs",
+            "status": "modified",
+            "additions": 10,
+            "deletions": 10,
+            "changes": 20
+          },
+          {
+            "filename": "consensus/src/pipeline/virtual_processor/utxo_validation.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "consensus/src/processes/pruning_proof/mod.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "consensus/src/processes/transaction_validator/tx_validation_in_isolation.rs",
+            "status": "modified",
+            "additions": 8,
+            "deletions": 8,
+            "changes": 16
+          },
+          {
+            "filename": "consensus/src/processes/transaction_validator/tx_validation_in_utxo_context.rs",
+            "status": "modified",
+            "additions": 26,
+            "deletions": 26,
+            "changes": 52
+          },
+          {
+            "filename": "consensus/wasm/src/utils.rs",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4
+          },
+          {
+            "filename": "crypto/txscript/Cargo.toml",
+            "status": "modified",
+            "additions": 3,
+            "deletions": 1,
+            "changes": 4
+          },
+          {
+            "filename": "crypto/txscript/benches/pricing.rs",
+            "status": "modified",
+            "additions": 38,
+            "deletions": 18,
+            "changes": 56
+          },
+          {
+            "filename": "crypto/txscript/examples/kip-10.rs",
+            "status": "modified",
+            "additions": 4,
+            "deletions": 4,
+            "changes": 8
+          },
+          {
+            "filename": "crypto/txscript/src/data_stack.rs",
+            "status": "modified",
+            "additions": 3,
+            "deletions": 2,
+            "changes": 5
+          },
+          {
+            "filename": "crypto/txscript/src/lib.rs",
+            "status": "modified",
+            "additions": 330,
+            "deletions": 115,
+            "changes": 445
+          },
+          {
+            "filename": "crypto/txscript/src/opcodes/mod.rs",
+            "status": "modified",
+            "additions": 4,
+            "deletions": 4,
+            "changes": 8
+          },
+          {
+            "filename": "crypto/txscript/src/runtime_resource_meter.rs",
+            "status": "modified",
+            "additions": 25,
+            "deletions": 20,
+            "changes": 45
+          },
+          {
+            "filename": "crypto/txscript/src/script_builder.rs",
+            "status": "modified",
+            "additions": 121,
+            "deletions": 10,
+            "changes": 131
+          },
+          {
+            "filename": "crypto/txscript/src/standard/multisig.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "crypto/txscript/src/wasm/builder.rs",
+            "status": "modified",
+            "additions": 120,
+            "deletions": 10,
+            "changes": 130
+          },
+          {
+            "filename": "crypto/txscript/test-data/script_tests.json",
+            "status": "modified",
+            "additions": 8,
+            "deletions": 2,
+            "changes": 10
+          },
+          {
+            "filename": "crypto/txscript/test-data/script_tests_covenants.json",
+            "status": "modified",
+            "additions": 97,
+            "deletions": 13,
+            "changes": 110
+          },
+          {
+            "filename": "docker/Dockerfile.kaspa-wallet",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4
+          },
+          {
+            "filename": "docker/Dockerfile.kaspad",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4
+          },
+          {
+            "filename": "docker/Dockerfile.rothschild",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4
+          },
+          {
+            "filename": "docker/Dockerfile.simpa",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4
+          },
+          {
+            "filename": "docker/Dockerfile.stratum-bridge",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4
+          },
+          {
+            "filename": "docs/toccata-guide.md",
+            "status": "added",
+            "additions": 122,
+            "deletions": 0,
+            "changes": 122
+          },
+          {
+            "filename": "kaspad/src/daemon.rs",
+            "status": "modified",
+            "additions": 19,
+            "deletions": 17,
+            "changes": 36
+          },
+          {
+            "filename": "mining/errors/src/mempool.rs",
+            "status": "modified",
+            "additions": 4,
+            "deletions": 0,
+            "changes": 4
+          },
+          {
+            "filename": "mining/src/manager.rs",
+            "status": "modified",
+            "additions": 14,
+            "deletions": 7,
+            "changes": 21
+          },
+          {
+            "filename": "mining/src/manager_tests.rs",
+            "status": "modified",
+            "additions": 7,
+            "deletions": 3,
+            "changes": 10
+          },
+          {
+            "filename": "mining/src/mempool/check_transaction_limits.rs",
+            "status": "modified",
+            "additions": 4,
+            "deletions": 4,
+            "changes": 8
+          },
+          {
+            "filename": "mining/src/mempool/check_transaction_standard.rs",
+            "status": "modified",
+            "additions": 261,
+            "deletions": 17,
+            "changes": 278
+          },
+          {
+            "filename": "mining/src/mempool/config.rs",
+            "status": "modified",
+            "additions": 5,
+            "deletions": 0,
+            "changes": 5
+          },
+          {
+            "filename": "mining/src/mempool/mod.rs",
+            "status": "modified",
+            "additions": 8,
+            "deletions": 3,
+            "changes": 11
+          },
+          {
+            "filename": "mining/src/mempool/model/frontier.rs",
+            "status": "modified",
+            "additions": 5,
+            "deletions": 39,
+            "changes": 44
+          },
+          {
+            "filename": "mining/src/mempool/model/frontier/feerate_key.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 11,
+            "changes": 12
+          },
+          {
+            "filename": "mining/src/mempool/model/transactions_pool.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 5,
+            "changes": 6
+          },
+          {
+            "filename": "mining/src/mempool/validate_and_insert_transaction.rs",
+            "status": "modified",
+            "additions": 11,
+            "deletions": 6,
+            "changes": 17
+          },
+          {
+            "filename": "mining/src/testutils/consensus_mock.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "mining/src/toccata_transient_mass_activation_tests.rs",
+            "status": "modified",
+            "additions": 104,
+            "deletions": 2,
+            "changes": 106
+          },
+          {
+            "filename": "protocol/flows/src/ibd/flow.rs",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4
+          },
+          {
+            "filename": "protocol/flows/src/v7/request_pruning_point_and_anticone.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "protocol/p2p/proto/p2p.proto",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4
+          },
+          {
+            "filename": "protocol/p2p/src/convert/tx.rs",
+            "status": "modified",
+            "additions": 14,
+            "deletions": 14,
+            "changes": 28
+          },
+          {
+            "filename": "rothschild/benches/bench.rs",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4
+          },
+          {
+            "filename": "rothschild/src/main.rs",
+            "status": "modified",
+            "additions": 6,
+            "deletions": 2,
+            "changes": 8
+          },
+          {
+            "filename": "rpc/core/src/api/ops.rs",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 0,
+            "changes": 2
+          },
+          {
+            "filename": "rpc/core/src/api/rpc.rs",
+            "status": "modified",
+            "additions": 9,
+            "deletions": 0,
+            "changes": 9
+          },
+          {
+            "filename": "rpc/core/src/convert/tx.rs",
+            "status": "modified",
+            "additions": 13,
+            "deletions": 11,
+            "changes": 24
+          },
+          {
+            "filename": "rpc/core/src/convert/verbosity.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "rpc/core/src/model/message.rs",
+            "status": "modified",
+            "additions": 119,
+            "deletions": 0,
+            "changes": 119
+          },
+          {
+            "filename": "rpc/core/src/model/optional/tx.rs",
+            "status": "modified",
+            "additions": 93,
+            "deletions": 12,
+            "changes": 105
+          },
+          {
+            "filename": "rpc/core/src/model/optional/tx_serde_tests.rs",
+            "status": "modified",
+            "additions": 85,
+            "deletions": 2,
+            "changes": 87
+          },
+          {
+            "filename": "rpc/core/src/model/tests.rs",
+            "status": "modified",
+            "additions": 35,
+            "deletions": 7,
+            "changes": 42
+          },
+          {
+            "filename": "rpc/core/src/model/tx.rs",
+            "status": "modified",
+            "additions": 190,
+            "deletions": 9,
+            "changes": 199
+          },
+          {
+            "filename": "rpc/core/src/model/verbosity.rs",
+            "status": "modified",
+            "additions": 6,
+            "deletions": 6,
+            "changes": 12
+          },
+          {
+            "filename": "rpc/core/src/wasm/convert.rs",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4
+          },
+          {
+            "filename": "rpc/core/src/wasm/message.rs",
+            "status": "modified",
+            "additions": 46,
+            "deletions": 6,
+            "changes": 52
+          },
+          {
+            "filename": "rpc/grpc/client/src/lib.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "rpc/grpc/core/proto/messages.proto",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 0,
+            "changes": 2
+          },
+          {
+            "filename": "rpc/grpc/core/proto/rpc.proto",
+            "status": "modified",
+            "additions": 21,
+            "deletions": 1,
+            "changes": 22
+          },
+          {
+            "filename": "rpc/grpc/core/src/convert/kaspad.rs",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 0,
+            "changes": 2
+          },
+          {
+            "filename": "rpc/grpc/core/src/convert/message.rs",
+            "status": "modified",
+            "additions": 34,
+            "deletions": 0,
+            "changes": 34
+          },
+          {
+            "filename": "rpc/grpc/core/src/convert/optional/tx.rs",
+            "status": "modified",
+            "additions": 4,
+            "deletions": 4,
+            "changes": 8
+          },
+          {
+            "filename": "rpc/grpc/core/src/convert/tx.rs",
+            "status": "modified",
+            "additions": 6,
+            "deletions": 6,
+            "changes": 12
+          },
+          {
+            "filename": "rpc/grpc/core/src/ops.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "rpc/grpc/server/src/request_handler/factory.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "rpc/grpc/server/src/tests/rpc_core_mock.rs",
+            "status": "modified",
+            "additions": 8,
+            "deletions": 0,
+            "changes": 8
+          },
+          {
+            "filename": "rpc/service/src/converter/consensus.rs",
+            "status": "modified",
+            "additions": 9,
+            "deletions": 5,
+            "changes": 14
+          },
+          {
+            "filename": "rpc/service/src/service.rs",
+            "status": "modified",
+            "additions": 82,
+            "deletions": 4,
+            "changes": 86
+          },
+          {
+            "filename": "rpc/wrpc/client/src/client.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "rpc/wrpc/examples/simple_client/src/main.rs",
+            "status": "modified",
+            "additions": 8,
+            "deletions": 0,
+            "changes": 8
+          },
+          {
+            "filename": "rpc/wrpc/server/src/router.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "rpc/wrpc/wasm/src/client.rs",
+            "status": "modified",
+            "additions": 3,
+            "deletions": 0,
+            "changes": 3
+          },
+          {
+            "filename": "simpa/src/simulator/miner.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "testing/integration/src/common/utils.rs",
+            "status": "modified",
+            "additions": 6,
+            "deletions": 1,
+            "changes": 7
+          },
+          {
+            "filename": "testing/integration/src/consensus_integration_tests.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "testing/integration/src/daemon_integration_tests.rs",
+            "status": "modified",
+            "additions": 8,
+            "deletions": 8,
+            "changes": 16
+          },
+          {
+            "filename": "testing/integration/src/mempool_benchmarks.rs",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4
+          },
+          {
+            "filename": "testing/integration/src/rpc_tests.rs",
+            "status": "modified",
+            "additions": 13,
+            "deletions": 0,
+            "changes": 13
+          },
+          {
+            "filename": "wallet/core/src/tests/rpc_core_mock.rs",
+            "status": "modified",
+            "additions": 8,
+            "deletions": 0,
+            "changes": 8
+          },
+          {
+            "filename": "wallet/core/src/tx/generator/generator.rs",
+            "status": "modified",
+            "additions": 9,
+            "deletions": 3,
+            "changes": 12
+          },
+          {
+            "filename": "wallet/core/src/tx/generator/test.rs",
+            "status": "modified",
+            "additions": 21,
+            "deletions": 3,
+            "changes": 24
+          },
+          {
+            "filename": "wallet/core/src/tx/mass.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "wallet/core/src/wasm/tx/mass.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "wallet/pskt/src/convert.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "wallet/pskt/src/pskt.rs",
+            "status": "modified",
+            "additions": 3,
+            "deletions": 3,
+            "changes": 6
+          },
+          {
+            "filename": "wallet/pskt/src/wasm/pskt.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "wasm/examples/nodejs/javascript/general/get-block-reward.js",
+            "status": "added",
+            "additions": 39,
+            "deletions": 0,
+            "changes": 39
+          },
+          {
+            "filename": "wasm/examples/nodejs/javascript/general/mempool-entries.js",
+            "status": "added",
+            "additions": 25,
+            "deletions": 0,
+            "changes": 25
+          },
+          {
+            "filename": "wasm/examples/nodejs/javascript/zkproof/groth16.js",
+            "status": "modified",
+            "additions": 220,
+            "deletions": 197,
+            "changes": 417
+          },
+          {
+            "filename": "wasm/examples/nodejs/javascript/zkproof/risc0-succinct.js",
+            "status": "modified",
+            "additions": 222,
+            "deletions": 199,
+            "changes": 421
+          }
+        ],
+        "impacts": [
+          {
+            "id": "activation-p2p",
+            "label": "Activation and P2P compatibility",
+            "fileCount": 3,
+            "commitCount": 1,
+            "matchedFiles": [
+              "consensus/core/src/config/params.rs",
+              "docs/toccata-guide.md",
+              "mining/src/toccata_transient_mass_activation_tests.rs"
+            ],
+            "matchedCommits": [
+              "feat(mempool): allow p2p relayed tx with low fees before toccata activation (#1022)"
+            ],
+            "builderImpact": "Node operators must track the activation DAA, release line, P2P version cutoff, and one-way upgrade constraints."
+          },
+          {
+            "id": "transaction-wire-format",
+            "label": "Transaction and wire-format contracts",
+            "fileCount": 5,
+            "commitCount": 3,
+            "matchedFiles": [
+              "consensus/core/src/tx.rs",
+              "consensus/core/src/tx/serde_impl.rs",
+              "protocol/p2p/proto/p2p.proto",
+              "rpc/grpc/core/proto/messages.proto",
+              "rpc/grpc/core/proto/rpc.proto"
+            ],
+            "matchedCommits": [
+              "Rename tx.mass -> tx.storage_mass (#1039)",
+              "Rename input.mass -> input.compute_commit, TxInputMass -> ComputeCommit (#1040)",
+              "Make storage_mass a required field in RpcTransaction when decoding JSON (#1043)"
+            ],
+            "builderImpact": "RPC, protobuf, miner, pool, wallet, and indexer models must preserve v1 transaction fields without lossy renaming."
+          },
+          {
+            "id": "covenant-lineage",
+            "label": "Covenants and UTXO lineage",
+            "fileCount": 3,
+            "commitCount": 1,
+            "matchedFiles": [
+              "consensus/src/pipeline/virtual_processor/utxo_validation.rs",
+              "consensus/src/processes/transaction_validator/tx_validation_in_utxo_context.rs",
+              "crypto/txscript/test-data/script_tests_covenants.json"
+            ],
+            "matchedCommits": [
+              "fix(wallet/generator): include covenant bindings (#896)"
+            ],
+            "builderImpact": "UTXO-first applications must preserve covenant bindings, authorizing inputs, covenant IDs, and successor lineage."
+          },
+          {
+            "id": "fees-mass-mempool",
+            "label": "Fee, mass, and mempool policy",
+            "fileCount": 16,
+            "commitCount": 5,
+            "matchedFiles": [
+              "consensus/core/src/mass/mod.rs",
+              "consensus/core/src/mass/units.rs",
+              "mining/errors/src/mempool.rs",
+              "mining/src/mempool/check_transaction_limits.rs",
+              "mining/src/mempool/check_transaction_standard.rs",
+              "mining/src/mempool/config.rs",
+              "mining/src/mempool/mod.rs",
+              "mining/src/mempool/model/frontier.rs"
+            ],
+            "matchedCommits": [
+              "feat(mempool): allow p2p relayed tx with low fees before toccata activation (#1022)",
+              "Rename tx.mass -> tx.storage_mass (#1039)",
+              "Rename input.mass -> input.compute_commit, TxInputMass -> ComputeCommit (#1040)",
+              "Make storage_mass a required field in RpcTransaction when decoding JSON (#1043)",
+              "fix(wasm): mempool entries request args are required (#951)"
+            ],
+            "builderImpact": "Fee estimation must distinguish consensus validity from node relay policy and use current mass dimensions."
+          },
+          {
+            "id": "rpc-wasm-sdk",
+            "label": "RPC, WASM, and SDK surface",
+            "fileCount": 36,
+            "commitCount": 2,
+            "matchedFiles": [
+              "consensus/wasm/src/utils.rs",
+              "crypto/txscript/src/wasm/builder.rs",
+              "rpc/core/src/api/ops.rs",
+              "rpc/core/src/api/rpc.rs",
+              "rpc/core/src/convert/tx.rs",
+              "rpc/core/src/convert/verbosity.rs",
+              "rpc/core/src/model/message.rs",
+              "rpc/core/src/model/optional/tx.rs"
+            ],
+            "matchedCommits": [
+              "feat(wasm/txscript): allows passing script builder flags (#999)",
+              "fix(wasm): mempool entries request args are required (#951)"
+            ],
+            "builderImpact": "Integrators must regenerate or update client bindings and test required arguments, aliases, and serialization behavior."
+          },
+          {
+            "id": "wallet-pskt",
+            "label": "Wallet and PSKT construction",
+            "fileCount": 9,
+            "commitCount": 1,
+            "matchedFiles": [
+              "consensus/client/src/signing.rs",
+              "wallet/core/src/tests/rpc_core_mock.rs",
+              "wallet/core/src/tx/generator/generator.rs",
+              "wallet/core/src/tx/generator/test.rs",
+              "wallet/core/src/tx/mass.rs",
+              "wallet/core/src/wasm/tx/mass.rs",
+              "wallet/pskt/src/convert.rs",
+              "wallet/pskt/src/pskt.rs"
+            ],
+            "matchedCommits": [
+              "fix(wallet/generator): include covenant bindings (#896)"
+            ],
+            "builderImpact": "Wallet construction and signing previews must preserve covenant fields, compute commitments, storage mass, and explicit fees."
+          },
+          {
+            "id": "zk-verification",
+            "label": "ZK verification and pricing",
+            "fileCount": 2,
+            "commitCount": 0,
+            "matchedFiles": [
+              "wasm/examples/nodejs/javascript/zkproof/groth16.js",
+              "wasm/examples/nodejs/javascript/zkproof/risc0-succinct.js"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "Proof-system dependencies, verifier hardening, script-unit pricing, proof size, and failure behavior remain security-critical."
+          },
+          {
+            "id": "node-storage-ibd",
+            "label": "Node storage, pruning, and IBD",
+            "fileCount": 4,
+            "commitCount": 2,
+            "matchedFiles": [
+              "consensus/core/tests/db_compat.rs",
+              "consensus/src/processes/pruning_proof/mod.rs",
+              "protocol/flows/src/ibd/flow.rs",
+              "protocol/flows/src/v7/request_pruning_point_and_anticone.rs"
+            ],
+            "matchedCommits": [
+              "Rename tx.mass -> tx.storage_mass (#1039)",
+              "Make storage_mass a required field in RpcTransaction when decoding JSON (#1043)"
+            ],
+            "builderImpact": "Operators must plan database migrations, resync cost, retention, pruning compatibility, and recovery procedures."
+          },
+          {
+            "id": "security-hardening",
+            "label": "Security hardening",
+            "fileCount": 0,
+            "commitCount": 3,
+            "matchedFiles": [],
+            "matchedCommits": [
+              "Fixes #1017 — unbounded Stratum input buffer allowing remote memory exhaustion (#1023)",
+              "Integrate finalized ZK hardening and KIP-21 shortcut (#1027)",
+              "Fix script engine handling of unknown script versions (#1046)"
+            ],
+            "builderImpact": "Consensus and network-facing fixes require adversarial regression tests and careful version-boundary review."
+          },
+          {
+            "id": "tests-docs",
+            "label": "Tests, benchmarks, and operator docs",
+            "fileCount": 8,
+            "commitCount": 0,
+            "matchedFiles": [
+              "consensus/benches/check_scripts.rs",
+              "consensus/core/benches/serde_benchmark.rs",
+              "consensus/core/tests/db_compat.rs",
+              "crypto/txscript/benches/pricing.rs",
+              "docs/toccata-guide.md",
+              "rothschild/benches/bench.rs",
+              "rpc/grpc/server/src/tests/rpc_core_mock.rs",
+              "wallet/core/src/tests/rpc_core_mock.rs"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "Changed examples, tests, and guides should become reproducible compatibility checks in downstream projects."
+          }
+        ],
+        "url": "https://github.com/kaspanet/rusty-kaspa/compare/6899ea75384c1f422fe4ab0e47c439442da3f4fa...e5f6d1f7c86f3a3afbe97dbb75e72a0a3ff66a57"
+      },
+      {
+        "repo": "kaspanet/rusty-kaspa",
+        "branch": "tn12",
+        "label": "kaspanet/rusty-kaspa tn12",
+        "beforeSha": "ab4c51afde90dc6e0bce3f782d0a18af5da29434",
+        "afterSha": "ab4c51afde90dc6e0bce3f782d0a18af5da29434",
+        "ok": true,
+        "status": "unchanged",
+        "commits": [],
+        "files": [],
+        "impacts": []
+      },
+      {
+        "repo": "kaspanet/kips",
+        "branch": "master",
+        "label": "kaspanet/kips master",
+        "beforeSha": "1aba3b8321c1d27e00b7d87bd7c74ef879efabdc",
+        "afterSha": "1aba3b8321c1d27e00b7d87bd7c74ef879efabdc",
+        "ok": true,
+        "status": "unchanged",
+        "commits": [],
+        "files": [],
+        "impacts": []
+      },
+      {
+        "repo": "kaspanet/docs",
+        "branch": "main",
+        "label": "kaspanet/docs main",
+        "beforeSha": "6aa5e9f52995f53dc85ef3e8c7c71bab9a359b3e",
+        "afterSha": "6aa5e9f52995f53dc85ef3e8c7c71bab9a359b3e",
+        "ok": true,
+        "status": "unchanged",
+        "commits": [],
+        "files": [],
+        "impacts": []
+      },
+      {
+        "repo": "kaspanet/silverscript",
+        "branch": "master",
+        "label": "kaspanet/silverscript master",
+        "beforeSha": "2c4623124d75bd8a9a7f87ded9413ef9f6b17acd",
+        "afterSha": "2c4623124d75bd8a9a7f87ded9413ef9f6b17acd",
+        "ok": true,
+        "status": "unchanged",
+        "commits": [],
+        "files": [],
+        "impacts": []
+      },
+      {
+        "repo": "kaspanet/vprogs",
+        "branch": "master",
+        "label": "kaspanet/vprogs master",
+        "beforeSha": "57039db09ea958689aee2ae89f81ba40c8cc3e6d",
+        "afterSha": "57039db09ea958689aee2ae89f81ba40c8cc3e6d",
+        "ok": true,
+        "status": "unchanged",
+        "commits": [],
+        "files": [],
+        "impacts": []
       }
     ]
   },
   "kaspaNetwork": [
     {
+      "label": "Mainnet blockdag",
+      "url": "https://api.kaspa.org/info/blockdag",
+      "expectedNetworkName": "kaspa-mainnet",
+      "ok": true,
+      "status": 200,
+      "networkName": "kaspa-mainnet",
+      "virtualDaaScore": "452903728",
+      "blockCount": "26371161",
+      "headerCount": "26371161",
+      "tipHashes": [
+        "ac07ad88dbc0a3e6bbde199b971759dc49eee576c680453b45558f623c3b7468",
+        "a77ab6e83f8f4e67ca1d499e7f5668d81549184f0c6a139cc6cda7a1891209b3",
+        "913477ad53e35abe526253396822ee6c10afac8b532c22706892ed5732380fce",
+        "023d8580f13035d75658ce8c75926166d78f288551aad62c8a556b1eda3cecd6",
+        "1a899f672255be9cfa28b540150aec6a2fdc6b2b540ae95a33c44e1e14a4a978"
+      ]
+    },
+    {
       "label": "TN10 blockdag",
       "url": "https://api-tn10.kaspa.org/info/blockdag",
+      "expectedNetworkName": "kaspa-testnet-10",
       "ok": true,
       "status": 200,
       "networkName": "kaspa-testnet-10",
-      "virtualDaaScore": "481841011",
-      "blockCount": "1110011",
-      "headerCount": "1110011",
+      "virtualDaaScore": "483498498",
+      "blockCount": "1469279",
+      "headerCount": "1469279",
       "tipHashes": [
-        "595eb092e0676c13b7913dfc89d6556862dd7e1cd021d8e1745a42e722e9cf0b",
-        "94d36fd682be4d05cec9710883f61ce0c903879c4b49ba0d48df0d80be2a2a35",
-        "942f3874868b00e4cb4f30a6d7e9db49c27627ba727b33274c7d207ff6e2f694"
+        "5f691888c7a343df7ce246ae284e865342b39f8ff9e2d525ca8944b50727fb63"
       ]
     },
     {
       "label": "TN12 blockdag",
       "url": "https://api-tn12.kaspa.org/info/blockdag",
-      "ok": true,
-      "status": 200,
-      "networkName": "kaspa-testnet-12",
-      "virtualDaaScore": "29336303",
-      "blockCount": "1452275",
-      "headerCount": "1452275",
-      "tipHashes": [
-        "5af440cbede140620ee8c000ba1c362215eb67d810edcf7b06091551aa711053",
-        "015d03c03287262269ceceaee2a3197ddfd4d2132a43276e720df5f8c38c9ca4"
-      ]
+      "expectedNetworkName": "kaspa-testnet-12",
+      "ok": false,
+      "status": 500,
+      "error": "Internal server error"
     }
   ],
   "webSources": [
+    {
+      "label": "Rusty Kaspa Toccata node guide",
+      "url": "https://raw.githubusercontent.com/kaspanet/rusty-kaspa/v2.0.0/docs/toccata-guide.md",
+      "ok": true,
+      "status": 200,
+      "etag": "W/\"a0b7503881a7cb9afdb95db8e776b5e30ccb326eb294be5d99ddbe006aa708f2\"",
+      "lastModified": null,
+      "contentLength": 8267,
+      "contentSha256": "1878a361f41bbc4dbdf61db2ed1b7381c2c2dad94ab64332f1023c039761c429",
+      "fingerprintBasis": "etag:W/\"a0b7503881a7cb9afdb95db8e776b5e30ccb326eb294be5d99ddbe006aa708f2\"",
+      "sourceFingerprint": "3d09ed0027e1837a49c7c0252a887ed9e03801910b792a25b3ba526fe521bc78"
+    },
     {
       "label": "Kaspa programmability overview",
       "url": "https://docs.kaspa.org/programmability",
@@ -825,7 +3159,7 @@
       "etag": null,
       "lastModified": "Tue, 19 Aug 2025 21:04:05 GMT",
       "contentLength": 46722,
-      "contentSha256": "dc273b73ade523866a268d212e2ad0de868037d8e4711762604aaa875733cb51",
+      "contentSha256": "493223d68513c4da4302755726fe0f7414363713d82df7e6fc7d6375081c0f9d",
       "fingerprintBasis": "last-modified:Tue, 19 Aug 2025 21:04:05 GMT;bytes:46722",
       "sourceFingerprint": "0d01364b7b4050414ae64384d32e51f11cb58b186bb7e78fc3ee1e90c29eaff6"
     },
@@ -837,7 +3171,7 @@
       "etag": null,
       "lastModified": "Fri, 26 Sep 2025 01:10:08 GMT",
       "contentLength": 24937,
-      "contentSha256": "a5d2724a625c53520f4e29ba6adfde74c558be01cbc1c81bc8076dda7b9eef67",
+      "contentSha256": "cdcb6a99d80f0748744329d9d1447f6cc12a6ac0b724df62f10d366aa2669044",
       "fingerprintBasis": "last-modified:Fri, 26 Sep 2025 01:10:08 GMT;bytes:24937",
       "sourceFingerprint": "647b4d92432f01cb389d744c3c0ffa74e2e64b0cb27228bdb488fd708f2d4b57"
     },
@@ -849,7 +3183,7 @@
       "etag": null,
       "lastModified": "Sun, 24 Aug 2025 16:16:12 GMT",
       "contentLength": 32618,
-      "contentSha256": "cd89a9d867c5c38d88c1d4b4b045f5c5e0571e36a3ea8a4d1d590659e31b1244",
+      "contentSha256": "2252e2a567ea3190ccd743f43342f6486ccf0713c7ee818c6f37361ba2368ce4",
       "fingerprintBasis": "last-modified:Sun, 24 Aug 2025 16:16:12 GMT;bytes:32618",
       "sourceFingerprint": "cc44adf3732df5175a21643170a28cd7192daaec27c4e995d9ac4efecd489b0b"
     },
@@ -861,41 +3195,51 @@
       "etag": null,
       "lastModified": "Sun, 23 Feb 2025 15:17:32 GMT",
       "contentLength": 56014,
-      "contentSha256": "288c0f328c6329eb717804494ad84fa56834b41c1c1e1f208874b28878f9d4cf",
+      "contentSha256": "54e4c568d3b782a24493edd9dd62ce03a411fa54df6816c29010c4efa4fee253",
       "fingerprintBasis": "last-modified:Sun, 23 Feb 2025 15:17:32 GMT;bytes:56014",
       "sourceFingerprint": "57a1692460057531288a423923221b10db000ae774f0c41a69256278d4a0dd98"
     }
   ],
   "fetchWarnings": [],
   "verdict": {
-    "mainnetActivation": "not_verified_by_monitor; latest tracked Toccata mainnet release is pre-activation",
+    "mainnetActivation": "scheduled for mainnet DAA 474165565 (June 30, 2026, at 16:15 UTC); current mainnet is below threshold",
+    "activation": {
+      "state": "scheduled",
+      "releaseTag": "v2.0.0",
+      "releasePublishedAt": "2026-06-05T12:09:13Z",
+      "daaScore": 474165565,
+      "scheduleText": "June 30, 2026, at 16:15 UTC",
+      "currentDaaScore": 452903728,
+      "remainingDaaScore": 21261837,
+      "endpointVerified": true
+    },
     "implementationStatus": "PR #1000 is closed and merged against master.",
-    "branchStatus": "rusty-kaspa master d5205cc72ab7, toccata 0ae28f939e61.",
+    "branchStatus": "rusty-kaspa master 90dbf074275d, toccata 0ae28f939e61.",
     "caution": [
       "Do not equate open PRs with merged production behavior.",
-      "Do not equate TN10/TN12 observations with mainnet activation.",
-      "Use branch hashes, PR base refs, KIP merge state, and docs hashes together before making claims."
+      "A final release and activation schedule do not mean the activation DAA has been reached.",
+      "Separate protocol activation from wallet, pool, indexer, explorer, and application readiness."
     ]
   },
-  "factsHash": "1f3f260011d79cc6d36622835160dfdcf2080f2228304b4b496ffd468ed45fc0",
-  "previousFactsHash": "502d425b101943e3d47a4dab0564503989357cc14c8d003757dc2e2521d7f534",
-  "changedSincePrevious": true,
+  "factsHash": "09fb9264350e6cf7c7e8882ebc1bf704383afea8878a8bb70a3ccab70e58bf4f",
+  "previousFactsHash": "09fb9264350e6cf7c7e8882ebc1bf704383afea8878a8bb70a3ccab70e58bf4f",
+  "changedSincePrevious": false,
   "changeSummary": {
-    "previousCheckedAt": "2026-06-04T03:31:13.507Z",
-    "currentCheckedAt": "2026-06-04T03:33:39.389Z",
-    "previousFactsHash": "502d425b101943e3d47a4dab0564503989357cc14c8d003757dc2e2521d7f534",
-    "currentFactsHash": "1f3f260011d79cc6d36622835160dfdcf2080f2228304b4b496ffd468ed45fc0",
-    "changedSincePrevious": true,
+    "previousCheckedAt": "2026-06-06T01:38:20.406Z",
+    "currentCheckedAt": "2026-06-06T01:39:16.315Z",
+    "previousFactsHash": "09fb9264350e6cf7c7e8882ebc1bf704383afea8878a8bb70a3ccab70e58bf4f",
+    "currentFactsHash": "09fb9264350e6cf7c7e8882ebc1bf704383afea8878a8bb70a3ccab70e58bf4f",
+    "changedSincePrevious": false,
     "sections": {
       "facts": [
-        "factsHash 502d425b101943e3d47a4dab0564503989357cc14c8d003757dc2e2521d7f534 -> 1f3f260011d79cc6d36622835160dfdcf2080f2228304b4b496ffd468ed45fc0"
+        "No stable monitored fact changes detected."
       ],
       "githubPulls": [],
       "releases": [],
       "refs": [],
       "network": [
-        "TN10 blockdag: virtualDaaScore 481839338 -> 481841011; blockCount 1108338 -> 1110011; headerCount 1108338 -> 1110011.",
-        "TN12 blockdag: virtualDaaScore 29334710 -> 29336303; blockCount 1450682 -> 1452275; headerCount 1450682 -> 1452275."
+        "Mainnet blockdag: virtualDaaScore 452903094 -> 452903728; blockCount 26370527 -> 26371161; headerCount 26370527 -> 26371161.",
+        "TN10 blockdag: virtualDaaScore 483497959 -> 483498498; blockCount 1468740 -> 1469279; headerCount 1468740 -> 1469279."
       ],
       "webSources": []
     }

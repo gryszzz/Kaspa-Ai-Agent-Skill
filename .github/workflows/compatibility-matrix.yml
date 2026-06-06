@@ -7,6 +7,8 @@ on:
     paths:
       - "skills/public/kaspa-sovereign-architect-engine/**"
       - "scripts/toccata-source-monitor.mjs"
+      - "scripts/toccata-source-monitor.test.mjs"
+      - "scripts/lib/**"
       - "scripts/kaspa-knowledge-drill.mjs"
       - "scripts/covenant-lineage-prototype.mjs"
       - "scripts/vprog-scope-simulator.mjs"
@@ -22,6 +24,8 @@ on:
     paths:
       - "skills/public/kaspa-sovereign-architect-engine/**"
       - "scripts/toccata-source-monitor.mjs"
+      - "scripts/toccata-source-monitor.test.mjs"
+      - "scripts/lib/**"
       - "scripts/kaspa-knowledge-drill.mjs"
       - "scripts/covenant-lineage-prototype.mjs"
       - "scripts/vprog-scope-simulator.mjs"
@@ -55,7 +59,14 @@ jobs:
           node-version: "24"
 
       - name: Run compatibility validator (all targets)
-        run: node skills/public/kaspa-sovereign-architect-engine/scripts/validate-compatibility.mjs --all
+        run: |
+          node skills/public/kaspa-sovereign-architect-engine/scripts/validate-compatibility.mjs --all
+          node --test skills/public/kaspa-sovereign-architect-engine/scripts/validate-compatibility.test.mjs
+
+      - name: Test Toccata source intelligence
+        run: |
+          node --test scripts/toccata-source-monitor.test.mjs
+          node scripts/toccata-source-monitor.mjs --check
 
       - name: Run local knowledge drill
         run: |
@@ -73,6 +84,26 @@ jobs:
 
       - name: Run mainnet readiness gate
         run: node scripts/toccata-mainnet-readiness-gate.mjs --check
+
+      - name: Build and smoke test skill package
+        shell: bash
+        run: |
+          VERSION="$(node -e "const m=require('./skills/public/kaspa-sovereign-architect-engine/manifest.json'); process.stdout.write(m.version)")"
+          OUT_DIR="$RUNNER_TEMP/kaspa-skill-package"
+          EXTRACT_DIR="$RUNNER_TEMP/kaspa-skill-extracted"
+          skills/public/kaspa-sovereign-architect-engine/scripts/package-release.sh "$OUT_DIR" "v$VERSION"
+          mkdir -p "$EXTRACT_DIR"
+          unzip -q "$OUT_DIR/kaspa-sovereign-architect-engine-v$VERSION.zip" -d "$EXTRACT_DIR"
+          cd "$EXTRACT_DIR/kaspa-sovereign-architect-engine"
+          node scripts/validate-compatibility.mjs --all
+          node --test scripts/validate-compatibility.test.mjs
+          node --test scripts/toccata-source-monitor.test.mjs
+          node scripts/toccata-source-monitor.mjs --check
+          node scripts/kaspa-knowledge-drill.mjs --check > "$RUNNER_TEMP/packaged-knowledge-drill.md"
+          node scripts/covenant-lineage-prototype.mjs --check-all
+          node scripts/vprog-scope-simulator.mjs --check
+          node scripts/toccata-network-check.mjs --check
+          node scripts/toccata-mainnet-readiness-gate.mjs --check
 
   target-matrix:
     name: Target ${{ matrix.target }}

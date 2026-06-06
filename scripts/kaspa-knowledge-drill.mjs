@@ -58,10 +58,23 @@ function buildReleaseRows(snapshot) {
   });
 }
 
+function buildBranchDeltaRows(snapshot) {
+  return (snapshot.github?.branchDeltas || [])
+    .filter((delta) => delta.impacts?.length)
+    .map(
+      (delta) =>
+        `| ${delta.label} | ${delta.status} | ${delta.totalCommits || 0} | ${delta.fileCount || 0} | ${delta.impacts
+          .map((impact) => impact.label)
+          .join(", ")} |`,
+    );
+}
+
 function buildOutput(snapshot) {
   const zk = findPull(snapshot, "kaspanet/rusty-kaspa", 1013);
+  const mainnet = findNetwork(snapshot, "Mainnet blockdag");
   const tn10 = findNetwork(snapshot, "TN10 blockdag");
   const tn12 = findNetwork(snapshot, "TN12 blockdag");
+  const activation = snapshot.verdict?.activation || {};
 
   return `# Kaspa Toccata Knowledge Drill
 
@@ -81,10 +94,25 @@ Release pulse:
 | --- | --- | --- | --- | --- |
 ${buildReleaseRows(snapshot).join("\n")}
 
-Testnet pulse:
+Branch-change intelligence:
 
+| Source | Status | Commits | Files | Engineering impact |
+| --- | --- | --- | --- | --- |
+${buildBranchDeltaRows(snapshot).join("\n") || "| No changed branches | unchanged | 0 | 0 | none |"}
+
+Network pulse:
+
+- Mainnet: ${formatNetwork(mainnet)}
 - TN10: ${formatNetwork(tn10)}
 - TN12: ${formatNetwork(tn12)}
+
+Activation pulse:
+
+- State: ${activation.state || "unknown"}
+- Release: ${activation.releaseTag || "unknown"}
+- Activation DAA: ${activation.daaScore ?? "unknown"}
+- Current mainnet DAA: ${activation.currentDaaScore ?? "unknown"}
+- Remaining DAA: ${activation.remainingDaaScore ?? "unknown"}
 
 Mainnet rule:
 
@@ -98,10 +126,11 @@ Answer these without opening notes, then check against the snapshot and corpus:
 1. What exact evidence separates TN10/TN12 Toccata behavior from mainnet activation?
 2. What does PR #1000 currently prove, and what does it not prove?
 3. What changed or needs attention in PR #1013? Current status: ${formatPull(zk)}.
-4. What does \`v1.3.0-toc.5\` prove, and what does it explicitly not prove?
-5. Which tracked KIP-16/17/20/21 documents are merged, and why does merged KIP status still not prove mainnet activation?
-6. What wallet UX would prevent a covenant spend from looking like an ordinary payment?
-7. What network names did the latest TN10/TN12 endpoints return, and why does that matter?
+4. What does \`v2.0.0\` prove, and why is Toccata still not active before DAA ${activation.daaScore ?? "unknown"}?
+5. How did \`Transaction.mass\`, \`TransactionInput.mass\`, and their API names change for Toccata integrations?
+6. Which tracked KIP-16/17/20/21 documents are merged, and why does merged KIP status still not prove activation?
+7. What wallet UX would prevent a covenant spend from looking like an ordinary payment?
+8. What network names did the latest mainnet/TN10/TN12 endpoints return, and why does that matter?
 
 ## Deep Drills
 
@@ -117,23 +146,24 @@ Answer these without opening notes, then check against the snapshot and corpus:
 
 Reject or qualify each claim:
 
-1. "Toccata is live on mainnet because TN10 passed its activation score."
-2. "A pre-activation mainnet pre-release is final activation evidence."
+1. "Toccata is live on mainnet because v2.0.0 was published."
+2. "A final release schedule proves the activation DAA has already been reached."
 3. "A merged PR is merged to master even when its base branch is a feature branch."
 4. "A merged KIP file proves mainnet activation."
 5. "A covenant ID proves the state transition is semantically valid."
 6. "A testnet SilverScript demo is production wallet support."
 7. "A proof verifier opcode removes the need to reason about witness availability or verification cost."
-8. "A node endpoint is trustworthy without checking its returned network name."
+8. "The deprecated JSON \`mass\` alias and \`storageMass\` can disagree safely."
+9. "A node endpoint is trustworthy without checking its returned network name."
 
 ## Builder Sprint
 
 Today, build or update one small artifact:
 
-1. A source diff note for PR #1013 if its head changed.
+1. A compatibility fixture for \`storageMass\`, legacy \`mass\`, and conflicting-field rejection.
 2. A covenant lineage fixture that stresses reorg, duplicate continuation, wrong-network, or missing-metadata behavior.
 3. A wallet signing preview golden case from covenant fixture output.
-4. A TN10/TN12 multi-endpoint run using \`scripts/toccata-network-check.mjs --live\`.
+4. A mainnet/TN10/TN12 endpoint review with explicit network-name checks.
 5. A vProg scope simulation for one app idea.
 6. A mainnet readiness gate review using \`scripts/toccata-mainnet-readiness-gate.mjs\`.
 

@@ -189,6 +189,7 @@ async function main() {
 
   if (live) {
     const configured = [
+      ...parseEndpointEnv("TOCCATA_MAINNET_ENDPOINTS", "MAINNET", "kaspa-mainnet", "https://api.kaspa.org/info/blockdag"),
       ...parseEndpointEnv("TOCCATA_TN10_ENDPOINTS", "TN10", "kaspa-testnet-10", "https://api-tn10.kaspa.org/info/blockdag"),
       ...parseEndpointEnv("TOCCATA_TN12_ENDPOINTS", "TN12", "kaspa-testnet-12", "https://api-tn12.kaspa.org/info/blockdag"),
     ];

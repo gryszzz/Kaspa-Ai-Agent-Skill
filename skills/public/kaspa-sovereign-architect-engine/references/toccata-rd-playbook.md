@@ -29,7 +29,7 @@ Reader-facing docs page: `docs/toccata-evidence-ladder.md` in the repo, or `refe
 7. Official Kaspa docs and docs source files
 8. Kaspa Research posts
 9. SilverScript and vProgs repositories
-10. Live TN10/TN12 REST checks
+10. Live mainnet/TN10/TN12 REST checks
 11. Community commentary, videos, posts, and summaries
 
 Rules:
@@ -50,21 +50,28 @@ Every serious Toccata report must record:
 - `rusty-kaspa` `tn10` and `tn12` hashes when relevant
 - latest stable `rusty-kaspa` release tag
 - Toccata release or pre-release tags, including whether each tag is activation or pre-activation evidence
+- final activation DAA, current mainnet DAA, and whether the threshold has been reached
+- recent branch-delta commits and engineering impact lanes
 - state of Rusty Kaspa PR #1000
 - state of Rusty Kaspa PR #1013
 - KIP-16, KIP-17, KIP-20, KIP-21 PR states and document statuses
-- TN10 and TN12 live DAA scores when claiming activation behavior
+- mainnet, TN10, and TN12 live DAA scores when claiming activation behavior
 
 ## Current Source Watchlist
 
-Current June 4, 2026 posture from `research-snapshots/toccata/latest.md`:
+Current June 6, 2026 posture from `research-snapshots/toccata/latest.md`:
 
-- `v1.3.0-toc.5` is a Rusty Kaspa Toccata mainnet pre-activation pre-release published on 2026-06-03. It is mainnet sanity-testing evidence and explicitly not mainnet activation evidence.
+- `v2.0.0` is the final Rusty Kaspa Toccata release, published on 2026-06-05.
+- Mainnet activation is scheduled for DAA `474,165,565`, roughly 2026-06-30 16:15 UTC. The live mainnet endpoint was still below that threshold in the 2026-06-06 snapshot.
+- P2P protocol version 10 becomes mandatory 24 hours before activation.
+- The latest `master` delta includes `storage_mass`/`storageMass`, `compute_commit`, required RPC storage mass decoding, wallet covenant-binding generation, WASM script-builder flags, required mempool request arguments, activation configuration, and unknown-script-version hardening.
 - `tn10-toc3` is a TN10 Toccata ZK hardening pre-release published on 2026-05-27. Its notes schedule activation for May 28, 2026 around 16:00 UTC at DAA score 476,232,000.
 - PR #1000 is closed and merged against `master`.
 - PR #1013 is closed and merged against `tn10`.
 - KIP-16, KIP-17, KIP-20, and KIP-21 PRs are closed and merged to `kaspanet/kips` `master`; their merged document statuses indicate implemented/activated on TN10.
-- Mainnet activation is still `not_verified_by_monitor`; run the mainnet readiness gate before making any mainnet claim.
+- Protocol activation is still blocked until the live mainnet DAA reaches the release threshold; wallet/indexer readiness remains a separate audit.
+- The node database upgrade is one-way; rollback to a pre-Toccata node requires a resync.
+- Pools and miners must preserve output covenant data and input compute commitments from block-template receipt through block submission.
 
 Rusty Kaspa:
 
@@ -74,9 +81,10 @@ Rusty Kaspa:
 - branch `tn10`
 - branch `tn12`
 - tag `v1.3.0-toc.5`
+- tag `v2.0.0`
 - tag `tn10-toc3`
 - tag `tn10-toc2`
-- latest stable tag
+- latest stable tag and activation schedule
 
 KIPs:
 
@@ -124,6 +132,8 @@ Track:
 - UTXO lineage rules
 - P2SH/state encoding conventions
 - transaction version and covenant binding rules
+- `TransactionInput.compute_commit`
+- `Transaction.storage_mass` / JSON-WASM `storageMass` compatibility
 - SilverScript compiler output
 
 Builder output:
@@ -136,6 +146,8 @@ Builder output:
 Bundled release checks:
 
 ```bash
+node --test scripts/toccata-source-monitor.test.mjs
+node scripts/toccata-source-monitor.mjs --check
 node scripts/covenant-lineage-prototype.mjs --check-all
 ```
 
@@ -147,6 +159,7 @@ Track:
 - Groth16 verifier path
 - RISC0 Succinct verifier path
 - PR #1013 changes
+- final `v2.0.0` verifier and pricing behavior
 - pricing and runtime resource metering
 - proof data shape and transaction size constraints
 
@@ -213,7 +226,7 @@ Phase 1: Evidence engine
 
 - Implement a repeatable source audit command.
 - Record branch hashes and PR states.
-- Diff `toccata` against `master` by feature bucket.
+- Diff current branch heads against the previous snapshot by engineering impact lane.
 - Store snapshots with UTC timestamps.
 
 Phase 2: Covenant lab

@@ -2,14 +2,14 @@
 
 This page explains how this repository ranks Toccata-era evidence. It is meant for readers who need to decide whether a claim is mainnet behavior, testnet behavior, branch-only work, a proposal, or research direction.
 
-Short rule: TN10 and TN12 evidence is useful testnet evidence. It is not mainnet activation.
+Short rule: a final release with a future DAA is scheduled mainnet evidence. Active mainnet behavior begins only when a verified mainnet endpoint reaches that DAA.
 
 ## Source Tiers
 
 Tier 1: stable release notes and tags
 
 - Use for final release claims.
-- Mainnet activation claims need explicit release, activation, or merged production evidence.
+- Mainnet activation claims need explicit release, activation DAA, merged production evidence, and live mainnet threshold evidence.
 - A pre-activation pre-release is useful upgrade evidence, but it is not final activation evidence.
 
 Tier 2: Toccata pre-release notes and tags
@@ -57,9 +57,10 @@ Tier 9: tooling repositories
 - SilverScript, vProgs, SDKs, examples, and experiments help builders prepare.
 - A working testnet tool is not the same as audited mainnet wallet or indexer support.
 
-Tier 10: live TN10/TN12 signals
+Tier 10: live mainnet/TN10/TN12 signals
 
-- Use `/info/blockdag` checks to confirm endpoint health and testnet DAA context.
+- Use `/info/blockdag` checks to confirm endpoint health, returned network name, and DAA context.
+- For a scheduled mainnet fork, compare live mainnet `virtualDaaScore` to the release activation DAA.
 - Pair testnet observations with branch, PR, and docs evidence.
 - Never infer mainnet activation from TN10 or TN12.
 
@@ -73,6 +74,8 @@ Tier 11: community commentary
 Use these labels in docs, issues, PRs, and research notes:
 
 - Mainnet verified: explicit mainnet release, activation, or merged production evidence exists.
+- Mainnet scheduled: final release and activation DAA are verified, but the live mainnet DAA remains below the threshold.
+- Mainnet active: final release, merged code, official guide, and live mainnet DAA threshold evidence converge.
 - Mainnet pre-activation: a release is intended for mainnet sanity testing before activation, and does not prove activation.
 - Testnet verified: TN10 or TN12 evidence exists and the network is named.
 - Branch verified: code exists on a named branch and commit hash.
@@ -91,8 +94,9 @@ Before repeating a Toccata claim:
 3. Record release tag, pre-release flag, and activation or pre-activation wording.
 4. Record PR state and base branch.
 5. Record KIP state separately from implementation state.
-6. Record TN10/TN12 endpoint results only as testnet evidence.
-7. State what would need to be true for a mainnet claim.
+6. Record mainnet/TN10/TN12 endpoint results with returned network names.
+7. Compare current mainnet DAA to the activation DAA.
+8. State wallet/indexer readiness separately from protocol activation.
 
 ## Repo References
 

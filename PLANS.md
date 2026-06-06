@@ -1,59 +1,91 @@
-# ExecPlan: Publish Kaspa Skill To GitHub Packages
+# ExecPlan: Ship The Complete Toccata-Aware Skill Update
 
 ## Goal
 
-Publish `kaspa-sovereign-architect-engine` to GitHub Packages so the repository Packages tab shows a real package in addition to GitHub Release assets.
+Update the entire `kaspa-sovereign-architect-engine` package so its core
+instructions, platform adapters, references, bundled scripts, release metadata,
+and validation all express the same current Kaspa Toccata engineering contract.
 
 ## Success Metrics
 
-- Release workflow has `packages: write` permission.
-- Release workflow pushes a GHCR OCI artifact containing ZIP, tarball, and `SHA256SUMS.txt`.
-- README documents both GitHub Release downloads and GitHub Packages pulls.
-- Manifest is bumped to the new release version.
-- Tag push creates a GitHub Release and a GitHub Packages entry.
+- `SKILL.md` remains concise enough for progressive disclosure and routes
+  detailed protocol knowledge to references.
+- Every adapter carries the same activation, UTXO, wallet, fee, network, and
+  verification rules.
+- The package includes every helper module and deterministic test required by
+  its bundled scripts.
+- Manifest, repository documentation, and release notes describe a coherent
+  `v1.7.0` package without falsely claiming it has already been published.
+- Automated validation detects adapter drift and missing Toccata safety rules.
+- Packaged artifacts run their own monitor, readiness, lineage, and knowledge
+  checks after extraction.
 
 ## Constraints
 
-- Preserve the existing package layout under `skills/public/kaspa-sovereign-architect-engine/`.
-- Do not remove adapter compatibility or validator-required metadata.
-- Do not present roadmap or research discussion as live protocol behavior.
-- Do not change skill behavior or adapters.
-- Keep the release workflow interface unchanged.
+- Preserve Kaspa's UTXO-first and DAG-aware architecture.
+- Preserve both Kasware and Kaspium compatibility paths.
+- Validate both `kaspa:` and `kaspatest:` address prefixes.
+- Keep fees, signing intent, custody, and key handling explicit.
+- Treat Rusty Kaspa `v2.0.0` as final release evidence and mainnet DAA
+  `474,165,565` as the activation threshold; do not claim active behavior before
+  live mainnet reaches it.
+- Do not claim a new GitHub release or package publication without actually
+  publishing it.
 
 ## Milestones
 
-1. Inspect package state.
-- [x] Read `AGENTS.md` and `PLANS.md`.
-- [x] Confirm current branch and remote.
-- [x] Confirm GitHub Release assets exist but GitHub Packages is empty.
+1. Audit the complete skill surface.
+- [x] Read the prior plan, working tree, skill creator guidance, core skill,
+  manifest, adapters, references, scripts, and release workflow.
+- [x] Identify stale adapter wording, package omissions, and version drift.
 
-2. Add GitHub Packages publishing.
-- [x] Add GHCR/ORAS publishing to `.github/workflows/release-skill.yml`.
-- [x] Bump manifest and README release pointer.
-- [x] Add release notes for the package-channel release.
-- [x] Document `oras pull`.
+2. Update the complete skill.
+- [x] Refine `SKILL.md` trigger metadata, engineering workflow, and progressive
+  disclosure.
+- [x] Align OpenAI, Anthropic, Cursor, Gemini, OpenClaw, and generic adapters.
+- [x] Refresh references and source metadata from the latest checked-in
+  snapshot.
+- [x] Bundle source-intelligence tests and all runtime dependencies.
+- [x] Bump the package to `1.7.0` and add accurate release notes.
 
-3. Validate.
-- [x] Run compatibility validation before release changes.
-- [x] Run compatibility validation after release changes.
-- [x] Build local release artifacts.
-- [x] Run release-relevant Toccata checks.
-- [x] Push commit and tag.
-- [x] Verify GitHub Release assets.
-- [x] Verify GitHub Packages entry/digest.
+3. Strengthen validation.
+- [x] Validate required Toccata, network, wallet, fee, and UTXO rules across
+  every adapter.
+- [x] Validate package contents and extracted helper execution.
 
-## Commands to Verify
+4. Verify.
+- [x] Run skill-creator and repository compatibility validators.
+- [x] Run Toccata source, knowledge, network, readiness, lineage, and vProg
+  checks.
+- [x] Run Kasware/Kaspium and address-prefix compatibility tests.
+- [x] Build and smoke-test the `v1.7.0` package.
+- [x] Run `git diff --check` and review the final diff.
 
-- `node scripts/covenant-lineage-prototype.mjs --check-all`
-- `node scripts/vprog-scope-simulator.mjs --check`
+## Commands To Verify
+
+- `python3 /Users/anthonygryszkin/.codex/skills/.system/skill-creator/scripts/quick_validate.py skills/public/kaspa-sovereign-architect-engine`
+- `node skills/public/kaspa-sovereign-architect-engine/scripts/validate-compatibility.mjs --all`
+- `node --test skills/public/kaspa-sovereign-architect-engine/scripts/validate-compatibility.test.mjs`
+- `node --test scripts/toccata-source-monitor.test.mjs`
+- `node scripts/toccata-source-monitor.mjs --check`
+- `node scripts/kaspa-knowledge-drill.mjs --check`
 - `node scripts/toccata-network-check.mjs --check`
 - `node scripts/toccata-mainnet-readiness-gate.mjs --check`
-- `node skills/public/kaspa-sovereign-architect-engine/scripts/validate-compatibility.mjs --all`
-- `skills/public/kaspa-sovereign-architect-engine/scripts/package-release.sh /tmp/kaspa-skill-release-v1.6.2 v1.6.2`
-- `gh release view v1.6.2 --json assets,url`
-- `oras manifest fetch ghcr.io/gryszzz/kaspa-sovereign-architect-engine:v1.6.2`
+- `node scripts/covenant-lineage-prototype.mjs --check-all`
+- `node scripts/vprog-scope-simulator.mjs --check`
+- `npm run build --prefix kaspa-wallet-fullstack/backend && npm test --prefix kaspa-wallet-fullstack/backend`
+- `npm test --prefix kaspa-wallet-fullstack/frontend`
+- `npm run lint --prefix kaspa-wallet-fullstack/frontend && npm run build --prefix kaspa-wallet-fullstack/frontend`
+- `skills/public/kaspa-sovereign-architect-engine/scripts/package-release.sh /tmp/kaspa-skill-v1.7.0 v1.7.0`
 - `git diff --check`
 
-## Blockers / TODOs
+## Verification Notes
 
-- No root package manifest exists for a single repo-wide `npm test`; validation uses the release workflow's skill-specific checks.
+- Live source checks are network-dependent; deterministic checks must remain
+  runnable from the checked-in snapshot.
+- The latest checked-in live sample recorded TN12 `HTTP 500`; this is evidence
+  of endpoint state, not proof that TN12 protocol behavior is unavailable.
+- Wallet dependency advisories remain separate maintenance work unless package
+  changes in this plan require dependency updates.
+- Packaged ZIP SHA-256:
+  `1cbca071335b56db0f61eb9efd14b9b8f7e3bf93fc2ad27c915df14e572dba47`.

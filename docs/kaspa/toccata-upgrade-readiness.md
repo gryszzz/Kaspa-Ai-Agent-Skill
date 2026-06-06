@@ -1,6 +1,6 @@
 # Toccata Upgrade Readiness
 
-Generated: 2026-06-04
+Generated: 2026-06-06
 
 This page is the builder readiness map for the Toccata upgrade track. It separates what is here, what is coming, what changes for builders, and how this repo stays precise and network-aware.
 
@@ -15,21 +15,27 @@ node scripts/kaspa-knowledge-drill.mjs
 
 As of the latest local snapshot:
 
-- Mainnet activation is not verified by this repository.
+- Rusty Kaspa `v2.0.0`, published 2026-06-05, is the final Toccata mainnet release.
+- Toccata is scheduled to activate at mainnet DAA `474,165,565`, roughly 2026-06-30 16:15 UTC.
+- The 2026-06-06 snapshot observed mainnet below the activation threshold, so Toccata must still be described as scheduled, not active.
 - Rusty Kaspa PR #1000 is closed and merged against `master` as of 2026-06-02.
 - Rusty Kaspa PR #1013 is closed and merged against `tn10` as of 2026-05-27.
-- Rusty Kaspa release `v1.3.0-toc.5`, published 2026-06-03, is a mainnet pre-activation pre-release for sanity testing. It explicitly does not activate Toccata on mainnet and expects one more final upgrade.
+- Release `v1.3.0-toc.5` remains useful pre-activation history; `v2.0.0` supersedes it as the final release.
 - Rusty Kaspa release `tn10-toc3`, published 2026-05-27, is TN10 Toccata ZK hardening evidence. Its release notes schedule TN10 activation for May 28, 2026 around 16:00 UTC at DAA score 476,232,000.
-- TN10 and TN12 endpoint observations are testnet-only signals.
+- Mainnet, TN10, and TN12 endpoint observations must be checked by returned `networkName`; TN12 returned an upstream `HTTP 500` during the latest snapshot and is not silently treated as healthy.
 - KIP-16, KIP-17, KIP-20, and KIP-21 PRs are closed and merged into `kaspanet/kips` `master`; their document statuses indicate implemented/activated on TN10.
 
 ## What Is Here
 
-Testnet-visible or source-visible work:
+Released, scheduled, testnet-visible, or source-visible work:
 
 - Merged `master` implementation evidence for Toccata through PR #1000, plus branch/tag evidence that must still be interpreted network-by-network.
 - Toccata branch evidence for covenants, covenant IDs, ZK opcode work, sequencing commitments, and related transaction/RPC surfaces.
-- Mainnet pre-activation release evidence through `v1.3.0-toc.5`, including the upcoming higher RPC minimum standard fee policy: `100 sompi * max(compute grams, 2 * transaction bytes)`.
+- Final release and activation schedule evidence through `v2.0.0`.
+- Higher node relay/RPC minimum fee policy: `100 sompi * max(compute grams, 2 * transaction bytes)`. This is policy, not consensus validity.
+- Transaction API migration: Rust/protobuf `storage_mass`, JSON/JavaScript `storageMass`, legacy JSON `mass` alias, and `TransactionInput.compute_commit`.
+- Pool/miner requirement to preserve `TransactionOutput.covenant` and `TransactionInput.compute_commit` from block templates through block submission.
+- One-way node database upgrade; rollback requires resync.
 - TN10 ZK hardening release evidence through `tn10-toc3`.
 - TN10 and TN12 `/info/blockdag` endpoint checks for live testnet context.
 - Official docs describing programmability areas: covenants, inline ZK, Based Apps, and future vProgs.
@@ -39,16 +45,15 @@ Builder implication:
 
 - Build watch-only, testnet-first prototypes.
 - Keep network labels visible everywhere.
-- Build indexers and wallets as if field names and semantics may still move.
+- Update indexers and wallets to the final release contracts and keep compatibility tests for aliases and required fields.
 - Treat examples as learning assets, not production readiness.
 
 ## What Is Coming
 
 Expected areas to keep watching:
 
-- Final mainnet activation evidence: release, activation schedule, merged code path, and final branch/tag state.
-- Successor release after `v1.3.0-toc.5`, especially final activation wording and any mainnet DAA/height/time schedule.
-- Any successor PRs after PR #1000 and PR #1013, especially fee policy, RPC/WASM, wallet, indexer, and ZK hardening deltas.
+- Mainnet DAA crossing `474,165,565` and the 24-hour P2P protocol-version-10 cutoff.
+- Post-release fixes and branch deltas, especially transaction serialization, RPC/WASM, wallet/PSKT, mempool, mining template, and security behavior.
 - KIP document-status edits after KIP-16, KIP-17, KIP-20, and KIP-21 are merged.
 - Wallet, WASM, RPC, PSKT, explorer, and indexer support for covenant fields.
 - Sequencing commitment and vProg research turning into stable builder APIs.
@@ -67,6 +72,14 @@ Covenants:
 - App state can be represented through constrained UTXO transitions.
 - Indexers must track covenant IDs, genesis outputs, continuation edges, authorizing inputs, accepted transaction context, and reorg state.
 - Wallets must show covenant spends as state transitions, not ordinary sends.
+- Transaction generators must preserve covenant bindings instead of dropping them.
+
+Transaction and API compatibility:
+
+- New Rust/protobuf integrations use `storage_mass`; JSON/JavaScript integrations use `storageMass`.
+- JSON currently emits both `mass` and `storageMass`; deserialization accepts either, but rejects conflicting values.
+- Version 1 inputs carry `compute_commit`/compute-budget semantics rather than the old ambiguous input `mass` name.
+- WASM mempool request arguments that are required by the current API must not be omitted.
 
 ZK:
 
@@ -106,7 +119,8 @@ Never mix:
 
 Use precise verbs:
 
-- "is verified on mainnet" only after explicit mainnet evidence.
+- "is scheduled on mainnet" when the final release and activation DAA are verified but the live DAA is still below threshold.
+- "is active on mainnet" only after a healthy mainnet endpoint reaches the activation DAA.
 - "is active on TN10/TN12" only after endpoint and source checks.
 - "exists on branch" only with branch name and commit hash.
 - "is proposed" for KIP PR text.
@@ -132,7 +146,7 @@ Daily:
 
 Weekly:
 
-- Diff PR #1000 and PR #1013.
+- Review the monitor's branch-delta impact lanes.
 - Update the covenant lineage indexer note.
 - Update the wallet signing preview assumptions.
 - Update the ZK proof-cost and dependency matrix.
@@ -150,10 +164,12 @@ Before building:
 Already in place:
 
 - Source monitor and snapshots.
-- Release-note tracking for stable, Toccata pre-activation, and TN10 activation tags.
-- Mainnet readiness gate that treats `v1.3.0-toc.5` as pre-activation evidence rather than final activation evidence.
+- Release-note tracking for final, pre-activation, and TN10 activation tags.
+- Mainnet readiness gate that separates protocol activation from wallet/indexer readiness.
+- Mainnet DAA progress tracking and branch-delta engineering classification.
+- Deterministic source-intelligence tests.
 - Evidence ladder docs.
-- TN10/TN12 smoke-test notes.
+- Mainnet/TN10/TN12 smoke-test notes.
 - Covenant lineage indexer notes.
 - PR diff summaries with changed-file counts and semantic content signals.
 - KIP document-status extraction from tracked KIP PR files.
@@ -169,12 +185,12 @@ Already in place:
 
 Next high-leverage upgrades:
 
-- Add focused behavior extraction for `v1.3.0-toc.5` release notes, especially fee policy, RPC submission behavior, gRPC/protobuf compatibility, and one-way DB upgrade risk.
+- Add downstream compatibility fixtures for `storageMass`, legacy `mass`, `compute_commit`, covenant bindings, and required mempool request arguments.
 - Add a Kaspa crate compatibility smoke fixture that can point at Toccata git tags and verify SDK-facing APIs without rewriting the whole app stack.
 - Add wallet and indexer fixtures for the Toccata opcode/covenant surface: covenant IDs, successor outputs, authorization inputs, sequencing commitments, and fee-policy previews.
 - Extend PR diff summaries from changed-file signals into focused changed-behavior notes.
 - Add wallet-preview golden test cases from the covenant lineage fixtures.
-- Add live multi-endpoint source-node lists once trusted TN10/TN12 peers are available.
+- Add live multi-endpoint source-node lists once trusted mainnet/TN10/TN12 peers are available.
 - Add proof-cost benchmark snapshots when verifier pricing stabilizes.
 - Add witness API contract tests once an indexer implementation exists.
 
@@ -188,5 +204,5 @@ Next high-leverage upgrades:
 - Sequencing witness API sketch: [`./sequencing-witness-api.md`](./sequencing-witness-api.md)
 - vProg scope simulator: [`./vprog-scope-simulator.md`](./vprog-scope-simulator.md)
 - Mainnet readiness gate: [`./mainnet-readiness-gate.md`](./mainnet-readiness-gate.md)
-- TN10/TN12 smoke tests: [`../../research-snapshots/toccata/rpc-smoke-tests.md`](../../research-snapshots/toccata/rpc-smoke-tests.md)
+- Mainnet/TN10/TN12 smoke tests: [`../../research-snapshots/toccata/rpc-smoke-tests.md`](../../research-snapshots/toccata/rpc-smoke-tests.md)
 - Readiness drills: [`../../training-corpus/kaspa-toccata-readiness-drills-2026.md`](../../training-corpus/kaspa-toccata-readiness-drills-2026.md)

@@ -11,7 +11,8 @@ This repository publishes a reusable AI skill package for serious Kaspa research
 - **Skill ID:** `$kaspa-sovereign-architect-engine`
 - **Main skill file:** [`SKILL.md`](skills/public/kaspa-sovereign-architect-engine/SKILL.md)
 - **Release downloads:** [GitHub Releases](https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases)
-- **Current release:** `v1.6.2` - GitHub Packages Release
+- **Published release:** `v1.6.2` - GitHub Releases and Packages
+- **Repository skill version:** `v1.7.0` - complete Toccata-aware update, not yet published
 - **Positioning:** package-first distribution (not a website product)
 - **Freshness model:** current-aware, source-grounded, KIP-aware, and research-radar aware
 - **Build scope:** Kaspa protocol, wallet, indexer, WASM, dApp, Kdapp, and infrastructure work
@@ -22,6 +23,7 @@ This repository publishes a reusable AI skill package for serious Kaspa research
 
 - **Kaspa research radar:** economics, L1/L2, consensus, mining, KIPs, papers, and ecosystem engineering
 - **Toccata R&D intelligence:** branch-aware tracking for covenants, ZK opcodes, sequencing commitments, SilverScript, Based Apps, and vProgs
+- **Toccata integration contracts:** scheduled-versus-active DAA gating, `storageMass`/`storage_mass`, `compute_commit`, fee-policy separation, miner template preservation, and one-way DB migration
 - **Protocol engineering:** BlockDAG, GHOSTDAG, DAGKNIGHT status checks, mempool, UTXO semantics, and future-feature handling
 - **KIP-aware analysis:** separates research ideas, KIP proposals, merged code, activation, wallet/indexer support, and app usability
 - **Indexer architecture:** DAG-aware ordering, idempotent ingestion, dedupe, checkpoints, retries, sync lag, and query-layer separation
@@ -63,7 +65,7 @@ Use $kaspa-sovereign-architect-engine in KIP Status mode. Build a table of relev
 ```
 
 ```text
-Use $kaspa-sovereign-architect-engine in Toccata R&D Intelligence mode. Re-check Rusty Kaspa PR #1000, PR #1013, KIP-16/17/20/21, TN10/TN12 activation, and produce the next covenant/indexer/wallet build plan.
+Use $kaspa-sovereign-architect-engine in Toccata R&D Intelligence mode. Re-check Rusty Kaspa v2.0.0, current mainnet DAA versus activation DAA 474165565, recent branch-delta impact lanes, KIP-16/17/20/21, and produce the next covenant/indexer/wallet compatibility plan.
 ```
 
 ## 🧩 Compatibility Matrix
@@ -105,15 +107,16 @@ Toccata source monitoring:
 - Mainnet readiness gate: [`docs/kaspa/mainnet-readiness-gate.md`](docs/kaspa/mainnet-readiness-gate.md)
 - Machine-readable snapshot: [`research-snapshots/toccata/latest.json`](research-snapshots/toccata/latest.json)
 - Reviewer snapshot: [`research-snapshots/toccata/latest.md`](research-snapshots/toccata/latest.md)
-- TN10/TN12 RPC smoke-test notes: [`research-snapshots/toccata/rpc-smoke-tests.md`](research-snapshots/toccata/rpc-smoke-tests.md)
+- Mainnet/TN10/TN12 RPC smoke-test notes: [`research-snapshots/toccata/rpc-smoke-tests.md`](research-snapshots/toccata/rpc-smoke-tests.md)
 - Monitor script: [`scripts/toccata-source-monitor.mjs`](scripts/toccata-source-monitor.mjs)
+- Monitor tests: `node --test scripts/toccata-source-monitor.test.mjs`
 - Local knowledge drill: `node scripts/kaspa-knowledge-drill.mjs`
 - Covenant lineage prototype: `node scripts/covenant-lineage-prototype.mjs --check-all`
 - vProg scope simulator: `node scripts/vprog-scope-simulator.mjs --check`
 - Network endpoint checker: `node scripts/toccata-network-check.mjs --check`
 - Mainnet readiness gate: `node scripts/toccata-mainnet-readiness-gate.mjs --check`
-- Release packages bundle the skill plus Toccata readiness docs, fixtures, source snapshots, and helper scripts under the installed skill directory.
-- Claim rule: testnet signals, open PRs, docs, and branch hashes are tracked as evidence, not treated as mainnet activation by themselves
+- Release packages bundle the skill plus adapters, references, Toccata readiness docs, fixtures, source snapshots, helper modules, and deterministic tests under the installed skill directory.
+- Claim rule: final release plus schedule means "scheduled"; active mainnet requires a verified endpoint at or above the activation DAA, and wallet/indexer readiness is a separate claim
 
 ## 🛠 Install
 
@@ -144,7 +147,7 @@ tar -xzf /tmp/kaspa-sovereign-architect-engine.tar.gz -C "$CODEX_HOME/skills"
 
 ### Option B: Pull from GitHub Packages
 
-The skill is also published as an OCI artifact in GitHub Packages:
+The currently published skill is also available as an OCI artifact in GitHub Packages:
 
 ```bash
 oras pull ghcr.io/gryszzz/kaspa-sovereign-architect-engine:v1.6.2
@@ -231,7 +234,8 @@ Design a Kaspa DAG-aware indexer for 100k users with failure recovery and replay
 ## 📦 Releases
 
 - Download packages: [Releases](https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases)
-- Latest release notes: [`v1.6.2`](release-notes/v1.6.2.md)
+- Latest published release notes: [`v1.6.2`](release-notes/v1.6.2.md)
+- Next repository release notes: [`v1.7.0`](release-notes/v1.7.0.md)
 - Automated packaging workflow: [`.github/workflows/release-skill.yml`](.github/workflows/release-skill.yml)
 
 ## 🌐 Deploy + Marketing
@@ -251,6 +255,6 @@ Design a Kaspa DAG-aware indexer for 100k users with failure recovery and replay
 - [`training-corpus/kaspa-toccata-2026.md`](training-corpus/kaspa-toccata-2026.md) - source-gated Toccata mastery map
 - [`training-corpus/kaspa-toccata-rd-intelligence-2026.md`](training-corpus/kaspa-toccata-rd-intelligence-2026.md) - deeper Toccata R&D intelligence and development roadmap
 - [`training-corpus/kaspa-toccata-readiness-drills-2026.md`](training-corpus/kaspa-toccata-readiness-drills-2026.md) - local Toccata preparation and self-testing loop
-- [`research-snapshots/toccata/`](research-snapshots/toccata/) - automated source snapshots for Toccata PRs, KIPs, refs, docs, and TN10/TN12 signals
+- [`research-snapshots/toccata/`](research-snapshots/toccata/) - automated release, branch-delta, KIP, docs, and mainnet/TN10/TN12 intelligence
 - [`kaspa-balance-api/`](kaspa-balance-api/) - production-oriented Kaspa API sample
 - [`kaspa-codex-evolution-loop/`](kaspa-codex-evolution-loop/) - autonomous iteration framework

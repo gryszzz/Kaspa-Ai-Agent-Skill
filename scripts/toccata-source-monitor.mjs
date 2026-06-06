@@ -4,6 +4,12 @@ import { execFileSync } from "node:child_process";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
+import {
+  classifyUpstreamChanges,
+  evaluateMainnetActivation,
+  parseToccataActivation,
+  validateToccataSnapshot,
+} from "./lib/toccata-intelligence.mjs";
 
 const ROOT_DIR = process.cwd();
 const OUTPUT_DIR = path.join(ROOT_DIR, "research-snapshots", "toccata");
@@ -11,6 +17,7 @@ const LATEST_JSON = path.join(OUTPUT_DIR, "latest.json");
 const LATEST_MD = path.join(OUTPUT_DIR, "latest.md");
 const CHECKED_AT = new Date().toISOString();
 const WRITE_IF_CHANGED = process.argv.includes("--write-if-changed");
+const CHECK_ONLY = process.argv.includes("--check");
 
 function resolveGithubToken() {
   if (process.env.GITHUB_TOKEN || process.env.GH_TOKEN) {
@@ -88,6 +95,7 @@ const githubRefs = [
   { repo: "kaspanet/rusty-kaspa", kind: "tags", name: "tn10-toc2" },
   { repo: "kaspanet/rusty-kaspa", kind: "tags", name: "tn10-toc3" },
   { repo: "kaspanet/rusty-kaspa", kind: "tags", name: "v1.3.0-toc.5" },
+  { repo: "kaspanet/rusty-kaspa", kind: "tags", name: "v2.0.0" },
   { repo: "kaspanet/rusty-kaspa", kind: "tags", name: "v1.1.0" },
   { repo: "kaspanet/kips", kind: "heads", name: "master" },
   { repo: "kaspanet/docs", kind: "heads", name: "main" },
@@ -95,7 +103,15 @@ const githubRefs = [
   { repo: "kaspanet/vprogs", kind: "heads", name: "master" },
 ];
 
+const branchDeltaSources = githubRefs.filter((ref) => ref.kind === "heads");
+
 const githubReleases = [
+  {
+    repo: "kaspanet/rusty-kaspa",
+    tag: "v2.0.0",
+    label: "Final Toccata mainnet release",
+    interpretation: "Final release and activation schedule evidence; active behavior still requires the mainnet DAA threshold.",
+  },
   {
     repo: "kaspanet/rusty-kaspa",
     tag: "v1.3.0-toc.5",
@@ -117,12 +133,16 @@ const githubReleases = [
   {
     repo: "kaspanet/rusty-kaspa",
     tag: "v1.1.0",
-    label: "Latest stable non-Toccata line tracked by monitor",
+    label: "Pre-Toccata stable baseline",
     interpretation: "Stable integration baseline; do not confuse with Toccata pre-release.",
   },
 ];
 
 const webSources = [
+  {
+    label: "Rusty Kaspa Toccata node guide",
+    url: "https://raw.githubusercontent.com/kaspanet/rusty-kaspa/v2.0.0/docs/toccata-guide.md",
+  },
   {
     label: "Kaspa programmability overview",
     url: "https://docs.kaspa.org/programmability",
@@ -163,12 +183,19 @@ const webSources = [
 
 const networkSources = [
   {
+    label: "Mainnet blockdag",
+    url: "https://api.kaspa.org/info/blockdag",
+    expectedNetworkName: "kaspa-mainnet",
+  },
+  {
     label: "TN10 blockdag",
     url: "https://api-tn10.kaspa.org/info/blockdag",
+    expectedNetworkName: "kaspa-testnet-10",
   },
   {
     label: "TN12 blockdag",
     url: "https://api-tn12.kaspa.org/info/blockdag",
+    expectedNetworkName: "kaspa-testnet-12",
   },
 ];
 
@@ -572,6 +599,88 @@ async function readGithubRef(entry) {
   };
 }
 
+async function readGithubBranchDelta(entry, refs, previousSnapshot) {
+  const currentRef = refs.find(
+    (ref) => ref.repo === entry.repo && ref.kind === entry.kind && ref.name === entry.name,
+  );
+  const previousRef = previousSnapshot?.github?.refs?.find(
+    (ref) => ref.repo === entry.repo && ref.kind === entry.kind && ref.name === entry.name,
+  );
+  const previousDelta = previousSnapshot?.github?.branchDeltas?.find(
+    (delta) => delta.repo === entry.repo && delta.branch === entry.name,
+  );
+  const base = {
+    repo: entry.repo,
+    branch: entry.name,
+    label: `${entry.repo} ${entry.name}`,
+    beforeSha: previousRef?.sha || null,
+    afterSha: currentRef?.sha || null,
+  };
+
+  if (!currentRef?.ok) {
+    return { ...base, ok: false, status: currentRef?.status || 0, error: currentRef?.error || "current ref unavailable" };
+  }
+  if (!previousRef?.ok || !previousRef.sha) {
+    return { ...base, ok: true, status: "baseline_created", commits: [], files: [], impacts: [] };
+  }
+  if (previousRef.sha === currentRef.sha) {
+    if (previousDelta?.afterSha === currentRef.sha && previousDelta.commits?.length) {
+      const carriedCommits = previousDelta.commits.map((commit) => ({
+        ...commit,
+        message: (commit.message || "").split("\n")[0],
+      }));
+      return {
+        ...previousDelta,
+        status: "last_observed_change",
+        commits: carriedCommits,
+        impacts: classifyUpstreamChanges(previousDelta.files || [], carriedCommits),
+      };
+    }
+    return { ...base, ok: true, status: "unchanged", commits: [], files: [], impacts: [] };
+  }
+
+  const { owner, name } = splitRepo(entry.repo);
+  const result = await fetchJson(
+    `https://api.github.com/repos/${owner}/${name}/compare/${previousRef.sha}...${currentRef.sha}`,
+    { headers: apiHeaders },
+  );
+  if (!result.ok) {
+    return { ...base, ok: false, status: result.status, error: result.error };
+  }
+
+  const commits = (result.data.commits || []).map((commit) => ({
+    sha: commit.sha || null,
+    committedAt: commit.commit?.committer?.date || commit.commit?.author?.date || null,
+    message: (commit.commit?.message || "").split("\n")[0],
+    url: commit.html_url || null,
+  }));
+  const files = (result.data.files || []).map((file) => ({
+    filename: file.filename,
+    status: file.status,
+    additions: file.additions || 0,
+    deletions: file.deletions || 0,
+    changes: file.changes || 0,
+    patch: file.patch || "",
+  }));
+
+  return {
+    ...base,
+    ok: true,
+    status: result.data.status || "changed",
+    aheadBy: result.data.ahead_by || 0,
+    behindBy: result.data.behind_by || 0,
+    totalCommits: result.data.total_commits || commits.length,
+    fileCount: files.length,
+    additions: files.reduce((total, file) => total + file.additions, 0),
+    deletions: files.reduce((total, file) => total + file.deletions, 0),
+    filesTruncated: files.length >= 300,
+    commits,
+    files: files.map(({ patch, ...file }) => file),
+    impacts: classifyUpstreamChanges(files, commits),
+    url: `https://github.com/${entry.repo}/compare/${previousRef.sha}...${currentRef.sha}`,
+  };
+}
+
 function releaseHighlights(body) {
   if (!body) {
     return [];
@@ -602,7 +711,7 @@ async function readGithubRelease(entry) {
 
   const release = result.data;
   const body = release.body || "";
-  return {
+  const snapshotRelease = {
     ...entry,
     ok: true,
     name: release.name || null,
@@ -615,6 +724,8 @@ async function readGithubRelease(entry) {
     bodySha256: sha256(body),
     bodyHighlights: releaseHighlights(body),
   };
+  snapshotRelease.activation = parseToccataActivation({ ...snapshotRelease, body });
+  return snapshotRelease;
 }
 
 async function readNetworkSource(entry) {
@@ -641,17 +752,25 @@ async function readNetworkSource(entry) {
   };
 }
 
-function buildVerdict({ pulls, refs, releases }) {
+function buildVerdict({ pulls, refs, releases, kaspaNetwork }) {
   const toccataPr = pulls.find((pull) => pull.repo === "kaspanet/rusty-kaspa" && pull.number === 1000);
   const mainRef = refs.find((ref) => ref.repo === "kaspanet/rusty-kaspa" && ref.kind === "heads" && ref.name === "master");
   const toccataRef = refs.find((ref) => ref.repo === "kaspanet/rusty-kaspa" && ref.kind === "heads" && ref.name === "toccata");
-  const toccataPreRelease = releases.find((release) => release.repo === "kaspanet/rusty-kaspa" && release.tag === "v1.3.0-toc.5");
+  const finalRelease = releases.find((release) => release.repo === "kaspanet/rusty-kaspa" && release.tag === "v2.0.0");
+  const mainnet = kaspaNetwork.find((source) => source.label === "Mainnet blockdag");
+  const activation = evaluateMainnetActivation(finalRelease, mainnet);
+  const activationLabel =
+    activation.state === "active"
+      ? `verified active at mainnet DAA ${activation.currentDaaScore}, activation threshold ${activation.daaScore}`
+      : activation.state === "scheduled"
+        ? `scheduled for mainnet DAA ${activation.daaScore} (${activation.scheduleText || "UTC estimate unavailable"}); current mainnet is below threshold`
+        : activation.state === "scheduled_endpoint_unverified"
+          ? `scheduled for mainnet DAA ${activation.daaScore}, but mainnet endpoint evidence is unavailable`
+          : "not_verified_by_monitor";
 
   return {
-    mainnetActivation:
-      toccataPreRelease?.ok && toccataPreRelease.prerelease
-        ? "not_verified_by_monitor; latest tracked Toccata mainnet release is pre-activation"
-        : "not_verified_by_monitor",
+    mainnetActivation: activationLabel,
+    activation,
     implementationStatus: toccataPr?.ok
       ? `PR #1000 is ${toccataPr.state}${toccataPr.merged ? " and merged" : ""} against ${toccataPr.baseRefName}.`
       : "PR #1000 status unavailable.",
@@ -661,8 +780,8 @@ function buildVerdict({ pulls, refs, releases }) {
         : "rusty-kaspa branch status incomplete.",
     caution: [
       "Do not equate open PRs with merged production behavior.",
-      "Do not equate TN10/TN12 observations with mainnet activation.",
-      "Use branch hashes, PR base refs, KIP merge state, and docs hashes together before making claims.",
+      "A final release and activation schedule do not mean the activation DAA has been reached.",
+      "Separate protocol activation from wallet, pool, indexer, explorer, and application readiness.",
     ],
   };
 }
@@ -974,7 +1093,7 @@ ${markdownList(summary.sections.releases)}
 
 ${markdownList(summary.sections.refs)}
 
-### Testnet Signals
+### Network Signals
 
 ${markdownList(summary.sections.network)}
 
@@ -994,6 +1113,46 @@ function buildFetchWarningsMarkdown(warnings) {
 ${markdownList(warnings)}
 
 `;
+}
+
+function buildBranchDeltaDetails(branchDeltas) {
+  const changed = branchDeltas.filter((delta) => delta.ok && !["unchanged", "baseline_created"].includes(delta.status));
+  if (!changed.length) {
+    return "No changed branch delta required behavior classification.";
+  }
+
+  return changed
+    .map((delta) => {
+      const commits = delta.commits
+        .slice(0, 12)
+        .map((commit) => `- \`${shortSha(commit.sha)}\` ${commit.message.split("\n")[0]}`)
+        .join("\n");
+      const impacts = delta.impacts.length
+        ? delta.impacts
+            .map(
+              (impact) =>
+                `- **${impact.label}:** ${impact.builderImpact} Matched: ${[
+                  ...impact.matchedCommits,
+                  ...impact.matchedFiles,
+                ]
+                  .slice(0, 8)
+                  .map((value) => `\`${value}\``)
+                  .join(", ")}.`,
+            )
+            .join("\n")
+        : "- No configured engineering impact lane matched.";
+
+      return `### ${delta.label}
+
+Commits:
+
+${commits || "- Commit details unavailable."}
+
+Engineering impact:
+
+${impacts}`;
+    })
+    .join("\n\n");
 }
 
 function buildMarkdown(snapshot) {
@@ -1030,6 +1189,16 @@ function buildMarkdown(snapshot) {
     release.ok ? `[source](${release.url})` : "",
   ]);
 
+  const branchDeltaRows = (snapshot.github.branchDeltas || []).map((delta) => [
+    delta.label,
+    delta.ok ? delta.status : "error",
+    delta.ok ? `${shortSha(delta.beforeSha)} -> ${shortSha(delta.afterSha)}` : delta.error,
+    delta.ok ? delta.totalCommits || 0 : "",
+    delta.ok ? `${delta.fileCount || 0}${delta.filesTruncated ? "+" : ""}` : "",
+    delta.ok ? (delta.impacts || []).map((impact) => impact.label).join(", ") : "",
+    delta.url ? `[compare](${delta.url})` : "",
+  ]);
+
   const networkRows = snapshot.kaspaNetwork.map((source) => [
     source.label,
     source.ok ? "ok" : "error",
@@ -1055,6 +1224,8 @@ Facts hash: \`${snapshot.factsHash}\`
 ## Verdict
 
 - Mainnet activation: ${snapshot.verdict.mainnetActivation}
+- Mainnet DAA observed: ${snapshot.verdict.activation.currentDaaScore ?? "unavailable"}
+- Activation DAA: ${snapshot.verdict.activation.daaScore ?? "unavailable"}
 - Implementation status: ${snapshot.verdict.implementationStatus}
 - Branch status: ${snapshot.verdict.branchStatus}
 - Caution: ${snapshot.verdict.caution.join(" ")}
@@ -1078,7 +1249,13 @@ ${markdownTable(["Signal", "Tag", "Pre-release", "Published", "Target", "Highlig
 
 ${markdownTable(["Reference", "SHA", "Type"], refRows)}
 
-## Testnet Signals
+## Upstream Branch Deltas
+
+${markdownTable(["Source", "Status", "Range", "Commits", "Files", "Engineering impact", "Link"], branchDeltaRows)}
+
+${buildBranchDeltaDetails(snapshot.github.branchDeltas || [])}
+
+## Network Signals
 
 ${markdownTable(["Source", "Status", "Network", "Virtual DAA", "Block count"], networkRows)}
 
@@ -1124,13 +1301,41 @@ function buildFactsHash(snapshot) {
     },
     kaspaNetwork: stableNetworkFacts,
     webSources: stableWebFacts,
-    verdict: snapshot.verdict,
+    verdict: {
+      mainnetActivation: snapshot.verdict.mainnetActivation,
+      implementationStatus: snapshot.verdict.implementationStatus,
+      branchStatus: snapshot.verdict.branchStatus,
+      caution: snapshot.verdict.caution,
+      activation: {
+        state: snapshot.verdict.activation?.state || "not_verified",
+        releaseTag: snapshot.verdict.activation?.releaseTag || null,
+        releasePublishedAt: snapshot.verdict.activation?.releasePublishedAt || null,
+        daaScore: snapshot.verdict.activation?.daaScore || null,
+        scheduleText: snapshot.verdict.activation?.scheduleText || null,
+        endpointVerified: Boolean(snapshot.verdict.activation?.endpointVerified),
+      },
+    },
   };
   return sha256(JSON.stringify(comparable));
 }
 
 async function main() {
   const previousSnapshot = await loadPreviousSnapshot();
+  if (CHECK_ONLY) {
+    const errors = validateToccataSnapshot(previousSnapshot || {});
+    if (errors.length) {
+      for (const error of errors) {
+        console.error(`check failed: ${error}`);
+      }
+      process.exitCode = 1;
+      return;
+    }
+    console.log(
+      `Toccata source snapshot check passed: schema ${previousSnapshot.schemaVersion}, activation ${previousSnapshot.verdict.activation.state}.`,
+    );
+    return;
+  }
+
   const [pulls, refs, releases, kaspaNetwork, fingerprints] = await Promise.all([
     Promise.all(githubPulls.map(readGithubPull)),
     Promise.all(githubRefs.map(readGithubRef)),
@@ -1140,20 +1345,29 @@ async function main() {
   ]);
   const fetchWarnings = applyPreviousGithubFetchFallback({ pulls, refs }, previousSnapshot);
   fetchWarnings.push(...applyPreviousReleaseFetchFallback({ releases }, previousSnapshot));
+  const branchDeltas = await Promise.all(
+    branchDeltaSources.map((entry) => readGithubBranchDelta(entry, refs, previousSnapshot)),
+  );
+  fetchWarnings.push(
+    ...branchDeltas
+      .filter((delta) => !delta.ok)
+      .map((delta) => `${delta.label}: branch delta unavailable (${delta.error || delta.status || "unknown"}).`),
+  );
 
   const snapshot = {
-    schemaVersion: 1,
+    schemaVersion: 2,
     checkedAt: CHECKED_AT,
     policy: {
       sourceTier: "primary-source-first",
-      mainnetClaimRule: "mainnet activation requires explicit mainnet release, activation, or merged production evidence",
+      mainnetClaimRule:
+        "mainnet activation requires a final release, explicit activation DAA, merged production code, and mainnet endpoint evidence at or above the threshold",
       testnetClaimRule: "TN10/TN12 observations are testnet-only until corroborated by mainnet evidence",
     },
-    github: { pulls, refs, releases },
+    github: { pulls, refs, releases, branchDeltas },
     kaspaNetwork,
     webSources: fingerprints,
     fetchWarnings,
-    verdict: buildVerdict({ pulls, refs, releases }),
+    verdict: buildVerdict({ pulls, refs, releases, kaspaNetwork }),
   };
   applyPreviousPullMetadataFallback(snapshot, previousSnapshot);
   snapshot.factsHash = buildFactsHash(snapshot);

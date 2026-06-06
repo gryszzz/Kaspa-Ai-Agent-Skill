@@ -1,6 +1,6 @@
 # Kaspa Toccata R&D Intelligence Upgrade
 
-Generated: 2026-06-04T03:33:39Z
+Generated: 2026-06-06T01:39:16Z
 
 ## Executive Verdict
 
@@ -14,27 +14,29 @@ The strategic path is to master three layers at once:
 
 Current high-confidence status:
 
-- Mainnet activation is not verified by this repo. The latest tracked Toccata mainnet release, `v1.3.0-toc.5`, is a pre-activation pre-release for sanity testing and explicitly does not activate Toccata on mainnet.
+- Rusty Kaspa `v2.0.0` is the final Toccata release. Activation is scheduled for mainnet DAA `474,165,565`, roughly 2026-06-30 16:15 UTC.
+- The 2026-06-06 mainnet endpoint observation remained below the activation DAA, so the protocol is scheduled, not yet active.
 - PR #1000, `Toccata`, is closed and merged from `toccata` into `master`.
 - PR #1013, `ZK opcode updates`, is closed and merged into `tn10`.
 - `tn10-toc3` is TN10 Toccata ZK hardening evidence. Its release notes schedule TN10 activation for May 28, 2026 around 16:00 UTC at DAA score 476,232,000.
 - KIP-16, KIP-17, KIP-20, and KIP-21 are closed and merged to `kaspanet/kips` `master`; their document statuses indicate implemented/activated on TN10.
-- The mainnet readiness gate currently returns `do_not_claim_mainnet`, with only the merged-code-path gate complete.
+- The mainnet readiness gate separates protocol activation from wallet/indexer readiness. The release, schedule, merged code, mainnet endpoint, and official guide are present; the activation DAA has not yet been reached.
 
 ## Source Snapshot
 
-Audit date: 2026-06-04T03:33:39Z
+Audit date: 2026-06-06T01:39:16Z
 
 Rusty Kaspa:
 
-- `master`: `d5205cc72ab7b811e88a23595dfac5b9facdeece`
+- `master`: `90dbf074275d60c1fe74a3491883196f110970c0`
 - `toccata`: `0ae28f939e61994a11eb8eb6dd775255e2924afb`
-- `tn10`: `6899ea75384c1f422fe4ab0e47c439442da3f4fa`
+- `tn10`: `e5f6d1f7c86f3a3afbe97dbb75e72a0a3ff66a57`
 - `tn12`: `ab4c51afde90dc6e0bce3f782d0a18af5da29434`
 - tag `v1.3.0-toc.5`: `04b0d135f8c8023676ea74dcf496c99d5d0bc2a5`
+- tag `v2.0.0`: `90dbf074275d60c1fe74a3491883196f110970c0`
 - tag `tn10-toc3`: `1015a62359e0d06e0b3b3b7f7d06bc1bd4bf0c1b`
 - tag `tn10-toc2`: `97415b689462bec8a1a36f1665302529ea8a3108`
-- latest stable release tag observed: `v1.1.0`, commit `e97070faa3826c590f477e327c82daaddd6178f4`
+- latest stable release tag observed: `v2.0.0`
 
 KIPs:
 
@@ -52,8 +54,17 @@ Docs and tooling:
 
 Live network checks:
 
-- TN10 REST `info/blockdag`: `networkName = kaspa-testnet-10`, `virtualDaaScore = 481841011`
-- TN12 REST `info/blockdag`: `networkName = kaspa-testnet-12`, `virtualDaaScore = 29336303`
+- Mainnet REST `info/blockdag`: `networkName = kaspa-mainnet`, `virtualDaaScore = 452903728`
+- TN10 REST `info/blockdag`: `networkName = kaspa-testnet-10`, `virtualDaaScore = 483498498`
+- TN12 REST returned `HTTP 500` during the snapshot and is recorded as unavailable.
+
+Final-release API changes:
+
+- `Transaction.mass` became `storage_mass` in Rust/protobuf and `storageMass` in JSON/JavaScript.
+- Legacy JSON `mass` remains an alias; when both names are supplied, conflicting values are rejected.
+- `TransactionInput.mass`/`TxInputMass` became `compute_commit`/`ComputeCommit`.
+- Wallet transaction generation now preserves covenant bindings.
+- Pools and miners must preserve covenant and compute-commit fields from `GetBlockTemplate` through `SubmitBlock`.
 
 ## Feature Intelligence
 
@@ -133,7 +144,7 @@ Risk:
 
 - ZK verifier libraries become security dependencies.
 - Proof systems differ in proof size, verification cost, maturity, and quantum-safety properties.
-- PR #1013 shows the ZK opcode surface is still changing.
+- Final verifier behavior is released, but verifier dependencies and pricing remain security-sensitive and must be benchmarked against `v2.0.0`.
 
 ### KIP-21: Partitioned Sequencing Commitments
 
@@ -193,8 +204,8 @@ Risk:
 Run a current-status audit before any serious claim:
 
 ```bash
-git ls-remote --heads --tags https://github.com/kaspanet/rusty-kaspa.git master toccata tn10 tn12 refs/tags/v1.3.0-toc.5 refs/tags/tn10-toc3 refs/tags/tn10-toc2 refs/tags/v1.1.0
-gh release view -R kaspanet/rusty-kaspa v1.3.0-toc.5 --json tagName,isPrerelease,publishedAt,targetCommitish,body
+git ls-remote --heads --tags https://github.com/kaspanet/rusty-kaspa.git master toccata tn10 tn12 refs/tags/v2.0.0 refs/tags/v1.3.0-toc.5 refs/tags/tn10-toc3
+gh release view -R kaspanet/rusty-kaspa v2.0.0 --json tagName,isPrerelease,publishedAt,targetCommitish,body
 gh release view -R kaspanet/rusty-kaspa tn10-toc3 --json tagName,isPrerelease,publishedAt,targetCommitish,body
 gh pr view -R kaspanet/rusty-kaspa 1000 --json state,baseRefName,headRefName,updatedAt,mergeable,commits
 gh pr view -R kaspanet/rusty-kaspa 1013 --json state,baseRefName,headRefName,updatedAt,mergeable,commits
@@ -202,14 +213,15 @@ gh pr view -R kaspanet/kips 31 --json state,title,updatedAt,mergeable,commits
 gh pr view -R kaspanet/kips 32 --json state,title,updatedAt,mergeable,commits
 gh pr view -R kaspanet/kips 35 --json state,title,updatedAt,mergeable,commits
 gh pr view -R kaspanet/kips 36 --json state,title,updatedAt,mergeable,commits
+curl -fsSL https://api.kaspa.org/info/blockdag
 curl -fsSL https://api-tn10.kaspa.org/info/blockdag
 curl -fsSL https://api-tn12.kaspa.org/info/blockdag
 ```
 
 ### Weekly Development Loop
 
-1. Diff `toccata` against `master`.
-2. Reclassify each capability as mainnet, testnet, branch-only, PR-only, docs-only, research-only, or experimental tooling.
+1. Review the monitor's branch deltas against the previous snapshot.
+2. Reclassify each capability as released, scheduled, active-by-DAA, testnet, branch-only, docs-only, research-only, or experimental tooling.
 3. Run SilverScript tests.
 4. Compile one covenant example.
 5. Update covenant indexer schema assumptions.
@@ -221,7 +233,7 @@ curl -fsSL https://api-tn12.kaspa.org/info/blockdag
 
 Target 1: Toccata source auditor
 
-- Inputs: GitHub API, `git ls-remote`, TN10/TN12 REST endpoints.
+- Inputs: GitHub API, branch compares, release notes, and mainnet/TN10/TN12 REST endpoints.
 - Output: JSON snapshot and Markdown summary.
 - Value: prevents stale claims and catches branch-state changes.
 

@@ -16,7 +16,21 @@ function findPull(snapshot, repo, number) {
 }
 
 function findTrackedMainnetToccataRelease(snapshot) {
-  const release = snapshot.github?.releases?.find(
+  const releases = snapshot.github?.releases || [];
+  const finalRelease = releases.find(
+    (entry) =>
+      entry.repo === "kaspanet/rusty-kaspa" &&
+      entry.ok &&
+      !entry.prerelease &&
+      !entry.draft &&
+      !/^tn\d+/i.test(entry.tagName || entry.tag || "") &&
+      /toccata|v2\.0\.0/i.test(`${entry.label || ""} ${entry.name || ""} ${entry.tagName || entry.tag || ""}`),
+  );
+  if (finalRelease) {
+    return finalRelease;
+  }
+
+  const release = releases.find(
     (entry) =>
       entry.repo === "kaspanet/rusty-kaspa" &&
       entry.ok &&
@@ -47,11 +61,6 @@ function isActivationRelease(release) {
   return !haystack.includes("pre-activation") && !haystack.includes("does not activate");
 }
 
-function hasVerifiedMainnetActivation(verdict) {
-  const value = verdict?.mainnetActivation || "";
-  return Boolean(value) && !value.startsWith("not_verified_by_monitor");
-}
-
 function gate(id, title, complete, evidence, requiredEvidence) {
   return {
     id,
@@ -65,9 +74,12 @@ function gate(id, title, complete, evidence, requiredEvidence) {
 function evaluate(snapshot) {
   const toccataPr = findPull(snapshot, "kaspanet/rusty-kaspa", 1000);
   const releaseTag = findTrackedMainnetToccataRelease(snapshot);
-  const testnetNetworks = (snapshot.kaspaNetwork || []).map((source) => source.networkName).filter(Boolean);
+  const activation = snapshot.verdict?.activation || {};
+  const mainnet = (snapshot.kaspaNetwork || []).find(
+    (source) => source.ok && source.networkName === "kaspa-mainnet",
+  );
   const docsOk = (snapshot.webSources || []).some(
-    (source) => source.ok && source.label === "Kaspa programmability overview",
+    (source) => source.ok && source.label === "Rusty Kaspa Toccata node guide",
   );
 
   const gates = [
@@ -87,8 +99,10 @@ function evaluate(snapshot) {
     gate(
       "activation_schedule",
       "Activation schedule",
-      hasVerifiedMainnetActivation(snapshot.verdict),
-      snapshot.verdict?.mainnetActivation || "not_verified_by_monitor",
+      Boolean(activation.daaScore),
+      activation.daaScore
+        ? `DAA ${activation.daaScore}; ${activation.scheduleText || "UTC estimate unavailable"}.`
+        : "not_verified_by_monitor",
       "An explicit mainnet activation height, DAA score, timestamp, or release note from primary sources.",
     ),
     gate(
@@ -103,9 +117,20 @@ function evaluate(snapshot) {
     gate(
       "network_endpoint_evidence",
       "Mainnet endpoint evidence",
-      testnetNetworks.includes("kaspa-mainnet"),
-      testnetNetworks.length ? `Observed networks: ${testnetNetworks.join(", ")}.` : "No network endpoint evidence.",
+      Boolean(mainnet),
+      mainnet
+        ? `Observed kaspa-mainnet at virtual DAA ${mainnet.virtualDaaScore}.`
+        : "No healthy kaspa-mainnet endpoint evidence.",
       "Healthy mainnet endpoint checks that return the expected mainnet network name and current state.",
+    ),
+    gate(
+      "activation_reached",
+      "Activation DAA reached",
+      activation.state === "active",
+      activation.currentDaaScore && activation.daaScore
+        ? `Current mainnet DAA ${activation.currentDaaScore}; activation DAA ${activation.daaScore}.`
+        : "Current and activation DAA evidence is incomplete.",
+      "A healthy mainnet endpoint at or above the final release activation DAA.",
     ),
     gate(
       "wallet_indexer_support",
@@ -117,17 +142,36 @@ function evaluate(snapshot) {
     gate(
       "docs_alignment",
       "Docs alignment",
-      false,
-      docsOk ? "Programmability docs are reachable, but this gate has no mainnet activation document." : "Programmability docs unavailable.",
+      docsOk,
+      docsOk ? "The versioned Rusty Kaspa Toccata node guide is tracked." : "Versioned Toccata node guide unavailable.",
       "Official docs or release notes that align with release tag, activation schedule, code path, and endpoint evidence.",
     ),
   ];
 
+  const protocolGateIds = new Set([
+    "release_tag",
+    "activation_schedule",
+    "merged_code_path",
+    "network_endpoint_evidence",
+    "activation_reached",
+    "docs_alignment",
+  ]);
+  const protocolGates = gates.filter((entry) => protocolGateIds.has(entry.id));
+  const protocolCompleteCount = protocolGates.filter((entry) => entry.complete).length;
   const completeCount = gates.filter((entry) => entry.complete).length;
   return {
     snapshotCheckedAt: snapshot.checkedAt || null,
     factsHash: snapshot.factsHash || null,
-    decision: completeCount === gates.length ? "ready_to_claim_mainnet" : "do_not_claim_mainnet",
+    decision:
+      protocolCompleteCount === protocolGates.length
+        ? "ready_to_claim_mainnet_protocol_active"
+        : "do_not_claim_mainnet_protocol_active",
+    ecosystemDecision:
+      completeCount === gates.length
+        ? "ready_to_claim_wallet_indexer_ready"
+        : "do_not_claim_wallet_indexer_ready",
+    protocolCompleteCount,
+    protocolRequiredCount: protocolGates.length,
     completeCount,
     requiredCount: gates.length,
     gates,
@@ -141,13 +185,21 @@ async function main() {
   const report = evaluate(snapshot);
 
   if (check) {
-    if (report.decision !== "do_not_claim_mainnet" && report.completeCount !== report.requiredCount) {
-      console.error("check failed: readiness gate produced an inconsistent mainnet decision");
+    if (
+      report.decision === "ready_to_claim_mainnet_protocol_active" &&
+      report.protocolCompleteCount !== report.protocolRequiredCount
+    ) {
+      console.error("check failed: readiness gate produced an inconsistent protocol activation decision");
+      process.exitCode = 1;
+      return;
+    }
+    if (report.ecosystemDecision === "ready_to_claim_wallet_indexer_ready" && report.completeCount !== report.requiredCount) {
+      console.error("check failed: readiness gate produced an inconsistent ecosystem readiness decision");
       process.exitCode = 1;
       return;
     }
     console.log(
-      `mainnet readiness gate check passed: ${report.decision}, ${report.completeCount}/${report.requiredCount} gate(s) complete.`,
+      `mainnet readiness gate check passed: ${report.decision}, ${report.protocolCompleteCount}/${report.protocolRequiredCount} protocol gate(s); ${report.ecosystemDecision}.`,
     );
     return;
   }

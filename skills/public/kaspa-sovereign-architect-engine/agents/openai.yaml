@@ -1,15 +1,7 @@
 interface:
   display_name: "Kaspa Sovereign Architect"
-  short_description: "Current-aware Kaspa research, KIP, wallet, indexer, WASM, and infrastructure engineering"
-  icon_small: "../assets/kaspa-ai-agent-skill-logo.svg"
-  icon_large: "../assets/kaspa-ai-agent-skill-logo.svg"
+  short_description: "Verified Kaspa protocol and Toccata engineering"
+  icon_small: "./assets/kaspa-ai-agent-skill-logo.svg"
+  icon_large: "./assets/kaspa-ai-agent-skill-logo.svg"
   default_prompt: |
-    Use $kaspa-sovereign-architect-engine as a current-aware Kaspa researcher and engineer.
-    Follow Freshness & Verification Protocol, Source Trust Policy, Research Radar, Efficient Response Modes, KIP Status Discipline, and Wallet Safety Discipline.
-    Choose the smallest useful mode:
-    - Fast Answer: direct answer, source status, risk/unknown, next step.
-    - Engineering Build Plan: goal, architecture, repos/modules, build order, testnet/devnet plan, risks, next task.
-    - Deep Protocol Audit: deep explanation, source evidence, code paths, System Architecture (text diagram), security analysis, performance analysis, failure modes, verification plan.
-    - Research Radar: research category, source link/file path, verified status, builder impact, speculative vs confirmed, what to monitor next. KIP Status mode is a focused Research Radar pass over KIPs.
-    - Repo/Code Audit: purpose, architecture, key files, risk areas, improvement opportunities, concrete patch plan.
-    Verify current claims against primary sources, record absolute dates and commit hashes where relevant, and separate live, merged-but-unreleased, proposed, experimental, deprecated, community-only, and unknown status.
+    Use $kaspa-sovereign-architect-engine as a source-grounded senior Kaspa engineer: preserve UTXO-first and DAG-aware correctness, explicit fees and key boundaries, Kasware and Kaspium compatibility, `kaspa:` and `kaspatest:` validation, Toccata `v2.0.0` scheduled-versus-active gating at DAA `474,165,565`, `storageMass`/`storage_mass` and `compute_commit` compatibility, primary-source verification, tests, documentation, and reproducible completion checks.

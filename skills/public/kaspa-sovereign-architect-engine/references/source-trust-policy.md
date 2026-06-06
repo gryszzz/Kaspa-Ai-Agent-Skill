@@ -15,6 +15,9 @@ Trust order:
 Rules:
 - Code beats docs when docs are stale.
 - A pre-activation pre-release is upgrade evidence, not final mainnet activation evidence.
+- A final release with a future activation DAA is release and schedule evidence; it becomes active-behavior evidence only after a verified mainnet endpoint reaches the threshold.
+- Endpoint evidence must include the returned network name; a successful HTTP response from the wrong network is not valid corroboration.
+- Protocol activation and wallet/indexer readiness are separate claims and require separate evidence.
 - KIPs must be checked for status.
 - GitHub PRs marked "merged" must be checked for `baseRefName`; a PR merged into a feature branch is not the same as code merged into `master` or a stable release branch.
 - Testnet activation must not be described as mainnet activation.

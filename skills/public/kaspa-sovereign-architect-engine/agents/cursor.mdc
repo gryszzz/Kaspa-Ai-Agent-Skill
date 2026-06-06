@@ -1,35 +1,38 @@
 ---
-description: Kaspa Sovereign Architect Engine v1.4 compatibility rules for Cursor
+description: Source-grounded Kaspa and Toccata engineering rules for Cursor
 globs:
 alwaysApply: false
 ---
 
 # Kaspa Sovereign Architect Engine
 
-Use this rule when working on Kaspa protocol apps, KIPs, wallets, indexers, WASM/TypeScript apps, Kdapp experiments, dApps, infrastructure, or DAG-aware UX.
+Use for Kaspa protocol, Rusty Kaspa, KIPs, wallets, indexers, WASM/TypeScript,
+covenants, ZK, vProgs, mining, infrastructure, and repository work.
 
 Skill ID: `$kaspa-sovereign-architect-engine`
 
-## Required Policies
+## Required Contract
 
-- Follow the Freshness & Verification Protocol in `skills/public/kaspa-sovereign-architect-engine/SKILL.md`.
-- Follow Source Trust Policy (`references/source-trust-policy.md`).
-- Use Research Radar (`references/kaspa-research-radar.md`) for active research and future-feature tracking.
-- Use Efficient Response Modes and keep simple answers small.
-- Apply KIP Status Discipline before treating KIPs or future protocol work as live.
-- Apply Wallet Safety Discipline for signing, keys, custody, frontend wallet UX, and provider boundaries.
+- Read `SKILL.md` and task-relevant references before coding.
+- Verify current claims using primary sources, exact dates, release tags,
+  network names, and commit hashes.
+- Preserve UTXO-first value flow and DAG-aware acceptance/reorg handling.
+- Keep fees explicit. Never add hidden recipients, custody, or key handling.
+- Preserve Kasware and Kaspium compatibility. Validate `kaspa:` and
+  `kaspatest:` prefixes.
+- Treat Toccata `v2.0.0` as released but scheduled until mainnet DAA reaches
+  `474,165,565`.
+- Apply `storageMass`/`storage_mass`, legacy `mass`, and `compute_commit`
+  compatibility rules.
+- Separate protocol activation from wallet/indexer/pool/miner/app readiness.
+- Inspect existing plans and patterns, make minimal changes, add tests and docs,
+  and run verification before completion.
 
-## Response Modes
+## Cursor Execution
 
-- Fast Answer: direct answer, source status, risk/unknown, next step.
-- Engineering Build Plan: goal, architecture, repos/modules, build order, testnet/devnet plan, risks, next task.
-- Deep Protocol Audit: deep explanation, source evidence, code paths, System Architecture (text diagram), security analysis, performance analysis, failure modes, verification plan.
-- Research Radar: research category, source link/file path, verified status, builder impact, speculative vs confirmed, what to monitor next. KIP Status mode is a focused Research Radar pass over KIPs.
-- Repo/Code Audit: purpose, architecture, key files, risk areas, improvement opportunities, concrete patch plan.
-
-## Rules
-
-- Prefer source-grounded implementation over generic advice.
-- Record commit hashes for repo analysis and absolute dates for time-sensitive claims.
-- Never expose private keys in frontend code.
-- Design indexers for DAG-aware ordering, idempotency, dedupe, checkpoints, retries, and sync-lag visibility.
+- Prefer concrete edits over speculative prose.
+- Preserve unrelated working-tree changes.
+- Quote file paths and symbols in reviews.
+- For reviews, lead with findings ordered by severity.
+- For implementation, report changed files, verification, current source
+  status, unknowns, and residual risk.

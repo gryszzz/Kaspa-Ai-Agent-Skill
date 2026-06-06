@@ -1,14 +1,14 @@
 # Mainnet Readiness Gate
 
-Status: claim-control checklist and executable gate.
+Status: protocol-activation and ecosystem-readiness claim control.
 
-Current snapshot note, 2026-06-04:
+Current snapshot note, 2026-06-06:
 
-- Decision: `do_not_claim_mainnet`.
-- Complete gates: 1 of 6.
-- PR #1000 is merged into `master`, so the merged-code-path gate is complete.
-- Release `v1.3.0-toc.5` is tracked, but it is a pre-activation pre-release and does not complete the final mainnet-release or activation-schedule gates.
-- TN10/TN12 evidence remains testnet-only.
+- Protocol decision: `do_not_claim_mainnet_protocol_active`.
+- Rusty Kaspa `v2.0.0` is final release evidence.
+- Activation is scheduled for DAA `474,165,565`, roughly 2026-06-30 16:15 UTC.
+- The observed mainnet DAA is below the activation threshold.
+- Ecosystem decision: `do_not_claim_wallet_indexer_ready`; local prototypes do not prove audited production support.
 
 Run:
 
@@ -17,39 +17,37 @@ node scripts/toccata-mainnet-readiness-gate.mjs
 node scripts/toccata-mainnet-readiness-gate.mjs --check
 ```
 
-The gate reads `research-snapshots/toccata/latest.json` and returns `do_not_claim_mainnet` unless all required evidence categories are complete.
+## Protocol Gates
 
-## Required Gates
+| Gate | Required evidence |
+| --- | --- |
+| Final release | Stable Rusty Kaspa release explicitly naming Toccata |
+| Activation schedule | Explicit mainnet DAA and UTC estimate |
+| Merged code path | Production code merged into `master` |
+| Mainnet endpoint | Healthy endpoint returning `kaspa-mainnet` |
+| Activation reached | Live mainnet DAA at or above `474,165,565` |
+| Docs alignment | Versioned official Toccata node guide |
 
-| Gate | Required evidence | Current rule |
-| --- | --- | --- |
-| Mainnet release tag | Rusty Kaspa release tag or signed release explicitly naming mainnet Toccata behavior | Testnet tags do not count |
-| Activation schedule | Explicit mainnet height, DAA score, timestamp, or release note | Open PRs do not count |
-| Merged production code path | Merged production branch or equivalent primary-source code evidence | PR #1000 is merged, but code merge alone is not activation |
-| Mainnet endpoint evidence | Healthy endpoint checks returning expected mainnet network name and current state | TN10/TN12 are testnet-only |
-| Wallet and indexer support | Wallet preview, signing support, indexer schema, reorg handling, and support matrix | Protocol code alone is not UX readiness |
-| Docs alignment | Official docs or release notes aligned with tag, schedule, code, endpoints, and wallet/indexer support | General programmability docs do not imply activation |
+## Ecosystem Gate
 
-## Decision Language
+Wallet/indexer readiness is deliberately separate. It requires audited transaction parsing, `storageMass` and `compute_commit` compatibility, covenant-aware construction, reorg-safe indexing, fee estimation, and signing UX. Protocol activation alone does not complete this gate.
 
-Allowed:
+## Allowed Language
 
-```text
-Toccata evidence is present on testnet and in open source work, but this repo does not verify mainnet activation yet.
-```
-
-Blocked:
+Before the DAA threshold:
 
 ```text
-Toccata is live on mainnet.
+Toccata v2.0.0 is released and scheduled to activate at mainnet DAA 474,165,565.
 ```
 
-Blocked unless every gate is complete:
+After the threshold, if all protocol gates pass:
 
 ```text
-Mainnet wallets and indexers can rely on Toccata behavior.
+Toccata protocol activation is verified on mainnet.
 ```
 
-## Why This Exists
+Still blocked without ecosystem evidence:
 
-This repo tracks fast-moving source, KIPs, docs, testnet endpoints, and builder prototypes. That is powerful, but it creates a temptation to turn evidence into claims too early. The gate keeps the skill precise: testnet signals are useful, open PRs are useful, docs are useful, but mainnet claims require all evidence lines to converge.
+```text
+All wallets and indexers are Toccata-ready.
+```

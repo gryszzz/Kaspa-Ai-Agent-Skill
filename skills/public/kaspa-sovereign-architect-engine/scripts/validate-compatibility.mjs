@@ -12,6 +12,21 @@ const openaiPath = path.join(rootDir, "agents", "openai.yaml");
 const logoPath = path.join(rootDir, "assets", "kaspa-ai-agent-skill-logo.svg");
 
 const requiredTargets = ["codex", "openai", "anthropic", "cursor", "openclaw", "gemini", "generic"];
+const contractChecks = [
+  ["UTXO-first architecture", /UTXO[- ]first/i],
+  ["DAG-aware correctness", /DAG[- ]aware/i],
+  ["explicit fee handling", /explicit[\s\S]{0,40}fees?|fees?[\s\S]{0,40}explicit/i],
+  ["key safety", /key\s+(?:handling|boundaries)|private keys?|seeds?/i],
+  ["Kasware compatibility", /Kasware/],
+  ["Kaspium compatibility", /Kaspium/],
+  ["mainnet address prefix", /kaspa:/],
+  ["testnet address prefix", /kaspatest:/],
+  ["Toccata final release", /v2\.0\.0/],
+  ["Toccata activation DAA", /474,165,565/],
+  ["storage mass compatibility", /storageMass/],
+  ["compute commitment compatibility", /compute_commit/],
+  ["verification requirement", /verif|tests?/i],
+];
 
 function ok(msg) {
   console.log(`[ok] ${msg}`);
@@ -63,6 +78,9 @@ function validateManifest() {
     fail("manifest.json missing required keys: name, version, targets[]");
     return null;
   }
+  if (!/^\d+\.\d+\.\d+$/.test(manifest.version)) {
+    fail(`manifest.json version is not semver: ${manifest.version}`);
+  }
 
   const targetIds = manifest.targets.map((t) => t.id);
   for (const id of requiredTargets) {
@@ -83,14 +101,29 @@ function validateOpenAIYaml() {
 
   const iconMatch = content.match(/icon_small:\s*["'](.+)["']/);
   if (iconMatch) {
-    const p = path.resolve(path.dirname(openaiPath), iconMatch[1]);
-    assertFile(p, "openai icon_small");
+    const rootRelative = path.resolve(rootDir, iconMatch[1]);
+    const adapterRelative = path.resolve(path.dirname(openaiPath), iconMatch[1]);
+    const iconPath = fs.existsSync(rootRelative) ? rootRelative : adapterRelative;
+    assertFile(iconPath, "openai icon_small");
   } else {
     fail("openai.yaml missing icon_small path");
   }
 
   if (assertFile(logoPath, "Kaspa AI Agent Skill logo asset")) {
     ok("logo asset is present for adapters");
+  }
+}
+
+function validateSharedContract(content, label) {
+  let valid = true;
+  for (const [rule, pattern] of contractChecks) {
+    if (!pattern.test(content)) {
+      fail(`${label} missing shared contract rule: ${rule}`);
+      valid = false;
+    }
+  }
+  if (valid) {
+    ok(`${label} includes the shared Kaspa/Toccata contract`);
   }
 }
 
@@ -104,6 +137,7 @@ function validateTarget(targetId, manifest) {
   const entryPath = path.join(rootDir, target.entry);
   if (!assertFile(entryPath, `target:${targetId} entry`)) return;
   const content = readFile(entryPath);
+  validateSharedContract(content, `target:${targetId}`);
 
   switch (targetId) {
     case "codex":
@@ -112,12 +146,17 @@ function validateTarget(targetId, manifest) {
       } else {
         ok("codex skill contract found");
       }
+      if (content.split(/\r?\n/).length > 500) {
+        fail("codex skill exceeds the 500-line progressive-disclosure limit");
+      } else {
+        ok("codex skill stays within the progressive-disclosure line limit");
+      }
       break;
     case "openai":
       validateOpenAIYaml();
       break;
     case "anthropic":
-      if (!content.includes("System Architecture (text diagram)")) {
+      if (!/System Architecture \(text\s+diagram\)/.test(content)) {
         fail("anthropic adapter missing required output structure");
       } else {
         ok("anthropic adapter includes output structure");

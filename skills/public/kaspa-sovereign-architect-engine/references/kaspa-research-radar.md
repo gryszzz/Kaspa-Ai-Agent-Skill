@@ -23,7 +23,9 @@ Track:
 
 Track:
 - activation status by network, release tag, DAA score, and UTC date
-- Rusty Kaspa branch status: `master`, `toccata`, `tn12`, release tags, and PR base branches
+- mainnet DAA distance to activation and the 24-hour P2P protocol-version cutoff
+- Rusty Kaspa branch status: `master`, `toccata`, `tn10`, `tn12`, release tags, and PR base branches
+- branch-delta impact across transaction wire formats, RPC/WASM, wallet/PSKT, mempool policy, storage migrations, and security fixes
 - open ZK SDK and ZK rollup example PRs
 - vProg computation DAG, proof cadence, scope cost, and pruning safety research
 - covenant script behavior
@@ -35,6 +37,10 @@ Track:
 - Based Apps and vProgs architecture
 - wallet signing UX for covenant spends and proof-bearing transactions
 - indexer schema impact for covenant lineage, app state, proof metadata, and sequencing commitments
+- API migration from `mass` to `storageMass`/`storage_mass`, plus `TransactionInput.compute_commit`
+- fee-policy separation: relay/RPC minimum fee policy is not consensus validity
+- pool/miner preservation of covenant and compute-commit fields from template to submitted block
+- one-way database upgrade and rollback/resync requirements
 - production readiness labels: live, merged but unreleased, testnet-only, experimental, proposed, unknown
 
 ## Consensus

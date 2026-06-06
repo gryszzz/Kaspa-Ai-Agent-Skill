@@ -1,19 +1,24 @@
 # Kaspa Toccata Mastery Map
 
-Generated: 2026-06-04
+Generated: 2026-06-06
 
 ## Current Status
 
-Treat Toccata as a near-mainnet / testnet-active hard fork track until a final mainnet activation release and DAA score are verified from primary sources.
+Treat Toccata as released and scheduled, but not yet active on mainnet until a verified mainnet endpoint reaches activation DAA `474,165,565`.
 
-Confirmed evidence as of 2026-06-04:
+Confirmed evidence as of 2026-06-06:
 
-- Rusty Kaspa GitHub shows `v1.3.0-toc.5` as a Toccata mainnet pre-activation pre-release published on 2026-06-03. It is intended for mainnet sanity testing, explicitly does not activate Toccata on mainnet, and expects one more final upgrade.
+- Rusty Kaspa `v2.0.0`, published 2026-06-05, is the final Toccata release. It schedules mainnet activation for DAA `474,165,565`, roughly 2026-06-30 16:15 UTC.
+- Starting 24 hours before activation, updated nodes connect only to peers using P2P protocol version 10.
+- The latest source snapshot observed mainnet below the activation threshold, so present-tense mainnet activation claims remain incorrect.
 - Rusty Kaspa GitHub shows PR #1000, `Toccata`, closed and merged from `toccata` into `master` on 2026-06-02.
 - Rusty Kaspa GitHub shows PR #1013, `ZK opcode updates`, closed and merged into `tn10` on 2026-05-27.
 - Rusty Kaspa GitHub shows `tn10-toc3` as a pre-release published on 2026-05-27. It scheduled TN10 Toccata ZK hardening for 2026-05-28 around 16:00 UTC at DAA score 476,232,000.
 - Rusty Kaspa GitHub shows `tn10-toc2` as a pre-release dated 2026-05-16. It scheduled the Toccata hard fork on testnet-10 for 2026-05-18 16:00 UTC at DAA score 467,579,632.
-- The latest stable Rusty Kaspa release visible in GitHub releases is `v1.1.0`, dated 2026-03-04. That release focuses on VSPC API v2, sync/pruning improvements, storage/performance gains, pruning-proof refactors, RocksDB presets, and Stratum Bridge beta. It is not itself a final Toccata mainnet activation release.
+- The final release guide requires pools and miners to preserve `TransactionOutput.covenant` and `TransactionInput.compute_commit` from block templates through block submission.
+- Rust/protobuf transaction APIs use `storage_mass`; JSON/JavaScript use `storageMass`. Legacy JSON `mass` remains a compatibility alias, and conflicting values are rejected.
+- The higher minimum standard fee is `100 sompi * max(compute grams, 2 * transaction bytes)`. This is node relay/mempool policy, not consensus validity.
+- The node database upgrade is one-way; rollback to older software requires a resync.
 - KIP-16, KIP-17, KIP-20, and KIP-21 are closed and merged into `kaspanet/kips` `master`; their document statuses indicate implemented/activated on TN10.
 - Kaspa.org describes Toccata as the next hard fork, focused on covenant-based base-layer programmability.
 - Kaspa.org/build describes the Toccata bundle as extended script opcodes, covenant IDs, zk opcodes with a verifier precompile subsystem, and sequencing commitments. It says this is live on TN12 ahead of mainnet activation.
@@ -23,19 +28,20 @@ Confirmed evidence as of 2026-06-04:
 
 ## Second-Pass Source Audit
 
-Audit time: 2026-06-04T03:33:39Z
+Audit time: 2026-06-06T01:39:16Z
 
 ### Rusty Kaspa Branch State
 
-- `kaspanet/rusty-kaspa` `master`: `d5205cc72ab7b811e88a23595dfac5b9facdeece`
+- `kaspanet/rusty-kaspa` `master`: `90dbf074275d60c1fe74a3491883196f110970c0`
 - `kaspanet/rusty-kaspa` `toccata`: `0ae28f939e61994a11eb8eb6dd775255e2924afb`
-- `kaspanet/rusty-kaspa` `tn10`: `6899ea75384c1f422fe4ab0e47c439442da3f4fa`
+- `kaspanet/rusty-kaspa` `tn10`: `e5f6d1f7c86f3a3afbe97dbb75e72a0a3ff66a57`
 - `kaspanet/rusty-kaspa` `tn12`: `ab4c51afde90dc6e0bce3f782d0a18af5da29434`
 - `kaspanet/rusty-kaspa` tag `v1.3.0-toc.5`: `04b0d135f8c8023676ea74dcf496c99d5d0bc2a5`
+- `kaspanet/rusty-kaspa` tag `v2.0.0`: `90dbf074275d60c1fe74a3491883196f110970c0`
 - `kaspanet/rusty-kaspa` tag `tn10-toc3`: `1015a62359e0d06e0b3b3b7f7d06bc1bd4bf0c1b`
 - `kaspanet/rusty-kaspa` tag `tn10-toc2`: `97415b689462bec8a1a36f1665302529ea8a3108`
 
-The decisive implementation signal is Rusty Kaspa PR #1000, `Toccata`, which is now closed and merged from branch `toccata` into `master`. This is merged code-path evidence, not final mainnet activation evidence.
+The implementation, final release, and activation schedule are now verified. Active mainnet behavior still requires live DAA threshold evidence.
 
 Do not treat all GitHub PRs marked `MERGED` as merged into `master`. Several important Toccata PRs were merged into feature branches such as `covpp`, `covpp-reset1`, `covpp-reset2`, or `toccata`. Record `baseRefName` whenever using GitHub PR evidence.
 
@@ -43,19 +49,22 @@ Do not treat all GitHub PRs marked `MERGED` as merged into `master`. Several imp
 
 Release evidence:
 
-- `v1.3.0-toc.5` is mainnet pre-activation evidence only. It tells node operators to sanity-test mainnet behavior before the final rollout, and says it does not activate Toccata on mainnet.
+- `v2.0.0` is final release and activation-schedule evidence.
+- Mainnet activation DAA is `474,165,565`, roughly 2026-06-30 16:15 UTC.
+- P2P protocol version 10 becomes mandatory for peer connectivity starting 24 hours before activation.
 - `tn10-toc3` is TN10 hardening evidence. It schedules TN10 activation for May 28, 2026 around 16:00 UTC at DAA score 476,232,000.
 - `tn10-toc2` is earlier TN10 rehearsal evidence. It scheduled the May 18, 2026 TN10 hard fork at DAA score 467,579,632.
 
 Live REST check:
 
-- `https://api-tn10.kaspa.org/info/blockdag` returned `networkName = kaspa-testnet-10` and `virtualDaaScore = 481841011` at 2026-06-04T03:33:39Z. This is above the `tn10-toc3` activation DAA score of 476,232,000.
-- `https://api-tn12.kaspa.org/info/blockdag` returned `networkName = kaspa-testnet-12` and `virtualDaaScore = 29336303` at the same audit pass.
+- `https://api.kaspa.org/info/blockdag` returned `networkName = kaspa-mainnet` and `virtualDaaScore = 452903728` at 2026-06-06T01:39:16Z, below activation.
+- `https://api-tn10.kaspa.org/info/blockdag` returned `networkName = kaspa-testnet-10` and `virtualDaaScore = 483498498`, above the TN10 hardening activation DAA.
+- The TN12 endpoint returned `HTTP 500` during this audit. Record the failure; do not silently present stale TN12 state as live.
 
 Conclusion:
 
 - Toccata should be described as active/past activation on TN10 only when the release schedule and live TN10 endpoint evidence are cited together.
-- Toccata should not be described as active on mainnet until a mainnet activation release, DAA score, and code path are verified.
+- Toccata should be described as released and scheduled on mainnet, not active, until the live DAA reaches `474,165,565`.
 
 ### KIP Status Evidence
 
@@ -87,15 +96,16 @@ Important Rusty Kaspa PRs:
 - PR #1011: `Clarify seqcommit tx validation contexts`, merged into base branch `toccata`.
 - PR #1013: `ZK opcode updates`, merged into base branch `tn10`.
 
-Code found on the `toccata` branch includes:
+Code in final `v2.0.0` includes:
 
-- `TransactionInput` carrying `TxInputMass`, with `ComputeBudget` for version >= 1 transactions.
+- `TransactionInput.compute_commit`, with `ComputeBudget` for version >= 1 transactions.
 - `TransactionOutput` carrying `Option<CovenantBinding>`.
 - `UtxoEntry` carrying `Option<Hash>` covenant ID.
+- `Transaction.storage_mass` in Rust/protobuf and `storageMass` in JSON/JavaScript, with legacy `mass` compatibility.
 - WASM opcode exposure for `OpZkPrecompile`, `OpTxPayloadSubstr`, `OpTxPayloadLen`, `OpInputCovenantId`, `OpCovInputCount`, `OpCovInputIdx`, `OpCovOutputCount`, `OpCovOutputIdx`, `OpChainblockSeqCommit`, and `OpOutputCovenantId`.
 - Post-Toccata transient mass and lane/gas limit parameters.
 
-This code-path evidence is stronger than roadmap copy, but still distinct from a final stable/mainnet activation release.
+These are final-release contracts, but downstream compatibility and mainnet activation are separate questions.
 
 ## Verification Ladder
 
@@ -229,7 +239,7 @@ Programmability Surface
 
 2. Toccata feature matrix
 
-- Track each feature against source status: script opcodes, covenant IDs, zk precompile/opcodes, sequencing commitments, TN12/TN10 activation, and final mainnet activation evidence.
+- Track each feature against source status: released, scheduled, active-by-DAA, testnet active, wallet-ready, indexer-ready, or experimental.
 
 3. SilverScript lab
 
@@ -260,17 +270,18 @@ Programmability Surface
 
 ## Open Questions
 
-- What exact Rusty Kaspa release will schedule mainnet Toccata?
-- What final DAA score and UTC timestamp will define mainnet activation?
-- What successor release follows `v1.3.0-toc.5`, and what final activation language does it contain?
+- When will mainnet cross DAA `474,165,565`, and do endpoint observations agree at the threshold?
 - What wallet, indexer, RPC, WASM, PSKT, and explorer support is verified against the final activation release?
-- What verifier systems are included in the first activation, and what verification costs/mass rules apply?
+- Which integrations still depend on deprecated `mass` names or omit `compute_commit`/covenant fields?
+- What audited verification-cost, script-unit, and dependency assumptions should builders pin for the released Groth16 and RISC0/Succinct paths?
 - How will wallets expose covenant state and proof semantics safely to non-technical users?
 - What explorer/indexer schema changes are needed for covenant IDs and sequencing commitment proofs?
 
 ## Source Inventory
 
 - Rusty Kaspa releases: https://github.com/kaspanet/rusty-kaspa/releases
+- Rusty Kaspa final Toccata release: https://github.com/kaspanet/rusty-kaspa/releases/tag/v2.0.0
+- Rusty Kaspa Toccata node guide: https://github.com/kaspanet/rusty-kaspa/blob/v2.0.0/docs/toccata-guide.md
 - Rusty Kaspa Toccata mainnet pre-activation release: https://github.com/kaspanet/rusty-kaspa/releases/tag/v1.3.0-toc.5
 - Rusty Kaspa TN10 Toccata ZK hardening release: https://github.com/kaspanet/rusty-kaspa/releases/tag/tn10-toc3
 - Rusty Kaspa repository: https://github.com/kaspanet/rusty-kaspa
@@ -296,5 +307,6 @@ Programmability Surface
 - SilverScript: https://github.com/kaspanet/silverscript
 - vProgs: https://github.com/kaspanet/vprogs
 - KIPs repository: https://github.com/kaspanet/kips
+- Mainnet REST blockDAG endpoint: https://api.kaspa.org/info/blockdag
 - TN10 REST blockDAG endpoint: https://api-tn10.kaspa.org/info/blockdag
 - TN12 REST blockDAG endpoint: https://api-tn12.kaspa.org/info/blockdag

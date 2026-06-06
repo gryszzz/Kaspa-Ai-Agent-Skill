@@ -1,17 +1,19 @@
-# TN10 and TN12 RPC Smoke Test Notes
+# Mainnet, TN10, and TN12 RPC Smoke Test Notes
 
-These notes cover the testnet blockDAG endpoints used by the Toccata Source Monitor:
+These notes cover the blockDAG endpoints used by the Toccata Source Monitor:
 
+- Mainnet: `https://api.kaspa.org/info/blockdag`
 - TN10: `https://api-tn10.kaspa.org/info/blockdag`
 - TN12: `https://api-tn12.kaspa.org/info/blockdag`
 
-They are smoke checks for testnet endpoint health and response shape. They are not proof of mainnet activation, mainnet readiness, or production behavior.
+They are smoke checks for endpoint health and response shape. Mainnet activation additionally requires the final release activation DAA to be reached.
 
 ## Quick Check
 
-Run both endpoint checks before using TN10 or TN12 observations in Toccata research:
+Run all endpoint checks before using live observations in Toccata research:
 
 ```bash
+curl -fsS --max-time 20 https://api.kaspa.org/info/blockdag
 curl -fsS --max-time 20 https://api-tn10.kaspa.org/info/blockdag
 curl -fsS --max-time 20 https://api-tn12.kaspa.org/info/blockdag
 ```
@@ -20,7 +22,7 @@ Expected baseline:
 
 - HTTP response is `200`.
 - Body is valid JSON.
-- `networkName` matches the endpoint: `kaspa-testnet-10` for TN10 and `kaspa-testnet-12` for TN12.
+- `networkName` matches the endpoint: `kaspa-mainnet`, `kaspa-testnet-10`, or `kaspa-testnet-12`.
 - `virtualDaaScore`, `blockCount`, and `headerCount` are present and parseable as non-negative integer values. The public endpoint may return these as strings.
 - `tipHashes` is present as an array. A non-empty array is the normal healthy shape.
 
@@ -51,9 +53,10 @@ A healthy response should look like this shape. Values are examples only and wil
 
 For Toccata activation notes:
 
+- Mainnet: compare `virtualDaaScore` against final release activation DAA `474,165,565`. Below the threshold means scheduled; at or above means activation evidence.
 - TN10: compare `virtualDaaScore` against the `tn10-toc2` activation schedule only after confirming the response is from `kaspa-testnet-10`.
 - TN12: treat the endpoint result as TN12 testnet evidence only, and pair it with branch or docs evidence before making broader Toccata claims.
-- Mainnet: do not infer anything from TN10 or TN12. Mainnet claims require explicit mainnet release, activation, or merged production evidence.
+- Do not infer mainnet state from TN10 or TN12.
 
 ## Failure Modes
 
@@ -71,6 +74,7 @@ Treat these as safe failures, not negative protocol conclusions:
 Use a verbose header check when a smoke test fails:
 
 ```bash
+curl -v --max-time 20 https://api.kaspa.org/info/blockdag
 curl -v --max-time 20 https://api-tn10.kaspa.org/info/blockdag
 curl -v --max-time 20 https://api-tn12.kaspa.org/info/blockdag
 ```
@@ -94,12 +98,14 @@ node scripts/toccata-network-check.mjs --live
 
 By default, the live check uses:
 
+- `https://api.kaspa.org/info/blockdag`
 - `https://api-tn10.kaspa.org/info/blockdag`
 - `https://api-tn12.kaspa.org/info/blockdag`
 
 To compare more than one endpoint per network, pass comma-separated endpoint lists:
 
 ```bash
+TOCCATA_MAINNET_ENDPOINTS="https://api.kaspa.org/info/blockdag,https://source-node.example/mainnet/info/blockdag" \
 TOCCATA_TN10_ENDPOINTS="https://api-tn10.kaspa.org/info/blockdag,https://source-node.example/tn10/info/blockdag" \
 TOCCATA_TN12_ENDPOINTS="https://api-tn12.kaspa.org/info/blockdag,https://source-node.example/tn12/info/blockdag" \
 node scripts/toccata-network-check.mjs --live

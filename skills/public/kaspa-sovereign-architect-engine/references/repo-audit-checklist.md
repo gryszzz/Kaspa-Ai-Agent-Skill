@@ -17,6 +17,8 @@ Use this checklist per repository and quote concrete file paths and symbols.
 
 - Locate transaction object model.
 - Locate transaction builder and fee or mass calculation path.
+- Locate `storageMass`/`storage_mass`, legacy `mass`, and
+  `compute_commit` serialization paths when Toccata is in scope.
 - Locate serialization and deserialization routines.
 - Locate signing boundary and key usage boundary.
 - Locate submission and confirmation tracking path.
@@ -36,6 +38,8 @@ Use this checklist per repository and quote concrete file paths and symbols.
 - Identify wallet phishing, malicious extension, and signing-prompt confusion risks.
 - Identify race conditions around UTXO selection and double-spend handling.
 - Identify extension or provider-injection risk when browser wallets are in scope.
+- Verify Kasware and Kaspium flows when the product claims both paths.
+- Verify explicit handling for `kaspa:` and `kaspatest:` prefixes.
 
 ## 6. Improvement and Reuse
 
@@ -64,7 +68,7 @@ Use this checklist per repository and quote concrete file paths and symbols.
 Use patterns like these to accelerate discovery:
 
 ```bash
-rg -n "tx|transaction|sign|signature|wallet|mnemonic|seed|utxo|rpc|grpc|websocket|fee|mass|mempool|consensus|serialize|deserialize" <repo-root>
+rg -n "tx|transaction|sign|signature|wallet|Kasware|Kaspium|mnemonic|seed|utxo|rpc|grpc|websocket|fee|mass|storageMass|storage_mass|compute_commit|mempool|consensus|serialize|deserialize|kaspa:|kaspatest:" <repo-root>
 ```
 
 Rust-heavy repos:

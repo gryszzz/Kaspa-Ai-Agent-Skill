@@ -1,6 +1,6 @@
 # Kaspa Toccata Readiness Drills
 
-Generated: 2026-06-04
+Generated: 2026-06-06
 
 This file is the repo-local training loop for preparing the `kaspa-sovereign-architect-engine` skill for Toccata-era work. It does not train the base model. It trains the local skill package, retrieval corpus, and operator habits by forcing repeated source verification, recall, and build-oriented synthesis.
 
@@ -18,6 +18,7 @@ Prepare for the Toccata upgrade by becoming excellent at three things:
 
 ```bash
 node scripts/toccata-source-monitor.mjs --write-if-changed
+node --test scripts/toccata-source-monitor.test.mjs
 ```
 
 2. Run the local knowledge drill.
@@ -30,17 +31,17 @@ node scripts/kaspa-knowledge-drill.mjs
 4. Pick one deep drill and produce a short artifact.
 5. If an answer depends on current state, record the source URL, audit date, branch, PR base, and commit hash.
 6. If a source changed, update the relevant corpus or playbook instead of relying on memory.
-7. Check the endpoint `networkName` before trusting any TN10/TN12 result.
+7. Check the endpoint `networkName` before trusting any mainnet/TN10/TN12 result.
 
 ## Weekly Build Loop
 
 Monday: source audit
 
-- Re-check Rusty Kaspa PR #1000 and PR #1013.
-- Re-check Rusty Kaspa releases `v1.3.0-toc.5`, `tn10-toc3`, `tn10-toc2`, and the latest stable tag.
+- Re-check Rusty Kaspa `v2.0.0`, its activation DAA, and the live mainnet DAA.
+- Review branch-delta impact lanes instead of relying only on pinned PR numbers.
 - Re-check KIP-16, KIP-17, KIP-20, and KIP-21 PR status plus the merged KIP file document status.
-- Re-check TN10 and TN12 `/info/blockdag` shape.
-- Confirm TN10/TN12 `networkName` values did not drift or get mixed by a proxy.
+- Re-check mainnet, TN10, and TN12 `/info/blockdag` shape.
+- Confirm returned `networkName` values did not drift or get mixed by a proxy.
 - Record what changed since the previous snapshot.
 
 Tuesday: covenant lab
@@ -61,6 +62,8 @@ Thursday: wallet lab
 - Design a signing preview for a covenant spend.
 - Include consumed state, successor state, covenant ID, proof requirements, and replay or phishing risks.
 - Separate watch-only, wallet-connected, local signer, extension signer, and hardware signer assumptions.
+- Test Kasware and Kaspium paths with both `kaspa:` and `kaspatest:` address validation.
+- Test `storageMass`, legacy `mass`, `compute_commit`, covenant bindings, and explicit fee display.
 
 Friday: ZK and sequencing lab
 
@@ -79,13 +82,13 @@ Weekend: app strategy
 
 Evidence:
 
-- What would prove Toccata mainnet activation?
-- What does `v1.3.0-toc.5` prove, and what does it explicitly not prove?
+- What would prove the scheduled activation DAA has actually been reached?
+- What does `v2.0.0` prove, and what does it not prove about current live mainnet state?
 - What does `tn10-toc3` prove, and why is it still not mainnet evidence?
 - What does a feature branch prove that an open PR does not?
 - What does a merged KIP file prove that it still does not prove about mainnet?
-- Which network name did each testnet endpoint return in the latest snapshot?
-- Which readiness gate is currently complete, and which gates still block mainnet claims?
+- Which network name did each endpoint return in the latest snapshot?
+- Which protocol gates are complete, which one blocks activation, and why is wallet/indexer readiness separate?
 
 Covenants:
 
@@ -115,20 +118,18 @@ vProgs:
 
 High leverage:
 
-- Add release-note behavior extraction for `v1.3.0-toc.5`: fee policy, RPC submission, P2P relay, gRPC/protobuf, and one-way DB upgrade risk.
 - Add a Toccata git-tag crate compatibility smoke fixture for SDK-facing Kaspa APIs.
-- Add wallet/indexer fixtures for covenant IDs, successor outputs, authorization inputs, sequencing commitments, and fee-policy previews.
-- Extend PR diff summaries from changed-file signals into focused changed-behavior notes.
+- Add wallet/indexer fixtures for `storageMass`, legacy `mass`, `compute_commit`, covenant IDs, successor outputs, sequencing commitments, and fee-policy previews.
+- Turn branch-delta impact lanes into focused downstream compatibility fixtures.
 - Add wallet-preview golden tests that consume covenant lineage fixture output.
-- Add live source-node lists for the multi-endpoint TN10/TN12 checker.
+- Add trusted multi-endpoint source lists for mainnet, TN10, and TN12.
 - Add proof-cost benchmark snapshots when verifier pricing stabilizes.
 - Add witness API contract tests once an indexer implementation exists.
-- Add source-monitor changed-behavior notes for PR #1000 and PR #1013.
 
 Guardrails:
 
 - Never collapse testnet evidence into mainnet claims.
 - Never treat merged KIP files or TN10 activation status as mainnet activation.
-- Never treat a pre-activation mainnet pre-release as final activation evidence.
+- Never treat a final release with a future DAA as already-active mainnet behavior.
 - Never assume wallet/indexer support follows automatically from protocol code.
 - Never treat a demo compiler or app as audited production readiness.
