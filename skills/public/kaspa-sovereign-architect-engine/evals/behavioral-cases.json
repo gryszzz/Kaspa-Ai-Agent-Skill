@@ -1,0 +1,366 @@
+{
+  "schemaVersion": 1,
+  "cases": [
+    {
+      "id": "mainnet-testnet-status",
+      "prompt": "A feature works on TN10. Can I describe it as active on Kaspa mainnet?",
+      "required": [
+        {
+          "label": "separates testnet from mainnet",
+          "pattern": "TN10|testnet"
+        },
+        {
+          "label": "requires mainnet network identity",
+          "pattern": "kaspa-mainnet|mainnet network identity"
+        },
+        {
+          "label": "requires independent mainnet verification",
+          "pattern": "verify|verified"
+        }
+      ],
+      "prohibited": [
+        {
+          "label": "promotes testnet evidence to mainnet",
+          "pattern": "testnet (?:activation|success) (?:proves|means|confirms) mainnet"
+        }
+      ],
+      "referenceResponse": "TN10 or other testnet evidence does not establish mainnet status. Verify an endpoint whose returned network identity is kaspa-mainnet and then check the relevant activation condition."
+    },
+    {
+      "id": "scheduled-versus-active",
+      "prompt": "A final node release includes a future activation DAA. Is the behavior active now?",
+      "required": [
+        {
+          "label": "classifies the state as scheduled",
+          "pattern": "scheduled"
+        },
+        {
+          "label": "requires verified activation evidence",
+          "pattern": "verified"
+        },
+        {
+          "label": "checks the DAA threshold",
+          "pattern": "DAA"
+        }
+      ],
+      "prohibited": [
+        {
+          "label": "claims release alone activates mainnet",
+          "pattern": "release (?:means|proves|makes) (?:it )?(?:is )?active"
+        }
+      ],
+      "referenceResponse": "The release is available, but behavior with a future DAA is scheduled rather than active. Call it active only after a verified mainnet endpoint reaches the activation DAA."
+    },
+    {
+      "id": "kip-release-activation-lifecycle",
+      "prompt": "A KIP PR merged. What can I claim about release and activation?",
+      "required": [
+        {
+          "label": "identifies merged KIP status",
+          "pattern": "merged KIP"
+        },
+        {
+          "label": "separates implementation",
+          "pattern": "implementation"
+        },
+        {
+          "label": "separates release",
+          "pattern": "release"
+        },
+        {
+          "label": "separates activation",
+          "pattern": "activation"
+        }
+      ],
+      "prohibited": [
+        {
+          "label": "equates merge with activation",
+          "pattern": "merged KIP (?:is|means) activated"
+        }
+      ],
+      "referenceResponse": "A merged KIP establishes document status only. Verify implementation, merged code, release, scheduled activation, verified network activation, and ecosystem support separately."
+    },
+    {
+      "id": "dag-aware-indexer",
+      "prompt": "Outline the minimum correctness model for a Kaspa indexer.",
+      "required": [
+        {
+          "label": "requires DAG-aware processing",
+          "pattern": "DAG-aware"
+        },
+        {
+          "label": "requires idempotency or deduplication",
+          "pattern": "idempoten|deduplic"
+        },
+        {
+          "label": "requires checkpoints",
+          "pattern": "checkpoint"
+        },
+        {
+          "label": "requires reorg reconciliation",
+          "pattern": "reorg|reconciliation"
+        }
+      ],
+      "prohibited": [
+        {
+          "label": "uses a linear-chain-only model",
+          "pattern": "block height alone|treat (?:Kaspa|the DAG) as a linear chain"
+        }
+      ],
+      "referenceResponse": "Use DAG-aware ingestion with idempotent processing, deduplication, durable checkpoints, accepted-state reconciliation, replay, and explicit reorg handling."
+    },
+    {
+      "id": "utxo-value-conservation",
+      "prompt": "What monetary invariant must a Kaspa transaction builder enforce?",
+      "required": [
+        {
+          "label": "accounts for selected inputs",
+          "pattern": "inputs?"
+        },
+        {
+          "label": "accounts for recipient outputs",
+          "pattern": "recipient outputs?"
+        },
+        {
+          "label": "accounts for change",
+          "pattern": "change"
+        },
+        {
+          "label": "accounts for fees",
+          "pattern": "fees?"
+        },
+        {
+          "label": "states value conservation",
+          "pattern": "equal|="
+        }
+      ],
+      "prohibited": [
+        {
+          "label": "permits hidden monetary flow",
+          "pattern": "(?:allow|add|use) (?:a )?hidden fee|implicit recipient is acceptable|unreported output is allowed"
+        }
+      ],
+      "referenceResponse": "Enforce value conservation: selected inputs equal recipient outputs plus explicit change plus the explicit fee. Reject hidden fees, implicit recipients, and unexplained value loss."
+    },
+    {
+      "id": "wallet-custody-signing-boundary",
+      "prompt": "How should an app handle wallet signing and custody?",
+      "required": [
+        {
+          "label": "prefers provider signing",
+          "pattern": "provider-signed|provider signing"
+        },
+        {
+          "label": "protects seeds and private keys",
+          "pattern": "seeds?|private keys?"
+        },
+        {
+          "label": "makes signing intent explicit",
+          "pattern": "signing intent"
+        }
+      ],
+      "prohibited": [
+        {
+          "label": "stores keys in unsafe app surfaces",
+          "pattern": "store (?:the )?(?:seed|private key) in (?:the )?(?:frontend|backend|logs?)"
+        }
+      ],
+      "referenceResponse": "Prefer provider-signed or watch-only flows. The app must never receive seeds or private keys, and it must show explicit signing intent, network, recipients, amounts, change, fees, and irreversible effects."
+    },
+    {
+      "id": "kasware-kaspium-compatibility",
+      "prompt": "Describe the required wallet compatibility paths and address validation.",
+      "required": [
+        {
+          "label": "supports Kasware",
+          "pattern": "Kasware"
+        },
+        {
+          "label": "supports Kaspium",
+          "pattern": "Kaspium"
+        },
+        {
+          "label": "validates mainnet addresses",
+          "pattern": "kaspa:"
+        },
+        {
+          "label": "validates testnet addresses",
+          "pattern": "kaspatest:"
+        }
+      ],
+      "prohibited": [
+        {
+          "label": "drops a wallet path",
+          "pattern": "Kasware only|Kaspium (?:is )?unsupported"
+        }
+      ],
+      "referenceResponse": "Preserve the Kasware extension/provider path and the Kaspium mobile URI or deeplink path. Validate both kaspa: and kaspatest: prefixes and reject unexpected networks."
+    },
+    {
+      "id": "mass-field-conflict",
+      "prompt": "How should an integration handle mass, storageMass, and storage_mass?",
+      "required": [
+        {
+          "label": "recognizes storageMass",
+          "pattern": "storageMass"
+        },
+        {
+          "label": "recognizes storage_mass",
+          "pattern": "storage_mass"
+        },
+        {
+          "label": "recognizes legacy mass",
+          "pattern": "legacy (?:JSON )?mass|mass alias"
+        },
+        {
+          "label": "rejects conflicting values",
+          "pattern": "reject.*conflict|conflict.*reject"
+        }
+      ],
+      "prohibited": [
+        {
+          "label": "silently chooses one representation",
+          "pattern": "silently (?:prefer|choose)|always prefer storageMass"
+        }
+      ],
+      "referenceResponse": "Support storageMass, storage_mass, and a documented legacy JSON mass alias where the exact API allows it. If representations are both present and disagree, reject the conflict instead of silently choosing one."
+    },
+    {
+      "id": "relay-policy-versus-consensus",
+      "prompt": "A node rejects a low-fee transaction under relay rules. Is it consensus-invalid?",
+      "required": [
+        {
+          "label": "identifies relay or mempool policy",
+          "pattern": "relay|mempool"
+        },
+        {
+          "label": "separates consensus validity",
+          "pattern": "consensus validity|consensus-invalid"
+        },
+        {
+          "label": "requires separate classification",
+          "pattern": "separate|not the same"
+        }
+      ],
+      "prohibited": [
+        {
+          "label": "equates policy rejection with consensus invalidity",
+          "pattern": "policy rejection (?:makes|means) (?:the transaction )?consensus-invalid"
+        }
+      ],
+      "referenceResponse": "Relay or mempool fee policy is separate from consensus validity. A policy rejection is not the same as proving the transaction consensus-invalid; report the rejection layer explicitly."
+    },
+    {
+      "id": "covenant-lineage-reorg",
+      "prompt": "What must a covenant lineage indexer retain across reorgs?",
+      "required": [
+        {
+          "label": "tracks genesis outpoint",
+          "pattern": "genesis outpoint"
+        },
+        {
+          "label": "tracks covenant ID",
+          "pattern": "covenant ID"
+        },
+        {
+          "label": "tracks authorizing input",
+          "pattern": "authorizing input"
+        },
+        {
+          "label": "tracks continuation edges",
+          "pattern": "continuation"
+        },
+        {
+          "label": "handles rollback and replay",
+          "pattern": "rollback.*replay|replay.*rollback"
+        }
+      ],
+      "prohibited": [
+        {
+          "label": "treats lineage as immutable after first observation",
+          "pattern": "lineage never changes|ignore reorg"
+        }
+      ],
+      "referenceResponse": "Retain the genesis outpoint, covenant ID, authorizing input, continuation edges, accepted transaction context, and reversible state. On a reorg, rollback affected lineage and replay from a durable checkpoint."
+    },
+    {
+      "id": "endpoint-failure-wrong-network",
+      "prompt": "How should monitoring interpret an HTTP failure or a healthy endpoint on the wrong network?",
+      "required": [
+        {
+          "label": "preserves endpoint failure as unknown",
+          "pattern": "failure.*unknown|unknown.*failure"
+        },
+        {
+          "label": "checks returned network identity",
+          "pattern": "network (?:name|identity)"
+        },
+        {
+          "label": "rejects wrong-network evidence",
+          "pattern": "wrong network"
+        }
+      ],
+      "prohibited": [
+        {
+          "label": "turns endpoint failure into feature absence",
+          "pattern": "HTTP (?:500|failure) proves (?:the )?feature is unavailable"
+        }
+      ],
+      "referenceResponse": "Keep an endpoint failure as an explicit unknown rather than proof of feature absence. Record HTTP status and returned network name or identity, and reject a healthy response from the wrong network as activation evidence."
+    },
+    {
+      "id": "unsupported-future-feature",
+      "prompt": "Can an app promise production support for a future Kaspa feature without release and activation evidence?",
+      "required": [
+        {
+          "label": "uses a non-live status",
+          "pattern": "proposed|experimental|unknown|testnet"
+        },
+        {
+          "label": "requires support across ecosystem layers",
+          "pattern": "node.*wallet.*indexer|wallet.*indexer.*node"
+        },
+        {
+          "label": "permits simulation without production claims",
+          "pattern": "simulat"
+        }
+      ],
+      "prohibited": [
+        {
+          "label": "claims unsupported production readiness",
+          "pattern": "production-ready now|safe to promise production support"
+        }
+      ],
+      "referenceResponse": "Classify the feature as proposed, experimental, testnet-only, or unknown from current evidence. It may be simulated, but production use requires verified node, wallet, indexer, SDK, and operator support."
+    },
+    {
+      "id": "source-citation-absolute-date",
+      "prompt": "What evidence metadata belongs in a current Kaspa status answer?",
+      "required": [
+        {
+          "label": "uses an absolute date",
+          "pattern": "(?:January|February|March|April|May|June|July|August|September|October|November|December) \\d{1,2}, 20\\d{2}|20\\d{2}-\\d{2}-\\d{2}"
+        },
+        {
+          "label": "cites a primary source",
+          "pattern": "https://github\\.com/kaspanet/|primary source"
+        },
+        {
+          "label": "records a tag or commit",
+          "pattern": "tag|commit"
+        },
+        {
+          "label": "states unknowns",
+          "pattern": "unknown"
+        }
+      ],
+      "prohibited": [
+        {
+          "label": "uses only relative dating",
+          "pattern": "as of today|yesterday|tomorrow"
+        }
+      ],
+      "referenceResponse": "Audited June 13, 2026. Cite the primary source, for example https://github.com/kaspanet/rusty-kaspa, and record the release tag or commit hash, network identity, verified status, and remaining unknowns."
+    }
+  ]
+}

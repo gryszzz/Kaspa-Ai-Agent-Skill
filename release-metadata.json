@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "package": "kaspa-sovereign-architect-engine",
+  "repositoryVersion": "1.8.0",
+  "publishedRelease": "v1.6.2",
+  "publishedAt": "2026-05-26T01:31:33Z",
+  "publishedReleaseUrl": "https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases/tag/v1.6.2",
+  "nextReleaseNotes": "release-notes/v1.8.0.md",
+  "repositoryReleaseStatus": "unpublished"
+}

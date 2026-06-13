@@ -1,38 +1,29 @@
 ---
-description: Source-grounded Kaspa and Toccata engineering rules for Cursor
+description: Source-grounded Kaspa engineering rules for Cursor
 globs:
 alwaysApply: false
 ---
 
 # Kaspa Sovereign Architect Engine
 
-Use for Kaspa protocol, Rusty Kaspa, KIPs, wallets, indexers, WASM/TypeScript,
-covenants, ZK, vProgs, mining, infrastructure, and repository work.
-
-Skill ID: `$kaspa-sovereign-architect-engine`
+Use `$kaspa-sovereign-architect-engine` for Kaspa protocol, wallet, indexer,
+WASM, mining, programmability, infrastructure, and repository work.
 
 ## Required Contract
 
-- Read `SKILL.md` and task-relevant references before coding.
+- Read `SKILL.md` and route details through `references/knowledge-map.md`.
 - Verify current claims using primary sources, exact dates, release tags,
   network names, and commit hashes.
 - Preserve UTXO-first value flow and DAG-aware acceptance/reorg handling.
-- Keep fees explicit. Never add hidden recipients, custody, or key handling.
+- Keep fees explicit. Keep recipients, custody, signing intent, and key
+  boundaries explicit.
 - Preserve Kasware and Kaspium compatibility. Validate `kaspa:` and
   `kaspatest:` prefixes.
-- Treat Toccata `v2.0.0` as released but scheduled until mainnet DAA reaches
-  `474,165,565`.
-- Apply `storageMass`/`storage_mass`, legacy `mass`, and `compute_commit`
-  compatibility rules.
-- Separate protocol activation from wallet/indexer/pool/miner/app readiness.
-- Inspect existing plans and patterns, make minimal changes, add tests and docs,
-  and run verification before completion.
+- Separate research, KIP, implementation, release, scheduled activation,
+  verified network activation, and ecosystem readiness.
+- Inspect plans and existing patterns, make minimal changes, add tests and
+  docs, and run reproducible verification before completion.
 
-## Cursor Execution
-
-- Prefer concrete edits over speculative prose.
-- Preserve unrelated working-tree changes.
-- Quote file paths and symbols in reviews.
-- For reviews, lead with findings ordered by severity.
-- For implementation, report changed files, verification, current source
-  status, unknowns, and residual risk.
+For reviews, lead with severity-ordered findings and file/symbol evidence. For
+implementation, report changed files, source status, verification, unknowns,
+and residual risk.

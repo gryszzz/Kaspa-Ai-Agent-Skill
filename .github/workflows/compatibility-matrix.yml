@@ -18,6 +18,11 @@ on:
       - "fixtures/toccata/**"
       - "research-snapshots/toccata/**"
       - "training-corpus/kaspa-toccata-*.md"
+      - "README.md"
+      - "release-metadata.json"
+      - "release-notes/**"
+      - "scripts/validate-skill-release.mjs"
+      - "scripts/validate-skill-release.test.mjs"
       - ".github/workflows/compatibility-matrix.yml"
       - ".github/workflows/toccata-source-monitor.yml"
   pull_request:
@@ -35,6 +40,11 @@ on:
       - "fixtures/toccata/**"
       - "research-snapshots/toccata/**"
       - "training-corpus/kaspa-toccata-*.md"
+      - "README.md"
+      - "release-metadata.json"
+      - "release-notes/**"
+      - "scripts/validate-skill-release.mjs"
+      - "scripts/validate-skill-release.test.mjs"
       - ".github/workflows/compatibility-matrix.yml"
       - ".github/workflows/toccata-source-monitor.yml"
   workflow_dispatch:
@@ -61,7 +71,13 @@ jobs:
       - name: Run compatibility validator (all targets)
         run: |
           node skills/public/kaspa-sovereign-architect-engine/scripts/validate-compatibility.mjs --all
-          node --test skills/public/kaspa-sovereign-architect-engine/scripts/validate-compatibility.test.mjs
+          node skills/public/kaspa-sovereign-architect-engine/scripts/run-behavioral-evals.mjs --check
+          node --test skills/public/kaspa-sovereign-architect-engine/scripts/*.test.mjs
+
+      - name: Check release and adapter consistency
+        run: |
+          node scripts/validate-skill-release.mjs --check
+          node --test scripts/validate-skill-release.test.mjs
 
       - name: Test Toccata source intelligence
         run: |
@@ -96,8 +112,8 @@ jobs:
           unzip -q "$OUT_DIR/kaspa-sovereign-architect-engine-v$VERSION.zip" -d "$EXTRACT_DIR"
           cd "$EXTRACT_DIR/kaspa-sovereign-architect-engine"
           node scripts/validate-compatibility.mjs --all
-          node --test scripts/validate-compatibility.test.mjs
-          node --test scripts/toccata-source-monitor.test.mjs
+          node scripts/run-behavioral-evals.mjs --check
+          node --test scripts/*.test.mjs
           node scripts/toccata-source-monitor.mjs --check
           node scripts/kaspa-knowledge-drill.mjs --check > "$RUNNER_TEMP/packaged-knowledge-drill.md"
           node scripts/covenant-lineage-prototype.mjs --check-all

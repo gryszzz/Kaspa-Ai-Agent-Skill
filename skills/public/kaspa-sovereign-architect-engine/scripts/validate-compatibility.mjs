@@ -21,11 +21,16 @@ const contractChecks = [
   ["Kaspium compatibility", /Kaspium/],
   ["mainnet address prefix", /kaspa:/],
   ["testnet address prefix", /kaspatest:/],
-  ["Toccata final release", /v2\.0\.0/],
-  ["Toccata activation DAA", /474,165,565/],
-  ["storage mass compatibility", /storageMass/],
-  ["compute commitment compatibility", /compute_commit/],
+  ["release and activation separation", /release[\s\S]{0,180}scheduled activation[\s\S]{0,180}(?:verified )?(?:network )?activation/i],
+  ["ecosystem readiness separation", /ecosystem readiness/i],
+  ["primary-source verification", /primary[- ]sources?/i],
   ["verification requirement", /verif|tests?/i],
+];
+const adapterDetailChecks = [
+  ["dated Toccata release", /v2\.0\.0/],
+  ["dated activation DAA", /474,?165,?565/],
+  ["transaction storage-mass field", /storageMass|storage_mass/],
+  ["transaction compute-commit field", /compute_commit|ComputeCommit/],
 ];
 
 function ok(msg) {
@@ -127,6 +132,19 @@ function validateSharedContract(content, label) {
   }
 }
 
+function validateAdapterProgressiveDisclosure(content, label) {
+  let valid = true;
+  for (const [detail, pattern] of adapterDetailChecks) {
+    if (pattern.test(content)) {
+      fail(`${label} embeds ${detail}; load it from references instead`);
+      valid = false;
+    }
+  }
+  if (valid) {
+    ok(`${label} keeps changing protocol detail in references`);
+  }
+}
+
 function validateTarget(targetId, manifest) {
   const target = manifest.targets.find((t) => t.id === targetId);
   if (!target) {
@@ -138,6 +156,9 @@ function validateTarget(targetId, manifest) {
   if (!assertFile(entryPath, `target:${targetId} entry`)) return;
   const content = readFile(entryPath);
   validateSharedContract(content, `target:${targetId}`);
+  if (targetId !== "codex") {
+    validateAdapterProgressiveDisclosure(content, `target:${targetId}`);
+  }
 
   switch (targetId) {
     case "codex":
@@ -150,6 +171,11 @@ function validateTarget(targetId, manifest) {
         fail("codex skill exceeds the 500-line progressive-disclosure limit");
       } else {
         ok("codex skill stays within the progressive-disclosure line limit");
+      }
+      if (!content.includes("references/knowledge-map.md")) {
+        fail("codex skill does not route knowledge through references/knowledge-map.md");
+      } else {
+        ok("codex skill routes detailed knowledge through the knowledge map");
       }
       break;
     case "openai":
@@ -204,6 +230,8 @@ function validateScripts() {
   const pwshInstall = path.join(rootDir, "scripts", "install-codex.ps1");
   const exportScript = path.join(rootDir, "scripts", "export-adapters.sh");
   const packageScript = path.join(rootDir, "scripts", "package-release.sh");
+  const syncScript = path.join(rootDir, "scripts", "sync-local-skill.mjs");
+  const evalScript = path.join(rootDir, "scripts", "run-behavioral-evals.mjs");
 
   assertFile(bashInstall, "install-codex.sh");
   assertFile(geminiInstall, "install-gemini.sh");
@@ -211,6 +239,32 @@ function validateScripts() {
   assertFile(pwshInstall, "install-codex.ps1");
   assertFile(exportScript, "export-adapters.sh");
   assertFile(packageScript, "package-release.sh");
+  assertFile(syncScript, "sync-local-skill.mjs");
+  assertFile(evalScript, "run-behavioral-evals.mjs");
+}
+
+function validateReferences() {
+  const knowledgeMap = path.join(rootDir, "references", "knowledge-map.md");
+  if (!assertFile(knowledgeMap, "knowledge map")) return;
+  const content = readFile(knowledgeMap);
+  for (const reference of [
+    "source-trust-policy.md",
+    "sources.md",
+    "kaspa-research-radar.md",
+    "toccata-rd-playbook.md",
+    "repo-audit-checklist.md",
+    "core-research-track.md",
+    "local-skill-sync.md",
+  ]) {
+    if (!content.includes(reference)) {
+      fail(`knowledge map missing reference: ${reference}`);
+    }
+  }
+}
+
+function validateEvals() {
+  const evalCases = path.join(rootDir, "evals", "behavioral-cases.json");
+  assertFile(evalCases, "behavioral evaluation cases");
 }
 
 function main() {
@@ -228,6 +282,8 @@ function main() {
     validateTarget(targetId, manifest);
   }
   validateScripts();
+  validateReferences();
+  validateEvals();
 
   if (process.exitCode && process.exitCode !== 0) {
     console.error("Compatibility validation failed.");

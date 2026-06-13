@@ -33,7 +33,10 @@ jobs:
       - name: Validate compatibility (release gate)
         run: |
           node skills/public/kaspa-sovereign-architect-engine/scripts/validate-compatibility.mjs --all
-          node --test skills/public/kaspa-sovereign-architect-engine/scripts/validate-compatibility.test.mjs
+          node skills/public/kaspa-sovereign-architect-engine/scripts/run-behavioral-evals.mjs --check
+          node --test skills/public/kaspa-sovereign-architect-engine/scripts/*.test.mjs
+          node scripts/validate-skill-release.mjs --check
+          node --test scripts/validate-skill-release.test.mjs
           node --test scripts/toccata-source-monitor.test.mjs
           node scripts/toccata-source-monitor.mjs --check
           node scripts/kaspa-knowledge-drill.mjs --check > "$RUNNER_TEMP/kaspa-knowledge-drill.md"
@@ -54,8 +57,8 @@ jobs:
           unzip -q "dist-artifacts/kaspa-sovereign-architect-engine-${GITHUB_REF_NAME}.zip" -d "$EXTRACT_DIR"
           cd "$EXTRACT_DIR/kaspa-sovereign-architect-engine"
           node scripts/validate-compatibility.mjs --all
-          node --test scripts/validate-compatibility.test.mjs
-          node --test scripts/toccata-source-monitor.test.mjs
+          node scripts/run-behavioral-evals.mjs --check
+          node --test scripts/*.test.mjs
           node scripts/toccata-source-monitor.mjs --check
           node scripts/kaspa-knowledge-drill.mjs --check > "$RUNNER_TEMP/packaged-knowledge-drill.md"
           node scripts/covenant-lineage-prototype.mjs --check-all
