@@ -12,7 +12,7 @@ This repository publishes a reusable AI skill package for serious Kaspa research
 - **Main skill file:** [`SKILL.md`](skills/public/kaspa-sovereign-architect-engine/SKILL.md)
 - **Release downloads:** [GitHub Releases](https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases)
 - **Published release:** `v1.6.2` - GitHub Releases and Packages
-- **Repository skill version:** `v1.7.0` - complete Toccata-aware update, not yet published
+- **Repository skill version:** `v1.8.0` - deterministic sync and behavioral evaluation update, not yet published
 - **Positioning:** package-first distribution (not a website product)
 - **Freshness model:** current-aware, source-grounded, KIP-aware, and research-radar aware
 - **Build scope:** Kaspa protocol, wallet, indexer, WASM, dApp, Kdapp, and infrastructure work
@@ -252,7 +252,8 @@ Design a Kaspa DAG-aware indexer for 100k users with failure recovery and replay
 
 - Download packages: [Releases](https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases)
 - Latest published release notes: [`v1.6.2`](release-notes/v1.6.2.md)
-- Next repository release notes: [`v1.7.0`](release-notes/v1.7.0.md)
+- Next repository release notes: [`v1.8.0`](release-notes/v1.8.0.md)
+- Machine-readable release state: [`release-metadata.json`](release-metadata.json)
 - Automated packaging workflow: [`.github/workflows/release-skill.yml`](.github/workflows/release-skill.yml)
 
 ## 🌐 Deploy + Marketing

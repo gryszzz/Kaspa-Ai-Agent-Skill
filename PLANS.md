@@ -63,11 +63,11 @@ evaluations, and prepare a coherent next release without publishing it.
 - [x] Check both required content and prohibited claims.
 
 4. Add release and metadata consistency gates.
-- [ ] Align manifest, README, adapters, release notes, examples, and package
+- [x] Align manifest, README, adapters, release notes, examples, and package
   metadata on the next repository version.
-- [ ] Keep published release metadata separate from repository version.
-- [ ] Add CI checks for adapter and version drift.
-- [ ] Prepare release notes without creating a tag or release.
+- [x] Keep published release metadata separate from repository version.
+- [x] Add CI checks for adapter and version drift.
+- [x] Prepare release notes without creating a tag or release.
 
 5. Verify repository and packaged artifact.
 - [ ] Run existing compatibility, source, knowledge, lineage, vProg, network,
