@@ -70,13 +70,14 @@ evaluations, and prepare a coherent next release without publishing it.
 - [x] Prepare release notes without creating a tag or release.
 
 5. Verify repository and packaged artifact.
-- [ ] Run existing compatibility, source, knowledge, lineage, vProg, network,
+- [x] Run existing compatibility, source, knowledge, lineage, vProg, network,
   and readiness checks.
-- [ ] Run all new sync, evaluation, and consistency tests.
-- [ ] Run skill quick validation and `git diff --check`.
-- [ ] Package the skill, extract it into a clean temporary directory, and run
+- [x] Run all new sync, evaluation, and consistency tests.
+- [x] Run skill quick validation and `git diff --check`.
+- [x] Package the skill, extract it into a clean temporary directory, and run
   the checks again from the artifact.
-- [ ] Commit in focused increments and push only after all checks pass.
+- [x] Commit in focused increments.
+- [ ] Push only after all checks pass.
 
 ## Verification Commands
 
@@ -102,3 +103,14 @@ git diff --check
 - Published release remains `v1.6.2` until a release is explicitly created.
 - Repository version will become `1.8.0` only with matching README and release
   metadata updates.
+
+## Verification Record
+
+- Repository and extracted-package checks passed on 2026-06-13.
+- Packaged ZIP SHA-256:
+  `99786b97a6b01a267d609b5ba596a5e77af616e4f3fbe0330ddec68a28d11182`.
+- Packaged tarball SHA-256:
+  `373107a34e06a48addddc7981b6c488f2f53d97f3448f78a52c59022dc318dff`.
+- The deterministic network check retained one hard endpoint issue and one
+  warning while correctly enforcing `do_not_claim_mainnet_protocol_active` and
+  `do_not_claim_wallet_indexer_ready`.
