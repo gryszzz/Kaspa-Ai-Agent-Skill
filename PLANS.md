@@ -48,12 +48,12 @@ evaluations, and prepare a coherent next release without publishing it.
 - [x] Test direction, deletion, ignores, conflicts, and missing local roots.
 
 2. Reduce prompt duplication without reducing Kaspa specialization.
-- [ ] Keep safety, UTXO, DAG, signing, network, wallet, source-verification,
+- [x] Keep safety, UTXO, DAG, signing, network, wallet, source-verification,
   and completion rules in `SKILL.md`.
-- [ ] Move dated Toccata facts and detailed compatibility material to
+- [x] Move dated Toccata facts and detailed compatibility material to
   references.
-- [ ] Add a knowledge map that routes task types to references.
-- [ ] Keep adapters semantically aligned with the operating kernel.
+- [x] Add a knowledge map that routes task types to references.
+- [x] Keep adapters semantically aligned with the operating kernel.
 
 3. Add deterministic behavioral evaluations.
 - [ ] Cover network confusion, scheduled versus active behavior, KIP

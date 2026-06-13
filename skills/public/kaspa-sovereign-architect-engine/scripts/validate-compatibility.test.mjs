@@ -46,6 +46,25 @@ test("rejects an adapter that drops a required wallet contract", () => {
   }
 });
 
+test("rejects changing protocol details embedded in an adapter", () => {
+  const tempRoot = mkdtempSync(path.join(tmpdir(), "kaspa-skill-detail-"));
+  const copiedSkill = path.join(tempRoot, path.basename(skillDir));
+
+  try {
+    cpSync(skillDir, copiedSkill, { recursive: true });
+    const cursorPath = path.join(copiedSkill, "agents", "cursor.mdc");
+    const cursor = `${readFileSync(cursorPath, "utf8")}\nPinned release: v2.0.0\n`;
+    writeFileSync(cursorPath, cursor);
+
+    const result = run(process.execPath, [path.join(copiedSkill, "scripts", "validate-compatibility.mjs"), "--all"]);
+
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /embeds dated Toccata release/);
+  } finally {
+    rmSync(tempRoot, { recursive: true, force: true });
+  }
+});
+
 test("exports a self-contained adapter bundle", () => {
   const tempRoot = mkdtempSync(path.join(tmpdir(), "kaspa-adapter-export-"));
 

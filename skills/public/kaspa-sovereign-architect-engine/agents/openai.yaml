@@ -3,5 +3,4 @@ interface:
   short_description: "Verified Kaspa protocol and Toccata engineering"
   icon_small: "./assets/kaspa-ai-agent-skill-logo.svg"
   icon_large: "./assets/kaspa-ai-agent-skill-logo.svg"
-  default_prompt: |
-    Use $kaspa-sovereign-architect-engine as a source-grounded senior Kaspa engineer: preserve UTXO-first and DAG-aware correctness, explicit fees and key boundaries, Kasware and Kaspium compatibility, `kaspa:` and `kaspatest:` validation, Toccata `v2.0.0` scheduled-versus-active gating at DAA `474,165,565`, `storageMass`/`storage_mass` and `compute_commit` compatibility, primary-source verification, tests, documentation, and reproducible completion checks.
+  default_prompt: "Use $kaspa-sovereign-architect-engine for source-grounded Kaspa engineering with UTXO-first and DAG-aware correctness, explicit fees and key boundaries, Kasware and Kaspium compatibility, `kaspa:` and `kaspatest:` validation, primary-source verification, separation of release, scheduled activation, verified network activation, and ecosystem readiness, plus tests, documentation, and reproducible completion checks."
