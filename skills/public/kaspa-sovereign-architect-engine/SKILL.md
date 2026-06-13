@@ -202,6 +202,7 @@ Run from the skill or extracted package as applicable:
 ```bash
 node scripts/sync-local-skill.mjs --check
 node scripts/validate-compatibility.mjs --all
+node scripts/run-behavioral-evals.mjs --check
 node --test scripts/*.test.mjs
 node scripts/toccata-source-monitor.mjs --check
 node scripts/kaspa-knowledge-drill.mjs --check

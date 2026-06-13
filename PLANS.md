@@ -56,11 +56,11 @@ evaluations, and prepare a coherent next release without publishing it.
 - [x] Keep adapters semantically aligned with the operating kernel.
 
 3. Add deterministic behavioral evaluations.
-- [ ] Cover network confusion, scheduled versus active behavior, KIP
+- [x] Cover network confusion, scheduled versus active behavior, KIP
   lifecycle, DAG indexers, UTXO conservation, signing/custody, Kasware and
   Kaspium, mass conflicts, policy versus consensus, covenant lineage/reorgs,
   endpoint failures, future-feature claims, and citation/date requirements.
-- [ ] Check both required content and prohibited claims.
+- [x] Check both required content and prohibited claims.
 
 4. Add release and metadata consistency gates.
 - [ ] Align manifest, README, adapters, release notes, examples, and package

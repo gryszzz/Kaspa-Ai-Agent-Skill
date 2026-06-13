@@ -115,6 +115,7 @@ Toccata source monitoring:
 - vProg scope simulator: `node scripts/vprog-scope-simulator.mjs --check`
 - Network endpoint checker: `node scripts/toccata-network-check.mjs --check`
 - Mainnet readiness gate: `node scripts/toccata-mainnet-readiness-gate.mjs --check`
+- Behavioral contract evaluations: `node skills/public/kaspa-sovereign-architect-engine/scripts/run-behavioral-evals.mjs --check`
 - Release packages bundle the skill plus adapters, references, Toccata readiness docs, fixtures, source snapshots, helper modules, and deterministic tests under the installed skill directory.
 - Claim rule: final release plus schedule means "scheduled"; active mainnet requires a verified endpoint at or above the activation DAA, and wallet/indexer readiness is a separate claim
 

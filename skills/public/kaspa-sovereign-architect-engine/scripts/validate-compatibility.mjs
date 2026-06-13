@@ -231,6 +231,7 @@ function validateScripts() {
   const exportScript = path.join(rootDir, "scripts", "export-adapters.sh");
   const packageScript = path.join(rootDir, "scripts", "package-release.sh");
   const syncScript = path.join(rootDir, "scripts", "sync-local-skill.mjs");
+  const evalScript = path.join(rootDir, "scripts", "run-behavioral-evals.mjs");
 
   assertFile(bashInstall, "install-codex.sh");
   assertFile(geminiInstall, "install-gemini.sh");
@@ -239,6 +240,7 @@ function validateScripts() {
   assertFile(exportScript, "export-adapters.sh");
   assertFile(packageScript, "package-release.sh");
   assertFile(syncScript, "sync-local-skill.mjs");
+  assertFile(evalScript, "run-behavioral-evals.mjs");
 }
 
 function validateReferences() {
@@ -260,6 +262,11 @@ function validateReferences() {
   }
 }
 
+function validateEvals() {
+  const evalCases = path.join(rootDir, "evals", "behavioral-cases.json");
+  assertFile(evalCases, "behavioral evaluation cases");
+}
+
 function main() {
   const args = parseArgs(process.argv);
   const manifest = validateManifest();
@@ -276,6 +283,7 @@ function main() {
   }
   validateScripts();
   validateReferences();
+  validateEvals();
 
   if (process.exitCode && process.exitCode !== 0) {
     console.error("Compatibility validation failed.");
