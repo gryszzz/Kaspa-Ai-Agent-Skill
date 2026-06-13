@@ -184,6 +184,22 @@ Export adapter bundle:
 ./skills/public/kaspa-sovereign-architect-engine/scripts/export-adapters.sh
 ```
 
+### Safe repository/local synchronization
+
+The repository skill directory is canonical. Preview deterministic drift before
+copying in either direction:
+
+```bash
+node skills/public/kaspa-sovereign-architect-engine/scripts/sync-local-skill.mjs \
+  --check --report /tmp/kaspa-skill-drift.json
+```
+
+Dry-run is the default. Use `--to-local` or `--from-local` to select a
+direction, and add `--apply` only after reviewing the report. Conflicts block
+writes unless `--force` is explicit; use `--backup` when resolving them. See
+[`local-skill-sync.md`](skills/public/kaspa-sovereign-architect-engine/references/local-skill-sync.md)
+for the full workflow.
+
 ### Option E: Install for OpenClaw
 
 OpenClaw loads AgentSkills-compatible folders from `~/.openclaw/skills` or `<workspace>/skills`.

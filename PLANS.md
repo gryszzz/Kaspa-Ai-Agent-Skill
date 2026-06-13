@@ -39,13 +39,13 @@ evaluations, and prepare a coherent next release without publishing it.
 ## Milestones
 
 1. Establish deterministic source-of-truth synchronization.
-- [ ] Add `--check`, `--from-local`, `--to-local`, `--dry-run`, `--backup`,
+- [x] Add `--check`, `--from-local`, `--to-local`, `--dry-run`, `--backup`,
   and `--branch`.
-- [ ] Store deterministic hashes and a machine-readable drift report.
-- [ ] Exclude caches, logs, environment files, snapshots, dependencies,
+- [x] Store deterministic hashes and a machine-readable drift report.
+- [x] Exclude caches, logs, environment files, snapshots, dependencies,
   editor files, and platform temporary files.
-- [ ] Detect changed-on-both-sides conflicts using a shared sync-state file.
-- [ ] Test direction, deletion, ignores, conflicts, and missing local roots.
+- [x] Detect changed-on-both-sides conflicts using a shared sync-state file.
+- [x] Test direction, deletion, ignores, conflicts, and missing local roots.
 
 2. Reduce prompt duplication without reducing Kaspa specialization.
 - [ ] Keep safety, UTXO, DAG, signing, network, wallet, source-verification,
