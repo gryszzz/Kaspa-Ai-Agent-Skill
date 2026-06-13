@@ -77,7 +77,7 @@ evaluations, and prepare a coherent next release without publishing it.
 - [x] Package the skill, extract it into a clean temporary directory, and run
   the checks again from the artifact.
 - [x] Commit in focused increments.
-- [ ] Push only after all checks pass.
+- [x] Push only after all checks pass.
 
 ## Verification Commands
 
