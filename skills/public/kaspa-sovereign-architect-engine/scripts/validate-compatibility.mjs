@@ -256,6 +256,7 @@ function validateReferences() {
     "toccata-rd-playbook.md",
     "repo-audit-checklist.md",
     "transaction-plan-safety.md",
+    "live-source-intelligence.md",
     "core-research-track.md",
     "local-skill-sync.md",
   ]) {

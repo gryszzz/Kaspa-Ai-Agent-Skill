@@ -52,9 +52,10 @@ For any current, latest, released, active, scheduled, deprecated, or
 network-state claim:
 
 1. Read `references/source-trust-policy.md`.
-2. Read the relevant section of `references/sources.md`.
-3. Verify primary sources and live network identity when available.
-4. Record the absolute audit date, release/tag, commit hashes, network name,
+2. Read `references/live-source-intelligence.md`.
+3. Read the relevant section of `references/sources.md`.
+4. Verify primary sources and live network identity when available.
+5. Record the absolute audit date, release/tag, commit hashes, network name,
    and evidence status.
 
 Treat checked-in snapshots as dated baselines, not permanent truth.
@@ -208,6 +209,7 @@ node scripts/validate-compatibility.mjs --all
 node scripts/run-behavioral-evals.mjs --check
 node scripts/lint-transaction-plan.mjs --check
 node --test scripts/*.test.mjs
+node scripts/kaspa-source-intelligence.mjs --check
 node scripts/toccata-source-monitor.mjs --check
 node scripts/kaspa-knowledge-drill.mjs --check
 node scripts/covenant-lineage-prototype.mjs --check-all

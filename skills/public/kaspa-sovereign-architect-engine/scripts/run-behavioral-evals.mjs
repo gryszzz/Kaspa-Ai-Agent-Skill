@@ -20,6 +20,7 @@ const requiredCaseIds = [
   "relay-policy-versus-consensus",
   "covenant-lineage-reorg",
   "endpoint-failure-wrong-network",
+  "live-source-intelligence-claims",
   "unsupported-future-feature",
   "source-citation-absolute-date",
 ];

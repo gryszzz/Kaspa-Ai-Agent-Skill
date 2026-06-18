@@ -342,6 +342,39 @@
       "referenceResponse": "Keep an endpoint failure as an explicit unknown rather than proof of feature absence. Record HTTP status and returned network name or identity, and reject a healthy response from the wrong network as activation evidence."
     },
     {
+      "id": "live-source-intelligence-claims",
+      "prompt": "A live Kaspa source-intelligence snapshot says sourceHealth=healthy_with_warnings, latest Rusty Kaspa release is v2.0.1, and TN12 endpoint failed. How should the agent use it?",
+      "required": [
+        {
+          "label": "records source health",
+          "pattern": "healthy_with_warnings|sourceHealth"
+        },
+        {
+          "label": "records release tag",
+          "pattern": "v2\\.0\\.1|release tag"
+        },
+        {
+          "label": "preserves TN12 as unknown",
+          "pattern": "TN12.*unknown|unknown.*TN12"
+        },
+        {
+          "label": "records checkedAt or facts hash",
+          "pattern": "checkedAt|facts hash|factsHash"
+        }
+      ],
+      "prohibited": [
+        {
+          "label": "turns endpoint failure into absence",
+          "pattern": "TN12.*inactive|endpoint failed.*feature absent"
+        },
+        {
+          "label": "claims latest release activates everything",
+          "pattern": "v2\\.0\\.1.*activates everything|latest release means all features are active"
+        }
+      ],
+      "referenceResponse": "Use the snapshot as dated evidence: record sourceHealth=healthy_with_warnings, checkedAt or factsHash, and the latest Rusty Kaspa release tag v2.0.1. Treat TN12 as unknown from that source until a healthy, network-correct endpoint or another primary source confirms its state."
+    },
+    {
       "id": "unsupported-future-feature",
       "prompt": "Can an app promise production support for a future Kaspa feature without release and activation evidence?",
       "required": [

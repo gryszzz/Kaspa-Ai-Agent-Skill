@@ -39,6 +39,8 @@ jobs:
           node --test scripts/validate-skill-release.test.mjs
           node --test scripts/toccata-source-monitor.test.mjs
           node scripts/toccata-source-monitor.mjs --check
+          node --test scripts/kaspa-source-intelligence.test.mjs
+          node scripts/kaspa-source-intelligence.mjs --check
           node scripts/kaspa-knowledge-drill.mjs --check > "$RUNNER_TEMP/kaspa-knowledge-drill.md"
           node scripts/covenant-lineage-prototype.mjs --check-all
           node scripts/vprog-scope-simulator.mjs --check
@@ -60,6 +62,7 @@ jobs:
           node scripts/run-behavioral-evals.mjs --check
           node --test scripts/*.test.mjs
           node scripts/toccata-source-monitor.mjs --check
+          node scripts/kaspa-source-intelligence.mjs --check
           node scripts/kaspa-knowledge-drill.mjs --check > "$RUNNER_TEMP/packaged-knowledge-drill.md"
           node scripts/covenant-lineage-prototype.mjs --check-all
           node scripts/vprog-scope-simulator.mjs --check

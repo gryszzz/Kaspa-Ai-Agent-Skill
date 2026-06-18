@@ -34,6 +34,8 @@ mkdir -p \
   "$STAGED_SKILL_DIR/references/repo-docs/kaspa" \
   "$STAGED_SKILL_DIR/research-snapshots/toccata" \
   "$STAGED_SKILL_DIR/references/repo-docs/research-snapshots/toccata" \
+  "$STAGED_SKILL_DIR/research-snapshots/source-intelligence" \
+  "$STAGED_SKILL_DIR/references/repo-docs/research-snapshots/source-intelligence" \
   "$STAGED_SKILL_DIR/training-corpus" \
   "$STAGED_SKILL_DIR/references/repo-docs/training-corpus" \
   "$STAGED_SKILL_DIR/fixtures/toccata"
@@ -70,6 +72,12 @@ copy_if_present "$REPO_ROOT/research-snapshots/toccata/README.md" "$STAGED_SKILL
 copy_if_present "$REPO_ROOT/research-snapshots/toccata/latest.json" "$STAGED_SKILL_DIR/research-snapshots/toccata"
 copy_if_present "$REPO_ROOT/research-snapshots/toccata/latest.md" "$STAGED_SKILL_DIR/research-snapshots/toccata"
 copy_if_present "$REPO_ROOT/research-snapshots/toccata/rpc-smoke-tests.md" "$STAGED_SKILL_DIR/research-snapshots/toccata"
+copy_if_present "$REPO_ROOT/research-snapshots/source-intelligence/README.md" "$STAGED_SKILL_DIR/references/repo-docs/research-snapshots/source-intelligence"
+copy_if_present "$REPO_ROOT/research-snapshots/source-intelligence/latest.json" "$STAGED_SKILL_DIR/references/repo-docs/research-snapshots/source-intelligence"
+copy_if_present "$REPO_ROOT/research-snapshots/source-intelligence/latest.md" "$STAGED_SKILL_DIR/references/repo-docs/research-snapshots/source-intelligence"
+copy_if_present "$REPO_ROOT/research-snapshots/source-intelligence/README.md" "$STAGED_SKILL_DIR/research-snapshots/source-intelligence"
+copy_if_present "$REPO_ROOT/research-snapshots/source-intelligence/latest.json" "$STAGED_SKILL_DIR/research-snapshots/source-intelligence"
+copy_if_present "$REPO_ROOT/research-snapshots/source-intelligence/latest.md" "$STAGED_SKILL_DIR/research-snapshots/source-intelligence"
 copy_if_present "$REPO_ROOT/training-corpus/kaspa-toccata-2026.md" "$STAGED_SKILL_DIR/references/repo-docs/training-corpus"
 copy_if_present "$REPO_ROOT/training-corpus/kaspa-toccata-rd-intelligence-2026.md" "$STAGED_SKILL_DIR/references/repo-docs/training-corpus"
 copy_if_present "$REPO_ROOT/training-corpus/kaspa-toccata-readiness-drills-2026.md" "$STAGED_SKILL_DIR/references/repo-docs/training-corpus"
@@ -80,6 +88,8 @@ copy_if_present "$REPO_ROOT/fixtures/toccata/." "$STAGED_SKILL_DIR/fixtures/tocc
 copy_if_present "$REPO_ROOT/scripts/lib" "$STAGED_SKILL_DIR/scripts"
 copy_if_present "$REPO_ROOT/scripts/toccata-source-monitor.mjs" "$STAGED_SKILL_DIR/scripts"
 copy_if_present "$REPO_ROOT/scripts/toccata-source-monitor.test.mjs" "$STAGED_SKILL_DIR/scripts"
+copy_if_present "$REPO_ROOT/scripts/kaspa-source-intelligence.mjs" "$STAGED_SKILL_DIR/scripts"
+copy_if_present "$REPO_ROOT/scripts/kaspa-source-intelligence.test.mjs" "$STAGED_SKILL_DIR/scripts"
 copy_if_present "$REPO_ROOT/scripts/kaspa-knowledge-drill.mjs" "$STAGED_SKILL_DIR/scripts"
 copy_if_present "$REPO_ROOT/scripts/covenant-lineage-prototype.mjs" "$STAGED_SKILL_DIR/scripts"
 copy_if_present "$REPO_ROOT/scripts/vprog-scope-simulator.mjs" "$STAGED_SKILL_DIR/scripts"

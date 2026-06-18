@@ -5,7 +5,7 @@ kernel; these files hold detailed or changing knowledge.
 
 | Task | Load | Purpose |
 |---|---|---|
-| Current, latest, released, active, or scheduled claim | `source-trust-policy.md`, then the relevant section of `sources.md` | Establish evidence hierarchy, dated baseline, official URLs, network identity, and claim status. |
+| Current, latest, released, active, or scheduled claim | `source-trust-policy.md`, `live-source-intelligence.md`, then the relevant section of `sources.md` | Establish evidence hierarchy, dated baseline, official URLs, network identity, source-health warnings, and claim status. |
 | Toccata, covenants, ZK, sequencing, SilverScript, Based Apps, or vProgs | `toccata-rd-playbook.md`, plus `sources.md` | Load release/activation evidence, branch and KIP state, transaction compatibility, policy, migration, miner, wallet, indexer, and R&D detail. |
 | KIP status or future-feature research | `kaspa-research-radar.md`, `source-trust-policy.md`, and `sources.md` | Separate proposal, merged document, implementation, release, activation, and ecosystem support. |
 | Transaction plan, payment builder, fee/change review, signing preview, or broadcast safety | `transaction-plan-safety.md`, then `repo-audit-checklist.md` section 3 when code is involved | Enforce explicit inputs, outputs, fees, change, network prefixes, no secrets, no broadcast-by-default, and linter-backed review. |

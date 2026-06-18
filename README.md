@@ -12,7 +12,7 @@ This repository publishes a reusable AI skill package for serious Kaspa research
 - **Main skill file:** [`SKILL.md`](skills/public/kaspa-sovereign-architect-engine/SKILL.md)
 - **Release downloads:** [GitHub Releases](https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases)
 - **Published release:** `v1.6.2` - GitHub Releases and Packages
-- **Repository skill version:** `v1.8.0` - deterministic sync, behavioral evaluations, and transaction-plan safety gate, not yet published
+- **Repository skill version:** `v1.8.0` - deterministic sync, behavioral evaluations, transaction-plan safety, and live source intelligence, not yet published
 - **Positioning:** package-first distribution (not a website product)
 - **Freshness model:** current-aware, source-grounded, KIP-aware, and research-radar aware
 - **Build scope:** Kaspa protocol, wallet, indexer, WASM, dApp, Kdapp, and infrastructure work
@@ -93,6 +93,16 @@ Automated verification:
 
 - [Compatibility Matrix workflow](https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/actions/workflows/compatibility-matrix.yml)
 - Release gating validation is enforced in [`.github/workflows/release-skill.yml`](.github/workflows/release-skill.yml)
+
+Live Kaspa source intelligence:
+
+- [Kaspa Source Intelligence workflow](https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/actions/workflows/kaspa-source-intelligence.yml)
+- Source intelligence reference: [`live-source-intelligence.md`](skills/public/kaspa-sovereign-architect-engine/references/live-source-intelligence.md)
+- Machine-readable snapshot: [`research-snapshots/source-intelligence/latest.json`](research-snapshots/source-intelligence/latest.json)
+- Reviewer snapshot: [`research-snapshots/source-intelligence/latest.md`](research-snapshots/source-intelligence/latest.md)
+- Source intelligence script: `node scripts/kaspa-source-intelligence.mjs --check`
+- Source intelligence tests: `node --test scripts/kaspa-source-intelligence.test.mjs`
+- Claim rule: current/latest claims cite `checkedAt` plus `factsHash`, and endpoint failures are treated as unknown evidence rather than proof a feature is absent
 
 Toccata source monitoring:
 
@@ -261,6 +271,8 @@ Design a Kaspa DAG-aware indexer for 100k users with failure recovery and replay
 
 - Auto-deploy workflow: [`.github/workflows/pages.yml`](.github/workflows/pages.yml)
 - GitHub Pages landing page: [Live Site](https://gryszzz.github.io/Kaspa-Ai-Agent-Skill/)
+- Download hub: [`docs/downloads.html`](docs/downloads.html)
+- Live source intelligence panel: [`docs/source-intelligence.html`](docs/source-intelligence.html)
 - Custom domain support: set repo variable `GH_PAGES_CNAME` (for example `skill.yourdomain.com`); workflow writes `CNAME` automatically
 - Domain setup guide: [`docs/domain-setup.md`](docs/domain-setup.md)
 - Launch copy + channel templates: [`docs/launch-kit.html`](docs/launch-kit.html)

@@ -1,7 +1,7 @@
 {
   "name": "kaspa-sovereign-architect-engine",
   "version": "1.8.0",
-  "description": "Source-grounded Kaspa protocol and Toccata engineering skill with UTXO-first architecture, DAG-aware correctness, explicit monetary flows, transaction-plan safety gates, wallet compatibility, upstream change intelligence, and reproducible verification.",
+  "description": "Source-grounded Kaspa protocol and Toccata engineering skill with UTXO-first architecture, DAG-aware correctness, explicit monetary flows, live source intelligence, transaction-plan safety gates, wallet compatibility, upstream change intelligence, and reproducible verification.",
   "license": "MIT",
   "targets": [
     {

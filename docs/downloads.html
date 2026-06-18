@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Downloads | Kaspa AI Agent Skill</title>
+    <meta
+      name="description"
+      content="Download and install the Kaspa Sovereign Architect Engine skill package for Codex, Claude, Cursor, OpenClaw, Gemini CLI, and generic LLM workflows."
+    />
+    <meta name="robots" content="index,follow" />
+    <style>
+      :root {
+        --bg: #081126;
+        --panel: #101b36;
+        --line: #2c4475;
+        --brand: #4ce8cf;
+        --brand-deep: #1ab39d;
+        --ink: #edf5ff;
+        --muted: #9db4dc;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(850px 520px at 8% 0%, #17346666, transparent 64%),
+          radial-gradient(780px 620px at 96% 4%, #1ab39d3d, transparent 58%),
+          var(--bg);
+      }
+      .shell {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 28px 20px 64px;
+      }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+        flex-wrap: wrap;
+      }
+      .nav a {
+        text-decoration: none;
+        font-weight: 650;
+        font-size: 14px;
+        color: #dbe8ff;
+        margin-right: 12px;
+      }
+      .hero, .card {
+        border: 1px solid var(--line);
+        background: linear-gradient(155deg, #14274d 0%, #0c1530 75%);
+        border-radius: 18px;
+      }
+      .hero {
+        padding: 26px;
+      }
+      h1 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        line-height: 1.08;
+      }
+      h2 {
+        margin: 0 0 8px;
+        color: var(--brand);
+        font-size: 18px;
+      }
+      p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 14px;
+      }
+      .btn {
+        text-decoration: none;
+        padding: 10px 14px;
+        border-radius: 10px;
+        border: 1px solid var(--line);
+        font-weight: 700;
+        font-size: 14px;
+      }
+      .btn-primary {
+        background: linear-gradient(135deg, var(--brand), var(--brand-deep));
+        color: #062118;
+        border: none;
+      }
+      .btn-ghost {
+        background: #122247;
+        color: #dbe8ff;
+      }
+      .grid {
+        margin-top: 18px;
+        display: grid;
+        gap: 14px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+      .card {
+        padding: 16px;
+      }
+      .code {
+        margin-top: 10px;
+        border: 1px solid #36548f;
+        background: #071027;
+        border-radius: 10px;
+        padding: 11px;
+        font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+        overflow-x: auto;
+        font-size: 13px;
+        line-height: 1.55;
+        color: #d5e2ff;
+        white-space: pre;
+      }
+      .note {
+        margin-top: 16px;
+        font-size: 13px;
+        color: #8fa8d8;
+      }
+      a { color: var(--brand); }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <nav class="nav" aria-label="Primary">
+        <div>
+          <a href="./index.html">Home</a>
+          <a href="./downloads.html">Downloads</a>
+          <a href="./source-intelligence.html">Live Intelligence</a>
+          <a href="./launch-kit.html">Launch Kit</a>
+        </div>
+        <a href="https://github.com/gryszzz/Kaspa-Ai-Agent-Skill" target="_blank" rel="noreferrer">GitHub Repository</a>
+      </nav>
+
+      <section class="hero">
+        <h1>Download The Kaspa AI Agent Skill</h1>
+        <p>
+          Install the reusable skill package, verify the checksum, and use the bundled adapters from your preferred
+          coding agent or LLM workflow.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases/latest/download/kaspa-sovereign-architect-engine.zip" target="_blank" rel="noreferrer">Download ZIP</a>
+          <a class="btn btn-ghost" href="https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases/latest/download/kaspa-sovereign-architect-engine.tar.gz" target="_blank" rel="noreferrer">Download Tarball</a>
+          <a class="btn btn-ghost" href="https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases/latest/download/SHA256SUMS.txt" target="_blank" rel="noreferrer">SHA256SUMS</a>
+          <a class="btn btn-ghost" href="https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases" target="_blank" rel="noreferrer">All Releases</a>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>Codex Install</h2>
+          <p>Best path for local Codex skill use.</p>
+          <div class="code">mkdir -p "$CODEX_HOME/skills"
+curl -L -o /tmp/kaspa-sovereign-architect-engine.zip \
+  https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases/latest/download/kaspa-sovereign-architect-engine.zip
+unzip -o /tmp/kaspa-sovereign-architect-engine.zip -d "$CODEX_HOME/skills"</div>
+        </article>
+
+        <article class="card">
+          <h2>Verify Download</h2>
+          <p>Pull the release checksums and verify the ZIP before installing.</p>
+          <div class="code">curl -L -o /tmp/SHA256SUMS.txt \
+  https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases/latest/download/SHA256SUMS.txt
+(cd /tmp && grep "kaspa-sovereign-architect-engine.zip$" SHA256SUMS.txt | shasum -a 256 -c -)</div>
+        </article>
+
+        <article class="card">
+          <h2>GitHub Package</h2>
+          <p>Use the OCI package when mirroring or scripting release consumption.</p>
+          <div class="code">oras pull ghcr.io/gryszzz/kaspa-sovereign-architect-engine:latest</div>
+        </article>
+
+        <article class="card">
+          <h2>Claude, Cursor, Gemini, OpenClaw</h2>
+          <p>Adapters are included in the package under <code>agents/</code>.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/tree/main/skills/public/kaspa-sovereign-architect-engine/agents" target="_blank" rel="noreferrer">Browse Adapters</a>
+            <a class="btn btn-ghost" href="https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/tree/main/skills/public/kaspa-sovereign-architect-engine" target="_blank" rel="noreferrer">Browse Skill</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>Release Notes</h2>
+          <p>Published release is v1.6.2. Repository v1.8.0 is prepared with live source intelligence and release gates.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/blob/main/release-notes/v1.8.0.md" target="_blank" rel="noreferrer">Read v1.8.0 Notes</a>
+            <a class="btn btn-ghost" href="https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/blob/main/release-metadata.json" target="_blank" rel="noreferrer">Release Metadata</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>After Install</h2>
+          <p>Invoke the skill by name and ask for source-grounded Kaspa engineering help.</p>
+          <div class="code">$kaspa-sovereign-architect-engine
+Audit this Kaspa wallet/indexer design for UTXO, DAG, signing, replay, and network-state risks.</div>
+        </article>
+      </section>
+
+      <p class="note">
+        The direct latest links resolve to the newest published GitHub Release. When v1.8.0 is tagged and published,
+        these buttons automatically point at the v1.8.0 artifacts.
+      </p>
+    </main>
+  </body>
+</html>
