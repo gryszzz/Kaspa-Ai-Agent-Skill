@@ -1,26 +1,89 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 320" role="img" aria-labelledby="title desc">
-  <title id="title">Kaspa AI Agent Skill logo</title>
-  <desc id="desc">A dedicated Kaspa AI Agent Skill mark with teal circuit lines and wordmark.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="360" viewBox="0 0 1600 360" role="img" aria-labelledby="title desc">
+  <title id="title">Kaspa AI Agent Skill</title>
+  <desc id="desc">Transparent high-tech text mark for the Kaspa AI Agent Skill.</desc>
   <defs>
-    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0" stop-color="#07111f"/>
-      <stop offset="1" stop-color="#0c1d2a"/>
+    <linearGradient id="kaspaText" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8dfcff"/>
+      <stop offset="26%" stop-color="#6cffd2"/>
+      <stop offset="50%" stop-color="#ffffff"/>
+      <stop offset="73%" stop-color="#7c5cff"/>
+      <stop offset="100%" stop-color="#00ffa3"/>
     </linearGradient>
-    <linearGradient id="kaspa" x1="0" x2="1" y1="0" y2="0">
-      <stop offset="0" stop-color="#70f2d4"/>
-      <stop offset="1" stop-color="#1fc7a6"/>
+    <linearGradient id="kaspaStroke" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00ffa3"/>
+      <stop offset="50%" stop-color="#7c5cff"/>
+      <stop offset="100%" stop-color="#8dfcff"/>
     </linearGradient>
+    <filter id="softGlow" x="-20%" y="-80%" width="140%" height="260%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.12  0 0 0 0 1  0 0 0 0 0.78  0 0 0 0.85 0" result="greenGlow"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="16" result="wideBlur"/>
+      <feColorMatrix in="wideBlur" type="matrix" values="0 0 0 0 0.49  0 0 0 0 0.36  0 0 0 0 1  0 0 0 0.45 0" result="violetGlow"/>
+      <feMerge>
+        <feMergeNode in="violetGlow"/>
+        <feMergeNode in="greenGlow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="lineGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="scanLines" width="18" height="18" patternUnits="userSpaceOnUse">
+      <path d="M0 17H18" stroke="#8dfcff" stroke-width="0.8" opacity="0.22"/>
+    </pattern>
   </defs>
-  <rect width="960" height="320" rx="34" fill="url(#bg)"/>
-  <g fill="none" stroke="url(#kaspa)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M122 202 196 82h94l-70 112h92"/>
-    <path d="M270 118h74M234 160h110M198 202h146"/>
-    <path d="M122 202h74l42-70"/>
-    <circle cx="196" cy="82" r="8" fill="#70f2d4"/>
-    <circle cx="290" cy="82" r="8" fill="#1fc7a6"/>
-    <circle cx="344" cy="202" r="8" fill="#1fc7a6"/>
+
+  <g opacity="0.72" filter="url(#lineGlow)">
+    <path d="M162 267 C272 204, 368 216, 478 154 S719 78, 838 165 S1035 282, 1179 182 S1392 79, 1488 129"
+      fill="none" stroke="url(#kaspaStroke)" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 18"/>
+    <path d="M214 103 H404 M1196 257 H1392" stroke="#00ffa3" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+    <circle cx="214" cy="103" r="6" fill="#00ffa3"/>
+    <circle cx="404" cy="103" r="4" fill="#8dfcff"/>
+    <circle cx="1196" cy="257" r="5" fill="#7c5cff"/>
+    <circle cx="1392" cy="257" r="7" fill="#8dfcff"/>
   </g>
-  <text x="400" y="143" fill="#eef7fb" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="56" font-weight="800" letter-spacing="0">Kaspa</text>
-  <text x="400" y="205" fill="#70f2d4" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="42" font-weight="650" letter-spacing="0">AI Agent Skill</text>
-  <text x="402" y="244" fill="#9eb8c5" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22" letter-spacing="0">source-grounded research + engineering</text>
+
+  <g filter="url(#softGlow)">
+    <text x="800" y="166"
+      text-anchor="middle"
+      font-family="Inter, Satoshi, Space Grotesk, Arial, Helvetica, sans-serif"
+      font-size="104"
+      font-weight="900"
+      letter-spacing="6"
+      fill="url(#kaspaText)"
+      stroke="url(#kaspaStroke)"
+      stroke-width="1.8"
+      paint-order="stroke fill">KASPA AI</text>
+    <text x="800" y="252"
+      text-anchor="middle"
+      font-family="Inter, Satoshi, Space Grotesk, Arial, Helvetica, sans-serif"
+      font-size="76"
+      font-weight="800"
+      letter-spacing="10"
+      fill="#dffcff"
+      stroke="#7c5cff"
+      stroke-width="1"
+      paint-order="stroke fill">AGENT SKILL</text>
+  </g>
+
+  <text x="800" y="166"
+    text-anchor="middle"
+    font-family="Inter, Satoshi, Space Grotesk, Arial, Helvetica, sans-serif"
+    font-size="104"
+    font-weight="900"
+    letter-spacing="6"
+    fill="url(#scanLines)"
+    opacity="0.35">KASPA AI</text>
+
+  <g opacity="0.95">
+    <path d="M419 287 H1181" stroke="url(#kaspaStroke)" stroke-width="3" stroke-linecap="round"/>
+    <path d="M520 306 H1080" stroke="#8dfcff" stroke-width="1.5" stroke-linecap="round" opacity="0.55"/>
+    <circle cx="419" cy="287" r="5" fill="#00ffa3"/>
+    <circle cx="1181" cy="287" r="5" fill="#7c5cff"/>
+    <circle cx="800" cy="287" r="7" fill="#ffffff"/>
+  </g>
 </svg>

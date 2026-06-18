@@ -128,6 +128,9 @@ must still be checked.
 - Keep Kaspium URI/deeplink payloads explicit and network-correct.
 - Show recipient, amount, fee, change, network, and covenant/proof effects
   before signing.
+- For concrete payment or transaction plans, load
+  `references/transaction-plan-safety.md` and run
+  `node scripts/lint-transaction-plan.mjs` before calling the plan reviewable.
 - Treat RPC and provider responses as untrusted input.
 - Cover phishing, provider injection, account switching, replay, RPC
   hijacking, malicious dependencies, and user rejection.
@@ -203,6 +206,7 @@ Run from the skill or extracted package as applicable:
 node scripts/sync-local-skill.mjs --check
 node scripts/validate-compatibility.mjs --all
 node scripts/run-behavioral-evals.mjs --check
+node scripts/lint-transaction-plan.mjs --check
 node --test scripts/*.test.mjs
 node scripts/toccata-source-monitor.mjs --check
 node scripts/kaspa-knowledge-drill.mjs --check

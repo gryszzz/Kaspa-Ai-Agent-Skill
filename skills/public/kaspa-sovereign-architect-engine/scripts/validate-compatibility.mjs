@@ -232,6 +232,7 @@ function validateScripts() {
   const packageScript = path.join(rootDir, "scripts", "package-release.sh");
   const syncScript = path.join(rootDir, "scripts", "sync-local-skill.mjs");
   const evalScript = path.join(rootDir, "scripts", "run-behavioral-evals.mjs");
+  const txPlanLintScript = path.join(rootDir, "scripts", "lint-transaction-plan.mjs");
 
   assertFile(bashInstall, "install-codex.sh");
   assertFile(geminiInstall, "install-gemini.sh");
@@ -241,6 +242,7 @@ function validateScripts() {
   assertFile(packageScript, "package-release.sh");
   assertFile(syncScript, "sync-local-skill.mjs");
   assertFile(evalScript, "run-behavioral-evals.mjs");
+  assertFile(txPlanLintScript, "lint-transaction-plan.mjs");
 }
 
 function validateReferences() {
@@ -253,6 +255,7 @@ function validateReferences() {
     "kaspa-research-radar.md",
     "toccata-rd-playbook.md",
     "repo-audit-checklist.md",
+    "transaction-plan-safety.md",
     "core-research-track.md",
     "local-skill-sync.md",
   ]) {

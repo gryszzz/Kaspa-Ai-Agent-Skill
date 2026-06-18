@@ -1,4 +1,4 @@
-<img width="1983" height="793" alt="ChatGPT Image May 30, 2026, 10_28_23 PM (1)" src="https://github.com/user-attachments/assets/cbfee1fb-2065-4853-b3bc-f365b5d9a741" />
+<img src="docs/assets/kaspa-ai-agent-skill-logo.svg" alt="Kaspa AI Agent Skill" width="760" />
 
 # 🧠 Kaspa Ai Agent Skill 
 
@@ -12,7 +12,7 @@ This repository publishes a reusable AI skill package for serious Kaspa research
 - **Main skill file:** [`SKILL.md`](skills/public/kaspa-sovereign-architect-engine/SKILL.md)
 - **Release downloads:** [GitHub Releases](https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases)
 - **Published release:** `v1.6.2` - GitHub Releases and Packages
-- **Repository skill version:** `v1.8.0` - deterministic sync and behavioral evaluation update, not yet published
+- **Repository skill version:** `v1.8.0` - deterministic sync, behavioral evaluations, and transaction-plan safety gate, not yet published
 - **Positioning:** package-first distribution (not a website product)
 - **Freshness model:** current-aware, source-grounded, KIP-aware, and research-radar aware
 - **Build scope:** Kaspa protocol, wallet, indexer, WASM, dApp, Kdapp, and infrastructure work
@@ -116,6 +116,7 @@ Toccata source monitoring:
 - Network endpoint checker: `node scripts/toccata-network-check.mjs --check`
 - Mainnet readiness gate: `node scripts/toccata-mainnet-readiness-gate.mjs --check`
 - Behavioral contract evaluations: `node skills/public/kaspa-sovereign-architect-engine/scripts/run-behavioral-evals.mjs --check`
+- Transaction-plan safety gate: `node skills/public/kaspa-sovereign-architect-engine/scripts/lint-transaction-plan.mjs --check`
 - Release packages bundle the skill plus adapters, references, Toccata readiness docs, fixtures, source snapshots, helper modules, and deterministic tests under the installed skill directory.
 - Claim rule: final release plus schedule means "scheduled"; active mainnet requires a verified endpoint at or above the activation DAA, and wallet/indexer readiness is a separate claim
 

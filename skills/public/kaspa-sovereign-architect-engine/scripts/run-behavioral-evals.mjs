@@ -13,6 +13,7 @@ const requiredCaseIds = [
   "kip-release-activation-lifecycle",
   "dag-aware-indexer",
   "utxo-value-conservation",
+  "transaction-plan-safety-gate",
   "wallet-custody-signing-boundary",
   "kasware-kaspium-compatibility",
   "mass-field-conflict",
