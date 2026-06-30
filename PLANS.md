@@ -57,6 +57,7 @@ node scripts/toccata-ecosystem-readiness-audit.mjs --check
 node scripts/toccata-live-fixture-check.mjs --check
 node scripts/toccata-zk-benchmark-check.mjs --check
 node --test scripts/toccata-protocol-drill.test.mjs
+node --test scripts/toccata-evidence-lanes.test.mjs
 skills/public/kaspa-sovereign-architect-engine/scripts/package-release.sh \
   /tmp/kaspa-skill-v1.8.0 v1.8.0
 git diff --check

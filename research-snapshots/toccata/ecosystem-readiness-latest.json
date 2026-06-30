@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-06-30T23:18:05.103Z",
+  "checkedAt": "2026-06-30T23:24:40.577Z",
   "sourcePolicy": "Repository availability and keyword evidence are not readiness proof. Readiness requires explicit post-Toccata support evidence, tests, and maintained release paths for each component.",
   "sources": [
     {
@@ -17,6 +17,13 @@
       "latestRelease": null,
       "readmeOk": true,
       "evidenceTermsFound": [],
+      "textEvidenceTermsFound": [],
+      "sourceEvidence": {
+        "treeOk": true,
+        "status": 200,
+        "scannedFiles": 2,
+        "matchedFiles": []
+      },
       "evidenceHash": "12aace52ec5c4c496302bdfc1d7d1556cd42f39c642125943eccb6c25d6dfb70",
       "readiness": "source_available_no_toccata_readiness_proof"
     },
@@ -38,10 +45,57 @@
       },
       "readmeOk": true,
       "evidenceTermsFound": [
+        "toccata",
+        "covenant",
+        "storageMass"
+      ],
+      "textEvidenceTermsFound": [
         "toccata"
       ],
+      "sourceEvidence": {
+        "treeOk": true,
+        "status": 200,
+        "scannedFiles": 4,
+        "matchedFiles": [
+          {
+            "path": "lib/kaspa/transaction/mass_calculator.dart",
+            "terms": [
+              "covenant",
+              "storageMass"
+            ],
+            "lineNumbers": [
+              24,
+              37,
+              45,
+              49,
+              56,
+              62,
+              69,
+              82
+            ],
+            "contentHash": "c772e2806434a3a36e144cba1f71ecda614550a5d2b34dbeef6eb3ab38ff345e"
+          },
+          {
+            "path": "test/mass_calculator_test.dart",
+            "terms": [
+              "storageMass"
+            ],
+            "lineNumbers": [
+              58,
+              65,
+              67,
+              68,
+              75,
+              82,
+              84,
+              85
+            ],
+            "contentHash": "fcff389be1866dd55017f5a09955c6428e680c5f6bafe9904f72276bb1f46986"
+          }
+        ]
+      },
       "evidenceHash": "eef50448510a5b8722f9159fabaedd21f9142efbca4ad82f166196825c98650a",
-      "readiness": "mentions_toccata_terms_review_required"
+      "readiness": "repo_contains_toccata_evidence_review_required"
     },
     {
       "id": "kaspa-ng",
@@ -60,9 +114,29 @@
         "url": "https://github.com/aspectron/kaspa-ng/releases/tag/v2.0.1"
       },
       "readmeOk": true,
-      "evidenceTermsFound": [],
+      "evidenceTermsFound": [
+        "toccata"
+      ],
+      "textEvidenceTermsFound": [],
+      "sourceEvidence": {
+        "treeOk": true,
+        "status": 200,
+        "scannedFiles": 3,
+        "matchedFiles": [
+          {
+            "path": "core/CHANGELOG.md",
+            "terms": [
+              "toccata"
+            ],
+            "lineNumbers": [
+              13
+            ],
+            "contentHash": "9a520765e77a743913de4fd4f8e9401e97644c2aba4fdf0452ba390bb7480822"
+          }
+        ]
+      },
       "evidenceHash": "440370c62ed5a9771a97a4792828644b99eac36fb502a8eede3c7b5fbd9798d8",
-      "readiness": "source_available_no_toccata_readiness_proof"
+      "readiness": "repo_contains_toccata_evidence_review_required"
     },
     {
       "id": "simply-kaspa-indexer",
@@ -86,8 +160,37 @@
         "covenant",
         "covenant_id"
       ],
+      "textEvidenceTermsFound": [
+        "toccata",
+        "covenant",
+        "covenant_id"
+      ],
+      "sourceEvidence": {
+        "treeOk": true,
+        "status": 200,
+        "scannedFiles": 1,
+        "matchedFiles": [
+          {
+            "path": "README.md",
+            "terms": [
+              "covenant",
+              "covenant_id"
+            ],
+            "lineNumbers": [
+              143,
+              145,
+              146,
+              153,
+              317,
+              321,
+              322
+            ],
+            "contentHash": "626292aee7416f72629d6028c4b4a647f89819bff6b6974d51074a766f811a99"
+          }
+        ]
+      },
       "evidenceHash": "693146a13287f838035eaed39cb028ea6b754339c9ef7b33cd548416f62796f9",
-      "readiness": "mentions_toccata_terms_review_required"
+      "readiness": "repo_contains_toccata_evidence_review_required"
     },
     {
       "id": "kaspa-explorer",
@@ -103,6 +206,13 @@
       "latestRelease": null,
       "readmeOk": true,
       "evidenceTermsFound": [],
+      "textEvidenceTermsFound": [],
+      "sourceEvidence": {
+        "treeOk": true,
+        "status": 200,
+        "scannedFiles": 1,
+        "matchedFiles": []
+      },
       "evidenceHash": "16fb88a4521c29d64cbeb23f7e246e366d486999715ba050e73ceb899af75c77",
       "readiness": "source_available_no_toccata_readiness_proof"
     },
@@ -126,10 +236,62 @@
       "evidenceTermsFound": [
         "toccata",
         "covenant",
+        "covenant_id",
+        "storage_mass"
+      ],
+      "textEvidenceTermsFound": [
+        "toccata",
+        "covenant",
         "covenant_id"
       ],
+      "sourceEvidence": {
+        "treeOk": true,
+        "status": 200,
+        "scannedFiles": 7,
+        "matchedFiles": [
+          {
+            "path": "endpoints/get_transaction_mass.py",
+            "terms": [
+              "storage_mass"
+            ],
+            "lineNumbers": [
+              7,
+              13,
+              39,
+              63,
+              66
+            ],
+            "contentHash": "4954ddcc661940a419e7b5a7898bea224d334d14ed8f4af6ccb914d49992549e"
+          },
+          {
+            "path": "helper/mass_calculation_storage.py",
+            "terms": [
+              "storage_mass"
+            ],
+            "lineNumbers": [
+              18
+            ],
+            "contentHash": "84a0fdafa009628eb06c1640de3cfee3194511cdd63fe039cda1ca046325239d"
+          },
+          {
+            "path": "helper/tests/test_storage_mass.py",
+            "terms": [
+              "storage_mass"
+            ],
+            "lineNumbers": [
+              1,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "contentHash": "529a7a210d91a60dc8bf1651320af88bcee9e1b5b795380d3bcbbd3a22974eb6"
+          }
+        ]
+      },
       "evidenceHash": "faa11ea4c99f1a41264b049be1a2cbf63836a2be0e2f460864a975164cfb2215",
-      "readiness": "mentions_toccata_terms_review_required"
+      "readiness": "repo_contains_toccata_evidence_review_required"
     },
     {
       "id": "kaspa-miner",
@@ -149,6 +311,13 @@
       },
       "readmeOk": true,
       "evidenceTermsFound": [],
+      "textEvidenceTermsFound": [],
+      "sourceEvidence": {
+        "treeOk": true,
+        "status": 200,
+        "scannedFiles": 1,
+        "matchedFiles": []
+      },
       "evidenceHash": "a3746faf307cee90a7913d0c10886cdaa7cfa9e375c042ef24bda98d60360818",
       "readiness": "source_available_no_toccata_readiness_proof"
     },
@@ -171,15 +340,253 @@
       "readmeOk": true,
       "evidenceTermsFound": [
         "toccata",
+        "covenant",
+        "covenant_id",
+        "storage_mass",
+        "computeBudget",
+        "compute_commit",
+        "storageMass"
+      ],
+      "textEvidenceTermsFound": [
+        "toccata",
         "covenant"
       ],
+      "sourceEvidence": {
+        "treeOk": true,
+        "status": 200,
+        "scannedFiles": 25,
+        "matchedFiles": [
+          {
+            "path": "consensus/client/src/covenant.rs",
+            "terms": [
+              "covenant",
+              "covenant_id"
+            ],
+            "lineNumbers": [
+              2,
+              10,
+              11,
+              17,
+              19,
+              23,
+              25,
+              31
+            ],
+            "contentHash": "ec30dec2d31adddbaca094246a68d41e677b3d7bb1c96ea9fd8a15c290f1db1e"
+          },
+          {
+            "path": "consensus/core/src/hashing/covenant_id.rs",
+            "terms": [
+              "covenant",
+              "covenant_id"
+            ],
+            "lineNumbers": [
+              8,
+              11,
+              14,
+              15,
+              16,
+              20
+            ],
+            "contentHash": "fd175de39395670f97e9d58bf35e4066cbfd086c0b03f7a09eef7c8111dcce95"
+          },
+          {
+            "path": "consensus/core/src/mass/mod.rs",
+            "terms": [
+              "covenant",
+              "storage_mass",
+              "computeBudget",
+              "compute_commit",
+              "covenant_id"
+            ],
+            "lineNumbers": [
+              4,
+              72,
+              74,
+              83,
+              99,
+              109,
+              115,
+              265
+            ],
+            "contentHash": "77cec8d4478efebfa7478cdb09a2e969f1c61078b7acf9c1aca4cc1127632b6c"
+          },
+          {
+            "path": "consensus/core/src/mass/units.rs",
+            "terms": [
+              "computeBudget"
+            ],
+            "lineNumbers": [
+              64,
+              66,
+              84,
+              88,
+              95,
+              105,
+              107,
+              112
+            ],
+            "contentHash": "0a47b4dda868da1df5064a9745c4f1278d9b3fd388db7416f5fb05068fef12ab"
+          },
+          {
+            "path": "consensus/core/src/utxo/pre_toccata.rs",
+            "terms": [
+              "toccata",
+              "covenant",
+              "covenant_id"
+            ],
+            "lineNumbers": [
+              1,
+              2,
+              4,
+              12,
+              17,
+              18,
+              19,
+              22
+            ],
+            "contentHash": "f2a3210c4ddd3c65067692d3f64264ed3d3c0a5e8fe7bd44f6f9abd0660d6616"
+          },
+          {
+            "path": "crypto/txscript/examples/covenant_id.rs",
+            "terms": [
+              "covenant",
+              "covenant_id"
+            ],
+            "lineNumbers": [
+              5,
+              10,
+              25,
+              26,
+              30,
+              31,
+              36,
+              39
+            ],
+            "contentHash": "34ccfeabb7f1404a7b921c60049414397d40b6c331d890cabfbe4d849038870b"
+          },
+          {
+            "path": "crypto/txscript/examples/covenants.rs",
+            "terms": [
+              "covenant"
+            ],
+            "lineNumbers": [
+              22,
+              26,
+              27,
+              28,
+              33,
+              36,
+              40,
+              41
+            ],
+            "contentHash": "3ec90ea5376314ea4b9cfef3a51655a0472ccd8c02b22a73bbbc3d8dbb9e95a1"
+          },
+          {
+            "path": "crypto/txscript/src/covenants.rs",
+            "terms": [
+              "covenant",
+              "covenant_id"
+            ],
+            "lineNumbers": [
+              3,
+              6,
+              14,
+              21,
+              27,
+              33,
+              35,
+              39
+            ],
+            "contentHash": "152ff055a603aa50cc24fdf8a8ae281b944892e1c0a55631425652cd54c08ec0"
+          },
+          {
+            "path": "crypto/txscript/test-data/script_tests_covenants.json",
+            "terms": [
+              "covenant",
+              "toccata",
+              "covenant_id"
+            ],
+            "lineNumbers": [
+              3401,
+              3408,
+              3415,
+              3422,
+              3429,
+              3436,
+              3443,
+              3450
+            ],
+            "contentHash": "be49304b40f56e83240f73be088626aa8e441a0b319372239bb5fe4911dc99aa"
+          },
+          {
+            "path": "docs/toccata-guide.md",
+            "terms": [
+              "toccata",
+              "covenant",
+              "storageMass",
+              "storage_mass",
+              "computeBudget",
+              "covenant_id"
+            ],
+            "lineNumbers": [
+              1,
+              3,
+              11,
+              15,
+              23,
+              100,
+              102,
+              106
+            ],
+            "contentHash": "f5415bd7ae325d928612ad548f2ea488b163c69573707327ab3b62e7b972a0db"
+          },
+          {
+            "path": "mining/src/toccata_transient_mass_activation_tests.rs",
+            "terms": [
+              "toccata",
+              "storageMass",
+              "storage_mass"
+            ],
+            "lineNumbers": [
+              1,
+              2,
+              27,
+              166,
+              386,
+              415,
+              418,
+              432
+            ],
+            "contentHash": "a3708096f33ab51d4340aeb86bb48ac91ce3c1f740a9b6bce2b0e72826f36184"
+          },
+          {
+            "path": "wallet/core/src/tx/mass.rs",
+            "terms": [
+              "storage_mass",
+              "compute_commit"
+            ],
+            "lineNumbers": [
+              9,
+              212,
+              221,
+              272,
+              299,
+              300,
+              306,
+              308
+            ],
+            "contentHash": "40d4a56732c447071451a010f72a21a700b4126e3edb38dd1ca52d76ac473e76"
+          }
+        ]
+      },
       "evidenceHash": "e47f2beabcbac7f0260d021c51245512ee259a2fa2be5e79424819778b0649bc",
-      "readiness": "mentions_toccata_terms_review_required"
+      "readiness": "repo_contains_toccata_evidence_review_required"
     }
   ],
   "verdict": {
     "doNotClaimWalletIndexerReady": true,
     "reason": "Repository availability and keyword evidence are not sufficient to prove ecosystem readiness."
   },
-  "factsHash": "ea06a55e753d32c68d83d26b1b5c15f1f0656aec75934edbdda88ecbb5bf3bde"
+  "factsHash": "be2dc441886b850398c442640d5f3eb1eb512e6eba831d8f7f25eee341b86fff"
 }

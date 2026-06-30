@@ -85,6 +85,67 @@ function termsFound(text, terms) {
   return terms.filter((term) => lower.includes(term.toLowerCase()));
 }
 
+function isScannablePath(filePath) {
+  return (
+    /\.(md|json|toml|ya?ml|rs|ts|tsx|js|jsx|go|dart|py|proto|txt)$/i.test(filePath) ||
+    /(^|\/)(Dockerfile|Makefile|Cargo\.lock|package-lock\.json|pubspec\.lock)$/i.test(filePath)
+  );
+}
+
+async function fetchRepoTree(repo, defaultBranch) {
+  return fetchJson(`https://api.github.com/repos/${repo}/git/trees/${encodeURIComponent(defaultBranch)}?recursive=1`);
+}
+
+async function scanSourceEvidence(source, defaultBranch, proofTerms) {
+  const tree = await fetchRepoTree(source.repo, defaultBranch);
+  if (!tree.ok || !Array.isArray(tree.body?.tree)) {
+    return {
+      treeOk: false,
+      status: tree.status,
+      scannedFiles: 0,
+      matchedFiles: [],
+    };
+  }
+
+  const candidateFiles = tree.body.tree
+    .filter((entry) => entry.type === "blob" && entry.size <= 250000 && isScannablePath(entry.path))
+    .filter((entry) => termsFound(entry.path, proofTerms).length > 0 || /readme|release|changelog|toccata|covenant|mass|compute/i.test(entry.path))
+    .slice(0, 120);
+
+  const matchedFiles = [];
+  for (const entry of candidateFiles) {
+    const raw = await fetchText(
+      `https://raw.githubusercontent.com/${source.repo}/${encodeURIComponent(defaultBranch)}/${entry.path
+        .split("/")
+        .map(encodeURIComponent)
+        .join("/")}`,
+    );
+    if (!raw.ok) continue;
+    const terms = [...new Set([...termsFound(entry.path, proofTerms), ...termsFound(raw.text, proofTerms)])];
+    if (terms.length === 0) continue;
+    const lines = raw.text.split(/\r?\n/);
+    const lineNumbers = [];
+    for (const [index, line] of lines.entries()) {
+      if (termsFound(line, proofTerms).length > 0) lineNumbers.push(index + 1);
+      if (lineNumbers.length >= 8) break;
+    }
+    matchedFiles.push({
+      path: entry.path,
+      terms,
+      lineNumbers,
+      contentHash: sha256(raw.text),
+    });
+    if (matchedFiles.length >= 12) break;
+  }
+
+  return {
+    treeOk: true,
+    status: tree.status,
+    scannedFiles: candidateFiles.length,
+    matchedFiles,
+  };
+}
+
 async function auditSource(source, proofTerms) {
   const repoUrl = `https://api.github.com/repos/${source.repo}`;
   const repo = await fetchJson(repoUrl);
@@ -107,8 +168,13 @@ async function auditSource(source, proofTerms) {
     release.ok ? release.body?.body || release.body?.name || "" : "",
   ].join("\n");
   const found = termsFound(evidenceText, proofTerms);
-  const readiness = found.length
-    ? "mentions_toccata_terms_review_required"
+  const sourceEvidence = await scanSourceEvidence(source, defaultBranch, proofTerms);
+  const sourceTerms = [...new Set(sourceEvidence.matchedFiles.flatMap((entry) => entry.terms))];
+  const allTerms = [...new Set([...found, ...sourceTerms])];
+  const readiness = sourceEvidence.matchedFiles.length
+    ? "repo_contains_toccata_evidence_review_required"
+    : found.length
+      ? "mentions_toccata_terms_review_required"
     : "source_available_no_toccata_readiness_proof";
 
   return {
@@ -126,7 +192,9 @@ async function auditSource(source, proofTerms) {
         }
       : null,
     readmeOk: readme.ok,
-    evidenceTermsFound: found,
+    evidenceTermsFound: allTerms,
+    textEvidenceTermsFound: found,
+    sourceEvidence,
     evidenceHash: sha256(evidenceText),
     readiness,
   };
@@ -147,7 +215,10 @@ function renderMarkdown(snapshot) {
   const rows = snapshot.sources
     .map(
       (source) =>
-        `| ${source.label} | ${source.role} | ${source.ok ? "ok" : "error"} | ${source.readiness} | ${(source.evidenceTermsFound || []).join(", ") || "none"} |`,
+        `| ${source.label} | ${source.role} | ${source.ok ? "ok" : "error"} | ${source.readiness} | ${(source.evidenceTermsFound || []).join(", ") || "none"} | ${(source.sourceEvidence?.matchedFiles || [])
+          .slice(0, 3)
+          .map((entry) => `${entry.path} (${entry.terms.join(",")})`)
+          .join("<br>") || "none"} |`,
     )
     .join("\n");
   return `# Toccata Ecosystem Readiness Audit
@@ -160,8 +231,8 @@ This audit checks configured public repositories for source availability and
 Toccata-related evidence terms. It does not prove wallet, indexer, miner,
 explorer, or application readiness.
 
-| Source | Role | Source | Readiness | Evidence terms |
-| --- | --- | --- | --- | --- |
+| Source | Role | Source | Readiness | Evidence terms | Evidence samples |
+| --- | --- | --- | --- | --- | --- |
 ${rows}
 `;
 }
@@ -214,4 +285,3 @@ async function main() {
 }
 
 main();
-

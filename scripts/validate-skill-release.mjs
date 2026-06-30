@@ -254,6 +254,11 @@ function validateLocal(repoRoot) {
     failures,
   );
   requireCondition(
+    ecosystemReadiness.sources?.some((source) => source.sourceEvidence?.matchedFiles?.length > 0),
+    "ecosystem readiness snapshot must include source-level evidence samples",
+    failures,
+  );
+  requireCondition(
     zkBenchmark.status === "pending_no_measurements" || zkBenchmark.status === "measured",
     "ZK benchmark snapshot must have a valid status",
     failures,
@@ -307,6 +312,7 @@ function validateLocal(repoRoot) {
     "zk-proof-cost-baseline.json",
     "toccata-captured-responses-check.mjs",
     "toccata-ecosystem-readiness-audit.mjs",
+    "toccata-evidence-lanes.test.mjs",
     "toccata-live-fixture-check.mjs",
     "toccata-zk-benchmark-check.mjs",
   ]) {

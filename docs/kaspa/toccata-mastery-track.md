@@ -287,7 +287,8 @@ these:
   with the same protocol drill runner as the reference answers.
 - Ecosystem readiness lives under
   `research-snapshots/toccata/ecosystem-readiness-latest.*`. Repository
-  availability or keyword matches are not readiness proof.
+  availability, release metadata, README matches, and source-level term
+  samples are audit leads, not readiness proof.
 - Live covenant/indexer fixtures must use
   `fixtures/toccata/live-covenant-indexer-fixture.template.json` as the intake
   contract and must come from a real post-Toccata indexer or RPC-backed

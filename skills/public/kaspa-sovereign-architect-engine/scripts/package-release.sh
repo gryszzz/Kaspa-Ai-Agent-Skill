@@ -119,6 +119,7 @@ copy_if_present "$REPO_ROOT/scripts/toccata-network-check.mjs" "$STAGED_SKILL_DI
 copy_if_present "$REPO_ROOT/scripts/toccata-mainnet-readiness-gate.mjs" "$STAGED_SKILL_DIR/scripts"
 copy_if_present "$REPO_ROOT/scripts/toccata-captured-responses-check.mjs" "$STAGED_SKILL_DIR/scripts"
 copy_if_present "$REPO_ROOT/scripts/toccata-ecosystem-readiness-audit.mjs" "$STAGED_SKILL_DIR/scripts"
+copy_if_present "$REPO_ROOT/scripts/toccata-evidence-lanes.test.mjs" "$STAGED_SKILL_DIR/scripts"
 copy_if_present "$REPO_ROOT/scripts/toccata-live-fixture-check.mjs" "$STAGED_SKILL_DIR/scripts"
 copy_if_present "$REPO_ROOT/scripts/toccata-zk-benchmark-check.mjs" "$STAGED_SKILL_DIR/scripts"
 
