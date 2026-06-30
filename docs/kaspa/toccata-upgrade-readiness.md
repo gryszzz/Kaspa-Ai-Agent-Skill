@@ -25,6 +25,13 @@ As of the latest local snapshot:
 - Mainnet, TN10, and TN12 endpoint observations must be checked by returned `networkName`; TN12 returned an upstream `HTTP 500` during the latest snapshot and is not silently treated as healthy.
 - KIP-16, KIP-17, KIP-20, and KIP-21 PRs are closed and merged into `kaspanet/kips` `master`; their document statuses indicate implemented/activated on TN10.
 
+Supplemental check, 2026-06-30T13:29:37Z:
+
+- Rusty Kaspa `v2.0.1`, published 2026-06-15, is the latest stable mainnet Toccata release.
+- Rusty Kaspa `v2.0.0` remains the release that defines the mainnet activation DAA `474,165,565`.
+- Live mainnet returned `networkName=kaspa-mainnet` and `virtualDaaScore=474063735`, still below activation threshold. Continue to describe Toccata as scheduled/pre-activation until a fresh mainnet endpoint reaches or exceeds the threshold.
+- Current Rusty Kaspa heads: `master` `98a4ccd8d200853787f227bd4536ac540cf34957`, `toccata` `0ae28f939e61994a11eb8eb6dd775255e2924afb`, `tn10` `e5f6d1f7c86f3a3afbe97dbb75e72a0a3ff66a57`, and `tn12` `ab4c51afde90dc6e0bce3f782d0a18af5da29434`.
+
 ## What Is Here
 
 Released, scheduled, testnet-visible, or source-visible work:
@@ -32,6 +39,8 @@ Released, scheduled, testnet-visible, or source-visible work:
 - Merged `master` implementation evidence for Toccata through PR #1000, plus branch/tag evidence that must still be interpreted network-by-network.
 - Toccata branch evidence for covenants, covenant IDs, ZK opcode work, sequencing commitments, and related transaction/RPC surfaces.
 - Final release and activation schedule evidence through `v2.0.0`.
+- Stable maintenance evidence through `v2.0.1`; this is upgrade evidence and
+  does not by itself prove mainnet activation.
 - Higher node relay/RPC minimum fee policy: `100 sompi * max(compute grams, 2 * transaction bytes)`. This is policy, not consensus validity.
 - Transaction API migration: Rust/protobuf `storage_mass`, JSON/JavaScript `storageMass`, legacy JSON `mass` alias, and `TransactionInput.compute_commit`.
 - Pool/miner requirement to preserve `TransactionOutput.covenant` and `TransactionInput.compute_commit` from block templates through block submission.

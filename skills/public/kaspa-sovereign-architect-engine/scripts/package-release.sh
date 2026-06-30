@@ -50,6 +50,12 @@ copy_if_present() {
 
 copy_if_present "$REPO_ROOT/docs/toccata-evidence-ladder.md" "$STAGED_SKILL_DIR/references/repo-docs"
 copy_if_present "$REPO_ROOT/docs/toccata-evidence-ladder.md" "$STAGED_SKILL_DIR/docs"
+copy_if_present "$REPO_ROOT/docs/toccata.md" "$STAGED_SKILL_DIR/references/repo-docs"
+copy_if_present "$REPO_ROOT/docs/toccata.md" "$STAGED_SKILL_DIR/docs"
+copy_if_present "$REPO_ROOT/SYSTEM_ARCHITECTURE.md" "$STAGED_SKILL_DIR/references/repo-docs"
+copy_if_present "$REPO_ROOT/SYSTEM_ARCHITECTURE.md" "$STAGED_SKILL_DIR"
+copy_if_present "$REPO_ROOT/TRAINING_SOURCES.md" "$STAGED_SKILL_DIR"
+copy_if_present "$REPO_ROOT/TRAINING_SOURCES.md" "$STAGED_SKILL_DIR/references/repo-docs"
 copy_if_present "$REPO_ROOT/docs/kaspa/covenant-lineage-indexer.md" "$STAGED_SKILL_DIR/references/repo-docs/kaspa"
 copy_if_present "$REPO_ROOT/docs/kaspa/toccata-upgrade-readiness.md" "$STAGED_SKILL_DIR/references/repo-docs/kaspa"
 copy_if_present "$REPO_ROOT/docs/kaspa/wallet-covenant-signing-preview.md" "$STAGED_SKILL_DIR/references/repo-docs/kaspa"
