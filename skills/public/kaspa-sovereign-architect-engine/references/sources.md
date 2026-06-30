@@ -38,8 +38,26 @@ Audit date: 2026-06-30T13:29:37Z
 - Rusty Kaspa `toccata`: `0ae28f939e61994a11eb8eb6dd775255e2924afb`.
 - Rusty Kaspa `tn10`: `e5f6d1f7c86f3a3afbe97dbb75e72a0a3ff66a57`.
 - Rusty Kaspa `tn12`: `ab4c51afde90dc6e0bce3f782d0a18af5da29434`.
-- Mainnet activation DAA remains `474165565` from the `v2.0.0` release and current Toccata guide. Live mainnet REST returned `networkName=kaspa-mainnet` and `virtualDaaScore=474063735`, below threshold, so status at this audit is `scheduled/pre-activation`, not verified active.
+- Mainnet activation DAA remains `474165565` from the `v2.0.0` release and
+  current Toccata guide. Live mainnet REST returned
+  `networkName=kaspa-mainnet` and `virtualDaaScore=474063735`, below
+  threshold, so status at this historical audit was scheduled/pre-activation.
+  The post-activation pulse below supersedes this status.
 - Current Toccata Guide, fetched from `master` on 2026-06-30, identifies the minimum standard fee policy as `100 sompi * max(compute grams, 2 * transaction bytes)`, describes it as node/mempool policy rather than consensus, and names the transaction/API changes `RpcTransaction.storage_mass`, JSON/WASM `storageMass`, `RpcTransactionInput.computeBudget`, `RpcTransactionOutput.covenant`, and `RpcUtxoEntry.covenant_id`.
+
+## Post-Activation Toccata Pulse
+
+Audit date: 2026-06-30T22:39:08Z
+
+- Mainnet protocol activation is verified for this audit. The live mainnet
+  endpoint returned `networkName=kaspa-mainnet` and
+  `virtualDaaScore=474391519`, above activation DAA `474165565`.
+- Source monitor facts hash:
+  `4713fa066387bd080e9e30bcac80de0b8b41c77544cdce96555ac3c2702acb36`.
+- `node scripts/toccata-mainnet-readiness-gate.mjs --check` returns
+  `ready_to_claim_mainnet_protocol_active` with `6/6` protocol gates.
+- Ecosystem readiness remains separate:
+  `do_not_claim_wallet_indexer_ready`.
 
 ## Primary Sources
 

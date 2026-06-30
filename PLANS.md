@@ -1,35 +1,32 @@
-# ExecPlan: Toccata Builder Skill, Source Truth, And Agent Flywheel
+# ExecPlan: Post-Activation Toccata Hardening
 
 ## Current Goal
 
-Make repository-local agent behavior match the Toccata builder workflow and
-autonomous engineering flywheel:
+Update repository-local agent behavior for verified post-activation Toccata
+mainnet status while preserving source discipline and ecosystem-readiness
+separation:
 
-- Treat `docs/kaspa/` and `docs/toccata-evidence-ladder.md` as the
-  repository source of truth for Toccata builder requirements.
+- Refresh `research-snapshots/toccata/latest.*` from live primary sources and
+  classify mainnet protocol activation from the returned `kaspa-mainnet`
+  `virtualDaaScore`.
+- Update docs, references, training corpus, and behavioral evals so future
+  sessions can say Toccata protocol activation is verified on mainnet only
+  when they cite the live DAA evidence.
+- Keep wallet/indexer/miner/application readiness explicitly separate from
+  protocol activation.
+- Treat `docs/toccata.md`, `docs/kaspa/`, and
+  `docs/toccata-evidence-ladder.md` as the repository source of truth for
+  Toccata builder requirements.
 - Require Toccata R&D Intelligence mode to cite the relevant playbook,
   `docs/kaspa` note, or evidence-ladder requirement before proposing
   covenant-related changes.
-- Formalize `AGENTS.md` as the persistent agent memory journal with a
-  `[Problem] | [Kaspa Protocol Constraint] | [Solution]` Pattern of Success
-  format.
-- Add `TRAINING_SOURCES.md` as the immutable protocol-source ladder and make
-  agent sessions cite it before protocol, transaction, covenant, sequencing,
-  wallet, indexer, or architecture changes.
-- Add `docs/toccata.md` as the official/repo-backed Toccata builder guide for
-  node operators, wallet builders, pool/miner integrators, indexers/explorers,
-  KaspaScript/covenant builders, and ZK/lane-proof researchers.
-- Add `SYSTEM_ARCHITECTURE.md` and `AGENT_TRACE.md` so non-trivial autonomous
-  work has memory, Plan-Act-Verify discipline, observability, and rollback
-  boundaries.
-- Add CI smoke coverage for agent-facing Toccata tasks, including the network
-  endpoint check and mainnet readiness gate.
 
 ## Current Constraints
 
 - Keep Kaspa UTXO-first, DAG-aware, and network-explicit.
-- Do not turn testnet, branch, KIP, docs, or research evidence into mainnet
-  activation claims.
+- Do not turn testnet, branch, KIP, docs, release schedule, or research
+  evidence into mainnet activation claims without live `kaspa-mainnet`
+  threshold evidence.
 - Preserve existing release-gate behavior and package-release docs bundling.
 - Do not let community resources override official docs, Rusty Kaspa code,
   releases, or KIPs.
@@ -166,5 +163,5 @@ git diff --check
 - Packaged tarball SHA-256:
   `373107a34e06a48addddc7981b6c488f2f53d97f3448f78a52c59022dc318dff`.
 - The deterministic network check retained one hard endpoint issue and one
-  warning while correctly enforcing `do_not_claim_mainnet_protocol_active` and
-  `do_not_claim_wallet_indexer_ready`.
+  warning while correctly enforcing the then-current pre-activation protocol
+  gate and `do_not_claim_wallet_indexer_ready`.

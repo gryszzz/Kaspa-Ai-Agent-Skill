@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "checkedAt": "2026-06-06T01:39:16.315Z",
+  "checkedAt": "2026-06-30T22:39:08.670Z",
   "policy": {
     "sourceTier": "primary-source-first",
     "mainnetClaimRule": "mainnet activation requires a final release, explicit activation DAA, merged production code, and mainnet endpoint evidence at or above the threshold",
@@ -440,7 +440,7 @@
         "baseRefName": "master",
         "headRefName": "master",
         "headSha": "cdafc96705eb5dc619e7f8fefaaf492949d6698f",
-        "updatedAt": "2026-03-10T16:31:00Z",
+        "updatedAt": "2026-06-28T07:43:08Z",
         "createdAt": "2026-03-06T20:43:49Z",
         "mergedAt": null,
         "diffSummary": {
@@ -527,7 +527,7 @@
         "kind": "heads",
         "name": "master",
         "ok": true,
-        "sha": "90dbf074275d60c1fe74a3491883196f110970c0",
+        "sha": "98a4ccd8d200853787f227bd4536ac540cf34957",
         "objectType": "commit",
         "url": "https://github.com/kaspanet/rusty-kaspa/tree/master"
       },
@@ -617,7 +617,7 @@
         "kind": "heads",
         "name": "main",
         "ok": true,
-        "sha": "6aa5e9f52995f53dc85ef3e8c7c71bab9a359b3e",
+        "sha": "c3fb0fded5f13d6fbb9a37c5a1f561ad732a421f",
         "objectType": "commit",
         "url": "https://github.com/kaspanet/docs/tree/main"
       },
@@ -626,7 +626,7 @@
         "kind": "heads",
         "name": "master",
         "ok": true,
-        "sha": "2c4623124d75bd8a9a7f87ded9413ef9f6b17acd",
+        "sha": "d25bd3427a093c17327ca3d6b9e1aa5f7688c863",
         "objectType": "commit",
         "url": "https://github.com/kaspanet/silverscript/tree/master"
       },
@@ -635,7 +635,7 @@
         "kind": "heads",
         "name": "master",
         "ok": true,
-        "sha": "57039db09ea958689aee2ae89f81ba40c8cc3e6d",
+        "sha": "252ff51f5467b73be75bc58ae84e5b22e90e3022",
         "objectType": "commit",
         "url": "https://github.com/kaspanet/vprogs/tree/master"
       }
@@ -779,157 +779,143 @@
         "repo": "kaspanet/rusty-kaspa",
         "branch": "master",
         "label": "kaspanet/rusty-kaspa master",
-        "beforeSha": "d5205cc72ab7b811e88a23595dfac5b9facdeece",
-        "afterSha": "90dbf074275d60c1fe74a3491883196f110970c0",
+        "beforeSha": "90dbf074275d60c1fe74a3491883196f110970c0",
+        "afterSha": "98a4ccd8d200853787f227bd4536ac540cf34957",
         "ok": true,
-        "status": "last_observed_change",
+        "status": "ahead",
         "aheadBy": 12,
         "behindBy": 0,
         "totalCommits": 12,
-        "fileCount": 98,
-        "additions": 2206,
-        "deletions": 1156,
+        "fileCount": 135,
+        "additions": 4868,
+        "deletions": 904,
         "filesTruncated": false,
         "commits": [
           {
-            "sha": "ae51b8a5072ed42984b58d32032569be9d2f7d22",
-            "committedAt": "2026-06-04T10:40:41Z",
-            "message": "Reenable TN10 (#1038)",
-            "url": "https://github.com/kaspanet/rusty-kaspa/commit/ae51b8a5072ed42984b58d32032569be9d2f7d22"
+            "sha": "895766fd6e882e5ebf1ede74f9de610d616afa14",
+            "committedAt": "2026-06-08T13:54:02Z",
+            "message": "feat(wallet/core): smt sync event handling (#1047)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/895766fd6e882e5ebf1ede74f9de610d616afa14"
           },
           {
-            "sha": "770e3e9d4fd29e56869646193308bf39aeeac3e2",
-            "committedAt": "2026-06-04T16:35:37Z",
-            "message": "feat(rpc): get block reward by hash (#927)",
-            "url": "https://github.com/kaspanet/rusty-kaspa/commit/770e3e9d4fd29e56869646193308bf39aeeac3e2"
+            "sha": "2787953efb84d58f5cdda282953e60bea7da253b",
+            "committedAt": "2026-06-14T14:20:07Z",
+            "message": "Add get_seq_commit_lane_proof RPC (gRPC + wRPC) (#961)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/2787953efb84d58f5cdda282953e60bea7da253b"
           },
           {
-            "sha": "a9451167d721fd9760582eedf34cec7b51c4f36a",
-            "committedAt": "2026-06-04T18:40:25Z",
-            "message": "Rename tx.mass -> tx.storage_mass (#1039)",
-            "url": "https://github.com/kaspanet/rusty-kaspa/commit/a9451167d721fd9760582eedf34cec7b51c4f36a"
+            "sha": "c53a83bf4829d430d5179fd02f6d756dab782028",
+            "committedAt": "2026-06-14T15:02:15Z",
+            "message": "Change consensus-client CovenantBinding's inner type (#935)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/c53a83bf4829d430d5179fd02f6d756dab782028"
           },
           {
-            "sha": "c26d517a80aaaf52b80cbb426355abbae3a470b6",
-            "committedAt": "2026-06-04T20:18:26Z",
-            "message": "Rename input.mass -> input.compute_commit, TxInputMass -> ComputeCommit (#1040)",
-            "url": "https://github.com/kaspanet/rusty-kaspa/commit/c26d517a80aaaf52b80cbb426355abbae3a470b6"
+            "sha": "b2d8759c5408cdea9c6ce4306d0285e4cdafa0d2",
+            "committedAt": "2026-06-15T09:03:16Z",
+            "message": "feat(roth): generate tx targeting user lanes (#1021)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/b2d8759c5408cdea9c6ce4306d0285e4cdafa0d2"
           },
           {
-            "sha": "9bd6581b9c25cb0940856d136924b1c644e4042e",
-            "committedAt": "2026-06-04T21:26:08Z",
-            "message": "Make storage_mass a required field in RpcTransaction when decoding JSON (#1043)",
-            "url": "https://github.com/kaspanet/rusty-kaspa/commit/9bd6581b9c25cb0940856d136924b1c644e4042e"
+            "sha": "4e9252fb0ca67eb538116cfb53266dfe7c1abbed",
+            "committedAt": "2026-06-15T11:17:36Z",
+            "message": "Add rocknroll SMT prune scanner (#990)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/4e9252fb0ca67eb538116cfb53266dfe7c1abbed"
           },
           {
-            "sha": "36126503b812a5ea2e1a673cd3beea111a715e35",
-            "committedAt": "2026-06-04T22:02:49Z",
-            "message": "clean: remove consensus get current block color (#1042)",
-            "url": "https://github.com/kaspanet/rusty-kaspa/commit/36126503b812a5ea2e1a673cd3beea111a715e35"
+            "sha": "1fe3697b4ebf5d5ceac33fbe3b73b8d3348b3325",
+            "committedAt": "2026-06-15T11:31:19Z",
+            "message": "fix(connectionmanager): don't panic on wakeup send during shutdown (#989) (#1029)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/1fe3697b4ebf5d5ceac33fbe3b73b8d3348b3325"
           },
           {
-            "sha": "c1d8189303cd9cacbb39ef326ac4aa23a5971a70",
-            "committedAt": "2026-06-04T23:07:40Z",
-            "message": "feat(wasm/txscript): allows passing script builder flags (#999)",
-            "url": "https://github.com/kaspanet/rusty-kaspa/commit/c1d8189303cd9cacbb39ef326ac4aa23a5971a70"
+            "sha": "778b21e2700f458e24b93ece53346643763b5d12",
+            "committedAt": "2026-06-15T19:08:28Z",
+            "message": "Bump version to v2.0.1 + RPC and sync improvements (#1053)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/778b21e2700f458e24b93ece53346643763b5d12"
           },
           {
-            "sha": "bbadf5e5717042ad30634f389505a3e2f8b6902a",
-            "committedAt": "2026-06-04T23:30:33Z",
-            "message": "fix(wallet/generator): include covenant bindings (#896)",
-            "url": "https://github.com/kaspanet/rusty-kaspa/commit/bbadf5e5717042ad30634f389505a3e2f8b6902a"
+            "sha": "cfafeb4c093fa37a303f1b9f19c58f986b870ce3",
+            "committedAt": "2026-06-15T19:10:50Z",
+            "message": "fix(wasm/client): transaction v0 deserialization (#1052)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/cfafeb4c093fa37a303f1b9f19c58f986b870ce3"
           },
           {
-            "sha": "580fa8b5d5a66b55db368cd47781784b8b631222",
-            "committedAt": "2026-06-04T23:48:07Z",
-            "message": "fix(wasm): mempool entries request args are required (#951)",
-            "url": "https://github.com/kaspanet/rusty-kaspa/commit/580fa8b5d5a66b55db368cd47781784b8b631222"
+            "sha": "9fdbaf1b1886fb5742783d2da73c36239bd6f272",
+            "committedAt": "2026-06-17T23:04:54Z",
+            "message": "fix(rpc/vspcv2): covenant field was missing from tx outputs (#1056)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/9fdbaf1b1886fb5742783d2da73c36239bd6f272"
           },
           {
-            "sha": "b8deb638dab0b60806e1c32b3b9d53f1b07a78a1",
-            "committedAt": "2026-06-05T07:33:26Z",
-            "message": "Set Toccata to activate on mainnet (#1044)",
-            "url": "https://github.com/kaspanet/rusty-kaspa/commit/b8deb638dab0b60806e1c32b3b9d53f1b07a78a1"
+            "sha": "46bf884387f5941e32b3740ae844763070fcbb27",
+            "committedAt": "2026-06-21T12:19:33Z",
+            "message": "docs(toccata): enhanced guide (#1059)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/46bf884387f5941e32b3740ae844763070fcbb27"
           },
           {
-            "sha": "4e8f3135828d9c77146469424ba5a0801ea626e3",
-            "committedAt": "2026-06-05T11:02:07Z",
-            "message": "Fix script engine handling of unknown script versions (#1046)",
-            "url": "https://github.com/kaspanet/rusty-kaspa/commit/4e8f3135828d9c77146469424ba5a0801ea626e3"
+            "sha": "a8951cd4063f1b02ec670735c6ef860f817b39ce",
+            "committedAt": "2026-06-23T15:21:42Z",
+            "message": "Zk sdk (#953)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/a8951cd4063f1b02ec670735c6ef860f817b39ce"
           },
           {
-            "sha": "90dbf074275d60c1fe74a3491883196f110970c0",
-            "committedAt": "2026-06-05T11:55:30Z",
-            "message": "Add Toccata upgrade guide (#1045)",
-            "url": "https://github.com/kaspanet/rusty-kaspa/commit/90dbf074275d60c1fe74a3491883196f110970c0"
+            "sha": "98a4ccd8d200853787f227bd4536ac540cf34957",
+            "committedAt": "2026-06-24T07:30:28Z",
+            "message": "fix(windows/zk): remove syscall symbol def (#1064)",
+            "url": "https://github.com/kaspanet/rusty-kaspa/commit/98a4ccd8d200853787f227bd4536ac540cf34957"
           }
         ],
         "files": [
           {
-            "filename": ".github/workflows/ci.yaml",
-            "status": "modified",
-            "additions": 3,
-            "deletions": 1,
-            "changes": 4
-          },
-          {
             "filename": "Cargo.lock",
             "status": "modified",
-            "additions": 69,
-            "deletions": 67,
-            "changes": 136
+            "additions": 545,
+            "deletions": 144,
+            "changes": 689
           },
           {
             "filename": "Cargo.toml",
             "status": "modified",
-            "additions": 62,
-            "deletions": 62,
-            "changes": 124
+            "additions": 67,
+            "deletions": 63,
+            "changes": 130
           },
           {
-            "filename": "cli/src/extensions/transaction.rs",
+            "filename": "cli/src/cli.rs",
             "status": "modified",
-            "additions": 1,
-            "deletions": 1,
-            "changes": 2
-          },
-          {
-            "filename": "cli/src/modules/rpc.rs",
-            "status": "modified",
-            "additions": 9,
+            "additions": 7,
             "deletions": 0,
-            "changes": 9
+            "changes": 7
+          },
+          {
+            "filename": "components/connectionmanager/src/lib.rs",
+            "status": "modified",
+            "additions": 8,
+            "deletions": 2,
+            "changes": 10
           },
           {
             "filename": "components/consensusmanager/src/session.rs",
             "status": "modified",
-            "additions": 4,
-            "deletions": 5,
+            "additions": 8,
+            "deletions": 1,
             "changes": 9
           },
           {
-            "filename": "consensus/benches/check_scripts.rs",
+            "filename": "consensus/client/src/covenant.rs",
             "status": "modified",
-            "additions": 3,
-            "deletions": 3,
-            "changes": 6
+            "additions": 63,
+            "deletions": 17,
+            "changes": 80
           },
           {
-            "filename": "consensus/client/src/block.rs",
-            "status": "added",
-            "additions": 11,
-            "deletions": 0,
-            "changes": 11
-          },
-          {
-            "filename": "consensus/client/src/input.rs",
+            "filename": "consensus/client/src/output.rs",
             "status": "modified",
-            "additions": 5,
-            "deletions": 5,
-            "changes": 10
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4
           },
           {
-            "filename": "consensus/client/src/lib.rs",
+            "filename": "consensus/client/src/serializable/mod.rs",
             "status": "modified",
             "additions": 1,
             "deletions": 0,
@@ -938,296 +924,520 @@
           {
             "filename": "consensus/client/src/serializable/numeric.rs",
             "status": "modified",
-            "additions": 11,
-            "deletions": 11,
-            "changes": 22
+            "additions": 3,
+            "deletions": 2,
+            "changes": 5
           },
           {
             "filename": "consensus/client/src/serializable/string.rs",
             "status": "modified",
-            "additions": 11,
-            "deletions": 11,
-            "changes": 22
-          },
-          {
-            "filename": "consensus/client/src/signing.rs",
-            "status": "removed",
-            "additions": 0,
-            "deletions": 216,
-            "changes": 216
+            "additions": 3,
+            "deletions": 2,
+            "changes": 5
           },
           {
             "filename": "consensus/client/src/transaction.rs",
             "status": "modified",
-            "additions": 39,
-            "deletions": 16,
-            "changes": 55
+            "additions": 17,
+            "deletions": 0,
+            "changes": 17
           },
           {
-            "filename": "consensus/core/benches/serde_benchmark.rs",
+            "filename": "consensus/core/src/api/mod.rs",
+            "status": "modified",
+            "additions": 37,
+            "deletions": 0,
+            "changes": 37
+          },
+          {
+            "filename": "consensus/core/src/errors/consensus.rs",
+            "status": "modified",
+            "additions": 9,
+            "deletions": 0,
+            "changes": 9
+          },
+          {
+            "filename": "consensus/core/src/errors/pruning.rs",
+            "status": "modified",
+            "additions": 6,
+            "deletions": 0,
+            "changes": 6
+          },
+          {
+            "filename": "consensus/core/src/header.rs",
+            "status": "modified",
+            "additions": 12,
+            "deletions": 0,
+            "changes": 12
+          },
+          {
+            "filename": "consensus/core/src/mass/mod.rs",
+            "status": "modified",
+            "additions": 17,
+            "deletions": 3,
+            "changes": 20
+          },
+          {
+            "filename": "consensus/src/consensus/factory.rs",
+            "status": "modified",
+            "additions": 36,
+            "deletions": 7,
+            "changes": 43
+          },
+          {
+            "filename": "consensus/src/consensus/mod.rs",
+            "status": "modified",
+            "additions": 98,
+            "deletions": 3,
+            "changes": 101
+          },
+          {
+            "filename": "consensus/src/consensus/test_consensus.rs",
+            "status": "modified",
+            "additions": 3,
+            "deletions": 2,
+            "changes": 5
+          },
+          {
+            "filename": "consensus/src/pipeline/body_processor/body_validation_in_context.rs",
+            "status": "modified",
+            "additions": 4,
+            "deletions": 0,
+            "changes": 4
+          },
+          {
+            "filename": "consensus/src/pipeline/body_processor/processor.rs",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 0,
+            "changes": 2
+          },
+          {
+            "filename": "consensus/src/pipeline/virtual_processor/processor.rs",
+            "status": "modified",
+            "additions": 14,
+            "deletions": 4,
+            "changes": 18
+          },
+          {
+            "filename": "consensus/src/processes/pruning_proof/apply.rs",
+            "status": "modified",
+            "additions": 15,
+            "deletions": 1,
+            "changes": 16
+          },
+          {
+            "filename": "consensus/src/processes/pruning_proof/validate.rs",
+            "status": "modified",
+            "additions": 7,
+            "deletions": 2,
+            "changes": 9
+          },
+          {
+            "filename": "core/Cargo.toml",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "crypto/smt/src/proof.rs",
             "status": "modified",
             "additions": 5,
-            "deletions": 5,
-            "changes": 10
+            "deletions": 6,
+            "changes": 11
           },
           {
-            "filename": "consensus/core/src/acceptance_data.rs",
+            "filename": "crypto/txscript/Cargo.toml",
             "status": "modified",
+            "additions": 0,
+            "deletions": 4,
+            "changes": 4
+          },
+          {
+            "filename": "crypto/txscript/build.rs",
+            "status": "removed",
+            "additions": 0,
+            "deletions": 24,
+            "changes": 24
+          },
+          {
+            "filename": "crypto/txscript/src/zk_precompiles/risc0/rcpt.rs",
+            "status": "modified",
+            "additions": 0,
+            "deletions": 1,
+            "changes": 1
+          },
+          {
+            "filename": "crypto/txscript/src/zk_precompiles/risc0/windows_stub/sys_alloc.c",
+            "status": "removed",
+            "additions": 0,
+            "deletions": 73,
+            "changes": 73
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/Cargo.toml",
+            "status": "added",
+            "additions": 49,
+            "deletions": 0,
+            "changes": 49
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/src/error.rs",
+            "status": "added",
+            "additions": 16,
+            "deletions": 0,
+            "changes": 16
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/src/lib.rs",
+            "status": "added",
+            "additions": 14,
+            "deletions": 0,
+            "changes": 14
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/src/points/error.rs",
+            "status": "added",
+            "additions": 11,
+            "deletions": 0,
+            "changes": 11
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/src/points/mod.rs",
+            "status": "added",
+            "additions": 57,
+            "deletions": 0,
+            "changes": 57
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/src/result.rs",
+            "status": "added",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/src/zk_to_script/builder/commit/groth16.rs",
+            "status": "added",
+            "additions": 27,
+            "deletions": 0,
+            "changes": 27
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/src/zk_to_script/builder/commit/mod.rs",
+            "status": "added",
+            "additions": 2,
+            "deletions": 0,
+            "changes": 2
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/src/zk_to_script/builder/commit/succinct.rs",
+            "status": "added",
+            "additions": 36,
+            "deletions": 0,
+            "changes": 36
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/src/zk_to_script/builder/mod.rs",
+            "status": "added",
+            "additions": 4,
+            "deletions": 0,
+            "changes": 4
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/src/zk_to_script/builder/proof/groth16/mod.rs",
+            "status": "added",
+            "additions": 41,
+            "deletions": 0,
+            "changes": 41
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/src/zk_to_script/builder/proof/mod.rs",
+            "status": "added",
+            "additions": 8,
+            "deletions": 0,
+            "changes": 8
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/src/zk_to_script/builder/proof/succinct.rs",
+            "status": "added",
+            "additions": 44,
+            "deletions": 0,
+            "changes": 44
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/src/zk_to_script/fragments/groth16.rs",
+            "status": "added",
+            "additions": 256,
+            "deletions": 0,
+            "changes": 256
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/src/zk_to_script/fragments/mod.rs",
+            "status": "added",
             "additions": 7,
             "deletions": 0,
             "changes": 7
           },
           {
-            "filename": "consensus/core/src/api/mod.rs",
+            "filename": "crypto/txscript/zk-sdk/src/zk_to_script/fragments/prepare/groth16.rs",
+            "status": "added",
+            "additions": 29,
+            "deletions": 0,
+            "changes": 29
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/src/zk_to_script/fragments/prepare/mod.rs",
+            "status": "added",
+            "additions": 5,
+            "deletions": 0,
+            "changes": 5
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/src/zk_to_script/fragments/prepare/succinct.rs",
+            "status": "added",
+            "additions": 35,
+            "deletions": 0,
+            "changes": 35
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/src/zk_to_script/fragments/succinct.rs",
+            "status": "added",
+            "additions": 71,
+            "deletions": 0,
+            "changes": 71
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/src/zk_to_script/mod.rs",
+            "status": "added",
+            "additions": 148,
+            "deletions": 0,
+            "changes": 148
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/src/zk_to_script/wasm/commit/groth16.rs",
+            "status": "added",
+            "additions": 28,
+            "deletions": 0,
+            "changes": 28
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/src/zk_to_script/wasm/commit/mod.rs",
+            "status": "added",
+            "additions": 2,
+            "deletions": 0,
+            "changes": 2
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/src/zk_to_script/wasm/commit/succinct.rs",
+            "status": "added",
+            "additions": 32,
+            "deletions": 0,
+            "changes": 32
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/src/zk_to_script/wasm/fragments.rs",
+            "status": "added",
+            "additions": 164,
+            "deletions": 0,
+            "changes": 164
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/src/zk_to_script/wasm/mod.rs",
+            "status": "added",
+            "additions": 126,
+            "deletions": 0,
+            "changes": 126
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/src/zk_to_script/wasm/proof/groth16.rs",
+            "status": "added",
+            "additions": 34,
+            "deletions": 0,
+            "changes": 34
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/src/zk_to_script/wasm/proof/mod.rs",
+            "status": "added",
+            "additions": 36,
+            "deletions": 0,
+            "changes": 36
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/src/zk_to_script/wasm/proof/succinct.rs",
+            "status": "added",
+            "additions": 34,
+            "deletions": 0,
+            "changes": 34
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/tests/data/zk_builder_tests/groth.rcpt.hex",
+            "status": "renamed",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/tests/data/zk_builder_tests/succinct.image.hex",
+            "status": "added",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/tests/data/zk_builder_tests/succinct.journal.hex",
+            "status": "renamed",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/tests/data/zk_builder_tests/succinct.rcpt.hex",
+            "status": "added",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "crypto/txscript/zk-sdk/tests/r0_script_builder.rs",
+            "status": "added",
+            "additions": 295,
+            "deletions": 0,
+            "changes": 295
+          },
+          {
+            "filename": "database/rocknroll/Cargo.toml",
+            "status": "added",
+            "additions": 23,
+            "deletions": 0,
+            "changes": 23
+          },
+          {
+            "filename": "database/rocknroll/src/args.rs",
+            "status": "added",
+            "additions": 59,
+            "deletions": 0,
+            "changes": 59
+          },
+          {
+            "filename": "database/rocknroll/src/bin/smt_prune_scan.rs",
+            "status": "added",
+            "additions": 119,
+            "deletions": 0,
+            "changes": 119
+          },
+          {
+            "filename": "database/rocknroll/src/db.rs",
+            "status": "added",
+            "additions": 81,
+            "deletions": 0,
+            "changes": 81
+          },
+          {
+            "filename": "database/rocknroll/src/lib.rs",
+            "status": "added",
+            "additions": 19,
+            "deletions": 0,
+            "changes": 19
+          },
+          {
+            "filename": "database/src/db/conn_builder.rs",
+            "status": "modified",
+            "additions": 15,
+            "deletions": 0,
+            "changes": 15
+          },
+          {
+            "filename": "docs/toccata-guide.md",
+            "status": "modified",
+            "additions": 64,
+            "deletions": 18,
+            "changes": 82
+          },
+          {
+            "filename": "mining/errors/src/mempool.rs",
+            "status": "modified",
+            "additions": 4,
+            "deletions": 1,
+            "changes": 5
+          },
+          {
+            "filename": "mining/src/manager.rs",
+            "status": "modified",
+            "additions": 11,
+            "deletions": 2,
+            "changes": 13
+          },
+          {
+            "filename": "mining/src/mempool/populate_entries_and_try_validate.rs",
+            "status": "modified",
+            "additions": 18,
+            "deletions": 2,
+            "changes": 20
+          },
+          {
+            "filename": "mining/src/mempool/validate_and_insert_transaction.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "protocol/flows/src/ibd/flow.rs",
+            "status": "modified",
+            "additions": 12,
+            "deletions": 0,
+            "changes": 12
+          },
+          {
+            "filename": "protocol/flows/src/ibd/progress.rs",
             "status": "modified",
             "additions": 2,
             "deletions": 2,
             "changes": 4
           },
           {
-            "filename": "consensus/core/src/config/params.rs",
+            "filename": "protocol/flows/src/v7/blockrelay/flow.rs",
             "status": "modified",
             "additions": 2,
             "deletions": 1,
             "changes": 3
           },
           {
-            "filename": "consensus/core/src/hashing/sighash.rs",
-            "status": "modified",
-            "additions": 11,
-            "deletions": 11,
-            "changes": 22
-          },
-          {
-            "filename": "consensus/core/src/hashing/tx.rs",
-            "status": "modified",
-            "additions": 10,
-            "deletions": 10,
-            "changes": 20
-          },
-          {
-            "filename": "consensus/core/src/mass/mod.rs",
+            "filename": "protocol/flows/src/v7/txrelay/flow.rs",
             "status": "modified",
             "additions": 7,
-            "deletions": 5,
-            "changes": 12
+            "deletions": 3,
+            "changes": 10
           },
           {
-            "filename": "consensus/core/src/mass/units.rs",
+            "filename": "protocol/p2p/src/common.rs",
             "status": "modified",
-            "additions": 2,
+            "additions": 7,
             "deletions": 2,
-            "changes": 4
+            "changes": 9
           },
           {
-            "filename": "consensus/core/src/merkle.rs",
-            "status": "modified",
-            "additions": 7,
-            "deletions": 7,
-            "changes": 14
-          },
-          {
-            "filename": "consensus/core/src/sign.rs",
-            "status": "modified",
-            "additions": 13,
-            "deletions": 13,
-            "changes": 26
-          },
-          {
-            "filename": "consensus/core/src/tx.rs",
-            "status": "modified",
-            "additions": 59,
-            "deletions": 30,
-            "changes": 89
-          },
-          {
-            "filename": "consensus/core/src/tx/serde_impl.rs",
-            "status": "modified",
-            "additions": 21,
-            "deletions": 8,
-            "changes": 29
-          },
-          {
-            "filename": "consensus/core/tests/db_compat.rs",
-            "status": "modified",
-            "additions": 4,
-            "deletions": 4,
-            "changes": 8
-          },
-          {
-            "filename": "consensus/src/consensus/mod.rs",
-            "status": "modified",
-            "additions": 33,
-            "deletions": 28,
-            "changes": 61
-          },
-          {
-            "filename": "consensus/src/pipeline/body_processor/body_validation_in_isolation.rs",
-            "status": "modified",
-            "additions": 10,
-            "deletions": 10,
-            "changes": 20
-          },
-          {
-            "filename": "consensus/src/pipeline/virtual_processor/utxo_validation.rs",
+            "filename": "rothschild/Cargo.toml",
             "status": "modified",
             "additions": 1,
-            "deletions": 1,
-            "changes": 2
-          },
-          {
-            "filename": "consensus/src/processes/transaction_validator/tx_validation_in_isolation.rs",
-            "status": "modified",
-            "additions": 8,
-            "deletions": 8,
-            "changes": 16
-          },
-          {
-            "filename": "consensus/src/processes/transaction_validator/tx_validation_in_utxo_context.rs",
-            "status": "modified",
-            "additions": 26,
-            "deletions": 26,
-            "changes": 52
-          },
-          {
-            "filename": "consensus/wasm/src/utils.rs",
-            "status": "modified",
-            "additions": 2,
-            "deletions": 2,
-            "changes": 4
-          },
-          {
-            "filename": "crypto/txscript/Cargo.toml",
-            "status": "modified",
-            "additions": 3,
-            "deletions": 1,
-            "changes": 4
-          },
-          {
-            "filename": "crypto/txscript/benches/pricing.rs",
-            "status": "modified",
-            "additions": 38,
-            "deletions": 18,
-            "changes": 56
-          },
-          {
-            "filename": "crypto/txscript/examples/kip-10.rs",
-            "status": "modified",
-            "additions": 4,
-            "deletions": 4,
-            "changes": 8
-          },
-          {
-            "filename": "crypto/txscript/src/lib.rs",
-            "status": "modified",
-            "additions": 56,
-            "deletions": 19,
-            "changes": 75
-          },
-          {
-            "filename": "crypto/txscript/src/script_builder.rs",
-            "status": "modified",
-            "additions": 4,
             "deletions": 0,
-            "changes": 4
+            "changes": 1
           },
           {
-            "filename": "crypto/txscript/src/standard/multisig.rs",
-            "status": "modified",
-            "additions": 1,
-            "deletions": 1,
-            "changes": 2
-          },
-          {
-            "filename": "crypto/txscript/src/wasm/builder.rs",
-            "status": "modified",
-            "additions": 120,
-            "deletions": 10,
-            "changes": 130
-          },
-          {
-            "filename": "docs/toccata-guide.md",
+            "filename": "rothschild/src/gas.rs",
             "status": "added",
-            "additions": 122,
+            "additions": 70,
             "deletions": 0,
-            "changes": 122
-          },
-          {
-            "filename": "kaspad/src/daemon.rs",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 6,
-            "changes": 6
-          },
-          {
-            "filename": "mining/src/manager.rs",
-            "status": "modified",
-            "additions": 2,
-            "deletions": 2,
-            "changes": 4
-          },
-          {
-            "filename": "mining/src/mempool/check_transaction_limits.rs",
-            "status": "modified",
-            "additions": 2,
-            "deletions": 2,
-            "changes": 4
-          },
-          {
-            "filename": "mining/src/mempool/check_transaction_standard.rs",
-            "status": "modified",
-            "additions": 2,
-            "deletions": 2,
-            "changes": 4
-          },
-          {
-            "filename": "mining/src/mempool/model/frontier/feerate_key.rs",
-            "status": "modified",
-            "additions": 1,
-            "deletions": 1,
-            "changes": 2
-          },
-          {
-            "filename": "mining/src/testutils/consensus_mock.rs",
-            "status": "modified",
-            "additions": 1,
-            "deletions": 1,
-            "changes": 2
-          },
-          {
-            "filename": "mining/src/toccata_transient_mass_activation_tests.rs",
-            "status": "modified",
-            "additions": 1,
-            "deletions": 1,
-            "changes": 2
-          },
-          {
-            "filename": "protocol/p2p/proto/p2p.proto",
-            "status": "modified",
-            "additions": 2,
-            "deletions": 2,
-            "changes": 4
-          },
-          {
-            "filename": "protocol/p2p/src/convert/tx.rs",
-            "status": "modified",
-            "additions": 14,
-            "deletions": 14,
-            "changes": 28
-          },
-          {
-            "filename": "rothschild/benches/bench.rs",
-            "status": "modified",
-            "additions": 2,
-            "deletions": 2,
-            "changes": 4
+            "changes": 70
           },
           {
             "filename": "rothschild/src/main.rs",
             "status": "modified",
-            "additions": 6,
-            "deletions": 2,
-            "changes": 8
+            "additions": 87,
+            "deletions": 28,
+            "changes": 115
           },
           {
             "filename": "rpc/core/src/api/ops.rs",
@@ -1239,65 +1449,30 @@
           {
             "filename": "rpc/core/src/api/rpc.rs",
             "status": "modified",
-            "additions": 9,
+            "additions": 13,
             "deletions": 0,
-            "changes": 9
+            "changes": 13
           },
           {
             "filename": "rpc/core/src/convert/tx.rs",
             "status": "modified",
-            "additions": 13,
-            "deletions": 11,
-            "changes": 24
-          },
-          {
-            "filename": "rpc/core/src/convert/verbosity.rs",
-            "status": "modified",
-            "additions": 1,
+            "additions": 2,
             "deletions": 1,
-            "changes": 2
+            "changes": 3
           },
           {
             "filename": "rpc/core/src/model/message.rs",
             "status": "modified",
-            "additions": 119,
+            "additions": 106,
             "deletions": 0,
-            "changes": 119
-          },
-          {
-            "filename": "rpc/core/src/model/optional/tx.rs",
-            "status": "modified",
-            "additions": 93,
-            "deletions": 12,
-            "changes": 105
-          },
-          {
-            "filename": "rpc/core/src/model/optional/tx_serde_tests.rs",
-            "status": "modified",
-            "additions": 85,
-            "deletions": 2,
-            "changes": 87
+            "changes": 106
           },
           {
             "filename": "rpc/core/src/model/tests.rs",
             "status": "modified",
-            "additions": 35,
-            "deletions": 7,
-            "changes": 42
-          },
-          {
-            "filename": "rpc/core/src/model/tx.rs",
-            "status": "modified",
-            "additions": 190,
-            "deletions": 9,
-            "changes": 199
-          },
-          {
-            "filename": "rpc/core/src/model/verbosity.rs",
-            "status": "modified",
-            "additions": 6,
-            "deletions": 6,
-            "changes": 12
+            "additions": 28,
+            "deletions": 0,
+            "changes": 28
           },
           {
             "filename": "rpc/core/src/wasm/convert.rs",
@@ -1305,13 +1480,6 @@
             "additions": 2,
             "deletions": 2,
             "changes": 4
-          },
-          {
-            "filename": "rpc/core/src/wasm/message.rs",
-            "status": "modified",
-            "additions": 46,
-            "deletions": 6,
-            "changes": 52
           },
           {
             "filename": "rpc/grpc/client/src/lib.rs",
@@ -1330,9 +1498,9 @@
           {
             "filename": "rpc/grpc/core/proto/rpc.proto",
             "status": "modified",
-            "additions": 21,
-            "deletions": 1,
-            "changes": 22
+            "additions": 32,
+            "deletions": 0,
+            "changes": 32
           },
           {
             "filename": "rpc/grpc/core/src/convert/kaspad.rs",
@@ -1344,23 +1512,9 @@
           {
             "filename": "rpc/grpc/core/src/convert/message.rs",
             "status": "modified",
-            "additions": 34,
+            "additions": 38,
             "deletions": 0,
-            "changes": 34
-          },
-          {
-            "filename": "rpc/grpc/core/src/convert/optional/tx.rs",
-            "status": "modified",
-            "additions": 4,
-            "deletions": 4,
-            "changes": 8
-          },
-          {
-            "filename": "rpc/grpc/core/src/convert/tx.rs",
-            "status": "modified",
-            "additions": 6,
-            "deletions": 6,
-            "changes": 12
+            "changes": 38
           },
           {
             "filename": "rpc/grpc/core/src/ops.rs",
@@ -1384,18 +1538,11 @@
             "changes": 8
           },
           {
-            "filename": "rpc/service/src/converter/consensus.rs",
-            "status": "modified",
-            "additions": 9,
-            "deletions": 5,
-            "changes": 14
-          },
-          {
             "filename": "rpc/service/src/service.rs",
             "status": "modified",
-            "additions": 81,
-            "deletions": 3,
-            "changes": 84
+            "additions": 21,
+            "deletions": 0,
+            "changes": 21
           },
           {
             "filename": "rpc/wrpc/client/src/client.rs",
@@ -1405,11 +1552,18 @@
             "changes": 1
           },
           {
-            "filename": "rpc/wrpc/examples/simple_client/src/main.rs",
+            "filename": "rpc/wrpc/examples/vcc_v2/Cargo.toml",
             "status": "modified",
-            "additions": 8,
+            "additions": 1,
             "deletions": 0,
-            "changes": 8
+            "changes": 1
+          },
+          {
+            "filename": "rpc/wrpc/examples/vcc_v2/src/main.rs",
+            "status": "modified",
+            "additions": 10,
+            "deletions": 1,
+            "changes": 11
           },
           {
             "filename": "rpc/wrpc/server/src/router.rs",
@@ -1419,53 +1573,39 @@
             "changes": 1
           },
           {
-            "filename": "rpc/wrpc/wasm/src/client.rs",
-            "status": "modified",
-            "additions": 3,
-            "deletions": 0,
-            "changes": 3
-          },
-          {
-            "filename": "simpa/src/simulator/miner.rs",
+            "filename": "testing/integration/Cargo.toml",
             "status": "modified",
             "additions": 1,
-            "deletions": 1,
-            "changes": 2
-          },
-          {
-            "filename": "testing/integration/src/common/utils.rs",
-            "status": "modified",
-            "additions": 6,
-            "deletions": 1,
-            "changes": 7
+            "deletions": 0,
+            "changes": 1
           },
           {
             "filename": "testing/integration/src/consensus_integration_tests.rs",
             "status": "modified",
-            "additions": 1,
-            "deletions": 1,
-            "changes": 2
+            "additions": 8,
+            "deletions": 6,
+            "changes": 14
           },
           {
             "filename": "testing/integration/src/daemon_integration_tests.rs",
             "status": "modified",
-            "additions": 8,
-            "deletions": 8,
-            "changes": 16
-          },
-          {
-            "filename": "testing/integration/src/mempool_benchmarks.rs",
-            "status": "modified",
-            "additions": 2,
-            "deletions": 2,
-            "changes": 4
+            "additions": 16,
+            "deletions": 3,
+            "changes": 19
           },
           {
             "filename": "testing/integration/src/rpc_tests.rs",
             "status": "modified",
-            "additions": 13,
+            "additions": 182,
+            "deletions": 1,
+            "changes": 183
+          },
+          {
+            "filename": "wallet/core/src/events.rs",
+            "status": "modified",
+            "additions": 5,
             "deletions": 0,
-            "changes": 13
+            "changes": 5
           },
           {
             "filename": "wallet/core/src/tests/rpc_core_mock.rs",
@@ -1477,30 +1617,30 @@
           {
             "filename": "wallet/core/src/tx/generator/generator.rs",
             "status": "modified",
-            "additions": 9,
-            "deletions": 3,
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "wallet/core/src/tx/payment.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "wallet/core/src/utxo/sync.rs",
+            "status": "modified",
+            "additions": 12,
+            "deletions": 0,
             "changes": 12
           },
           {
-            "filename": "wallet/core/src/tx/generator/test.rs",
+            "filename": "wallet/core/src/wasm/notify.rs",
             "status": "modified",
-            "additions": 21,
-            "deletions": 3,
-            "changes": 24
-          },
-          {
-            "filename": "wallet/core/src/tx/mass.rs",
-            "status": "modified",
-            "additions": 1,
+            "additions": 16,
             "deletions": 1,
-            "changes": 2
-          },
-          {
-            "filename": "wallet/core/src/wasm/tx/mass.rs",
-            "status": "modified",
-            "additions": 1,
-            "deletions": 1,
-            "changes": 2
+            "changes": 17
           },
           {
             "filename": "wallet/pskt/src/convert.rs",
@@ -1510,58 +1650,179 @@
             "changes": 2
           },
           {
-            "filename": "wallet/pskt/src/pskt.rs",
+            "filename": "wasm/Cargo.toml",
             "status": "modified",
             "additions": 3,
-            "deletions": 3,
-            "changes": 6
+            "deletions": 0,
+            "changes": 3
           },
           {
-            "filename": "wallet/pskt/src/wasm/pskt.rs",
-            "status": "modified",
+            "filename": "wasm/examples/nodejs/javascript/zkproof/data/direct/succinct.claim.hex",
+            "status": "added",
             "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "wasm/examples/nodejs/javascript/zkproof/data/direct/succinct.control_digests.hex",
+            "status": "renamed",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "wasm/examples/nodejs/javascript/zkproof/data/direct/succinct.control_id.hex",
+            "status": "added",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "wasm/examples/nodejs/javascript/zkproof/data/direct/succinct.control_index.hex",
+            "status": "renamed",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "wasm/examples/nodejs/javascript/zkproof/data/direct/succinct.hashfn.hex",
+            "status": "renamed",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "wasm/examples/nodejs/javascript/zkproof/data/direct/succinct.image.hex",
+            "status": "added",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "wasm/examples/nodejs/javascript/zkproof/data/direct/succinct.journal.hex",
+            "status": "renamed",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "wasm/examples/nodejs/javascript/zkproof/data/direct/succinct.seal.hex",
+            "status": "added",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "wasm/examples/nodejs/javascript/zkproof/data/receipts/groth.rcpt.hex",
+            "status": "added",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "wasm/examples/nodejs/javascript/zkproof/data/receipts/succinct.rcpt.hex",
+            "status": "added",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "wasm/examples/nodejs/javascript/zkproof/groth.image.hex",
+            "status": "removed",
+            "additions": 0,
             "deletions": 1,
-            "changes": 2
-          },
-          {
-            "filename": "wasm/examples/nodejs/javascript/general/get-block-reward.js",
-            "status": "added",
-            "additions": 39,
-            "deletions": 0,
-            "changes": 39
-          },
-          {
-            "filename": "wasm/examples/nodejs/javascript/general/mempool-entries.js",
-            "status": "added",
-            "additions": 25,
-            "deletions": 0,
-            "changes": 25
+            "changes": 1
           },
           {
             "filename": "wasm/examples/nodejs/javascript/zkproof/groth16.js",
             "status": "modified",
-            "additions": 220,
-            "deletions": 197,
-            "changes": 417
+            "additions": 196,
+            "deletions": 215,
+            "changes": 411
+          },
+          {
+            "filename": "wasm/examples/nodejs/javascript/zkproof/groth16_builder.js",
+            "status": "added",
+            "additions": 162,
+            "deletions": 0,
+            "changes": 162
+          },
+          {
+            "filename": "wasm/examples/nodejs/javascript/zkproof/groth16_split.js",
+            "status": "added",
+            "additions": 185,
+            "deletions": 0,
+            "changes": 185
           },
           {
             "filename": "wasm/examples/nodejs/javascript/zkproof/risc0-succinct.js",
+            "status": "removed",
+            "additions": 0,
+            "deletions": 243,
+            "changes": 243
+          },
+          {
+            "filename": "wasm/examples/nodejs/javascript/zkproof/succinct.claim.hex",
+            "status": "removed",
+            "additions": 0,
+            "deletions": 1,
+            "changes": 1
+          },
+          {
+            "filename": "wasm/examples/nodejs/javascript/zkproof/succinct.image.hex",
+            "status": "removed",
+            "additions": 0,
+            "deletions": 1,
+            "changes": 1
+          },
+          {
+            "filename": "wasm/examples/nodejs/javascript/zkproof/succinct.js",
+            "status": "added",
+            "additions": 238,
+            "deletions": 0,
+            "changes": 238
+          },
+          {
+            "filename": "wasm/examples/nodejs/javascript/zkproof/succinct.seal.hex",
+            "status": "removed",
+            "additions": 0,
+            "deletions": 1,
+            "changes": 1
+          },
+          {
+            "filename": "wasm/examples/nodejs/javascript/zkproof/succinct_builder.js",
+            "status": "added",
+            "additions": 161,
+            "deletions": 0,
+            "changes": 161
+          },
+          {
+            "filename": "wasm/examples/nodejs/javascript/zkproof/succinct_split.js",
+            "status": "added",
+            "additions": 185,
+            "deletions": 0,
+            "changes": 185
+          },
+          {
+            "filename": "wasm/src/lib.rs",
             "status": "modified",
-            "additions": 222,
-            "deletions": 199,
-            "changes": 421
+            "additions": 2,
+            "deletions": 0,
+            "changes": 2
           }
         ],
         "impacts": [
           {
             "id": "activation-p2p",
             "label": "Activation and P2P compatibility",
-            "fileCount": 3,
+            "fileCount": 5,
             "commitCount": 0,
             "matchedFiles": [
-              "consensus/core/src/config/params.rs",
-              "docs/toccata-guide.md",
-              "mining/src/toccata_transient_mass_activation_tests.rs"
+              "Cargo.toml",
+              "consensus/src/consensus/mod.rs",
+              "consensus/src/pipeline/virtual_processor/processor.rs",
+              "consensus/src/processes/pruning_proof/apply.rs",
+              "docs/toccata-guide.md"
             ],
             "matchedCommits": [],
             "builderImpact": "Node operators must track the activation DAA, release line, P2P version cutoff, and one-way upgrade constraints."
@@ -1569,136 +1830,155 @@
           {
             "id": "transaction-wire-format",
             "label": "Transaction and wire-format contracts",
-            "fileCount": 5,
-            "commitCount": 3,
+            "fileCount": 8,
+            "commitCount": 0,
             "matchedFiles": [
-              "consensus/core/src/tx.rs",
-              "consensus/core/src/tx/serde_impl.rs",
-              "protocol/p2p/proto/p2p.proto",
+              "consensus/client/src/serializable/numeric.rs",
+              "consensus/client/src/serializable/string.rs",
+              "consensus/client/src/transaction.rs",
+              "consensus/core/src/mass/mod.rs",
+              "docs/toccata-guide.md",
+              "rothschild/src/main.rs",
               "rpc/grpc/core/proto/messages.proto",
               "rpc/grpc/core/proto/rpc.proto"
             ],
-            "matchedCommits": [
-              "Rename tx.mass -> tx.storage_mass (#1039)",
-              "Rename input.mass -> input.compute_commit, TxInputMass -> ComputeCommit (#1040)",
-              "Make storage_mass a required field in RpcTransaction when decoding JSON (#1043)"
-            ],
+            "matchedCommits": [],
             "builderImpact": "RPC, protobuf, miner, pool, wallet, and indexer models must preserve v1 transaction fields without lossy renaming."
           },
           {
             "id": "covenant-lineage",
             "label": "Covenants and UTXO lineage",
-            "fileCount": 2,
-            "commitCount": 1,
+            "fileCount": 43,
+            "commitCount": 2,
             "matchedFiles": [
-              "consensus/src/pipeline/virtual_processor/utxo_validation.rs",
-              "consensus/src/processes/transaction_validator/tx_validation_in_utxo_context.rs"
+              "Cargo.lock",
+              "Cargo.toml",
+              "cli/src/cli.rs",
+              "components/consensusmanager/src/session.rs",
+              "consensus/client/src/covenant.rs",
+              "consensus/client/src/output.rs",
+              "consensus/client/src/serializable/mod.rs",
+              "consensus/client/src/serializable/numeric.rs"
             ],
             "matchedCommits": [
-              "fix(wallet/generator): include covenant bindings (#896)"
+              "Change consensus-client CovenantBinding's inner type (#935)",
+              "fix(rpc/vspcv2): covenant field was missing from tx outputs (#1056)"
             ],
             "builderImpact": "UTXO-first applications must preserve covenant bindings, authorizing inputs, covenant IDs, and successor lineage."
           },
           {
             "id": "fees-mass-mempool",
             "label": "Fee, mass, and mempool policy",
-            "fileCount": 10,
-            "commitCount": 4,
+            "fileCount": 11,
+            "commitCount": 0,
             "matchedFiles": [
+              "consensus/client/src/serializable/numeric.rs",
+              "consensus/client/src/serializable/string.rs",
+              "consensus/client/src/transaction.rs",
               "consensus/core/src/mass/mod.rs",
-              "consensus/core/src/mass/units.rs",
-              "mining/src/mempool/check_transaction_limits.rs",
-              "mining/src/mempool/check_transaction_standard.rs",
-              "mining/src/mempool/model/frontier/feerate_key.rs",
-              "mining/src/toccata_transient_mass_activation_tests.rs",
-              "testing/integration/src/mempool_benchmarks.rs",
-              "wallet/core/src/tx/mass.rs"
+              "consensus/src/pipeline/body_processor/processor.rs",
+              "docs/toccata-guide.md",
+              "mining/errors/src/mempool.rs",
+              "mining/src/manager.rs"
             ],
-            "matchedCommits": [
-              "Rename tx.mass -> tx.storage_mass (#1039)",
-              "Rename input.mass -> input.compute_commit, TxInputMass -> ComputeCommit (#1040)",
-              "Make storage_mass a required field in RpcTransaction when decoding JSON (#1043)",
-              "fix(wasm): mempool entries request args are required (#951)"
-            ],
+            "matchedCommits": [],
             "builderImpact": "Fee estimation must distinguish consensus validity from node relay policy and use current mass dimensions."
           },
           {
             "id": "rpc-wasm-sdk",
             "label": "RPC, WASM, and SDK surface",
-            "fileCount": 36,
+            "fileCount": 65,
             "commitCount": 2,
             "matchedFiles": [
-              "consensus/wasm/src/utils.rs",
-              "crypto/txscript/src/wasm/builder.rs",
-              "rpc/core/src/api/ops.rs",
-              "rpc/core/src/api/rpc.rs",
-              "rpc/core/src/convert/tx.rs",
-              "rpc/core/src/convert/verbosity.rs",
-              "rpc/core/src/model/message.rs",
-              "rpc/core/src/model/optional/tx.rs"
+              "Cargo.lock",
+              "Cargo.toml",
+              "consensus/client/src/covenant.rs",
+              "consensus/client/src/output.rs",
+              "consensus/client/src/transaction.rs",
+              "core/Cargo.toml",
+              "crypto/txscript/Cargo.toml",
+              "crypto/txscript/src/zk_precompiles/risc0/windows_stub/sys_alloc.c"
             ],
             "matchedCommits": [
-              "feat(wasm/txscript): allows passing script builder flags (#999)",
-              "fix(wasm): mempool entries request args are required (#951)"
+              "Add get_seq_commit_lane_proof RPC (gRPC + wRPC) (#961)",
+              "fix(wasm/client): transaction v0 deserialization (#1052)"
             ],
             "builderImpact": "Integrators must regenerate or update client bindings and test required arguments, aliases, and serialization behavior."
           },
           {
             "id": "wallet-pskt",
             "label": "Wallet and PSKT construction",
-            "fileCount": 9,
-            "commitCount": 1,
+            "fileCount": 10,
+            "commitCount": 0,
             "matchedFiles": [
-              "consensus/client/src/signing.rs",
+              "Cargo.lock",
+              "Cargo.toml",
+              "crypto/txscript/src/zk_precompiles/risc0/windows_stub/sys_alloc.c",
+              "wallet/core/src/events.rs",
               "wallet/core/src/tests/rpc_core_mock.rs",
               "wallet/core/src/tx/generator/generator.rs",
-              "wallet/core/src/tx/generator/test.rs",
-              "wallet/core/src/tx/mass.rs",
-              "wallet/core/src/wasm/tx/mass.rs",
-              "wallet/pskt/src/convert.rs",
-              "wallet/pskt/src/pskt.rs"
+              "wallet/core/src/tx/payment.rs",
+              "wallet/core/src/utxo/sync.rs"
             ],
-            "matchedCommits": [
-              "fix(wallet/generator): include covenant bindings (#896)"
-            ],
+            "matchedCommits": [],
             "builderImpact": "Wallet construction and signing previews must preserve covenant fields, compute commitments, storage mass, and explicit fees."
           },
           {
             "id": "zk-verification",
             "label": "ZK verification and pricing",
-            "fileCount": 2,
+            "fileCount": 53,
             "commitCount": 0,
             "matchedFiles": [
-              "wasm/examples/nodejs/javascript/zkproof/groth16.js",
-              "wasm/examples/nodejs/javascript/zkproof/risc0-succinct.js"
+              "Cargo.lock",
+              "Cargo.toml",
+              "crypto/txscript/build.rs",
+              "crypto/txscript/src/zk_precompiles/risc0/rcpt.rs",
+              "crypto/txscript/src/zk_precompiles/risc0/windows_stub/sys_alloc.c",
+              "crypto/txscript/zk-sdk/Cargo.toml",
+              "crypto/txscript/zk-sdk/src/lib.rs",
+              "crypto/txscript/zk-sdk/src/zk_to_script/builder/commit/groth16.rs"
             ],
             "matchedCommits": [],
             "builderImpact": "Proof-system dependencies, verifier hardening, script-unit pricing, proof size, and failure behavior remain security-critical."
           },
           {
-            "id": "node-storage-ibd",
-            "label": "Node storage, pruning, and IBD",
-            "fileCount": 1,
+            "id": "sequencing-smt",
+            "label": "Sequencing commitments and SMT state",
+            "fileCount": 33,
             "commitCount": 2,
             "matchedFiles": [
-              "consensus/core/tests/db_compat.rs"
+              "Cargo.lock",
+              "Cargo.toml",
+              "components/consensusmanager/src/session.rs",
+              "consensus/core/src/api/mod.rs",
+              "consensus/src/consensus/mod.rs",
+              "consensus/src/consensus/test_consensus.rs",
+              "consensus/src/pipeline/virtual_processor/processor.rs",
+              "consensus/src/processes/pruning_proof/apply.rs"
             ],
             "matchedCommits": [
-              "Rename tx.mass -> tx.storage_mass (#1039)",
-              "Make storage_mass a required field in RpcTransaction when decoding JSON (#1043)"
+              "Add get_seq_commit_lane_proof RPC (gRPC + wRPC) (#961)",
+              "feat(roth): generate tx targeting user lanes (#1021)"
             ],
-            "builderImpact": "Operators must plan database migrations, resync cost, retention, pruning compatibility, and recovery procedures."
+            "builderImpact": "Lane-aware indexers and proof services must handle reorgs, pruning, inactivity shortcuts, and witness availability."
           },
           {
-            "id": "security-hardening",
-            "label": "Security hardening",
-            "fileCount": 0,
-            "commitCount": 1,
-            "matchedFiles": [],
-            "matchedCommits": [
-              "Fix script engine handling of unknown script versions (#1046)"
+            "id": "node-storage-ibd",
+            "label": "Node storage, pruning, and IBD",
+            "fileCount": 33,
+            "commitCount": 0,
+            "matchedFiles": [
+              "Cargo.lock",
+              "Cargo.toml",
+              "components/consensusmanager/src/session.rs",
+              "consensus/client/src/serializable/numeric.rs",
+              "consensus/client/src/serializable/string.rs",
+              "consensus/client/src/transaction.rs",
+              "consensus/core/src/api/mod.rs",
+              "consensus/core/src/errors/consensus.rs"
             ],
-            "builderImpact": "Consensus and network-facing fixes require adversarial regression tests and careful version-boundary review."
+            "matchedCommits": [],
+            "builderImpact": "Operators must plan database migrations, resync cost, retention, pruning compatibility, and recovery procedures."
           },
           {
             "id": "tests-docs",
@@ -1706,12 +1986,12 @@
             "fileCount": 8,
             "commitCount": 0,
             "matchedFiles": [
-              "consensus/benches/check_scripts.rs",
-              "consensus/core/benches/serde_benchmark.rs",
-              "consensus/core/tests/db_compat.rs",
-              "crypto/txscript/benches/pricing.rs",
+              "crypto/txscript/zk-sdk/tests/data/zk_builder_tests/groth.rcpt.hex",
+              "crypto/txscript/zk-sdk/tests/data/zk_builder_tests/succinct.image.hex",
+              "crypto/txscript/zk-sdk/tests/data/zk_builder_tests/succinct.journal.hex",
+              "crypto/txscript/zk-sdk/tests/data/zk_builder_tests/succinct.rcpt.hex",
+              "crypto/txscript/zk-sdk/tests/r0_script_builder.rs",
               "docs/toccata-guide.md",
-              "rothschild/benches/bench.rs",
               "rpc/grpc/server/src/tests/rpc_core_mock.rs",
               "wallet/core/src/tests/rpc_core_mock.rs"
             ],
@@ -1719,7 +1999,7 @@
             "builderImpact": "Changed examples, tests, and guides should become reproducible compatibility checks in downstream projects."
           }
         ],
-        "url": "https://github.com/kaspanet/rusty-kaspa/compare/d5205cc72ab7b811e88a23595dfac5b9facdeece...90dbf074275d60c1fe74a3491883196f110970c0"
+        "url": "https://github.com/kaspanet/rusty-kaspa/compare/90dbf074275d60c1fe74a3491883196f110970c0...98a4ccd8d200853787f227bd4536ac540cf34957"
       },
       {
         "repo": "kaspanet/rusty-kaspa",
@@ -3003,36 +3283,2820 @@
         "branch": "main",
         "label": "kaspanet/docs main",
         "beforeSha": "6aa5e9f52995f53dc85ef3e8c7c71bab9a359b3e",
-        "afterSha": "6aa5e9f52995f53dc85ef3e8c7c71bab9a359b3e",
+        "afterSha": "c3fb0fded5f13d6fbb9a37c5a1f561ad732a421f",
         "ok": true,
-        "status": "unchanged",
-        "commits": [],
-        "files": [],
-        "impacts": []
+        "status": "ahead",
+        "aheadBy": 4,
+        "behindBy": 0,
+        "totalCommits": 4,
+        "fileCount": 25,
+        "additions": 2431,
+        "deletions": 55,
+        "filesTruncated": false,
+        "commits": [
+          {
+            "sha": "e407c7d0f6e1f95e5a2d3c93a760d4eab62f7259",
+            "committedAt": "2026-06-20T14:34:18Z",
+            "message": "feat(wallet/python): mention and add example (#50)",
+            "url": "https://github.com/kaspanet/docs/commit/e407c7d0f6e1f95e5a2d3c93a760d4eab62f7259"
+          },
+          {
+            "sha": "c820f264ad0312fcbfa11ce0e12f9daadf84aca3",
+            "committedAt": "2026-06-23T01:35:26Z",
+            "message": "Add contributor docs and clean up boilerplate (#49)",
+            "url": "https://github.com/kaspanet/docs/commit/c820f264ad0312fcbfa11ce0e12f9daadf84aca3"
+          },
+          {
+            "sha": "fae9ec4c1c77fafc2434029e926b6287e4ccfcc9",
+            "committedAt": "2026-06-30T13:40:43Z",
+            "message": "Initial toccata book guide (v0) (#51)",
+            "url": "https://github.com/kaspanet/docs/commit/fae9ec4c1c77fafc2434029e926b6287e4ccfcc9"
+          },
+          {
+            "sha": "c3fb0fded5f13d6fbb9a37c5a1f561ad732a421f",
+            "committedAt": "2026-06-30T13:49:00Z",
+            "message": "docs: clarify for agents (#52)",
+            "url": "https://github.com/kaspanet/docs/commit/c3fb0fded5f13d6fbb9a37c5a1f561ad732a421f"
+          }
+        ],
+        "files": [
+          {
+            "filename": "CONTRIBUTING.md",
+            "status": "added",
+            "additions": 53,
+            "deletions": 0,
+            "changes": 53
+          },
+          {
+            "filename": "README.md",
+            "status": "modified",
+            "additions": 28,
+            "deletions": 31,
+            "changes": 59
+          },
+          {
+            "filename": "app/llms.txt/route.ts",
+            "status": "modified",
+            "additions": 114,
+            "deletions": 3,
+            "changes": 117
+          },
+          {
+            "filename": "content/docs/index.mdx",
+            "status": "modified",
+            "additions": 5,
+            "deletions": 0,
+            "changes": 5
+          },
+          {
+            "filename": "content/docs/integrate/accepted-transactions.mdx",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "content/docs/integrate/getting-started.mdx",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "content/docs/integrate/meta.json",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "content/docs/integrate/wallet.mdx",
+            "status": "modified",
+            "additions": 48,
+            "deletions": 2,
+            "changes": 50
+          },
+          {
+            "filename": "content/docs/meta.json",
+            "status": "modified",
+            "additions": 8,
+            "deletions": 1,
+            "changes": 9
+          },
+          {
+            "filename": "content/docs/programmability/meta.json",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "content/docs/resources/meta.json",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "content/docs/test.mdx",
+            "status": "removed",
+            "additions": 0,
+            "deletions": 17,
+            "changes": 17
+          },
+          {
+            "filename": "content/docs/toccata/agent-brief.mdx",
+            "status": "added",
+            "additions": 124,
+            "deletions": 0,
+            "changes": 124
+          },
+          {
+            "filename": "content/docs/toccata/argent.mdx",
+            "status": "added",
+            "additions": 201,
+            "deletions": 0,
+            "changes": 201
+          },
+          {
+            "filename": "content/docs/toccata/based-apps.mdx",
+            "status": "added",
+            "additions": 242,
+            "deletions": 0,
+            "changes": 242
+          },
+          {
+            "filename": "content/docs/toccata/covenant-state.mdx",
+            "status": "added",
+            "additions": 298,
+            "deletions": 0,
+            "changes": 298
+          },
+          {
+            "filename": "content/docs/toccata/decision-guide.mdx",
+            "status": "added",
+            "additions": 161,
+            "deletions": 0,
+            "changes": 161
+          },
+          {
+            "filename": "content/docs/toccata/index.mdx",
+            "status": "added",
+            "additions": 228,
+            "deletions": 0,
+            "changes": 228
+          },
+          {
+            "filename": "content/docs/toccata/inline-zk.mdx",
+            "status": "added",
+            "additions": 129,
+            "deletions": 0,
+            "changes": 129
+          },
+          {
+            "filename": "content/docs/toccata/meta.json",
+            "status": "added",
+            "additions": 16,
+            "deletions": 0,
+            "changes": 16
+          },
+          {
+            "filename": "content/docs/toccata/references.mdx",
+            "status": "added",
+            "additions": 93,
+            "deletions": 0,
+            "changes": 93
+          },
+          {
+            "filename": "content/docs/toccata/script-pricing.mdx",
+            "status": "added",
+            "additions": 200,
+            "deletions": 0,
+            "changes": 200
+          },
+          {
+            "filename": "content/docs/toccata/silverscript.mdx",
+            "status": "added",
+            "additions": 247,
+            "deletions": 0,
+            "changes": 247
+          },
+          {
+            "filename": "content/docs/toccata/transaction-v1.mdx",
+            "status": "added",
+            "additions": 230,
+            "deletions": 0,
+            "changes": 230
+          },
+          {
+            "filename": "package.json",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          }
+        ],
+        "impacts": [
+          {
+            "id": "activation-p2p",
+            "label": "Activation and P2P compatibility",
+            "fileCount": 1,
+            "commitCount": 0,
+            "matchedFiles": [
+              "content/docs/toccata/references.mdx"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "Node operators must track the activation DAA, release line, P2P version cutoff, and one-way upgrade constraints."
+          },
+          {
+            "id": "transaction-wire-format",
+            "label": "Transaction and wire-format contracts",
+            "fileCount": 4,
+            "commitCount": 0,
+            "matchedFiles": [
+              "content/docs/toccata/references.mdx",
+              "content/docs/toccata/script-pricing.mdx",
+              "content/docs/toccata/silverscript.mdx",
+              "content/docs/toccata/transaction-v1.mdx"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "RPC, protobuf, miner, pool, wallet, and indexer models must preserve v1 transaction fields without lossy renaming."
+          },
+          {
+            "id": "covenant-lineage",
+            "label": "Covenants and UTXO lineage",
+            "fileCount": 15,
+            "commitCount": 0,
+            "matchedFiles": [
+              "app/llms.txt/route.ts",
+              "content/docs/index.mdx",
+              "content/docs/programmability/meta.json",
+              "content/docs/toccata/agent-brief.mdx",
+              "content/docs/toccata/argent.mdx",
+              "content/docs/toccata/based-apps.mdx",
+              "content/docs/toccata/covenant-state.mdx",
+              "content/docs/toccata/decision-guide.mdx"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "UTXO-first applications must preserve covenant bindings, authorizing inputs, covenant IDs, and successor lineage."
+          },
+          {
+            "id": "fees-mass-mempool",
+            "label": "Fee, mass, and mempool policy",
+            "fileCount": 11,
+            "commitCount": 0,
+            "matchedFiles": [
+              "content/docs/integrate/wallet.mdx",
+              "content/docs/toccata/agent-brief.mdx",
+              "content/docs/toccata/argent.mdx",
+              "content/docs/toccata/based-apps.mdx",
+              "content/docs/toccata/covenant-state.mdx",
+              "content/docs/toccata/decision-guide.mdx",
+              "content/docs/toccata/index.mdx",
+              "content/docs/toccata/references.mdx"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "Fee estimation must distinguish consensus validity from node relay policy and use current mass dimensions."
+          },
+          {
+            "id": "rpc-wasm-sdk",
+            "label": "RPC, WASM, and SDK surface",
+            "fileCount": 2,
+            "commitCount": 0,
+            "matchedFiles": [
+              "CONTRIBUTING.md",
+              "content/docs/integrate/wallet.mdx"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "Integrators must regenerate or update client bindings and test required arguments, aliases, and serialization behavior."
+          },
+          {
+            "id": "wallet-pskt",
+            "label": "Wallet and PSKT construction",
+            "fileCount": 1,
+            "commitCount": 0,
+            "matchedFiles": [
+              "content/docs/toccata/transaction-v1.mdx"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "Wallet construction and signing previews must preserve covenant fields, compute commitments, storage mass, and explicit fees."
+          },
+          {
+            "id": "zk-verification",
+            "label": "ZK verification and pricing",
+            "fileCount": 6,
+            "commitCount": 0,
+            "matchedFiles": [
+              "content/docs/toccata/agent-brief.mdx",
+              "content/docs/toccata/based-apps.mdx",
+              "content/docs/toccata/index.mdx",
+              "content/docs/toccata/inline-zk.mdx",
+              "content/docs/toccata/references.mdx",
+              "content/docs/toccata/script-pricing.mdx"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "Proof-system dependencies, verifier hardening, script-unit pricing, proof size, and failure behavior remain security-critical."
+          },
+          {
+            "id": "sequencing-smt",
+            "label": "Sequencing commitments and SMT state",
+            "fileCount": 9,
+            "commitCount": 0,
+            "matchedFiles": [
+              "app/llms.txt/route.ts",
+              "content/docs/toccata/agent-brief.mdx",
+              "content/docs/toccata/based-apps.mdx",
+              "content/docs/toccata/covenant-state.mdx",
+              "content/docs/toccata/decision-guide.mdx",
+              "content/docs/toccata/index.mdx",
+              "content/docs/toccata/inline-zk.mdx",
+              "content/docs/toccata/references.mdx"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "Lane-aware indexers and proof services must handle reorgs, pruning, inactivity shortcuts, and witness availability."
+          },
+          {
+            "id": "node-storage-ibd",
+            "label": "Node storage, pruning, and IBD",
+            "fileCount": 2,
+            "commitCount": 0,
+            "matchedFiles": [
+              "content/docs/integrate/wallet.mdx",
+              "content/docs/toccata/silverscript.mdx"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "Operators must plan database migrations, resync cost, retention, pruning compatibility, and recovery procedures."
+          },
+          {
+            "id": "security-hardening",
+            "label": "Security hardening",
+            "fileCount": 7,
+            "commitCount": 0,
+            "matchedFiles": [
+              "content/docs/toccata/argent.mdx",
+              "content/docs/toccata/based-apps.mdx",
+              "content/docs/toccata/covenant-state.mdx",
+              "content/docs/toccata/index.mdx",
+              "content/docs/toccata/inline-zk.mdx",
+              "content/docs/toccata/references.mdx",
+              "content/docs/toccata/silverscript.mdx"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "Consensus and network-facing fixes require adversarial regression tests and careful version-boundary review."
+          },
+          {
+            "id": "tests-docs",
+            "label": "Tests, benchmarks, and operator docs",
+            "fileCount": 2,
+            "commitCount": 0,
+            "matchedFiles": [
+              "content/docs/toccata/references.mdx",
+              "content/docs/toccata/silverscript.mdx"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "Changed examples, tests, and guides should become reproducible compatibility checks in downstream projects."
+          }
+        ],
+        "url": "https://github.com/kaspanet/docs/compare/6aa5e9f52995f53dc85ef3e8c7c71bab9a359b3e...c3fb0fded5f13d6fbb9a37c5a1f561ad732a421f"
       },
       {
         "repo": "kaspanet/silverscript",
         "branch": "master",
         "label": "kaspanet/silverscript master",
         "beforeSha": "2c4623124d75bd8a9a7f87ded9413ef9f6b17acd",
-        "afterSha": "2c4623124d75bd8a9a7f87ded9413ef9f6b17acd",
+        "afterSha": "d25bd3427a093c17327ca3d6b9e1aa5f7688c863",
         "ok": true,
-        "status": "unchanged",
-        "commits": [],
-        "files": [],
-        "impacts": []
+        "status": "ahead",
+        "aheadBy": 3,
+        "behindBy": 0,
+        "totalCommits": 3,
+        "fileCount": 26,
+        "additions": 1699,
+        "deletions": 900,
+        "filesTruncated": false,
+        "commits": [
+          {
+            "sha": "faaa074915edd1e885e4dd552051e348d1854c87",
+            "committedAt": "2026-06-16T05:18:41Z",
+            "message": "Allow contract state to include different  (#131)",
+            "url": "https://github.com/kaspanet/silverscript/commit/faaa074915edd1e885e4dd552051e348d1854c87"
+          },
+          {
+            "sha": "c46e0e20150c5c9d9921fd4c813e4e727ae918ef",
+            "committedAt": "2026-06-27T14:46:28Z",
+            "message": "Expose typed CheckSigFromStack builtins (#132)",
+            "url": "https://github.com/kaspanet/silverscript/commit/c46e0e20150c5c9d9921fd4c813e4e727ae918ef"
+          },
+          {
+            "sha": "d25bd3427a093c17327ca3d6b9e1aa5f7688c863",
+            "committedAt": "2026-06-28T10:18:10Z",
+            "message": "Bump rusty-kaspa version to v2.0.1 (#136)",
+            "url": "https://github.com/kaspanet/silverscript/commit/d25bd3427a093c17327ca3d6b9e1aa5f7688c863"
+          }
+        ],
+        "files": [
+          {
+            "filename": "Cargo.lock",
+            "status": "modified",
+            "additions": 163,
+            "deletions": 466,
+            "changes": 629
+          },
+          {
+            "filename": "Cargo.toml",
+            "status": "modified",
+            "additions": 6,
+            "deletions": 5,
+            "changes": 11
+          },
+          {
+            "filename": "debugger/cli/src/main.rs",
+            "status": "modified",
+            "additions": 9,
+            "deletions": 5,
+            "changes": 14
+          },
+          {
+            "filename": "debugger/session/tests/debug_session_tests.rs",
+            "status": "modified",
+            "additions": 6,
+            "deletions": 5,
+            "changes": 11
+          },
+          {
+            "filename": "docs/TUTORIAL.md",
+            "status": "modified",
+            "additions": 19,
+            "deletions": 0,
+            "changes": 19
+          },
+          {
+            "filename": "extensions/silverscript.nvim/queries/silverscript/highlights.scm",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "extensions/vscode/queries/highlights.scm",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 2,
+            "changes": 3
+          },
+          {
+            "filename": "extensions/zed/languages/silverscript/highlights.scm",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "silverscript-lang/Cargo.toml",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "silverscript-lang/src/compiler/compile.rs",
+            "status": "modified",
+            "additions": 164,
+            "deletions": 154,
+            "changes": 318
+          },
+          {
+            "filename": "silverscript-lang/src/compiler/debug_value_types.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "silverscript-lang/src/compiler/mod.rs",
+            "status": "modified",
+            "additions": 7,
+            "deletions": 4,
+            "changes": 11
+          },
+          {
+            "filename": "silverscript-lang/src/compiler/static_check.rs",
+            "status": "modified",
+            "additions": 190,
+            "deletions": 34,
+            "changes": 224
+          },
+          {
+            "filename": "silverscript-lang/src/compiler/structs.rs",
+            "status": "modified",
+            "additions": 7,
+            "deletions": 82,
+            "changes": 89
+          },
+          {
+            "filename": "silverscript-lang/src/compiler/validate_output_state.rs",
+            "status": "added",
+            "additions": 342,
+            "deletions": 0,
+            "changes": 342
+          },
+          {
+            "filename": "silverscript-lang/tests/cashc_valid_examples_tests.rs",
+            "status": "modified",
+            "additions": 68,
+            "deletions": 18,
+            "changes": 86
+          },
+          {
+            "filename": "silverscript-lang/tests/chess_apps_tests.rs",
+            "status": "modified",
+            "additions": 11,
+            "deletions": 4,
+            "changes": 15
+          },
+          {
+            "filename": "silverscript-lang/tests/common.rs",
+            "status": "modified",
+            "additions": 4,
+            "deletions": 1,
+            "changes": 5
+          },
+          {
+            "filename": "silverscript-lang/tests/compiler_tests.rs",
+            "status": "modified",
+            "additions": 660,
+            "deletions": 88,
+            "changes": 748
+          },
+          {
+            "filename": "silverscript-lang/tests/examples/hodl_vault.sil",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "silverscript-lang/tests/examples/simple_checksigfromstack.sil",
+            "status": "renamed",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "silverscript-lang/tests/examples/simple_checksigfromstack_ecdsa.sil",
+            "status": "added",
+            "additions": 7,
+            "deletions": 0,
+            "changes": 7
+          },
+          {
+            "filename": "silverscript-lang/tests/examples/trailing_comma.sil",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4
+          },
+          {
+            "filename": "silverscript-lang/tests/examples_tests.rs",
+            "status": "modified",
+            "additions": 25,
+            "deletions": 23,
+            "changes": 48
+          },
+          {
+            "filename": "silverscript-lang/tests/silverc_tests.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "tree-sitter/queries/highlights.scm",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          }
+        ],
+        "impacts": [
+          {
+            "id": "transaction-wire-format",
+            "label": "Transaction and wire-format contracts",
+            "fileCount": 7,
+            "commitCount": 0,
+            "matchedFiles": [
+              "debugger/cli/src/main.rs",
+              "debugger/session/tests/debug_session_tests.rs",
+              "silverscript-lang/tests/cashc_valid_examples_tests.rs",
+              "silverscript-lang/tests/chess_apps_tests.rs",
+              "silverscript-lang/tests/compiler_tests.rs",
+              "silverscript-lang/tests/examples_tests.rs",
+              "silverscript-lang/tests/silverc_tests.rs"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "RPC, protobuf, miner, pool, wallet, and indexer models must preserve v1 transaction fields without lossy renaming."
+          },
+          {
+            "id": "covenant-lineage",
+            "label": "Covenants and UTXO lineage",
+            "fileCount": 14,
+            "commitCount": 0,
+            "matchedFiles": [
+              "debugger/cli/src/main.rs",
+              "debugger/session/tests/debug_session_tests.rs",
+              "extensions/silverscript.nvim/queries/silverscript/highlights.scm",
+              "extensions/vscode/queries/highlights.scm",
+              "extensions/zed/languages/silverscript/highlights.scm",
+              "silverscript-lang/src/compiler/compile.rs",
+              "silverscript-lang/src/compiler/mod.rs",
+              "silverscript-lang/tests/cashc_valid_examples_tests.rs"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "UTXO-first applications must preserve covenant bindings, authorizing inputs, covenant IDs, and successor lineage."
+          },
+          {
+            "id": "fees-mass-mempool",
+            "label": "Fee, mass, and mempool policy",
+            "fileCount": 8,
+            "commitCount": 0,
+            "matchedFiles": [
+              "Cargo.lock",
+              "debugger/cli/src/main.rs",
+              "debugger/session/tests/debug_session_tests.rs",
+              "silverscript-lang/tests/cashc_valid_examples_tests.rs",
+              "silverscript-lang/tests/chess_apps_tests.rs",
+              "silverscript-lang/tests/compiler_tests.rs",
+              "silverscript-lang/tests/examples_tests.rs",
+              "silverscript-lang/tests/silverc_tests.rs"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "Fee estimation must distinguish consensus validity from node relay policy and use current mass dimensions."
+          },
+          {
+            "id": "rpc-wasm-sdk",
+            "label": "RPC, WASM, and SDK surface",
+            "fileCount": 1,
+            "commitCount": 0,
+            "matchedFiles": [
+              "Cargo.lock"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "Integrators must regenerate or update client bindings and test required arguments, aliases, and serialization behavior."
+          },
+          {
+            "id": "zk-verification",
+            "label": "ZK verification and pricing",
+            "fileCount": 1,
+            "commitCount": 0,
+            "matchedFiles": [
+              "Cargo.lock"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "Proof-system dependencies, verifier hardening, script-unit pricing, proof size, and failure behavior remain security-critical."
+          },
+          {
+            "id": "sequencing-smt",
+            "label": "Sequencing commitments and SMT state",
+            "fileCount": 5,
+            "commitCount": 0,
+            "matchedFiles": [
+              "extensions/silverscript.nvim/queries/silverscript/highlights.scm",
+              "extensions/vscode/queries/highlights.scm",
+              "extensions/zed/languages/silverscript/highlights.scm",
+              "silverscript-lang/tests/compiler_tests.rs",
+              "tree-sitter/queries/highlights.scm"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "Lane-aware indexers and proof services must handle reorgs, pruning, inactivity shortcuts, and witness availability."
+          },
+          {
+            "id": "tests-docs",
+            "label": "Tests, benchmarks, and operator docs",
+            "fileCount": 12,
+            "commitCount": 0,
+            "matchedFiles": [
+              "debugger/session/tests/debug_session_tests.rs",
+              "docs/TUTORIAL.md",
+              "silverscript-lang/tests/cashc_valid_examples_tests.rs",
+              "silverscript-lang/tests/chess_apps_tests.rs",
+              "silverscript-lang/tests/common.rs",
+              "silverscript-lang/tests/compiler_tests.rs",
+              "silverscript-lang/tests/examples/hodl_vault.sil",
+              "silverscript-lang/tests/examples/simple_checksigfromstack.sil"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "Changed examples, tests, and guides should become reproducible compatibility checks in downstream projects."
+          }
+        ],
+        "url": "https://github.com/kaspanet/silverscript/compare/2c4623124d75bd8a9a7f87ded9413ef9f6b17acd...d25bd3427a093c17327ca3d6b9e1aa5f7688c863"
       },
       {
         "repo": "kaspanet/vprogs",
         "branch": "master",
         "label": "kaspanet/vprogs master",
         "beforeSha": "57039db09ea958689aee2ae89f81ba40c8cc3e6d",
-        "afterSha": "57039db09ea958689aee2ae89f81ba40c8cc3e6d",
+        "afterSha": "252ff51f5467b73be75bc58ae84e5b22e90e3022",
         "ok": true,
-        "status": "unchanged",
-        "commits": [],
-        "files": [],
-        "impacts": []
+        "status": "ahead",
+        "aheadBy": 38,
+        "behindBy": 0,
+        "totalCommits": 38,
+        "fileCount": 238,
+        "additions": 17174,
+        "deletions": 2715,
+        "filesTruncated": false,
+        "commits": [
+          {
+            "sha": "d8825998ad250f02d117a95530ceb38253577cd2",
+            "committedAt": "2026-06-18T09:10:38Z",
+            "message": "initial commit",
+            "url": "https://github.com/kaspanet/vprogs/commit/d8825998ad250f02d117a95530ceb38253577cd2"
+          },
+          {
+            "sha": "a9d344d32f4763be68b07f74db665c66300f9a99",
+            "committedAt": "2026-06-18T09:10:47Z",
+            "message": "Feat: Skip unsupported tx versions + ABI wire-format refactor (#43)",
+            "url": "https://github.com/kaspanet/vprogs/commit/a9d344d32f4763be68b07f74db665c66300f9a99"
+          },
+          {
+            "sha": "01759b79888d166f30326a304258d39b335f19ea",
+            "committedAt": "2026-06-18T09:10:47Z",
+            "message": "update/bump deps, remove serde_nested (#44)",
+            "url": "https://github.com/kaspanet/vprogs/commit/01759b79888d166f30326a304258d39b335f19ea"
+          },
+          {
+            "sha": "3dd28907193acb36cff52c24048a53cc671fc2ec",
+            "committedAt": "2026-06-18T09:10:47Z",
+            "message": "Settlement covenant: e2e chain acceptance + redeem hardening (#45)",
+            "url": "https://github.com/kaspanet/vprogs/commit/3dd28907193acb36cff52c24048a53cc671fc2ec"
+          },
+          {
+            "sha": "f0b55d6f3dbbd03117112209e4cc6a149abdc5f2",
+            "committedAt": "2026-06-18T09:10:47Z",
+            "message": "extract hashing part from SMT into generic trait",
+            "url": "https://github.com/kaspanet/vprogs/commit/f0b55d6f3dbbd03117112209e4cc6a149abdc5f2"
+          },
+          {
+            "sha": "9bfb91fc98f88182a7c90ceaf2d09bd185946725",
+            "committedAt": "2026-06-18T09:10:47Z",
+            "message": "Feat: Settle empty batches + further verifier API reorg (#46)",
+            "url": "https://github.com/kaspanet/vprogs/commit/9bfb91fc98f88182a7c90ceaf2d09bd185946725"
+          },
+          {
+            "sha": "7d45d5cd0940f6ec1c0791566c477a236444c53d",
+            "committedAt": "2026-06-18T09:10:47Z",
+            "message": "address review comment",
+            "url": "https://github.com/kaspanet/vprogs/commit/7d45d5cd0940f6ec1c0791566c477a236444c53d"
+          },
+          {
+            "sha": "4a1e93cd410a83247cf1fdab84eac53abd70de98",
+            "committedAt": "2026-06-18T09:10:47Z",
+            "message": "Feat/exit support (#47)",
+            "url": "https://github.com/kaspanet/vprogs/commit/4a1e93cd410a83247cf1fdab84eac53abd70de98"
+          },
+          {
+            "sha": "d1eda7ee51bb3afc79670b344d2bbdc0d95e0651",
+            "committedAt": "2026-06-18T09:10:47Z",
+            "message": "rebuilt guests",
+            "url": "https://github.com/kaspanet/vprogs/commit/d1eda7ee51bb3afc79670b344d2bbdc0d95e0651"
+          },
+          {
+            "sha": "2d2624074e47db729c4c4b8af4b9c6f0305ab87a",
+            "committedAt": "2026-06-18T09:10:47Z",
+            "message": "Chore/CI: close fmt + clippy coverage gap in excluded crates (#48)",
+            "url": "https://github.com/kaspanet/vprogs/commit/2d2624074e47db729c4c4b8af4b9c6f0305ab87a"
+          },
+          {
+            "sha": "2d5028e478ea1dbf7f0e6ad6bf63bb0ace72eb97",
+            "committedAt": "2026-06-18T09:10:47Z",
+            "message": "Merge pull request #50 from kaspanet/feat/core-hashing",
+            "url": "https://github.com/kaspanet/vprogs/commit/2d5028e478ea1dbf7f0e6ad6bf63bb0ace72eb97"
+          },
+          {
+            "sha": "6c945accce1960c790d9047991cc18a61a337e6b",
+            "committedAt": "2026-06-18T09:10:47Z",
+            "message": "add covenant tracking to bridge",
+            "url": "https://github.com/kaspanet/vprogs/commit/6c945accce1960c790d9047991cc18a61a337e6b"
+          },
+          {
+            "sha": "1bdd61246c27eb4dd3273cfefe991b92a0369f5c",
+            "committedAt": "2026-06-18T09:10:47Z",
+            "message": "Feat: Wire Groth16 settlement covenant + backend tag (#52)",
+            "url": "https://github.com/kaspanet/vprogs/commit/1bdd61246c27eb4dd3273cfefe991b92a0369f5c"
+          },
+          {
+            "sha": "5e00ad289997ef09c1f80100efa0491cc2dccdd9",
+            "committedAt": "2026-06-18T09:10:47Z",
+            "message": "code hygiene",
+            "url": "https://github.com/kaspanet/vprogs/commit/5e00ad289997ef09c1f80100efa0491cc2dccdd9"
+          },
+          {
+            "sha": "e14b48f99c0fd3b06817144c5f79ecbc8acc9dde",
+            "committedAt": "2026-06-18T09:10:47Z",
+            "message": "Feat: Introduce core/merkle-tree (#53)",
+            "url": "https://github.com/kaspanet/vprogs/commit/e14b48f99c0fd3b06817144c5f79ecbc8acc9dde"
+          },
+          {
+            "sha": "4a5018b7e4a4667abf710e3447e106e752d0e9f6",
+            "committedAt": "2026-06-18T09:10:48Z",
+            "message": "Test: real-proof L1 settlement variant (CUDA only)",
+            "url": "https://github.com/kaspanet/vprogs/commit/4a5018b7e4a4667abf710e3447e106e752d0e9f6"
+          },
+          {
+            "sha": "2450495fbc912ce68a5333630ecd8a493ac5c02d",
+            "committedAt": "2026-06-18T09:10:48Z",
+            "message": "Fix real-proof L1 settlement, add Groth16 variant of the L1 test",
+            "url": "https://github.com/kaspanet/vprogs/commit/2450495fbc912ce68a5333630ecd8a493ac5c02d"
+          },
+          {
+            "sha": "fc84cd3be03d11ee0601bc562d116f8f21f89d81",
+            "committedAt": "2026-06-18T09:10:48Z",
+            "message": "Drop the dev-redeem L1 settlement test",
+            "url": "https://github.com/kaspanet/vprogs/commit/fc84cd3be03d11ee0601bc562d116f8f21f89d81"
+          },
+          {
+            "sha": "4e4a0c2df19e7ba275314129aad9c0412dd91057",
+            "committedAt": "2026-06-18T09:10:48Z",
+            "message": "Bake risc0 succinct verifier-identity pins as build-time consts, run two settlements in the L1 e2e",
+            "url": "https://github.com/kaspanet/vprogs/commit/4e4a0c2df19e7ba275314129aad9c0412dd91057"
+          },
+          {
+            "sha": "7e8e3407aa6aa1fc287896549c8de5fb3d49de1e",
+            "committedAt": "2026-06-18T09:10:48Z",
+            "message": "Add same-typed-positional rule to code-hygiene; apply to settlement_l1_e2e",
+            "url": "https://github.com/kaspanet/vprogs/commit/7e8e3407aa6aa1fc287896549c8de5fb3d49de1e"
+          },
+          {
+            "sha": "b174f48fc09521dfd67588154c01da6dce58be33",
+            "committedAt": "2026-06-18T09:10:48Z",
+            "message": "Tighten same-typed-positional rule: distinct types are fine, mix of T and &T isn't",
+            "url": "https://github.com/kaspanet/vprogs/commit/b174f48fc09521dfd67588154c01da6dce58be33"
+          },
+          {
+            "sha": "843def11ef2ea7e6667bc0d371919ed4362e1662",
+            "committedAt": "2026-06-18T09:10:48Z",
+            "message": "Re-add dev-redeem L1 settlement test as a CPU diff target",
+            "url": "https://github.com/kaspanet/vprogs/commit/843def11ef2ea7e6667bc0d371919ed4362e1662"
+          },
+          {
+            "sha": "095cc95fc938e8ccaae6ee7ea8ea8f74a3bc5588",
+            "committedAt": "2026-06-18T09:10:48Z",
+            "message": "Fix real-proof L1 settlement: route carriers off NATIVE, dodge the SMT shortcut leaf",
+            "url": "https://github.com/kaspanet/vprogs/commit/095cc95fc938e8ccaae6ee7ea8ea8f74a3bc5588"
+          },
+          {
+            "sha": "dc4e4d95431ee801736dfd35e2b248cb04e45396",
+            "committedAt": "2026-06-18T09:10:48Z",
+            "message": "fmt",
+            "url": "https://github.com/kaspanet/vprogs/commit/dc4e4d95431ee801736dfd35e2b248cb04e45396"
+          },
+          {
+            "sha": "f3394b1c1362739363296fd2af4f63d40a585295",
+            "committedAt": "2026-06-18T09:10:48Z",
+            "message": "cleanup",
+            "url": "https://github.com/kaspanet/vprogs/commit/f3394b1c1362739363296fd2af4f63d40a585295"
+          },
+          {
+            "sha": "c7a3db6b99ad2b45804e8e91d6e46e936cc3dec6",
+            "committedAt": "2026-06-18T09:10:48Z",
+            "message": "Address PR #55 review comments",
+            "url": "https://github.com/kaspanet/vprogs/commit/c7a3db6b99ad2b45804e8e91d6e46e936cc3dec6"
+          },
+          {
+            "sha": "c53625c0305fbab88b0b3861c3f3e9ae1b05ea3d",
+            "committedAt": "2026-06-18T09:10:48Z",
+            "message": "Merge pull request #54 from kaspanet/feat/zk-settlement-tracking",
+            "url": "https://github.com/kaspanet/vprogs/commit/c53625c0305fbab88b0b3861c3f3e9ae1b05ea3d"
+          },
+          {
+            "sha": "7514a9f4783e4d18e6b16bc85815b06ac2bc1c10",
+            "committedAt": "2026-06-18T09:10:48Z",
+            "message": "Merge pull request #55 from biryukovmaxim/tests-on-cuda-l1-real-proof",
+            "url": "https://github.com/kaspanet/vprogs/commit/7514a9f4783e4d18e6b16bc85815b06ac2bc1c10"
+          },
+          {
+            "sha": "3f20fa41312e076f5b66b871a856dbd3c72fef30",
+            "committedAt": "2026-06-18T09:10:48Z",
+            "message": "Bump rusty-kaspa and wrap lanes_root into the post-hardening activity root (#58)",
+            "url": "https://github.com/kaspanet/vprogs/commit/3f20fa41312e076f5b66b871a856dbd3c72fef30"
+          },
+          {
+            "sha": "8ed5dac1e713fcacb585e3bef112f2c6a56a40fc",
+            "committedAt": "2026-06-18T09:10:48Z",
+            "message": "Commit to lane (#57)",
+            "url": "https://github.com/kaspanet/vprogs/commit/8ed5dac1e713fcacb585e3bef112f2c6a56a40fc"
+          },
+          {
+            "sha": "9ad81fddbc39e594c9ee3a02b8d0f6f207366355",
+            "committedAt": "2026-06-18T09:10:48Z",
+            "message": "Feat: SMT kind-aware proofs and single-walk root computation (#59)",
+            "url": "https://github.com/kaspanet/vprogs/commit/9ad81fddbc39e594c9ee3a02b8d0f6f207366355"
+          },
+          {
+            "sha": "c1b1b14055fb23a1ecd5fc60ec891e34852b7e8e",
+            "committedAt": "2026-06-18T09:10:48Z",
+            "message": "Fix: Persist SMT tree-emptying deletes via a Node::Empty tombstone (#68)",
+            "url": "https://github.com/kaspanet/vprogs/commit/c1b1b14055fb23a1ecd5fc60ec891e34852b7e8e"
+          },
+          {
+            "sha": "d9b091f90d41eab9050c59f6858711aeae1853d3",
+            "committedAt": "2026-06-18T09:10:48Z",
+            "message": "Feat: Framework collapses \"deletion\" onto \"empty data\" (#69)",
+            "url": "https://github.com/kaspanet/vprogs/commit/d9b091f90d41eab9050c59f6858711aeae1853d3"
+          },
+          {
+            "sha": "ab924f16bf9f00c37de05722145a4f87422f82ff",
+            "committedAt": "2026-06-18T09:10:48Z",
+            "message": "Feat: Route the L2 resource state hash through the RISC0 SHA-256 precompile (#70)",
+            "url": "https://github.com/kaspanet/vprogs/commit/ab924f16bf9f00c37de05722145a4f87422f82ff"
+          },
+          {
+            "sha": "a7f1414e91762df7ca9f18f4afafe727b8ee129e",
+            "committedAt": "2026-06-18T09:10:48Z",
+            "message": "Feat: Batch aggregator split (#72)",
+            "url": "https://github.com/kaspanet/vprogs/commit/a7f1414e91762df7ca9f18f4afafe727b8ee129e"
+          },
+          {
+            "sha": "7436ff72a9039ff326a8e309d96905511627d4ca",
+            "committedAt": "2026-06-18T09:10:48Z",
+            "message": "Wire aggregation and settlement into the proving pipeline (#80)",
+            "url": "https://github.com/kaspanet/vprogs/commit/7436ff72a9039ff326a8e309d96905511627d4ca"
+          },
+          {
+            "sha": "289e32ccd31f6ed1adb14a0432123a8af1dd1545",
+            "committedAt": "2026-06-18T11:24:59Z",
+            "message": "Merge pull request #36 from kaspanet/feat/zk-convenants",
+            "url": "https://github.com/kaspanet/vprogs/commit/289e32ccd31f6ed1adb14a0432123a8af1dd1545"
+          },
+          {
+            "sha": "252ff51f5467b73be75bc58ae84e5b22e90e3022",
+            "committedAt": "2026-06-18T12:10:08Z",
+            "message": "Persist SMT tree-emptying deletes via a Node::Empty tombstone for leaves (#79)",
+            "url": "https://github.com/kaspanet/vprogs/commit/252ff51f5467b73be75bc58ae84e5b22e90e3022"
+          }
+        ],
+        "files": [
+          {
+            "filename": ".claude/skills/code-hygiene/SKILL.md",
+            "status": "added",
+            "additions": 758,
+            "deletions": 0,
+            "changes": 758
+          },
+          {
+            "filename": ".dockerignore",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 1,
+            "changes": 3
+          },
+          {
+            "filename": ".github/workflows/ci.yml",
+            "status": "modified",
+            "additions": 5,
+            "deletions": 2,
+            "changes": 7
+          },
+          {
+            "filename": ".gitignore",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "Cargo.lock",
+            "status": "modified",
+            "additions": 2231,
+            "deletions": 853,
+            "changes": 3084
+          },
+          {
+            "filename": "Cargo.toml",
+            "status": "modified",
+            "additions": 63,
+            "deletions": 20,
+            "changes": 83
+          },
+          {
+            "filename": "cargo-check-all.sh",
+            "status": "modified",
+            "additions": 4,
+            "deletions": 4,
+            "changes": 8
+          },
+          {
+            "filename": "cargo-fmt-all.sh",
+            "status": "modified",
+            "additions": 25,
+            "deletions": 4,
+            "changes": 29
+          },
+          {
+            "filename": "core/atomics/src/atomic_async_latch.rs",
+            "status": "modified",
+            "additions": 11,
+            "deletions": 1,
+            "changes": 12
+          },
+          {
+            "filename": "core/codec/Cargo.toml",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "core/codec/src/bits.rs",
+            "status": "modified",
+            "additions": 20,
+            "deletions": 0,
+            "changes": 20
+          },
+          {
+            "filename": "core/codec/src/error.rs",
+            "status": "modified",
+            "additions": 13,
+            "deletions": 0,
+            "changes": 13
+          },
+          {
+            "filename": "core/codec/src/lib.rs",
+            "status": "modified",
+            "additions": 4,
+            "deletions": 0,
+            "changes": 4
+          },
+          {
+            "filename": "core/codec/src/mut_reader.rs",
+            "status": "added",
+            "additions": 23,
+            "deletions": 0,
+            "changes": 23
+          },
+          {
+            "filename": "core/codec/src/reader.rs",
+            "status": "modified",
+            "additions": 98,
+            "deletions": 77,
+            "changes": 175
+          },
+          {
+            "filename": "core/codec/src/sort_unique.rs",
+            "status": "modified",
+            "additions": 7,
+            "deletions": 5,
+            "changes": 12
+          },
+          {
+            "filename": "core/codec/src/writer.rs",
+            "status": "added",
+            "additions": 60,
+            "deletions": 0,
+            "changes": 60
+          },
+          {
+            "filename": "core/hashing/Cargo.toml",
+            "status": "added",
+            "additions": 8,
+            "deletions": 0,
+            "changes": 8
+          },
+          {
+            "filename": "core/hashing/src/blake3.rs",
+            "status": "added",
+            "additions": 24,
+            "deletions": 0,
+            "changes": 24
+          },
+          {
+            "filename": "core/hashing/src/hasher.rs",
+            "status": "added",
+            "additions": 26,
+            "deletions": 0,
+            "changes": 26
+          },
+          {
+            "filename": "core/hashing/src/lib.rs",
+            "status": "added",
+            "additions": 13,
+            "deletions": 0,
+            "changes": 13
+          },
+          {
+            "filename": "core/hashing/src/sha256.rs",
+            "status": "added",
+            "additions": 26,
+            "deletions": 0,
+            "changes": 26
+          },
+          {
+            "filename": "core/merkle-tree/Cargo.toml",
+            "status": "added",
+            "additions": 7,
+            "deletions": 0,
+            "changes": 7
+          },
+          {
+            "filename": "core/merkle-tree/src/lib.rs",
+            "status": "added",
+            "additions": 17,
+            "deletions": 0,
+            "changes": 17
+          },
+          {
+            "filename": "core/merkle-tree/src/node_tags.rs",
+            "status": "added",
+            "additions": 15,
+            "deletions": 0,
+            "changes": 15
+          },
+          {
+            "filename": "core/merkle-tree/src/streaming_builder.rs",
+            "status": "added",
+            "additions": 282,
+            "deletions": 0,
+            "changes": 282
+          },
+          {
+            "filename": "core/smt/Cargo.toml",
+            "status": "modified",
+            "additions": 5,
+            "deletions": 4,
+            "changes": 9
+          },
+          {
+            "filename": "core/smt/src/empty_hash.rs",
+            "status": "renamed",
+            "additions": 0,
+            "deletions": 6,
+            "changes": 6
+          },
+          {
+            "filename": "core/smt/src/hashed_node.rs",
+            "status": "added",
+            "additions": 69,
+            "deletions": 0,
+            "changes": 69
+          },
+          {
+            "filename": "core/smt/src/hashing/blake3.rs",
+            "status": "removed",
+            "additions": 0,
+            "deletions": 10,
+            "changes": 10
+          },
+          {
+            "filename": "core/smt/src/key.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "core/smt/src/lib.rs",
+            "status": "modified",
+            "additions": 12,
+            "deletions": 9,
+            "changes": 21
+          },
+          {
+            "filename": "core/smt/src/node.rs",
+            "status": "modified",
+            "additions": 32,
+            "deletions": 46,
+            "changes": 78
+          },
+          {
+            "filename": "core/smt/src/proving/leaf.rs",
+            "status": "modified",
+            "additions": 12,
+            "deletions": 30,
+            "changes": 42
+          },
+          {
+            "filename": "core/smt/src/proving/leaf_update.rs",
+            "status": "added",
+            "additions": 9,
+            "deletions": 0,
+            "changes": 9
+          },
+          {
+            "filename": "core/smt/src/proving/member.rs",
+            "status": "added",
+            "additions": 18,
+            "deletions": 0,
+            "changes": 18
+          },
+          {
+            "filename": "core/smt/src/proving/members_by_leaf.rs",
+            "status": "added",
+            "additions": 19,
+            "deletions": 0,
+            "changes": 19
+          },
+          {
+            "filename": "core/smt/src/proving/membership.rs",
+            "status": "added",
+            "additions": 12,
+            "deletions": 0,
+            "changes": 12
+          },
+          {
+            "filename": "core/smt/src/proving/proof.rs",
+            "status": "modified",
+            "additions": 263,
+            "deletions": 53,
+            "changes": 316
+          },
+          {
+            "filename": "core/smt/src/proving/proof_builder.rs",
+            "status": "modified",
+            "additions": 147,
+            "deletions": 75,
+            "changes": 222
+          },
+          {
+            "filename": "core/smt/src/proving/traversal.rs",
+            "status": "modified",
+            "additions": 166,
+            "deletions": 54,
+            "changes": 220
+          },
+          {
+            "filename": "core/smt/src/tree.rs",
+            "status": "modified",
+            "additions": 4,
+            "deletions": 5,
+            "changes": 9
+          },
+          {
+            "filename": "core/smt/src/updater.rs",
+            "status": "modified",
+            "additions": 33,
+            "deletions": 15,
+            "changes": 48
+          },
+          {
+            "filename": "core/smt/tests/delete_with_promotion.rs",
+            "status": "added",
+            "additions": 250,
+            "deletions": 0,
+            "changes": 250
+          },
+          {
+            "filename": "core/smt/tests/e2e.rs",
+            "status": "modified",
+            "additions": 63,
+            "deletions": 26,
+            "changes": 89
+          },
+          {
+            "filename": "core/smt/tests/non_inclusion_shortcut.rs",
+            "status": "added",
+            "additions": 174,
+            "deletions": 0,
+            "changes": 174
+          },
+          {
+            "filename": "core/types/Cargo.toml",
+            "status": "modified",
+            "additions": 4,
+            "deletions": 2,
+            "changes": 6
+          },
+          {
+            "filename": "core/types/src/access_metadata.rs",
+            "status": "modified",
+            "additions": 28,
+            "deletions": 4,
+            "changes": 32
+          },
+          {
+            "filename": "core/types/src/access_type.rs",
+            "status": "modified",
+            "additions": 5,
+            "deletions": 7,
+            "changes": 12
+          },
+          {
+            "filename": "core/types/src/resource_id.rs",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 7,
+            "changes": 9
+          },
+          {
+            "filename": "core/types/src/scheduler_transaction.rs",
+            "status": "modified",
+            "additions": 9,
+            "deletions": 19,
+            "changes": 28
+          },
+          {
+            "filename": "docs/proving-pipeline.md",
+            "status": "added",
+            "additions": 434,
+            "deletions": 0,
+            "changes": 434
+          },
+          {
+            "filename": "examples/tn10-flow/Cargo.toml",
+            "status": "added",
+            "additions": 57,
+            "deletions": 0,
+            "changes": 57
+          },
+          {
+            "filename": "examples/tn10-flow/src/config.rs",
+            "status": "added",
+            "additions": 79,
+            "deletions": 0,
+            "changes": 79
+          },
+          {
+            "filename": "examples/tn10-flow/src/daemon.rs",
+            "status": "added",
+            "additions": 162,
+            "deletions": 0,
+            "changes": 162
+          },
+          {
+            "filename": "examples/tn10-flow/src/main.rs",
+            "status": "added",
+            "additions": 443,
+            "deletions": 0,
+            "changes": 443
+          },
+          {
+            "filename": "examples/tn10-flow/src/persistence.rs",
+            "status": "added",
+            "additions": 47,
+            "deletions": 0,
+            "changes": 47
+          },
+          {
+            "filename": "l1/bridge/Cargo.toml",
+            "status": "modified",
+            "additions": 16,
+            "deletions": 14,
+            "changes": 30
+          },
+          {
+            "filename": "l1/bridge/src/config.rs",
+            "status": "modified",
+            "additions": 63,
+            "deletions": 6,
+            "changes": 69
+          },
+          {
+            "filename": "l1/bridge/src/event.rs",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4
+          },
+          {
+            "filename": "l1/bridge/src/virtual_chain.rs",
+            "status": "modified",
+            "additions": 4,
+            "deletions": 4,
+            "changes": 8
+          },
+          {
+            "filename": "l1/bridge/src/worker.rs",
+            "status": "modified",
+            "additions": 258,
+            "deletions": 79,
+            "changes": 337
+          },
+          {
+            "filename": "l1/bridge/tests/integration.rs",
+            "status": "modified",
+            "additions": 19,
+            "deletions": 11,
+            "changes": 30
+          },
+          {
+            "filename": "l1/types/Cargo.toml",
+            "status": "modified",
+            "additions": 3,
+            "deletions": 0,
+            "changes": 3
+          },
+          {
+            "filename": "l1/types/src/chain_block_metadata.rs",
+            "status": "modified",
+            "additions": 58,
+            "deletions": 17,
+            "changes": 75
+          },
+          {
+            "filename": "l1/types/src/l1_transaction_covenant_ext.rs",
+            "status": "added",
+            "additions": 247,
+            "deletions": 0,
+            "changes": 247
+          },
+          {
+            "filename": "l1/types/src/lib.rs",
+            "status": "modified",
+            "additions": 6,
+            "deletions": 0,
+            "changes": 6
+          },
+          {
+            "filename": "l1/types/src/settlement_info.rs",
+            "status": "added",
+            "additions": 25,
+            "deletions": 0,
+            "changes": 25
+          },
+          {
+            "filename": "l1/types/src/transaction_id.rs",
+            "status": "added",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "l1/utils/Cargo.toml",
+            "status": "added",
+            "additions": 11,
+            "deletions": 0,
+            "changes": 11
+          },
+          {
+            "filename": "l1/utils/src/lib.rs",
+            "status": "added",
+            "additions": 5,
+            "deletions": 0,
+            "changes": 5
+          },
+          {
+            "filename": "l1/utils/src/tx_id.rs",
+            "status": "added",
+            "additions": 27,
+            "deletions": 0,
+            "changes": 27
+          },
+          {
+            "filename": "l1/utils/tests/tx_id.rs",
+            "status": "added",
+            "additions": 41,
+            "deletions": 0,
+            "changes": 41
+          },
+          {
+            "filename": "l1/wallet/Cargo.toml",
+            "status": "added",
+            "additions": 15,
+            "deletions": 0,
+            "changes": 15
+          },
+          {
+            "filename": "l1/wallet/src/build.rs",
+            "status": "added",
+            "additions": 205,
+            "deletions": 0,
+            "changes": 205
+          },
+          {
+            "filename": "l1/wallet/src/lib.rs",
+            "status": "added",
+            "additions": 264,
+            "deletions": 0,
+            "changes": 264
+          },
+          {
+            "filename": "node/cli/Cargo.toml",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "node/cli/src/l1_bridge_params.rs",
+            "status": "modified",
+            "additions": 25,
+            "deletions": 6,
+            "changes": 31
+          },
+          {
+            "filename": "node/framework/Cargo.toml",
+            "status": "modified",
+            "additions": 3,
+            "deletions": 1,
+            "changes": 4
+          },
+          {
+            "filename": "node/framework/src/worker.rs",
+            "status": "modified",
+            "additions": 34,
+            "deletions": 7,
+            "changes": 41
+          },
+          {
+            "filename": "node/framework/tests/e2e.rs",
+            "status": "modified",
+            "additions": 52,
+            "deletions": 13,
+            "changes": 65
+          },
+          {
+            "filename": "node/test-utils/Cargo.toml",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "node/test-utils/src/l1_node.rs",
+            "status": "modified",
+            "additions": 115,
+            "deletions": 103,
+            "changes": 218
+          },
+          {
+            "filename": "node/test-utils/src/lib.rs",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4
+          },
+          {
+            "filename": "scheduling/scheduler/Cargo.toml",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "scheduling/scheduler/src/access_handle.rs",
+            "status": "modified",
+            "additions": 6,
+            "deletions": 0,
+            "changes": 6
+          },
+          {
+            "filename": "scheduling/scheduler/src/scheduled_batch.rs",
+            "status": "modified",
+            "additions": 14,
+            "deletions": 10,
+            "changes": 24
+          },
+          {
+            "filename": "scheduling/scheduler/src/scheduled_transaction.rs",
+            "status": "modified",
+            "additions": 5,
+            "deletions": 5,
+            "changes": 10
+          },
+          {
+            "filename": "scheduling/scheduler/src/state_diff.rs",
+            "status": "modified",
+            "additions": 12,
+            "deletions": 4,
+            "changes": 16
+          },
+          {
+            "filename": "scheduling/scheduler/src/transaction_context.rs",
+            "status": "modified",
+            "additions": 8,
+            "deletions": 18,
+            "changes": 26
+          },
+          {
+            "filename": "scheduling/scheduler/tests/e2e.rs",
+            "status": "modified",
+            "additions": 248,
+            "deletions": 59,
+            "changes": 307
+          },
+          {
+            "filename": "scheduling/test-utils/src/processor.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "sim/Cargo.toml",
+            "status": "added",
+            "additions": 59,
+            "deletions": 0,
+            "changes": 59
+          },
+          {
+            "filename": "sim/src/config.rs",
+            "status": "added",
+            "additions": 94,
+            "deletions": 0,
+            "changes": 94
+          },
+          {
+            "filename": "sim/src/driver.rs",
+            "status": "added",
+            "additions": 18,
+            "deletions": 0,
+            "changes": 18
+          },
+          {
+            "filename": "sim/src/driver/config.rs",
+            "status": "added",
+            "additions": 22,
+            "deletions": 0,
+            "changes": 22
+          },
+          {
+            "filename": "sim/src/driver/l2_driver.rs",
+            "status": "added",
+            "additions": 869,
+            "deletions": 0,
+            "changes": 869
+          },
+          {
+            "filename": "sim/src/driver/stats.rs",
+            "status": "added",
+            "additions": 19,
+            "deletions": 0,
+            "changes": 19
+          },
+          {
+            "filename": "sim/src/l2_miner.rs",
+            "status": "added",
+            "additions": 312,
+            "deletions": 0,
+            "changes": 312
+          },
+          {
+            "filename": "sim/src/lane_source.rs",
+            "status": "added",
+            "additions": 66,
+            "deletions": 0,
+            "changes": 66
+          },
+          {
+            "filename": "sim/src/lib.rs",
+            "status": "added",
+            "additions": 13,
+            "deletions": 0,
+            "changes": 13
+          },
+          {
+            "filename": "sim/src/network.rs",
+            "status": "added",
+            "additions": 90,
+            "deletions": 0,
+            "changes": 90
+          },
+          {
+            "filename": "sim/tests/l2_flow.rs",
+            "status": "added",
+            "additions": 330,
+            "deletions": 0,
+            "changes": 330
+          },
+          {
+            "filename": "sim/tests/smoke.rs",
+            "status": "added",
+            "additions": 60,
+            "deletions": 0,
+            "changes": 60
+          },
+          {
+            "filename": "state/proof-receipt/Cargo.toml",
+            "status": "added",
+            "additions": 13,
+            "deletions": 0,
+            "changes": 13
+          },
+          {
+            "filename": "state/proof-receipt/src/key.rs",
+            "status": "added",
+            "additions": 98,
+            "deletions": 0,
+            "changes": 98
+          },
+          {
+            "filename": "state/proof-receipt/src/lib.rs",
+            "status": "added",
+            "additions": 44,
+            "deletions": 0,
+            "changes": 44
+          },
+          {
+            "filename": "state/proof-receipt/src/prune.rs",
+            "status": "added",
+            "additions": 20,
+            "deletions": 0,
+            "changes": 20
+          },
+          {
+            "filename": "state/proof-receipt/tests/roundtrip.rs",
+            "status": "added",
+            "additions": 166,
+            "deletions": 0,
+            "changes": 166
+          },
+          {
+            "filename": "state/version/src/lib.rs",
+            "status": "modified",
+            "additions": 19,
+            "deletions": 4,
+            "changes": 23
+          },
+          {
+            "filename": "storage/rocksdb-store/Cargo.toml",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "storage/rocksdb-store/src/config.rs",
+            "status": "modified",
+            "additions": 15,
+            "deletions": 5,
+            "changes": 20
+          },
+          {
+            "filename": "storage/rocksdb-store/src/state_space_ext.rs",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 0,
+            "changes": 2
+          },
+          {
+            "filename": "storage/rocksdb-store/src/store.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
+          },
+          {
+            "filename": "storage/types/src/state_space.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "zk/abi/Cargo.toml",
+            "status": "modified",
+            "additions": 11,
+            "deletions": 2,
+            "changes": 13
+          },
+          {
+            "filename": "zk/abi/src/batch_aggregator/input/inputs.rs",
+            "status": "added",
+            "additions": 46,
+            "deletions": 0,
+            "changes": 46
+          },
+          {
+            "filename": "zk/abi/src/batch_aggregator/input/lane_proof.rs",
+            "status": "added",
+            "additions": 66,
+            "deletions": 0,
+            "changes": 66
+          },
+          {
+            "filename": "zk/abi/src/batch_aggregator/journal/state_transition.rs",
+            "status": "added",
+            "additions": 101,
+            "deletions": 0,
+            "changes": 101
+          },
+          {
+            "filename": "zk/abi/src/batch_aggregator/verifier.rs",
+            "status": "added",
+            "additions": 162,
+            "deletions": 0,
+            "changes": 162
+          },
+          {
+            "filename": "zk/abi/src/batch_processor/abi.rs",
+            "status": "removed",
+            "additions": 0,
+            "deletions": 142,
+            "changes": 142
+          },
+          {
+            "filename": "zk/abi/src/batch_processor/error_code.rs",
+            "status": "removed",
+            "additions": 0,
+            "deletions": 25,
+            "changes": 25
+          },
+          {
+            "filename": "zk/abi/src/batch_processor/input/batch.rs",
+            "status": "added",
+            "additions": 60,
+            "deletions": 0,
+            "changes": 60
+          },
+          {
+            "filename": "zk/abi/src/batch_processor/input/inputs.rs",
+            "status": "modified",
+            "additions": 36,
+            "deletions": 62,
+            "changes": 98
+          },
+          {
+            "filename": "zk/abi/src/batch_processor/input/transaction_journals.rs",
+            "status": "removed",
+            "additions": 0,
+            "deletions": 34,
+            "changes": 34
+          },
+          {
+            "filename": "zk/abi/src/batch_processor/journal/batch_transition.rs",
+            "status": "added",
+            "additions": 76,
+            "deletions": 0,
+            "changes": 76
+          },
+          {
+            "filename": "zk/abi/src/batch_processor/journal/state_transition.rs",
+            "status": "removed",
+            "additions": 0,
+            "deletions": 59,
+            "changes": 59
+          },
+          {
+            "filename": "zk/abi/src/batch_processor/verifier.rs",
+            "status": "added",
+            "additions": 211,
+            "deletions": 0,
+            "changes": 211
+          },
+          {
+            "filename": "zk/abi/src/error.rs",
+            "status": "modified",
+            "additions": 11,
+            "deletions": 15,
+            "changes": 26
+          },
+          {
+            "filename": "zk/abi/src/error_code.rs",
+            "status": "added",
+            "additions": 19,
+            "deletions": 0,
+            "changes": 19
+          },
+          {
+            "filename": "zk/abi/src/journals.rs",
+            "status": "added",
+            "additions": 36,
+            "deletions": 0,
+            "changes": 36
+          },
+          {
+            "filename": "zk/abi/src/lib.rs",
+            "status": "modified",
+            "additions": 61,
+            "deletions": 21,
+            "changes": 82
+          },
+          {
+            "filename": "zk/abi/src/transaction_processor/abi.rs",
+            "status": "modified",
+            "additions": 45,
+            "deletions": 30,
+            "changes": 75
+          },
+          {
+            "filename": "zk/abi/src/transaction_processor/effects.rs",
+            "status": "added",
+            "additions": 9,
+            "deletions": 0,
+            "changes": 9
+          },
+          {
+            "filename": "zk/abi/src/transaction_processor/input/batch_metadata.rs",
+            "status": "removed",
+            "additions": 0,
+            "deletions": 30,
+            "changes": 30
+          },
+          {
+            "filename": "zk/abi/src/transaction_processor/input/execution_input.rs",
+            "status": "added",
+            "additions": 60,
+            "deletions": 0,
+            "changes": 60
+          },
+          {
+            "filename": "zk/abi/src/transaction_processor/input/inputs.rs",
+            "status": "modified",
+            "additions": 46,
+            "deletions": 92,
+            "changes": 138
+          },
+          {
+            "filename": "zk/abi/src/transaction_processor/input/payload.rs",
+            "status": "added",
+            "additions": 24,
+            "deletions": 0,
+            "changes": 24
+          },
+          {
+            "filename": "zk/abi/src/transaction_processor/input/resource.rs",
+            "status": "modified",
+            "additions": 38,
+            "deletions": 58,
+            "changes": 96
+          },
+          {
+            "filename": "zk/abi/src/transaction_processor/input/transaction.rs",
+            "status": "added",
+            "additions": 47,
+            "deletions": 0,
+            "changes": 47
+          },
+          {
+            "filename": "zk/abi/src/transaction_processor/journal/entries.rs",
+            "status": "modified",
+            "additions": 9,
+            "deletions": 34,
+            "changes": 43
+          },
+          {
+            "filename": "zk/abi/src/transaction_processor/journal/entry.rs",
+            "status": "removed",
+            "additions": 0,
+            "deletions": 40,
+            "changes": 40
+          },
+          {
+            "filename": "zk/abi/src/transaction_processor/journal/input/commitment.rs",
+            "status": "modified",
+            "additions": 33,
+            "deletions": 48,
+            "changes": 81
+          },
+          {
+            "filename": "zk/abi/src/transaction_processor/journal/input/execution_context.rs",
+            "status": "added",
+            "additions": 32,
+            "deletions": 0,
+            "changes": 32
+          },
+          {
+            "filename": "zk/abi/src/transaction_processor/journal/input/resource_commitment.rs",
+            "status": "modified",
+            "additions": 22,
+            "deletions": 41,
+            "changes": 63
+          },
+          {
+            "filename": "zk/abi/src/transaction_processor/journal/input/resource_commitments.rs",
+            "status": "removed",
+            "additions": 0,
+            "deletions": 37,
+            "changes": 37
+          },
+          {
+            "filename": "zk/abi/src/transaction_processor/journal/output/commitment.rs",
+            "status": "modified",
+            "additions": 114,
+            "deletions": 43,
+            "changes": 157
+          },
+          {
+            "filename": "zk/abi/src/transaction_processor/journal/output/resource_commitment.rs",
+            "status": "modified",
+            "additions": 18,
+            "deletions": 2,
+            "changes": 20
+          },
+          {
+            "filename": "zk/abi/src/transaction_processor/journal/output/resource_commitments.rs",
+            "status": "modified",
+            "additions": 1,
+            "deletions": 0,
+            "changes": 1
+          },
+          {
+            "filename": "zk/abi/src/transaction_processor/output/outputs.rs",
+            "status": "modified",
+            "additions": 22,
+            "deletions": 16,
+            "changes": 38
+          },
+          {
+            "filename": "zk/abi/src/transaction_processor/output/storage_op.rs",
+            "status": "removed",
+            "additions": 0,
+            "deletions": 74,
+            "changes": 74
+          },
+          {
+            "filename": "zk/abi/src/transaction_processor/transaction_handler.rs",
+            "status": "modified",
+            "additions": 23,
+            "deletions": 6,
+            "changes": 29
+          },
+          {
+            "filename": "zk/abi/src/withdrawal/exit_accumulator.rs",
+            "status": "added",
+            "additions": 24,
+            "deletions": 0,
+            "changes": 24
+          },
+          {
+            "filename": "zk/abi/src/withdrawal/exit_sink.rs",
+            "status": "added",
+            "additions": 71,
+            "deletions": 0,
+            "changes": 71
+          },
+          {
+            "filename": "zk/abi/src/withdrawal/exits.rs",
+            "status": "added",
+            "additions": 34,
+            "deletions": 0,
+            "changes": 34
+          },
+          {
+            "filename": "zk/abi/src/withdrawal/exits_iter.rs",
+            "status": "added",
+            "additions": 18,
+            "deletions": 0,
+            "changes": 18
+          },
+          {
+            "filename": "zk/abi/src/withdrawal/no_exits.rs",
+            "status": "added",
+            "additions": 12,
+            "deletions": 0,
+            "changes": 12
+          },
+          {
+            "filename": "zk/abi/src/withdrawal/script_bytes.rs",
+            "status": "added",
+            "additions": 24,
+            "deletions": 0,
+            "changes": 24
+          },
+          {
+            "filename": "zk/abi/src/withdrawal/standard_spk.rs",
+            "status": "added",
+            "additions": 213,
+            "deletions": 0,
+            "changes": 213
+          },
+          {
+            "filename": "zk/abi/src/write.rs",
+            "status": "removed",
+            "additions": 0,
+            "deletions": 16,
+            "changes": 16
+          },
+          {
+            "filename": "zk/abi/tests/batch_aggregator.rs",
+            "status": "added",
+            "additions": 237,
+            "deletions": 0,
+            "changes": 237
+          },
+          {
+            "filename": "zk/abi/tests/round_trip.rs",
+            "status": "added",
+            "additions": 77,
+            "deletions": 0,
+            "changes": 77
+          },
+          {
+            "filename": "zk/aggregate-prover/Cargo.toml",
+            "status": "added",
+            "additions": 21,
+            "deletions": 0,
+            "changes": 21
+          },
+          {
+            "filename": "zk/aggregate-prover/src/backend.rs",
+            "status": "added",
+            "additions": 19,
+            "deletions": 0,
+            "changes": 19
+          },
+          {
+            "filename": "zk/aggregate-prover/src/command.rs",
+            "status": "added",
+            "additions": 10,
+            "deletions": 0,
+            "changes": 10
+          },
+          {
+            "filename": "zk/aggregate-prover/src/config.rs",
+            "status": "added",
+            "additions": 26,
+            "deletions": 0,
+            "changes": 26
+          },
+          {
+            "filename": "zk/aggregate-prover/src/lib.rs",
+            "status": "added",
+            "additions": 13,
+            "deletions": 0,
+            "changes": 13
+          },
+          {
+            "filename": "zk/aggregate-prover/src/prover.rs",
+            "status": "added",
+            "additions": 76,
+            "deletions": 0,
+            "changes": 76
+          },
+          {
+            "filename": "zk/aggregate-prover/src/scheduled_bundle.rs",
+            "status": "added",
+            "additions": 154,
+            "deletions": 0,
+            "changes": 154
+          },
+          {
+            "filename": "zk/aggregate-prover/src/settlement_artifact.rs",
+            "status": "added",
+            "additions": 30,
+            "deletions": 0,
+            "changes": 30
+          },
+          {
+            "filename": "zk/aggregate-prover/src/worker.rs",
+            "status": "added",
+            "additions": 334,
+            "deletions": 0,
+            "changes": 334
+          },
+          {
+            "filename": "zk/backend/risc0/api/Cargo.toml",
+            "status": "modified",
+            "additions": 29,
+            "deletions": 7,
+            "changes": 36
+          },
+          {
+            "filename": "zk/backend/risc0/api/build.rs",
+            "status": "added",
+            "additions": 41,
+            "deletions": 0,
+            "changes": 41
+          },
+          {
+            "filename": "zk/backend/risc0/api/src/backend.rs",
+            "status": "modified",
+            "additions": 75,
+            "deletions": 26,
+            "changes": 101
+          },
+          {
+            "filename": "zk/backend/risc0/api/src/elf_binary.rs",
+            "status": "added",
+            "additions": 19,
+            "deletions": 0,
+            "changes": 19
+          },
+          {
+            "filename": "zk/backend/risc0/api/src/guest.rs",
+            "status": "removed",
+            "additions": 0,
+            "deletions": 14,
+            "changes": 14
+          },
+          {
+            "filename": "zk/backend/risc0/api/src/host.rs",
+            "status": "modified",
+            "additions": 7,
+            "deletions": 7,
+            "changes": 14
+          },
+          {
+            "filename": "zk/backend/risc0/api/src/journal.rs",
+            "status": "modified",
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4
+          },
+          {
+            "filename": "zk/backend/risc0/api/src/lib.rs",
+            "status": "modified",
+            "additions": 28,
+            "deletions": 4,
+            "changes": 32
+          },
+          {
+            "filename": "zk/backend/risc0/api/src/permission_script.rs",
+            "status": "added",
+            "additions": 777,
+            "deletions": 0,
+            "changes": 777
+          },
+          {
+            "filename": "zk/backend/risc0/api/src/permission_tree.rs",
+            "status": "added",
+            "additions": 169,
+            "deletions": 0,
+            "changes": 169
+          },
+          {
+            "filename": "zk/backend/risc0/api/src/proof_type.rs",
+            "status": "added",
+            "additions": 19,
+            "deletions": 0,
+            "changes": 19
+          },
+          {
+            "filename": "zk/backend/risc0/api/src/sha256.rs",
+            "status": "added",
+            "additions": 39,
+            "deletions": 0,
+            "changes": 39
+          },
+          {
+            "filename": "zk/backend/risc0/api/src/verify_journal.rs",
+            "status": "added",
+            "additions": 6,
+            "deletions": 0,
+            "changes": 6
+          },
+          {
+            "filename": "zk/backend/risc0/api/src/witness.rs",
+            "status": "added",
+            "additions": 139,
+            "deletions": 0,
+            "changes": 139
+          },
+          {
+            "filename": "zk/backend/risc0/batch-aggregator/Cargo.lock",
+            "status": "added",
+            "additions": 1963,
+            "deletions": 0,
+            "changes": 1963
+          },
+          {
+            "filename": "zk/backend/risc0/batch-aggregator/Cargo.toml",
+            "status": "added",
+            "additions": 11,
+            "deletions": 0,
+            "changes": 11
+          },
+          {
+            "filename": "zk/backend/risc0/batch-aggregator/compiled/program.elf",
+            "status": "added",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/batch-aggregator/src/main.rs",
+            "status": "added",
+            "additions": 22,
+            "deletions": 0,
+            "changes": 22
+          },
+          {
+            "filename": "zk/backend/risc0/batch-processor/Cargo.lock",
+            "status": "modified",
+            "additions": 261,
+            "deletions": 2,
+            "changes": 263
+          },
+          {
+            "filename": "zk/backend/risc0/batch-processor/compiled/program.elf",
+            "status": "modified",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/batch-processor/src/main.rs",
+            "status": "modified",
+            "additions": 14,
+            "deletions": 6,
+            "changes": 20
+          },
+          {
+            "filename": "zk/backend/risc0/build-guests.sh",
+            "status": "modified",
+            "additions": 16,
+            "deletions": 7,
+            "changes": 23
+          },
+          {
+            "filename": "zk/backend/risc0/covenant/Cargo.toml",
+            "status": "added",
+            "additions": 38,
+            "deletions": 0,
+            "changes": 38
+          },
+          {
+            "filename": "zk/backend/risc0/covenant/build.rs",
+            "status": "added",
+            "additions": 113,
+            "deletions": 0,
+            "changes": 113
+          },
+          {
+            "filename": "zk/backend/risc0/covenant/src/bootstrap.rs",
+            "status": "added",
+            "additions": 84,
+            "deletions": 0,
+            "changes": 84
+          },
+          {
+            "filename": "zk/backend/risc0/covenant/src/lib.rs",
+            "status": "added",
+            "additions": 37,
+            "deletions": 0,
+            "changes": 37
+          },
+          {
+            "filename": "zk/backend/risc0/covenant/src/script.rs",
+            "status": "added",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/covenant/src/settlement.rs",
+            "status": "added",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/covenant/src/settlement/settlement_dev_input.rs",
+            "status": "added",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/covenant/src/settlement/settlement_input.rs",
+            "status": "added",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/covenant/src/settlement/settlement_witness.rs",
+            "status": "added",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/covenant/src/settlement/succinct_witness.rs",
+            "status": "added",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/settler/Cargo.toml",
+            "status": "added",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/settler/src/covenant.rs",
+            "status": "added",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/settler/src/covenant/build.rs",
+            "status": "added",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/settler/src/covenant/built_settlement.rs",
+            "status": "added",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/settler/src/covenant/covenant_advance.rs",
+            "status": "added",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/settler/src/covenant/covenant_state.rs",
+            "status": "added",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/settler/src/lib.rs",
+            "status": "added",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/settler/src/worker.rs",
+            "status": "added",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/test-suite/Cargo.toml",
+            "status": "modified",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/test-suite/src/l1_transaction_ext.rs",
+            "status": "added",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/test-suite/src/lib.rs",
+            "status": "modified",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/test-suite/tests/covenant_e2e.rs",
+            "status": "added",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/test-suite/tests/e2e.rs",
+            "status": "modified",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/test-suite/tests/proving_e2e.rs",
+            "status": "modified",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/test-suite/tests/settlement_e2e.rs",
+            "status": "added",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/test-suite/tests/settlement_l1_e2e.rs",
+            "status": "added",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/transaction-processor-with-exits/Cargo.lock",
+            "status": "added",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/transaction-processor-with-exits/Cargo.toml",
+            "status": "added",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/transaction-processor-with-exits/compiled/program.elf",
+            "status": "added",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/transaction-processor-with-exits/src/main.rs",
+            "status": "added",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/transaction-processor/Cargo.lock",
+            "status": "modified",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/transaction-processor/Cargo.toml",
+            "status": "modified",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/transaction-processor/compiled/program.elf",
+            "status": "modified",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/backend/risc0/transaction-processor/src/main.rs",
+            "status": "modified",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/batch-prover/Cargo.toml",
+            "status": "modified",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/batch-prover/src/config.rs",
+            "status": "added",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/batch-prover/src/lane_source.rs",
+            "status": "added",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/batch-prover/src/lib.rs",
+            "status": "modified",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/batch-prover/src/prover.rs",
+            "status": "modified",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/batch-prover/src/worker.rs",
+            "status": "modified",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/transaction-prover/src/prover.rs",
+            "status": "modified",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/transaction-prover/src/worker.rs",
+            "status": "modified",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/vm/Cargo.toml",
+            "status": "modified",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/vm/src/proving_pipeline.rs",
+            "status": "modified",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          },
+          {
+            "filename": "zk/vm/src/vm.rs",
+            "status": "modified",
+            "additions": 0,
+            "deletions": 0,
+            "changes": 0
+          }
+        ],
+        "impacts": [
+          {
+            "id": "activation-p2p",
+            "label": "Activation and P2P compatibility",
+            "fileCount": 3,
+            "commitCount": 0,
+            "matchedFiles": [
+              "node/cli/src/l1_bridge_params.rs",
+              "sim/src/config.rs",
+              "sim/src/driver/l2_driver.rs"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "Node operators must track the activation DAA, release line, P2P version cutoff, and one-way upgrade constraints."
+          },
+          {
+            "id": "transaction-wire-format",
+            "label": "Transaction and wire-format contracts",
+            "fileCount": 5,
+            "commitCount": 0,
+            "matchedFiles": [
+              "l1/wallet/src/build.rs",
+              "l1/wallet/src/lib.rs",
+              "sim/src/config.rs",
+              "sim/src/driver/l2_driver.rs",
+              "sim/src/l2_miner.rs"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "RPC, protobuf, miner, pool, wallet, and indexer models must preserve v1 transaction fields without lossy renaming."
+          },
+          {
+            "id": "covenant-lineage",
+            "label": "Covenants and UTXO lineage",
+            "fileCount": 60,
+            "commitCount": 3,
+            "matchedFiles": [
+              ".claude/skills/code-hygiene/SKILL.md",
+              "Cargo.toml",
+              "docs/proving-pipeline.md",
+              "examples/tn10-flow/Cargo.toml",
+              "examples/tn10-flow/src/config.rs",
+              "examples/tn10-flow/src/daemon.rs",
+              "examples/tn10-flow/src/main.rs",
+              "examples/tn10-flow/src/persistence.rs"
+            ],
+            "matchedCommits": [
+              "Settlement covenant: e2e chain acceptance + redeem hardening (#45)",
+              "add covenant tracking to bridge",
+              "Feat: Wire Groth16 settlement covenant + backend tag (#52)"
+            ],
+            "builderImpact": "UTXO-first applications must preserve covenant bindings, authorizing inputs, covenant IDs, and successor lineage."
+          },
+          {
+            "id": "fees-mass-mempool",
+            "label": "Fee, mass, and mempool policy",
+            "fileCount": 14,
+            "commitCount": 0,
+            "matchedFiles": [
+              ".claude/skills/code-hygiene/SKILL.md",
+              "docs/proving-pipeline.md",
+              "examples/tn10-flow/src/config.rs",
+              "examples/tn10-flow/src/main.rs",
+              "l1/utils/tests/tx_id.rs",
+              "l1/wallet/src/build.rs",
+              "l1/wallet/src/lib.rs",
+              "node/test-utils/src/l1_node.rs"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "Fee estimation must distinguish consensus validity from node relay policy and use current mass dimensions."
+          },
+          {
+            "id": "rpc-wasm-sdk",
+            "label": "RPC, WASM, and SDK surface",
+            "fileCount": 5,
+            "commitCount": 0,
+            "matchedFiles": [
+              "Cargo.toml",
+              "node/test-utils/src/l1_node.rs",
+              "sim/src/lane_source.rs",
+              "zk/backend/risc0/batch-aggregator/Cargo.lock",
+              "zk/backend/risc0/batch-processor/Cargo.lock"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "Integrators must regenerate or update client bindings and test required arguments, aliases, and serialization behavior."
+          },
+          {
+            "id": "wallet-pskt",
+            "label": "Wallet and PSKT construction",
+            "fileCount": 3,
+            "commitCount": 0,
+            "matchedFiles": [
+              "l1/wallet/src/build.rs",
+              "l1/wallet/src/lib.rs",
+              "node/test-utils/src/l1_node.rs"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "Wallet construction and signing previews must preserve covenant fields, compute commitments, storage mass, and explicit fees."
+          },
+          {
+            "id": "zk-verification",
+            "label": "ZK verification and pricing",
+            "fileCount": 73,
+            "commitCount": 4,
+            "matchedFiles": [
+              "Cargo.toml",
+              "docs/proving-pipeline.md",
+              "examples/tn10-flow/Cargo.toml",
+              "examples/tn10-flow/src/config.rs",
+              "examples/tn10-flow/src/daemon.rs",
+              "examples/tn10-flow/src/main.rs",
+              "l1/types/src/l1_transaction_covenant_ext.rs",
+              "l1/wallet/src/build.rs"
+            ],
+            "matchedCommits": [
+              "Feat: Wire Groth16 settlement covenant + backend tag (#52)",
+              "Fix real-proof L1 settlement, add Groth16 variant of the L1 test",
+              "Bake risc0 succinct verifier-identity pins as build-time consts, run two settlements in the L1 e2e",
+              "Feat: Route the L2 resource state hash through the RISC0 SHA-256 precompile (#70)"
+            ],
+            "builderImpact": "Proof-system dependencies, verifier hardening, script-unit pricing, proof size, and failure behavior remain security-critical."
+          },
+          {
+            "id": "sequencing-smt",
+            "label": "Sequencing commitments and SMT state",
+            "fileCount": 55,
+            "commitCount": 2,
+            "matchedFiles": [
+              ".claude/skills/code-hygiene/SKILL.md",
+              "Cargo.toml",
+              "docs/proving-pipeline.md",
+              "examples/tn10-flow/Cargo.toml",
+              "examples/tn10-flow/src/config.rs",
+              "examples/tn10-flow/src/daemon.rs",
+              "examples/tn10-flow/src/main.rs",
+              "examples/tn10-flow/src/persistence.rs"
+            ],
+            "matchedCommits": [
+              "Bump rusty-kaspa and wrap lanes_root into the post-hardening activity root (#58)",
+              "Commit to lane (#57)"
+            ],
+            "builderImpact": "Lane-aware indexers and proof services must handle reorgs, pruning, inactivity shortcuts, and witness availability."
+          },
+          {
+            "id": "node-storage-ibd",
+            "label": "Node storage, pruning, and IBD",
+            "fileCount": 46,
+            "commitCount": 0,
+            "matchedFiles": [
+              "Cargo.toml",
+              "core/smt/src/node.rs",
+              "core/smt/tests/delete_with_promotion.rs",
+              "core/smt/tests/e2e.rs",
+              "core/smt/tests/non_inclusion_shortcut.rs",
+              "docs/proving-pipeline.md",
+              "examples/tn10-flow/Cargo.toml",
+              "examples/tn10-flow/src/config.rs"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "Operators must plan database migrations, resync cost, retention, pruning compatibility, and recovery procedures."
+          },
+          {
+            "id": "security-hardening",
+            "label": "Security hardening",
+            "fileCount": 2,
+            "commitCount": 2,
+            "matchedFiles": [
+              "zk/abi/src/batch_aggregator/input/lane_proof.rs",
+              "zk/abi/src/batch_aggregator/verifier.rs"
+            ],
+            "matchedCommits": [
+              "Settlement covenant: e2e chain acceptance + redeem hardening (#45)",
+              "Bump rusty-kaspa and wrap lanes_root into the post-hardening activity root (#58)"
+            ],
+            "builderImpact": "Consensus and network-facing fixes require adversarial regression tests and careful version-boundary review."
+          },
+          {
+            "id": "tests-docs",
+            "label": "Tests, benchmarks, and operator docs",
+            "fileCount": 18,
+            "commitCount": 0,
+            "matchedFiles": [
+              "core/smt/tests/delete_with_promotion.rs",
+              "core/smt/tests/e2e.rs",
+              "core/smt/tests/non_inclusion_shortcut.rs",
+              "docs/proving-pipeline.md",
+              "l1/bridge/tests/integration.rs",
+              "l1/utils/tests/tx_id.rs",
+              "node/framework/tests/e2e.rs",
+              "scheduling/scheduler/tests/e2e.rs"
+            ],
+            "matchedCommits": [],
+            "builderImpact": "Changed examples, tests, and guides should become reproducible compatibility checks in downstream projects."
+          }
+        ],
+        "url": "https://github.com/kaspanet/vprogs/compare/57039db09ea958689aee2ae89f81ba40c8cc3e6d...252ff51f5467b73be75bc58ae84e5b22e90e3022"
       }
     ]
   },
@@ -3044,15 +6108,17 @@
       "ok": true,
       "status": 200,
       "networkName": "kaspa-mainnet",
-      "virtualDaaScore": "452903728",
-      "blockCount": "26371161",
-      "headerCount": "26371161",
+      "virtualDaaScore": "474391519",
+      "blockCount": "1192067",
+      "headerCount": "1192067",
       "tipHashes": [
-        "ac07ad88dbc0a3e6bbde199b971759dc49eee576c680453b45558f623c3b7468",
-        "a77ab6e83f8f4e67ca1d499e7f5668d81549184f0c6a139cc6cda7a1891209b3",
-        "913477ad53e35abe526253396822ee6c10afac8b532c22706892ed5732380fce",
-        "023d8580f13035d75658ce8c75926166d78f288551aad62c8a556b1eda3cecd6",
-        "1a899f672255be9cfa28b540150aec6a2fdc6b2b540ae95a33c44e1e14a4a978"
+        "28b18e7f9ef11f53a770b9f282bbc2d681649adb9c16413ae3e4a2d78c6cd4fb",
+        "8248e4b1ef5dd85368ffc4fd5242218777acc70825f71a54a5744bc37595d2e3",
+        "b42b3c796c8586ba5c6c99e7d48f326847260a55f00f5019ee791aeae6eda8ff",
+        "93dd7ffa280e5001bd41986d3f85c06a8555749a3585d831b0426a31b5bc0c44",
+        "70b2fa394dce178f0f991e18c1a4b1032b978eebb07c1ed4b35f50458b2e7576",
+        "7847e8c22f082b92888ac44b00833025ee6863a9a231b7fd3718b1c6fc2a8bea",
+        "8694af8bf6f6f8aeb4ea3d4eaf7e98882ca065d625adfce45c7144e13a17097d"
       ]
     },
     {
@@ -3062,11 +6128,17 @@
       "ok": true,
       "status": 200,
       "networkName": "kaspa-testnet-10",
-      "virtualDaaScore": "483498498",
-      "blockCount": "1469279",
-      "headerCount": "1469279",
+      "virtualDaaScore": "505007593",
+      "blockCount": "6478083",
+      "headerCount": "6478083",
       "tipHashes": [
-        "5f691888c7a343df7ce246ae284e865342b39f8ff9e2d525ca8944b50727fb63"
+        "7b63846c77be37cbc55c216f3e277cb9ff4397af3cf91f542282e4f393a24bf2",
+        "3b7c85df4eda92268d60cd189450a9aa5ad9c462a85e623739f6a11fede90270",
+        "9ceb010f5b89a5757ccce2072b677fe4aa7b0ebdf0aeb51445fa55cde6a7054a",
+        "9f94719639cc73760726124d7bc75a4378240e1e591eb2546d842d5e441211a7",
+        "820f65605d3668c11d1cd47e276c3f2f2fbadec79134e729c22f702c873b8e9f",
+        "bd554e780ecf2143c788adef27ba23a315b69400ea2431ccec1152503ad8324d",
+        "778976cdef2b2602b118f334884ef3808ad5006b200e5edafaad72541cde565d"
       ]
     },
     {
@@ -3074,8 +6146,8 @@
       "url": "https://api-tn12.kaspa.org/info/blockdag",
       "expectedNetworkName": "kaspa-testnet-12",
       "ok": false,
-      "status": 500,
-      "error": "Internal server error"
+      "status": 503,
+      "error": "Invalid JSON: Unexpected token '<', \"<html><bod\"... is not valid JSON"
     }
   ],
   "webSources": [
@@ -3096,60 +6168,60 @@
       "url": "https://docs.kaspa.org/programmability",
       "ok": true,
       "status": 200,
-      "etag": "W/\"ca70735e3d333d9651b8460ee51942a6\"",
-      "lastModified": "Fri, 29 May 2026 05:54:37 GMT",
-      "contentLength": 55397,
-      "contentSha256": "91c3aed0ca1f4e4e71ec2b5d0389544f26cc9ae63e9d4312b6aadad4723d1193",
-      "fingerprintBasis": "etag:W/\"ca70735e3d333d9651b8460ee51942a6\"",
-      "sourceFingerprint": "8a4394dc92661d122b40ae23c1f31c885306916529b71f55b01cfaf623774aae"
+      "etag": "W/\"04bb143eb3a3e196ef76cc6c0097f91f\"",
+      "lastModified": null,
+      "contentLength": 62234,
+      "contentSha256": "ca04fbd40b265bf43b14a9ed291beb0812ae5fc347ce8fa7023f60705735f51b",
+      "fingerprintBasis": "etag:W/\"04bb143eb3a3e196ef76cc6c0097f91f\"",
+      "sourceFingerprint": "827354d83526500105d4dc93b0c3a99574c98727c5008cd6e486ff7b822136ef"
     },
     {
       "label": "Kaspa covenants docs",
       "url": "https://docs.kaspa.org/programmability/covenants",
       "ok": true,
       "status": 200,
-      "etag": "W/\"55416d21d8471f24dc8f4263ffbc2355\"",
-      "lastModified": "Fri, 29 May 2026 12:18:57 GMT",
-      "contentLength": 54726,
-      "contentSha256": "a0ff4aabae8ff91bce7d378c0b8f89542dff1511141c7f4ab2463205b7deb591",
-      "fingerprintBasis": "etag:W/\"55416d21d8471f24dc8f4263ffbc2355\"",
-      "sourceFingerprint": "73e4a4a4676b8dfa50203247c09ba039af838b6cc4ff7dd5bf0e98fb36d15f31"
+      "etag": "W/\"56ae360879dfc4932cc777338218503a\"",
+      "lastModified": null,
+      "contentLength": 60844,
+      "contentSha256": "1d1e00c2e954f21a679f72a3cbae57903407cbb1e764ba72eb5172a9b5cdf336",
+      "fingerprintBasis": "etag:W/\"56ae360879dfc4932cc777338218503a\"",
+      "sourceFingerprint": "36a08457415bbe3c2785dbe0ea321072f1247cce91d61c6be628127799bd9f5c"
     },
     {
       "label": "Kaspa inline ZK docs",
       "url": "https://docs.kaspa.org/programmability/inline-zk",
       "ok": true,
       "status": 200,
-      "etag": "W/\"c2cc7ed8524ad41e3be8c61bc8ba4c6f\"",
-      "lastModified": "Fri, 29 May 2026 12:19:19 GMT",
-      "contentLength": 53928,
-      "contentSha256": "e3d253d2e33c0fa322c4ff2d5ce9f377f73ae9b2ec4adee63666ddbb7ff52a3a",
-      "fingerprintBasis": "etag:W/\"c2cc7ed8524ad41e3be8c61bc8ba4c6f\"",
-      "sourceFingerprint": "f0935b1651d6376c19c68affbadabffdcefccae2331b7409779e17a1468a64f4"
+      "etag": "W/\"3b13621271b67722f9d9dcf99ce70b62\"",
+      "lastModified": null,
+      "contentLength": 60046,
+      "contentSha256": "9f27ff80340137ba375d4a2d3407e63f7d4e08a05a21f6de0a58d5ba0fdfbac5",
+      "fingerprintBasis": "etag:W/\"3b13621271b67722f9d9dcf99ce70b62\"",
+      "sourceFingerprint": "210ed25efc9d7fdb335498e9c6308189f25c6c11db174d5fbbb1edc8dfd64a9b"
     },
     {
       "label": "Kaspa based apps docs",
       "url": "https://docs.kaspa.org/programmability/based-apps",
       "ok": true,
       "status": 200,
-      "etag": "W/\"b79cca6b00eb45041542e76a055078e8\"",
-      "lastModified": "Fri, 29 May 2026 05:54:38 GMT",
-      "contentLength": 52059,
-      "contentSha256": "4a1aef3bf9bc0d17b6e45b4e943c9912971624c5475c5a7ab2305c7af77b0013",
-      "fingerprintBasis": "etag:W/\"b79cca6b00eb45041542e76a055078e8\"",
-      "sourceFingerprint": "618bd928125d8c09f242fd9a443b8d6093d4cc97d5e8e9348a9d78db81821da9"
+      "etag": "W/\"1ff6b15b96087eb17f6e48f0a9fbe6d0\"",
+      "lastModified": null,
+      "contentLength": 58177,
+      "contentSha256": "2c007be0dd9b07097ec8c093d544cf2ff6a67360134be8bfdc873630a23883b5",
+      "fingerprintBasis": "etag:W/\"1ff6b15b96087eb17f6e48f0a9fbe6d0\"",
+      "sourceFingerprint": "cdf59d146dd2d434621db4df074166fb97870130ba798324470aa9a1fca26e53"
     },
     {
       "label": "Kaspa full vProgs docs",
       "url": "https://docs.kaspa.org/programmability/full-vprogs",
       "ok": true,
       "status": 200,
-      "etag": "W/\"82a557b4d8cbd2036bf69309d6132f73\"",
-      "lastModified": "Sat, 30 May 2026 08:00:29 GMT",
-      "contentLength": 45792,
-      "contentSha256": "44b4a8fa0027271f7767dcfaecd13f352e7499156b460e05d7e1ba32c39e1682",
-      "fingerprintBasis": "etag:W/\"82a557b4d8cbd2036bf69309d6132f73\"",
-      "sourceFingerprint": "a33718dab8525dba4fe7f6c97e4f07133ceb646a229a3c94024713c58a7267be"
+      "etag": "W/\"dd0e56a83a5e418473451175cbdf0ec8\"",
+      "lastModified": null,
+      "contentLength": 51910,
+      "contentSha256": "975403f2eec02df3dbb6037d0f4182b10360776d37b4cfb88ba31d547dfb5f63",
+      "fingerprintBasis": "etag:W/\"dd0e56a83a5e418473451175cbdf0ec8\"",
+      "sourceFingerprint": "b5fe92cd42139d42a45b413ebffffd60da72a81a15e42693f063b26cb4f439fc"
     },
     {
       "label": "Formal vProg computation DAG model",
@@ -3159,7 +6231,7 @@
       "etag": null,
       "lastModified": "Tue, 19 Aug 2025 21:04:05 GMT",
       "contentLength": 46722,
-      "contentSha256": "493223d68513c4da4302755726fe0f7414363713d82df7e6fc7d6375081c0f9d",
+      "contentSha256": "b901c8c2d9a1e52331944812909793975ea79c57d3aed019c21d00696c99565f",
       "fingerprintBasis": "last-modified:Tue, 19 Aug 2025 21:04:05 GMT;bytes:46722",
       "sourceFingerprint": "0d01364b7b4050414ae64384d32e51f11cb58b186bb7e78fc3ee1e90c29eaff6"
     },
@@ -3171,7 +6243,7 @@
       "etag": null,
       "lastModified": "Fri, 26 Sep 2025 01:10:08 GMT",
       "contentLength": 24937,
-      "contentSha256": "cdcb6a99d80f0748744329d9d1447f6cc12a6ac0b724df62f10d366aa2669044",
+      "contentSha256": "221bd3b8afb7ebd613475f7bf34e8037f372d9c4413dd5ba3f0affe7b084d426",
       "fingerprintBasis": "last-modified:Fri, 26 Sep 2025 01:10:08 GMT;bytes:24937",
       "sourceFingerprint": "647b4d92432f01cb389d744c3c0ffa74e2e64b0cb27228bdb488fd708f2d4b57"
     },
@@ -3183,7 +6255,7 @@
       "etag": null,
       "lastModified": "Sun, 24 Aug 2025 16:16:12 GMT",
       "contentLength": 32618,
-      "contentSha256": "2252e2a567ea3190ccd743f43342f6486ccf0713c7ee818c6f37361ba2368ce4",
+      "contentSha256": "fd8701d384c024b0e79b32ccd39a53d9744147202909b0f78c4d29879785694f",
       "fingerprintBasis": "last-modified:Sun, 24 Aug 2025 16:16:12 GMT;bytes:32618",
       "sourceFingerprint": "cc44adf3732df5175a21643170a28cd7192daaec27c4e995d9ac4efecd489b0b"
     },
@@ -3195,53 +6267,67 @@
       "etag": null,
       "lastModified": "Sun, 23 Feb 2025 15:17:32 GMT",
       "contentLength": 56014,
-      "contentSha256": "54e4c568d3b782a24493edd9dd62ce03a411fa54df6816c29010c4efa4fee253",
+      "contentSha256": "06168e58eaef19379230321b3cd4d968fb1c7dee6760767f590a09079a9676a4",
       "fingerprintBasis": "last-modified:Sun, 23 Feb 2025 15:17:32 GMT;bytes:56014",
       "sourceFingerprint": "57a1692460057531288a423923221b10db000ae774f0c41a69256278d4a0dd98"
     }
   ],
   "fetchWarnings": [],
   "verdict": {
-    "mainnetActivation": "scheduled for mainnet DAA 474165565 (June 30, 2026, at 16:15 UTC); current mainnet is below threshold",
+    "mainnetActivation": "verified active at mainnet DAA 474391519, activation threshold 474165565",
     "activation": {
-      "state": "scheduled",
+      "state": "active",
       "releaseTag": "v2.0.0",
       "releasePublishedAt": "2026-06-05T12:09:13Z",
       "daaScore": 474165565,
       "scheduleText": "June 30, 2026, at 16:15 UTC",
-      "currentDaaScore": 452903728,
-      "remainingDaaScore": 21261837,
+      "currentDaaScore": 474391519,
+      "remainingDaaScore": 0,
       "endpointVerified": true
     },
     "implementationStatus": "PR #1000 is closed and merged against master.",
-    "branchStatus": "rusty-kaspa master 90dbf074275d, toccata 0ae28f939e61.",
+    "branchStatus": "rusty-kaspa master 98a4ccd8d200, toccata 0ae28f939e61.",
     "caution": [
       "Do not equate open PRs with merged production behavior.",
       "A final release and activation schedule do not mean the activation DAA has been reached.",
       "Separate protocol activation from wallet, pool, indexer, explorer, and application readiness."
     ]
   },
-  "factsHash": "09fb9264350e6cf7c7e8882ebc1bf704383afea8878a8bb70a3ccab70e58bf4f",
+  "factsHash": "4713fa066387bd080e9e30bcac80de0b8b41c77544cdce96555ac3c2702acb36",
   "previousFactsHash": "09fb9264350e6cf7c7e8882ebc1bf704383afea8878a8bb70a3ccab70e58bf4f",
-  "changedSincePrevious": false,
+  "changedSincePrevious": true,
   "changeSummary": {
-    "previousCheckedAt": "2026-06-06T01:38:20.406Z",
-    "currentCheckedAt": "2026-06-06T01:39:16.315Z",
+    "previousCheckedAt": "2026-06-06T01:39:16.315Z",
+    "currentCheckedAt": "2026-06-30T22:39:08.670Z",
     "previousFactsHash": "09fb9264350e6cf7c7e8882ebc1bf704383afea8878a8bb70a3ccab70e58bf4f",
-    "currentFactsHash": "09fb9264350e6cf7c7e8882ebc1bf704383afea8878a8bb70a3ccab70e58bf4f",
-    "changedSincePrevious": false,
+    "currentFactsHash": "4713fa066387bd080e9e30bcac80de0b8b41c77544cdce96555ac3c2702acb36",
+    "changedSincePrevious": true,
     "sections": {
       "facts": [
-        "No stable monitored fact changes detected."
+        "factsHash 09fb9264350e6cf7c7e8882ebc1bf704383afea8878a8bb70a3ccab70e58bf4f -> 4713fa066387bd080e9e30bcac80de0b8b41c77544cdce96555ac3c2702acb36"
       ],
-      "githubPulls": [],
+      "githubPulls": [
+        "KIP-22: updated 2026-03-10T16:31:00Z -> 2026-06-28T07:43:08Z."
+      ],
       "releases": [],
-      "refs": [],
-      "network": [
-        "Mainnet blockdag: virtualDaaScore 452903094 -> 452903728; blockCount 26370527 -> 26371161; headerCount 26370527 -> 26371161.",
-        "TN10 blockdag: virtualDaaScore 483497959 -> 483498498; blockCount 1468740 -> 1469279; headerCount 1468740 -> 1469279."
+      "refs": [
+        "kaspanet/rusty-kaspa heads/master: sha 90dbf074275d -> 98a4ccd8d200.",
+        "kaspanet/docs heads/main: sha 6aa5e9f52995 -> c3fb0fded5f1.",
+        "kaspanet/silverscript heads/master: sha 2c4623124d75 -> d25bd3427a09.",
+        "kaspanet/vprogs heads/master: sha 57039db09ea9 -> 252ff51f5467."
       ],
-      "webSources": []
+      "network": [
+        "Mainnet blockdag: virtualDaaScore 452903728 -> 474391519; blockCount 26371161 -> 1192067; headerCount 26371161 -> 1192067.",
+        "TN10 blockdag: virtualDaaScore 483498498 -> 505007593; blockCount 1469279 -> 6478083; headerCount 1469279 -> 6478083.",
+        "TN12 blockdag: status error:500 -> error:503."
+      ],
+      "webSources": [
+        "Kaspa programmability overview: fingerprint 8a4394dc9266 -> 827354d83526; bytes 55397 -> 62234.",
+        "Kaspa covenants docs: fingerprint 73e4a4a4676b -> 36a08457415b; bytes 54726 -> 60844.",
+        "Kaspa inline ZK docs: fingerprint f0935b1651d6 -> 210ed25efc9d; bytes 53928 -> 60046.",
+        "Kaspa based apps docs: fingerprint 618bd928125d -> cdf59d146dd2; bytes 52059 -> 58177.",
+        "Kaspa full vProgs docs: fingerprint a33718dab852 -> b5fe92cd4213; bytes 45792 -> 51910."
+      ]
     }
   }
 }

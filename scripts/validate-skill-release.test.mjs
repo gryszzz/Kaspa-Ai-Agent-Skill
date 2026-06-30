@@ -38,6 +38,7 @@ function copyReleaseSurface() {
     "docs/toccata.md",
     "release-metadata.json",
     "release-notes/v1.8.0.md",
+    "research-snapshots/toccata/latest.json",
     "skills/public/kaspa-sovereign-architect-engine/manifest.json",
     "skills/public/kaspa-sovereign-architect-engine/agents",
     "skills/public/kaspa-sovereign-architect-engine/scripts/package-release.sh",

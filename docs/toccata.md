@@ -8,9 +8,13 @@ Source status: official/repo-backed only. Audit baseline: 2026-06-30. GitHub
 reported `rusty-kaspa` latest release `v2.0.1`, published
 2026-06-15T19:14:22Z, tag `cfafeb4c093fa37a303f1b9f19c58f986b870ce3`.
 `v2.0.0` was published 2026-06-05T12:09:13Z, tag
-`90dbf074275d60c1fe74a3491883196f110970c0`. Mainnet activation must still be
-verified against a live mainnet endpoint and the activation DAA before claiming
-active behavior.
+`90dbf074275d60c1fe74a3491883196f110970c0`.
+
+Post-activation audit: on 2026-06-30T22:39:08Z the live mainnet source monitor
+returned `networkName=kaspa-mainnet` and `virtualDaaScore=474391519`, above the
+activation DAA `474165565`. This proves Toccata protocol activation on
+mainnet for this audit. It does not prove wallet, indexer, miner, explorer, or
+application readiness.
 
 ## Source Pack
 
@@ -43,6 +47,8 @@ truth for Toccata behavior.
 - Rusty Kaspa `v2.0.1` or newer is the current implementation target for new
   Toccata work. Use Go Kaspad `v0.12.23` only for legacy Go wallet/tooling
   compatibility and label it as legacy.
+- Mainnet protocol activation is now verified by live DAA evidence, but
+  downstream readiness remains a separate audit.
 
 ## Fee Model
 

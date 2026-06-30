@@ -97,10 +97,26 @@ Current June 6, 2026 posture from `research-snapshots/toccata/latest.md`:
 2026-06-30 source pulse:
 
 - Latest stable Rusty Kaspa is `v2.0.1`, a mainnet Toccata maintenance release published on 2026-06-15.
-- `v2.0.0` remains the mainnet Toccata release that scheduled activation at DAA `474,165,565`, roughly 2026-06-30 16:15 UTC. At 2026-06-30T13:29:37Z, live mainnet returned `networkName=kaspa-mainnet` and `virtualDaaScore=474063735`, so answer `scheduled/pre-activation` unless a fresh mainnet endpoint crosses the threshold.
+- `v2.0.0` remains the mainnet Toccata release that scheduled activation at
+  DAA `474,165,565`, roughly 2026-06-30 16:15 UTC. At
+  2026-06-30T13:29:37Z, live mainnet returned `networkName=kaspa-mainnet` and
+  `virtualDaaScore=474063735`, so that audit was scheduled/pre-activation.
+  The post-activation pulse below supersedes this status.
 - Current Rusty Kaspa heads: `master` `98a4ccd8d200853787f227bd4536ac540cf34957`, `toccata` `0ae28f939e61994a11eb8eb6dd775255e2924afb`, `tn10` `e5f6d1f7c86f3a3afbe97dbb75e72a0a3ff66a57`, `tn12` `ab4c51afde90dc6e0bce3f782d0a18af5da29434`.
 - The current Toccata Guide is `https://github.com/kaspanet/rusty-kaspa/blob/master/docs/toccata-guide.md`. Avoid malformed search-wrapper links; use GitHub release, raw, or blob URLs directly.
 - The Toccata Guide names the fee policy `100 sompi * max(compute grams, 2 * transaction bytes)` and labels it node/mempool policy, not consensus. It also names `RpcTransaction.storage_mass`, JSON/WASM `storageMass`, `RpcTransactionInput.computeBudget`, `RpcTransactionOutput.covenant`, and `RpcUtxoEntry.covenant_id`.
+
+2026-06-30 post-activation pulse:
+
+- The source monitor now verifies Toccata protocol activation on mainnet:
+  `networkName=kaspa-mainnet`, `virtualDaaScore=474391519`, activation DAA
+  `474165565`, checked at 2026-06-30T22:39:08Z.
+- The readiness gate decision is `ready_to_claim_mainnet_protocol_active` with
+  `6/6` protocol gates.
+- Wallet/indexer readiness remains blocked as a separate claim:
+  `do_not_claim_wallet_indexer_ready`.
+- Use active-mainnet wording only when citing the live endpoint audit date,
+  returned network name, observed DAA, activation DAA, and source snapshot hash.
 
 Rusty Kaspa:
 

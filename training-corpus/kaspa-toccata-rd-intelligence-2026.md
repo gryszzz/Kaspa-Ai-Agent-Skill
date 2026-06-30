@@ -1,6 +1,6 @@
 # Kaspa Toccata R&D Intelligence Upgrade
 
-Generated: 2026-06-06T01:39:16Z
+Generated: 2026-06-06T01:39:16Z; post-activation supplement added 2026-06-30
 
 ## Executive Verdict
 
@@ -15,12 +15,18 @@ The strategic path is to master three layers at once:
 Current high-confidence status:
 
 - Rusty Kaspa `v2.0.0` is the final Toccata release. Activation is scheduled for mainnet DAA `474,165,565`, roughly 2026-06-30 16:15 UTC.
-- The 2026-06-06 mainnet endpoint observation remained below the activation DAA, so the protocol is scheduled, not yet active.
+- The 2026-06-06 mainnet endpoint observation remained below the activation
+  DAA. The 2026-06-30T22:39:08Z source monitor later verified active mainnet
+  protocol status with `networkName=kaspa-mainnet` and
+  `virtualDaaScore=474391519`.
 - PR #1000, `Toccata`, is closed and merged from `toccata` into `master`.
 - PR #1013, `ZK opcode updates`, is closed and merged into `tn10`.
 - `tn10-toc3` is TN10 Toccata ZK hardening evidence. Its release notes schedule TN10 activation for May 28, 2026 around 16:00 UTC at DAA score 476,232,000.
 - KIP-16, KIP-17, KIP-20, and KIP-21 are closed and merged to `kaspanet/kips` `master`; their document statuses indicate implemented/activated on TN10.
-- The mainnet readiness gate separates protocol activation from wallet/indexer readiness. The release, schedule, merged code, mainnet endpoint, and official guide are present; the activation DAA has not yet been reached.
+- The mainnet readiness gate separates protocol activation from wallet/indexer
+  readiness. The release, schedule, merged code, mainnet endpoint, official
+  guide, and activation DAA threshold are now satisfied; wallet/indexer
+  readiness remains a separate blocked claim.
 
 ## Source Snapshot
 

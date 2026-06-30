@@ -2,7 +2,11 @@
 
 This page explains how this repository ranks Toccata-era evidence. It is meant for readers who need to decide whether a claim is mainnet behavior, testnet behavior, branch-only work, a proposal, or research direction.
 
-Short rule: a final release with a future DAA is scheduled mainnet evidence. Active mainnet behavior begins only when a verified mainnet endpoint reaches that DAA.
+Short rule: a final release with a future DAA is scheduled mainnet evidence.
+Active mainnet behavior begins only when a verified mainnet endpoint reaches
+that DAA. As of the 2026-06-30T22:39:08Z source snapshot, Toccata protocol
+activation is verified on mainnet because `kaspa-mainnet` returned
+`virtualDaaScore=474391519`, above activation DAA `474165565`.
 
 ## Source Tiers
 
@@ -61,6 +65,8 @@ Tier 10: live mainnet/TN10/TN12 signals
 
 - Use `/info/blockdag` checks to confirm endpoint health, returned network name, and DAA context.
 - For a scheduled mainnet fork, compare live mainnet `virtualDaaScore` to the release activation DAA.
+- After activation, keep citing the endpoint audit date, returned network name,
+  observed DAA, and activation DAA.
 - Pair testnet observations with branch, PR, and docs evidence.
 - Never infer mainnet activation from TN10 or TN12.
 

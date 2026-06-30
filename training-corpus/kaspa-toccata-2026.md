@@ -1,16 +1,24 @@
 # Kaspa Toccata Mastery Map
 
-Generated: 2026-06-06
+Generated: 2026-06-06; updated with post-activation supplement on 2026-06-30
 
 ## Current Status
 
-Treat Toccata as released and scheduled, but not yet active on mainnet until a verified mainnet endpoint reaches activation DAA `474,165,565`.
+Treat Toccata protocol activation as verified on mainnet only when citing the
+post-threshold live endpoint evidence. The current repository snapshot checked
+at 2026-06-30T22:39:08Z returned `networkName=kaspa-mainnet` and
+`virtualDaaScore=474391519`, above activation DAA `474,165,565`.
+
+Wallet, indexer, miner, explorer, and application readiness remain separate
+claims.
 
 Confirmed evidence as of 2026-06-06:
 
 - Rusty Kaspa `v2.0.0`, published 2026-06-05, is the final Toccata release. It schedules mainnet activation for DAA `474,165,565`, roughly 2026-06-30 16:15 UTC.
 - Starting 24 hours before activation, updated nodes connect only to peers using P2P protocol version 10.
-- The latest source snapshot observed mainnet below the activation threshold, so present-tense mainnet activation claims remain incorrect.
+- The 2026-06-06 source snapshot observed mainnet below the activation
+  threshold. The 2026-06-30T22:39:08Z snapshot later verified active mainnet
+  protocol status.
 - Rusty Kaspa GitHub shows PR #1000, `Toccata`, closed and merged from `toccata` into `master` on 2026-06-02.
 - Rusty Kaspa GitHub shows PR #1013, `ZK opcode updates`, closed and merged into `tn10` on 2026-05-27.
 - Rusty Kaspa GitHub shows `tn10-toc3` as a pre-release published on 2026-05-27. It scheduled TN10 Toccata ZK hardening for 2026-05-28 around 16:00 UTC at DAA score 476,232,000.
@@ -41,7 +49,8 @@ Audit time: 2026-06-06T01:39:16Z
 - `kaspanet/rusty-kaspa` tag `tn10-toc3`: `1015a62359e0d06e0b3b3b7f7d06bc1bd4bf0c1b`
 - `kaspanet/rusty-kaspa` tag `tn10-toc2`: `97415b689462bec8a1a36f1665302529ea8a3108`
 
-The implementation, final release, and activation schedule are now verified. Active mainnet behavior still requires live DAA threshold evidence.
+The implementation, final release, activation schedule, and post-threshold
+mainnet DAA evidence are now verified for the 2026-06-30T22:39:08Z audit.
 
 Do not treat all GitHub PRs marked `MERGED` as merged into `master`. Several important Toccata PRs were merged into feature branches such as `covpp`, `covpp-reset1`, `covpp-reset2`, or `toccata`. Record `baseRefName` whenever using GitHub PR evidence.
 
@@ -64,7 +73,9 @@ Live REST check:
 Conclusion:
 
 - Toccata should be described as active/past activation on TN10 only when the release schedule and live TN10 endpoint evidence are cited together.
-- Toccata should be described as released and scheduled on mainnet, not active, until the live DAA reaches `474,165,565`.
+- Toccata may be described as protocol-active on mainnet when citing the
+  2026-06-30T22:39:08Z live DAA evidence or a fresher equivalent endpoint
+  check.
 
 ### KIP Status Evidence
 

@@ -31,7 +31,7 @@ test("passes all bundled behavioral reference responses", () => {
   const result = run(["--check"]);
 
   assert.equal(result.status, 0, result.stderr || result.stdout);
-  assert.equal(result.report.total, 15);
+  assert.equal(result.report.total, 16);
   assert.equal(result.report.failedCount, 0);
 });
 

@@ -52,6 +52,39 @@
       "referenceResponse": "The release is available, but behavior with a future DAA is scheduled rather than active. Call it active only after a verified mainnet endpoint reaches the activation DAA."
     },
     {
+      "id": "post-threshold-mainnet-active",
+      "prompt": "A final Toccata release exists and a live kaspa-mainnet endpoint is above activation DAA. What can I claim now?",
+      "required": [
+        {
+          "label": "claims protocol activation only",
+          "pattern": "protocol activation|protocol-active|protocol active"
+        },
+        {
+          "label": "requires returned mainnet identity",
+          "pattern": "kaspa-mainnet"
+        },
+        {
+          "label": "requires DAA threshold evidence",
+          "pattern": "DAA"
+        },
+        {
+          "label": "keeps wallet and indexer separate",
+          "pattern": "wallet|indexer"
+        },
+        {
+          "label": "states readiness separation",
+          "pattern": "separate|does not prove|still requires"
+        }
+      ],
+      "prohibited": [
+        {
+          "label": "claims ecosystem-wide readiness",
+          "pattern": "all wallets and indexers (?:are|ready|support)|ecosystem is fully ready"
+        }
+      ],
+      "referenceResponse": "You can claim Toccata protocol activation is verified on mainnet when citing the live kaspa-mainnet endpoint and observed DAA above the activation DAA. That does not prove wallet, indexer, miner, explorer, or app readiness; those remain separate audits."
+    },
+    {
       "id": "kip-release-activation-lifecycle",
       "prompt": "A KIP PR merged. What can I claim about release and activation?",
       "required": [

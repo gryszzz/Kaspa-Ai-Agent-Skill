@@ -17,6 +17,20 @@ Supplemental snapshot note, 2026-06-30T13:29:37Z:
 - Live mainnet returned `networkName=kaspa-mainnet` and `virtualDaaScore=474063735`, below `474165565`.
 - Ecosystem decision remains `do_not_claim_wallet_indexer_ready`.
 
+Post-activation snapshot note, 2026-06-30T22:39:08Z:
+
+- Protocol decision: `ready_to_claim_mainnet_protocol_active`.
+- Rusty Kaspa `v2.0.0` remains the release that defines activation DAA
+  `474,165,565`; Rusty Kaspa `v2.0.1` remains the current implementation
+  target for operators and integrators.
+- Live mainnet returned `networkName=kaspa-mainnet` and
+  `virtualDaaScore=474391519`, above the activation threshold.
+- The source monitor facts hash is
+  `4713fa066387bd080e9e30bcac80de0b8b41c77544cdce96555ac3c2702acb36`.
+- Ecosystem decision remains `do_not_claim_wallet_indexer_ready`; protocol
+  activation does not prove audited wallet, indexer, miner, explorer, or app
+  readiness.
+
 Run:
 
 ```bash
@@ -50,7 +64,8 @@ Toccata v2.0.0 is released and scheduled to activate at mainnet DAA 474,165,565.
 After the threshold, if all protocol gates pass:
 
 ```text
-Toccata protocol activation is verified on mainnet.
+Toccata protocol activation is verified on mainnet as of the cited live
+mainnet DAA check.
 ```
 
 Still blocked without ecosystem evidence:

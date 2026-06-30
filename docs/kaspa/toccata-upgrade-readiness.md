@@ -13,7 +13,7 @@ node scripts/toccata-source-monitor.mjs --write-if-changed
 node scripts/kaspa-knowledge-drill.mjs
 ```
 
-As of the latest local snapshot:
+Historical 2026-06-06 posture:
 
 - Rusty Kaspa `v2.0.0`, published 2026-06-05, is the final Toccata mainnet release.
 - Toccata is scheduled to activate at mainnet DAA `474,165,565`, roughly 2026-06-30 16:15 UTC.
@@ -29,18 +29,34 @@ Supplemental check, 2026-06-30T13:29:37Z:
 
 - Rusty Kaspa `v2.0.1`, published 2026-06-15, is the latest stable mainnet Toccata release.
 - Rusty Kaspa `v2.0.0` remains the release that defines the mainnet activation DAA `474,165,565`.
-- Live mainnet returned `networkName=kaspa-mainnet` and `virtualDaaScore=474063735`, still below activation threshold. Continue to describe Toccata as scheduled/pre-activation until a fresh mainnet endpoint reaches or exceeds the threshold.
+- At that audit, live mainnet returned `networkName=kaspa-mainnet` and
+  `virtualDaaScore=474063735`, still below activation threshold. This line is
+  historical; the post-activation check below supersedes it.
 - Current Rusty Kaspa heads: `master` `98a4ccd8d200853787f227bd4536ac540cf34957`, `toccata` `0ae28f939e61994a11eb8eb6dd775255e2924afb`, `tn10` `e5f6d1f7c86f3a3afbe97dbb75e72a0a3ff66a57`, and `tn12` `ab4c51afde90dc6e0bce3f782d0a18af5da29434`.
+
+Post-activation check, 2026-06-30T22:39:08Z:
+
+- Toccata protocol activation is verified on mainnet by live endpoint evidence:
+  `networkName=kaspa-mainnet` and `virtualDaaScore=474391519`, above
+  activation DAA `474165565`.
+- `node scripts/toccata-mainnet-readiness-gate.mjs --check` now returns
+  `ready_to_claim_mainnet_protocol_active` with `6/6` protocol gates.
+- The ecosystem gate remains `do_not_claim_wallet_indexer_ready`; wallet,
+  indexer, miner, explorer, and app readiness still require separate audits.
+- Current source snapshot facts hash:
+  `4713fa066387bd080e9e30bcac80de0b8b41c77544cdce96555ac3c2702acb36`.
 
 ## What Is Here
 
-Released, scheduled, testnet-visible, or source-visible work:
+Released, mainnet-active, testnet-visible, or source-visible work:
 
 - Merged `master` implementation evidence for Toccata through PR #1000, plus branch/tag evidence that must still be interpreted network-by-network.
 - Toccata branch evidence for covenants, covenant IDs, ZK opcode work, sequencing commitments, and related transaction/RPC surfaces.
-- Final release and activation schedule evidence through `v2.0.0`.
-- Stable maintenance evidence through `v2.0.1`; this is upgrade evidence and
-  does not by itself prove mainnet activation.
+- Final release and activation schedule evidence through `v2.0.0`, plus live
+  mainnet activation evidence from the post-threshold source snapshot.
+- Stable maintenance evidence through `v2.0.1`; this is the current
+  implementation target, while mainnet activation remains proven by live DAA
+  threshold evidence.
 - Higher node relay/RPC minimum fee policy: `100 sompi * max(compute grams, 2 * transaction bytes)`. This is policy, not consensus validity.
 - Transaction API migration: Rust/protobuf `storage_mass`, JSON/JavaScript `storageMass`, legacy JSON `mass` alias, and `TransactionInput.compute_commit`.
 - Pool/miner requirement to preserve `TransactionOutput.covenant` and `TransactionInput.compute_commit` from block templates through block submission.
@@ -61,7 +77,6 @@ Builder implication:
 
 Expected areas to keep watching:
 
-- Mainnet DAA crossing `474,165,565` and the 24-hour P2P protocol-version-10 cutoff.
 - Post-release fixes and branch deltas, especially transaction serialization, RPC/WASM, wallet/PSKT, mempool, mining template, and security behavior.
 - KIP document-status edits after KIP-16, KIP-17, KIP-20, and KIP-21 are merged.
 - Wallet, WASM, RPC, PSKT, explorer, and indexer support for covenant fields.
@@ -128,8 +143,9 @@ Never mix:
 
 Use precise verbs:
 
-- "is scheduled on mainnet" when the final release and activation DAA are verified but the live DAA is still below threshold.
-- "is active on mainnet" only after a healthy mainnet endpoint reaches the activation DAA.
+- "is scheduled on mainnet" only for historical or pre-threshold snapshots.
+- "is active on mainnet" only when citing a healthy mainnet endpoint at or
+  above the activation DAA.
 - "is active on TN10/TN12" only after endpoint and source checks.
 - "exists on branch" only with branch name and commit hash.
 - "is proposed" for KIP PR text.
@@ -138,7 +154,7 @@ Use precise verbs:
 
 Avoid these claims unless proven:
 
-- "Toccata is live on mainnet."
+- "Toccata is live on mainnet" without citing live DAA evidence.
 - "KIP PRs are final."
 - "Wallets support covenant signing."
 - "RPC providers expose final covenant fields."

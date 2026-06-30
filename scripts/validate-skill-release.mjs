@@ -48,6 +48,7 @@ function validateLocal(repoRoot) {
   const systemArchitecture = readFileSync(path.join(repoRoot, "SYSTEM_ARCHITECTURE.md"), "utf8");
   const trainingSources = readFileSync(path.join(repoRoot, "TRAINING_SOURCES.md"), "utf8");
   const toccataGuide = readFileSync(path.join(repoRoot, "docs", "toccata.md"), "utf8");
+  const toccataSnapshot = readJson(path.join(repoRoot, "research-snapshots", "toccata", "latest.json"));
   const version = manifest.version;
   const versionTag = `v${version}`;
 
@@ -173,6 +174,22 @@ function validateLocal(repoRoot) {
       failures,
     );
   }
+  requireCondition(
+    toccataSnapshot.verdict?.activation?.state === "active",
+    "Toccata snapshot must verify active mainnet protocol status",
+    failures,
+  );
+  requireCondition(
+    Number(toccataSnapshot.verdict?.activation?.currentDaaScore || 0) >=
+      Number(toccataSnapshot.verdict?.activation?.daaScore || Number.POSITIVE_INFINITY),
+    "Toccata snapshot current DAA must be at or above activation DAA",
+    failures,
+  );
+  requireCondition(
+    toccataSnapshot.kaspaNetwork?.some((source) => source.ok && source.networkName === "kaspa-mainnet"),
+    "Toccata snapshot must include healthy kaspa-mainnet endpoint evidence",
+    failures,
+  );
 
   const adapterDir = path.join(skillRoot, "agents");
   for (const fileName of readdirSync(adapterDir).sort()) {

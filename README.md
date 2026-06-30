@@ -23,7 +23,7 @@ This repository publishes a reusable AI skill package for serious Kaspa research
 
 - **Kaspa research radar:** economics, L1/L2, consensus, mining, KIPs, papers, and ecosystem engineering
 - **Toccata R&D intelligence:** branch-aware tracking for covenants, ZK opcodes, sequencing commitments, SilverScript, Based Apps, and vProgs
-- **Toccata integration contracts:** scheduled-versus-active DAA gating, `storageMass`/`storage_mass`, `compute_commit`, fee-policy separation, miner template preservation, and one-way DB migration
+- **Toccata integration contracts:** post-activation DAA gating, `storageMass`/`storage_mass`, `compute_commit`, fee-policy separation, miner template preservation, one-way DB migration, and separate wallet/indexer readiness
 - **Protocol engineering:** BlockDAG, GHOSTDAG, DAGKNIGHT status checks, mempool, UTXO semantics, and future-feature handling
 - **KIP-aware analysis:** separates research ideas, KIP proposals, merged code, activation, wallet/indexer support, and app usability
 - **Indexer architecture:** DAG-aware ordering, idempotent ingestion, dedupe, checkpoints, retries, sync lag, and query-layer separation
@@ -132,7 +132,9 @@ Toccata source monitoring:
 - Behavioral contract evaluations: `node skills/public/kaspa-sovereign-architect-engine/scripts/run-behavioral-evals.mjs --check`
 - Transaction-plan safety gate: `node skills/public/kaspa-sovereign-architect-engine/scripts/lint-transaction-plan.mjs --check`
 - Release packages bundle the skill plus adapters, references, system architecture, protocol training sources, Toccata builder/readiness docs, fixtures, source snapshots, helper modules, and deterministic tests under the installed skill directory.
-- Claim rule: final release plus schedule means "scheduled"; active mainnet requires a verified endpoint at or above the activation DAA, and wallet/indexer readiness is a separate claim
+- Claim rule: current source snapshot verifies Toccata protocol activation on
+  mainnet by live `kaspa-mainnet` DAA evidence; wallet/indexer readiness is
+  still a separate claim.
 
 Agent operating rule:
 

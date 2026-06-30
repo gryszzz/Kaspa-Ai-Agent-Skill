@@ -10,6 +10,7 @@ const defaultCasesPath = path.resolve(scriptDir, "..", "evals", "behavioral-case
 const requiredCaseIds = [
   "mainnet-testnet-status",
   "scheduled-versus-active",
+  "post-threshold-mainnet-active",
   "kip-release-activation-lifecycle",
   "dag-aware-indexer",
   "utxo-value-conservation",
