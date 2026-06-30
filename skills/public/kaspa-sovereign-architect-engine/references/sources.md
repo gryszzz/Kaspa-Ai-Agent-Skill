@@ -28,11 +28,26 @@ Snapshot date: 2026-06-06T01:39:16Z
 
 These hashes are a freshness baseline, not a permanent truth. Re-run `git ls-remote` or inspect local clones before making "latest" claims.
 
+## Supplemental Toccata Pulse
+
+Audit date: 2026-06-30T13:29:37Z
+
+- Rusty Kaspa latest stable release: `v2.0.1`, published 2026-06-15T19:14:22Z, tag `cfafeb4c093fa37a303f1b9f19c58f986b870ce3`, release URL `https://github.com/kaspanet/rusty-kaspa/releases/tag/v2.0.1`.
+- Rusty Kaspa mainnet Toccata release: `v2.0.0`, published 2026-06-05T12:09:13Z, tag `90dbf074275d60c1fe74a3491883196f110970c0`, release URL `https://github.com/kaspanet/rusty-kaspa/releases/tag/v2.0.0`.
+- Rusty Kaspa `master`: `98a4ccd8d200853787f227bd4536ac540cf34957`.
+- Rusty Kaspa `toccata`: `0ae28f939e61994a11eb8eb6dd775255e2924afb`.
+- Rusty Kaspa `tn10`: `e5f6d1f7c86f3a3afbe97dbb75e72a0a3ff66a57`.
+- Rusty Kaspa `tn12`: `ab4c51afde90dc6e0bce3f782d0a18af5da29434`.
+- Mainnet activation DAA remains `474165565` from the `v2.0.0` release and current Toccata guide. Live mainnet REST returned `networkName=kaspa-mainnet` and `virtualDaaScore=474063735`, below threshold, so status at this audit is `scheduled/pre-activation`, not verified active.
+- Current Toccata Guide, fetched from `master` on 2026-06-30, identifies the minimum standard fee policy as `100 sompi * max(compute grams, 2 * transaction bytes)`, describes it as node/mempool policy rather than consensus, and names the transaction/API changes `RpcTransaction.storage_mass`, JSON/WASM `storageMass`, `RpcTransactionInput.computeBudget`, `RpcTransactionOutput.covenant`, and `RpcUtxoEntry.covenant_id`.
+
 ## Primary Sources
 
 - Kaspa Official: `https://kaspa.org/`
+- Kaspa Developer Docs: `https://docs.kaspa.org/`
 - Official Developer Resources: `https://kaspa.org/developers-resourses/`
 - Official Developer Page: `https://kaspa.org/developer/`
+- Official Builder and R&D Portal: `https://kaspa.org/build`
 - Official Docs Repository: `https://github.com/kaspanet/docs`
 - Wiki: `https://wiki.kaspa.org/`
 - Kaspa Research Forum: `https://research.kas.pa/`
@@ -56,6 +71,7 @@ These hashes are a freshness baseline, not a permanent truth. Re-run `git ls-rem
 
 ## Community and Ecosystem Repositories
 
+- Kaspathon Developer Resources: `https://github.com/Kaspathon/KaspaDev-Resources`
 - Kaspa JS utilities / KKluster tooling: verify current repository before use; label as community tooling unless official ownership is confirmed.
 - SilverScript: verify current repository and status before giving production guidance.
 - Kasia: `https://github.com/K-Kluster/Kasia`
@@ -65,8 +81,13 @@ These hashes are a freshness baseline, not a permanent truth. Re-run `git ls-rem
 ## Toccata Programmability Sources
 
 - Rusty Kaspa releases: `https://github.com/kaspanet/rusty-kaspa/releases`
+- Rusty Kaspa latest stable release `v2.0.1`: `https://github.com/kaspanet/rusty-kaspa/releases/tag/v2.0.1`
 - Rusty Kaspa final Toccata release `v2.0.0`: `https://github.com/kaspanet/rusty-kaspa/releases/tag/v2.0.0`
-- Rusty Kaspa Toccata node guide: `https://github.com/kaspanet/rusty-kaspa/blob/v2.0.0/docs/toccata-guide.md`
+- Rusty Kaspa Toccata node guide: `https://github.com/kaspanet/rusty-kaspa/blob/master/docs/toccata-guide.md`
+- Rusty Kaspa Toccata node guide at `v2.0.0`: `https://github.com/kaspanet/rusty-kaspa/blob/v2.0.0/docs/toccata-guide.md`
+- Rusty Kaspa gRPC `messages.proto`: `https://github.com/kaspanet/rusty-kaspa/blob/master/rpc/grpc/core/proto/messages.proto`
+- Rusty Kaspa gRPC `rpc.proto`: `https://github.com/kaspanet/rusty-kaspa/blob/master/rpc/grpc/core/proto/rpc.proto`
+- Go Kaspad legacy compatibility release `v0.12.23`: `https://github.com/kaspanet/kaspad/releases/tag/v0.12.23`
 - Rusty Kaspa Toccata mainnet pre-activation pre-release `v1.3.0-toc.5`: `https://github.com/kaspanet/rusty-kaspa/releases/tag/v1.3.0-toc.5`
 - Rusty Kaspa TN10 Toccata ZK hardening pre-release `tn10-toc3`: `https://github.com/kaspanet/rusty-kaspa/releases/tag/tn10-toc3`
 - Rusty Kaspa TN10 Toccata rehearsal pre-release `tn10-toc2`: `https://github.com/kaspanet/rusty-kaspa/releases/tag/tn10-toc2`

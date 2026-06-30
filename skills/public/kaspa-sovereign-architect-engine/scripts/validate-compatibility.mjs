@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 
 const scriptPath = fileURLToPath(import.meta.url);
 const rootDir = path.resolve(path.dirname(scriptPath), "..");
+const repoRoot = path.resolve(rootDir, "../../..");
 const manifestPath = path.join(rootDir, "manifest.json");
 const openaiPath = path.join(rootDir, "agents", "openai.yaml");
 const logoPath = path.join(rootDir, "assets", "kaspa-ai-agent-skill-logo.svg");
@@ -24,6 +25,7 @@ const contractChecks = [
   ["release and activation separation", /release[\s\S]{0,180}scheduled activation[\s\S]{0,180}(?:verified )?(?:network )?activation/i],
   ["ecosystem readiness separation", /ecosystem readiness/i],
   ["primary-source verification", /primary[- ]sources?/i],
+  ["protocol source ladder", /TRAINING_SOURCES\.md|source-trust references/i],
   ["verification requirement", /verif|tests?/i],
 ];
 const adapterDetailChecks = [
@@ -232,6 +234,7 @@ function validateScripts() {
   const packageScript = path.join(rootDir, "scripts", "package-release.sh");
   const syncScript = path.join(rootDir, "scripts", "sync-local-skill.mjs");
   const evalScript = path.join(rootDir, "scripts", "run-behavioral-evals.mjs");
+  const txPlanLintScript = path.join(rootDir, "scripts", "lint-transaction-plan.mjs");
 
   assertFile(bashInstall, "install-codex.sh");
   assertFile(geminiInstall, "install-gemini.sh");
@@ -241,10 +244,18 @@ function validateScripts() {
   assertFile(packageScript, "package-release.sh");
   assertFile(syncScript, "sync-local-skill.mjs");
   assertFile(evalScript, "run-behavioral-evals.mjs");
+  assertFile(txPlanLintScript, "lint-transaction-plan.mjs");
 }
 
 function validateReferences() {
   const knowledgeMap = path.join(rootDir, "references", "knowledge-map.md");
+  const toccataPlaybook = path.join(rootDir, "references", "toccata-rd-playbook.md");
+  const toccataDocCandidates = [
+    path.join(repoRoot, "docs", "toccata.md"),
+    path.join(rootDir, "docs", "toccata.md"),
+    path.join(rootDir, "references", "repo-docs", "toccata.md"),
+  ];
+  const toccataDoc = toccataDocCandidates.find((candidate) => fs.existsSync(candidate));
   if (!assertFile(knowledgeMap, "knowledge map")) return;
   const content = readFile(knowledgeMap);
   for (const reference of [
@@ -253,11 +264,71 @@ function validateReferences() {
     "kaspa-research-radar.md",
     "toccata-rd-playbook.md",
     "repo-audit-checklist.md",
+    "transaction-plan-safety.md",
+    "live-source-intelligence.md",
     "core-research-track.md",
     "local-skill-sync.md",
   ]) {
     if (!content.includes(reference)) {
       fail(`knowledge map missing reference: ${reference}`);
+    }
+  }
+
+  for (const repositorySource of [
+    "docs/toccata.md",
+    "docs/kaspa",
+    "docs/toccata-evidence-ladder.md",
+    "references/repo-docs/kaspa",
+  ]) {
+    if (!content.includes(repositorySource)) {
+      fail(`knowledge map missing Toccata source-truth route: ${repositorySource}`);
+    }
+  }
+
+  if (!assertFile(toccataPlaybook, "Toccata R&D playbook")) return;
+  const playbook = readFile(toccataPlaybook);
+  for (const sourceTruthRule of [
+    "docs/toccata.md",
+    "docs/kaspa",
+    "docs/toccata-evidence-ladder.md",
+    "Pre-change citation gate",
+  ]) {
+    if (!playbook.includes(sourceTruthRule)) {
+      fail(`Toccata R&D playbook missing source-truth rule: ${sourceTruthRule}`);
+    }
+  }
+
+  if (!toccataDoc) {
+    fail("Toccata builder guide missing: expected docs/toccata.md or packaged equivalent");
+    return;
+  }
+  assertFile(toccataDoc, "Toccata builder guide");
+  const guide = readFile(toccataDoc);
+  for (const required of [
+    "v2.0.1",
+    "v2.0.0",
+    "KIP-16",
+    "KIP-17",
+    "KIP-20",
+    "KIP-21",
+    "OpZkPrecompile",
+    "100 sompi * max(compute grams, 2 * transaction bytes)",
+    "storageMass",
+    "storage_mass",
+    "computeBudget",
+    "covenant_id",
+    "GetBlockRewardInfo",
+    "GetSeqCommitLaneProof",
+    "Node Operators",
+    "Wallet Builders",
+    "Pool And Miner Integrators",
+    "Indexers And Explorers",
+    "KaspaScript And Covenant Builders",
+    "ZK And Lane-Proof Researchers",
+    "No full EVM-style smart-contract claims",
+  ]) {
+    if (!guide.includes(required)) {
+      fail(`Toccata builder guide missing required content: ${required}`);
     }
   }
 }

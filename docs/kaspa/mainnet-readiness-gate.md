@@ -10,6 +10,13 @@ Current snapshot note, 2026-06-06:
 - The observed mainnet DAA is below the activation threshold.
 - Ecosystem decision: `do_not_claim_wallet_indexer_ready`; local prototypes do not prove audited production support.
 
+Supplemental snapshot note, 2026-06-30T13:29:37Z:
+
+- Protocol decision remains `do_not_claim_mainnet_protocol_active`.
+- Rusty Kaspa `v2.0.1` is latest stable release evidence, but `v2.0.0` still defines the activation DAA.
+- Live mainnet returned `networkName=kaspa-mainnet` and `virtualDaaScore=474063735`, below `474165565`.
+- Ecosystem decision remains `do_not_claim_wallet_indexer_ready`.
+
 Run:
 
 ```bash

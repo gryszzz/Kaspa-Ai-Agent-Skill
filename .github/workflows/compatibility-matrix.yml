@@ -8,6 +8,8 @@ on:
       - "skills/public/kaspa-sovereign-architect-engine/**"
       - "scripts/toccata-source-monitor.mjs"
       - "scripts/toccata-source-monitor.test.mjs"
+      - "scripts/kaspa-source-intelligence.mjs"
+      - "scripts/kaspa-source-intelligence.test.mjs"
       - "scripts/lib/**"
       - "scripts/kaspa-knowledge-drill.mjs"
       - "scripts/covenant-lineage-prototype.mjs"
@@ -17,6 +19,7 @@ on:
       - "docs/kaspa/**"
       - "fixtures/toccata/**"
       - "research-snapshots/toccata/**"
+      - "research-snapshots/source-intelligence/**"
       - "training-corpus/kaspa-toccata-*.md"
       - "README.md"
       - "release-metadata.json"
@@ -25,11 +28,14 @@ on:
       - "scripts/validate-skill-release.test.mjs"
       - ".github/workflows/compatibility-matrix.yml"
       - ".github/workflows/toccata-source-monitor.yml"
+      - ".github/workflows/kaspa-source-intelligence.yml"
   pull_request:
     paths:
       - "skills/public/kaspa-sovereign-architect-engine/**"
       - "scripts/toccata-source-monitor.mjs"
       - "scripts/toccata-source-monitor.test.mjs"
+      - "scripts/kaspa-source-intelligence.mjs"
+      - "scripts/kaspa-source-intelligence.test.mjs"
       - "scripts/lib/**"
       - "scripts/kaspa-knowledge-drill.mjs"
       - "scripts/covenant-lineage-prototype.mjs"
@@ -39,6 +45,7 @@ on:
       - "docs/kaspa/**"
       - "fixtures/toccata/**"
       - "research-snapshots/toccata/**"
+      - "research-snapshots/source-intelligence/**"
       - "training-corpus/kaspa-toccata-*.md"
       - "README.md"
       - "release-metadata.json"
@@ -47,6 +54,7 @@ on:
       - "scripts/validate-skill-release.test.mjs"
       - ".github/workflows/compatibility-matrix.yml"
       - ".github/workflows/toccata-source-monitor.yml"
+      - ".github/workflows/kaspa-source-intelligence.yml"
   workflow_dispatch:
 
 env:
@@ -84,6 +92,11 @@ jobs:
           node --test scripts/toccata-source-monitor.test.mjs
           node scripts/toccata-source-monitor.mjs --check
 
+      - name: Test live Kaspa source intelligence
+        run: |
+          node --test scripts/kaspa-source-intelligence.test.mjs
+          node scripts/kaspa-source-intelligence.mjs --check
+
       - name: Run local knowledge drill
         run: |
           node scripts/kaspa-knowledge-drill.mjs > "$RUNNER_TEMP/kaspa-knowledge-drill.md"
@@ -115,6 +128,7 @@ jobs:
           node scripts/run-behavioral-evals.mjs --check
           node --test scripts/*.test.mjs
           node scripts/toccata-source-monitor.mjs --check
+          node scripts/kaspa-source-intelligence.mjs --check
           node scripts/kaspa-knowledge-drill.mjs --check > "$RUNNER_TEMP/packaged-knowledge-drill.md"
           node scripts/covenant-lineage-prototype.mjs --check-all
           node scripts/vprog-scope-simulator.mjs --check

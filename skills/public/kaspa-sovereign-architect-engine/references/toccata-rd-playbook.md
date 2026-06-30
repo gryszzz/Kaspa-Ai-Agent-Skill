@@ -6,7 +6,28 @@ Use this playbook when analyzing Toccata, covenants, SilverScript, ZK opcodes, s
 
 Build an evidence-first Toccata research loop that is faster and sharper than surface-level ecosystem commentary.
 
+Builder guide: `docs/toccata.md` in the repo, or
+`references/repo-docs/toccata.md` in release downloads.
+
 Upgrade-readiness docs page: `docs/kaspa/toccata-upgrade-readiness.md` in the repo, or `references/repo-docs/kaspa/toccata-upgrade-readiness.md` in release downloads.
+
+Repository source of truth: for `gryszzz/Kaspa-Ai-Agent-Skill`, use
+`docs/toccata.md`, `docs/kaspa/`, and `docs/toccata-evidence-ladder.md` as the
+builder-facing requirement set. Packaged releases may expose the same material
+under `docs/` or `references/repo-docs/`.
+
+Pre-change citation gate: before proposing or implementing covenant-related
+changes, cite the specific local requirement that governs the work. Acceptable
+anchors include this playbook, `docs/toccata-evidence-ladder.md`, and focused
+notes such as `docs/toccata.md`, `docs/kaspa/covenant-lineage-indexer.md`,
+`docs/kaspa/wallet-covenant-signing-preview.md`,
+`docs/kaspa/sequencing-witness-api.md`, or
+`docs/kaspa/mainnet-readiness-gate.md`.
+
+Official/repo-backed source gate: for Toccata engineering, use Rusty Kaspa
+release tags, the Toccata Guide, Rusty Kaspa proto files, KIP-16/17/20/21, and
+Go Kaspad v0.12.23 for legacy compatibility. Do not use community summaries as
+technical truth.
 
 Do not claim superiority over upstream developers. The practical edge is:
 
@@ -73,6 +94,14 @@ Current June 6, 2026 posture from `research-snapshots/toccata/latest.md`:
 - The node database upgrade is one-way; rollback to a pre-Toccata node requires a resync.
 - Pools and miners must preserve output covenant data and input compute commitments from block-template receipt through block submission.
 
+2026-06-30 source pulse:
+
+- Latest stable Rusty Kaspa is `v2.0.1`, a mainnet Toccata maintenance release published on 2026-06-15.
+- `v2.0.0` remains the mainnet Toccata release that scheduled activation at DAA `474,165,565`, roughly 2026-06-30 16:15 UTC. At 2026-06-30T13:29:37Z, live mainnet returned `networkName=kaspa-mainnet` and `virtualDaaScore=474063735`, so answer `scheduled/pre-activation` unless a fresh mainnet endpoint crosses the threshold.
+- Current Rusty Kaspa heads: `master` `98a4ccd8d200853787f227bd4536ac540cf34957`, `toccata` `0ae28f939e61994a11eb8eb6dd775255e2924afb`, `tn10` `e5f6d1f7c86f3a3afbe97dbb75e72a0a3ff66a57`, `tn12` `ab4c51afde90dc6e0bce3f782d0a18af5da29434`.
+- The current Toccata Guide is `https://github.com/kaspanet/rusty-kaspa/blob/master/docs/toccata-guide.md`. Avoid malformed search-wrapper links; use GitHub release, raw, or blob URLs directly.
+- The Toccata Guide names the fee policy `100 sompi * max(compute grams, 2 * transaction bytes)` and labels it node/mempool policy, not consensus. It also names `RpcTransaction.storage_mass`, JSON/WASM `storageMass`, `RpcTransactionInput.computeBudget`, `RpcTransactionOutput.covenant`, and `RpcUtxoEntry.covenant_id`.
+
 Rusty Kaspa:
 
 - PR #1000: `Toccata`, branch `toccata` into `master`, closed/merged on 2026-06-02
@@ -82,9 +111,53 @@ Rusty Kaspa:
 - branch `tn12`
 - tag `v1.3.0-toc.5`
 - tag `v2.0.0`
+- tag `v2.0.1`
 - tag `tn10-toc3`
 - tag `tn10-toc2`
 - latest stable tag and activation schedule
+
+Role prompts:
+
+- Node operators: upgrade target, one-way DB migration, Testnet-10 testing,
+  live network-name and DAA activation verification.
+- Wallet builders: fee estimation, signing preview, storage mass, compute
+  budget, covenant transitions, Kasware/Kaspium compatibility, no key exposure.
+- Pool/miner integrators: preserve post-Toccata block-template and transaction
+  fields through solved-block submission.
+- Indexers/explorers: parse transaction version `1`, `computeBudget`,
+  `covenant`, `covenant_id`, and `storageMass`/`storage_mass`.
+- KaspaScript/covenant builders: start from KIP-17 and KIP-20; model genesis,
+  continuation, non-forgeability, and invalid transitions.
+- ZK/lane-proof researchers: start from KIP-16 and KIP-21; avoid invented
+  proof systems, opcodes, or roadmap status.
+
+### Transaction And Node-Interaction Changes
+
+Use this checklist when adapting SDKs, wallets, indexers, exchanges, pools, or
+manual transaction tooling for Toccata:
+
+- Prefer Rusty Kaspa `v2.0.1` or newer for Toccata work. Use Go `kaspad`
+  `v0.12.23` only when supporting legacy Go wallet/node workflows, and label it
+  as the deprecated Go node.
+- Regenerate gRPC/protobuf bindings after reading the Toccata Guide and updated
+  proto files; do not patch generated structs by hand.
+- Replace `RpcTransaction.mass` with `RpcTransaction.storage_mass`.
+- In JSON/JavaScript/WASM paths, use `storageMass`. Accept deprecated `mass`
+  only for backward compatibility, and reject input where both are present with
+  conflicting values.
+- Carry `RpcTransactionInput.computeBudget` through parsing, validation,
+  signing previews, block templates, custom mining-job messages, and submission.
+- Carry `RpcTransactionOutput.covenant` and `RpcUtxoEntry.covenant_id` through
+  raw transaction storage, UTXO models, lineage indexing, API responses, and
+  proof/evidence views.
+- Preserve transaction version `1`, block header version, storage mass,
+  compute budget, output covenant binding, and covenant IDs in pool and miner
+  `GetBlockTemplate` -> job distribution -> solved block reconstruction ->
+  `SubmitBlock` flows.
+- Treat the post-Toccata minimum standard fee as node policy:
+  `100 sompi * max(compute grams, 2 * transaction bytes)`. Do not call it a
+  consensus rule; zero-fee transactions remain consensus-valid even when direct
+  node submission or relay policy rejects them.
 
 KIPs:
 

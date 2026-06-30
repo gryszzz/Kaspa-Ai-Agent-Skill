@@ -22,6 +22,9 @@ Use this checklist per repository and quote concrete file paths and symbols.
 - Locate serialization and deserialization routines.
 - Locate signing boundary and key usage boundary.
 - Locate submission and confirmation tracking path.
+- For concrete transaction-plan JSON, run
+  `node scripts/lint-transaction-plan.mjs <plan.json>` before calling the plan
+  reviewable.
 
 ## 4. Node Interaction
 
@@ -40,6 +43,8 @@ Use this checklist per repository and quote concrete file paths and symbols.
 - Identify extension or provider-injection risk when browser wallets are in scope.
 - Verify Kasware and Kaspium flows when the product claims both paths.
 - Verify explicit handling for `kaspa:` and `kaspatest:` prefixes.
+- Verify `broadcast` remains false in reviewed plans unless the user has moved
+  to explicit wallet-local signing outside the skill.
 
 ## 6. Improvement and Reuse
 

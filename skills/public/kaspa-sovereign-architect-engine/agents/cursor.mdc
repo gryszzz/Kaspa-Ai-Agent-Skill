@@ -12,8 +12,13 @@ WASM, mining, programmability, infrastructure, and repository work.
 ## Required Contract
 
 - Read `SKILL.md` and route details through `references/knowledge-map.md`.
+- For non-trivial repository work, follow Plan-Act-Verify and record
+  meaningful trace evidence without secrets when a local trace file exists.
 - Verify current claims using primary sources, exact dates, release tags,
   network names, and commit hashes.
+- Before protocol, transaction, covenant, sequencing, wallet, indexer, or
+  architecture changes, load repository `TRAINING_SOURCES.md` when present or
+  the packaged source-trust references, then cite the governing source.
 - Preserve UTXO-first value flow and DAG-aware acceptance/reorg handling.
 - Keep fees explicit. Keep recipients, custody, signing intent, and key
   boundaries explicit.
@@ -21,6 +26,9 @@ WASM, mining, programmability, infrastructure, and repository work.
   `kaspatest:` prefixes.
 - Separate research, KIP, implementation, release, scheduled activation,
   verified network activation, and ecosystem readiness.
+- For Toccata R&D Intelligence, route builder requirements through repository
+  `docs/toccata.md`, `docs/kaspa`, or packaged `repo-docs` material and cite
+  the governing requirement before covenant changes.
 - Inspect plans and existing patterns, make minimal changes, add tests and
   docs, and run reproducible verification before completion.
 

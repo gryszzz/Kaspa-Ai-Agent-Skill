@@ -1,0 +1,544 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-06-18T17:20:45.790Z",
+  "previousFactsHash": "b896cf5cbd8dfc84459fe990d9478368394b3b63e915e19ba4afc7e43a6bcda5",
+  "github": {
+    "repos": [
+      {
+        "repo": "kaspanet/rusty-kaspa",
+        "label": "Rusty Kaspa node and SDK",
+        "primary": true,
+        "ok": true,
+        "status": 200,
+        "url": "https://github.com/kaspanet/rusty-kaspa",
+        "defaultBranch": "master",
+        "archived": false,
+        "disabled": false,
+        "pushedAt": "2026-06-17T23:04:54Z",
+        "updatedAt": "2026-06-17T23:04:59Z",
+        "openIssuesCount": 180,
+        "stargazersCount": 826,
+        "visibility": "public"
+      },
+      {
+        "repo": "kaspanet/kips",
+        "label": "Kaspa Improvement Proposals",
+        "primary": true,
+        "ok": true,
+        "status": 200,
+        "url": "https://github.com/kaspanet/kips",
+        "defaultBranch": "master",
+        "archived": false,
+        "disabled": false,
+        "pushedAt": "2026-06-02T16:59:02Z",
+        "updatedAt": "2026-06-05T17:58:57Z",
+        "openIssuesCount": 14,
+        "stargazersCount": 52,
+        "visibility": "public"
+      },
+      {
+        "repo": "kaspanet/docs",
+        "label": "Official Kaspa docs source",
+        "primary": true,
+        "ok": true,
+        "status": 200,
+        "url": "https://github.com/kaspanet/docs",
+        "defaultBranch": "main",
+        "archived": false,
+        "disabled": false,
+        "pushedAt": "2026-04-20T12:38:27Z",
+        "updatedAt": "2026-05-31T07:11:28Z",
+        "openIssuesCount": 16,
+        "stargazersCount": 64,
+        "visibility": "public"
+      },
+      {
+        "repo": "kaspanet/kaspad",
+        "label": "Deprecated Go node",
+        "primary": false,
+        "deprecated": true,
+        "ok": true,
+        "status": 200,
+        "url": "https://github.com/kaspanet/kaspad",
+        "defaultBranch": "master",
+        "archived": false,
+        "disabled": false,
+        "pushedAt": "2026-06-05T09:00:12Z",
+        "updatedAt": "2026-06-16T06:44:48Z",
+        "openIssuesCount": 176,
+        "stargazersCount": 528,
+        "visibility": "public"
+      },
+      {
+        "repo": "michaelsutton/kdapp",
+        "label": "Kdapp reference work",
+        "primary": false,
+        "ok": true,
+        "status": 200,
+        "url": "https://github.com/michaelsutton/kdapp",
+        "defaultBranch": "master",
+        "archived": false,
+        "disabled": false,
+        "pushedAt": "2025-07-02T10:47:53Z",
+        "updatedAt": "2026-03-09T05:43:13Z",
+        "openIssuesCount": 2,
+        "stargazersCount": 27,
+        "visibility": "public"
+      },
+      {
+        "repo": "kaspanet/silverscript",
+        "label": "SilverScript",
+        "primary": false,
+        "experimental": true,
+        "ok": true,
+        "status": 200,
+        "url": "https://github.com/kaspanet/silverscript",
+        "defaultBranch": "master",
+        "archived": false,
+        "disabled": false,
+        "pushedAt": "2026-06-16T05:18:42Z",
+        "updatedAt": "2026-06-16T05:18:46Z",
+        "openIssuesCount": 25,
+        "stargazersCount": 40,
+        "visibility": "public"
+      },
+      {
+        "repo": "kaspanet/vprogs",
+        "label": "vProgs",
+        "primary": false,
+        "experimental": true,
+        "ok": true,
+        "status": 200,
+        "url": "https://github.com/kaspanet/vprogs",
+        "defaultBranch": "master",
+        "archived": false,
+        "disabled": false,
+        "pushedAt": "2026-06-18T15:50:08Z",
+        "updatedAt": "2026-06-18T12:10:15Z",
+        "openIssuesCount": 18,
+        "stargazersCount": 48,
+        "visibility": "public"
+      }
+    ],
+    "refs": [
+      {
+        "repo": "kaspanet/rusty-kaspa",
+        "kind": "heads",
+        "name": "master",
+        "ok": true,
+        "sha": "9fdbaf1b1886fb5742783d2da73c36239bd6f272",
+        "objectType": "commit",
+        "url": "https://github.com/kaspanet/rusty-kaspa/tree/master"
+      },
+      {
+        "repo": "kaspanet/rusty-kaspa",
+        "kind": "heads",
+        "name": "toccata",
+        "ok": true,
+        "sha": "0ae28f939e61994a11eb8eb6dd775255e2924afb",
+        "objectType": "commit",
+        "url": "https://github.com/kaspanet/rusty-kaspa/tree/toccata"
+      },
+      {
+        "repo": "kaspanet/rusty-kaspa",
+        "kind": "heads",
+        "name": "tn10",
+        "ok": true,
+        "sha": "e5f6d1f7c86f3a3afbe97dbb75e72a0a3ff66a57",
+        "objectType": "commit",
+        "url": "https://github.com/kaspanet/rusty-kaspa/tree/tn10"
+      },
+      {
+        "repo": "kaspanet/rusty-kaspa",
+        "kind": "heads",
+        "name": "tn12",
+        "ok": true,
+        "sha": "ab4c51afde90dc6e0bce3f782d0a18af5da29434",
+        "objectType": "commit",
+        "url": "https://github.com/kaspanet/rusty-kaspa/tree/tn12"
+      },
+      {
+        "repo": "kaspanet/kips",
+        "kind": "heads",
+        "name": "master",
+        "ok": true,
+        "sha": "1aba3b8321c1d27e00b7d87bd7c74ef879efabdc",
+        "objectType": "commit",
+        "url": "https://github.com/kaspanet/kips/tree/master"
+      },
+      {
+        "repo": "kaspanet/docs",
+        "kind": "heads",
+        "name": "main",
+        "ok": true,
+        "sha": "6aa5e9f52995f53dc85ef3e8c7c71bab9a359b3e",
+        "objectType": "commit",
+        "url": "https://github.com/kaspanet/docs/tree/main"
+      },
+      {
+        "repo": "kaspanet/silverscript",
+        "kind": "heads",
+        "name": "master",
+        "ok": true,
+        "sha": "faaa074915edd1e885e4dd552051e348d1854c87",
+        "objectType": "commit",
+        "url": "https://github.com/kaspanet/silverscript/tree/master"
+      },
+      {
+        "repo": "kaspanet/vprogs",
+        "kind": "heads",
+        "name": "master",
+        "ok": true,
+        "sha": "252ff51f5467b73be75bc58ae84e5b22e90e3022",
+        "objectType": "commit",
+        "url": "https://github.com/kaspanet/vprogs/tree/master"
+      }
+    ],
+    "releases": [
+      {
+        "repo": "kaspanet/rusty-kaspa",
+        "kind": "latest",
+        "label": "Latest Rusty Kaspa release",
+        "ok": true,
+        "tagName": "v2.0.1",
+        "name": "Mainnet Toccata Release - v2.0.1",
+        "url": "https://github.com/kaspanet/rusty-kaspa/releases/tag/v2.0.1",
+        "targetCommitish": "master",
+        "draft": false,
+        "prerelease": false,
+        "publishedAt": "2026-06-15T19:14:22Z",
+        "createdAt": "2026-06-15T19:10:50Z",
+        "assetCount": 4,
+        "bodyHash": "ecd9e38f98c204122cd38f37f12ce9339bffd0126ffff78ecfedc020b860fbc9"
+      }
+    ]
+  },
+  "web": [
+    {
+      "label": "Kaspa build portal",
+      "url": "https://kaspa.org/build",
+      "primary": true,
+      "ok": true,
+      "status": 200,
+      "etag": "\"cnjk67kqdx20tm\"",
+      "lastModified": null,
+      "contentLength": 94378,
+      "contentSha256": "7125f77aa5d79e74823f008d2e63f12346df3d7a3aae1d8fb80cd9db4407d785",
+      "sourceFingerprint": "39b9157fa932fad76ccf673d4ba9eef72e818173f1bf50c8e0472bc6f51653f1"
+    },
+    {
+      "label": "Kaspa docs home",
+      "url": "https://docs.kaspa.org",
+      "primary": true,
+      "ok": true,
+      "status": 200,
+      "etag": "W/\"082021f1a1aaefc93936b71daf4cf4da\"",
+      "lastModified": "Fri, 29 May 2026 09:26:41 GMT",
+      "contentLength": 43117,
+      "contentSha256": "62c57b21e1977e27f57bce36e1850327044107706abe4a9e76798054a32e7a35",
+      "sourceFingerprint": "13f9e77c0a209e32c5ac8b9fa07fa8616afc1be25d58935bef60d5f08f48c35c"
+    },
+    {
+      "label": "Kaspa programmability docs",
+      "url": "https://docs.kaspa.org/programmability",
+      "primary": true,
+      "ok": true,
+      "status": 200,
+      "etag": "W/\"ca70735e3d333d9651b8460ee51942a6\"",
+      "lastModified": "Fri, 29 May 2026 05:54:37 GMT",
+      "contentLength": 55397,
+      "contentSha256": "91c3aed0ca1f4e4e71ec2b5d0389544f26cc9ae63e9d4312b6aadad4723d1193",
+      "sourceFingerprint": "060a5dd00ffcb4d336137f70ec6d5a547f5abe502ab884ce4c72c14a3ae70f96"
+    },
+    {
+      "label": "Kaspa covenants docs",
+      "url": "https://docs.kaspa.org/programmability/covenants",
+      "primary": true,
+      "ok": true,
+      "status": 200,
+      "etag": "W/\"55416d21d8471f24dc8f4263ffbc2355\"",
+      "lastModified": "Fri, 29 May 2026 12:18:57 GMT",
+      "contentLength": 54726,
+      "contentSha256": "a0ff4aabae8ff91bce7d378c0b8f89542dff1511141c7f4ab2463205b7deb591",
+      "sourceFingerprint": "ef1ff1f915b63580f18768f2a2cdddfc43980b3e06432e6c5851b9de10622dee"
+    },
+    {
+      "label": "Kaspa Research categories",
+      "url": "https://research.kas.pa/categories",
+      "primary": false,
+      "ok": true,
+      "status": 200,
+      "etag": null,
+      "lastModified": null,
+      "contentLength": 12157,
+      "contentSha256": "bdb7549f337838de3400dd579cd792ebd6a3aae86c27c959bcce9d4f49ec7c9e",
+      "sourceFingerprint": "e7e5fea5d860c541ce2c274002eb1dc3bfda9b05f542226fd95e8db8ee4f1e79"
+    },
+    {
+      "label": "vProgs architecture proposal",
+      "url": "https://research.kas.pa/t/concrete-proposal-for-a-synchronously-composable-verifiable-programs-architecture/387",
+      "primary": false,
+      "ok": true,
+      "status": 200,
+      "etag": null,
+      "lastModified": "Sun, 17 Aug 2025 07:11:16 GMT",
+      "contentLength": 28982,
+      "contentSha256": "b6b7b18ec2a482c16762f5cf5afc766994f4d87f14d02614c3971b3dc36a9fa5",
+      "sourceFingerprint": "13fc4201b98c9d74a94520c7058bae0e0198cf9ac4bb7ae6617c72243f76046b"
+    }
+  ],
+  "kaspaNetwork": [
+    {
+      "label": "Mainnet blockDAG",
+      "url": "https://api.kaspa.org/info/blockdag",
+      "expectedNetworkName": "kaspa-mainnet",
+      "ok": true,
+      "status": 200,
+      "networkName": "kaspa-mainnet",
+      "virtualDaaScore": "463834263",
+      "blockCount": "26498291",
+      "headerCount": "26498291",
+      "sourceFingerprint": "10af6f53d5d44bb028adbf93be7083bf8525386a6c513ca04efe6b808f32469f"
+    },
+    {
+      "label": "TN10 blockDAG",
+      "url": "https://api-tn10.kaspa.org/info/blockdag",
+      "expectedNetworkName": "kaspa-testnet-10",
+      "ok": true,
+      "status": 200,
+      "networkName": "kaspa-testnet-10",
+      "virtualDaaScore": "494433785",
+      "blockCount": "1129661",
+      "headerCount": "1129661",
+      "sourceFingerprint": "fec0094db37f05ff2681a0b605b4ec6b54f4d6d58c50fc4d999d8cad20fd6af5"
+    },
+    {
+      "label": "TN12 blockDAG",
+      "url": "https://api-tn12.kaspa.org/info/blockdag",
+      "expectedNetworkName": "kaspa-testnet-12",
+      "ok": false,
+      "status": 500,
+      "error": "Internal server error"
+    }
+  ],
+  "kipIndex": {
+    "ok": true,
+    "status": 200,
+    "url": "https://github.com/kaspanet/kips",
+    "trackedCount": 15,
+    "documents": [
+      {
+        "file": "kip-0001.md",
+        "kip": "1",
+        "layer": "Core",
+        "title": "Rewriting the Kaspa Full-Node in the Rust Programming Language",
+        "documentStatus": "Implemented",
+        "ok": true,
+        "status": 200,
+        "url": "https://github.com/kaspanet/kips/blob/master/kip-0001.md",
+        "contentSha256": "e1769e21676adf68932d2010a34eb3e9fa8e313a71fdbb9813a8d1977e928258"
+      },
+      {
+        "file": "kip-0002.md",
+        "kip": "2",
+        "layer": "Consensus (hard fork), API/RPC",
+        "title": "Upgrade consensus to follow the DAGKNIGHT protocol",
+        "documentStatus": "Proposed",
+        "ok": true,
+        "status": 200,
+        "url": "https://github.com/kaspanet/kips/blob/master/kip-0002.md",
+        "contentSha256": "b40c50ef2a47ecf7853267d7f795c2792baf9122f8978041ae3e68c287efe09f"
+      },
+      {
+        "file": "kip-0003.md",
+        "kip": "3",
+        "layer": "Consensus (hard fork), DAA",
+        "title": "Block sampling for efficient DAA with high BPS",
+        "documentStatus": "Rejected (see below)",
+        "ok": true,
+        "status": 200,
+        "url": "https://github.com/kaspanet/kips/blob/master/kip-0003.md",
+        "contentSha256": "6fdfa19a680c40cfc058f06fc3355f6a9f4d72113130b839bab0af56e0dab384"
+      },
+      {
+        "file": "kip-0004.md",
+        "kip": "4",
+        "layer": "Consensus (hard fork), DAA",
+        "title": "Sparse Difficulty Windows",
+        "documentStatus": "Active",
+        "ok": true,
+        "status": 200,
+        "url": "https://github.com/kaspanet/kips/blob/master/kip-0004.md",
+        "contentSha256": "dd7b247129a471b7978dd6e482fcc7caaf3ee37f5a22d3f1fe3436ef0d4ed376"
+      },
+      {
+        "file": "kip-0005.md",
+        "kip": "5",
+        "layer": "Applications",
+        "title": "Message Signing",
+        "documentStatus": "Active",
+        "ok": true,
+        "status": 200,
+        "url": "https://github.com/kaspanet/kips/blob/master/kip-0005.md",
+        "contentSha256": "6bfcbea66579951ec1f1ed99b9d6296c37a95f9a9b831a8e809ac1ac0f9a98c4"
+      },
+      {
+        "file": "kip-0006.md",
+        "kip": "6",
+        "layer": "Consensus (hard fork), Block Validation",
+        "title": "Proof of Chain Membership (PoChM)",
+        "documentStatus": "Draft",
+        "ok": true,
+        "status": 200,
+        "url": "https://github.com/kaspanet/kips/blob/master/kip-0006.md",
+        "contentSha256": "2f356747ec12e94a0396f61ebd92203bb64a0c98f8ea6a37185b5883ed8b3e3a"
+      },
+      {
+        "file": "kip-0009.md",
+        "kip": "9",
+        "layer": "Mempool, P2P, Consensus",
+        "title": "Extended mass formula for mitigating state bloat",
+        "authors": "Michael Sutton <msutton@cs.huji.ac.il>",
+        "documentStatus": "Active",
+        "ok": true,
+        "status": 200,
+        "url": "https://github.com/kaspanet/kips/blob/master/kip-0009.md",
+        "contentSha256": "153a0e674e98763468fc24270676883b5d86db8efca2c1177fb6a1090a05309c"
+      },
+      {
+        "file": "kip-0010.md",
+        "kip": "10",
+        "layer": "Consensus, Script Engine",
+        "title": "New Transaction Opcodes for Enhanced Script Functionality",
+        "authors": "Maxim Biryukov (@biryukovmaxim),",
+        "documentStatus": "Active",
+        "ok": true,
+        "status": 200,
+        "url": "https://github.com/kaspanet/kips/blob/master/kip-0010.md",
+        "contentSha256": "da9774f32605c54a61dfc7204be92198fab3e6b68d3c59c149d74e6897c9b98e"
+      },
+      {
+        "file": "kip-0013.md",
+        "kip": "13",
+        "layer": "Consensus (hard fork), Block Size",
+        "title": "Transient Storage Handling",
+        "documentStatus": "Active",
+        "ok": true,
+        "status": 200,
+        "url": "https://github.com/kaspanet/kips/blob/master/kip-0013.md",
+        "contentSha256": "48efe56486898df4dd1950d1aace0ff74c09a1990f7041b9e1e3edf77484e33e"
+      },
+      {
+        "file": "kip-0014.md",
+        "kip": "14",
+        "layer": "Consensus (hard fork)",
+        "title": "The Crescendo Hardfork",
+        "documentStatus": "Active",
+        "created": "2025-01-21",
+        "ok": true,
+        "status": 200,
+        "url": "https://github.com/kaspanet/kips/blob/master/kip-0014.md",
+        "contentSha256": "7b7855c59abbab2c0d29991f82d32ac011727183af24609584947969c05cae1c"
+      },
+      {
+        "file": "kip-0015.md",
+        "kip": "15",
+        "layer": "Consensus (hard fork)",
+        "title": "Canonical Transaction Ordering and SelectedParent Accepted Transactions Commitment",
+        "documentStatus": "Active",
+        "created": "2025-02-01",
+        "ok": true,
+        "status": 200,
+        "url": "https://github.com/kaspanet/kips/blob/master/kip-0015.md",
+        "contentSha256": "d5a6aef73c3d594a30703e8af44b2176f7a2ca85984e4b68f3f0582d7304d401"
+      },
+      {
+        "file": "kip-0016.md",
+        "kip": "16",
+        "layer": "Script Engine, ZK",
+        "title": "New Transaction Opcodes for Verifiable Computation",
+        "authors": "Alexander Safstrom (@saefstroem)",
+        "documentStatus": "Proposed, Implemented and activated in TN10",
+        "ok": true,
+        "status": 200,
+        "url": "https://github.com/kaspanet/kips/blob/master/kip-0016.md",
+        "contentSha256": "7c91ede1634dbcf167be9633d5f219c1b52ab2877745de2ec904b7283fdefb98"
+      },
+      {
+        "file": "kip-0017.md",
+        "kip": "17",
+        "layer": "Consensus, Script Engine",
+        "title": "Covenants and Improved Scripting Capabilities",
+        "authors": "Ori Newman <orinewman1@gmail.com>",
+        "documentStatus": "Implemented and activated in TN10",
+        "ok": true,
+        "status": 200,
+        "url": "https://github.com/kaspanet/kips/blob/master/kip-0017.md",
+        "contentSha256": "6187cb583e28eb1b3e220a17ece1ad9d4ed6bad7ab108aad49ea170fd836576f"
+      },
+      {
+        "file": "kip-0020.md",
+        "kip": "20",
+        "layer": "Consensus, Script Engine",
+        "title": "Covenant IDs",
+        "authors": "Michael Sutton <msutton@cs.huji.ac.il>",
+        "documentStatus": "Proposed, Implemented and activated in TN10",
+        "ok": true,
+        "status": 200,
+        "url": "https://github.com/kaspanet/kips/blob/master/kip-0020.md",
+        "contentSha256": "ff413c6e595548e0525ed3a814da809f8edaa5541bfdf7fe95239fd734e600ee"
+      },
+      {
+        "file": "kip-0021.md",
+        "kip": "21",
+        "layer": "Consensus (hard fork), Chain-Block UTXO Validation",
+        "title": "Partitioned Sequencing Commitment with O(activity) Proving",
+        "authors": "Michael Sutton <msutton@cs.huji.ac.il>, Maxim Biryukov (@biryukovmaxim), Hans Moog <hans.moog@kaspafoundation.org>",
+        "documentStatus": "Implemented and activated in TN10",
+        "created": "2026-02-17",
+        "ok": true,
+        "status": 200,
+        "url": "https://github.com/kaspanet/kips/blob/master/kip-0021.md",
+        "contentSha256": "e1f3dbbab69ba3da5c610b1f823a2fb8e6c6635bb07b70d75ab9689715c4e7c2"
+      }
+    ]
+  },
+  "verdict": {
+    "sourceHealth": "healthy_with_warnings",
+    "counts": {
+      "githubRepos": 7,
+      "githubReposOk": 7,
+      "githubRepoFailures": 0,
+      "releases": 1,
+      "releasesOk": 1,
+      "refs": 8,
+      "refsOk": 8,
+      "webSources": 6,
+      "webSourcesOk": 6,
+      "networkSources": 3,
+      "networkSourcesOk": 2,
+      "kipDocuments": 15,
+      "kipDocumentsOk": 15
+    },
+    "primaryEvidence": {
+      "healthyPrimaryRepos": 3,
+      "healthyPrimaryWeb": 4,
+      "healthyNetwork": 2,
+      "latestRustyReleaseTag": "v2.0.1",
+      "latestRustyReleasePublishedAt": "2026-06-15T19:14:22Z"
+    },
+    "warnings": [
+      "Network endpoint unavailable: TN12 blockDAG"
+    ],
+    "claimRules": [
+      "Do not convert endpoint failure into feature absence.",
+      "Do not convert testnet activation into mainnet activation.",
+      "Do not convert a merged KIP into released or activated behavior.",
+      "Do not convert a final release with a future DAA into active behavior.",
+      "Always record source URL, checkedAt, release tag or commit, and network identity for current claims."
+    ]
+  },
+  "factsHash": "70f55abc46da0c81479fe2f3bddb47e1dd9b9973c0b2ff589f34449f6a73547d",
+  "changedSincePrevious": true,
+  "validationErrors": []
+}

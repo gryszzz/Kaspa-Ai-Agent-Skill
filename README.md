@@ -1,4 +1,4 @@
-<img width="1983" height="793" alt="ChatGPT Image May 30, 2026, 10_28_23 PM (1)" src="https://github.com/user-attachments/assets/cbfee1fb-2065-4853-b3bc-f365b5d9a741" />
+<img src="docs/assets/kaspa-ai-agent-skill-logo.svg" alt="Kaspa AI Agent Skill" width="760" />
 
 # 🧠 Kaspa Ai Agent Skill 
 
@@ -12,7 +12,7 @@ This repository publishes a reusable AI skill package for serious Kaspa research
 - **Main skill file:** [`SKILL.md`](skills/public/kaspa-sovereign-architect-engine/SKILL.md)
 - **Release downloads:** [GitHub Releases](https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases)
 - **Published release:** `v1.6.2` - GitHub Releases and Packages
-- **Repository skill version:** `v1.8.0` - deterministic sync and behavioral evaluation update, not yet published
+- **Repository skill version:** `v1.8.0` - deterministic sync, behavioral evaluations, transaction-plan safety, and live source intelligence, not yet published
 - **Positioning:** package-first distribution (not a website product)
 - **Freshness model:** current-aware, source-grounded, KIP-aware, and research-radar aware
 - **Build scope:** Kaspa protocol, wallet, indexer, WASM, dApp, Kdapp, and infrastructure work
@@ -83,6 +83,7 @@ Use $kaspa-sovereign-architect-engine in Toccata R&D Intelligence mode. Re-check
 Compatibility metadata:
 
 - [`manifest.json`](skills/public/kaspa-sovereign-architect-engine/manifest.json)
+- Agent system architecture: [`SYSTEM_ARCHITECTURE.md`](SYSTEM_ARCHITECTURE.md)
 - Source trust policy: [`source-trust-policy.md`](skills/public/kaspa-sovereign-architect-engine/references/source-trust-policy.md)
 - Research radar: [`kaspa-research-radar.md`](skills/public/kaspa-sovereign-architect-engine/references/kaspa-research-radar.md)
 - Toccata R&D playbook: [`toccata-rd-playbook.md`](skills/public/kaspa-sovereign-architect-engine/references/toccata-rd-playbook.md)
@@ -94,9 +95,22 @@ Automated verification:
 - [Compatibility Matrix workflow](https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/actions/workflows/compatibility-matrix.yml)
 - Release gating validation is enforced in [`.github/workflows/release-skill.yml`](.github/workflows/release-skill.yml)
 
+Live Kaspa source intelligence:
+
+- [Kaspa Source Intelligence workflow](https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/actions/workflows/kaspa-source-intelligence.yml)
+- Source intelligence reference: [`live-source-intelligence.md`](skills/public/kaspa-sovereign-architect-engine/references/live-source-intelligence.md)
+- Protocol training sources: [`TRAINING_SOURCES.md`](TRAINING_SOURCES.md)
+- Machine-readable snapshot: [`research-snapshots/source-intelligence/latest.json`](research-snapshots/source-intelligence/latest.json)
+- Reviewer snapshot: [`research-snapshots/source-intelligence/latest.md`](research-snapshots/source-intelligence/latest.md)
+- Source intelligence script: `node scripts/kaspa-source-intelligence.mjs --check`
+- Source intelligence tests: `node --test scripts/kaspa-source-intelligence.test.mjs`
+- Claim rule: current/latest claims cite `checkedAt` plus `factsHash`, and endpoint failures are treated as unknown evidence rather than proof a feature is absent
+
 Toccata source monitoring:
 
 - [Toccata Source Monitor workflow](https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/actions/workflows/toccata-source-monitor.yml)
+- [Agent Toccata Smoke workflow](.github/workflows/agent-toccata-smoke.yml)
+- Toccata builder guide: [`docs/toccata.md`](docs/toccata.md)
 - Toccata evidence ladder: [`docs/toccata-evidence-ladder.md`](docs/toccata-evidence-ladder.md)
 - Toccata upgrade readiness: [`docs/kaspa/toccata-upgrade-readiness.md`](docs/kaspa/toccata-upgrade-readiness.md)
 - Covenant lineage indexer notes: [`docs/kaspa/covenant-lineage-indexer.md`](docs/kaspa/covenant-lineage-indexer.md)
@@ -116,8 +130,24 @@ Toccata source monitoring:
 - Network endpoint checker: `node scripts/toccata-network-check.mjs --check`
 - Mainnet readiness gate: `node scripts/toccata-mainnet-readiness-gate.mjs --check`
 - Behavioral contract evaluations: `node skills/public/kaspa-sovereign-architect-engine/scripts/run-behavioral-evals.mjs --check`
-- Release packages bundle the skill plus adapters, references, Toccata readiness docs, fixtures, source snapshots, helper modules, and deterministic tests under the installed skill directory.
+- Transaction-plan safety gate: `node skills/public/kaspa-sovereign-architect-engine/scripts/lint-transaction-plan.mjs --check`
+- Release packages bundle the skill plus adapters, references, system architecture, protocol training sources, Toccata builder/readiness docs, fixtures, source snapshots, helper modules, and deterministic tests under the installed skill directory.
 - Claim rule: final release plus schedule means "scheduled"; active mainnet requires a verified endpoint at or above the activation DAA, and wallet/indexer readiness is a separate claim
+
+Agent operating rule:
+
+- Non-trivial autonomous work follows [`SYSTEM_ARCHITECTURE.md`](SYSTEM_ARCHITECTURE.md):
+  Plan, Act, Verify, and record meaningful trace evidence in
+  [`AGENT_TRACE.md`](AGENT_TRACE.md).
+- Before protocol, transaction, covenant, sequencing, wallet, indexer, or
+  architecture work, load [`TRAINING_SOURCES.md`](TRAINING_SOURCES.md) and cite
+  the governing source tier, URL, or local path before proposing changes.
+- For Toccata builder work, load [`docs/toccata.md`](docs/toccata.md) and use
+  official/repo-backed sources only.
+- For repository work, `docs/kaspa/` and `docs/toccata-evidence-ladder.md` are the Toccata builder source of truth.
+- In Toccata R&D Intelligence mode, covenant-related proposals must cite the governing requirement from the playbook, evidence ladder, or the relevant `docs/kaspa` note before code changes.
+- Hard-won fixes should be appended to [`AGENTS.md`](AGENTS.md) as a Pattern of Success: `[Problem] | [Kaspa Protocol Constraint] | [Solution]`.
+- Agent-facing Toccata changes are smoke-gated by `node scripts/toccata-network-check.mjs --check` and `node scripts/toccata-mainnet-readiness-gate.mjs --check`.
 
 ## 🛠 Install
 
@@ -260,6 +290,8 @@ Design a Kaspa DAG-aware indexer for 100k users with failure recovery and replay
 
 - Auto-deploy workflow: [`.github/workflows/pages.yml`](.github/workflows/pages.yml)
 - GitHub Pages landing page: [Live Site](https://gryszzz.github.io/Kaspa-Ai-Agent-Skill/)
+- Download hub: [`docs/downloads.html`](docs/downloads.html)
+- Live source intelligence panel: [`docs/source-intelligence.html`](docs/source-intelligence.html)
 - Custom domain support: set repo variable `GH_PAGES_CNAME` (for example `skill.yourdomain.com`); workflow writes `CNAME` automatically
 - Domain setup guide: [`docs/domain-setup.md`](docs/domain-setup.md)
 - Launch copy + channel templates: [`docs/launch-kit.html`](docs/launch-kit.html)

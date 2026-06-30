@@ -45,6 +45,9 @@ function validateLocal(repoRoot) {
   const manifest = readJson(path.join(skillRoot, "manifest.json"));
   const releaseMetadata = readJson(path.join(repoRoot, "release-metadata.json"));
   const readme = readFileSync(path.join(repoRoot, "README.md"), "utf8");
+  const systemArchitecture = readFileSync(path.join(repoRoot, "SYSTEM_ARCHITECTURE.md"), "utf8");
+  const trainingSources = readFileSync(path.join(repoRoot, "TRAINING_SOURCES.md"), "utf8");
+  const toccataGuide = readFileSync(path.join(repoRoot, "docs", "toccata.md"), "utf8");
   const version = manifest.version;
   const versionTag = `v${version}`;
 
@@ -96,6 +99,80 @@ function validateLocal(repoRoot) {
     "README next release notes link is stale",
     failures,
   );
+  requireCondition(
+    readme.includes("TRAINING_SOURCES.md"),
+    "README must link TRAINING_SOURCES.md",
+    failures,
+  );
+  requireCondition(
+    readme.includes("SYSTEM_ARCHITECTURE.md"),
+    "README must link SYSTEM_ARCHITECTURE.md",
+    failures,
+  );
+  requireCondition(
+    readme.includes("docs/toccata.md"),
+    "README must link docs/toccata.md",
+    failures,
+  );
+  for (const architectureRule of [
+    "Plan-Act-Verify",
+    "AGENT_TRACE.md",
+    "Autonomous wallet identity is not enabled by default",
+  ]) {
+    requireCondition(
+      systemArchitecture.includes(architectureRule),
+      `SYSTEM_ARCHITECTURE.md missing rule: ${architectureRule}`,
+      failures,
+    );
+  }
+  for (const sourceUrl of [
+    "https://docs.kaspa.org/",
+    "https://github.com/kaspanet/rusty-kaspa",
+    "https://github.com/kaspanet/kips",
+    "https://kaspa.org/build",
+    "https://github.com/Kaspathon/KaspaDev-Resources",
+    "https://wiki.kaspa.org/",
+    "https://github.com/kaspanet/rusty-kaspa/releases/tag/v2.0.1",
+    "https://github.com/kaspanet/rusty-kaspa/releases/tag/v2.0.0",
+    "https://github.com/kaspanet/rusty-kaspa/blob/master/docs/toccata-guide.md",
+    "https://github.com/kaspanet/kips/blob/master/kip-0016.md",
+    "https://github.com/kaspanet/kips/blob/master/kip-0017.md",
+    "https://github.com/kaspanet/kips/blob/master/kip-0020.md",
+    "https://github.com/kaspanet/kips/blob/master/kip-0021.md",
+    "https://github.com/kaspanet/kaspad/releases/tag/v0.12.23",
+    "https://github.com/kaspanet/rusty-kaspa/blob/master/rpc/grpc/core/proto/messages.proto",
+    "https://github.com/kaspanet/rusty-kaspa/blob/master/rpc/grpc/core/proto/rpc.proto",
+  ]) {
+    requireCondition(
+      trainingSources.includes(sourceUrl),
+      `TRAINING_SOURCES.md missing source URL: ${sourceUrl}`,
+      failures,
+    );
+  }
+  requireCondition(
+    /never guess DAA/i.test(trainingSources),
+    "TRAINING_SOURCES.md must prohibit guessing DAA",
+    failures,
+  );
+  for (const toccataRequirement of [
+    "v2.0.1",
+    "KIP-16",
+    "KIP-17",
+    "KIP-20",
+    "KIP-21",
+    "100 sompi * max(compute grams, 2 * transaction bytes)",
+    "storageMass",
+    "computeBudget",
+    "covenant_id",
+    "GetSeqCommitLaneProof",
+    "No full EVM-style smart-contract claims",
+  ]) {
+    requireCondition(
+      toccataGuide.includes(toccataRequirement),
+      `docs/toccata.md missing requirement: ${toccataRequirement}`,
+      failures,
+    );
+  }
 
   const adapterDir = path.join(skillRoot, "agents");
   for (const fileName of readdirSync(adapterDir).sort()) {
@@ -112,6 +189,21 @@ function validateLocal(repoRoot) {
   requireCondition(
     packageScript.includes('VERSION="$(node -e'),
     "package script must derive its version from manifest.json",
+    failures,
+  );
+  requireCondition(
+    packageScript.includes("TRAINING_SOURCES.md"),
+    "package script must bundle TRAINING_SOURCES.md into release artifacts",
+    failures,
+  );
+  requireCondition(
+    packageScript.includes("docs/toccata.md"),
+    "package script must bundle docs/toccata.md into release artifacts",
+    failures,
+  );
+  requireCondition(
+    packageScript.includes("SYSTEM_ARCHITECTURE.md"),
+    "package script must bundle SYSTEM_ARCHITECTURE.md into release artifacts",
     failures,
   );
 

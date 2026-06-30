@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Live Kaspa Source Intelligence | Kaspa AI Agent Skill</title>
+    <meta
+      name="description"
+      content="Latest Kaspa source intelligence snapshot for Rusty Kaspa releases, repository refs, KIPs, docs, research pages, and network endpoint identity."
+    />
+    <meta name="robots" content="index,follow" />
+    <style>
+      :root {
+        --bg: #081126;
+        --panel: #101b36;
+        --line: #2c4475;
+        --brand: #4ce8cf;
+        --brand-deep: #1ab39d;
+        --ink: #edf5ff;
+        --muted: #9db4dc;
+        --ok: #69f0ae;
+        --warn: #ffd166;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(850px 520px at 8% 0%, #17346666, transparent 64%),
+          radial-gradient(780px 620px at 96% 4%, #1ab39d3d, transparent 58%),
+          var(--bg);
+      }
+      .shell {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 28px 20px 64px;
+      }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+        flex-wrap: wrap;
+      }
+      .nav a {
+        text-decoration: none;
+        font-weight: 650;
+        font-size: 14px;
+        color: #dbe8ff;
+        margin-right: 12px;
+      }
+      .hero, .card {
+        border: 1px solid var(--line);
+        background: linear-gradient(155deg, #14274d 0%, #0c1530 75%);
+        border-radius: 18px;
+      }
+      .hero {
+        padding: 26px;
+      }
+      h1 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        line-height: 1.08;
+      }
+      h2 {
+        margin: 0 0 8px;
+        color: var(--brand);
+        font-size: 18px;
+      }
+      p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+      .status-warn {
+        color: var(--warn);
+        font-weight: 800;
+      }
+      .grid {
+        margin-top: 18px;
+        display: grid;
+        gap: 14px;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+      .card {
+        padding: 16px;
+      }
+      .metric strong {
+        display: block;
+        font-size: 26px;
+        color: var(--brand);
+      }
+      .metric span {
+        display: block;
+        color: var(--muted);
+        font-size: 13px;
+        margin-top: 4px;
+      }
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        overflow: hidden;
+        border-radius: 12px;
+      }
+      .table th, .table td {
+        border: 1px solid #2c4475;
+        padding: 10px;
+        text-align: left;
+        color: #d5e2ff;
+        font-size: 14px;
+      }
+      .table th {
+        color: var(--brand);
+        background: #0a1530;
+      }
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 14px;
+      }
+      .btn {
+        text-decoration: none;
+        padding: 10px 14px;
+        border-radius: 10px;
+        border: 1px solid var(--line);
+        font-weight: 700;
+        font-size: 14px;
+      }
+      .btn-primary {
+        background: linear-gradient(135deg, var(--brand), var(--brand-deep));
+        color: #062118;
+        border: none;
+      }
+      .btn-ghost {
+        background: #122247;
+        color: #dbe8ff;
+      }
+      .code {
+        margin-top: 10px;
+        border: 1px solid #36548f;
+        background: #071027;
+        border-radius: 10px;
+        padding: 11px;
+        font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+        overflow-x: auto;
+        font-size: 13px;
+        line-height: 1.55;
+        color: #d5e2ff;
+        white-space: pre;
+      }
+      a { color: var(--brand); }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <nav class="nav" aria-label="Primary">
+        <div>
+          <a href="./index.html">Home</a>
+          <a href="./downloads.html">Downloads</a>
+          <a href="./source-intelligence.html">Live Intelligence</a>
+          <a href="./launch-kit.html">Launch Kit</a>
+        </div>
+        <a href="https://github.com/gryszzz/Kaspa-Ai-Agent-Skill" target="_blank" rel="noreferrer">GitHub Repository</a>
+      </nav>
+
+      <section class="hero">
+        <h1>Live Kaspa Source Intelligence</h1>
+        <p>
+          Snapshot checked at <strong id="checked-at">2026-06-18T17:20:45.790Z</strong>.
+          Source health is <span id="source-health" class="status-warn">healthy_with_warnings</span>.
+          Facts hash: <code id="facts-hash">70f55abc46da0c81479fe2f3bddb47e1dd9b9973c0b2ff589f34449f6a73547d</code>.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/blob/main/research-snapshots/source-intelligence/latest.md" target="_blank" rel="noreferrer">Read Full Snapshot</a>
+          <a class="btn btn-ghost" href="https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/blob/main/research-snapshots/source-intelligence/latest.json" target="_blank" rel="noreferrer">Open JSON</a>
+          <a class="btn btn-ghost" href="https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/blob/main/scripts/kaspa-source-intelligence.mjs" target="_blank" rel="noreferrer">View Script</a>
+        </div>
+      </section>
+
+      <section class="grid">
+        <article class="card metric"><strong id="latest-release">v2.0.1</strong><span id="latest-release-label">Latest Rusty Kaspa release, published 2026-06-15</span></article>
+        <article class="card metric"><strong id="github-repos">7/7</strong><span>GitHub repositories reachable</span></article>
+        <article class="card metric"><strong id="github-refs">8/8</strong><span>Tracked Git refs reachable</span></article>
+        <article class="card metric"><strong id="web-sources">6/6</strong><span>Docs and research pages reachable</span></article>
+        <article class="card metric"><strong id="network-sources">2/3</strong><span>Network endpoints reachable</span></article>
+        <article class="card metric"><strong id="kip-documents">15/15</strong><span>KIP documents indexed</span></article>
+      </section>
+
+      <section class="grid">
+        <article class="card" style="grid-column: 1 / -1;">
+          <h2>Network Identity</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Endpoint</th>
+                <th>Expected</th>
+                <th>Observed</th>
+                <th>DAA</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="network-table-body">
+              <tr>
+                <td>Mainnet blockDAG</td>
+                <td>kaspa-mainnet</td>
+                <td>kaspa-mainnet</td>
+                <td>463834263</td>
+                <td>ok</td>
+              </tr>
+              <tr>
+                <td>TN10 blockDAG</td>
+                <td>kaspa-testnet-10</td>
+                <td>kaspa-testnet-10</td>
+                <td>494433785</td>
+                <td>ok</td>
+              </tr>
+              <tr>
+                <td>TN12 blockDAG</td>
+                <td>kaspa-testnet-12</td>
+                <td>unknown</td>
+                <td>unknown</td>
+                <td>failed 500</td>
+              </tr>
+            </tbody>
+          </table>
+          <p id="source-warning" style="margin-top: 12px;">
+            Warning: TN12 endpoint failure is preserved as unknown evidence. It must not be turned into a claim
+            that TN12 is inactive or that a feature is absent.
+          </p>
+        </article>
+
+        <article class="card">
+          <h2>Claim Rules</h2>
+          <p>Do not convert endpoint failure into feature absence.</p>
+          <p>Do not convert testnet activation into mainnet activation.</p>
+          <p>Do not convert a merged KIP into released or activated behavior.</p>
+          <p>Always record source URL, checkedAt, release tag or commit, and network identity.</p>
+        </article>
+
+        <article class="card">
+          <h2>Run Locally</h2>
+          <p>Refresh the snapshot from the repository root or from an extracted release package.</p>
+          <div class="code">node scripts/kaspa-source-intelligence.mjs --check
+node scripts/kaspa-source-intelligence.mjs --markdown
+node scripts/kaspa-source-intelligence.mjs --write-if-changed</div>
+        </article>
+      </section>
+    </main>
+
+    <script>
+      const sourceSnapshotUrl = "https://raw.githubusercontent.com/gryszzz/Kaspa-Ai-Agent-Skill/main/research-snapshots/source-intelligence/latest.json";
+      const setText = (id, value) => {
+        const el = document.getElementById(id);
+        if (el && value !== undefined && value !== null) el.textContent = value;
+      };
+      const count = (ok, total) => `${ok ?? 0}/${total ?? 0}`;
+
+      function renderNetworkTable(items) {
+        const tbody = document.getElementById("network-table-body");
+        if (!tbody || !Array.isArray(items) || items.length === 0) return;
+        tbody.replaceChildren(...items.map((item) => {
+          const row = document.createElement("tr");
+          for (const value of [
+            item.label || "",
+            item.expectedNetworkName || "",
+            item.networkName || "unknown",
+            item.virtualDaaScore || "unknown",
+            item.ok ? "ok" : `failed ${item.status || ""}`.trim(),
+          ]) {
+            const cell = document.createElement("td");
+            cell.textContent = value;
+            row.appendChild(cell);
+          }
+          return row;
+        }));
+      }
+
+      fetch(sourceSnapshotUrl, { cache: "no-store" })
+        .then((response) => (response.ok ? response.json() : null))
+        .then((snapshot) => {
+          if (!snapshot) return;
+          const verdict = snapshot.verdict || {};
+          const counts = verdict.counts || {};
+          const primary = verdict.primaryEvidence || {};
+          setText("checked-at", snapshot.checkedAt);
+          setText("source-health", verdict.sourceHealth);
+          setText("facts-hash", snapshot.factsHash);
+          setText("latest-release", primary.latestRustyReleaseTag);
+          setText("latest-release-label", `Latest Rusty Kaspa release, published ${(primary.latestRustyReleasePublishedAt || "").slice(0, 10) || "unknown"}`);
+          setText("github-repos", count(counts.githubReposOk, counts.githubRepos));
+          setText("github-refs", count(counts.refsOk, counts.refs));
+          setText("web-sources", count(counts.webSourcesOk, counts.webSources));
+          setText("network-sources", count(counts.networkSourcesOk, counts.networkSources));
+          setText("kip-documents", count(counts.kipDocumentsOk, counts.kipDocuments));
+          renderNetworkTable(snapshot.kaspaNetwork);
+          if (Array.isArray(verdict.warnings) && verdict.warnings.length) {
+            setText("source-warning", `Warning: ${verdict.warnings.join("; ")}. Endpoint failures remain unknown evidence and must not be converted into feature absence.`);
+          }
+        })
+        .catch(() => {});
+    </script>
+  </body>
+</html>

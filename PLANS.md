@@ -1,4 +1,58 @@
-# ExecPlan: Local Skill Sync, Behavioral Evals, And Release Discipline
+# ExecPlan: Toccata Builder Skill, Source Truth, And Agent Flywheel
+
+## Current Goal
+
+Make repository-local agent behavior match the Toccata builder workflow and
+autonomous engineering flywheel:
+
+- Treat `docs/kaspa/` and `docs/toccata-evidence-ladder.md` as the
+  repository source of truth for Toccata builder requirements.
+- Require Toccata R&D Intelligence mode to cite the relevant playbook,
+  `docs/kaspa` note, or evidence-ladder requirement before proposing
+  covenant-related changes.
+- Formalize `AGENTS.md` as the persistent agent memory journal with a
+  `[Problem] | [Kaspa Protocol Constraint] | [Solution]` Pattern of Success
+  format.
+- Add `TRAINING_SOURCES.md` as the immutable protocol-source ladder and make
+  agent sessions cite it before protocol, transaction, covenant, sequencing,
+  wallet, indexer, or architecture changes.
+- Add `docs/toccata.md` as the official/repo-backed Toccata builder guide for
+  node operators, wallet builders, pool/miner integrators, indexers/explorers,
+  KaspaScript/covenant builders, and ZK/lane-proof researchers.
+- Add `SYSTEM_ARCHITECTURE.md` and `AGENT_TRACE.md` so non-trivial autonomous
+  work has memory, Plan-Act-Verify discipline, observability, and rollback
+  boundaries.
+- Add CI smoke coverage for agent-facing Toccata tasks, including the network
+  endpoint check and mainnet readiness gate.
+
+## Current Constraints
+
+- Keep Kaspa UTXO-first, DAG-aware, and network-explicit.
+- Do not turn testnet, branch, KIP, docs, or research evidence into mainnet
+  activation claims.
+- Preserve existing release-gate behavior and package-release docs bundling.
+- Do not let community resources override official docs, Rusty Kaspa code,
+  releases, or KIPs.
+- Do not add autonomous wallet spending, paid API behavior, or new agent
+  orchestration dependencies without explicit approval.
+- Make changes minimal and verifiable.
+
+## Current Verification Plan
+
+```bash
+node skills/public/kaspa-sovereign-architect-engine/scripts/validate-compatibility.mjs --all
+node skills/public/kaspa-sovereign-architect-engine/scripts/run-behavioral-evals.mjs --check
+node --test skills/public/kaspa-sovereign-architect-engine/scripts/*.test.mjs
+node scripts/validate-skill-release.mjs --check
+node --test scripts/validate-skill-release.test.mjs
+node scripts/toccata-network-check.mjs --check
+node scripts/toccata-mainnet-readiness-gate.mjs --check
+skills/public/kaspa-sovereign-architect-engine/scripts/package-release.sh \
+  /tmp/kaspa-skill-v1.8.0 v1.8.0
+git diff --check
+```
+
+# Previous ExecPlan: Local Skill Sync, Behavioral Evals, And Release Discipline
 
 ## Goal
 

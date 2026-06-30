@@ -13,6 +13,13 @@ Trust order:
 10. GPTs, tweets, videos, articles, and summaries
 
 Rules:
+- Start protocol-primitives research from the Kaspa Developer Docs, then use
+  Rusty Kaspa source code, release tags, KIPs, and live network evidence to
+  validate or correct the implementation detail.
+- For Toccata engineering, use official/repo-backed sources only: Rusty Kaspa
+  release tags, the Toccata Guide, Rusty Kaspa proto files, KIP-16/17/20/21,
+  Go Kaspad v0.12.23 for legacy compatibility, and local repo docs that cite
+  those sources.
 - Code beats docs when docs are stale.
 - A pre-activation pre-release is upgrade evidence, not final mainnet activation evidence.
 - A final release with a future activation DAA is release and schedule evidence; it becomes active-behavior evidence only after a verified mainnet endpoint reaches the threshold.

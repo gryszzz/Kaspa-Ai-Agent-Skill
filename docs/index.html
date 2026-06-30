@@ -37,6 +37,8 @@
         --brand-deep: #1ab39d;
         --ink: #ecf3ff;
         --muted: #9fb4da;
+        --ok: #69f0ae;
+        --warn: #ffd166;
       }
       * {
         box-sizing: border-box;
@@ -54,6 +56,21 @@
         max-width: 1120px;
         margin: 0 auto;
         padding: 28px 20px 64px;
+      }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+        flex-wrap: wrap;
+      }
+      .nav a {
+        text-decoration: none;
+        font-weight: 650;
+        font-size: 14px;
+        color: #dbe8ff;
+        margin-right: 12px;
       }
       .hero {
         border: 1px solid var(--line);
@@ -122,6 +139,17 @@
         gap: 14px;
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       }
+      .section-title {
+        margin: 28px 0 10px;
+      }
+      .section-title h2 {
+        margin: 0;
+        color: var(--ink);
+        font-size: clamp(1.35rem, 3vw, 1.85rem);
+      }
+      .section-title p {
+        max-width: 780px;
+      }
       .card {
         border: 1px solid var(--line);
         border-radius: 14px;
@@ -150,6 +178,51 @@
         font-size: 13px;
         color: #d5e2ff;
       }
+      .metric-grid {
+        margin-top: 14px;
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      }
+      .metric {
+        border: 1px solid #294674;
+        border-radius: 12px;
+        background: #0a1530;
+        padding: 12px;
+      }
+      .metric strong {
+        display: block;
+        font-size: 20px;
+        color: var(--brand);
+      }
+      .metric span {
+        display: block;
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .status-ok {
+        color: var(--ok);
+        font-weight: 700;
+      }
+      .status-warn {
+        color: var(--warn);
+        font-weight: 700;
+      }
+      .download-card {
+        background:
+          linear-gradient(150deg, #132a50 0%, #0b142c 78%);
+      }
+      .step-list {
+        margin: 10px 0 0;
+        padding-left: 18px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+      .subtle {
+        font-size: 13px;
+        color: #8fa8d8;
+      }
       .footer {
         margin-top: 24px;
         font-size: 13px;
@@ -162,6 +235,16 @@
   </head>
   <body>
     <main class="shell">
+      <nav class="nav" aria-label="Primary">
+        <div>
+          <a href="./index.html">Home</a>
+          <a href="./downloads.html">Downloads</a>
+          <a href="./source-intelligence.html">Live Intelligence</a>
+          <a href="./launch-kit.html">Launch Kit</a>
+        </div>
+        <a href="https://github.com/gryszzz/Kaspa-Ai-Agent-Skill" target="_blank" rel="noreferrer">GitHub Repository</a>
+      </nav>
+
       <section class="hero">
         <div class="hero-top">
           <img src="./assets/kaspa-ai-agent-skill-logo.svg" alt="Kaspa AI Agent Skill logo" />
@@ -175,17 +258,90 @@
               <span class="badge">Codex Native</span>
               <span class="badge">OpenAI + Claude + Cursor + Gemini</span>
               <span class="badge">OpenClaw Adapter Included</span>
-              <span class="badge">Repository v1.7.0</span>
+              <span class="badge">Repository v1.8.0</span>
               <span class="badge">Published v1.6.2</span>
+              <span class="badge">Live Source Intelligence</span>
             </div>
           </div>
         </div>
         <div class="cta-row">
-          <a class="btn btn-primary" href="https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases" target="_blank" rel="noreferrer">Download Latest Release</a>
+          <a class="btn btn-primary" href="https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases/latest/download/kaspa-sovereign-architect-engine.zip" target="_blank" rel="noreferrer">Download Skill ZIP</a>
+          <a class="btn btn-ghost" href="./downloads.html">Install Options</a>
+          <a class="btn btn-ghost" href="./source-intelligence.html">Latest Intelligence</a>
           <a class="btn btn-ghost" href="https://github.com/gryszzz/Kaspa-Ai-Agent-Skill" target="_blank" rel="noreferrer">View Repository</a>
-          <a class="btn btn-ghost" href="https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/tree/main/skills/public/kaspa-sovereign-architect-engine" target="_blank" rel="noreferrer">Browse Skill Package</a>
-          <a class="btn btn-ghost" href="./launch-kit.html">Open Launch Kit</a>
         </div>
+      </section>
+
+      <section class="section-title" id="download">
+        <h2>Download Hub</h2>
+        <p>
+          The project ships as a reusable skill package. Download the ZIP, install it into your agent skill folder,
+          then invoke <code>$kaspa-sovereign-architect-engine</code> from Codex or use the bundled adapters elsewhere.
+        </p>
+      </section>
+
+      <section class="grid">
+        <article class="card download-card">
+          <h2>Stable Release ZIP</h2>
+          <p>Best path for Codex and local agent installs.</p>
+          <div class="cta-row" style="margin-top: 12px;">
+            <a class="btn btn-primary" href="https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases/latest/download/kaspa-sovereign-architect-engine.zip" target="_blank" rel="noreferrer">Download ZIP</a>
+            <a class="btn btn-ghost" href="https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases/latest/download/SHA256SUMS.txt" target="_blank" rel="noreferrer">Checksums</a>
+          </div>
+        </article>
+
+        <article class="card download-card">
+          <h2>Tarball + OCI</h2>
+          <p>Use this for scripts, package mirrors, and reproducible release workflows.</p>
+          <div class="code">curl -L -O https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/releases/latest/download/kaspa-sovereign-architect-engine.tar.gz
+oras pull ghcr.io/gryszzz/kaspa-sovereign-architect-engine:latest</div>
+        </article>
+
+        <article class="card download-card">
+          <h2>Adapters</h2>
+          <p>Use the same skill brain from Codex, OpenAI-style agents, Claude, Cursor, OpenClaw, Gemini CLI, or a generic LLM stack.</p>
+          <p style="margin-top: 8px;"><a href="https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/tree/main/skills/public/kaspa-sovereign-architect-engine/agents" target="_blank" rel="noreferrer">Browse adapter files</a></p>
+        </article>
+      </section>
+
+      <section class="section-title" id="intelligence">
+        <h2>Live Kaspa Source Intelligence</h2>
+        <p>
+          Dated snapshot from primary Kaspa sources. It tracks Rusty Kaspa release state, repository refs,
+          docs/research fingerprints, KIPs, and mainnet/TN endpoint identity.
+        </p>
+      </section>
+
+      <section class="grid">
+        <article class="card" style="grid-column: 1 / -1;">
+          <h2>Snapshot Status</h2>
+          <p>
+            Checked <strong id="checked-at">2026-06-18T17:20:45.790Z</strong>.
+            Source health is <span id="source-health" class="status-warn">healthy_with_warnings</span>.
+            Latest Rusty Kaspa release: <strong id="latest-release">v2.0.1</strong>, published
+            <span id="latest-published">2026-06-15</span>.
+          </p>
+          <div class="metric-grid" aria-label="Kaspa source intelligence metrics">
+            <div class="metric"><strong id="github-repos">7/7</strong><span>GitHub repositories</span></div>
+            <div class="metric"><strong id="github-refs">8/8</strong><span>Tracked refs</span></div>
+            <div class="metric"><strong id="web-sources">6/6</strong><span>Docs/research pages</span></div>
+            <div class="metric"><strong id="network-sources">2/3</strong><span>Network endpoints</span></div>
+            <div class="metric"><strong id="kip-documents">15/15</strong><span>KIP documents</span></div>
+            <div class="metric"><strong id="facts-hash-prefix">70f55abc</strong><span>Facts hash prefix</span></div>
+          </div>
+          <p id="source-warning" class="subtle" style="margin-top: 12px;">
+            Warning preserved as unknown evidence: TN12 blockDAG endpoint unavailable. Endpoint failure is not treated as
+            proof that a feature or network state is absent.
+          </p>
+          <div class="cta-row" style="margin-top: 12px;">
+            <a class="btn btn-primary" href="./source-intelligence.html">Open Intelligence Panel</a>
+            <a class="btn btn-ghost" href="https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/blob/main/research-snapshots/source-intelligence/latest.md" target="_blank" rel="noreferrer">Read Snapshot</a>
+          </div>
+        </article>
+      </section>
+
+      <section class="section-title">
+        <h2>Use The Skill</h2>
       </section>
 
       <section class="grid">
@@ -205,10 +361,10 @@ Design a Kaspa DAG-aware indexer with replay-safe workers and SRE-grade failure 
         </article>
 
         <article class="card">
-          <h2>Research Radar Upgrade</h2>
+          <h2>Current-Aware Upgrade</h2>
           <p>
-            Version 1.4 adds freshness checks, source trust rules, KIP status discipline, and research lanes for
-            economics, L1/L2, consensus, mining, papers, KIPs, WASM, Kdapp, indexers, and wallet tooling.
+            Version 1.8 adds deterministic local sync, behavioral evaluations, transaction-plan safety, and live
+            source intelligence for current release, KIP, and network-state claims.
           </p>
         </article>
 
@@ -234,6 +390,8 @@ unzip -o /tmp/kaspa-sovereign-architect-engine.zip -d "$CODEX_HOME/skills"</div>
         <article class="card">
           <h3>Market + Distribution Assets</h3>
           <p>Launch copy, channel strategy, and campaign templates are now bundled:</p>
+          <p style="margin-top: 8px;"><a href="./downloads.html">Open downloads.html</a></p>
+          <p><a href="./source-intelligence.html">Open source-intelligence.html</a></p>
           <p style="margin-top: 8px;"><a href="./launch-kit.html">Open launch-kit.html</a></p>
           <p><a href="./scaling-plan.md">Open scaling-plan.md</a></p>
           <p><a href="https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/blob/main/README.md" target="_blank" rel="noreferrer">Open README</a></p>
@@ -254,6 +412,38 @@ unzip -o /tmp/kaspa-sovereign-architect-engine.zip -d "$CODEX_HOME/skills"</div>
         execution patterns.
       </p>
     </main>
+
+    <script>
+      const sourceSnapshotUrl = "https://raw.githubusercontent.com/gryszzz/Kaspa-Ai-Agent-Skill/main/research-snapshots/source-intelligence/latest.json";
+      const setText = (id, value) => {
+        const el = document.getElementById(id);
+        if (el && value !== undefined && value !== null) el.textContent = value;
+      };
+      const count = (ok, total) => `${ok ?? 0}/${total ?? 0}`;
+
+      fetch(sourceSnapshotUrl, { cache: "no-store" })
+        .then((response) => (response.ok ? response.json() : null))
+        .then((snapshot) => {
+          if (!snapshot) return;
+          const verdict = snapshot.verdict || {};
+          const counts = verdict.counts || {};
+          const primary = verdict.primaryEvidence || {};
+          setText("checked-at", snapshot.checkedAt);
+          setText("source-health", verdict.sourceHealth);
+          setText("latest-release", primary.latestRustyReleaseTag);
+          setText("latest-published", primary.latestRustyReleasePublishedAt ? primary.latestRustyReleasePublishedAt.slice(0, 10) : null);
+          setText("github-repos", count(counts.githubReposOk, counts.githubRepos));
+          setText("github-refs", count(counts.refsOk, counts.refs));
+          setText("web-sources", count(counts.webSourcesOk, counts.webSources));
+          setText("network-sources", count(counts.networkSourcesOk, counts.networkSources));
+          setText("kip-documents", count(counts.kipDocumentsOk, counts.kipDocuments));
+          setText("facts-hash-prefix", snapshot.factsHash ? snapshot.factsHash.slice(0, 8) : null);
+          if (Array.isArray(verdict.warnings) && verdict.warnings.length) {
+            setText("source-warning", `Warning preserved as unknown evidence: ${verdict.warnings.join("; ")}. Endpoint failure is not treated as proof that a feature or network state is absent.`);
+          }
+        })
+        .catch(() => {});
+    </script>
 
     <script type="application/ld+json">
       {

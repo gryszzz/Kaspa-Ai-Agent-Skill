@@ -33,6 +33,9 @@ function copyReleaseSurface() {
   const root = mkdtempSync(path.join(tmpdir(), "kaspa-release-check-"));
   for (const relativePath of [
     "README.md",
+    "SYSTEM_ARCHITECTURE.md",
+    "TRAINING_SOURCES.md",
+    "docs/toccata.md",
     "release-metadata.json",
     "release-notes/v1.8.0.md",
     "skills/public/kaspa-sovereign-architect-engine/manifest.json",
