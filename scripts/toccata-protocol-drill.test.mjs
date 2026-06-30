@@ -11,6 +11,13 @@ import { fileURLToPath } from "node:url";
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const runner = path.join(scriptDir, "toccata-protocol-drill.mjs");
 const casesPath = path.resolve(scriptDir, "..", "fixtures", "toccata", "protocol-drills.json");
+const adversarialResponsesPath = path.resolve(
+  scriptDir,
+  "..",
+  "fixtures",
+  "toccata",
+  "protocol-drill-adversarial-responses.json",
+);
 
 function run(args = []) {
   const result = spawnSync(process.execPath, [runner, "--cases", casesPath, ...args], {
@@ -42,6 +49,20 @@ test("renders a human-readable drill sheet by default", () => {
   assert.match(result.stdout, /Toccata Protocol Mastery Drills/);
   assert.match(result.stdout, /activation-claim-boundary/);
   assert.equal(result.report, null);
+});
+
+test("reports the selected custom cases file", () => {
+  const root = mkdtempSync(path.join(tmpdir(), "toccata-drill-custom-"));
+  const customCasesPath = path.join(root, "custom-drills.json");
+  try {
+    writeFileSync(customCasesPath, readFileSync(casesPath, "utf8"));
+    const result = run(["--cases", customCasesPath, "--check"]);
+
+    assert.equal(result.status, 0, result.stderr || result.stdout);
+    assert.equal(result.report.suite, "custom-drills.json");
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
 });
 
 test("fails ecosystem-wide activation overclaims", () => {
@@ -83,3 +104,11 @@ test("fails fee answers that miss policy versus consensus", () => {
   }
 });
 
+test("fails bundled adversarial responses for every mastery case", () => {
+  const result = run(["--responses", adversarialResponsesPath]);
+
+  assert.equal(result.status, 1);
+  assert.equal(result.report.total, 8);
+  assert.equal(result.report.failedCount, 8);
+  assert.equal(result.report.results.every((entry) => entry.passed === false), true);
+});

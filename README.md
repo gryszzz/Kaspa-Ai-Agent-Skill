@@ -131,6 +131,7 @@ Toccata source monitoring:
 - Network endpoint checker: `node scripts/toccata-network-check.mjs --check`
 - Mainnet readiness gate: `node scripts/toccata-mainnet-readiness-gate.mjs --check`
 - Protocol mastery drill: `node scripts/toccata-protocol-drill.mjs --check`
+- Protocol adversarial drill: `! node scripts/toccata-protocol-drill.mjs --responses fixtures/toccata/protocol-drill-adversarial-responses.json`
 - Behavioral contract evaluations: `node skills/public/kaspa-sovereign-architect-engine/scripts/run-behavioral-evals.mjs --check`
 - Transaction-plan safety gate: `node skills/public/kaspa-sovereign-architect-engine/scripts/lint-transaction-plan.mjs --check`
 - Release packages bundle the skill plus adapters, references, system architecture, protocol training sources, Toccata builder/readiness/mastery docs, fixtures, source snapshots, helper modules, protocol drills, and deterministic tests under the installed skill directory.

@@ -40,6 +40,7 @@ function copyReleaseSurface() {
     "release-metadata.json",
     "release-notes/v1.8.0.md",
     "fixtures/toccata/protocol-drills.json",
+    "fixtures/toccata/protocol-drill-adversarial-responses.json",
     "research-snapshots/toccata/latest.json",
     "skills/public/kaspa-sovereign-architect-engine/manifest.json",
     "skills/public/kaspa-sovereign-architect-engine/agents",

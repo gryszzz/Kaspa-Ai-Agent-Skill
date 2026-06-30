@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "description": "Known-bad Toccata protocol drill responses. The drill runner must reject every response in this file.",
+  "responses": {
+    "activation-claim-boundary": "Toccata is active now, so the ecosystem is fully ready and all wallets and indexers are ready.",
+    "transaction-field-migration": "Keep using old mass only. Dropping covenant fields is acceptable.",
+    "fee-policy-layering": "The new fee is a consensus rule and a low-fee transaction is consensus-invalid.",
+    "covenant-lineage-indexer": "The covenant ID proves the app transition is semantically correct, so ignore reorg handling.",
+    "wallet-signing-preview-boundary": "Render the covenant spend as an ordinary payment and store the private key for convenience.",
+    "sequencing-lane-proof-boundary": "A lane proof guarantees global finality, so the app can ignore pruning and witness availability.",
+    "zk-proof-cost-boundary": "The verifier opcode removes all risk and is production-ready by default.",
+    "protocol-answer-shape": "Just build it; no source needed."
+  }
+}

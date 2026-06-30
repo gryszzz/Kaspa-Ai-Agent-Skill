@@ -51,6 +51,9 @@ function validateLocal(repoRoot) {
   const masteryTrack = readFileSync(path.join(repoRoot, "docs", "kaspa", "toccata-mastery-track.md"), "utf8");
   const toccataSnapshot = readJson(path.join(repoRoot, "research-snapshots", "toccata", "latest.json"));
   const protocolDrills = readJson(path.join(repoRoot, "fixtures", "toccata", "protocol-drills.json"));
+  const adversarialProtocolDrills = readJson(
+    path.join(repoRoot, "fixtures", "toccata", "protocol-drill-adversarial-responses.json"),
+  );
   const version = manifest.version;
   const versionTag = `v${version}`;
 
@@ -211,6 +214,12 @@ function validateLocal(repoRoot) {
     requireCondition(
       protocolDrills.cases.some((entry) => entry.id === drillId),
       `protocol drill fixture missing case: ${drillId}`,
+      failures,
+    );
+    requireCondition(
+      typeof adversarialProtocolDrills.responses?.[drillId] === "string" &&
+        adversarialProtocolDrills.responses[drillId].trim().length > 0,
+      `adversarial protocol drill fixture missing response: ${drillId}`,
       failures,
     );
   }

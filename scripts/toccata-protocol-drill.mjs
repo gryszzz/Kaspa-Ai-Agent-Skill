@@ -130,14 +130,14 @@ function buildMarkdown(suite) {
   return `# ${suite.title}\n\n${suite.sourcePolicy}\n\n${rows}`;
 }
 
-function runEvaluation(suite, responses) {
+function runEvaluation(suite, responses, casesPath) {
   const results = suite.cases.map((entry) =>
     evaluateCase(entry, responses ? responses[entry.id] : entry.referenceResponse),
   );
   const failed = results.filter((result) => !result.passed);
   return {
     schemaVersion: 1,
-    suite: path.basename(defaultCasesPath),
+    suite: path.basename(casesPath),
     passed: failed.length === 0,
     total: results.length,
     passedCount: results.length - failed.length,
@@ -163,7 +163,7 @@ function main() {
     }
 
     const responses = loadResponses(options.responsesPath);
-    const report = runEvaluation(suite, responses);
+    const report = runEvaluation(suite, responses, options.casesPath);
     process.stdout.write(`${JSON.stringify(report, null, 2)}\n`);
     process.exit(report.passed ? 0 : 1);
   } catch (error) {
@@ -173,4 +173,3 @@ function main() {
 }
 
 main();
-

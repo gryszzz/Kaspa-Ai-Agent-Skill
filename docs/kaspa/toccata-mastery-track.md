@@ -241,6 +241,14 @@ Run the machine-checkable protocol drill:
 node scripts/toccata-protocol-drill.mjs --check
 ```
 
+Run the known-bad answer suite. This command should fail because every
+adversarial response is unsafe:
+
+```bash
+! node scripts/toccata-protocol-drill.mjs \
+  --responses fixtures/toccata/protocol-drill-adversarial-responses.json
+```
+
 Run the protocol drill tests:
 
 ```bash
@@ -258,4 +266,3 @@ these:
 - fixture or drill case
 - deterministic verification command
 - trace or docs update when live evidence or release/package state changes
-

@@ -1,16 +1,17 @@
-# ExecPlan: Toccata Mastery And Protocol Drill Hardening
+# ExecPlan: Toccata Mastery Double-Check And Adversarial Training
 
 ## Current Goal
 
-Turn verified post-activation Toccata knowledge into repeatable builder
-mastery loops without adding dependencies or unsupported protocol claims:
+Double-check the Toccata mastery pass and add adversarial training pressure so
+the repo can prove both safe answers pass and unsafe answers fail:
 
-- Add a Toccata mastery track that breaks excellence into protocol, covenant,
-  indexer, wallet, ZK, sequencing, ops, and application lanes.
-- Add a deterministic protocol drill runner and case set so the skill can
-  practice evidence-backed claims and reject unsafe answers.
-- Wire the mastery track and drill into README, knowledge map, release
-  validation, release notes, and packaged artifacts.
+- Re-run the source, readiness, drill, release, compatibility, and package
+  gates from the last mastery pass.
+- Add a bundled adversarial response set for the protocol drill so every
+  mastery case has a known-bad answer that must fail.
+- Make release validation enforce both positive drill cases and adversarial
+  coverage.
+- Fix any small harness issues found during the double-check.
 - Keep Toccata mainnet protocol activation tied to the live `kaspa-mainnet`
   DAA evidence while keeping wallet/indexer/miner/application readiness
   explicitly separate.
@@ -47,6 +48,8 @@ node --test scripts/validate-skill-release.test.mjs
 node scripts/toccata-network-check.mjs --check
 node scripts/toccata-mainnet-readiness-gate.mjs --check
 node scripts/toccata-protocol-drill.mjs --check
+! node scripts/toccata-protocol-drill.mjs \
+  --responses fixtures/toccata/protocol-drill-adversarial-responses.json
 node --test scripts/toccata-protocol-drill.test.mjs
 skills/public/kaspa-sovereign-architect-engine/scripts/package-release.sh \
   /tmp/kaspa-skill-v1.8.0 v1.8.0
