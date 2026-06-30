@@ -1,6 +1,9 @@
 # Covenant Lineage Indexer Notes
 
-This design note sketches a Toccata-era covenant lineage indexer. It is builder-facing and deliberately testnet-scoped until mainnet activation and final wallet/indexer support are verified.
+This design note sketches a Toccata-era covenant lineage indexer. It is
+builder-facing and deliberately readiness-scoped: mainnet protocol activation
+is verified by live DAA evidence, but final wallet, indexer, explorer, app, and
+operator support still require separate audits.
 
 ## Scope
 
@@ -12,8 +15,9 @@ Goal:
 
 Non-goals:
 
-- Do not claim Toccata mainnet activation.
-- Do not treat merged KIPs or TN10 activation as mainnet activation.
+- Do not claim Toccata mainnet activation without citing live `kaspa-mainnet`
+  DAA evidence.
+- Do not treat merged KIPs or TN10 activation as wallet/indexer readiness.
 - Do not assume a covenant ID proves semantic transition validity by itself.
 - Do not design custody or signing logic.
 
@@ -22,6 +26,8 @@ Non-goals:
 As of the local Toccata source-monitor workflow:
 
 - TN10 and TN12 observations are testnet-only evidence.
+- Toccata protocol activation is verified on mainnet only when citing the
+  post-threshold source snapshot or a fresh live `kaspa-mainnet` DAA check.
 - Rusty Kaspa PR, branch, tag, and release-note state must be checked before using any covenant field as current behavior.
 - KIP-17 and KIP-20 are merged high-signal covenant sources, but their document status must still be recorded separately from implementation, network activation, and wallet/indexer support.
 - Wallet and app support must be verified independently from node or protocol code.

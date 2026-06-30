@@ -11,6 +11,9 @@ Builder guide: `docs/toccata.md` in the repo, or
 
 Upgrade-readiness docs page: `docs/kaspa/toccata-upgrade-readiness.md` in the repo, or `references/repo-docs/kaspa/toccata-upgrade-readiness.md` in release downloads.
 
+Mastery track: `docs/kaspa/toccata-mastery-track.md` in the repo, or
+`references/repo-docs/kaspa/toccata-mastery-track.md` in release downloads.
+
 Repository source of truth: for `gryszzz/Kaspa-Ai-Agent-Skill`, use
 `docs/toccata.md`, `docs/kaspa/`, and `docs/toccata-evidence-ladder.md` as the
 builder-facing requirement set. Packaged releases may expose the same material
@@ -146,6 +149,8 @@ Role prompts:
   continuation, non-forgeability, and invalid transitions.
 - ZK/lane-proof researchers: start from KIP-16 and KIP-21; avoid invented
   proof systems, opcodes, or roadmap status.
+- Mastery mode: run `node scripts/toccata-protocol-drill.mjs --check` after
+  updating protocol-sensitive docs, references, or training cases.
 
 ### Transaction And Node-Interaction Changes
 

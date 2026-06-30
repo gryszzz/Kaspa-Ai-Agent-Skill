@@ -11,6 +11,7 @@ Use the live source monitor before repeating any status claim:
 ```bash
 node scripts/toccata-source-monitor.mjs --write-if-changed
 node scripts/kaspa-knowledge-drill.mjs
+node scripts/toccata-protocol-drill.mjs --check
 ```
 
 Historical 2026-06-06 posture:
@@ -206,6 +207,7 @@ Already in place:
 - Multi-endpoint network checker.
 - Mainnet readiness gate.
 - Local knowledge drill.
+- Protocol mastery drill.
 - Compatibility CI that runs the drill, lineage checks, vProg simulator, endpoint checker, and mainnet gate.
 
 Next high-leverage upgrades:
@@ -229,5 +231,6 @@ Next high-leverage upgrades:
 - Sequencing witness API sketch: [`./sequencing-witness-api.md`](./sequencing-witness-api.md)
 - vProg scope simulator: [`./vprog-scope-simulator.md`](./vprog-scope-simulator.md)
 - Mainnet readiness gate: [`./mainnet-readiness-gate.md`](./mainnet-readiness-gate.md)
+- Toccata mastery track: [`./toccata-mastery-track.md`](./toccata-mastery-track.md)
 - Mainnet/TN10/TN12 smoke tests: [`../../research-snapshots/toccata/rpc-smoke-tests.md`](../../research-snapshots/toccata/rpc-smoke-tests.md)
 - Readiness drills: [`../../training-corpus/kaspa-toccata-readiness-drills-2026.md`](../../training-corpus/kaspa-toccata-readiness-drills-2026.md)

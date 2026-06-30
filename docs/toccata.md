@@ -49,6 +49,9 @@ truth for Toccata behavior.
   compatibility and label it as legacy.
 - Mainnet protocol activation is now verified by live DAA evidence, but
   downstream readiness remains a separate audit.
+- Toccata mastery work should use `docs/kaspa/toccata-mastery-track.md` and
+  `scripts/toccata-protocol-drill.mjs --check` to turn protocol knowledge into
+  repeatable, source-grounded drills.
 
 ## Fee Model
 
@@ -183,4 +186,5 @@ Before proposing code changes, load the narrow file that matches the task:
 - `docs/kaspa/wallet-covenant-signing-preview.md`
 - `docs/kaspa/sequencing-witness-api.md`
 - `docs/kaspa/zk-proof-cost-matrix.md`
+- `docs/kaspa/toccata-mastery-track.md`
 - `skills/public/kaspa-sovereign-architect-engine/references/toccata-rd-playbook.md`

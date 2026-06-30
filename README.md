@@ -112,6 +112,7 @@ Toccata source monitoring:
 - [Agent Toccata Smoke workflow](.github/workflows/agent-toccata-smoke.yml)
 - Toccata builder guide: [`docs/toccata.md`](docs/toccata.md)
 - Toccata evidence ladder: [`docs/toccata-evidence-ladder.md`](docs/toccata-evidence-ladder.md)
+- Toccata mastery track: [`docs/kaspa/toccata-mastery-track.md`](docs/kaspa/toccata-mastery-track.md)
 - Toccata upgrade readiness: [`docs/kaspa/toccata-upgrade-readiness.md`](docs/kaspa/toccata-upgrade-readiness.md)
 - Covenant lineage indexer notes: [`docs/kaspa/covenant-lineage-indexer.md`](docs/kaspa/covenant-lineage-indexer.md)
 - Wallet covenant-signing preview: [`docs/kaspa/wallet-covenant-signing-preview.md`](docs/kaspa/wallet-covenant-signing-preview.md)
@@ -129,9 +130,10 @@ Toccata source monitoring:
 - vProg scope simulator: `node scripts/vprog-scope-simulator.mjs --check`
 - Network endpoint checker: `node scripts/toccata-network-check.mjs --check`
 - Mainnet readiness gate: `node scripts/toccata-mainnet-readiness-gate.mjs --check`
+- Protocol mastery drill: `node scripts/toccata-protocol-drill.mjs --check`
 - Behavioral contract evaluations: `node skills/public/kaspa-sovereign-architect-engine/scripts/run-behavioral-evals.mjs --check`
 - Transaction-plan safety gate: `node skills/public/kaspa-sovereign-architect-engine/scripts/lint-transaction-plan.mjs --check`
-- Release packages bundle the skill plus adapters, references, system architecture, protocol training sources, Toccata builder/readiness docs, fixtures, source snapshots, helper modules, and deterministic tests under the installed skill directory.
+- Release packages bundle the skill plus adapters, references, system architecture, protocol training sources, Toccata builder/readiness/mastery docs, fixtures, source snapshots, helper modules, protocol drills, and deterministic tests under the installed skill directory.
 - Claim rule: current source snapshot verifies Toccata protocol activation on
   mainnet by live `kaspa-mainnet` DAA evidence; wallet/indexer readiness is
   still a separate claim.
@@ -147,6 +149,7 @@ Agent operating rule:
 - For Toccata builder work, load [`docs/toccata.md`](docs/toccata.md) and use
   official/repo-backed sources only.
 - For repository work, `docs/kaspa/` and `docs/toccata-evidence-ladder.md` are the Toccata builder source of truth.
+- For mastery work, use [`docs/kaspa/toccata-mastery-track.md`](docs/kaspa/toccata-mastery-track.md) and the protocol drill runner to turn claims into repeatable checks.
 - In Toccata R&D Intelligence mode, covenant-related proposals must cite the governing requirement from the playbook, evidence ladder, or the relevant `docs/kaspa` note before code changes.
 - Hard-won fixes should be appended to [`AGENTS.md`](AGENTS.md) as a Pattern of Success: `[Problem] | [Kaspa Protocol Constraint] | [Solution]`.
 - Agent-facing Toccata changes are smoke-gated by `node scripts/toccata-network-check.mjs --check` and `node scripts/toccata-mainnet-readiness-gate.mjs --check`.

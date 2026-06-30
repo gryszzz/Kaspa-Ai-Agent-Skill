@@ -1,19 +1,19 @@
-# ExecPlan: Post-Activation Toccata Hardening
+# ExecPlan: Toccata Mastery And Protocol Drill Hardening
 
 ## Current Goal
 
-Update repository-local agent behavior for verified post-activation Toccata
-mainnet status while preserving source discipline and ecosystem-readiness
-separation:
+Turn verified post-activation Toccata knowledge into repeatable builder
+mastery loops without adding dependencies or unsupported protocol claims:
 
-- Refresh `research-snapshots/toccata/latest.*` from live primary sources and
-  classify mainnet protocol activation from the returned `kaspa-mainnet`
-  `virtualDaaScore`.
-- Update docs, references, training corpus, and behavioral evals so future
-  sessions can say Toccata protocol activation is verified on mainnet only
-  when they cite the live DAA evidence.
-- Keep wallet/indexer/miner/application readiness explicitly separate from
-  protocol activation.
+- Add a Toccata mastery track that breaks excellence into protocol, covenant,
+  indexer, wallet, ZK, sequencing, ops, and application lanes.
+- Add a deterministic protocol drill runner and case set so the skill can
+  practice evidence-backed claims and reject unsafe answers.
+- Wire the mastery track and drill into README, knowledge map, release
+  validation, release notes, and packaged artifacts.
+- Keep Toccata mainnet protocol activation tied to the live `kaspa-mainnet`
+  DAA evidence while keeping wallet/indexer/miner/application readiness
+  explicitly separate.
 - Treat `docs/toccata.md`, `docs/kaspa/`, and
   `docs/toccata-evidence-ladder.md` as the repository source of truth for
   Toccata builder requirements.
@@ -27,6 +27,8 @@ separation:
 - Do not turn testnet, branch, KIP, docs, release schedule, or research
   evidence into mainnet activation claims without live `kaspa-mainnet`
   threshold evidence.
+- Do not turn protocol activation into wallet, indexer, miner, explorer, or
+  application readiness.
 - Preserve existing release-gate behavior and package-release docs bundling.
 - Do not let community resources override official docs, Rusty Kaspa code,
   releases, or KIPs.
@@ -44,6 +46,8 @@ node scripts/validate-skill-release.mjs --check
 node --test scripts/validate-skill-release.test.mjs
 node scripts/toccata-network-check.mjs --check
 node scripts/toccata-mainnet-readiness-gate.mjs --check
+node scripts/toccata-protocol-drill.mjs --check
+node --test scripts/toccata-protocol-drill.test.mjs
 skills/public/kaspa-sovereign-architect-engine/scripts/package-release.sh \
   /tmp/kaspa-skill-v1.8.0 v1.8.0
 git diff --check

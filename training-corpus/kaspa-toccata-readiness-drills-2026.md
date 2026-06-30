@@ -1,12 +1,17 @@
 # Kaspa Toccata Readiness Drills
 
-Generated: 2026-06-06
+Generated: 2026-06-06. Updated for post-activation protocol status on
+2026-06-30.
 
-This file is the repo-local training loop for preparing the `kaspa-sovereign-architect-engine` skill for Toccata-era work. It does not train the base model. It trains the local skill package, retrieval corpus, and operator habits by forcing repeated source verification, recall, and build-oriented synthesis.
+This file is the repo-local training loop for mastering Toccata-era work with
+the `kaspa-sovereign-architect-engine` skill. It does not train the base model.
+It trains the local skill package, retrieval corpus, and operator habits by
+forcing repeated source verification, recall, build-oriented synthesis, and
+readiness-boundary discipline.
 
 ## Operating Goal
 
-Prepare for the Toccata upgrade by becoming excellent at three things:
+Master Toccata by becoming excellent at three things:
 
 - Source truth: separate mainnet, TN10, TN12, branch-only, PR-only, KIP PR, docs, research, and tooling evidence.
 - Builder readiness: turn source changes into wallet, indexer, covenant, ZK, sequencing, and vProg tasks.
@@ -25,6 +30,7 @@ node --test scripts/toccata-source-monitor.test.mjs
 
 ```bash
 node scripts/kaspa-knowledge-drill.mjs
+node scripts/toccata-protocol-drill.mjs --check
 ```
 
 3. Answer the five-minute recall prompts without opening notes.
@@ -37,7 +43,11 @@ node scripts/kaspa-knowledge-drill.mjs
 
 Monday: source audit
 
-- Re-check Rusty Kaspa `v2.0.0`, its activation DAA, and the live mainnet DAA.
+- Re-check Rusty Kaspa `v2.0.0`, activation DAA `474,165,565`, the live
+  mainnet DAA, and the current `v2.0.1+` implementation target.
+- Preserve the post-activation boundary: protocol activation is verified only
+  with cited `kaspa-mainnet` DAA evidence; wallet/indexer/miner/explorer/app
+  readiness remains separate.
 - Review branch-delta impact lanes instead of relying only on pinned PR numbers.
 - Re-check KIP-16, KIP-17, KIP-20, and KIP-21 PR status plus the merged KIP file document status.
 - Re-check mainnet, TN10, and TN12 `/info/blockdag` shape.
@@ -82,13 +92,16 @@ Weekend: app strategy
 
 Evidence:
 
-- What would prove the scheduled activation DAA has actually been reached?
+- What source proves Toccata protocol activation is active on mainnet?
+- What live endpoint evidence separates protocol activation from ecosystem
+  readiness?
 - What does `v2.0.0` prove, and what does it not prove about current live mainnet state?
 - What does `tn10-toc3` prove, and why is it still not mainnet evidence?
 - What does a feature branch prove that an open PR does not?
 - What does a merged KIP file prove that it still does not prove about mainnet?
 - Which network name did each endpoint return in the latest snapshot?
-- Which protocol gates are complete, which one blocks activation, and why is wallet/indexer readiness separate?
+- Which protocol gates are complete, and why is wallet/indexer readiness
+  separate after protocol activation?
 
 Covenants:
 
@@ -125,11 +138,14 @@ High leverage:
 - Add trusted multi-endpoint source lists for mainnet, TN10, and TN12.
 - Add proof-cost benchmark snapshots when verifier pricing stabilizes.
 - Add witness API contract tests once an indexer implementation exists.
+- Promote stable answers into `docs/kaspa/toccata-mastery-track.md` or
+  `fixtures/toccata/protocol-drills.json` instead of relying on chat memory.
 
 Guardrails:
 
 - Never collapse testnet evidence into mainnet claims.
-- Never treat merged KIP files or TN10 activation status as mainnet activation.
-- Never treat a final release with a future DAA as already-active mainnet behavior.
+- Never treat merged KIP files or TN10 activation status as mainnet evidence.
+- Never cite active mainnet behavior without the live mainnet network name and
+  DAA threshold evidence.
 - Never assume wallet/indexer support follows automatically from protocol code.
 - Never treat a demo compiler or app as audited production readiness.

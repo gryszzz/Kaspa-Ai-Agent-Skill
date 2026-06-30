@@ -15,8 +15,9 @@ Protocol and ecosystem references used by this repository:
 Research:
 - PHANTOM/GHOSTDAG paper: https://eprint.iacr.org/2018/104.pdf
 
-Toccata preparation:
+Toccata mastery:
 - Evidence ladder: ../toccata-evidence-ladder.md
 - Upgrade readiness: ./toccata-upgrade-readiness.md
+- Mastery track: ./toccata-mastery-track.md
 - Covenant lineage indexer notes: ./covenant-lineage-indexer.md
 - Latest source snapshot: ../../research-snapshots/toccata/latest.md

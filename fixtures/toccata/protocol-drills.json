@@ -1,0 +1,344 @@
+{
+  "schemaVersion": 1,
+  "title": "Toccata Protocol Mastery Drills",
+  "sourcePolicy": "Use official/repo-backed sources and local Toccata R&D intelligence before protocol-sensitive claims.",
+  "cases": [
+    {
+      "id": "activation-claim-boundary",
+      "track": "protocol",
+      "prompt": "The latest repo snapshot shows kaspa-mainnet above the Toccata activation DAA. What can the agent claim?",
+      "sources": [
+        "docs/toccata-evidence-ladder.md",
+        "docs/kaspa/mainnet-readiness-gate.md",
+        "research-snapshots/toccata/latest.json"
+      ],
+      "required": [
+        {
+          "label": "claims protocol activation only",
+          "pattern": "protocol activation|protocol-active|protocol active"
+        },
+        {
+          "label": "cites mainnet identity",
+          "pattern": "kaspa-mainnet"
+        },
+        {
+          "label": "cites observed DAA",
+          "pattern": "474391519"
+        },
+        {
+          "label": "cites activation DAA",
+          "pattern": "474165565"
+        },
+        {
+          "label": "keeps wallet and indexer separate",
+          "pattern": "wallet.*indexer|indexer.*wallet"
+        },
+        {
+          "label": "states readiness boundary",
+          "pattern": "separate|does not prove|not prove"
+        }
+      ],
+      "prohibited": [
+        {
+          "label": "claims full ecosystem readiness",
+          "pattern": "ecosystem (?:is )?fully ready|all wallets.*ready|all indexers.*ready"
+        }
+      ],
+      "referenceResponse": "Claim: Toccata protocol activation is verified on mainnet. Source: docs/toccata-evidence-ladder.md, docs/kaspa/mainnet-readiness-gate.md, and research-snapshots/toccata/latest.json. Protocol status: kaspa-mainnet returned observed DAA 474391519, above activation DAA 474165565. Readiness boundary: this does not prove wallet and indexer readiness; wallet, indexer, miner, explorer, and app readiness remain separate audits."
+    },
+    {
+      "id": "transaction-field-migration",
+      "track": "protocol",
+      "prompt": "An SDK upgrade still uses mass everywhere and drops covenant fields. What must be fixed?",
+      "sources": [
+        "docs/toccata.md",
+        "https://github.com/kaspanet/rusty-kaspa/blob/master/docs/toccata-guide.md"
+      ],
+      "required": [
+        {
+          "label": "uses JSON/WASM storageMass",
+          "pattern": "storageMass"
+        },
+        {
+          "label": "uses Rust/protobuf storage_mass",
+          "pattern": "storage_mass"
+        },
+        {
+          "label": "keeps computeBudget",
+          "pattern": "computeBudget"
+        },
+        {
+          "label": "keeps output covenant",
+          "pattern": "covenant"
+        },
+        {
+          "label": "keeps UTXO covenant id",
+          "pattern": "covenant_id"
+        },
+        {
+          "label": "rejects mass conflicts",
+          "pattern": "reject.*conflict|conflict.*reject"
+        }
+      ],
+      "prohibited": [
+        {
+          "label": "silently chooses a field",
+          "pattern": "silently (?:choose|prefer) one|dropping covenant fields is acceptable"
+        }
+      ],
+      "referenceResponse": "Source: docs/toccata.md and the Toccata Guide. Fix the SDK to use JSON/WASM storageMass and Rust/protobuf storage_mass, preserve input computeBudget, output covenant, UTXO covenant_id, and transaction version 1, and reject mass/storageMass conflicts instead of silently choosing one. Do not drop covenant fields."
+    },
+    {
+      "id": "fee-policy-layering",
+      "track": "protocol",
+      "prompt": "A node rejects a low-fee post-Toccata transaction. What should the builder say?",
+      "sources": [
+        "docs/toccata.md",
+        "https://github.com/kaspanet/rusty-kaspa/blob/master/docs/toccata-guide.md"
+      ],
+      "required": [
+        {
+          "label": "cites fee formula",
+          "pattern": "100 sompi \\* max\\(compute grams, 2 \\* transaction bytes\\)"
+        },
+        {
+          "label": "labels node or mempool policy",
+          "pattern": "node policy|mempool policy|relay policy"
+        },
+        {
+          "label": "separates consensus",
+          "pattern": "not consensus|separate from consensus|consensus validity"
+        },
+        {
+          "label": "prefers fee estimation",
+          "pattern": "fee estimation|fee-estimation"
+        }
+      ],
+      "prohibited": [
+        {
+          "label": "turns policy into consensus",
+          "pattern": "consensus-invalid solely|consensus rule"
+        }
+      ],
+      "referenceResponse": "Source: docs/toccata.md and the Toccata Guide. The post-Toccata minimum standard fee is 100 sompi * max(compute grams, 2 * transaction bytes), but this is node policy or mempool policy, not consensus. Use fee estimation where possible and report consensus validity separately from relay rejection."
+    },
+    {
+      "id": "covenant-lineage-indexer",
+      "track": "covenants",
+      "prompt": "What makes a covenant lineage indexer safe enough to build on?",
+      "sources": [
+        "docs/kaspa/covenant-lineage-indexer.md",
+        "docs/toccata.md"
+      ],
+      "required": [
+        {
+          "label": "tracks genesis outpoint",
+          "pattern": "genesis outpoint"
+        },
+        {
+          "label": "tracks covenant id",
+          "pattern": "covenant ID"
+        },
+        {
+          "label": "tracks authorizing input",
+          "pattern": "authorizing input"
+        },
+        {
+          "label": "tracks continuation edges",
+          "pattern": "continuation"
+        },
+        {
+          "label": "tracks accepted transaction context",
+          "pattern": "accepted transaction context"
+        },
+        {
+          "label": "handles rollback and replay",
+          "pattern": "rollback.*replay|replay.*rollback"
+        }
+      ],
+      "prohibited": [
+        {
+          "label": "treats covenant id as semantic proof",
+          "pattern": "covenant ID proves.*semantic|ignore reorg"
+        }
+      ],
+      "referenceResponse": "Source: docs/kaspa/covenant-lineage-indexer.md. A safe indexer stores the genesis outpoint, covenant ID, authorizing input, continuation edges, accepted transaction context, source network, and reversible state. On reorg it must rollback and replay from a durable checkpoint; a covenant ID groups lineage but does not prove semantic correctness by itself."
+    },
+    {
+      "id": "wallet-signing-preview-boundary",
+      "track": "wallets",
+      "prompt": "How should a wallet preview a covenant spend?",
+      "sources": [
+        "docs/kaspa/wallet-covenant-signing-preview.md",
+        "skills/public/kaspa-sovereign-architect-engine/references/transaction-plan-safety.md"
+      ],
+      "required": [
+        {
+          "label": "not normal send",
+          "pattern": "not a normal send|not normal"
+        },
+        {
+          "label": "shows consumed state",
+          "pattern": "consumed state"
+        },
+        {
+          "label": "shows successor state",
+          "pattern": "successor state"
+        },
+        {
+          "label": "shows proof requirements",
+          "pattern": "proof requirements"
+        },
+        {
+          "label": "shows network",
+          "pattern": "network"
+        },
+        {
+          "label": "protects secrets",
+          "pattern": "seeds?|private keys?"
+        },
+        {
+          "label": "preserves wallet paths",
+          "pattern": "Kasware.*Kaspium|Kaspium.*Kasware"
+        }
+      ],
+      "prohibited": [
+        {
+          "label": "normalizes covenant spend as payment",
+          "pattern": "ordinary payment|normal send only|store.*private key"
+        }
+      ],
+      "referenceResponse": "Source: docs/kaspa/wallet-covenant-signing-preview.md. The wallet must say this is not a normal send, show network, consumed state, successor state, covenant ID, proof requirements, fee, and change, preserve Kasware and Kaspium paths, and never expose seeds or private keys."
+    },
+    {
+      "id": "sequencing-lane-proof-boundary",
+      "track": "sequencing",
+      "prompt": "What should a lane-aware sequencing API prove before an app trusts it?",
+      "sources": [
+        "docs/kaspa/sequencing-witness-api.md",
+        "docs/toccata.md"
+      ],
+      "required": [
+        {
+          "label": "includes lane",
+          "pattern": "lane"
+        },
+        {
+          "label": "includes accepted transaction context",
+          "pattern": "accepted transaction context"
+        },
+        {
+          "label": "includes witness availability",
+          "pattern": "witness availability"
+        },
+        {
+          "label": "includes pruning",
+          "pattern": "pruning"
+        },
+        {
+          "label": "keeps local and global separate",
+          "pattern": "global finality|lane-local"
+        },
+        {
+          "label": "names KIP-21 or API",
+          "pattern": "KIP-21|GetSeqCommitLaneProof"
+        }
+      ],
+      "prohibited": [
+        {
+          "label": "overclaims global finality",
+          "pattern": "lane proof guarantees global finality|ignore pruning"
+        }
+      ],
+      "referenceResponse": "Source: docs/kaspa/sequencing-witness-api.md and docs/toccata.md. A lane-aware API should expose the lane, accepted transaction context, witness availability, pruning state, and networkName, and it should use KIP-21 or GetSeqCommitLaneProof terminology only when grounded. It must not collapse lane-local evidence into global finality language."
+    },
+    {
+      "id": "zk-proof-cost-boundary",
+      "track": "zk",
+      "prompt": "What must be checked before saying an inline ZK path is builder-ready?",
+      "sources": [
+        "docs/kaspa/zk-proof-cost-matrix.md",
+        "docs/toccata.md"
+      ],
+      "required": [
+        {
+          "label": "names KIP-16",
+          "pattern": "KIP-16"
+        },
+        {
+          "label": "names OpZkPrecompile",
+          "pattern": "OpZkPrecompile"
+        },
+        {
+          "label": "requires proof payload shape",
+          "pattern": "payload"
+        },
+        {
+          "label": "requires public inputs or journal",
+          "pattern": "public inputs|journal"
+        },
+        {
+          "label": "requires cost or resource metering",
+          "pattern": "cost|resource"
+        },
+        {
+          "label": "requires malformed tests",
+          "pattern": "malformed|invalid"
+        },
+        {
+          "label": "keeps readiness separate",
+          "pattern": "wallet.*indexer|indexer.*wallet"
+        }
+      ],
+      "prohibited": [
+        {
+          "label": "claims verifier removes risk",
+          "pattern": "verifier (?:opcode )?removes all risk|is production-ready by default"
+        }
+      ],
+      "referenceResponse": "Source: docs/kaspa/zk-proof-cost-matrix.md and docs/toccata.md. Start from KIP-16 and OpZkPrecompile, then verify payload shape, public inputs or journal, program identity, cost or resource metering, malformed and invalid proof tests, and dependency maturity. Wallet and indexer readiness remain separate; a verifier opcode is not production-ready by default and does not remove proof risk."
+    },
+    {
+      "id": "protocol-answer-shape",
+      "track": "operations",
+      "prompt": "What shape should a protocol-sensitive Toccata answer use before recommending code?",
+      "sources": [
+        "docs/kaspa/toccata-mastery-track.md",
+        "TRAINING_SOURCES.md"
+      ],
+      "required": [
+        {
+          "label": "includes claim",
+          "pattern": "Claim:"
+        },
+        {
+          "label": "includes source",
+          "pattern": "Source:"
+        },
+        {
+          "label": "includes protocol status",
+          "pattern": "Protocol status:"
+        },
+        {
+          "label": "includes readiness boundary",
+          "pattern": "Readiness boundary:"
+        },
+        {
+          "label": "includes verification command",
+          "pattern": "Verification command:"
+        },
+        {
+          "label": "includes non-claim",
+          "pattern": "What I will not claim:"
+        }
+      ],
+      "prohibited": [
+        {
+          "label": "uses unsourced recommendation",
+          "pattern": "just build it|no source needed"
+        }
+      ],
+      "referenceResponse": "Claim: state the narrow Toccata claim. Source: cite the official URL or local path. Protocol status: classify active, scheduled, testnet, branch, KIP, docs, or unknown. Readiness boundary: separate wallet, indexer, miner, explorer, and app readiness. Verification command: name the local command to rerun. What I will not claim: record the unsupported claim that stays out of the answer."
+    }
+  ]
+}

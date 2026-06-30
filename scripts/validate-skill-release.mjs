@@ -48,7 +48,9 @@ function validateLocal(repoRoot) {
   const systemArchitecture = readFileSync(path.join(repoRoot, "SYSTEM_ARCHITECTURE.md"), "utf8");
   const trainingSources = readFileSync(path.join(repoRoot, "TRAINING_SOURCES.md"), "utf8");
   const toccataGuide = readFileSync(path.join(repoRoot, "docs", "toccata.md"), "utf8");
+  const masteryTrack = readFileSync(path.join(repoRoot, "docs", "kaspa", "toccata-mastery-track.md"), "utf8");
   const toccataSnapshot = readJson(path.join(repoRoot, "research-snapshots", "toccata", "latest.json"));
+  const protocolDrills = readJson(path.join(repoRoot, "fixtures", "toccata", "protocol-drills.json"));
   const version = manifest.version;
   const versionTag = `v${version}`;
 
@@ -174,6 +176,44 @@ function validateLocal(repoRoot) {
       failures,
     );
   }
+  for (const masteryRequirement of [
+    "Research -> Encode -> Eval -> Build -> Verify -> Record",
+    "Protocol",
+    "Covenants",
+    "Indexers",
+    "Wallets",
+    "ZK",
+    "Sequencing",
+    "Readiness boundary",
+    "node scripts/toccata-protocol-drill.mjs --check",
+  ]) {
+    requireCondition(
+      masteryTrack.includes(masteryRequirement),
+      `docs/kaspa/toccata-mastery-track.md missing requirement: ${masteryRequirement}`,
+      failures,
+    );
+  }
+  requireCondition(
+    protocolDrills.schemaVersion === 1 && Array.isArray(protocolDrills.cases) && protocolDrills.cases.length >= 8,
+    "protocol drill fixture must contain at least 8 schemaVersion 1 cases",
+    failures,
+  );
+  for (const drillId of [
+    "activation-claim-boundary",
+    "transaction-field-migration",
+    "fee-policy-layering",
+    "covenant-lineage-indexer",
+    "wallet-signing-preview-boundary",
+    "sequencing-lane-proof-boundary",
+    "zk-proof-cost-boundary",
+    "protocol-answer-shape",
+  ]) {
+    requireCondition(
+      protocolDrills.cases.some((entry) => entry.id === drillId),
+      `protocol drill fixture missing case: ${drillId}`,
+      failures,
+    );
+  }
   requireCondition(
     toccataSnapshot.verdict?.activation?.state === "active",
     "Toccata snapshot must verify active mainnet protocol status",
@@ -216,6 +256,16 @@ function validateLocal(repoRoot) {
   requireCondition(
     packageScript.includes("docs/toccata.md"),
     "package script must bundle docs/toccata.md into release artifacts",
+    failures,
+  );
+  requireCondition(
+    packageScript.includes("toccata-mastery-track.md"),
+    "package script must bundle docs/kaspa/toccata-mastery-track.md into release artifacts",
+    failures,
+  );
+  requireCondition(
+    packageScript.includes("toccata-protocol-drill.mjs"),
+    "package script must bundle toccata-protocol-drill.mjs into release artifacts",
     failures,
   );
   requireCondition(
