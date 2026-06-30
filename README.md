@@ -132,9 +132,13 @@ Toccata source monitoring:
 - Mainnet readiness gate: `node scripts/toccata-mainnet-readiness-gate.mjs --check`
 - Protocol mastery drill: `node scripts/toccata-protocol-drill.mjs --check`
 - Protocol adversarial drill: `! node scripts/toccata-protocol-drill.mjs --responses fixtures/toccata/protocol-drill-adversarial-responses.json`
+- Captured response drill: `node scripts/toccata-captured-responses-check.mjs --check`
+- Ecosystem readiness audit: `node scripts/toccata-ecosystem-readiness-audit.mjs --check`
+- Live covenant/indexer fixture intake: `node scripts/toccata-live-fixture-check.mjs --check`
+- ZK proof-cost benchmark baseline: `node scripts/toccata-zk-benchmark-check.mjs --check`
 - Behavioral contract evaluations: `node skills/public/kaspa-sovereign-architect-engine/scripts/run-behavioral-evals.mjs --check`
 - Transaction-plan safety gate: `node skills/public/kaspa-sovereign-architect-engine/scripts/lint-transaction-plan.mjs --check`
-- Release packages bundle the skill plus adapters, references, system architecture, protocol training sources, Toccata builder/readiness/mastery docs, fixtures, source snapshots, helper modules, protocol drills, and deterministic tests under the installed skill directory.
+- Release packages bundle the skill plus adapters, references, system architecture, protocol training sources, Toccata builder/readiness/mastery docs, fixtures, captured responses, source snapshots, helper modules, protocol drills, readiness audit checks, and deterministic tests under the installed skill directory.
 - Claim rule: current source snapshot verifies Toccata protocol activation on
   mainnet by live `kaspa-mainnet` DAA evidence; wallet/indexer readiness is
   still a separate claim.

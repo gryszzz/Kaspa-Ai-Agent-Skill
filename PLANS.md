@@ -1,17 +1,19 @@
-# ExecPlan: Toccata Mastery Double-Check And Adversarial Training
+# ExecPlan: Toccata Evidence Lane Fill
 
 ## Current Goal
 
-Double-check the Toccata mastery pass and add adversarial training pressure so
-the repo can prove both safe answers pass and unsafe answers fail:
+Fill the remaining Toccata mastery evidence lanes without fabricating
+readiness or benchmark claims:
 
-- Re-run the source, readiness, drill, release, compatibility, and package
-  gates from the last mastery pass.
-- Add a bundled adversarial response set for the protocol drill so every
-  mastery case has a known-bad answer that must fail.
-- Make release validation enforce both positive drill cases and adversarial
-  coverage.
-- Fix any small harness issues found during the double-check.
+- Add captured agent responses that are graded through `--responses`.
+- Add a live ecosystem readiness audit snapshot for wallet, indexer, miner,
+  explorer, and API sources while preserving `do_not_claim_wallet_indexer_ready`.
+- Add live covenant/indexer fixture intake validation so future real captures
+  have a schema and gate.
+- Add a ZK proof-cost benchmark baseline that stays pending until measured
+  data exists.
+- Wire all four lanes into release validation, package artifacts, README,
+  release notes, and mastery docs.
 - Keep Toccata mainnet protocol activation tied to the live `kaspa-mainnet`
   DAA evidence while keeping wallet/indexer/miner/application readiness
   explicitly separate.
@@ -50,6 +52,10 @@ node scripts/toccata-mainnet-readiness-gate.mjs --check
 node scripts/toccata-protocol-drill.mjs --check
 ! node scripts/toccata-protocol-drill.mjs \
   --responses fixtures/toccata/protocol-drill-adversarial-responses.json
+node scripts/toccata-captured-responses-check.mjs --check
+node scripts/toccata-ecosystem-readiness-audit.mjs --check
+node scripts/toccata-live-fixture-check.mjs --check
+node scripts/toccata-zk-benchmark-check.mjs --check
 node --test scripts/toccata-protocol-drill.test.mjs
 skills/public/kaspa-sovereign-architect-engine/scripts/package-release.sh \
   /tmp/kaspa-skill-v1.8.0 v1.8.0

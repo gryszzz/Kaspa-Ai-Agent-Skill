@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-06-30T23:18:05.103Z",
+  "sourcePolicy": "Repository availability and keyword evidence are not readiness proof. Readiness requires explicit post-Toccata support evidence, tests, and maintained release paths for each component.",
+  "sources": [
+    {
+      "id": "kasware-extension",
+      "role": "wallet",
+      "label": "KasWare browser extension",
+      "repo": "kasware-wallet/extension",
+      "url": "https://github.com/kasware-wallet/extension",
+      "ok": true,
+      "status": 200,
+      "defaultBranch": "main",
+      "pushedAt": "2026-03-08T15:31:07Z",
+      "updatedAt": "2026-06-30T17:20:34Z",
+      "latestRelease": null,
+      "readmeOk": true,
+      "evidenceTermsFound": [],
+      "evidenceHash": "12aace52ec5c4c496302bdfc1d7d1556cd42f39c642125943eccb6c25d6dfb70",
+      "readiness": "source_available_no_toccata_readiness_proof"
+    },
+    {
+      "id": "kaspium-wallet",
+      "role": "wallet",
+      "label": "Kaspium mobile wallet",
+      "repo": "azbuky/kaspium_wallet",
+      "url": "https://github.com/azbuky/kaspium_wallet",
+      "ok": true,
+      "status": 200,
+      "defaultBranch": "main",
+      "pushedAt": "2026-06-30T12:45:31Z",
+      "updatedAt": "2026-06-30T12:28:12Z",
+      "latestRelease": {
+        "tagName": "v1.2.0",
+        "publishedAt": "2026-06-30T12:45:31Z",
+        "url": "https://github.com/azbuky/kaspium_wallet/releases/tag/v1.2.0"
+      },
+      "readmeOk": true,
+      "evidenceTermsFound": [
+        "toccata"
+      ],
+      "evidenceHash": "eef50448510a5b8722f9159fabaedd21f9142efbca4ad82f166196825c98650a",
+      "readiness": "mentions_toccata_terms_review_required"
+    },
+    {
+      "id": "kaspa-ng",
+      "role": "wallet_explorer_node",
+      "label": "Kaspa NG",
+      "repo": "aspectron/kaspa-ng",
+      "url": "https://github.com/aspectron/kaspa-ng",
+      "ok": true,
+      "status": 200,
+      "defaultBranch": "master",
+      "pushedAt": "2026-06-29T13:17:53Z",
+      "updatedAt": "2026-06-29T13:16:06Z",
+      "latestRelease": {
+        "tagName": "v2.0.1",
+        "publishedAt": "2026-06-29T13:17:54Z",
+        "url": "https://github.com/aspectron/kaspa-ng/releases/tag/v2.0.1"
+      },
+      "readmeOk": true,
+      "evidenceTermsFound": [],
+      "evidenceHash": "440370c62ed5a9771a97a4792828644b99eac36fb502a8eede3c7b5fbd9798d8",
+      "readiness": "source_available_no_toccata_readiness_proof"
+    },
+    {
+      "id": "simply-kaspa-indexer",
+      "role": "indexer",
+      "label": "Simply Kaspa Indexer",
+      "repo": "supertypo/simply-kaspa-indexer",
+      "url": "https://github.com/supertypo/simply-kaspa-indexer",
+      "ok": true,
+      "status": 200,
+      "defaultBranch": "main",
+      "pushedAt": "2026-06-23T20:49:16Z",
+      "updatedAt": "2026-06-23T18:27:47Z",
+      "latestRelease": {
+        "tagName": "v2.2.0",
+        "publishedAt": "2026-06-23T18:28:40Z",
+        "url": "https://github.com/supertypo/simply-kaspa-indexer/releases/tag/v2.2.0"
+      },
+      "readmeOk": true,
+      "evidenceTermsFound": [
+        "toccata",
+        "covenant",
+        "covenant_id"
+      ],
+      "evidenceHash": "693146a13287f838035eaed39cb028ea6b754339c9ef7b33cd548416f62796f9",
+      "readiness": "mentions_toccata_terms_review_required"
+    },
+    {
+      "id": "kaspa-explorer",
+      "role": "explorer",
+      "label": "Kaspa Explorer",
+      "repo": "lAmeR1/kaspa-explorer",
+      "url": "https://github.com/lAmeR1/kaspa-explorer",
+      "ok": true,
+      "status": 200,
+      "defaultBranch": "main",
+      "pushedAt": "2025-04-23T18:27:04Z",
+      "updatedAt": "2026-06-02T23:41:56Z",
+      "latestRelease": null,
+      "readmeOk": true,
+      "evidenceTermsFound": [],
+      "evidenceHash": "16fb88a4521c29d64cbeb23f7e246e366d486999715ba050e73ceb899af75c77",
+      "readiness": "source_available_no_toccata_readiness_proof"
+    },
+    {
+      "id": "kaspa-rest-server",
+      "role": "explorer_api",
+      "label": "Kaspa REST API server",
+      "repo": "kaspa-ng/kaspa-rest-server",
+      "url": "https://github.com/kaspa-ng/kaspa-rest-server",
+      "ok": true,
+      "status": 200,
+      "defaultBranch": "main",
+      "pushedAt": "2026-06-30T09:19:01Z",
+      "updatedAt": "2026-06-30T09:16:51Z",
+      "latestRelease": {
+        "tagName": "v2.2.3",
+        "publishedAt": "2026-06-30T09:19:01Z",
+        "url": "https://github.com/kaspa-ng/kaspa-rest-server/releases/tag/v2.2.3"
+      },
+      "readmeOk": true,
+      "evidenceTermsFound": [
+        "toccata",
+        "covenant",
+        "covenant_id"
+      ],
+      "evidenceHash": "faa11ea4c99f1a41264b049be1a2cbf63836a2be0e2f460864a975164cfb2215",
+      "readiness": "mentions_toccata_terms_review_required"
+    },
+    {
+      "id": "kaspa-miner",
+      "role": "miner",
+      "label": "Kaspa CPU miner",
+      "repo": "elichai/kaspa-miner",
+      "url": "https://github.com/elichai/kaspa-miner",
+      "ok": true,
+      "status": 200,
+      "defaultBranch": "main",
+      "pushedAt": "2026-06-23T21:36:18Z",
+      "updatedAt": "2026-06-23T21:36:22Z",
+      "latestRelease": {
+        "tagName": "v0.2.5",
+        "publishedAt": "2024-01-07T16:43:09Z",
+        "url": "https://github.com/elichai/kaspa-miner/releases/tag/v0.2.5"
+      },
+      "readmeOk": true,
+      "evidenceTermsFound": [],
+      "evidenceHash": "a3746faf307cee90a7913d0c10886cdaa7cfa9e375c042ef24bda98d60360818",
+      "readiness": "source_available_no_toccata_readiness_proof"
+    },
+    {
+      "id": "rusty-kaspa",
+      "role": "node_mining_template_reference",
+      "label": "Rusty Kaspa reference node",
+      "repo": "kaspanet/rusty-kaspa",
+      "url": "https://github.com/kaspanet/rusty-kaspa",
+      "ok": true,
+      "status": 200,
+      "defaultBranch": "master",
+      "pushedAt": "2026-06-24T07:30:28Z",
+      "updatedAt": "2026-06-30T16:31:43Z",
+      "latestRelease": {
+        "tagName": "v2.0.1",
+        "publishedAt": "2026-06-15T19:14:22Z",
+        "url": "https://github.com/kaspanet/rusty-kaspa/releases/tag/v2.0.1"
+      },
+      "readmeOk": true,
+      "evidenceTermsFound": [
+        "toccata",
+        "covenant"
+      ],
+      "evidenceHash": "e47f2beabcbac7f0260d021c51245512ee259a2fa2be5e79424819778b0649bc",
+      "readiness": "mentions_toccata_terms_review_required"
+    }
+  ],
+  "verdict": {
+    "doNotClaimWalletIndexerReady": true,
+    "reason": "Repository availability and keyword evidence are not sufficient to prove ecosystem readiness."
+  },
+  "factsHash": "ea06a55e753d32c68d83d26b1b5c15f1f0656aec75934edbdda88ecbb5bf3bde"
+}

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "snapshotType": "zk_proof_cost_baseline",
+  "checkedAt": "2026-06-30T23:20:00Z",
+  "status": "pending_no_measurements",
+  "sourceBoundary": "No measured post-Toccata ZK proof-cost benchmark is recorded in this repository yet.",
+  "requiredBeforeMeasuredClaim": [
+    "proof system",
+    "program identity or image ID",
+    "proof payload bytes",
+    "public input or journal bytes",
+    "verification cost or resource units",
+    "valid proof result",
+    "invalid proof result",
+    "malformed proof result",
+    "dependency versions",
+    "network and activation context"
+  ],
+  "measurements": []
+}
+

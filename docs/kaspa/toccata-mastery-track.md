@@ -255,6 +255,20 @@ Run the protocol drill tests:
 node --test scripts/toccata-protocol-drill.test.mjs
 ```
 
+Run real captured agent responses:
+
+```bash
+node scripts/toccata-captured-responses-check.mjs --check
+```
+
+Run ecosystem readiness, live fixture, and ZK benchmark guard checks:
+
+```bash
+node scripts/toccata-ecosystem-readiness-audit.mjs --check
+node scripts/toccata-live-fixture-check.mjs --check
+node scripts/toccata-zk-benchmark-check.mjs --check
+```
+
 ## Promotion Rule
 
 A Toccata idea becomes a reusable builder pattern only when it has all of
@@ -266,3 +280,18 @@ these:
 - fixture or drill case
 - deterministic verification command
 - trace or docs update when live evidence or release/package state changes
+
+## Remaining Evidence Lanes
+
+- Captured responses live under `captured-responses/toccata/` and are graded
+  with the same protocol drill runner as the reference answers.
+- Ecosystem readiness lives under
+  `research-snapshots/toccata/ecosystem-readiness-latest.*`. Repository
+  availability or keyword matches are not readiness proof.
+- Live covenant/indexer fixtures must use
+  `fixtures/toccata/live-covenant-indexer-fixture.template.json` as the intake
+  contract and must come from a real post-Toccata indexer or RPC-backed
+  integration before being treated as captured evidence.
+- ZK proof-cost snapshots live under
+  `research-snapshots/toccata/zk-proof-cost-baseline.*`. The current baseline
+  is pending and must not be presented as a measured benchmark.

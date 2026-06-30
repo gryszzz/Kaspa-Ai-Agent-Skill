@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "capture": {
+    "agent": "Codex",
+    "mode": "Toccata mastery protocol drill",
+    "capturedAt": "2026-06-30T23:20:00Z",
+    "cases": "fixtures/toccata/protocol-drills.json",
+    "sourceBoundary": "Generated from this repository's current Toccata mastery prompts and local source ladder; not a wallet, indexer, miner, explorer, or app readiness audit."
+  },
+  "responses": {
+    "activation-claim-boundary": "Claim: Toccata protocol activation is verified on mainnet. Source: docs/toccata-evidence-ladder.md, docs/kaspa/mainnet-readiness-gate.md, and research-snapshots/toccata/latest.json. Protocol status: kaspa-mainnet returned observed DAA 474391519, above activation DAA 474165565. Readiness boundary: wallet and indexer readiness remain separate, as do miner, explorer, and app audits. Verification command: node scripts/toccata-mainnet-readiness-gate.mjs --check. What I will not claim: downstream component readiness without separate audits.",
+    "transaction-field-migration": "Source: docs/toccata.md and the Toccata Guide. Update SDK paths to use JSON/WASM storageMass and Rust/protobuf storage_mass, preserve input computeBudget, output covenant, UTXO covenant_id, and transaction version 1, and reject mass/storageMass conflicts instead of guessing. What I will not claim: compatibility when covenant fields are omitted.",
+    "fee-policy-layering": "Source: docs/toccata.md and the Toccata Guide. The post-Toccata minimum standard fee is 100 sompi * max(compute grams, 2 * transaction bytes). Treat it as node policy, mempool policy, or relay policy, not consensus. Use fee estimation where possible and keep consensus validity separate from relay rejection.",
+    "covenant-lineage-indexer": "Source: docs/kaspa/covenant-lineage-indexer.md. A safe covenant lineage indexer stores genesis outpoint, covenant ID, authorizing input, continuation edges, accepted transaction context, network name, and reversible state. It must rollback and replay from durable checkpoints on reorgs. A covenant ID groups lineage but does not prove semantic transition correctness.",
+    "wallet-signing-preview-boundary": "Source: docs/kaspa/wallet-covenant-signing-preview.md and transaction-plan-safety.md. The wallet must say this is not a normal send, show network, consumed state, successor state, covenant ID, proof requirements, fee, and change, preserve Kasware and Kaspium paths, and never expose seeds or private keys.",
+    "sequencing-lane-proof-boundary": "Source: docs/kaspa/sequencing-witness-api.md and docs/toccata.md. A lane-aware API must expose lane, accepted transaction context, witness availability, pruning state, and networkName. Use KIP-21 or GetSeqCommitLaneProof terminology only when grounded, and do not collapse lane-local evidence into global finality language.",
+    "zk-proof-cost-boundary": "Source: docs/kaspa/zk-proof-cost-matrix.md and docs/toccata.md. Start from KIP-16 and OpZkPrecompile, then verify proof payload shape, public inputs or journal, program identity, cost or resource metering, malformed and invalid proof tests, and dependency maturity. Wallet and indexer readiness remain separate.",
+    "protocol-answer-shape": "Claim: state the narrow Toccata claim. Source: cite the official URL or local path. Protocol status: classify active, scheduled, testnet, branch, KIP, docs, or unknown. Readiness boundary: separate wallet, indexer, miner, explorer, and app readiness. Verification command: name the local command to rerun. What I will not claim: record the unsupported claim that stays out of the answer."
+  }
+}

@@ -12,6 +12,10 @@ Use the live source monitor before repeating any status claim:
 node scripts/toccata-source-monitor.mjs --write-if-changed
 node scripts/kaspa-knowledge-drill.mjs
 node scripts/toccata-protocol-drill.mjs --check
+node scripts/toccata-captured-responses-check.mjs --check
+node scripts/toccata-ecosystem-readiness-audit.mjs --check
+node scripts/toccata-live-fixture-check.mjs --check
+node scripts/toccata-zk-benchmark-check.mjs --check
 ```
 
 Historical 2026-06-06 posture:
@@ -208,6 +212,10 @@ Already in place:
 - Mainnet readiness gate.
 - Local knowledge drill.
 - Protocol mastery drill.
+- Captured response grading.
+- Ecosystem readiness audit snapshot.
+- Live covenant/indexer fixture intake check.
+- ZK benchmark baseline check.
 - Compatibility CI that runs the drill, lineage checks, vProg simulator, endpoint checker, and mainnet gate.
 
 Next high-leverage upgrades:
@@ -233,4 +241,6 @@ Next high-leverage upgrades:
 - Mainnet readiness gate: [`./mainnet-readiness-gate.md`](./mainnet-readiness-gate.md)
 - Toccata mastery track: [`./toccata-mastery-track.md`](./toccata-mastery-track.md)
 - Mainnet/TN10/TN12 smoke tests: [`../../research-snapshots/toccata/rpc-smoke-tests.md`](../../research-snapshots/toccata/rpc-smoke-tests.md)
+- Ecosystem readiness audit: [`../../research-snapshots/toccata/ecosystem-readiness-latest.md`](../../research-snapshots/toccata/ecosystem-readiness-latest.md)
+- ZK proof-cost baseline: [`../../research-snapshots/toccata/zk-proof-cost-baseline.md`](../../research-snapshots/toccata/zk-proof-cost-baseline.md)
 - Readiness drills: [`../../training-corpus/kaspa-toccata-readiness-drills-2026.md`](../../training-corpus/kaspa-toccata-readiness-drills-2026.md)

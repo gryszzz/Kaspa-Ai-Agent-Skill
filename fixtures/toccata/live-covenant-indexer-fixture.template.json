@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "fixtureType": "template_only",
+  "capturedAt": null,
+  "networkName": null,
+  "source": {
+    "kind": "indexer_or_rpc_export",
+    "url": null,
+    "commit": null,
+    "operator": null
+  },
+  "activationEvidence": {
+    "requiredNetworkName": "kaspa-mainnet",
+    "activationDaa": 474165565,
+    "observedDaa": null
+  },
+  "acceptedTransactions": [],
+  "covenantLineages": [],
+  "notes": "Replace template_only with live_covenant_indexer_capture only after the data is exported from a real post-Toccata indexer or RPC-backed integration. Do not commit secrets, private keys, auth tokens, or private user addresses."
+}
+

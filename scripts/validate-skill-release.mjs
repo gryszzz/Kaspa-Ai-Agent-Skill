@@ -50,6 +50,10 @@ function validateLocal(repoRoot) {
   const toccataGuide = readFileSync(path.join(repoRoot, "docs", "toccata.md"), "utf8");
   const masteryTrack = readFileSync(path.join(repoRoot, "docs", "kaspa", "toccata-mastery-track.md"), "utf8");
   const toccataSnapshot = readJson(path.join(repoRoot, "research-snapshots", "toccata", "latest.json"));
+  const ecosystemReadiness = readJson(
+    path.join(repoRoot, "research-snapshots", "toccata", "ecosystem-readiness-latest.json"),
+  );
+  const zkBenchmark = readJson(path.join(repoRoot, "research-snapshots", "toccata", "zk-proof-cost-baseline.json"));
   const protocolDrills = readJson(path.join(repoRoot, "fixtures", "toccata", "protocol-drills.json"));
   const adversarialProtocolDrills = readJson(
     path.join(repoRoot, "fixtures", "toccata", "protocol-drill-adversarial-responses.json"),
@@ -239,6 +243,26 @@ function validateLocal(repoRoot) {
     "Toccata snapshot must include healthy kaspa-mainnet endpoint evidence",
     failures,
   );
+  requireCondition(
+    ecosystemReadiness.verdict?.doNotClaimWalletIndexerReady === true,
+    "ecosystem readiness snapshot must keep wallet/indexer readiness unclaimed",
+    failures,
+  );
+  requireCondition(
+    Array.isArray(ecosystemReadiness.sources) && ecosystemReadiness.sources.length >= 4,
+    "ecosystem readiness snapshot must include audited component sources",
+    failures,
+  );
+  requireCondition(
+    zkBenchmark.status === "pending_no_measurements" || zkBenchmark.status === "measured",
+    "ZK benchmark snapshot must have a valid status",
+    failures,
+  );
+  requireCondition(
+    zkBenchmark.status !== "pending_no_measurements" || zkBenchmark.measurements?.length === 0,
+    "pending ZK benchmark snapshot must not contain fake measurements",
+    failures,
+  );
 
   const adapterDir = path.join(skillRoot, "agents");
   for (const fileName of readdirSync(adapterDir).sort()) {
@@ -277,6 +301,21 @@ function validateLocal(repoRoot) {
     "package script must bundle toccata-protocol-drill.mjs into release artifacts",
     failures,
   );
+  for (const bundledName of [
+    "captured-responses",
+    "ecosystem-readiness-latest.json",
+    "zk-proof-cost-baseline.json",
+    "toccata-captured-responses-check.mjs",
+    "toccata-ecosystem-readiness-audit.mjs",
+    "toccata-live-fixture-check.mjs",
+    "toccata-zk-benchmark-check.mjs",
+  ]) {
+    requireCondition(
+      packageScript.includes(bundledName),
+      `package script must bundle ${bundledName} into release artifacts`,
+      failures,
+    );
+  }
   requireCondition(
     packageScript.includes("SYSTEM_ARCHITECTURE.md"),
     "package script must bundle SYSTEM_ARCHITECTURE.md into release artifacts",

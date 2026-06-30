@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "auditPolicy": "Repository availability and keyword evidence are not readiness proof. Readiness requires explicit post-Toccata support evidence, tests, and maintained release paths for each component.",
+  "sources": [
+    {
+      "id": "kasware-extension",
+      "role": "wallet",
+      "label": "KasWare browser extension",
+      "repo": "kasware-wallet/extension",
+      "url": "https://github.com/kasware-wallet/extension"
+    },
+    {
+      "id": "kaspium-wallet",
+      "role": "wallet",
+      "label": "Kaspium mobile wallet",
+      "repo": "azbuky/kaspium_wallet",
+      "url": "https://github.com/azbuky/kaspium_wallet"
+    },
+    {
+      "id": "kaspa-ng",
+      "role": "wallet_explorer_node",
+      "label": "Kaspa NG",
+      "repo": "aspectron/kaspa-ng",
+      "url": "https://github.com/aspectron/kaspa-ng"
+    },
+    {
+      "id": "simply-kaspa-indexer",
+      "role": "indexer",
+      "label": "Simply Kaspa Indexer",
+      "repo": "supertypo/simply-kaspa-indexer",
+      "url": "https://github.com/supertypo/simply-kaspa-indexer"
+    },
+    {
+      "id": "kaspa-explorer",
+      "role": "explorer",
+      "label": "Kaspa Explorer",
+      "repo": "lAmeR1/kaspa-explorer",
+      "url": "https://github.com/lAmeR1/kaspa-explorer"
+    },
+    {
+      "id": "kaspa-rest-server",
+      "role": "explorer_api",
+      "label": "Kaspa REST API server",
+      "repo": "kaspa-ng/kaspa-rest-server",
+      "url": "https://github.com/kaspa-ng/kaspa-rest-server"
+    },
+    {
+      "id": "kaspa-miner",
+      "role": "miner",
+      "label": "Kaspa CPU miner",
+      "repo": "elichai/kaspa-miner",
+      "url": "https://github.com/elichai/kaspa-miner"
+    },
+    {
+      "id": "rusty-kaspa",
+      "role": "node_mining_template_reference",
+      "label": "Rusty Kaspa reference node",
+      "repo": "kaspanet/rusty-kaspa",
+      "url": "https://github.com/kaspanet/rusty-kaspa"
+    }
+  ],
+  "proofTerms": [
+    "toccata",
+    "covenant",
+    "storageMass",
+    "storage_mass",
+    "computeBudget",
+    "compute_commit",
+    "covenant_id"
+  ]
+}
+

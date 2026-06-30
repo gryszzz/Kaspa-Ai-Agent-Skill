@@ -36,6 +36,8 @@ mkdir -p \
   "$STAGED_SKILL_DIR/references/repo-docs/research-snapshots/toccata" \
   "$STAGED_SKILL_DIR/research-snapshots/source-intelligence" \
   "$STAGED_SKILL_DIR/references/repo-docs/research-snapshots/source-intelligence" \
+  "$STAGED_SKILL_DIR/captured-responses/toccata" \
+  "$STAGED_SKILL_DIR/references/repo-docs/captured-responses/toccata" \
   "$STAGED_SKILL_DIR/training-corpus" \
   "$STAGED_SKILL_DIR/references/repo-docs/training-corpus" \
   "$STAGED_SKILL_DIR/fixtures/toccata"
@@ -80,6 +82,14 @@ copy_if_present "$REPO_ROOT/research-snapshots/toccata/README.md" "$STAGED_SKILL
 copy_if_present "$REPO_ROOT/research-snapshots/toccata/latest.json" "$STAGED_SKILL_DIR/research-snapshots/toccata"
 copy_if_present "$REPO_ROOT/research-snapshots/toccata/latest.md" "$STAGED_SKILL_DIR/research-snapshots/toccata"
 copy_if_present "$REPO_ROOT/research-snapshots/toccata/rpc-smoke-tests.md" "$STAGED_SKILL_DIR/research-snapshots/toccata"
+copy_if_present "$REPO_ROOT/research-snapshots/toccata/ecosystem-readiness-latest.json" "$STAGED_SKILL_DIR/references/repo-docs/research-snapshots/toccata"
+copy_if_present "$REPO_ROOT/research-snapshots/toccata/ecosystem-readiness-latest.md" "$STAGED_SKILL_DIR/references/repo-docs/research-snapshots/toccata"
+copy_if_present "$REPO_ROOT/research-snapshots/toccata/zk-proof-cost-baseline.json" "$STAGED_SKILL_DIR/references/repo-docs/research-snapshots/toccata"
+copy_if_present "$REPO_ROOT/research-snapshots/toccata/zk-proof-cost-baseline.md" "$STAGED_SKILL_DIR/references/repo-docs/research-snapshots/toccata"
+copy_if_present "$REPO_ROOT/research-snapshots/toccata/ecosystem-readiness-latest.json" "$STAGED_SKILL_DIR/research-snapshots/toccata"
+copy_if_present "$REPO_ROOT/research-snapshots/toccata/ecosystem-readiness-latest.md" "$STAGED_SKILL_DIR/research-snapshots/toccata"
+copy_if_present "$REPO_ROOT/research-snapshots/toccata/zk-proof-cost-baseline.json" "$STAGED_SKILL_DIR/research-snapshots/toccata"
+copy_if_present "$REPO_ROOT/research-snapshots/toccata/zk-proof-cost-baseline.md" "$STAGED_SKILL_DIR/research-snapshots/toccata"
 copy_if_present "$REPO_ROOT/research-snapshots/source-intelligence/README.md" "$STAGED_SKILL_DIR/references/repo-docs/research-snapshots/source-intelligence"
 copy_if_present "$REPO_ROOT/research-snapshots/source-intelligence/latest.json" "$STAGED_SKILL_DIR/references/repo-docs/research-snapshots/source-intelligence"
 copy_if_present "$REPO_ROOT/research-snapshots/source-intelligence/latest.md" "$STAGED_SKILL_DIR/references/repo-docs/research-snapshots/source-intelligence"
@@ -92,6 +102,8 @@ copy_if_present "$REPO_ROOT/training-corpus/kaspa-toccata-readiness-drills-2026.
 copy_if_present "$REPO_ROOT/training-corpus/kaspa-toccata-2026.md" "$STAGED_SKILL_DIR/training-corpus"
 copy_if_present "$REPO_ROOT/training-corpus/kaspa-toccata-rd-intelligence-2026.md" "$STAGED_SKILL_DIR/training-corpus"
 copy_if_present "$REPO_ROOT/training-corpus/kaspa-toccata-readiness-drills-2026.md" "$STAGED_SKILL_DIR/training-corpus"
+copy_if_present "$REPO_ROOT/captured-responses/toccata/." "$STAGED_SKILL_DIR/captured-responses/toccata"
+copy_if_present "$REPO_ROOT/captured-responses/toccata/." "$STAGED_SKILL_DIR/references/repo-docs/captured-responses/toccata"
 copy_if_present "$REPO_ROOT/fixtures/toccata/." "$STAGED_SKILL_DIR/fixtures/toccata"
 copy_if_present "$REPO_ROOT/scripts/lib" "$STAGED_SKILL_DIR/scripts"
 copy_if_present "$REPO_ROOT/scripts/toccata-source-monitor.mjs" "$STAGED_SKILL_DIR/scripts"
@@ -105,6 +117,10 @@ copy_if_present "$REPO_ROOT/scripts/covenant-lineage-prototype.mjs" "$STAGED_SKI
 copy_if_present "$REPO_ROOT/scripts/vprog-scope-simulator.mjs" "$STAGED_SKILL_DIR/scripts"
 copy_if_present "$REPO_ROOT/scripts/toccata-network-check.mjs" "$STAGED_SKILL_DIR/scripts"
 copy_if_present "$REPO_ROOT/scripts/toccata-mainnet-readiness-gate.mjs" "$STAGED_SKILL_DIR/scripts"
+copy_if_present "$REPO_ROOT/scripts/toccata-captured-responses-check.mjs" "$STAGED_SKILL_DIR/scripts"
+copy_if_present "$REPO_ROOT/scripts/toccata-ecosystem-readiness-audit.mjs" "$STAGED_SKILL_DIR/scripts"
+copy_if_present "$REPO_ROOT/scripts/toccata-live-fixture-check.mjs" "$STAGED_SKILL_DIR/scripts"
+copy_if_present "$REPO_ROOT/scripts/toccata-zk-benchmark-check.mjs" "$STAGED_SKILL_DIR/scripts"
 
 VERSIONED_ZIP="$OUT_DIR/${BASE_NAME}-${VERSION_TAG}.zip"
 VERSIONED_TAR="$OUT_DIR/${BASE_NAME}-${VERSION_TAG}.tar.gz"

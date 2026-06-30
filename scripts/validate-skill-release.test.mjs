@@ -42,6 +42,8 @@ function copyReleaseSurface() {
     "fixtures/toccata/protocol-drills.json",
     "fixtures/toccata/protocol-drill-adversarial-responses.json",
     "research-snapshots/toccata/latest.json",
+    "research-snapshots/toccata/ecosystem-readiness-latest.json",
+    "research-snapshots/toccata/zk-proof-cost-baseline.json",
     "skills/public/kaspa-sovereign-architect-engine/manifest.json",
     "skills/public/kaspa-sovereign-architect-engine/agents",
     "skills/public/kaspa-sovereign-architect-engine/scripts/package-release.sh",
