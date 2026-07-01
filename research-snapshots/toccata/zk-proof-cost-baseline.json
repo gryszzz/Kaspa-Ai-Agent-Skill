@@ -1,9 +1,28 @@
 {
   "schemaVersion": 1,
   "snapshotType": "zk_proof_cost_baseline",
-  "checkedAt": "2026-06-30T23:20:00Z",
-  "status": "pending_no_measurements",
-  "sourceBoundary": "No measured post-Toccata ZK proof-cost benchmark is recorded in this repository yet.",
+  "checkedAt": "2026-06-30T23:55:00Z",
+  "status": "measured_partial",
+  "sourceBoundary": "Local Criterion measurements were captured from upstream Rusty Kaspa's official kaspa-txscript zk_precompiles benchmark. These are machine/profile timing measurements, not consensus rules, relay policy, or complete DoS proof. Invalid and malformed proof-cost measurements remain pending.",
+  "benchmarkRun": {
+    "sourceTier": "Rusty Kaspa repository",
+    "repository": "https://github.com/kaspanet/rusty-kaspa",
+    "commit": "98a4ccd8d200853787f227bd4536ac540cf34957",
+    "benchmarkSource": "crypto/txscript/benches/zk_precompiles.rs",
+    "fixtureSource": "crypto/txscript/src/zk_precompiles/tests/helpers.rs",
+    "command": "cargo bench -p kaspa-txscript --bench zk_precompiles -- --warm-up-time 1 --measurement-time 3 --sample-size 10",
+    "toolchain": {
+      "rustc": "rustc 1.95.0 (59807616e 2026-04-14)",
+      "cargo": "cargo 1.95.0 (f2d3ce0bd 2026-03-21)"
+    },
+    "machine": {
+      "cpu": "Apple M1",
+      "logicalCpus": 8,
+      "memoryBytes": 8589934592,
+      "os": "macOS 26.5 build 25F71"
+    },
+    "criterionUnit": "nanoseconds"
+  },
   "requiredBeforeMeasuredClaim": [
     "proof system",
     "program identity or image ID",
@@ -16,6 +35,119 @@
     "dependency versions",
     "network and activation context"
   ],
-  "measurements": []
+  "measurements": [
+    {
+      "proofSystem": "R0/Succinct",
+      "programIdentity": "crypto/txscript/src/zk_precompiles/tests/data/succinct.image.hex",
+      "proofPayloadBytes": 222668,
+      "publicInputBytes": 32,
+      "verificationCost": {
+        "metric": "criterion_mean_time",
+        "meanNs": 13924027.553581348,
+        "confidenceLowNs": 13892093.664509423,
+        "confidenceHighNs": 13961691.94938021,
+        "medianNs": 13902801.81547619,
+        "humanMean": "13.924 ms"
+      },
+      "validProofResult": "execute_zk_script(build_stark_script(false)) completed successfully in the upstream benchmark",
+      "invalidProofResult": "not_measured_in_this_run",
+      "malformedProofResult": "not_measured_in_this_run",
+      "dependencyVersions": {
+        "rustyKaspaCommit": "98a4ccd8d200853787f227bd4536ac540cf34957",
+        "risc0Core": "3.0.1",
+        "risc0Zkp": "3.0.4",
+        "criterion": "0.5.1"
+      },
+      "networkName": "local-benchmark-not-network",
+      "sourceFiles": [
+        "crypto/txscript/benches/zk_precompiles.rs",
+        "crypto/txscript/src/zk_precompiles/tests/helpers.rs",
+        "crypto/txscript/src/zk_precompiles/tests/data/succinct.seal.hex",
+        "crypto/txscript/src/zk_precompiles/tests/data/succinct.journal.hex"
+      ]
+    },
+    {
+      "proofSystem": "Groth16",
+      "programIdentity": "helper fixture verifying key, 424 bytes",
+      "proofPayloadBytes": 128,
+      "publicInputBytes": 160,
+      "verificationCost": {
+        "metric": "criterion_mean_time",
+        "meanNs": 2626157.4403628116,
+        "confidenceLowNs": 2620885.9513452374,
+        "confidenceHighNs": 2631751.4238548754,
+        "medianNs": 2627697.8158730157,
+        "humanMean": "2.626 ms"
+      },
+      "validProofResult": "execute_zk_script(build_groth_script()) completed successfully in the upstream benchmark",
+      "invalidProofResult": "not_measured_in_this_run",
+      "malformedProofResult": "not_measured_in_this_run",
+      "dependencyVersions": {
+        "rustyKaspaCommit": "98a4ccd8d200853787f227bd4536ac540cf34957",
+        "arkGroth16": "0.6.0",
+        "arkBn254": "0.6.0",
+        "criterion": "0.5.1"
+      },
+      "networkName": "local-benchmark-not-network",
+      "sourceFiles": [
+        "crypto/txscript/benches/zk_precompiles.rs",
+        "crypto/txscript/src/zk_precompiles/tests/helpers.rs"
+      ]
+    }
+  ],
+  "referenceMeasurements": [
+    {
+      "name": "ECDSA baseline",
+      "meanNs": 24768.0719473859,
+      "confidenceLowNs": 24745.115034611696,
+      "confidenceHighNs": 24792.238138367367,
+      "medianNs": 24762.10777626194
+    },
+    {
+      "name": "R0 batch, 50 proofs, 1 thread",
+      "meanNs": 693430916.7
+    },
+    {
+      "name": "R0 batch, 50 proofs, 2 threads",
+      "meanNs": 370475745.6
+    },
+    {
+      "name": "R0 batch, 50 proofs, 4 threads",
+      "meanNs": 199840524.9
+    },
+    {
+      "name": "R0 batch, 50 proofs, 8 threads",
+      "meanNs": 151409416.65
+    },
+    {
+      "name": "R0 batch, 50 proofs, 16 threads",
+      "meanNs": 150210727.1
+    },
+    {
+      "name": "Groth16 prepare inputs, 10,000 inputs",
+      "meanNs": 42038694.98436508
+    },
+    {
+      "name": "Groth16 prepare inputs, 20,000 inputs",
+      "meanNs": 90635808.8988492
+    },
+    {
+      "name": "Groth16 prepare inputs, 40,000 inputs",
+      "meanNs": 195451783.3
+    },
+    {
+      "name": "Groth16 prepare inputs, 80,000 inputs",
+      "meanNs": 436292504
+    },
+    {
+      "name": "Groth16 prepare inputs, 160,000 inputs",
+      "meanNs": 885647675.1
+    }
+  ],
+  "remainingGaps": [
+    "Invalid proof rejection cost was not measured in this run.",
+    "Malformed proof rejection cost was not measured in this run.",
+    "Boundary-sized payload acceptance and rejection costs need dedicated fixtures.",
+    "These local wall-clock timings do not define on-chain pricing, relay policy, or consensus validity."
+  ]
 }
-

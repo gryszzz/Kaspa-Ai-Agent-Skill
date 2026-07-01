@@ -40,6 +40,27 @@ function validateFixture(fixture) {
       failures.push("acceptedTransactions[] must contain at least one live transaction");
     }
     if (!Array.isArray(fixture.covenantLineages)) failures.push("covenantLineages[] is required");
+    if (fixture.activationEvidence?.observedDaa < fixture.activationEvidence?.activationDaa) {
+      failures.push("observedDaa must be at or above activationDaa for live captures");
+    }
+    const hasCovenantTx = (fixture.acceptedTransactions || []).some((tx) => {
+      const inputs = Array.isArray(tx.inputs) ? tx.inputs : [];
+      const outputs = Array.isArray(tx.outputs) ? tx.outputs : [];
+      const toccataFields = tx.toccata_fields || tx.toccataFields || {};
+      return (
+        toccataFields.covenant_ids?.length > 0 ||
+        inputs.some((input) => input.covenant_id) ||
+        outputs.some((output) => output.covenant_id)
+      );
+    });
+    if (!hasCovenantTx) failures.push("live captures must include at least one covenant_id");
+    const hasAcceptedContext = (fixture.acceptedTransactions || []).every(
+      (tx) => tx.is_accepted === true && tx.accepting_block_hash && tx.accepting_block_blue_score,
+    );
+    if (!hasAcceptedContext) failures.push("live captures must preserve accepted block context");
+    if (!/not wallet.+readiness/i.test(fixture.readinessBoundary || fixture.notes || "")) {
+      failures.push("live captures must preserve the wallet/indexer readiness boundary");
+    }
   }
   return failures;
 }
@@ -65,4 +86,3 @@ function main() {
 }
 
 main();
-

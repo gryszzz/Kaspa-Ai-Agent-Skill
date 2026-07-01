@@ -39,6 +39,7 @@ function copyReleaseSurface() {
     "docs/kaspa/toccata-mastery-track.md",
     "release-metadata.json",
     "release-notes/v1.8.0.md",
+    "fixtures/toccata/live-covenant-indexer-mainnet-latest.json",
     "fixtures/toccata/protocol-drills.json",
     "fixtures/toccata/protocol-drill-adversarial-responses.json",
     "research-snapshots/toccata/latest.json",

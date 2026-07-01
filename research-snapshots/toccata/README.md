@@ -16,6 +16,14 @@ Snapshot rules:
 - `latest.json` is the machine-readable state.
 - `latest.md` is the reviewer-friendly state.
 - `rpc-smoke-tests.md` documents manual mainnet/TN10/TN12 endpoint smoke checks.
+- `ecosystem-readiness-latest.*` records wallet/indexer/miner/explorer/API
+  source evidence plus reproducible integration checks while preserving the
+  no-ecosystem-readiness-overclaim rule.
+- `live-covenant-indexer-mainnet-latest.md` summarizes the current real public
+  mainnet covenant/indexer export.
+- `zk-proof-cost-baseline.*` records the current ZK proof-cost state. As of
+  2026-06-30 it is `measured_partial`, with valid upstream Criterion verifier
+  timings captured and invalid/malformed proof-cost gaps still open.
 - A testnet signal is not treated as mainnet activation.
 - A final release with a future activation DAA is treated as scheduled, not active.
 - Protocol activation and wallet/indexer readiness are separate decisions.

@@ -30,11 +30,15 @@ function validate(snapshot) {
   const failures = [];
   if (snapshot.schemaVersion !== 1) failures.push("schemaVersion must be 1");
   if (snapshot.snapshotType !== "zk_proof_cost_baseline") failures.push("snapshotType must be zk_proof_cost_baseline");
+  if (!["pending_no_measurements", "measured_partial", "measured"].includes(snapshot.status)) {
+    failures.push("status must be pending_no_measurements, measured_partial, or measured");
+  }
   if (!Array.isArray(snapshot.measurements)) failures.push("measurements[] is required");
   if (snapshot.status === "pending_no_measurements" && snapshot.measurements.length !== 0) {
     failures.push("pending_no_measurements must not contain measurements");
   }
-  if (snapshot.status === "measured") {
+  if (["measured_partial", "measured"].includes(snapshot.status)) {
+    if (snapshot.measurements.length === 0) failures.push(`${snapshot.status} must contain measurements`);
     for (const [index, entry] of snapshot.measurements.entries()) {
       for (const field of [
         "proofSystem",
@@ -52,7 +56,13 @@ function validate(snapshot) {
           failures.push(`measurement ${index} missing ${field}`);
         }
       }
+      if (!entry.verificationCost?.meanNs && !entry.verificationCost?.resourceUnits) {
+        failures.push(`measurement ${index} missing verificationCost.meanNs or verificationCost.resourceUnits`);
+      }
     }
+  }
+  if (snapshot.status === "measured_partial" && !Array.isArray(snapshot.remainingGaps)) {
+    failures.push("measured_partial must list remainingGaps[]");
   }
   return failures;
 }
@@ -83,4 +93,3 @@ function main() {
 }
 
 main();
-

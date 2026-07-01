@@ -47,6 +47,17 @@ test("live fixture template passes while malformed live captures fail", () => {
   const ok = run("toccata-live-fixture-check.mjs", ["--check"]);
   assert.equal(ok.status, 0, ok.stderr || ok.stdout);
 
+  const live = run("toccata-live-covenant-export.mjs", ["--check"]);
+  assert.equal(live.status, 0, live.stderr || live.stdout);
+  assert.equal(live.report.passed, true);
+  assert.equal(live.report.covenantIds.length >= 1, true);
+
+  const captured = run("toccata-live-fixture-check.mjs", [
+    "--fixture",
+    path.join(repoRoot, "fixtures", "toccata", "live-covenant-indexer-mainnet-latest.json"),
+  ]);
+  assert.equal(captured.status, 0, captured.stderr || captured.stdout);
+
   const root = mkdtempSync(path.join(tmpdir(), "toccata-live-fixture-"));
   const fixturePath = path.join(root, "bad-live.json");
   try {
@@ -71,10 +82,11 @@ test("live fixture template passes while malformed live captures fail", () => {
   }
 });
 
-test("ZK benchmark baseline rejects fake pending measurements", () => {
+test("ZK benchmark baseline validates measured partial data and rejects fake pending measurements", () => {
   const ok = run("toccata-zk-benchmark-check.mjs", ["--check"]);
   assert.equal(ok.status, 0, ok.stderr || ok.stdout);
-  assert.equal(ok.report.status, "pending_no_measurements");
+  assert.equal(ok.report.status, "measured_partial");
+  assert.equal(ok.report.measurementCount >= 2, true);
 
   const root = mkdtempSync(path.join(tmpdir(), "toccata-zk-benchmark-"));
   const snapshotPath = path.join(root, "bad-zk.json");
@@ -82,6 +94,7 @@ test("ZK benchmark baseline rejects fake pending measurements", () => {
     const snapshot = JSON.parse(
       readFileSync(path.join(repoRoot, "research-snapshots", "toccata", "zk-proof-cost-baseline.json"), "utf8"),
     );
+    snapshot.status = "pending_no_measurements";
     snapshot.measurements.push({ proofSystem: "fake" });
     writeFileSync(snapshotPath, `${JSON.stringify(snapshot, null, 2)}\n`);
 
@@ -92,4 +105,3 @@ test("ZK benchmark baseline rejects fake pending measurements", () => {
     rmSync(root, { recursive: true, force: true });
   }
 });
-

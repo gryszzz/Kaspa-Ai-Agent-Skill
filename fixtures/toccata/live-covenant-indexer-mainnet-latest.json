@@ -1,0 +1,304 @@
+{
+  "schemaVersion": 1,
+  "fixtureType": "live_covenant_indexer_capture",
+  "capturedAt": "2026-06-30T23:46:30.095Z",
+  "networkName": "kaspa-mainnet",
+  "source": {
+    "kind": "public_rest_indexer_export",
+    "url": "https://api.kaspa.org/transactions/6a76aae95f5732b8876c40308d58ff528f5d2142ee880a0436b20bd2b8a339be",
+    "searchUrl": "https://api.kaspa.org/transactions/search?fields=transaction_id%2Chash%2Cversion%2Cis_accepted%2Caccepting_block_hash%2Caccepting_block_blue_score%2Caccepting_block_time%2Cinputs%2Coutputs&resolve_previous_outpoints=no",
+    "openApiUrl": "https://api.kaspa.org/openapi.json",
+    "implementation": "https://github.com/kaspa-ng/kaspa-rest-server",
+    "operator": "Kaspa public REST API"
+  },
+  "activationEvidence": {
+    "requiredNetworkName": "kaspa-mainnet",
+    "activationDaa": 474165565,
+    "observedDaa": 474432424,
+    "observedBlueScore": 472544756,
+    "tipHashes": [
+      "e6916b9c533103861fb97721789036237bd9c51743aa87ffcfeaa8c60e1dee42",
+      "e8f349d91001760d153cc3413a24feb6cf8fea193ff674c031374619d823e64a",
+      "f47217214e22d48da663c8d55dedeabc61b4eaa2eb784869d84ef146b1ddc9af"
+    ]
+  },
+  "acquisition": {
+    "searchedFromBlueScore": 472544756,
+    "searchWindow": {
+      "gte": 472536456,
+      "lt": 472536556
+    },
+    "scannedWindows": 83,
+    "scannedTransactions": 1809,
+    "computeBudgetTransactions": 278,
+    "errors": []
+  },
+  "acceptedTransactions": [
+    {
+      "transaction_id": "6a76aae95f5732b8876c40308d58ff528f5d2142ee880a0436b20bd2b8a339be",
+      "hash": "b22d18612061013834ed5b63db1fda248499c66d6d8916eaa99f04d657a2061c",
+      "subnetwork_id": "0000000000000000000000000000000000000000",
+      "mass": 25462,
+      "payload": null,
+      "block_hash": [
+        "858de1f3794fdcee6b9c7ddb679a98a235a9c90672e24e4591c859c4be1787bf"
+      ],
+      "block_time": 1782862364989,
+      "version": 1,
+      "is_accepted": true,
+      "accepting_block_hash": "c24ad03924d369b724ee79445b1814c24d926dde9ccec007413c43adc5d84d6f",
+      "accepting_block_blue_score": 472536522,
+      "accepting_block_time": 1782862365372,
+      "raw_response_sha256": "88cf729cacfdf3f5d0f9c95aea3e2ee2bdd88eb789da399b7d091b6e19cf54f0",
+      "toccata_fields": {
+        "covenant_ids": [
+          "8a1584ce07859b4ed1870035eb36a6c4c061607d781c88ce0bb173e7fc92e617"
+        ],
+        "covenant_authorizing_inputs": [
+          0
+        ],
+        "compute_budgets": [
+          10
+        ]
+      },
+      "inputs": [
+        {
+          "index": 0,
+          "previous_outpoint_hash": "fffb1b71691d345cd007dc96bc8b102174693656412f165a29400d998e4e1af6",
+          "previous_outpoint_index": 0,
+          "compute_budget": 10,
+          "covenant_id": "8a1584ce07859b4ed1870035eb36a6c4c061607d781c88ce0bb173e7fc92e617",
+          "signature_script_bytes": 4817,
+          "signature_script_sha256": "1fb02d57f89f4d44f551be344e17e968c95005267852b6ba1cfef713f98d87db",
+          "signature_script_prefix": "0898af9cd800000000514dc4126b080e",
+          "signature_script_suffix": "75007a75007a75757551677500696868"
+        },
+        {
+          "index": 1,
+          "previous_outpoint_hash": "ecc2a47a83a58789168a5194ced4d88d730eea5ec48b56e17b260e0e93cf35cd",
+          "previous_outpoint_index": 3,
+          "compute_budget": 10,
+          "covenant_id": null,
+          "signature_script_bytes": 66,
+          "signature_script_sha256": "c7fc24b96147200c153919342e7fa9c89e32e4295ebee989e3c58c52d86ffa92",
+          "signature_script_prefix": "41d72b61781bb31d75b32dece37c444c",
+          "signature_script_suffix": "45838e9b405bed07451c2efaaa88d801"
+        },
+        {
+          "index": 2,
+          "previous_outpoint_hash": "680a439ff466425a4f439b81d05c4662cde7b1f9be7a7d89d9cb1faef145477c",
+          "previous_outpoint_index": 4,
+          "compute_budget": 10,
+          "covenant_id": null,
+          "signature_script_bytes": 66,
+          "signature_script_sha256": "8793f13498a99b7f4dbc2f3eae196cb53de33515a85e4bfec9c0e9db8b97aaf1",
+          "signature_script_prefix": "41c1004b44c361132359b6b8be35f356",
+          "signature_script_suffix": "e9deefee51c69cd83fe26a7db2084d01"
+        },
+        {
+          "index": 3,
+          "previous_outpoint_hash": "cec8b5d9318d17e86605c9494f9c1beca23395f6e815435737450d523f60f9cc",
+          "previous_outpoint_index": 3,
+          "compute_budget": 10,
+          "covenant_id": null,
+          "signature_script_bytes": 66,
+          "signature_script_sha256": "b7a1e3c9997277d13b9b6746db2c0ac36bcd4d3c42967612c4f892db3b8fed11",
+          "signature_script_prefix": "4153bf942ee11af57f553cefb9935c58",
+          "signature_script_suffix": "b1fad70929ee15a7fe062b27f7372201"
+        },
+        {
+          "index": 4,
+          "previous_outpoint_hash": "d4b086ce0c74c36c78d9273b409316a7a8177f297c9cad57e58a6cc942d58626",
+          "previous_outpoint_index": 0,
+          "compute_budget": 10,
+          "covenant_id": null,
+          "signature_script_bytes": 66,
+          "signature_script_sha256": "d77b2ae4bf711f3f3e1b485a917162d04fe7b23c67cb9a82d2908c25f0eab4df",
+          "signature_script_prefix": "411a71d68e13e8f0f99d894a904e586f",
+          "signature_script_suffix": "1a324e3a96e0edc84fc610761db1b001"
+        },
+        {
+          "index": 5,
+          "previous_outpoint_hash": "e317003c6ff5ffc251a9ed066fde0e4e0b13c648f70eef07f568b18bc79f3d77",
+          "previous_outpoint_index": 1,
+          "compute_budget": 10,
+          "covenant_id": null,
+          "signature_script_bytes": 66,
+          "signature_script_sha256": "708d5d0948e47e1194f7d072bf2c94dc65eadd8bed9b289095aeab6b53ea0d24",
+          "signature_script_prefix": "413ac5013ee63c5c22e5c14da6a95121",
+          "signature_script_suffix": "36505398d58e5b207c44cf727a7fb501"
+        },
+        {
+          "index": 6,
+          "previous_outpoint_hash": "6fa8b286b3bacc8dcc4f5d649b463979f97cd0d227d2b24d232bff2b0aca7ab8",
+          "previous_outpoint_index": 1,
+          "compute_budget": 10,
+          "covenant_id": null,
+          "signature_script_bytes": 66,
+          "signature_script_sha256": "191064ae47ded1ec5e6b0c91f1fb0a9f480ba17685005340c43b47fead65b205",
+          "signature_script_prefix": "41fc2c04779b9ffcba1f7ac5353510c0",
+          "signature_script_suffix": "db061ee706d302d01cdce7956a659e01"
+        },
+        {
+          "index": 7,
+          "previous_outpoint_hash": "d91a20602bff45efee8c88ff3f7035d50105c72a9f0472535ed4e135a7841e4c",
+          "previous_outpoint_index": 1,
+          "compute_budget": 10,
+          "covenant_id": null,
+          "signature_script_bytes": 66,
+          "signature_script_sha256": "d7589eb2f52fc98c8c91558ae97201e0ec0762a75a7dd9590fab1754fa9172dc",
+          "signature_script_prefix": "41129227b931ab141fcf483f5e25a93e",
+          "signature_script_suffix": "badd3114d6d08efda64217499f167f01"
+        },
+        {
+          "index": 8,
+          "previous_outpoint_hash": "d442b69aa8f21f5ba9d15bc7ee1269ac8779090c7bcaa9309dc2b3a81efcf60d",
+          "previous_outpoint_index": 1,
+          "compute_budget": 10,
+          "covenant_id": null,
+          "signature_script_bytes": 66,
+          "signature_script_sha256": "e6c8da0ebd52bc4a4418e658ea9048e96847cb235ff44c77580ffc6db0969fea",
+          "signature_script_prefix": "4121672ba878f206e130fba3f8df3cae",
+          "signature_script_suffix": "737a040934b12ad27e58c05708fb5e01"
+        },
+        {
+          "index": 9,
+          "previous_outpoint_hash": "c505727f6b679a4b9fec2eab51a968d27cd649ccf2a84629e487e898744c0997",
+          "previous_outpoint_index": 1,
+          "compute_budget": 10,
+          "covenant_id": null,
+          "signature_script_bytes": 66,
+          "signature_script_sha256": "9e97dd6392633c23b712269be3cf2fc40dbaa39b549e9b70240f1e525de41903",
+          "signature_script_prefix": "4162e02ca88a8c78695ea14935c043d9",
+          "signature_script_suffix": "97ff6391d79228210ea7a62a32f80701"
+        },
+        {
+          "index": 10,
+          "previous_outpoint_hash": "bffcee5866711187f4b39d2877fd67c162ddd1d92fe55313a00ab6e856420cf2",
+          "previous_outpoint_index": 1,
+          "compute_budget": 10,
+          "covenant_id": null,
+          "signature_script_bytes": 66,
+          "signature_script_sha256": "5c518ec46be7ce08806436c878bd2e422abeb769d16e864eb47b0e19b69c7adf",
+          "signature_script_prefix": "416cdd6ccade77659f8d393ffe1c6b66",
+          "signature_script_suffix": "bc51f477b5ee39faead2e30344a96801"
+        },
+        {
+          "index": 11,
+          "previous_outpoint_hash": "c8d1e70e288a6263d644c8fcd8fdb0c8d2594450813c15913575206e9d5ac896",
+          "previous_outpoint_index": 1,
+          "compute_budget": 10,
+          "covenant_id": null,
+          "signature_script_bytes": 66,
+          "signature_script_sha256": "bc058a9b7bcd0f8cec24d102321a1e4c769767f1112a9e7dcbd77060b46c8e30",
+          "signature_script_prefix": "41ff9833c1c5d620335a01c427ab666a",
+          "signature_script_suffix": "b3d74542b31d3ee35fa1863de1f63a01"
+        },
+        {
+          "index": 12,
+          "previous_outpoint_hash": "fa0aceaff94b42a09d43e980cb6e383fbf638e3907b5c9aea92a13302187e62f",
+          "previous_outpoint_index": 0,
+          "compute_budget": 10,
+          "covenant_id": null,
+          "signature_script_bytes": 66,
+          "signature_script_sha256": "8c985646e143aa0dcef9749d5c64829c7fcf03696c7b4de7b3552f727a6c732e",
+          "signature_script_prefix": "41e091c1701cb7845adf4726266055d2",
+          "signature_script_suffix": "a8366a230950b5227a0be670899d2101"
+        },
+        {
+          "index": 13,
+          "previous_outpoint_hash": "7cd2205f2ec1f5473e4f9ac7a2d6d781b5d3d47b56d6d91b36aea530e5547434",
+          "previous_outpoint_index": 1,
+          "compute_budget": 10,
+          "covenant_id": null,
+          "signature_script_bytes": 66,
+          "signature_script_sha256": "e9e2b0e46b62e808f6b7d4ce83becdff8fd02ef063fecd275e4a89a475e200a0",
+          "signature_script_prefix": "41df3c500ec7cdd3d27a5542a50cb5d2",
+          "signature_script_suffix": "c6ef687976f1fc30d3628142fa5b1501"
+        },
+        {
+          "index": 14,
+          "previous_outpoint_hash": "10d3b98fd0134340536d90877e92fc8381431e3144d913405ad4063588c8b256",
+          "previous_outpoint_index": 2,
+          "compute_budget": 10,
+          "covenant_id": null,
+          "signature_script_bytes": 66,
+          "signature_script_sha256": "1f525796f043e63b5db32c1c5116f49d0c2d1cbf13a66c1df47ab9a969f72346",
+          "signature_script_prefix": "410bd4c276fefc31b774f079218f296b",
+          "signature_script_suffix": "2ae6680037ca08167eadd992de140501"
+        },
+        {
+          "index": 15,
+          "previous_outpoint_hash": "c6cc14340452bb5063539f68e7b26ef0a27d8096e814f372bae54be613465d65",
+          "previous_outpoint_index": 1,
+          "compute_budget": 10,
+          "covenant_id": null,
+          "signature_script_bytes": 66,
+          "signature_script_sha256": "225decba3884818114e205cdc8343793a425f099eac99191b913d03db3a199ea",
+          "signature_script_prefix": "4183c810ff4edc5b9419f1b570367f33",
+          "signature_script_suffix": "16191e7749be14e4c3a90d3f376e6201"
+        },
+        {
+          "index": 16,
+          "previous_outpoint_hash": "c0a1f27b71773775cb18476bd2cb27b4149c542709a05525d1c928a69cadb9c1",
+          "previous_outpoint_index": 0,
+          "compute_budget": 10,
+          "covenant_id": null,
+          "signature_script_bytes": 66,
+          "signature_script_sha256": "47d0cc579c513e654f0f99c8ed60a54a4592da454180ce5de20e614ba4cbfb83",
+          "signature_script_prefix": "41ff7b2f29ba961a0dee42fd0d8669f1",
+          "signature_script_suffix": "25ff24d6568b4ad29abfe96c2cd55601"
+        },
+        {
+          "index": 17,
+          "previous_outpoint_hash": "d8d565d1a0a573f915daaa85ef6794034dcd867286341d8cffe240847b38342d",
+          "previous_outpoint_index": 0,
+          "compute_budget": 10,
+          "covenant_id": null,
+          "signature_script_bytes": 66,
+          "signature_script_sha256": "8bf2844880c12f52f27a6a5cbfd90f92efa8a84f758a380aa27309634a550ff5",
+          "signature_script_prefix": "4112787a35d1209f8dfad25405093312",
+          "signature_script_suffix": "63b7e10a5c1b8e27984d6395b575db01"
+        }
+      ],
+      "outputs": [
+        {
+          "index": 0,
+          "amount": 3634147224,
+          "script_public_key_type": "scripthash",
+          "script_public_key_address": "kaspa:ppwumvj6x98yjkwvzuwvrz8jj2lzh0xcf73nffk4utpwyf2uf0klqgqrjkdjq",
+          "script_public_key_bytes": 35,
+          "script_public_key_sha256": "4cd766bdaa46d210e148ce50a3abdf3d33b5eca6b63671ca30a71eb688d90727",
+          "script_public_key_prefix": "aa205dcdb25a314e4959cc171cc188f2",
+          "covenant_authorizing_input": 0,
+          "covenant_id": "8a1584ce07859b4ed1870035eb36a6c4c061607d781c88ce0bb173e7fc92e617"
+        }
+      ]
+    }
+  ],
+  "covenantLineages": [
+    {
+      "covenant_id": "8a1584ce07859b4ed1870035eb36a6c4c061607d781c88ce0bb173e7fc92e617",
+      "network": "kaspa-mainnet",
+      "consumed_outpoint": {
+        "transaction_id": "fffb1b71691d345cd007dc96bc8b102174693656412f165a29400d998e4e1af6",
+        "index": 0
+      },
+      "spending_transaction_id": "6a76aae95f5732b8876c40308d58ff528f5d2142ee880a0436b20bd2b8a339be",
+      "successor_output": {
+        "transaction_id": "6a76aae95f5732b8876c40308d58ff528f5d2142ee880a0436b20bd2b8a339be",
+        "index": 0,
+        "script_public_key_type": "scripthash",
+        "amount": 3634147224
+      },
+      "authorizing_input_index": 0,
+      "authorizing_input_matches_consumed_covenant": true,
+      "accepting_block_hash": "c24ad03924d369b724ee79445b1814c24d926dde9ccec007413c43adc5d84d6f",
+      "accepting_block_blue_score": 472536522,
+      "transition_status": "observed_from_public_indexer_export",
+      "semantic_validity": "not_inferred_from_indexer_export"
+    }
+  ],
+  "readinessBoundary": "This is a real public mainnet transaction/indexer export with Toccata covenant fields. It proves field visibility for this source and transaction only; it is not wallet, explorer, miner, or ecosystem-wide readiness approval.",
+  "factsHash": "5138947c7d54cdd5e67e82117f43c3cc36994d67cec00872cf0d379b0d1cfa70"
+}

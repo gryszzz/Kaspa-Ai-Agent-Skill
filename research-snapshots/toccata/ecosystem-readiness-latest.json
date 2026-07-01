@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-06-30T23:24:40.577Z",
+  "checkedAt": "2026-06-30T23:55:04.215Z",
   "sourcePolicy": "Repository availability and keyword evidence are not readiness proof. Readiness requires explicit post-Toccata support evidence, tests, and maintained release paths for each component.",
   "sources": [
     {
@@ -584,9 +584,25 @@
       "readiness": "repo_contains_toccata_evidence_review_required"
     }
   ],
+  "reproducibleIntegrationTests": [
+    {
+      "id": "kaspa-rest-api-live-covenant-export",
+      "label": "Kaspa REST API live covenant export",
+      "componentRole": "explorer_api_indexer",
+      "status": "passed",
+      "command": "node scripts/toccata-live-covenant-export.mjs --check",
+      "evidencePath": "fixtures/toccata/live-covenant-indexer-mainnet-latest.json",
+      "sourceUrl": "https://api.kaspa.org/transactions/6a76aae95f5732b8876c40308d58ff528f5d2142ee880a0436b20bd2b8a339be",
+      "transactionId": "6a76aae95f5732b8876c40308d58ff528f5d2142ee880a0436b20bd2b8a339be",
+      "covenantIds": [
+        "8a1584ce07859b4ed1870035eb36a6c4c061607d781c88ce0bb173e7fc92e617"
+      ],
+      "boundary": "Proves this public REST/indexer source exposed one accepted mainnet covenant transaction; does not prove wallet, miner, explorer, or ecosystem-wide readiness."
+    }
+  ],
   "verdict": {
     "doNotClaimWalletIndexerReady": true,
-    "reason": "Repository availability and keyword evidence are not sufficient to prove ecosystem readiness."
+    "reason": "Repository availability, keyword evidence, and one-source integration checks are not sufficient to prove ecosystem-wide readiness."
   },
   "factsHash": "be2dc441886b850398c442640d5f3eb1eb512e6eba831d8f7f25eee341b86fff"
 }

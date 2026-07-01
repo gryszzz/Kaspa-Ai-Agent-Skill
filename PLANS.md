@@ -2,16 +2,16 @@
 
 ## Current Goal
 
-Fill the remaining Toccata mastery evidence lanes without fabricating
-readiness or benchmark claims:
+Fill and harden the remaining Toccata mastery evidence lanes without
+fabricating readiness or benchmark claims:
 
 - Add captured agent responses that are graded through `--responses`.
 - Add a live ecosystem readiness audit snapshot for wallet, indexer, miner,
   explorer, and API sources while preserving `do_not_claim_wallet_indexer_ready`.
-- Add live covenant/indexer fixture intake validation so future real captures
-  have a schema and gate.
-- Add a ZK proof-cost benchmark baseline that stays pending until measured
-  data exists.
+- Add live covenant/indexer fixture intake validation and a real public
+  `kaspa-mainnet` covenant export from the Kaspa REST API.
+- Add a ZK proof-cost benchmark baseline that records measured valid verifier
+  timings while preserving invalid/malformed/boundary-size gaps.
 - Wire all four lanes into release validation, package artifacts, README,
   release notes, and mastery docs.
 - Keep Toccata mainnet protocol activation tied to the live `kaspa-mainnet`
@@ -54,6 +54,7 @@ node scripts/toccata-protocol-drill.mjs --check
   --responses fixtures/toccata/protocol-drill-adversarial-responses.json
 node scripts/toccata-captured-responses-check.mjs --check
 node scripts/toccata-ecosystem-readiness-audit.mjs --check
+node scripts/toccata-live-covenant-export.mjs --check
 node scripts/toccata-live-fixture-check.mjs --check
 node scripts/toccata-zk-benchmark-check.mjs --check
 node --test scripts/toccata-protocol-drill.test.mjs

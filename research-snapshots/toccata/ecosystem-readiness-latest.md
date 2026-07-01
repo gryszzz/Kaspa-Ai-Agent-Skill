@@ -1,6 +1,6 @@
 # Toccata Ecosystem Readiness Audit
 
-Checked: 2026-06-30T23:24:40.577Z
+Checked: 2026-06-30T23:55:04.215Z
 
 Verdict: `do_not_claim_wallet_indexer_ready`
 
@@ -18,3 +18,12 @@ explorer, or application readiness.
 | Kaspa REST API server | explorer_api | ok | repo_contains_toccata_evidence_review_required | toccata, covenant, covenant_id, storage_mass | endpoints/get_transaction_mass.py (storage_mass)<br>helper/mass_calculation_storage.py (storage_mass)<br>helper/tests/test_storage_mass.py (storage_mass) |
 | Kaspa CPU miner | miner | ok | source_available_no_toccata_readiness_proof | none | none |
 | Rusty Kaspa reference node | node_mining_template_reference | ok | repo_contains_toccata_evidence_review_required | toccata, covenant, covenant_id, storage_mass, computeBudget, compute_commit, storageMass | consensus/client/src/covenant.rs (covenant,covenant_id)<br>consensus/core/src/hashing/covenant_id.rs (covenant,covenant_id)<br>consensus/core/src/mass/mod.rs (covenant,storage_mass,computeBudget,compute_commit,covenant_id) |
+
+## Reproducible Integration Evidence
+
+These checks are stronger than repository keyword matches, but they still do
+not prove wallet, miner, explorer, application, or ecosystem-wide readiness.
+
+| Check | Role | Status | Command | Evidence | Boundary |
+| --- | --- | --- | --- | --- | --- |
+| Kaspa REST API live covenant export | explorer_api_indexer | passed | `node scripts/toccata-live-covenant-export.mjs --check` | fixtures/toccata/live-covenant-indexer-mainnet-latest.json | Proves this public REST/indexer source exposed one accepted mainnet covenant transaction; does not prove wallet, miner, explorer, or ecosystem-wide readiness. |

@@ -11,12 +11,14 @@ const repoRoot = path.resolve(scriptDir, "..");
 const defaultSourcesPath = path.join(repoRoot, "fixtures", "toccata", "ecosystem-readiness-sources.json");
 const defaultSnapshotPath = path.join(repoRoot, "research-snapshots", "toccata", "ecosystem-readiness-latest.json");
 const defaultMarkdownPath = path.join(repoRoot, "research-snapshots", "toccata", "ecosystem-readiness-latest.md");
+const defaultLiveFixturePath = path.join(repoRoot, "fixtures", "toccata", "live-covenant-indexer-mainnet-latest.json");
 
 function parseArgs(argv) {
   const options = {
     sourcesPath: defaultSourcesPath,
     snapshotPath: defaultSnapshotPath,
     markdownPath: defaultMarkdownPath,
+    liveFixturePath: defaultLiveFixturePath,
     write: false,
     check: false,
   };
@@ -34,6 +36,10 @@ function parseArgs(argv) {
         break;
       case "--snapshot":
         options.snapshotPath = path.resolve(argv[index + 1]);
+        index += 1;
+        break;
+      case "--live-fixture":
+        options.liveFixturePath = path.resolve(argv[index + 1]);
         index += 1;
         break;
       default:
@@ -208,6 +214,12 @@ function validateSnapshot(snapshot) {
   if (snapshot.verdict?.doNotClaimWalletIndexerReady !== true) {
     failures.push("verdict.doNotClaimWalletIndexerReady must stay true until readiness is proven");
   }
+  if (
+    snapshot.reproducibleIntegrationTests &&
+    !snapshot.reproducibleIntegrationTests.every((entry) => entry.status && entry.command && entry.evidencePath)
+  ) {
+    failures.push("reproducibleIntegrationTests entries require status, command, and evidencePath");
+  }
   return failures;
 }
 
@@ -219,6 +231,12 @@ function renderMarkdown(snapshot) {
           .slice(0, 3)
           .map((entry) => `${entry.path} (${entry.terms.join(",")})`)
           .join("<br>") || "none"} |`,
+    )
+    .join("\n");
+  const integrationRows = (snapshot.reproducibleIntegrationTests || [])
+    .map(
+      (entry) =>
+        `| ${entry.label} | ${entry.componentRole} | ${entry.status} | \`${entry.command}\` | ${entry.evidencePath} | ${entry.boundary} |`,
     )
     .join("\n");
   return `# Toccata Ecosystem Readiness Audit
@@ -234,7 +252,47 @@ explorer, or application readiness.
 | Source | Role | Source | Readiness | Evidence terms | Evidence samples |
 | --- | --- | --- | --- | --- | --- |
 ${rows}
+
+## Reproducible Integration Evidence
+
+These checks are stronger than repository keyword matches, but they still do
+not prove wallet, miner, explorer, application, or ecosystem-wide readiness.
+
+| Check | Role | Status | Command | Evidence | Boundary |
+| --- | --- | --- | --- | --- | --- |
+${integrationRows || "| none | none | missing | none | none | no reproducible integration evidence captured yet |"}
 `;
+}
+
+function buildIntegrationEvidence(options) {
+  try {
+    const fixture = loadJson(options.liveFixturePath);
+    const tx = fixture.acceptedTransactions?.[0];
+    if (
+      fixture.fixtureType !== "live_covenant_indexer_capture" ||
+      fixture.networkName !== "kaspa-mainnet" ||
+      !tx?.toccata_fields?.covenant_ids?.length
+    ) {
+      return [];
+    }
+    return [
+      {
+        id: "kaspa-rest-api-live-covenant-export",
+        label: "Kaspa REST API live covenant export",
+        componentRole: "explorer_api_indexer",
+        status: "passed",
+        command: "node scripts/toccata-live-covenant-export.mjs --check",
+        evidencePath: path.relative(repoRoot, options.liveFixturePath),
+        sourceUrl: fixture.source?.url || null,
+        transactionId: tx.transaction_id,
+        covenantIds: tx.toccata_fields.covenant_ids,
+        boundary:
+          "Proves this public REST/indexer source exposed one accepted mainnet covenant transaction; does not prove wallet, miner, explorer, or ecosystem-wide readiness.",
+      },
+    ];
+  } catch {
+    return [];
+  }
 }
 
 async function buildSnapshot(options) {
@@ -248,9 +306,11 @@ async function buildSnapshot(options) {
     checkedAt: new Date().toISOString(),
     sourcePolicy: config.auditPolicy,
     sources,
+    reproducibleIntegrationTests: buildIntegrationEvidence(options),
     verdict: {
       doNotClaimWalletIndexerReady: true,
-      reason: "Repository availability and keyword evidence are not sufficient to prove ecosystem readiness.",
+      reason:
+        "Repository availability, keyword evidence, and one-source integration checks are not sufficient to prove ecosystem-wide readiness.",
     },
   };
   snapshot.factsHash = sha256(JSON.stringify(snapshot.sources));

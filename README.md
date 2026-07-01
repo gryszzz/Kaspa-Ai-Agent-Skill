@@ -135,6 +135,7 @@ Toccata source monitoring:
 - Captured response drill: `node scripts/toccata-captured-responses-check.mjs --check`
 - Ecosystem readiness audit: `node scripts/toccata-ecosystem-readiness-audit.mjs --check`
 - Live covenant/indexer fixture intake: `node scripts/toccata-live-fixture-check.mjs --check`
+- Live covenant/indexer export: `node scripts/toccata-live-covenant-export.mjs --check`
 - ZK proof-cost benchmark baseline: `node scripts/toccata-zk-benchmark-check.mjs --check`
 - Behavioral contract evaluations: `node skills/public/kaspa-sovereign-architect-engine/scripts/run-behavioral-evals.mjs --check`
 - Transaction-plan safety gate: `node skills/public/kaspa-sovereign-architect-engine/scripts/lint-transaction-plan.mjs --check`
@@ -142,6 +143,10 @@ Toccata source monitoring:
 - Claim rule: current source snapshot verifies Toccata protocol activation on
   mainnet by live `kaspa-mainnet` DAA evidence; wallet/indexer readiness is
   still a separate claim.
+- Evidence lane status: a real public mainnet covenant/indexer export is
+  captured under `fixtures/toccata/live-covenant-indexer-mainnet-latest.json`;
+  ZK proof-cost data is `measured_partial` from upstream Rusty Kaspa Criterion
+  benches, with invalid/malformed proof-cost gaps still open.
 
 Agent operating rule:
 

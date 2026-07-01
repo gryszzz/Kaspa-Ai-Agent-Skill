@@ -43,3 +43,17 @@ Do not call any proof path mainnet-ready until all of these are true:
 - Test vectors cover valid, invalid, malformed, and maximum-size payloads.
 - Wallet preview copy identifies proof requirements.
 - Indexer storage can distinguish proof type, payload hash, public inputs, and verification status.
+
+Current measured snapshot:
+
+- `research-snapshots/toccata/zk-proof-cost-baseline.json` is
+  `measured_partial`.
+- Valid upstream Rusty Kaspa Criterion paths were measured locally on
+  2026-06-30 from commit
+  `98a4ccd8d200853787f227bd4536ac540cf34957`.
+- R0/Succinct verification measured about 13.924 ms for the fixture with a
+  222,668 byte seal and 32 byte journal.
+- Groth16 verification measured about 2.626 ms for the fixture with a 128 byte
+  proof, 160 byte public inputs, and 424 byte verifying key.
+- Invalid proof, malformed proof, and boundary-sized payload measurements are
+  still required before claiming proof-path DoS readiness.

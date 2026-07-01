@@ -265,6 +265,7 @@ Run ecosystem readiness, live fixture, and ZK benchmark guard checks:
 
 ```bash
 node scripts/toccata-ecosystem-readiness-audit.mjs --check
+node scripts/toccata-live-covenant-export.mjs --check
 node scripts/toccata-live-fixture-check.mjs --check
 node scripts/toccata-zk-benchmark-check.mjs --check
 ```
@@ -287,12 +288,18 @@ these:
   with the same protocol drill runner as the reference answers.
 - Ecosystem readiness lives under
   `research-snapshots/toccata/ecosystem-readiness-latest.*`. Repository
-  availability, release metadata, README matches, and source-level term
-  samples are audit leads, not readiness proof.
-- Live covenant/indexer fixtures must use
-  `fixtures/toccata/live-covenant-indexer-fixture.template.json` as the intake
-  contract and must come from a real post-Toccata indexer or RPC-backed
-  integration before being treated as captured evidence.
+  availability, release metadata, README matches, source-level term samples,
+  and one-source integration checks are audit leads, not ecosystem-wide
+  readiness proof.
+- Live covenant/indexer evidence now includes
+  `fixtures/toccata/live-covenant-indexer-mainnet-latest.json`, a real public
+  `kaspa-mainnet` REST/indexer export with accepted block context,
+  `compute_budget`, `covenant_id`, and `covenant_authorizing_input`. The
+  template remains at
+  `fixtures/toccata/live-covenant-indexer-fixture.template.json` for future
+  captures.
 - ZK proof-cost snapshots live under
   `research-snapshots/toccata/zk-proof-cost-baseline.*`. The current baseline
-  is pending and must not be presented as a measured benchmark.
+  is `measured_partial`: valid R0/Succinct and Groth16 verifier timings were
+  measured from upstream Rusty Kaspa Criterion benches, while invalid,
+  malformed, and boundary-sized proof-cost measurements remain open.

@@ -53,6 +53,9 @@ function validateLocal(repoRoot) {
   const ecosystemReadiness = readJson(
     path.join(repoRoot, "research-snapshots", "toccata", "ecosystem-readiness-latest.json"),
   );
+  const liveCovenantFixture = readJson(
+    path.join(repoRoot, "fixtures", "toccata", "live-covenant-indexer-mainnet-latest.json"),
+  );
   const zkBenchmark = readJson(path.join(repoRoot, "research-snapshots", "toccata", "zk-proof-cost-baseline.json"));
   const protocolDrills = readJson(path.join(repoRoot, "fixtures", "toccata", "protocol-drills.json"));
   const adversarialProtocolDrills = readJson(
@@ -259,13 +262,32 @@ function validateLocal(repoRoot) {
     failures,
   );
   requireCondition(
-    zkBenchmark.status === "pending_no_measurements" || zkBenchmark.status === "measured",
+    ecosystemReadiness.reproducibleIntegrationTests?.some(
+      (entry) => entry.id === "kaspa-rest-api-live-covenant-export" && entry.status === "passed",
+    ),
+    "ecosystem readiness snapshot must include the live covenant export integration evidence",
+    failures,
+  );
+  requireCondition(
+    liveCovenantFixture.fixtureType === "live_covenant_indexer_capture" &&
+      liveCovenantFixture.networkName === "kaspa-mainnet" &&
+      liveCovenantFixture.acceptedTransactions?.[0]?.toccata_fields?.covenant_ids?.length > 0,
+    "live covenant fixture must contain a mainnet covenant export",
+    failures,
+  );
+  requireCondition(
+    ["pending_no_measurements", "measured_partial", "measured"].includes(zkBenchmark.status),
     "ZK benchmark snapshot must have a valid status",
     failures,
   );
   requireCondition(
     zkBenchmark.status !== "pending_no_measurements" || zkBenchmark.measurements?.length === 0,
     "pending ZK benchmark snapshot must not contain fake measurements",
+    failures,
+  );
+  requireCondition(
+    zkBenchmark.status !== "measured_partial" || zkBenchmark.remainingGaps?.length > 0,
+    "partial ZK benchmark snapshot must list remaining gaps",
     failures,
   );
 
@@ -309,11 +331,13 @@ function validateLocal(repoRoot) {
   for (const bundledName of [
     "captured-responses",
     "ecosystem-readiness-latest.json",
+    "live-covenant-indexer-mainnet-latest.md",
     "zk-proof-cost-baseline.json",
     "toccata-captured-responses-check.mjs",
     "toccata-ecosystem-readiness-audit.mjs",
     "toccata-evidence-lanes.test.mjs",
     "toccata-live-fixture-check.mjs",
+    "toccata-live-covenant-export.mjs",
     "toccata-zk-benchmark-check.mjs",
   ]) {
     requireCondition(
