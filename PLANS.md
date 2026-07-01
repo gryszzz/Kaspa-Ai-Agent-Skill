@@ -1,19 +1,21 @@
-# ExecPlan: Toccata Evidence Lane Fill
+# ExecPlan: Post-Toccata Kaspa App Lab Hardening
 
 ## Current Goal
 
-Fill and harden the remaining Toccata mastery evidence lanes without
-fabricating readiness or benchmark claims:
+Start the post-Toccata Kaspa App Lab so the skill learns from executable
+builder fixtures instead of general covenant descriptions:
 
-- Add captured agent responses that are graded through `--responses`.
-- Add a live ecosystem readiness audit snapshot for wallet, indexer, miner,
-  explorer, and API sources while preserving `do_not_claim_wallet_indexer_ready`.
-- Add live covenant/indexer fixture intake validation and a real public
-  `kaspa-mainnet` covenant export from the Kaspa REST API.
-- Add a ZK proof-cost benchmark baseline that records measured valid verifier
-  timings while preserving invalid/malformed/boundary-size gaps.
-- Wire all four lanes into release validation, package artifacts, README,
-  release notes, and mastery docs.
+- Fast-forward local `main` to `origin/main` before new work.
+- Add three local covenant app-pattern fixtures: vault/escrow, stateful
+  registry, and atomic-swap-style flow.
+- Each fixture must include valid transition, invalid transition, replay
+  attempt, reorg rollback, wrong-network rejection, and wallet preview data.
+- Add a deterministic reducer/checker so these patterns become testable
+  training and release-gate material.
+- Add a maintainer readiness approval ledger that keeps wallet, indexer,
+  miner, explorer, and app readiness unclaimed until a dated approval or
+  reproducible integration test exists.
+- Keep daily source-intelligence workflows intact and do not duplicate them.
 - Keep Toccata mainnet protocol activation tied to the live `kaspa-mainnet`
   DAA evidence while keeping wallet/indexer/miner/application readiness
   explicitly separate.
@@ -37,6 +39,9 @@ fabricating readiness or benchmark claims:
   releases, or KIPs.
 - Do not add autonomous wallet spending, paid API behavior, or new agent
   orchestration dependencies without explicit approval.
+- App Lab fixtures are local engineering fixtures only. They are not live
+  mainnet evidence, wallet approval, miner approval, explorer approval, or
+  production app readiness.
 - Make changes minimal and verifiable.
 
 ## Current Verification Plan
@@ -57,6 +62,8 @@ node scripts/toccata-ecosystem-readiness-audit.mjs --check
 node scripts/toccata-live-covenant-export.mjs --check
 node scripts/toccata-live-fixture-check.mjs --check
 node scripts/toccata-zk-benchmark-check.mjs --check
+node scripts/toccata-app-lab.mjs --check-all
+node scripts/toccata-readiness-approvals-check.mjs --check
 node --test scripts/toccata-protocol-drill.test.mjs
 node --test scripts/toccata-evidence-lanes.test.mjs
 skills/public/kaspa-sovereign-architect-engine/scripts/package-release.sh \

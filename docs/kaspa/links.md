@@ -20,4 +20,6 @@ Toccata mastery:
 - Upgrade readiness: ./toccata-upgrade-readiness.md
 - Mastery track: ./toccata-mastery-track.md
 - Covenant lineage indexer notes: ./covenant-lineage-indexer.md
+- Kaspa App Lab: ./kaspa-app-lab.md
+- Readiness approvals ledger: ../../READINESS_APPROVALS.md
 - Latest source snapshot: ../../research-snapshots/toccata/latest.md

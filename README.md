@@ -120,6 +120,8 @@ Toccata source monitoring:
 - Sequencing witness API sketch: [`docs/kaspa/sequencing-witness-api.md`](docs/kaspa/sequencing-witness-api.md)
 - vProg scope simulator notes: [`docs/kaspa/vprog-scope-simulator.md`](docs/kaspa/vprog-scope-simulator.md)
 - Mainnet readiness gate: [`docs/kaspa/mainnet-readiness-gate.md`](docs/kaspa/mainnet-readiness-gate.md)
+- Kaspa App Lab: [`docs/kaspa/kaspa-app-lab.md`](docs/kaspa/kaspa-app-lab.md)
+- Toccata readiness approvals ledger: [`READINESS_APPROVALS.md`](READINESS_APPROVALS.md)
 - Machine-readable snapshot: [`research-snapshots/toccata/latest.json`](research-snapshots/toccata/latest.json)
 - Reviewer snapshot: [`research-snapshots/toccata/latest.md`](research-snapshots/toccata/latest.md)
 - Mainnet/TN10/TN12 RPC smoke-test notes: [`research-snapshots/toccata/rpc-smoke-tests.md`](research-snapshots/toccata/rpc-smoke-tests.md)
@@ -137,9 +139,11 @@ Toccata source monitoring:
 - Live covenant/indexer fixture intake: `node scripts/toccata-live-fixture-check.mjs --check`
 - Live covenant/indexer export: `node scripts/toccata-live-covenant-export.mjs --check`
 - ZK proof-cost benchmark baseline: `node scripts/toccata-zk-benchmark-check.mjs --check`
+- Kaspa App Lab reducer: `node scripts/toccata-app-lab.mjs --check-all`
+- Readiness approval ledger gate: `node scripts/toccata-readiness-approvals-check.mjs --check`
 - Behavioral contract evaluations: `node skills/public/kaspa-sovereign-architect-engine/scripts/run-behavioral-evals.mjs --check`
 - Transaction-plan safety gate: `node skills/public/kaspa-sovereign-architect-engine/scripts/lint-transaction-plan.mjs --check`
-- Release packages bundle the skill plus adapters, references, system architecture, protocol training sources, Toccata builder/readiness/mastery docs, fixtures, captured responses, source snapshots, helper modules, protocol drills, readiness audit checks, and deterministic tests under the installed skill directory.
+- Release packages bundle the skill plus adapters, references, system architecture, protocol training sources, Toccata builder/readiness/mastery/App Lab docs, readiness approvals, fixtures, captured responses, source snapshots, helper modules, protocol drills, readiness audit checks, and deterministic tests under the installed skill directory.
 - Claim rule: current source snapshot verifies Toccata protocol activation on
   mainnet by live `kaspa-mainnet` DAA evidence; wallet/indexer readiness is
   still a separate claim.
@@ -147,6 +151,10 @@ Toccata source monitoring:
   captured under `fixtures/toccata/live-covenant-indexer-mainnet-latest.json`;
   ZK proof-cost data is `measured_partial` from upstream Rusty Kaspa Criterion
   benches, with invalid/malformed proof-cost gaps still open.
+- App Lab status: local covenant app fixtures cover vault/escrow, stateful
+  registry, and atomic-swap-style flows, but remain local reducer evidence
+  only. Wallet, indexer, miner, explorer, and application readiness must be
+  recorded in `READINESS_APPROVALS.md` before being claimed.
 
 Agent operating rule:
 

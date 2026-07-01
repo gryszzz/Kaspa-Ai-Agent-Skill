@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "fixtureType": "toccata_app_lab_case",
+  "appType": "vault_escrow",
+  "label": "Vault escrow covenant local fixture",
+  "evidenceStatus": "local_fixture_only_not_mainnet_evidence_not_wallet_readiness",
+  "network": "kaspa-testnet-12",
+  "covenantId": "app-lab-vault-escrow-cov-001",
+  "initialState": {
+    "currentTip": "vault-genesis-tx:0",
+    "valueSompi": 100000000,
+    "stateHash": "vault-state-locked-v1",
+    "acceptedDaaScore": 120000001
+  },
+  "transitions": [
+    {
+      "id": "valid-release-after-condition",
+      "caseType": "valid",
+      "network": "kaspa-testnet-12",
+      "txVersion": 1,
+      "consumedOutpoint": "vault-genesis-tx:0",
+      "successor": {
+        "outpoint": "vault-release-tx:0",
+        "covenantId": "app-lab-vault-escrow-cov-001",
+        "valueSompi": 99999000,
+        "stateHash": "vault-state-release-approved-v2"
+      },
+      "authorizingInputIndex": 0,
+      "computeBudget": 10,
+      "storageMass": 720,
+      "feeSompi": 1000,
+      "changeSompi": 0,
+      "proofRequirements": {
+        "scriptValidation": "required",
+        "covenantIdContinuity": "required",
+        "successorOutputValidation": "required",
+        "inlineZkProof": "not_required_for_this_fixture",
+        "witnessAvailability": "consumed_outpoint_required"
+      }
+    },
+    {
+      "id": "invalid-release-missing-successor",
+      "caseType": "invalid",
+      "rejected": true,
+      "rejectionReason": "draft does not create the expected successor covenant output"
+    },
+    {
+      "id": "replay-old-lock-output",
+      "caseType": "replay",
+      "consumedOutpoint": "vault-genesis-tx:0",
+      "rejected": true,
+      "rejectionReason": "consumed outpoint is no longer the current covenant tip after valid transition"
+    },
+    {
+      "id": "rollback-release-transition",
+      "caseType": "reorg_rollback",
+      "removedOutpoint": "vault-release-tx:0",
+      "rollbackToOutpoint": "vault-genesis-tx:0",
+      "reorgReason": "accepted block removed from selected chain"
+    },
+    {
+      "id": "wrong-network-mainnet-preview",
+      "caseType": "wrong_network",
+      "network": "kaspa-mainnet",
+      "rejected": true,
+      "rejectionReason": "fixture and wallet preview are for kaspa-testnet-12"
+    }
+  ],
+  "walletPreview": {
+    "previewType": "covenant_state_transition",
+    "warning": "This is not a normal send. You are consuming protected covenant state and creating a successor state.",
+    "network": "kaspa-testnet-12",
+    "covenantId": "app-lab-vault-escrow-cov-001",
+    "appLabel": "Vault escrow local fixture",
+    "walletCompatibility": [
+      "Kasware",
+      "Kaspium"
+    ],
+    "consumedState": {
+      "outpoint": "vault-genesis-tx:0",
+      "valueSompi": 100000000,
+      "stateHash": "vault-state-locked-v1"
+    },
+    "successorState": {
+      "outpoint": "vault-release-tx:0",
+      "valueSompi": 99999000,
+      "stateHash": "vault-state-release-approved-v2"
+    },
+    "proofRequirements": {
+      "scriptValidation": "required",
+      "inlineZkProof": "not_required_for_this_fixture"
+    },
+    "feeSompi": 1000,
+    "changeSompi": 0,
+    "computeBudget": 10,
+    "signingDecision": {
+      "primaryAction": "Sign covenant transition",
+      "blockedIf": [
+        "networkName mismatch",
+        "covenantId mismatch",
+        "currentTip mismatch",
+        "missing successor covenant output",
+        "unknown proof requirement"
+      ]
+    }
+  },
+  "expected": {
+    "acceptedTransitions": 1,
+    "rejectedTransitions": 3,
+    "reorgRollbacks": 1,
+    "finalTip": "vault-genesis-tx:0"
+  }
+}

@@ -105,3 +105,23 @@ test("ZK benchmark baseline validates measured partial data and rejects fake pen
     rmSync(root, { recursive: true, force: true });
   }
 });
+
+test("Kaspa App Lab validates all local covenant fixture families", () => {
+  const result = run("toccata-app-lab.mjs", ["--check-all"]);
+
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+  assert.equal(result.report.passed, true);
+  assert.equal(result.report.fixtureCount >= 3, true);
+  assert.deepEqual(result.report.appTypes, ["atomic_swap", "stateful_registry", "vault_escrow"]);
+});
+
+test("readiness approval ledger keeps approvals explicit", () => {
+  const result = run("toccata-readiness-approvals-check.mjs", ["--check"]);
+
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+  assert.equal(result.report.passed, true);
+  assert.equal(result.report.approvedCount, 0);
+  assert.equal(result.report.components.some((entry) => entry.component === "wallet"), true);
+  assert.equal(result.report.components.some((entry) => entry.component === "miner"), true);
+  assert.equal(result.report.components.some((entry) => entry.component === "explorer"), true);
+});

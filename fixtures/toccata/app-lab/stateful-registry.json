@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "fixtureType": "toccata_app_lab_case",
+  "appType": "stateful_registry",
+  "label": "Stateful registry covenant local fixture",
+  "evidenceStatus": "local_fixture_only_not_mainnet_evidence_not_wallet_readiness",
+  "network": "kaspa-testnet-12",
+  "covenantId": "app-lab-registry-cov-001",
+  "initialState": {
+    "currentTip": "registry-genesis-tx:0",
+    "valueSompi": 50000000,
+    "stateHash": "registry-root-v1-empty",
+    "acceptedDaaScore": 120000010
+  },
+  "transitions": [
+    {
+      "id": "valid-register-name",
+      "caseType": "valid",
+      "network": "kaspa-testnet-12",
+      "txVersion": 1,
+      "consumedOutpoint": "registry-genesis-tx:0",
+      "successor": {
+        "outpoint": "registry-name-tx:0",
+        "covenantId": "app-lab-registry-cov-001",
+        "valueSompi": 49998000,
+        "stateHash": "registry-root-v2-name-added"
+      },
+      "authorizingInputIndex": 0,
+      "computeBudget": 12,
+      "storageMass": 840,
+      "feeSompi": 2000,
+      "changeSompi": 0,
+      "proofRequirements": {
+        "scriptValidation": "required",
+        "covenantIdContinuity": "required",
+        "successorOutputValidation": "required",
+        "inlineZkProof": "not_required_for_this_fixture",
+        "witnessAvailability": "prior_registry_root_required"
+      }
+    },
+    {
+      "id": "invalid-duplicate-name-without-state-change",
+      "caseType": "invalid",
+      "rejected": true,
+      "rejectionReason": "state hash does not advance for duplicate registry mutation"
+    },
+    {
+      "id": "replay-registry-genesis",
+      "caseType": "replay",
+      "consumedOutpoint": "registry-genesis-tx:0",
+      "rejected": true,
+      "rejectionReason": "old registry root was already consumed by the valid transition"
+    },
+    {
+      "id": "rollback-name-registration",
+      "caseType": "reorg_rollback",
+      "removedOutpoint": "registry-name-tx:0",
+      "rollbackToOutpoint": "registry-genesis-tx:0",
+      "reorgReason": "accepted transaction removed before app indexer checkpoint"
+    },
+    {
+      "id": "wrong-network-registry-preview",
+      "caseType": "wrong_network",
+      "network": "kaspa-mainnet",
+      "rejected": true,
+      "rejectionReason": "registry fixture is scoped to kaspa-testnet-12"
+    }
+  ],
+  "walletPreview": {
+    "previewType": "covenant_state_transition",
+    "warning": "This is not a normal send. You are updating registry covenant state.",
+    "network": "kaspa-testnet-12",
+    "covenantId": "app-lab-registry-cov-001",
+    "appLabel": "Stateful registry local fixture",
+    "walletCompatibility": [
+      "Kasware",
+      "Kaspium"
+    ],
+    "consumedState": {
+      "outpoint": "registry-genesis-tx:0",
+      "valueSompi": 50000000,
+      "stateHash": "registry-root-v1-empty"
+    },
+    "successorState": {
+      "outpoint": "registry-name-tx:0",
+      "valueSompi": 49998000,
+      "stateHash": "registry-root-v2-name-added"
+    },
+    "proofRequirements": {
+      "scriptValidation": "required",
+      "inlineZkProof": "not_required_for_this_fixture"
+    },
+    "feeSompi": 2000,
+    "changeSompi": 0,
+    "computeBudget": 12,
+    "signingDecision": {
+      "primaryAction": "Sign registry state transition",
+      "blockedIf": [
+        "networkName mismatch",
+        "registry root mismatch",
+        "covenantId mismatch",
+        "missing successor registry output",
+        "indexer cannot prove current root"
+      ]
+    }
+  },
+  "expected": {
+    "acceptedTransitions": 1,
+    "rejectedTransitions": 3,
+    "reorgRollbacks": 1,
+    "finalTip": "registry-genesis-tx:0"
+  }
+}

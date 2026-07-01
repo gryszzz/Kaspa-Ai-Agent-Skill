@@ -199,7 +199,11 @@ Required questions:
 
 Artifacts:
 
+- `docs/kaspa/kaspa-app-lab.md`
 - `docs/kaspa/vprog-scope-simulator.md`
+- `fixtures/toccata/app-lab/`
+- `scripts/toccata-app-lab.mjs`
+- `READINESS_APPROVALS.md`
 - `scripts/vprog-scope-simulator.mjs`
 - `training-corpus/kaspa-toccata-readiness-drills-2026.md`
 
@@ -268,6 +272,8 @@ node scripts/toccata-ecosystem-readiness-audit.mjs --check
 node scripts/toccata-live-covenant-export.mjs --check
 node scripts/toccata-live-fixture-check.mjs --check
 node scripts/toccata-zk-benchmark-check.mjs --check
+node scripts/toccata-app-lab.mjs --check-all
+node scripts/toccata-readiness-approvals-check.mjs --check
 ```
 
 ## Promotion Rule
@@ -303,3 +309,10 @@ these:
   is `measured_partial`: valid R0/Succinct and Groth16 verifier timings were
   measured from upstream Rusty Kaspa Criterion benches, while invalid,
   malformed, and boundary-sized proof-cost measurements remain open.
+- The Kaspa App Lab lives under `fixtures/toccata/app-lab/` and currently
+  covers vault/escrow, stateful registry, and atomic-swap-style local covenant
+  reducer fixtures. These fixtures harden engineering reasoning but do not
+  prove wallet, indexer, miner, explorer, or app readiness.
+- Readiness approvals live in `READINESS_APPROVALS.md`. Do not upgrade a
+  component readiness claim without a dated maintainer approval or
+  reproducible integration test recorded there.

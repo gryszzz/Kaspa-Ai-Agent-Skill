@@ -47,8 +47,10 @@ function validateLocal(repoRoot) {
   const readme = readFileSync(path.join(repoRoot, "README.md"), "utf8");
   const systemArchitecture = readFileSync(path.join(repoRoot, "SYSTEM_ARCHITECTURE.md"), "utf8");
   const trainingSources = readFileSync(path.join(repoRoot, "TRAINING_SOURCES.md"), "utf8");
+  const readinessApprovals = readFileSync(path.join(repoRoot, "READINESS_APPROVALS.md"), "utf8");
   const toccataGuide = readFileSync(path.join(repoRoot, "docs", "toccata.md"), "utf8");
   const masteryTrack = readFileSync(path.join(repoRoot, "docs", "kaspa", "toccata-mastery-track.md"), "utf8");
+  const appLabDoc = readFileSync(path.join(repoRoot, "docs", "kaspa", "kaspa-app-lab.md"), "utf8");
   const toccataSnapshot = readJson(path.join(repoRoot, "research-snapshots", "toccata", "latest.json"));
   const ecosystemReadiness = readJson(
     path.join(repoRoot, "research-snapshots", "toccata", "ecosystem-readiness-latest.json"),
@@ -61,6 +63,11 @@ function validateLocal(repoRoot) {
   const adversarialProtocolDrills = readJson(
     path.join(repoRoot, "fixtures", "toccata", "protocol-drill-adversarial-responses.json"),
   );
+  const appLabFixtureDir = path.join(repoRoot, "fixtures", "toccata", "app-lab");
+  const appLabFixtures = readdirSync(appLabFixtureDir)
+    .filter((entry) => entry.endsWith(".json"))
+    .sort()
+    .map((entry) => readJson(path.join(appLabFixtureDir, entry)));
   const version = manifest.version;
   const versionTag = `v${version}`;
 
@@ -123,8 +130,18 @@ function validateLocal(repoRoot) {
     failures,
   );
   requireCondition(
+    readme.includes("READINESS_APPROVALS.md"),
+    "README must link READINESS_APPROVALS.md",
+    failures,
+  );
+  requireCondition(
     readme.includes("docs/toccata.md"),
     "README must link docs/toccata.md",
+    failures,
+  );
+  requireCondition(
+    readme.includes("docs/kaspa/kaspa-app-lab.md"),
+    "README must link docs/kaspa/kaspa-app-lab.md",
     failures,
   );
   for (const architectureRule of [
@@ -196,10 +213,40 @@ function validateLocal(repoRoot) {
     "Sequencing",
     "Readiness boundary",
     "node scripts/toccata-protocol-drill.mjs --check",
+    "node scripts/toccata-app-lab.mjs --check-all",
+    "node scripts/toccata-readiness-approvals-check.mjs --check",
   ]) {
     requireCondition(
       masteryTrack.includes(masteryRequirement),
       `docs/kaspa/toccata-mastery-track.md missing requirement: ${masteryRequirement}`,
+      failures,
+    );
+  }
+  for (const appLabRequirement of [
+    "local post-Toccata covenant engineering fixtures",
+    "not mainnet evidence",
+    "vault_escrow",
+    "stateful_registry",
+    "atomic_swap",
+    "wrong_network",
+    "node scripts/toccata-app-lab.mjs --check-all",
+    "node scripts/toccata-readiness-approvals-check.mjs --check",
+  ]) {
+    requireCondition(
+      appLabDoc.includes(appLabRequirement),
+      `docs/kaspa/kaspa-app-lab.md missing requirement: ${appLabRequirement}`,
+      failures,
+    );
+  }
+  requireCondition(
+    /Do not claim wallet, indexer, miner, explorer, or application readiness/i.test(readinessApprovals),
+    "READINESS_APPROVALS.md must prohibit readiness overclaims",
+    failures,
+  );
+  for (const component of ["wallet", "indexer", "miner", "explorer", "app"]) {
+    requireCondition(
+      readinessApprovals.includes(`| ${component} |`),
+      `READINESS_APPROVALS.md missing ${component} row`,
       failures,
     );
   }
@@ -208,6 +255,14 @@ function validateLocal(repoRoot) {
     "protocol drill fixture must contain at least 8 schemaVersion 1 cases",
     failures,
   );
+  requireCondition(appLabFixtures.length >= 3, "App Lab must include at least 3 fixture families", failures);
+  for (const appType of ["vault_escrow", "stateful_registry", "atomic_swap"]) {
+    requireCondition(
+      appLabFixtures.some((fixture) => fixture.appType === appType && /local_fixture_only/i.test(fixture.evidenceStatus)),
+      `App Lab missing local-only fixture type: ${appType}`,
+      failures,
+    );
+  }
   for (const drillId of [
     "activation-claim-boundary",
     "transaction-field-migration",
@@ -351,6 +406,22 @@ function validateLocal(repoRoot) {
     "package script must bundle SYSTEM_ARCHITECTURE.md into release artifacts",
     failures,
   );
+  requireCondition(
+    packageScript.includes("READINESS_APPROVALS.md"),
+    "package script must bundle READINESS_APPROVALS.md into release artifacts",
+    failures,
+  );
+  for (const bundledName of [
+    "kaspa-app-lab.md",
+    "toccata-app-lab.mjs",
+    "toccata-readiness-approvals-check.mjs",
+  ]) {
+    requireCondition(
+      packageScript.includes(bundledName),
+      `package script must bundle ${bundledName} into release artifacts`,
+      failures,
+    );
+  }
 
   return {
     failures,

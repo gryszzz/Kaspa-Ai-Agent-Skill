@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "fixtureType": "toccata_app_lab_case",
+  "appType": "atomic_swap",
+  "label": "Atomic-swap-style covenant local fixture",
+  "evidenceStatus": "local_fixture_only_not_mainnet_evidence_not_wallet_readiness",
+  "network": "kaspa-testnet-12",
+  "covenantId": "app-lab-atomic-swap-cov-001",
+  "initialState": {
+    "currentTip": "swap-lock-tx:0",
+    "valueSompi": 75000000,
+    "stateHash": "swap-state-party-a-locked-v1",
+    "acceptedDaaScore": 120000020
+  },
+  "transitions": [
+    {
+      "id": "valid-claim-with-secret",
+      "caseType": "valid",
+      "network": "kaspa-testnet-12",
+      "txVersion": 1,
+      "consumedOutpoint": "swap-lock-tx:0",
+      "successor": {
+        "outpoint": "swap-claim-tx:0",
+        "covenantId": "app-lab-atomic-swap-cov-001",
+        "valueSompi": 74997000,
+        "stateHash": "swap-state-claimed-v2"
+      },
+      "authorizingInputIndex": 0,
+      "computeBudget": 15,
+      "storageMass": 960,
+      "feeSompi": 3000,
+      "changeSompi": 0,
+      "proofRequirements": {
+        "scriptValidation": "required",
+        "covenantIdContinuity": "required",
+        "successorOutputValidation": "required",
+        "inlineZkProof": "not_required_for_this_fixture",
+        "witnessAvailability": "secret_hash_preimage_required"
+      }
+    },
+    {
+      "id": "invalid-wrong-secret-hash",
+      "caseType": "invalid",
+      "rejected": true,
+      "rejectionReason": "provided preimage does not match the committed swap hash"
+    },
+    {
+      "id": "replay-lock-after-claim",
+      "caseType": "replay",
+      "consumedOutpoint": "swap-lock-tx:0",
+      "rejected": true,
+      "rejectionReason": "swap lock outpoint was already consumed by claim transition"
+    },
+    {
+      "id": "rollback-claim-transition",
+      "caseType": "reorg_rollback",
+      "removedOutpoint": "swap-claim-tx:0",
+      "rollbackToOutpoint": "swap-lock-tx:0",
+      "reorgReason": "claim transaction removed from accepted context"
+    },
+    {
+      "id": "wrong-network-swap-preview",
+      "caseType": "wrong_network",
+      "network": "kaspa-mainnet",
+      "rejected": true,
+      "rejectionReason": "atomic-swap fixture is scoped to kaspa-testnet-12"
+    }
+  ],
+  "walletPreview": {
+    "previewType": "covenant_state_transition",
+    "warning": "This is not a normal send. You are claiming an atomic-swap covenant state.",
+    "network": "kaspa-testnet-12",
+    "covenantId": "app-lab-atomic-swap-cov-001",
+    "appLabel": "Atomic-swap-style local fixture",
+    "walletCompatibility": [
+      "Kasware",
+      "Kaspium"
+    ],
+    "consumedState": {
+      "outpoint": "swap-lock-tx:0",
+      "valueSompi": 75000000,
+      "stateHash": "swap-state-party-a-locked-v1"
+    },
+    "successorState": {
+      "outpoint": "swap-claim-tx:0",
+      "valueSompi": 74997000,
+      "stateHash": "swap-state-claimed-v2"
+    },
+    "proofRequirements": {
+      "scriptValidation": "required",
+      "secretPreimage": "required",
+      "inlineZkProof": "not_required_for_this_fixture"
+    },
+    "feeSompi": 3000,
+    "changeSompi": 0,
+    "computeBudget": 15,
+    "signingDecision": {
+      "primaryAction": "Sign swap covenant transition",
+      "blockedIf": [
+        "networkName mismatch",
+        "secret hash mismatch",
+        "covenantId mismatch",
+        "currentTip mismatch",
+        "missing successor swap output"
+      ]
+    }
+  },
+  "expected": {
+    "acceptedTransitions": 1,
+    "rejectedTransitions": 3,
+    "reorgRollbacks": 1,
+    "finalTip": "swap-lock-tx:0"
+  }
+}
