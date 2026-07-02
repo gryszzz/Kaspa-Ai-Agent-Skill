@@ -1,7 +1,7 @@
 # Kaspa Live Source Intelligence
 
-Checked: 2026-07-01T15:29:30.815Z
-Facts hash: `5087a6525acc46b49891e42e6075195f13e95e2e3796ad0878caa0fbbdc19547`
+Checked: 2026-07-02T14:59:09.038Z
+Facts hash: `d545e0ead4de0665d4a44b9ecc7d61910f58931556addf879eeb5fdf589ab380`
 Source health: **healthy_with_warnings**
 
 ## Primary Evidence
@@ -30,16 +30,16 @@ Source health: **healthy_with_warnings**
 | kaspanet/rusty-kaspa | heads/tn10 | `e5f6d1f7c86f` | ok |
 | kaspanet/rusty-kaspa | heads/tn12 | `ab4c51afde90` | ok |
 | kaspanet/kips | heads/master | `1aba3b8321c1` | ok |
-| kaspanet/docs | heads/main | `c3fb0fded5f1` | ok |
+| kaspanet/docs | heads/main | `0ac77d043a80` | ok |
 | kaspanet/silverscript | heads/master | `d25bd3427a09` | ok |
-| kaspanet/vprogs | heads/master | `252ff51f5467` | ok |
+| kaspanet/vprogs | heads/master | `ea96d1c87042` | ok |
 
 ## Network Identity
 
 | Endpoint | Expected | Observed | DAA | Status |
 | --- | --- | --- | ---: | --- |
-| [Mainnet blockDAG](https://api.kaspa.org/info/blockdag) | kaspa-mainnet | kaspa-mainnet | 474999257 | ok |
-| [TN10 blockDAG](https://api-tn10.kaspa.org/info/blockdag) | kaspa-testnet-10 | kaspa-testnet-10 | 505614276 | ok |
+| [Mainnet blockDAG](https://api.kaspa.org/info/blockdag) | kaspa-mainnet | kaspa-mainnet | 475844468 | ok |
+| [TN10 blockDAG](https://api-tn10.kaspa.org/info/blockdag) | kaspa-testnet-10 | kaspa-testnet-10 | 506459505 | ok |
 | [TN12 blockDAG](https://api-tn12.kaspa.org/info/blockdag) | kaspa-testnet-12 |  |  | failed 503 |
 
 ## KIP Index
