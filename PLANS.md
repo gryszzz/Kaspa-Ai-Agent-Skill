@@ -14,7 +14,7 @@ against released Rusty Kaspa and Silverscript tooling.
 - [x] Run skill tests, readiness checks, and extracted-package verification.
 - [x] Back up and synchronize both installed skill locations without losing edits.
 - [x] Add and run pinned KaspaScript compatibility and offline covenant lifecycle checks.
-- [ ] Record verified results, limitations, commits, and reviewable pull requests.
+- [x] Record verified results, limitations, commits, and reviewable pull requests.
 
 ## Constraints And Verification
 
@@ -42,6 +42,12 @@ isolated upstream compatibility probe and document any live-test prerequisites.
   including both compilers and a signed offline genesis/continuation/exit flow.
 - Live funded TN10 acceptance is not claimed. The funded wallet/node setup
   question remains open; no mainnet or live testnet funds were used.
+- Agent changes: `bb88366` and snapshot refresh `62f4e0a`, draft review at
+  https://github.com/gryszzz/Kaspa-Ai-Agent-Skill/pull/23.
+- KaspaScript changes: `742e545`, draft review at
+  https://github.com/gryszzz/Kaspa-Script/pull/2.
+- Both branches are pushed. Main is unchanged; scheduled automation adopts the
+  fix after review/merge. GitHub CI was started for both PRs.
 
 # Previous ExecPlan: Post-Toccata Kaspa App Lab Hardening
 
