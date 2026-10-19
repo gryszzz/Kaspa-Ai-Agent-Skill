@@ -2,6 +2,32 @@
   "schemaVersion": 1,
   "cases": [
     {
+      "id": "privacy-trial-readiness",
+      "prompt": "Four GPU proofs and private payments succeeded on TN10. Can our agent claim audited mainnet privacy and independent recovery?",
+      "required": [
+        { "label": "identifies testnet scope", "pattern": "TN10|testnet" },
+        { "label": "requires independent custody and recovery evidence", "pattern": "independent custody|shutdown.*recovery" },
+        { "label": "separates trial and audit", "pattern": "not.*audit|unaudited|not.*production" }
+      ],
+      "prohibited": [
+        { "label": "promotes the experiment to production", "pattern": "privacy is production.ready|audited mainnet privacy is available" }
+      ],
+      "referenceResponse": "The October 19, 2026 result is a bounded TN10 testnet trial reported by the project. It is not a production privacy protocol or independent security audit. Independent custody and full shutdown/recovery still require separate evidence."
+    },
+    {
+      "id": "released-compiler-experimental-framework",
+      "prompt": "Silverscript v1 is released. Does that mean Argent and every KaspaScript artifact are production-compatible?",
+      "required": [
+        { "label": "recognizes released foundation", "pattern": "Silverscript.*released" },
+        { "label": "keeps framework readiness separate", "pattern": "Argent.*experimental|Argent.*development" },
+        { "label": "requires interoperability checks", "pattern": "interoperability|compatibility test" }
+      ],
+      "prohibited": [
+        { "label": "assumes shared artifact compatibility", "pattern": "all artifacts are compatible|Argent is production.ready" }
+      ],
+      "referenceResponse": "Silverscript v1.0.0 is released; Argent remains under development. KaspaScript .ks and Silverscript .sil are different languages. Pin the exact compiler/node versions and run interoperability and native engine tests before claiming compatibility."
+    },
+    {
       "id": "mainnet-testnet-status",
       "prompt": "A feature works on TN10. Can I describe it as active on Kaspa mainnet?",
       "required": [

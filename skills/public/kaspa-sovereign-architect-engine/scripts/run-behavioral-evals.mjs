@@ -8,6 +8,8 @@ import { fileURLToPath } from "node:url";
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const defaultCasesPath = path.resolve(scriptDir, "..", "evals", "behavioral-cases.json");
 const requiredCaseIds = [
+  "privacy-trial-readiness",
+  "released-compiler-experimental-framework",
   "mainnet-testnet-status",
   "scheduled-versus-active",
   "post-threshold-mainnet-active",

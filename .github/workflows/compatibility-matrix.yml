@@ -11,6 +11,7 @@ on:
       - "scripts/kaspa-source-intelligence.mjs"
       - "scripts/kaspa-source-intelligence.test.mjs"
       - "scripts/lib/**"
+      - "scripts/update-snapshot-pr*"
       - "scripts/kaspa-knowledge-drill.mjs"
       - "scripts/covenant-lineage-prototype.mjs"
       - "scripts/vprog-scope-simulator.mjs"
@@ -37,6 +38,7 @@ on:
       - "scripts/kaspa-source-intelligence.mjs"
       - "scripts/kaspa-source-intelligence.test.mjs"
       - "scripts/lib/**"
+      - "scripts/update-snapshot-pr*"
       - "scripts/kaspa-knowledge-drill.mjs"
       - "scripts/covenant-lineage-prototype.mjs"
       - "scripts/vprog-scope-simulator.mjs"
@@ -94,7 +96,7 @@ jobs:
 
       - name: Test live Kaspa source intelligence
         run: |
-          node --test scripts/kaspa-source-intelligence.test.mjs
+          node --test scripts/kaspa-source-intelligence.test.mjs scripts/update-snapshot-pr.test.mjs
           node scripts/kaspa-source-intelligence.mjs --check
 
       - name: Run local knowledge drill

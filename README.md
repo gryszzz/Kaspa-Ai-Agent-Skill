@@ -65,7 +65,7 @@ Use $kaspa-sovereign-architect-engine in KIP Status mode. Build a table of relev
 ```
 
 ```text
-Use $kaspa-sovereign-architect-engine in Toccata R&D Intelligence mode. Re-check Rusty Kaspa v2.0.0, current mainnet DAA versus activation DAA 474165565, recent branch-delta impact lanes, KIP-16/17/20/21, and produce the next covenant/indexer/wallet compatibility plan.
+Use $kaspa-sovereign-architect-engine in Toccata R&D Intelligence mode. Re-check the latest stable Rusty Kaspa and Silverscript releases, current mainnet identity/DAA versus the Toccata activation threshold, Argent and KCC status, recent upstream deltas, and KIP-16/17/20/21. Produce a source-grounded covenant/indexer/wallet compatibility plan.
 ```
 
 ## 🧩 Compatibility Matrix

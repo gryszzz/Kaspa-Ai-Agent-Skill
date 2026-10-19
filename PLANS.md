@@ -1,4 +1,49 @@
-# ExecPlan: Post-Toccata Kaspa App Lab Hardening
+# ExecPlan: October 2026 Catch-Up
+
+## Current Goal
+
+Restore the daily source-update loop, refresh dated protocol knowledge, reconcile
+the installed skill with reviewed repository content, and validate KaspaScript
+against released Rusty Kaspa and Silverscript tooling.
+
+## Milestones
+
+- [x] Fix snapshot PR selection and cover open, merged, closed, and API failures.
+- [x] Track Silverscript releases, Argent, KCCs, and experimental privacy work.
+- [x] Refresh source snapshots and packaged references with dated evidence.
+- [x] Run skill tests, readiness checks, and extracted-package verification.
+- [x] Back up and synchronize both installed skill locations without losing edits.
+- [x] Add and run pinned KaspaScript compatibility and offline covenant lifecycle checks.
+- [ ] Record verified results, limitations, commits, and reviewable pull requests.
+
+## Constraints And Verification
+
+Follow `docs/kaspa/mainnet-readiness-gate.md`: protocol activation does not prove
+transaction construction, wallet/indexer support, fee behavior, or app readiness.
+Use Rusty Kaspa `v2.1.0` and Silverscript `v1.0.0` source pins; distinguish native
+offline validation from live TN10 acceptance. No mainnet signing, paid proving,
+release publication, or readiness promotion is part of this pass.
+
+Run the snapshot PR regressions, source intelligence tests, all skill script
+tests, release validation, network/readiness checks, package smoke, and
+`git diff --check`. In KaspaScript, run workspace format/test/clippy plus the
+isolated upstream compatibility probe and document any live-test prerequisites.
+
+## Checkpoint: 2026-10-19
+
+- Source snapshot: 10/10 repositories, 2/2 releases, 11/11 refs; mainnet and
+  TN10 returned the correct network identities. TN12 returned unavailable.
+- Agent repository tests: 54 passed; behavioral references: 18/18; extracted
+  package tests: 42 passed; mainnet protocol gate: 6/6, ecosystem readiness held.
+- Both installed skill locations match the reviewed full package with dated
+  snapshots. Original copies were backed up before synchronization.
+- KaspaScript: 83 workspace tests passed with testnet integration enabled;
+  two live network tests remain ignored. Seven new native v2.1.0 tests passed,
+  including both compilers and a signed offline genesis/continuation/exit flow.
+- Live funded TN10 acceptance is not claimed. The funded wallet/node setup
+  question remains open; no mainnet or live testnet funds were used.
+
+# Previous ExecPlan: Post-Toccata Kaspa App Lab Hardening
 
 ## Current Goal
 

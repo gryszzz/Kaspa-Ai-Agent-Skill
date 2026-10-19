@@ -64,6 +64,7 @@ Safety:
   --backup         Back up the destination before applying changes.
   --force          Resolve reported conflicts in the selected direction.
   --branch NAME    Require the repository worktree to be on NAME.
+  --include-snapshots  Include dated research snapshots from a reviewed package.
 
 Output:
   --report FILE    Also write the machine-readable JSON report to FILE.
@@ -89,6 +90,7 @@ function parseArgs(argv) {
     dryRun: true,
     backup: false,
     force: false,
+    includeSnapshots: false,
     branch: null,
     repoDir: defaultRepoDir,
     localDir: path.join(codexHome, "skills", "public", skillName),
@@ -120,6 +122,9 @@ function parseArgs(argv) {
         break;
       case "--force":
         options.force = true;
+        break;
+      case "--include-snapshots":
+        options.includeSnapshots = true;
         break;
       case "--branch":
         options.branch = takeValue(argv, index, arg);
@@ -155,6 +160,9 @@ function parseArgs(argv) {
     throw new Error("choose only one of --check, --to-local, or --from-local");
   }
   options.mode = modes[0] || "check";
+  if (options.includeSnapshots && options.mode === "from-local") {
+    throw new Error("--include-snapshots is only for package installation or checking");
+  }
   if (options.mode === "check" && !options.dryRun) {
     throw new Error("--check cannot be combined with --apply");
   }
@@ -169,13 +177,15 @@ function normalized(relativePath) {
   return relativePath.split(path.sep).join("/");
 }
 
-function shouldIgnore(relativePath, isDirectory) {
+function shouldIgnore(relativePath, isDirectory, includeSnapshots) {
   const normalizedPath = normalized(relativePath);
   const parts = normalizedPath.split("/");
   const name = parts.at(-1);
 
-  if (parts.some((part) => ignoredDirectoryNames.has(part))) return true;
-  if (isDirectory && ignoredDirectoryNames.has(name)) return true;
+  const ignoredDirectory = (part) => ignoredDirectoryNames.has(part)
+    && !(includeSnapshots && part === "research-snapshots");
+  if (parts.some(ignoredDirectory)) return true;
+  if (isDirectory && ignoredDirectory(name)) return true;
   if (ignoredFileNames.has(name)) return true;
   if (name === ".env" || name.startsWith(".env.")) return true;
   if (/\.(?:log|swp|swo|tmp)$/i.test(name) || name.endsWith("~")) return true;
@@ -183,7 +193,7 @@ function shouldIgnore(relativePath, isDirectory) {
   return false;
 }
 
-function readTree(root) {
+function readTree(root, includeSnapshots = false) {
   const files = new Map();
   const ignored = [];
   if (!existsSync(root)) {
@@ -199,7 +209,7 @@ function readTree(root) {
         ? path.join(relativeBase, entry.name)
         : entry.name;
       const reportPath = normalized(relativePath);
-      if (shouldIgnore(relativePath, entry.isDirectory())) {
+      if (shouldIgnore(relativePath, entry.isDirectory(), includeSnapshots)) {
         ignored.push(entry.isDirectory() ? `${reportPath}/` : reportPath);
         continue;
       }
@@ -402,8 +412,8 @@ function main() {
       );
     }
 
-    const repoTree = readTree(options.repoDir);
-    const localTree = readTree(options.localDir);
+    const repoTree = readTree(options.repoDir, options.includeSnapshots);
+    const localTree = readTree(options.localDir, options.includeSnapshots);
     const state = loadState(options.statePath);
     const report = buildReport(options, repoTree, localTree, state, git);
     const actions = buildActions(options, report, repoTree, localTree, state);
@@ -458,8 +468,8 @@ function main() {
       }
     }
 
-    const postRepo = readTree(options.repoDir);
-    const postLocal = readTree(options.localDir);
+    const postRepo = readTree(options.repoDir, options.includeSnapshots);
+    const postLocal = readTree(options.localDir, options.includeSnapshots);
     if (treeHash(postRepo.files) !== treeHash(postLocal.files)) {
       throw new Error("post-sync verification failed: trees are still different");
     }

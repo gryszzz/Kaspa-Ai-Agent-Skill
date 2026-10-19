@@ -2,6 +2,11 @@
 
 Use this playbook when analyzing Toccata, covenants, SilverScript, ZK opcodes, sequencing commitments, Based Apps, or vProgs.
 
+Current dated baseline: read `october-2026-catchup.md` and the October audit in
+`sources.md` first. The June snapshots below are historical. As of October 19,
+Rusty Kaspa v2.1.0 and Silverscript v1.0.0 are released, Toccata is mainnet-active,
+and Argent/privacy research require their own readiness evidence.
+
 ## Goal
 
 Build an evidence-first Toccata research loop that is faster and sharper than surface-level ecosystem commentary.

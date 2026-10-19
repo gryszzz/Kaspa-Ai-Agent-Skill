@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import assert from "node:assert/strict";
 import test from "node:test";
+import { githubRepos, githubReleases } from "./lib/source-watchlist.mjs";
 import {
   computeFactsHash,
   summarizeSourceHealth,
@@ -54,6 +55,27 @@ function sampleSnapshot(overrides = {}) {
   snapshot.factsHash = computeFactsHash(snapshot);
   return snapshot;
 }
+
+test("tracks released compilers separately from experimental applications", () => {
+  assert(githubReleases.some((entry) => entry.repo === "kaspanet/silverscript" && entry.kind === "latest"));
+  for (const name of ["argent-lang/argent", "olafweller/kaspa-privacy-initiative"]) {
+    const entry = githubRepos.find((item) => item.repo === name);
+    assert.equal(entry.primary, false);
+    assert.equal(entry.experimental, true);
+  }
+  const markdown = toMarkdown(sampleSnapshot({ github: { repos: githubRepos, refs: [], releases: [] } }));
+  assert.match(markdown, /Experimental; no production readiness claim/);
+  assert.match(markdown, /Conventions; document status is separate from adoption/);
+});
+
+test("a missing compiler release degrades source health without inventing a release", () => {
+  const snapshot = sampleSnapshot();
+  snapshot.github.releases.push({ repo: "kaspanet/silverscript", kind: "latest", ok: false, status: 503 });
+  const verdict = summarizeSourceHealth(snapshot);
+  assert.equal(verdict.sourceHealth, "healthy_with_warnings");
+  assert(verdict.warnings.some((warning) => warning.includes("kaspanet/silverscript")));
+  assert.match(toMarkdown(snapshot), /kaspanet\/silverscript: release unavailable/);
+});
 
 test("classifies a fully healthy primary-source snapshot", () => {
   const snapshot = sampleSnapshot();

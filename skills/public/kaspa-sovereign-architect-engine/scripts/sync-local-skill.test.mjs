@@ -127,6 +127,25 @@ test("excludes caches, logs, environment files, snapshots, dependencies, and edi
   }
 });
 
+test("package installation can explicitly include dated snapshots while excluding secrets", () => {
+  const paths = fixture();
+  try {
+    write(paths.repo, "SKILL.md", "package\n");
+    write(paths.repo, "research-snapshots/toccata/latest.json", "{\"checkedAt\":\"2026-10-19\"}\n");
+    write(paths.repo, "references/repo-docs/research-snapshots/toccata/latest.json", "{}\n");
+    write(paths.repo, "research-snapshots/.env", "SECRET=value\n");
+    const result = run(["--to-local", "--include-snapshots", "--apply"], paths);
+    assert.equal(result.status, 0, result.stderr);
+    assert(existsSync(path.join(paths.local, "research-snapshots/toccata/latest.json")));
+    assert(existsSync(path.join(paths.local, "references/repo-docs/research-snapshots/toccata/latest.json")));
+    assert(!existsSync(path.join(paths.local, "research-snapshots/.env")));
+    assert.equal(run(["--check", "--include-snapshots"], paths).status, 0);
+    assert.equal(run(["--from-local", "--include-snapshots", "--apply"], paths).status, 2);
+  } finally {
+    rmSync(paths.root, { recursive: true, force: true });
+  }
+});
+
 test("blocks two-sided conflicts and permits explicit forced resolution with backup", () => {
   const paths = fixture();
   try {
