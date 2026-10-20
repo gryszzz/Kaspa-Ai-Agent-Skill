@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-07-01T15:29:30.815Z",
-  "previousFactsHash": "70f55abc46da0c81479fe2f3bddb47e1dd9b9973c0b2ff589f34449f6a73547d",
+  "checkedAt": "2026-10-19T23:21:28.358Z",
+  "previousFactsHash": "5087a6525acc46b49891e42e6075195f13e95e2e3796ad0878caa0fbbdc19547",
   "github": {
     "repos": [
       {
@@ -14,10 +14,10 @@
         "defaultBranch": "master",
         "archived": false,
         "disabled": false,
-        "pushedAt": "2026-06-24T07:30:28Z",
-        "updatedAt": "2026-07-01T00:07:29Z",
-        "openIssuesCount": 188,
-        "stargazersCount": 832,
+        "pushedAt": "2026-10-19T15:05:13Z",
+        "updatedAt": "2026-10-19T15:05:21Z",
+        "openIssuesCount": 216,
+        "stargazersCount": 874,
         "visibility": "public"
       },
       {
@@ -30,10 +30,10 @@
         "defaultBranch": "master",
         "archived": false,
         "disabled": false,
-        "pushedAt": "2026-06-02T16:59:02Z",
-        "updatedAt": "2026-06-24T15:42:04Z",
-        "openIssuesCount": 14,
-        "stargazersCount": 53,
+        "pushedAt": "2026-10-19T12:28:50Z",
+        "updatedAt": "2026-09-22T22:41:26Z",
+        "openIssuesCount": 19,
+        "stargazersCount": 58,
         "visibility": "public"
       },
       {
@@ -46,10 +46,10 @@
         "defaultBranch": "main",
         "archived": false,
         "disabled": false,
-        "pushedAt": "2026-06-30T13:49:00Z",
-        "updatedAt": "2026-07-01T12:15:18Z",
-        "openIssuesCount": 15,
-        "stargazersCount": 65,
+        "pushedAt": "2026-07-02T14:51:32Z",
+        "updatedAt": "2026-09-10T07:29:16Z",
+        "openIssuesCount": 17,
+        "stargazersCount": 69,
         "visibility": "public"
       },
       {
@@ -64,9 +64,9 @@
         "archived": false,
         "disabled": false,
         "pushedAt": "2026-06-05T09:00:12Z",
-        "updatedAt": "2026-07-01T01:12:24Z",
-        "openIssuesCount": 176,
-        "stargazersCount": 529,
+        "updatedAt": "2026-09-29T10:58:49Z",
+        "openIssuesCount": 177,
+        "stargazersCount": 530,
         "visibility": "public"
       },
       {
@@ -80,31 +80,30 @@
         "archived": false,
         "disabled": false,
         "pushedAt": "2025-07-02T10:47:53Z",
-        "updatedAt": "2026-06-30T12:12:59Z",
+        "updatedAt": "2026-08-25T05:55:50Z",
         "openIssuesCount": 2,
-        "stargazersCount": 25,
+        "stargazersCount": 27,
         "visibility": "public"
       },
       {
         "repo": "kaspanet/silverscript",
-        "label": "SilverScript",
-        "primary": false,
-        "experimental": true,
+        "label": "Silverscript released compiler",
+        "primary": true,
         "ok": true,
         "status": 200,
         "url": "https://github.com/kaspanet/silverscript",
         "defaultBranch": "master",
         "archived": false,
         "disabled": false,
-        "pushedAt": "2026-06-28T10:18:11Z",
-        "updatedAt": "2026-06-28T10:18:15Z",
-        "openIssuesCount": 30,
-        "stargazersCount": 40,
+        "pushedAt": "2026-10-10T17:16:18Z",
+        "updatedAt": "2026-10-10T17:16:22Z",
+        "openIssuesCount": 41,
+        "stargazersCount": 58,
         "visibility": "public"
       },
       {
         "repo": "kaspanet/vprogs",
-        "label": "vProgs",
+        "label": "vProgs experimental framework",
         "primary": false,
         "experimental": true,
         "ok": true,
@@ -113,10 +112,61 @@
         "defaultBranch": "master",
         "archived": false,
         "disabled": false,
-        "pushedAt": "2026-07-01T14:16:58Z",
-        "updatedAt": "2026-06-18T12:10:15Z",
-        "openIssuesCount": 28,
-        "stargazersCount": 48,
+        "pushedAt": "2026-10-08T14:53:44Z",
+        "updatedAt": "2026-09-02T02:15:40Z",
+        "openIssuesCount": 55,
+        "stargazersCount": 53,
+        "visibility": "public"
+      },
+      {
+        "repo": "argent-lang/argent",
+        "label": "Argent experimental application compiler",
+        "primary": false,
+        "experimental": true,
+        "ok": true,
+        "status": 200,
+        "url": "https://github.com/argent-lang/argent",
+        "defaultBranch": "master",
+        "archived": false,
+        "disabled": false,
+        "pushedAt": "2026-10-19T13:04:09Z",
+        "updatedAt": "2026-10-19T13:04:15Z",
+        "openIssuesCount": 3,
+        "stargazersCount": 28,
+        "visibility": "public"
+      },
+      {
+        "repo": "kaspanet/kccs",
+        "label": "KCC conventions; inspect each document status",
+        "primary": true,
+        "standards": true,
+        "ok": true,
+        "status": 200,
+        "url": "https://github.com/kaspanet/kccs",
+        "defaultBranch": "main",
+        "archived": false,
+        "disabled": false,
+        "pushedAt": "2026-10-14T13:11:39Z",
+        "updatedAt": "2026-10-16T08:26:20Z",
+        "openIssuesCount": 8,
+        "stargazersCount": 12,
+        "visibility": "public"
+      },
+      {
+        "repo": "olafweller/kaspa-privacy-initiative",
+        "label": "Community privacy research; testnet evidence only",
+        "primary": false,
+        "experimental": true,
+        "ok": true,
+        "status": 200,
+        "url": "https://github.com/olafweller/kaspa-privacy-initiative",
+        "defaultBranch": "main",
+        "archived": false,
+        "disabled": false,
+        "pushedAt": "2026-10-19T19:06:23Z",
+        "updatedAt": "2026-10-19T13:54:33Z",
+        "openIssuesCount": 19,
+        "stargazersCount": 7,
         "visibility": "public"
       }
     ],
@@ -126,7 +176,7 @@
         "kind": "heads",
         "name": "master",
         "ok": true,
-        "sha": "98a4ccd8d200853787f227bd4536ac540cf34957",
+        "sha": "4edcbbccb449f84832afb1ca157904b35f37d006",
         "objectType": "commit",
         "url": "https://github.com/kaspanet/rusty-kaspa/tree/master"
       },
@@ -162,7 +212,7 @@
         "kind": "heads",
         "name": "master",
         "ok": true,
-        "sha": "1aba3b8321c1d27e00b7d87bd7c74ef879efabdc",
+        "sha": "e4ae2332117b5cb68bd6188e065ef885b6d17939",
         "objectType": "commit",
         "url": "https://github.com/kaspanet/kips/tree/master"
       },
@@ -171,7 +221,7 @@
         "kind": "heads",
         "name": "main",
         "ok": true,
-        "sha": "c3fb0fded5f13d6fbb9a37c5a1f561ad732a421f",
+        "sha": "0ac77d043a802fc8196abfd5812ac2afbd97a2b9",
         "objectType": "commit",
         "url": "https://github.com/kaspanet/docs/tree/main"
       },
@@ -180,7 +230,7 @@
         "kind": "heads",
         "name": "master",
         "ok": true,
-        "sha": "d25bd3427a093c17327ca3d6b9e1aa5f7688c863",
+        "sha": "a0dd7448ccc7bad5b99140f2c8edbbd0b2a874f1",
         "objectType": "commit",
         "url": "https://github.com/kaspanet/silverscript/tree/master"
       },
@@ -189,9 +239,36 @@
         "kind": "heads",
         "name": "master",
         "ok": true,
-        "sha": "252ff51f5467b73be75bc58ae84e5b22e90e3022",
+        "sha": "f9b84a863a7c7c20586a9cf947550475e894f72e",
         "objectType": "commit",
         "url": "https://github.com/kaspanet/vprogs/tree/master"
+      },
+      {
+        "repo": "argent-lang/argent",
+        "kind": "heads",
+        "name": "master",
+        "ok": true,
+        "sha": "5b544364d9b470e7433f5be54b5fc78a84a56f7d",
+        "objectType": "commit",
+        "url": "https://github.com/argent-lang/argent/tree/master"
+      },
+      {
+        "repo": "kaspanet/kccs",
+        "kind": "heads",
+        "name": "main",
+        "ok": true,
+        "sha": "1516a6c4cef59940fc3af3096dbcdd9c08690254",
+        "objectType": "commit",
+        "url": "https://github.com/kaspanet/kccs/tree/main"
+      },
+      {
+        "repo": "olafweller/kaspa-privacy-initiative",
+        "kind": "heads",
+        "name": "main",
+        "ok": true,
+        "sha": "05ea24a5cdb89ba5dd2cfec1041b1e69fa8de68d",
+        "objectType": "commit",
+        "url": "https://github.com/olafweller/kaspa-privacy-initiative/tree/main"
       }
     ],
     "releases": [
@@ -200,16 +277,32 @@
         "kind": "latest",
         "label": "Latest Rusty Kaspa release",
         "ok": true,
-        "tagName": "v2.0.1",
-        "name": "Mainnet Toccata Release - v2.0.1",
-        "url": "https://github.com/kaspanet/rusty-kaspa/releases/tag/v2.0.1",
+        "tagName": "v2.1.0",
+        "name": "Rusty Kaspa v2.1.0",
+        "url": "https://github.com/kaspanet/rusty-kaspa/releases/tag/v2.1.0",
         "targetCommitish": "master",
         "draft": false,
         "prerelease": false,
-        "publishedAt": "2026-06-15T19:14:22Z",
-        "createdAt": "2026-06-15T19:10:50Z",
+        "publishedAt": "2026-09-22T13:55:36Z",
+        "createdAt": "2026-09-22T13:50:54Z",
         "assetCount": 4,
-        "bodyHash": "ecd9e38f98c204122cd38f37f12ce9339bffd0126ffff78ecfedc020b860fbc9"
+        "bodyHash": "dc135a4372860215bb6716cd232a32149eaf618711b04ba5a6247f7173749d1d"
+      },
+      {
+        "repo": "kaspanet/silverscript",
+        "kind": "latest",
+        "label": "Latest Silverscript release",
+        "ok": true,
+        "tagName": "v1.0.0",
+        "name": "Silverscript v1.0.0",
+        "url": "https://github.com/kaspanet/silverscript/releases/tag/v1.0.0",
+        "targetCommitish": "master",
+        "draft": false,
+        "prerelease": false,
+        "publishedAt": "2026-09-09T16:48:31Z",
+        "createdAt": "2026-09-09T16:47:25Z",
+        "assetCount": 5,
+        "bodyHash": "0bfa025bcd9de3daa79774d0f90753828228dbd571ac840e047f365edbab11fc"
       }
     ]
   },
@@ -220,11 +313,11 @@
       "primary": true,
       "ok": true,
       "status": 200,
-      "etag": "\"12yrp3rijpi20tm\"",
+      "etag": "\"l2itvlotsq2o8d\"",
       "lastModified": null,
-      "contentLength": 94378,
-      "contentSha256": "e590e5a59e971aef02b442afc4582a57efd637fa0df61a901ba45450b509fbe8",
-      "sourceFingerprint": "8e7ee10090f1995d4aaeb6f8e09cd49522d6db59f81a86f7b2de0736fc5344ab"
+      "contentLength": 124717,
+      "contentSha256": "48e9e6daee2553a8efddd3f728d6c121dc02542cb388165ff5ba89a21b852e9f",
+      "sourceFingerprint": "ba8ebd9bcaccf8a20a062ae7a84f5d9f733e7f346754eddcc34cc8a89371e39d"
     },
     {
       "label": "Kaspa docs home",
@@ -232,35 +325,35 @@
       "primary": true,
       "ok": true,
       "status": 200,
-      "etag": "W/\"80f846b71854a5a83ba78a6af41eb2f1\"",
+      "etag": "W/\"9d8d5338db2afc10567f6e997ad96a2d\"",
       "lastModified": null,
       "contentLength": 50515,
-      "contentSha256": "1babf5b902edf28bf8925edee01dce0b10c14129c6adce38fd1f97fa3bb6fad6",
-      "sourceFingerprint": "6b207ca70caefc1f1dc0a8be2140933bb1db3b6e25f5a3750e349ca070b5e246"
+      "contentSha256": "d1cd2c4de9df99ac9ee31c6f51a74d972e60a35ad63c60c92bec4a1ad2f74dc7",
+      "sourceFingerprint": "d312602ea4ef59803e0275bfc2a33457cdf6d7eb9698c64e52db76f010b4f889"
     },
     {
-      "label": "Kaspa programmability docs",
-      "url": "https://docs.kaspa.org/programmability",
+      "label": "Kaspa Toccata docs",
+      "url": "https://docs.kaspa.org/toccata",
       "primary": true,
       "ok": true,
       "status": 200,
-      "etag": "W/\"04bb143eb3a3e196ef76cc6c0097f91f\"",
+      "etag": "W/\"e7cded09e43c47f8c7c4db203cd1ae33\"",
       "lastModified": null,
-      "contentLength": 62234,
-      "contentSha256": "ca04fbd40b265bf43b14a9ed291beb0812ae5fc347ce8fa7023f60705735f51b",
-      "sourceFingerprint": "9731503e21fbbfb7aedfbd0d758a42ee81b7f6958bf8d678f609382e0d1a896a"
+      "contentLength": 113726,
+      "contentSha256": "b767c117bf6028c2fc9bc5723023ed6288207882d3322174aa7881c0ab9a49e8",
+      "sourceFingerprint": "8850730c1f78d85087f04128d3fe8e8f6a6b6babbc31a181416c3f103dd5142b"
     },
     {
-      "label": "Kaspa covenants docs",
-      "url": "https://docs.kaspa.org/programmability/covenants",
+      "label": "Kaspa covenant state docs",
+      "url": "https://docs.kaspa.org/toccata/covenant-state",
       "primary": true,
       "ok": true,
       "status": 200,
-      "etag": "W/\"56ae360879dfc4932cc777338218503a\"",
+      "etag": "W/\"8882b583ee284c34c67332b2517e8a3c\"",
       "lastModified": null,
-      "contentLength": 60844,
-      "contentSha256": "1d1e00c2e954f21a679f72a3cbae57903407cbb1e764ba72eb5172a9b5cdf336",
-      "sourceFingerprint": "a3004946ab59206d0d8e7a17db7d82c4a9d2040d56fdee65c1fb2100b896db91"
+      "contentLength": 165368,
+      "contentSha256": "6420b9e880fca14b60c8c36aa46689b4925f50163fad31a9aed640b094cce01c",
+      "sourceFingerprint": "2a062df9cb69cd55dc95b4e73a9187ef3294d049ab7084fca00bce0fbab9770b"
     },
     {
       "label": "Kaspa Research categories",
@@ -271,8 +364,8 @@
       "etag": null,
       "lastModified": null,
       "contentLength": 12157,
-      "contentSha256": "0d37d7e8860cd220b62d4c9607639cc49d691305a1836715e8f340569034f3b1",
-      "sourceFingerprint": "2f3f1549686e770416ccefadfb5e905c907b203e2835dcc37c163a6daff29469"
+      "contentSha256": "90fd39e8965b9f25f22541627f9ee7185b24432ae562fa00fdc12ca48358843f",
+      "sourceFingerprint": "a17bd95504eeb62ddea59d91418049cbf8a8fcb3310d94065d38c2fe9e030eb7"
     },
     {
       "label": "vProgs architecture proposal",
@@ -283,8 +376,8 @@
       "etag": null,
       "lastModified": "Sun, 17 Aug 2025 07:11:16 GMT",
       "contentLength": 28982,
-      "contentSha256": "7c4e80dd76f0e5ed65fdefc757621c5d73cb2f178b97d7b9fd2101c1f9f1b161",
-      "sourceFingerprint": "6c9e93b327b05858e73687115ac982cdf425adc3177ca178c5994bc6009b68a1"
+      "contentSha256": "cdae7f1d88b5bd742c8cc7d7979b3e669d81f23a3d98110f622a452d4d9f6479",
+      "sourceFingerprint": "5c09294d256cb0276f42e216714ed38e9ae5a1e08c4c3c91a28ba96ee72f4efd"
     }
   ],
   "kaspaNetwork": [
@@ -295,10 +388,10 @@
       "ok": true,
       "status": 200,
       "networkName": "kaspa-mainnet",
-      "virtualDaaScore": "474999257",
-      "blockCount": "1367700",
-      "headerCount": "1367700",
-      "sourceFingerprint": "97b89e746b7018686b2b58b81c69f5bd423b83cb2845d57505b396a959130eb5"
+      "virtualDaaScore": "570318708",
+      "blockCount": "1497831",
+      "headerCount": "1497831",
+      "sourceFingerprint": "5e50004f8c37283487a65db320abf61315e487cc84d653db7039691ea5ab0128"
     },
     {
       "label": "TN10 blockDAG",
@@ -307,10 +400,10 @@
       "ok": true,
       "status": 200,
       "networkName": "kaspa-testnet-10",
-      "virtualDaaScore": "505614276",
-      "blockCount": "1359026",
-      "headerCount": "1359026",
-      "sourceFingerprint": "3f0f11331d6a6c5dcd49742f70a1ec3752ca0c179026e4edef6c862485af4350"
+      "virtualDaaScore": "601168244",
+      "blockCount": "1203153",
+      "headerCount": "1204917",
+      "sourceFingerprint": "f2f88c35be27fbf42df4929adf344b1f9540a46b3f94fe15ae219f0c868614a3"
     },
     {
       "label": "TN12 blockDAG",
@@ -458,11 +551,11 @@
         "layer": "Script Engine, ZK",
         "title": "New Transaction Opcodes for Verifiable Computation",
         "authors": "Alexander Safstrom (@saefstroem)",
-        "documentStatus": "Proposed, Implemented and activated in TN10",
+        "documentStatus": "Active",
         "ok": true,
         "status": 200,
         "url": "https://github.com/kaspanet/kips/blob/master/kip-0016.md",
-        "contentSha256": "7c91ede1634dbcf167be9633d5f219c1b52ab2877745de2ec904b7283fdefb98"
+        "contentSha256": "c70ef07766732677a72ff3e6c5c9c639104c6b2df6fa726ffc6752671ef5e1d4"
       },
       {
         "file": "kip-0017.md",
@@ -470,11 +563,11 @@
         "layer": "Consensus, Script Engine",
         "title": "Covenants and Improved Scripting Capabilities",
         "authors": "Ori Newman <orinewman1@gmail.com>",
-        "documentStatus": "Implemented and activated in TN10",
+        "documentStatus": "Active",
         "ok": true,
         "status": 200,
         "url": "https://github.com/kaspanet/kips/blob/master/kip-0017.md",
-        "contentSha256": "6187cb583e28eb1b3e220a17ece1ad9d4ed6bad7ab108aad49ea170fd836576f"
+        "contentSha256": "345a0a02f0590f4fe12704e82d25ee2fe7e703001b7c089ed6e3a639eea5fb90"
       },
       {
         "file": "kip-0020.md",
@@ -482,11 +575,11 @@
         "layer": "Consensus, Script Engine",
         "title": "Covenant IDs",
         "authors": "Michael Sutton <msutton@cs.huji.ac.il>",
-        "documentStatus": "Proposed, Implemented and activated in TN10",
+        "documentStatus": "Active",
         "ok": true,
         "status": 200,
         "url": "https://github.com/kaspanet/kips/blob/master/kip-0020.md",
-        "contentSha256": "ff413c6e595548e0525ed3a814da809f8edaa5541bfdf7fe95239fd734e600ee"
+        "contentSha256": "94610881c7ef905fe5346c7514b920f21a0e1a10e462776ba45eda73ac179cc8"
       },
       {
         "file": "kip-0021.md",
@@ -494,25 +587,25 @@
         "layer": "Consensus (hard fork), Chain-Block UTXO Validation",
         "title": "Partitioned Sequencing Commitment with O(activity) Proving",
         "authors": "Michael Sutton <msutton@cs.huji.ac.il>, Maxim Biryukov (@biryukovmaxim), Hans Moog <hans.moog@kaspafoundation.org>",
-        "documentStatus": "Implemented and activated in TN10",
+        "documentStatus": "Active",
         "created": "2026-02-17",
         "ok": true,
         "status": 200,
         "url": "https://github.com/kaspanet/kips/blob/master/kip-0021.md",
-        "contentSha256": "e1f3dbbab69ba3da5c610b1f823a2fb8e6c6635bb07b70d75ab9689715c4e7c2"
+        "contentSha256": "ce1606e74e20a9652a0c67ddd349d84b8b2ab8265df5a1d10b27d35f7a95cf26"
       }
     ]
   },
   "verdict": {
     "sourceHealth": "healthy_with_warnings",
     "counts": {
-      "githubRepos": 7,
-      "githubReposOk": 7,
+      "githubRepos": 10,
+      "githubReposOk": 10,
       "githubRepoFailures": 0,
-      "releases": 1,
-      "releasesOk": 1,
-      "refs": 8,
-      "refsOk": 8,
+      "releases": 2,
+      "releasesOk": 2,
+      "refs": 11,
+      "refsOk": 11,
       "webSources": 6,
       "webSourcesOk": 6,
       "networkSources": 3,
@@ -521,11 +614,11 @@
       "kipDocumentsOk": 15
     },
     "primaryEvidence": {
-      "healthyPrimaryRepos": 3,
+      "healthyPrimaryRepos": 5,
       "healthyPrimaryWeb": 4,
       "healthyNetwork": 2,
-      "latestRustyReleaseTag": "v2.0.1",
-      "latestRustyReleasePublishedAt": "2026-06-15T19:14:22Z"
+      "latestRustyReleaseTag": "v2.1.0",
+      "latestRustyReleasePublishedAt": "2026-09-22T13:55:36Z"
     },
     "warnings": [
       "Network endpoint unavailable: TN12 blockDAG"
@@ -538,7 +631,7 @@
       "Always record source URL, checkedAt, release tag or commit, and network identity for current claims."
     ]
   },
-  "factsHash": "5087a6525acc46b49891e42e6075195f13e95e2e3796ad0878caa0fbbdc19547",
+  "factsHash": "e429be67a4cfec7a2bb6a632d2b2c4228afb4f5a955a11fadef3baecc6678c1f",
   "changedSincePrevious": true,
   "validationErrors": []
 }

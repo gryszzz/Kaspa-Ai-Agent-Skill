@@ -3,6 +3,7 @@ import { execFileSync } from "node:child_process";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
+import { githubRepos, githubRefs, githubReleases } from "./lib/source-watchlist.mjs";
 import {
   computeFactsHash,
   sha256,
@@ -17,36 +18,11 @@ const LATEST_JSON = path.join(OUTPUT_DIR, "latest.json");
 const LATEST_MD = path.join(OUTPUT_DIR, "latest.md");
 const CHECKED_AT = new Date().toISOString();
 
-const githubRepos = [
-  { repo: "kaspanet/rusty-kaspa", label: "Rusty Kaspa node and SDK", primary: true },
-  { repo: "kaspanet/kips", label: "Kaspa Improvement Proposals", primary: true },
-  { repo: "kaspanet/docs", label: "Official Kaspa docs source", primary: true },
-  { repo: "kaspanet/kaspad", label: "Deprecated Go node", primary: false, deprecated: true },
-  { repo: "michaelsutton/kdapp", label: "Kdapp reference work", primary: false },
-  { repo: "kaspanet/silverscript", label: "SilverScript", primary: false, experimental: true },
-  { repo: "kaspanet/vprogs", label: "vProgs", primary: false, experimental: true },
-];
-
-const githubRefs = [
-  { repo: "kaspanet/rusty-kaspa", kind: "heads", name: "master" },
-  { repo: "kaspanet/rusty-kaspa", kind: "heads", name: "toccata" },
-  { repo: "kaspanet/rusty-kaspa", kind: "heads", name: "tn10" },
-  { repo: "kaspanet/rusty-kaspa", kind: "heads", name: "tn12" },
-  { repo: "kaspanet/kips", kind: "heads", name: "master" },
-  { repo: "kaspanet/docs", kind: "heads", name: "main" },
-  { repo: "kaspanet/silverscript", kind: "heads", name: "master" },
-  { repo: "kaspanet/vprogs", kind: "heads", name: "master" },
-];
-
-const githubReleases = [
-  { repo: "kaspanet/rusty-kaspa", kind: "latest", label: "Latest Rusty Kaspa release" },
-];
-
 const webSources = [
   { label: "Kaspa build portal", url: "https://kaspa.org/build", primary: true },
   { label: "Kaspa docs home", url: "https://docs.kaspa.org", primary: true },
-  { label: "Kaspa programmability docs", url: "https://docs.kaspa.org/programmability", primary: true },
-  { label: "Kaspa covenants docs", url: "https://docs.kaspa.org/programmability/covenants", primary: true },
+  { label: "Kaspa Toccata docs", url: "https://docs.kaspa.org/toccata", primary: true },
+  { label: "Kaspa covenant state docs", url: "https://docs.kaspa.org/toccata/covenant-state", primary: true },
   { label: "Kaspa Research categories", url: "https://research.kas.pa/categories", primary: false },
   {
     label: "vProgs architecture proposal",

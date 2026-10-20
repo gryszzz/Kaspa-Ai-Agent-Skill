@@ -71,6 +71,17 @@ code or architectural changes.
 For Toccata engineering, use official/repo-backed sources only. Community
 resources are navigation aids, not protocol truth.
 
+Current release baseline, verified 2026-10-19:
+
+- Rusty Kaspa `v2.1.0`: `https://github.com/kaspanet/rusty-kaspa/releases/tag/v2.1.0`
+- Silverscript `v1.0.0`: `https://github.com/kaspanet/silverscript/releases/tag/v1.0.0`
+- KCC conventions: `https://github.com/kaspanet/kccs` (per-document status).
+- Argent: `https://github.com/argent-lang/argent` (experimental application tooling).
+- Kaspa Privacy Initiative: `https://github.com/olafweller/kaspa-privacy-initiative`
+  (independent community research; bounded TN10 results do not prove production privacy).
+
+The older release links below remain historical and activation comparison sources.
+
 - Rusty Kaspa `v2.0.1`: `https://github.com/kaspanet/rusty-kaspa/releases/tag/v2.0.1`
 - Rusty Kaspa `v2.0.0`: `https://github.com/kaspanet/rusty-kaspa/releases/tag/v2.0.0`
 - Toccata Guide: `https://github.com/kaspanet/rusty-kaspa/blob/master/docs/toccata-guide.md`

@@ -2,6 +2,12 @@
 
 Status: protocol-activation and ecosystem-readiness claim control.
 
+Current audit, 2026-10-19: Rusty Kaspa `v2.1.0` is the stable integration
+baseline; Silverscript `v1.0.0` is released. The source snapshot returned
+`kaspa-mainnet` DAA `570318708`, above activation DAA `474165565`. Protocol
+activation is verified; wallet/indexer/application readiness still requires the
+separate evidence below. Historical notes are retained for comparison.
+
 Current snapshot note, 2026-06-06:
 
 - Protocol decision: `do_not_claim_mainnet_protocol_active`.

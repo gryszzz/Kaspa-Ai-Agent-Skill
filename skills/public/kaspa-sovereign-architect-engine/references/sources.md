@@ -2,6 +2,31 @@
 
 Use this inventory with `source-trust-policy.md`. Record absolute dates for time-sensitive claims and commit hashes for repository analysis.
 
+## Current Audit: 2026-10-19
+
+This audit supersedes the historical release and activation status below.
+
+- Rusty Kaspa latest stable: `v2.1.0`, published 2026-09-22, commit
+  `01b532e8b553523216471682649693af92f0fd16`:
+  https://github.com/kaspanet/rusty-kaspa/releases/tag/v2.1.0.
+- Silverscript stable: `v1.0.0`, published 2026-09-09, commit
+  `3ed973335b59269293564805cc2c58a14595ec03`:
+  https://github.com/kaspanet/silverscript/releases/tag/v1.0.0.
+- The 2026-10-19T23:21:28Z source snapshot returned `kaspa-mainnet` DAA
+  `570318708` and `kaspa-testnet-10` DAA `601168244`. Mainnet exceeds Toccata
+  activation DAA `474165565`. TN12 returned 503; its state is unknown here.
+- Rusty Kaspa master: `4edcbbccb449f84832afb1ca157904b35f37d006`.
+- Argent: https://github.com/argent-lang/argent. Experimental application
+  compiler above Silverscript; not generally release-ready.
+- Conventions: https://github.com/kaspanet/kccs. Inspect each KCC's document
+  status independently of implementation and wallet adoption.
+- Community privacy research: https://github.com/olafweller/kaspa-privacy-initiative,
+  commit `05ea24a5cdb89ba5dd2cfec1041b1e69fa8de68d`. The October 19 TN10 trial
+  reports four proofs/settlements and a native payout. It does not establish
+  audited production privacy, independent custody, or shutdown recovery.
+- Read `october-2026-catchup.md` for integration requirements and reproducible
+  source refresh commands. Recheck current sources before making latest claims.
+
 ## Verified Source Snapshot
 
 Snapshot date: 2026-06-06T01:39:16Z

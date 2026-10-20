@@ -55,6 +55,12 @@ export function summarizeSourceHealth(snapshot) {
   for (const repo of githubRepos.filter((item) => !item.ok)) {
     warnings.push(`GitHub source unavailable: ${repo.repo}`);
   }
+  for (const release of releases.filter((item) => !item.ok)) {
+    warnings.push(`GitHub release unavailable: ${release.repo}`);
+  }
+  for (const ref of refs.filter((item) => !item.ok)) {
+    warnings.push(`GitHub ref unavailable: ${ref.repo} ${ref.kind}/${ref.name}`);
+  }
   for (const page of web.filter((item) => !item.ok)) {
     warnings.push(`Web source unavailable: ${page.label}`);
   }
@@ -184,6 +190,22 @@ export function toMarkdown(snapshot) {
   lines.push("");
 
   lines.push("## GitHub Refs");
+  lines.push("");
+  lines.push(tableRow(["Repository", "Evidence scope"]));
+  lines.push(tableRow(["---", "---"]));
+  for (const repo of snapshot.github?.repos || []) {
+    lines.push(tableRow([repo.repo, repo.experimental ? "Experimental; no production readiness claim" : repo.standards ? "Conventions; document status is separate from adoption" : repo.primary ? "Primary source" : "Community or historical source"]));
+  }
+  lines.push("");
+  lines.push("## Tracked Releases");
+  lines.push("");
+  for (const release of snapshot.github?.releases || []) {
+    lines.push(release.ok
+      ? `- [${release.repo} ${release.tagName}](${release.url}), published ${release.publishedAt}; prerelease: ${release.prerelease ? "yes" : "no"}.`
+      : `- ${release.repo}: release unavailable.`);
+  }
+  lines.push("");
+  lines.push("## Ref Pins");
   lines.push("");
   lines.push(tableRow(["Source", "Ref", "SHA", "Status"]));
   lines.push(tableRow(["---", "---", "---", "---"]));
