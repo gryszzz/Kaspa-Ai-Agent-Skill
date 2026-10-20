@@ -1,4 +1,57 @@
-# ExecPlan: October 2026 Catch-Up
+# ExecPlan: Buyer/Seller Script Without Agent Custody
+
+## Current Goal
+
+Document and evaluate the spending agreement chosen by the user: buyer/seller
+escrow with explicit shared rules. Keep keys with the participants. Explain
+cooperative release, buyer timeout recovery, fee caps, and the inability of a
+script to adjudicate delivery. Ground the reference in the executable
+KaspaScript template and pinned Rusty Kaspa v2.1.0 engine tests.
+
+## Milestones
+
+- [x] Read the readiness/source rules and run the network fixture check.
+- [x] Add a scoped escrow reference and route it from the knowledge map.
+- [x] Add positive/adversarial behavioral evaluation coverage.
+- [x] Run skill tests, compatibility, release validation and diff checks.
+- [x] Package, test, back up and synchronize both installed skill locations.
+- [x] Record native/offline evidence and remaining wallet/live boundaries.
+
+No key reading, signing, funding, submission, paid proving, release publication,
+or readiness promotion is authorized by this documentation work. Preserve
+Kasware and Kaspium as wallet integration paths requiring separate verification.
+
+## Checkpoint: 2026-10-20T01:19:14Z
+
+KaspaScript has a readable two-party `.ks` template, single native P2SH
+dispatcher, fee/payout constraints, unsigned previews and an optional read-only
+wRPC inspector. Native tests exposed and now cover positive script-number sign
+encoding. The legacy SDK refuses multi-path instantiation that would omit
+recovery. Workspace tests: 85 passed, two live ignored; native tests: 19 passed.
+Both Rust format/Clippy lanes passed.
+
+Agent tests: 55 passed; behavioral reference cases: 19/19; extracted-package
+tests: 43 passed. Release/compatibility/plan-lint/skill-validation gates passed.
+Installed trees match tested package hash
+`d43335867000205cfe7d4d5edef8049537ea1adad51bdea98d71afb9386a7262`;
+backups end in `0293a578fc70` and `7e82b7888640`.
+
+No real keys were read or funds moved. Wallet-provider signing, visual approval,
+accepted funded TN10 receipts and DAG/indexer recovery remain unverified.
+Behavioral references are guardrail tests, not fresh LLM evaluations. At this
+checkpoint changes remained local and the remote draft PRs were unchanged.
+
+## Integration Authorization: 2026-10-20T01:21:59Z
+
+The user explicitly authorized commits, pushes and merges. Integrate the tested
+working-tree changes into existing KaspaScript PR #2 and skill PR #23. Refresh
+local gates, push the exact reviewed commits, wait for fresh CI, and merge only
+when GitHub reports the PRs are mergeable with successful checks and no change
+requests. Keep branch protection intact; do not use an administrative bypass.
+The PR histories provide final commit/check/merge receipts. No release, wallet
+signing, funding, key access or transaction broadcast is authorized by this step.
+
+# Previous ExecPlan: October 2026 Catch-Up
 
 ## Current Goal
 

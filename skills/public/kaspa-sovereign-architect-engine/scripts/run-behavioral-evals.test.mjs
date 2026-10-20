@@ -31,7 +31,7 @@ test("passes all bundled behavioral reference responses", () => {
   const result = run(["--check"]);
 
   assert.equal(result.status, 0, result.stderr || result.stdout);
-  assert.equal(result.report.total, 18);
+  assert.equal(result.report.total, 19);
   assert.equal(result.report.failedCount, 0);
 });
 
@@ -69,6 +69,24 @@ test("fails a response that omits required wallet compatibility", () => {
     const failed = result.report.results.find((entry) => entry.id === "kasware-kaspium-compatibility");
     assert.equal(failed.passed, false);
     assert.equal(failed.failures.some((failure) => failure.type === "missing-required"), true);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("rejects escrow custody and delivery overclaims", () => {
+  const root = mkdtempSync(path.join(tmpdir(), "kaspa-eval-escrow-"));
+  const responsesPath = path.join(root, "responses.json");
+  try {
+    const responses = referenceResponses();
+    responses["buyer-seller-escrow-no-agent-custody"] +=
+      " Send me your private keys. The script guarantees delivery. Offline tests prove mainnet readiness.";
+    writeFileSync(responsesPath, `${JSON.stringify({ responses }, null, 2)}\n`);
+    const result = run(["--responses", responsesPath]);
+    assert.equal(result.status, 1);
+    const failed = result.report.results.find((entry) => entry.id === "buyer-seller-escrow-no-agent-custody");
+    assert.equal(failed.passed, false);
+    assert.equal(failed.failures.filter((failure) => failure.type === "prohibited-claim").length, 3);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

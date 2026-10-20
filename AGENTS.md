@@ -65,4 +65,6 @@ change, test, or reproduced failure.
 
 ### Entries
 
-No entries yet.
+[Positive fee cap 128 failed native escrow execution] | [Kaspa numeric stack values reserve the high bit for sign] | [Emit the positive sign byte at integer boundaries and verify compiled bytecode with native positive/negative controls]
+
+[Single-spend instantiation could omit an escrow refund] | [Funding commits the exact P2SH redeem script] | [Compile release and refund into one lock and reject multi-path use of the legacy single-spend builder]
