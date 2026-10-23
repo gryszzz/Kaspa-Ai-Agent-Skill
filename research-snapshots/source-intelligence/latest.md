@@ -1,7 +1,7 @@
 # Kaspa Live Source Intelligence
 
-Checked: 2026-10-19T23:21:28.358Z
-Facts hash: `e429be67a4cfec7a2bb6a632d2b2c4228afb4f5a955a11fadef3baecc6678c1f`
+Checked: 2026-10-23T17:28:13.441Z
+Facts hash: `4f7575511ff73d8f497b90326aafc91241b9a217ef2a72c4551e13b54035bdaa`
 Source health: **healthy_with_warnings**
 
 ## Primary Evidence
@@ -51,18 +51,18 @@ Source health: **healthy_with_warnings**
 | kaspanet/rusty-kaspa | heads/tn12 | `ab4c51afde90` | ok |
 | kaspanet/kips | heads/master | `e4ae2332117b` | ok |
 | kaspanet/docs | heads/main | `0ac77d043a80` | ok |
-| kaspanet/silverscript | heads/master | `a0dd7448ccc7` | ok |
+| kaspanet/silverscript | heads/master | `15b7bc27680b` | ok |
 | kaspanet/vprogs | heads/master | `f9b84a863a7c` | ok |
-| argent-lang/argent | heads/master | `5b544364d9b4` | ok |
-| kaspanet/kccs | heads/main | `1516a6c4cef5` | ok |
-| olafweller/kaspa-privacy-initiative | heads/main | `05ea24a5cdb8` | ok |
+| argent-lang/argent | heads/master | `5a7744bc244a` | ok |
+| kaspanet/kccs | heads/main | `1ed87aef59fa` | ok |
+| olafweller/kaspa-privacy-initiative | heads/main | `7ffe83534376` | ok |
 
 ## Network Identity
 
 | Endpoint | Expected | Observed | DAA | Status |
 | --- | --- | --- | ---: | --- |
-| [Mainnet blockDAG](https://api.kaspa.org/info/blockdag) | kaspa-mainnet | kaspa-mainnet | 570318708 | ok |
-| [TN10 blockDAG](https://api-tn10.kaspa.org/info/blockdag) | kaspa-testnet-10 | kaspa-testnet-10 | 601168244 | ok |
+| [Mainnet blockDAG](https://api.kaspa.org/info/blockdag) | kaspa-mainnet | kaspa-mainnet | 573562558 | ok |
+| [TN10 blockDAG](https://api-tn10.kaspa.org/info/blockdag) | kaspa-testnet-10 | kaspa-testnet-10 | 604425718 | ok |
 | [TN12 blockDAG](https://api-tn12.kaspa.org/info/blockdag) | kaspa-testnet-12 |  |  | failed 503 |
 
 ## KIP Index
