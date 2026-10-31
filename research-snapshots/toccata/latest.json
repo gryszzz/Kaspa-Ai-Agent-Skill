@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "checkedAt": "2026-10-19T23:21:28.356Z",
+  "checkedAt": "2026-10-31T17:15:34.995Z",
   "policy": {
     "sourceTier": "primary-source-first",
     "mainnetClaimRule": "mainnet activation requires a final release, explicit activation DAA, merged production code, and mainnet endpoint evidence at or above the threshold",
@@ -626,7 +626,7 @@
         "kind": "heads",
         "name": "master",
         "ok": true,
-        "sha": "a0dd7448ccc7bad5b99140f2c8edbbd0b2a874f1",
+        "sha": "15b7bc27680bdf0d83b294fbbfda55ecb59958ca",
         "objectType": "commit",
         "url": "https://github.com/kaspanet/silverscript/tree/master"
       },
@@ -782,7 +782,7 @@
         "beforeSha": "98a4ccd8d200853787f227bd4536ac540cf34957",
         "afterSha": "4edcbbccb449f84832afb1ca157904b35f37d006",
         "ok": true,
-        "status": "ahead",
+        "status": "last_observed_change",
         "aheadBy": 26,
         "behindBy": 0,
         "totalCommits": 26,
@@ -3054,17 +3054,11 @@
           {
             "id": "activation-p2p",
             "label": "Activation and P2P compatibility",
-            "fileCount": 30,
+            "fileCount": 2,
             "commitCount": 0,
             "matchedFiles": [
-              "Cargo.toml",
               "consensus/core/src/config/params.rs",
-              "consensus/src/consensus/mod.rs",
-              "consensus/src/consensus/services.rs",
-              "consensus/src/model/services/seq_commit_accessor.rs",
-              "consensus/src/model/stores/virtual_state.rs",
-              "consensus/src/pipeline/header_processor/processor.rs",
-              "consensus/src/pipeline/pruning_processor/processor.rs"
+              "mining/src/toccata_transient_mass_activation_tests.rs"
             ],
             "matchedCommits": [],
             "builderImpact": "Node operators must track the activation DAA, release line, P2P version cutoff, and one-way upgrade constraints."
@@ -3072,17 +3066,15 @@
           {
             "id": "transaction-wire-format",
             "label": "Transaction and wire-format contracts",
-            "fileCount": 25,
+            "fileCount": 6,
             "commitCount": 1,
             "matchedFiles": [
               "consensus/client/src/compute_commit.rs",
-              "consensus/client/src/lib.rs",
-              "consensus/core/Cargo.toml",
-              "consensus/core/src/config/params.rs",
-              "consensus/core/src/hashing/tx.rs",
-              "consensus/core/src/mass/mod.rs",
               "consensus/core/src/tx.rs",
-              "consensus/core/src/tx/script_public_key.rs"
+              "consensus/core/src/tx/script_public_key.rs",
+              "consensus/core/src/tx/serde_impl.rs",
+              "protocol/p2p/proto/messages.proto",
+              "protocol/p2p/proto/p2p.proto"
             ],
             "matchedCommits": [
               "compute commit, mass calculation and generator fixes (#1074)"
@@ -3092,17 +3084,17 @@
           {
             "id": "covenant-lineage",
             "label": "Covenants and UTXO lineage",
-            "fileCount": 70,
+            "fileCount": 27,
             "commitCount": 1,
             "matchedFiles": [
-              "Cargo.toml",
-              "bridge/src/kaspaapi.rs",
-              "cli/src/modules/pskb.rs",
-              "cli/src/modules/rpc.rs",
-              "consensus/benches/check_scripts.rs",
               "consensus/client/src/utxo.rs",
-              "consensus/core/src/config/mod.rs",
-              "consensus/core/src/errors/tx.rs"
+              "consensus/core/src/utxo/pre_toccata.rs",
+              "consensus/core/src/utxo/utxo_collection.rs",
+              "consensus/core/src/utxo/utxo_diff.rs",
+              "consensus/core/src/utxo/utxo_entry.rs",
+              "consensus/core/src/utxo/utxo_error.rs",
+              "consensus/core/src/utxo/utxo_inquirer.rs",
+              "consensus/src/model/stores/utxo_diffs.rs"
             ],
             "matchedCommits": [
               "UtxoIndex: Key UTXOs by DAA score, adds pagnated and cursor-based api, exposes this via `get_utxos_by_addresses_v2` RPC (#991)"
@@ -3112,17 +3104,17 @@
           {
             "id": "fees-mass-mempool",
             "label": "Fee, mass, and mempool policy",
-            "fileCount": 53,
+            "fileCount": 20,
             "commitCount": 2,
             "matchedFiles": [
-              "bridge/src/share_handler.rs",
-              "cli/src/modules/pskb.rs",
-              "clippy.toml",
-              "consensus/client/src/compute_commit.rs",
-              "consensus/core/Cargo.toml",
-              "consensus/core/src/api/args.rs",
-              "consensus/core/src/config/params.rs",
-              "consensus/core/src/hashing/tx.rs"
+              "consensus/core/src/mass/mod.rs",
+              "consensus/core/src/mass/units.rs",
+              "mining/errors/src/mempool.rs",
+              "mining/src/feerate/mod.rs",
+              "mining/src/mempool/check_transaction_limits.rs",
+              "mining/src/mempool/check_transaction_standard.rs",
+              "mining/src/mempool/config.rs",
+              "mining/src/mempool/handle_new_block_transactions.rs"
             ],
             "matchedCommits": [
               "Explicitly reject coinbase transactions from mempool (#1137)",
@@ -3133,17 +3125,15 @@
           {
             "id": "rpc-wasm-sdk",
             "label": "RPC, WASM, and SDK surface",
-            "fileCount": 33,
+            "fileCount": 6,
             "commitCount": 1,
             "matchedFiles": [
-              ".cargo/config.toml",
-              ".github/workflows/ci.yaml",
-              "Cargo.toml",
-              "bridge/src/kaspaapi.rs",
-              "check",
-              "consensus/client/Cargo.toml",
-              "consensus/client/src/compute_commit.rs",
-              "consensus/client/src/parents.rs"
+              "consensus/core/src/hashing/wasm.rs",
+              "consensus/wasm/Cargo.toml",
+              "consensus/wasm/src/lib.rs",
+              "crypto/addresses/src/wasm.rs",
+              "crypto/txscript/src/wasm/builder.rs",
+              "crypto/txscript/zk-sdk/src/zk_to_script/wasm/fragments.rs"
             ],
             "matchedCommits": [
               "fix(wasm): sighash type mapping (#1085)"
@@ -3153,15 +3143,9 @@
           {
             "id": "wallet-pskt",
             "label": "Wallet and PSKT construction",
-            "fileCount": 5,
+            "fileCount": 0,
             "commitCount": 2,
-            "matchedFiles": [
-              "Cargo.toml",
-              "check",
-              "cli/src/modules/pskb.rs",
-              "consensus/core/Cargo.toml",
-              "consensus/core/src/hashing/sighash.rs"
-            ],
+            "matchedFiles": [],
             "matchedCommits": [
               "Add --allow-non-sighashall flag to pskb signing (#1135)",
               "compute commit, mass calculation and generator fixes (#1074)"
@@ -3171,17 +3155,16 @@
           {
             "id": "zk-verification",
             "label": "ZK verification and pricing",
-            "fileCount": 16,
+            "fileCount": 7,
             "commitCount": 1,
             "matchedFiles": [
-              "Cargo.toml",
-              "crypto/txscript/Cargo.toml",
-              "crypto/txscript/benches/pricing.rs",
               "crypto/txscript/benches/zk_precompiles.rs",
-              "crypto/txscript/src/opcodes/mod.rs",
               "crypto/txscript/src/zk_precompiles/fields/mod.rs",
               "crypto/txscript/src/zk_precompiles/groth16/mod.rs",
-              "crypto/txscript/src/zk_precompiles/risc0/rcpt.rs"
+              "crypto/txscript/src/zk_precompiles/risc0/rcpt.rs",
+              "crypto/txscript/src/zk_precompiles/tags.rs",
+              "crypto/txscript/src/zk_precompiles/tests/helpers.rs",
+              "crypto/txscript/zk-sdk/src/zk_to_script/fragments/groth16.rs"
             ],
             "matchedCommits": [
               "Add append_r0_groth16_verifier_dynamic_image_id (#1067)"
@@ -3191,17 +3174,16 @@
           {
             "id": "sequencing-smt",
             "label": "Sequencing commitments and SMT state",
-            "fileCount": 39,
+            "fileCount": 7,
             "commitCount": 1,
             "matchedFiles": [
-              ".github/workflows/ci.yaml",
-              "Cargo.toml",
-              "consensus/Cargo.toml",
-              "consensus/core/src/config/params.rs",
               "consensus/seq-commit/src/lib.rs",
               "consensus/seq-commit/tests/example_block.rs",
               "consensus/seq-commit/tests/prove_lane_activity.rs",
-              "consensus/smt-store/examples/bench_streaming_import.rs"
+              "consensus/smt-store/examples/bench_streaming_import.rs",
+              "consensus/smt-store/src/lib.rs",
+              "consensus/smt-store/tests/integration.rs",
+              "consensus/src/model/services/seq_commit_accessor.rs"
             ],
             "matchedCommits": [
               "consensus: replace accepted_id_digests Vec with SeqCommit (#1099) (#1142)"
@@ -3211,17 +3193,17 @@
           {
             "id": "node-storage-ibd",
             "label": "Node storage, pruning, and IBD",
-            "fileCount": 65,
+            "fileCount": 30,
             "commitCount": 2,
             "matchedFiles": [
-              "Cargo.toml",
-              "consensus/Cargo.toml",
-              "consensus/core/src/config/params.rs",
               "consensus/core/src/errors/pruning.rs",
-              "consensus/core/src/lib.rs",
-              "consensus/core/src/mass/mod.rs",
               "consensus/core/src/pruning.rs",
-              "consensus/core/src/tx.rs"
+              "consensus/core/tests/db_compat.rs",
+              "consensus/src/pipeline/pruning_processor/processor.rs",
+              "consensus/src/processes/pruning_proof/apply.rs",
+              "consensus/src/processes/pruning_proof/mod.rs",
+              "consensus/src/processes/pruning_proof/validate.rs",
+              "database/Cargo.toml"
             ],
             "matchedCommits": [
               "Split headers to 20 MiB chunks during IBD (#1136)",
@@ -4522,7 +4504,7 @@
         "beforeSha": "1aba3b8321c1d27e00b7d87bd7c74ef879efabdc",
         "afterSha": "e4ae2332117b5cb68bd6188e065ef885b6d17939",
         "ok": true,
-        "status": "ahead",
+        "status": "last_observed_change",
         "aheadBy": 1,
         "behindBy": 0,
         "totalCommits": 1,
@@ -4575,33 +4557,7 @@
             "changes": 2
           }
         ],
-        "impacts": [
-          {
-            "id": "covenant-lineage",
-            "label": "Covenants and UTXO lineage",
-            "fileCount": 4,
-            "commitCount": 0,
-            "matchedFiles": [
-              "README.md",
-              "kip-0017.md",
-              "kip-0020.md",
-              "kip-0021.md"
-            ],
-            "matchedCommits": [],
-            "builderImpact": "UTXO-first applications must preserve covenant bindings, authorizing inputs, covenant IDs, and successor lineage."
-          },
-          {
-            "id": "node-storage-ibd",
-            "label": "Node storage, pruning, and IBD",
-            "fileCount": 1,
-            "commitCount": 0,
-            "matchedFiles": [
-              "README.md"
-            ],
-            "matchedCommits": [],
-            "builderImpact": "Operators must plan database migrations, resync cost, retention, pruning compatibility, and recovery procedures."
-          }
-        ],
+        "impacts": [],
         "url": "https://github.com/kaspanet/kips/compare/1aba3b8321c1d27e00b7d87bd7c74ef879efabdc...e4ae2332117b5cb68bd6188e065ef885b6d17939"
       },
       {
@@ -4611,7 +4567,7 @@
         "beforeSha": "c3fb0fded5f13d6fbb9a37c5a1f561ad732a421f",
         "afterSha": "0ac77d043a802fc8196abfd5812ac2afbd97a2b9",
         "ok": true,
-        "status": "ahead",
+        "status": "last_observed_change",
         "aheadBy": 1,
         "behindBy": 0,
         "totalCommits": 1,
@@ -4666,91 +4622,15 @@
         ],
         "impacts": [
           {
-            "id": "transaction-wire-format",
-            "label": "Transaction and wire-format contracts",
+            "id": "covenant-lineage",
+            "label": "Covenants and UTXO lineage",
             "fileCount": 1,
             "commitCount": 0,
             "matchedFiles": [
-              "content/docs/toccata/transaction-v1.mdx"
-            ],
-            "matchedCommits": [],
-            "builderImpact": "RPC, protobuf, miner, pool, wallet, and indexer models must preserve v1 transaction fields without lossy renaming."
-          },
-          {
-            "id": "covenant-lineage",
-            "label": "Covenants and UTXO lineage",
-            "fileCount": 5,
-            "commitCount": 0,
-            "matchedFiles": [
-              "content/docs/toccata/agent-brief.mdx",
-              "content/docs/toccata/covenant-state.mdx",
-              "content/docs/toccata/decision-guide.mdx",
-              "content/docs/toccata/index.mdx",
-              "content/docs/toccata/transaction-v1.mdx"
+              "content/docs/toccata/covenant-state.mdx"
             ],
             "matchedCommits": [],
             "builderImpact": "UTXO-first applications must preserve covenant bindings, authorizing inputs, covenant IDs, and successor lineage."
-          },
-          {
-            "id": "fees-mass-mempool",
-            "label": "Fee, mass, and mempool policy",
-            "fileCount": 2,
-            "commitCount": 0,
-            "matchedFiles": [
-              "content/docs/toccata/agent-brief.mdx",
-              "content/docs/toccata/transaction-v1.mdx"
-            ],
-            "matchedCommits": [],
-            "builderImpact": "Fee estimation must distinguish consensus validity from node relay policy and use current mass dimensions."
-          },
-          {
-            "id": "wallet-pskt",
-            "label": "Wallet and PSKT construction",
-            "fileCount": 1,
-            "commitCount": 0,
-            "matchedFiles": [
-              "content/docs/toccata/transaction-v1.mdx"
-            ],
-            "matchedCommits": [],
-            "builderImpact": "Wallet construction and signing previews must preserve covenant fields, compute commitments, storage mass, and explicit fees."
-          },
-          {
-            "id": "zk-verification",
-            "label": "ZK verification and pricing",
-            "fileCount": 2,
-            "commitCount": 0,
-            "matchedFiles": [
-              "content/docs/toccata/agent-brief.mdx",
-              "content/docs/toccata/index.mdx"
-            ],
-            "matchedCommits": [],
-            "builderImpact": "Proof-system dependencies, verifier hardening, script-unit pricing, proof size, and failure behavior remain security-critical."
-          },
-          {
-            "id": "sequencing-smt",
-            "label": "Sequencing commitments and SMT state",
-            "fileCount": 5,
-            "commitCount": 0,
-            "matchedFiles": [
-              "content/docs/toccata/agent-brief.mdx",
-              "content/docs/toccata/covenant-state.mdx",
-              "content/docs/toccata/decision-guide.mdx",
-              "content/docs/toccata/index.mdx",
-              "content/docs/toccata/transaction-v1.mdx"
-            ],
-            "matchedCommits": [],
-            "builderImpact": "Lane-aware indexers and proof services must handle reorgs, pruning, inactivity shortcuts, and witness availability."
-          },
-          {
-            "id": "node-storage-ibd",
-            "label": "Node storage, pruning, and IBD",
-            "fileCount": 1,
-            "commitCount": 0,
-            "matchedFiles": [
-              "content/docs/toccata/transaction-v1.mdx"
-            ],
-            "matchedCommits": [],
-            "builderImpact": "Operators must plan database migrations, resync cost, retention, pruning compatibility, and recovery procedures."
           }
         ],
         "url": "https://github.com/kaspanet/docs/compare/c3fb0fded5f13d6fbb9a37c5a1f561ad732a421f...0ac77d043a802fc8196abfd5812ac2afbd97a2b9"
@@ -4759,2258 +4639,148 @@
         "repo": "kaspanet/silverscript",
         "branch": "master",
         "label": "kaspanet/silverscript master",
-        "beforeSha": "d25bd3427a093c17327ca3d6b9e1aa5f7688c863",
-        "afterSha": "a0dd7448ccc7bad5b99140f2c8edbbd0b2a874f1",
+        "beforeSha": "a0dd7448ccc7bad5b99140f2c8edbbd0b2a874f1",
+        "afterSha": "15b7bc27680bdf0d83b294fbbfda55ecb59958ca",
         "ok": true,
         "status": "ahead",
-        "aheadBy": 65,
+        "aheadBy": 2,
         "behindBy": 0,
-        "totalCommits": 65,
-        "fileCount": 250,
-        "additions": 13145,
-        "deletions": 5731,
+        "totalCommits": 2,
+        "fileCount": 13,
+        "additions": 154,
+        "deletions": 152,
         "filesTruncated": false,
         "commits": [
           {
-            "sha": "77ebf01a381af79e9708705cf55a2186d5ea7275",
-            "committedAt": "2026-07-09T13:07:58Z",
-            "message": "docs(readme): remove tn12 mention (#141)",
-            "url": "https://github.com/kaspanet/silverscript/commit/77ebf01a381af79e9708705cf55a2186d5ea7275"
-          },
-          {
-            "sha": "956868ea63a2af4176889f1331449b5f4f9e1df8",
-            "committedAt": "2026-07-12T09:37:00Z",
-            "message": "Template hash hardening (breaking change) (#143)",
-            "url": "https://github.com/kaspanet/silverscript/commit/956868ea63a2af4176889f1331449b5f4f9e1df8"
-          },
-          {
-            "sha": "9aa70b0d0215e7395e2a95b78472eba0a5b103a5",
-            "committedAt": "2026-07-14T22:10:37Z",
-            "message": "Fix lexical scoping and inferred-array scope bugs (#147)",
-            "url": "https://github.com/kaspanet/silverscript/commit/9aa70b0d0215e7395e2a95b78472eba0a5b103a5"
-          },
-          {
-            "sha": "26e3b9f94821b6fe47a2492755252ec4f995abb1",
-            "committedAt": "2026-07-19T10:35:12Z",
-            "message": "Expose keyed Blake2b and Blake3 hash builtins (#150)",
-            "url": "https://github.com/kaspanet/silverscript/commit/26e3b9f94821b6fe47a2492755252ec4f995abb1"
-          },
-          {
-            "sha": "2ed2343019db49f4253db2d6dfef598d02103a70",
-            "committedAt": "2026-07-21T11:42:42Z",
-            "message": "Enforce exact type equality during static checking (#160)",
-            "url": "https://github.com/kaspanet/silverscript/commit/2ed2343019db49f4253db2d6dfef598d02103a70"
-          },
-          {
-            "sha": "6e403041de951d92811b391e2a64be4bf1eb6ada",
-            "committedAt": "2026-07-21T14:26:21Z",
-            "message": "Add blake2/3 builtins to highlights (#161)",
-            "url": "https://github.com/kaspanet/silverscript/commit/6e403041de951d92811b391e2a64be4bf1eb6ada"
-          },
-          {
-            "sha": "2a3961cadc76bb16a425042172ffe32481da89b5",
-            "committedAt": "2026-07-21T15:20:11Z",
-            "message": "Harden entrypoints in covenant declaration leader contracts (#154)",
-            "url": "https://github.com/kaspanet/silverscript/commit/2a3961cadc76bb16a425042172ffe32481da89b5"
-          },
-          {
-            "sha": "bfc5a4565f905462e747ad40011dd07812757357",
-            "committedAt": "2026-07-27T04:14:15Z",
-            "message": "compile.rs refactor (#178)",
-            "url": "https://github.com/kaspanet/silverscript/commit/bfc5a4565f905462e747ad40011dd07812757357"
-          },
-          {
-            "sha": "8372e96efe2a5b8a05691d41eaa447fa250d1c30",
-            "committedAt": "2026-07-30T06:19:23Z",
-            "message": "Remove OpSha256 and fix license on Cargo.toml (#181)",
-            "url": "https://github.com/kaspanet/silverscript/commit/8372e96efe2a5b8a05691d41eaa447fa250d1c30"
-          },
-          {
-            "sha": "e8a7762a1e53a19b36033870376378bb61923651",
-            "committedAt": "2026-07-30T06:42:03Z",
-            "message": "Remove explicit uses of OpEqual OpVerify (#182)",
-            "url": "https://github.com/kaspanet/silverscript/commit/e8a7762a1e53a19b36033870376378bb61923651"
-          },
-          {
-            "sha": "447c91e828ca4e1ad3ed2e79bcc213b09dab2265",
-            "committedAt": "2026-08-02T06:04:10Z",
-            "message": "Add more accurate builtin types (#183)",
-            "url": "https://github.com/kaspanet/silverscript/commit/447c91e828ca4e1ad3ed2e79bcc213b09dab2265"
-          },
-          {
-            "sha": "f516b11fa94cbfa048b2e96d24d1b6e910fecc71",
-            "committedAt": "2026-08-02T06:38:38Z",
-            "message": "Fix ternary both branch execution bug (#184)",
-            "url": "https://github.com/kaspanet/silverscript/commit/f516b11fa94cbfa048b2e96d24d1b6e910fecc71"
-          },
-          {
-            "sha": "e90930f1652c8b55ed8e6a97371d0c568c923eb6",
-            "committedAt": "2026-08-02T09:31:27Z",
-            "message": "Reuse input templates for output-state validation (#144)",
-            "url": "https://github.com/kaspanet/silverscript/commit/e90930f1652c8b55ed8e6a97371d0c568c923eb6"
-          },
-          {
-            "sha": "00ba1c92ca4b668a3208294c15d4d06bfe84bdf5",
-            "committedAt": "2026-08-02T09:42:27Z",
-            "message": "Preserve explicit struct types for templated state reads (#180)",
-            "url": "https://github.com/kaspanet/silverscript/commit/00ba1c92ca4b668a3208294c15d4d06bfe84bdf5"
-          },
-          {
-            "sha": "ba2de1dd8be2eb9aaf9d4dca0880e303fd81088f",
-            "committedAt": "2026-08-02T10:03:34Z",
-            "message": "Add a temporary assert to make sure builds are reproducible (#186)",
-            "url": "https://github.com/kaspanet/silverscript/commit/ba2de1dd8be2eb9aaf9d4dca0880e303fd81088f"
-          },
-          {
-            "sha": "0f9980355530c8d4ca518c669ce79fde356560cc",
-            "committedAt": "2026-08-02T10:37:38Z",
-            "message": "Change 'entrypoint function' to 'entry' (#187)",
-            "url": "https://github.com/kaspanet/silverscript/commit/0f9980355530c8d4ca518c669ce79fde356560cc"
-          },
-          {
-            "sha": "81aecf5e39845dbaf3c8e1a4789f8684275062b3",
-            "committedAt": "2026-08-02T13:14:42Z",
-            "message": "Add x as byte[N] syntax (#188)",
-            "url": "https://github.com/kaspanet/silverscript/commit/81aecf5e39845dbaf3c8e1a4789f8684275062b3"
-          },
-          {
-            "sha": "f2a3b66b3af0ec7d2308c9abc7787fdcd3b76c8c",
-            "committedAt": "2026-08-02T13:59:52Z",
-            "message": "Add typed args for all builtins (#189)",
-            "url": "https://github.com/kaspanet/silverscript/commit/f2a3b66b3af0ec7d2308c9abc7787fdcd3b76c8c"
-          },
-          {
-            "sha": "8f4bc2e619a65863ddbf837c3235bf9c88b0b864",
-            "committedAt": "2026-08-02T14:19:57Z",
-            "message": "Add r0 support (#137)",
-            "url": "https://github.com/kaspanet/silverscript/commit/8f4bc2e619a65863ddbf837c3235bf9c88b0b864"
-          },
-          {
-            "sha": "c61e7d54f716f976a7c55ba5ed9684b237069391",
-            "committedAt": "2026-08-02T14:51:18Z",
-            "message": "Reject pragma if it covers a future major version (#190)",
-            "url": "https://github.com/kaspanet/silverscript/commit/c61e7d54f716f976a7c55ba5ed9684b237069391"
-          },
-          {
-            "sha": "3cb6072d60ff11e2a67a12b4419748bd473b3760",
-            "committedAt": "2026-08-02T15:08:30Z",
-            "message": "Entry args validation (#191)",
-            "url": "https://github.com/kaspanet/silverscript/commit/3cb6072d60ff11e2a67a12b4419748bd473b3760"
-          },
-          {
-            "sha": "622dc5dcff9c88db7d06b829534c48488b46b17f",
-            "committedAt": "2026-08-02T17:26:02Z",
-            "message": "Support split/slice on non-byte array, and support struct comparison (#192)",
-            "url": "https://github.com/kaspanet/silverscript/commit/622dc5dcff9c88db7d06b829534c48488b46b17f"
-          },
-          {
-            "sha": "32c56bd41f6e7840e3d9cb0f6a68a540f5d8ce9f",
-            "committedAt": "2026-08-03T06:02:38Z",
-            "message": "Require explicit struct types in literals and destructuring (#193)",
-            "url": "https://github.com/kaspanet/silverscript/commit/32c56bd41f6e7840e3d9cb0f6a68a540f5d8ce9f"
-          },
-          {
-            "sha": "6023e30c1352778c580282c073500c2779db13c9",
-            "committedAt": "2026-08-03T11:09:40Z",
-            "message": "Add typed array literals and numeric hex literals (#194)",
-            "url": "https://github.com/kaspanet/silverscript/commit/6023e30c1352778c580282c073500c2779db13c9"
-          },
-          {
-            "sha": "1bf8ef7909e786b37b92386392a80614705fe795",
-            "committedAt": "2026-08-03T12:51:26Z",
-            "message": "Generate one shared delegate entrypoint per covenant leader contract (#195)",
-            "url": "https://github.com/kaspanet/silverscript/commit/1bf8ef7909e786b37b92386392a80614705fe795"
-          },
-          {
-            "sha": "4d88ded7f71b2a5318cc1b608a140b6f8b66ee43",
-            "committedAt": "2026-08-03T14:01:23Z",
-            "message": "Rename the compilation result from `script` to `bytecode` (#196)",
-            "url": "https://github.com/kaspanet/silverscript/commit/4d88ded7f71b2a5318cc1b608a140b6f8b66ee43"
-          },
-          {
-            "sha": "8b748122d307efdca66d9cda72b5fa5040084827",
-            "committedAt": "2026-08-03T14:15:56Z",
-            "message": "Only allow bitwise operations on bytes (#197)",
-            "url": "https://github.com/kaspanet/silverscript/commit/8b748122d307efdca66d9cda72b5fa5040084827"
-          },
-          {
-            "sha": "5bf8f8987fc91d17877feb3143d04053d5ce0391",
-            "committedAt": "2026-08-03T14:43:30Z",
-            "message": "Rename IfElse to Ternary (#198)",
-            "url": "https://github.com/kaspanet/silverscript/commit/5bf8f8987fc91d17877feb3143d04053d5ce0391"
-          },
-          {
-            "sha": "6869e7d239886e4157a6d237f570ce9b514ddb79",
-            "committedAt": "2026-08-03T14:53:00Z",
-            "message": "Remove `.reverse()` support (#199)",
-            "url": "https://github.com/kaspanet/silverscript/commit/6869e7d239886e4157a6d237f570ce9b514ddb79"
-          },
-          {
-            "sha": "9e2ace4b2c016b4472be35ba452ae462b83006f6",
-            "committedAt": "2026-08-03T15:12:15Z",
-            "message": "Fix introspection expression terminology (#200)",
-            "url": "https://github.com/kaspanet/silverscript/commit/9e2ace4b2c016b4472be35ba452ae462b83006f6"
-          },
-          {
-            "sha": "65421cf29ebf41cee2e805418efabf6e7b3dbda1",
-            "committedAt": "2026-08-03T15:52:43Z",
-            "message": "Change outpointTransactionHash to outpointTxId and enable it and all introspection opcodes (#201)",
-            "url": "https://github.com/kaspanet/silverscript/commit/65421cf29ebf41cee2e805418efabf6e7b3dbda1"
-          },
-          {
-            "sha": "782a4d7e325fda20c80d7eb746667072954d772d",
-            "committedAt": "2026-08-03T16:06:17Z",
-            "message": "Rename checkSigFromStack to checkMsgSig (#202)",
-            "url": "https://github.com/kaspanet/silverscript/commit/782a4d7e325fda20c80d7eb746667072954d772d"
-          },
-          {
-            "sha": "4b0e1cd69739934f92c3ac4df1bb13d912418b2b",
-            "committedAt": "2026-08-03T16:37:29Z",
-            "message": "TODOs (#203)",
-            "url": "https://github.com/kaspanet/silverscript/commit/4b0e1cd69739934f92c3ac4df1bb13d912418b2b"
-          },
-          {
-            "sha": "d71791a83271fcd9715e566d4800af5a6f1d16c3",
-            "committedAt": "2026-08-07T07:22:08Z",
-            "message": "structs.rs refactor (#204)",
-            "url": "https://github.com/kaspanet/silverscript/commit/d71791a83271fcd9715e566d4800af5a6f1d16c3"
-          },
-          {
-            "sha": "5aa08863d21edb188ebb6341d49018aba758e9ac",
-            "committedAt": "2026-08-07T08:53:38Z",
-            "message": "Add g16.verify Groth16 verifier builtin (#138)",
-            "url": "https://github.com/kaspanet/silverscript/commit/5aa08863d21edb188ebb6341d49018aba758e9ac"
-          },
-          {
-            "sha": "cb34aa5e6a598f9e461c4ad7014279ba89251d8d",
-            "committedAt": "2026-08-07T10:48:13Z",
-            "message": "Some fixes (#205)",
-            "url": "https://github.com/kaspanet/silverscript/commit/cb34aa5e6a598f9e461c4ad7014279ba89251d8d"
-          },
-          {
-            "sha": "6f9e078b1d8b5389212755183b592704de99fea5",
-            "committedAt": "2026-08-09T11:28:29Z",
-            "message": "  Define explicit scalar byte and integer conversions (#206)",
-            "url": "https://github.com/kaspanet/silverscript/commit/6f9e078b1d8b5389212755183b592704de99fea5"
-          },
-          {
-            "sha": "c1ed16350d1132561eb51aba2ac641493dc298f9",
-            "committedAt": "2026-08-10T19:03:21Z",
-            "message": "  Harden compilation, entrypoint arguments, and bounded loops (#207)",
-            "url": "https://github.com/kaspanet/silverscript/commit/c1ed16350d1132561eb51aba2ac641493dc298f9"
-          },
-          {
-            "sha": "f86b8c34235e547508c578cf9cd1263bf6fdfd88",
-            "committedAt": "2026-08-11T07:47:06Z",
-            "message": "Add security policy (#208)",
-            "url": "https://github.com/kaspanet/silverscript/commit/f86b8c34235e547508c578cf9cd1263bf6fdfd88"
-          },
-          {
-            "sha": "14dce9a5ce8769cdfbd0c8965f8764fa9c325067",
-            "committedAt": "2026-08-13T15:42:18Z",
-            "message": "Fix some bugs (#209)",
-            "url": "https://github.com/kaspanet/silverscript/commit/14dce9a5ce8769cdfbd0c8965f8764fa9c325067"
-          },
-          {
-            "sha": "023c7eed6b85038c72233a62024c5476640445e3",
-            "committedAt": "2026-08-16T23:47:03Z",
-            "message": "  Tighten SilverScript type and evaluation semantics (#210)",
-            "url": "https://github.com/kaspanet/silverscript/commit/023c7eed6b85038c72233a62024c5476640445e3"
-          },
-          {
-            "sha": "aafc6a234a09526ea1b57362bd4de06e2dc3cd3c",
-            "committedAt": "2026-08-18T16:02:40Z",
-            "message": "  Harden constant, state, comparison, and loop semantics (#212)",
-            "url": "https://github.com/kaspanet/silverscript/commit/aafc6a234a09526ea1b57362bd4de06e2dc3cd3c"
-          },
-          {
-            "sha": "80d715f70099baa4ef2fb4fd582597e1d8d06fa0",
-            "committedAt": "2026-08-19T08:42:11Z",
-            "message": "Normalize bool in state fields and when converting to int (#213)",
-            "url": "https://github.com/kaspanet/silverscript/commit/80d715f70099baa4ef2fb4fd582597e1d8d06fa0"
-          },
-          {
-            "sha": "b5b0dc8bd216adf2a219696f122dc2f12e98beae",
-            "committedAt": "2026-08-19T13:15:08Z",
-            "message": "  Add temporal values and explicit DAA/time lock domains (#214)",
-            "url": "https://github.com/kaspanet/silverscript/commit/b5b0dc8bd216adf2a219696f122dc2f12e98beae"
-          },
-          {
-            "sha": "d8facb77c13ac2efb2be65dbca2c136bc4436afa",
-            "committedAt": "2026-08-19T14:50:53Z",
-            "message": "Debugger temporal fixes (#215)",
-            "url": "https://github.com/kaspanet/silverscript/commit/d8facb77c13ac2efb2be65dbca2c136bc4436afa"
-          },
-          {
-            "sha": "140bf184fd03dc0f5c29155f89e9e5d733a1152f",
-            "committedAt": "2026-08-20T05:50:31Z",
-            "message": "feat(compiler): template hash function is blake3 (#163)",
-            "url": "https://github.com/kaspanet/silverscript/commit/140bf184fd03dc0f5c29155f89e9e5d733a1152f"
-          },
-          {
-            "sha": "82188f39fa966f1f54abc9bc7414b9a3b7492a39",
-            "committedAt": "2026-08-23T12:18:53Z",
-            "message": "feat(compiler): dispatch tag as fn signature (#164)",
-            "url": "https://github.com/kaspanet/silverscript/commit/82188f39fa966f1f54abc9bc7414b9a3b7492a39"
-          },
-          {
-            "sha": "71ccb2d111a58ffb79d373e1bb0f6b1d20ef3751",
-            "committedAt": "2026-08-23T12:35:26Z",
-            "message": "fix(sdk): minimal byte encoding for sigscript args (#216)",
-            "url": "https://github.com/kaspanet/silverscript/commit/71ccb2d111a58ffb79d373e1bb0f6b1d20ef3751"
-          },
-          {
-            "sha": "dc6eec215c735eee7f55d00b7cd1068cee7b6ed6",
-            "committedAt": "2026-08-23T12:56:23Z",
-            "message": "feat(lang): add checksig ecdsa function (#217)",
-            "url": "https://github.com/kaspanet/silverscript/commit/dc6eec215c735eee7f55d00b7cd1068cee7b6ed6"
-          },
-          {
-            "sha": "84eb797abdae4a67a46bcd1e7b97e4393e07e3b6",
-            "committedAt": "2026-08-24T07:39:44Z",
-            "message": "chore(compiler/optimization): stateless multi entry (#142)",
-            "url": "https://github.com/kaspanet/silverscript/commit/84eb797abdae4a67a46bcd1e7b97e4393e07e3b6"
-          },
-          {
-            "sha": "f4de7b6307a90ae24e27d4b0d412863e426be1b1",
-            "committedAt": "2026-08-25T11:50:50Z",
-            "message": "Compiler hardening: validate dynamic struct-array ABI cardinality (#221)",
-            "url": "https://github.com/kaspanet/silverscript/commit/f4de7b6307a90ae24e27d4b0d412863e426be1b1"
-          },
-          {
-            "sha": "f1aaa3b357aeafc5699855ca52b91c9a53d082ec",
-            "committedAt": "2026-08-25T12:15:24Z",
-            "message": "expose spanned names for standalone function ASTs (#222)",
-            "url": "https://github.com/kaspanet/silverscript/commit/f1aaa3b357aeafc5699855ca52b91c9a53d082ec"
-          },
-          {
-            "sha": "28a16f0ee194dcb288a5aaf371abd0f4b77f462e",
-            "committedAt": "2026-08-25T14:28:59Z",
-            "message": "Add shared covenant delegate policies and configurable ABI names (#219)",
-            "url": "https://github.com/kaspanet/silverscript/commit/28a16f0ee194dcb288a5aaf371abd0f4b77f462e"
-          },
-          {
-            "sha": "8d7c801918a3eb209f14825cdd4288f5e2e7415e",
-            "committedAt": "2026-08-27T08:46:11Z",
-            "message": "  Harden type, ABI, and artifact validation (#230)",
-            "url": "https://github.com/kaspanet/silverscript/commit/8d7c801918a3eb209f14825cdd4288f5e2e7415e"
-          },
-          {
-            "sha": "d00778682679e037a2d48500157d0f44c1da9442",
-            "committedAt": "2026-08-27T10:11:31Z",
-            "message": "feat(compiler): dispatch tag revision (#223)",
-            "url": "https://github.com/kaspanet/silverscript/commit/d00778682679e037a2d48500157d0f44c1da9442"
-          },
-          {
-            "sha": "db9e1bafb15f6fc58f4856f3c1b7e5b72ac457c4",
-            "committedAt": "2026-08-28T20:30:31Z",
-            "message": "  Introduce portable SilverScript ABI artifacts (#232)",
-            "url": "https://github.com/kaspanet/silverscript/commit/db9e1bafb15f6fc58f4856f3c1b7e5b72ac457c4"
-          },
-          {
-            "sha": "01ef473bb6a1d30eaa3df95dbcb9fb882667558e",
-            "committedAt": "2026-08-29T06:21:56Z",
-            "message": "Add ECDSA tests (#233)",
-            "url": "https://github.com/kaspanet/silverscript/commit/01ef473bb6a1d30eaa3df95dbcb9fb882667558e"
-          },
-          {
-            "sha": "73e33e26ac33f6ff13f1eea51c01c0983c3ae4e3",
-            "committedAt": "2026-08-29T07:44:12Z",
-            "message": "Make AST spans and visitors reliable for source transformations (#231)",
-            "url": "https://github.com/kaspanet/silverscript/commit/73e33e26ac33f6ff13f1eea51c01c0983c3ae4e3"
-          },
-          {
-            "sha": "eedf555f14f0e6beb75c9900d9ded0fd5c871505",
-            "committedAt": "2026-08-30T11:58:52Z",
-            "message": "  Fix string literal escaping and allow variable-width runtime state (#236)",
-            "url": "https://github.com/kaspanet/silverscript/commit/eedf555f14f0e6beb75c9900d9ded0fd5c871505"
-          },
-          {
-            "sha": "c7d17a15ac88610d013ec9ffffa9520aeb69929b",
-            "committedAt": "2026-08-30T12:02:37Z",
-            "message": "Visit `as` cast targets as AST types (#235)",
-            "url": "https://github.com/kaspanet/silverscript/commit/c7d17a15ac88610d013ec9ffffa9520aeb69929b"
-          },
-          {
-            "sha": "8e10c9c3212db222c153ed9e7ce5d33238713489",
-            "committedAt": "2026-09-07T10:41:55Z",
-            "message": "  Reject contracts and ABI calls that exceed resource limits, tighten declaration validation, and fix false recursion errors and excessive parser stack usage. (#245)",
-            "url": "https://github.com/kaspanet/silverscript/commit/8e10c9c3212db222c153ed9e7ce5d33238713489"
-          },
-          {
-            "sha": "f5c2c29f02db9664dd66973cb2b35122c309b912",
-            "committedAt": "2026-09-07T15:34:11Z",
-            "message": "  Reject contracts that could produce runtime-dependent initial state, exceed covenant expansion bounds, or violate Kaspa script limits. (#246)",
-            "url": "https://github.com/kaspanet/silverscript/commit/f5c2c29f02db9664dd66973cb2b35122c309b912"
-          },
-          {
-            "sha": "158534d606e9d5541e932c7575ff331e12699fb5",
-            "committedAt": "2026-09-07T17:18:08Z",
-            "message": "silverscript-abi: inherit the workspace license (#244)",
-            "url": "https://github.com/kaspanet/silverscript/commit/158534d606e9d5541e932c7575ff331e12699fb5"
-          },
-          {
-            "sha": "3ed973335b59269293564805cc2c58a14595ec03",
-            "committedAt": "2026-09-09T16:47:25Z",
-            "message": "Prepare SilverScript 1.0 and clarify ABI artifact validation (#248)",
-            "url": "https://github.com/kaspanet/silverscript/commit/3ed973335b59269293564805cc2c58a14595ec03"
-          },
-          {
-            "sha": "a0dd7448ccc7bad5b99140f2c8edbbd0b2a874f1",
-            "committedAt": "2026-10-10T17:16:18Z",
-            "message": "Switch Rusty Kaspa dependencies to crates.io v2.1.0 (#259)",
-            "url": "https://github.com/kaspanet/silverscript/commit/a0dd7448ccc7bad5b99140f2c8edbbd0b2a874f1"
+            "sha": "acae66a5a245c2902ced9a8d9e90856bbf5e0907",
+            "committedAt": "2026-10-22T15:38:16Z",
+            "message": "Add silverscript- prefix to crates (#261)",
+            "url": "https://github.com/kaspanet/silverscript/commit/acae66a5a245c2902ced9a8d9e90856bbf5e0907"
+          },
+          {
+            "sha": "15b7bc27680bdf0d83b294fbbfda55ecb59958ca",
+            "committedAt": "2026-10-22T16:01:18Z",
+            "message": "Fix tree-sitter crate name (#262)",
+            "url": "https://github.com/kaspanet/silverscript/commit/15b7bc27680bdf0d83b294fbbfda55ecb59958ca"
           }
         ],
         "files": [
           {
-            "filename": ".github/workflows/ci.yaml",
-            "status": "modified",
-            "additions": 5,
-            "deletions": 8,
-            "changes": 13
-          },
-          {
             "filename": "Cargo.lock",
             "status": "modified",
-            "additions": 1199,
-            "deletions": 91,
-            "changes": 1290
+            "additions": 31,
+            "deletions": 31,
+            "changes": 62
           },
           {
             "filename": "Cargo.toml",
-            "status": "modified",
-            "additions": 25,
-            "deletions": 10,
-            "changes": 35
-          },
-          {
-            "filename": "README.md",
-            "status": "modified",
-            "additions": 49,
-            "deletions": 5,
-            "changes": 54
-          },
-          {
-            "filename": "SECURITY.md",
-            "status": "added",
-            "additions": 34,
-            "deletions": 0,
-            "changes": 34
-          },
-          {
-            "filename": "UNDEFINED-BEHAVIOUR.md",
-            "status": "added",
-            "additions": 361,
-            "deletions": 0,
-            "changes": 361
-          },
-          {
-            "filename": "check.sh",
-            "status": "added",
-            "additions": 56,
-            "deletions": 0,
-            "changes": 56
-          },
-          {
-            "filename": "debugger/cli/Cargo.toml",
-            "status": "modified",
-            "additions": 5,
-            "deletions": 2,
-            "changes": 7
-          },
-          {
-            "filename": "debugger/cli/README.md",
-            "status": "modified",
-            "additions": 5,
-            "deletions": 5,
-            "changes": 10
-          },
-          {
-            "filename": "debugger/cli/src/main.rs",
-            "status": "modified",
-            "additions": 176,
-            "deletions": 140,
-            "changes": 316
-          },
-          {
-            "filename": "debugger/cli/tests/cli_tests.rs",
-            "status": "modified",
-            "additions": 186,
-            "deletions": 15,
-            "changes": 201
-          },
-          {
-            "filename": "debugger/session/Cargo.toml",
-            "status": "modified",
-            "additions": 5,
-            "deletions": 1,
-            "changes": 6
-          },
-          {
-            "filename": "debugger/session/src/args.rs",
-            "status": "modified",
-            "additions": 273,
-            "deletions": 34,
-            "changes": 307
-          },
-          {
-            "filename": "debugger/session/src/covenant.rs",
-            "status": "modified",
-            "additions": 58,
-            "deletions": 38,
-            "changes": 96
-          },
-          {
-            "filename": "debugger/session/src/presentation.rs",
-            "status": "modified",
-            "additions": 8,
-            "deletions": 5,
-            "changes": 13
-          },
-          {
-            "filename": "debugger/session/src/session.rs",
-            "status": "modified",
-            "additions": 216,
-            "deletions": 136,
-            "changes": 352
-          },
-          {
-            "filename": "debugger/session/src/test_runner.rs",
             "status": "modified",
             "additions": 1,
             "deletions": 1,
             "changes": 2
           },
           {
-            "filename": "debugger/session/src/util.rs",
+            "filename": "README.md",
             "status": "modified",
             "additions": 1,
-            "deletions": 0,
-            "changes": 1
+            "deletions": 1,
+            "changes": 2
           },
           {
-            "filename": "debugger/session/tests/debug_session_tests.rs",
+            "filename": "debugger/cli/Cargo.toml",
             "status": "modified",
-            "additions": 332,
-            "deletions": 194,
-            "changes": 526
-          },
-          {
-            "filename": "docs/CONSTRUCTOR_ARGS.md",
-            "status": "added",
-            "additions": 98,
-            "deletions": 0,
-            "changes": 98
-          },
-          {
-            "filename": "docs/DECL.md",
-            "status": "modified",
-            "additions": 179,
-            "deletions": 16,
-            "changes": 195
-          },
-          {
-            "filename": "docs/TUTORIAL.md",
-            "status": "modified",
-            "additions": 423,
-            "deletions": 227,
-            "changes": 650
-          },
-          {
-            "filename": "docs/kcc20-book/src/kcc20-contract.md",
-            "status": "modified",
-            "additions": 2,
-            "deletions": 2,
-            "changes": 4
-          },
-          {
-            "filename": "docs/kcc20-book/src/kcc20-minter-contract.md",
-            "status": "modified",
-            "additions": 42,
-            "deletions": 37,
-            "changes": 79
-          },
-          {
-            "filename": "docs/kcc20-book/src/kcc20-overview.md",
-            "status": "modified",
-            "additions": 4,
+            "additions": 3,
             "deletions": 3,
-            "changes": 7
+            "changes": 6
           },
           {
-            "filename": "docs/kcc20-book/src/scenarios.md",
-            "status": "modified",
-            "additions": 43,
-            "deletions": 41,
-            "changes": 84
-          },
-          {
-            "filename": "docs/kcc20-book/src/what-the-tests-demonstrate.md",
-            "status": "modified",
-            "additions": 4,
-            "deletions": 0,
-            "changes": 4
-          },
-          {
-            "filename": "extensions/silverscript.nvim/queries/silverscript/highlights.scm",
-            "status": "modified",
-            "additions": 21,
-            "deletions": 7,
-            "changes": 28
-          },
-          {
-            "filename": "extensions/vscode/queries/highlights.scm",
-            "status": "modified",
-            "additions": 21,
-            "deletions": 7,
-            "changes": 28
-          },
-          {
-            "filename": "extensions/zed/languages/silverscript/highlights.scm",
-            "status": "modified",
-            "additions": 21,
-            "deletions": 7,
-            "changes": 28
-          },
-          {
-            "filename": "silverscript-abi/Cargo.toml",
-            "status": "added",
-            "additions": 19,
-            "deletions": 0,
-            "changes": 19
-          },
-          {
-            "filename": "silverscript-abi/src/json.rs",
-            "status": "added",
-            "additions": 184,
-            "deletions": 0,
-            "changes": 184
-          },
-          {
-            "filename": "silverscript-abi/src/lib.rs",
-            "status": "added",
-            "additions": 1810,
-            "deletions": 0,
-            "changes": 1810
-          },
-          {
-            "filename": "silverscript-core/Cargo.toml",
-            "status": "added",
-            "additions": 13,
-            "deletions": 0,
-            "changes": 13
-          },
-          {
-            "filename": "silverscript-core/src/lib.rs",
-            "status": "added",
-            "additions": 1,
-            "deletions": 0,
-            "changes": 1
-          },
-          {
-            "filename": "silverscript-core/src/utils.rs",
-            "status": "added",
-            "additions": 17,
-            "deletions": 0,
-            "changes": 17
-          },
-          {
-            "filename": "silverscript-debug-artifact/Cargo.toml",
-            "status": "added",
-            "additions": 19,
-            "deletions": 0,
-            "changes": 19
-          },
-          {
-            "filename": "silverscript-debug-artifact/src/lib.rs",
-            "status": "added",
-            "additions": 78,
-            "deletions": 0,
-            "changes": 78
-          },
-          {
-            "filename": "silverscript-lang/Cargo.toml",
-            "status": "modified",
-            "additions": 10,
-            "deletions": 0,
-            "changes": 10
-          },
-          {
-            "filename": "silverscript-lang/src/ast/mod.rs",
-            "status": "modified",
-            "additions": 633,
-            "deletions": 236,
-            "changes": 869
-          },
-          {
-            "filename": "silverscript-lang/src/ast/visit.rs",
-            "status": "modified",
-            "additions": 134,
-            "deletions": 39,
-            "changes": 173
-          },
-          {
-            "filename": "silverscript-lang/src/bin/silverc.rs",
+            "filename": "debugger/cli/README.md",
             "status": "modified",
             "additions": 6,
             "deletions": 6,
             "changes": 12
           },
           {
-            "filename": "silverscript-lang/src/checked_arithmetic.rs",
-            "status": "added",
-            "additions": 67,
-            "deletions": 0,
-            "changes": 67
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/abi.rs",
-            "status": "added",
-            "additions": 279,
-            "deletions": 0,
-            "changes": 279
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/array_append.rs",
-            "status": "modified",
-            "additions": 325,
-            "deletions": 110,
-            "changes": 435
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/builtin_types.rs",
-            "status": "added",
-            "additions": 224,
-            "deletions": 0,
-            "changes": 224
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/compile.rs",
-            "status": "modified",
-            "additions": 323,
-            "deletions": 3964,
-            "changes": 4287
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/compile/analysis.rs",
-            "status": "added",
-            "additions": 81,
-            "deletions": 0,
-            "changes": 81
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/compile/const_eval.rs",
-            "status": "added",
-            "additions": 316,
-            "deletions": 0,
-            "changes": 316
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/compile/emitter.rs",
-            "status": "added",
-            "additions": 47,
-            "deletions": 0,
-            "changes": 47
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/compile/expression.rs",
-            "status": "added",
-            "additions": 804,
-            "deletions": 0,
-            "changes": 804
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/compile/expression/builtin.rs",
-            "status": "added",
-            "additions": 350,
-            "deletions": 0,
-            "changes": 350
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/compile/helpers.rs",
-            "status": "added",
-            "additions": 396,
-            "deletions": 0,
-            "changes": 396
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/compile/stack_analysis.rs",
-            "status": "added",
-            "additions": 595,
-            "deletions": 0,
-            "changes": 595
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/compile/stack_analysis/stack.rs",
-            "status": "added",
-            "additions": 168,
-            "deletions": 0,
-            "changes": 168
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/compile/stack_analysis/stack/tests.rs",
-            "status": "added",
-            "additions": 575,
-            "deletions": 0,
-            "changes": 575
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/compile/state.rs",
-            "status": "added",
-            "additions": 510,
-            "deletions": 0,
-            "changes": 510
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/compile/statement.rs",
-            "status": "added",
-            "additions": 785,
-            "deletions": 0,
-            "changes": 785
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/covenant_declarations.rs",
-            "status": "modified",
-            "additions": 452,
-            "deletions": 275,
-            "changes": 727
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/debug_recording.rs",
-            "status": "modified",
-            "additions": 71,
-            "deletions": 69,
-            "changes": 140
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/debug_value_types.rs",
-            "status": "removed",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/for.rs",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/infer_array.rs",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/inline_functions.rs",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/locals.rs",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/mod.rs",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/read_input_state.rs",
-            "status": "added",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/stack_bindings.rs",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/static_check.rs",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/structs.rs",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/structs/assignment.rs",
-            "status": "added",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/structs/context.rs",
-            "status": "added",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/structs/contract.rs",
-            "status": "added",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/structs/declaration.rs",
-            "status": "added",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/structs/destructure.rs",
-            "status": "added",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/structs/expr_lowering.rs",
-            "status": "added",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/structs/layout.rs",
-            "status": "added",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/structs/scalar_expr.rs",
-            "status": "added",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/structs/schema.rs",
-            "status": "added",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/structs/statement.rs",
-            "status": "added",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/ternary.rs",
-            "status": "added",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/type_check.rs",
-            "status": "added",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/type_system.rs",
-            "status": "added",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/src/compiler/validate_output_state.rs",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/src/debug_info.rs",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/src/errors.rs",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/src/lib.rs",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/src/parser.rs",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/src/silverscript.pest",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/src/template.rs",
-            "status": "added",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/std/builtins.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/apps/chess/chess_castle.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/apps/chess/chess_castle_challenge.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/apps/chess/chess_diag.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/apps/chess/chess_horiz.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/apps/chess/chess_king.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/apps/chess/chess_knight.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/apps/chess/chess_mux.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/apps/chess/chess_pawn.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/apps/chess/chess_settle.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/apps/chess/chess_vert.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/apps/chess/league.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/apps/chess/player.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/ast_format_tests.rs",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/ast_json_tests.rs",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/ast_spans_tests.rs",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/cashc_valid_examples_tests.rs",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/chess_apps_tests.rs",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/common.rs",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/compiler_tests.rs",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/consensus_time_tests.rs",
-            "status": "added",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_compiler_tests.rs",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_ast_fixtures/lowers_auth_groups_single.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_ast_fixtures/lowers_auth_transition_two_field_state.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_ast_fixtures/lowers_auth_verification_groups_multiple_two_field_state.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_ast_fixtures/lowers_auth_verification_groups_single_two_field_state.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_ast_fixtures/lowers_cov_to_leader_and_delegate_expected_wrapper_ast.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_ast_fixtures/lowers_cov_transition_single_field_state.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_ast_fixtures/lowers_cov_transition_single_state_return.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_ast_fixtures/lowers_cov_transition_to_one_array_state_return.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_ast_fixtures/lowers_cov_transition_two_field_state.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_ast_fixtures/lowers_cov_verification_two_field_state.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_ast_fixtures/lowers_dummy_state_auth_verification.sil",
-            "status": "added",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_ast_fixtures/lowers_dummy_state_cov_verification.sil",
-            "status": "added",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_ast_fixtures/lowers_fanout_sugar_verification_two_field_state.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_ast_fixtures/lowers_inferred_auth_verification_two_field_state.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_ast_fixtures/lowers_inferred_cov_verification_two_field_state.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_ast_fixtures/lowers_inferred_singleton_transition_two_field_state.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_ast_fixtures/lowers_many_covenant_declarations_in_one_contract.sil",
-            "status": "removed",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_ast_fixtures/lowers_singleton_sugar_transition_termination_allowed_two_field_state.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_ast_fixtures/lowers_singleton_sugar_transition_two_field_state.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_ast_fixtures/lowers_singleton_sugar_verification_termination_allowed_to_state_array_validation.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_ast_fixtures/lowers_singleton_sugar_verification_to_single_state_validation.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_ast_fixtures/lowers_singleton_transition_uses_returned_state_in_validation.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_ast_fixtures/lowers_singleton_transition_with_termination_allowed_to_array_cardinality_checks.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_ast_fixtures/lowers_stateless_auth_verification.sil",
-            "status": "removed",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_ast_fixtures/lowers_stateless_cov_verification.sil",
-            "status": "removed",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_ast_fixtures/lowers_termination_allowed_in_transition_non_singleton_mode.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_ast_fixtures/lowers_termination_allowed_in_verification_non_singleton_mode.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_ast_fixtures/lowers_transition_array_return_to_exact_output_count_match.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_ast_tests.rs",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/covenant_declaration_security_tests.rs",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/date_literal_tests.rs",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/2_of_3_multisig.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/announcement.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/bar.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/bitwise.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/bounded_bytes.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/bytes1_equals_byte.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/cast_hash_checksig.sil",
+            "filename": "debugger/cli/src/main.rs",
             "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
+            "additions": 12,
+            "deletions": 10,
+            "changes": 22
           },
           {
-            "filename": "silverscript-lang/tests/examples/comments.sil",
+            "filename": "debugger/cli/tests/cli_tests.rs",
             "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/complex_assignments.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/constant_budget.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/correct_pragma.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/covenant.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/covenant_all_fields.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/covenant_escrow.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/covenant_id.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/covenant_last_will.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/covenant_mecenas.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/date_literal.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/debug_messages.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/deep_replace.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/deeply_nested-logs.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/deeply_nested.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/double_split.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/everything.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/foo.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/for_loop.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/for_loop_ctor.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/force_cast_smaller_bytes.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/g16_verify.sil",
-            "status": "added",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/hodl_vault.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/if_statement.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/if_statement_number_units-logs.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/if_statement_number_units.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/int_to_byte.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/integer_formatting.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/kcc20-minter.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/kcc20.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/log_intermediate_results.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/many_assignments.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/mecenas.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/mecenas_locktime.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/multifunction.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/multifunction_if_statements.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/multiline_array_multisig.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/multiline_statements.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/multiplication.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/num2bin.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/num2bin_variable.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/p2palindrome.sil",
-            "status": "removed",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/p2pkh-logs.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/p2pkh.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/p2pkh_ecdsa.sil",
-            "status": "added",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/p2pkh_invalid.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/p2pkh_with_assignment.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/p2pkh_with_cast.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/r0_g16.sil",
-            "status": "added",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/r0_succinct.sil",
-            "status": "added",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/r0_succinct_sha256.sil",
-            "status": "added",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/reassignment.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/return_basic.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/return_loop.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/sibling_introspection.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/simple_cast.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/simple_check_msg_sig_ecdsa.sil",
-            "status": "added",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/simple_checksigfromstack.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/simple_checksigfromstack_ecdsa.sil",
-            "status": "removed",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/simple_constant.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/simple_covenant.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/simple_functions.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/simple_if_statement.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/simple_multisig.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/simple_splice.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/simple_variables.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/simulating_state.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/slice.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/slice_optimised.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/slice_variable_parameter.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/split_or_slice_signature.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/split_size.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/split_typed.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/string_concatenation.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/string_with_escaped_characters.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/sum_series.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/trailing_comma.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/transfer_with_timeout.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/tuple_unpacking.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/tuple_unpacking_parameter.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples/tuple_unpacking_single_side_type.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/examples_tests.rs",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/fixtures/r0_groth16.rcpt.hex",
-            "status": "added",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/kcc20_tests.rs",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/parser_tests.rs",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/silverc-test-files/basic.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/silverc-test-files/with_ctor.sil",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/silverc-test-files/with_ctor_args.json",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/silverc_tests.rs",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "silverscript-lang/tests/temporal_type_tests.rs",
-            "status": "added",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
+            "additions": 77,
+            "deletions": 77,
+            "changes": 154
           },
           {
-            "filename": "silverscript-lang/tests/tutorial_examples_tests.rs",
+            "filename": "debugger/session/Cargo.toml",
             "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
+            "additions": 2,
+            "deletions": 2,
+            "changes": 4
           },
           {
-            "filename": "silverscript-lang/tests/tutorial_rust_examples_tests.rs",
+            "filename": "debugger/session/tests/debug_session_tests.rs",
             "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
+            "additions": 9,
+            "deletions": 9,
+            "changes": 18
           },
           {
             "filename": "tree-sitter/Cargo.lock",
             "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
+            "additions": 9,
+            "deletions": 9,
+            "changes": 18
           },
           {
             "filename": "tree-sitter/Cargo.toml",
             "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
           },
           {
-            "filename": "tree-sitter/bindings/node/binding_test.js",
+            "filename": "tree-sitter/bindings/rust/lib.rs",
             "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
           },
           {
-            "filename": "tree-sitter/grammar.js",
+            "filename": "tree-sitter/tests/examples_parse_smoke_test.rs",
             "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "tree-sitter/queries/highlights.scm",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "tree-sitter/src/grammar.json",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "tree-sitter/src/node-types.json",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
-          },
-          {
-            "filename": "tree-sitter/src/parser.c",
-            "status": "modified",
-            "additions": 0,
-            "deletions": 0,
-            "changes": 0
+            "additions": 1,
+            "deletions": 1,
+            "changes": 2
           }
         ],
         "impacts": [
           {
-            "id": "transaction-wire-format",
-            "label": "Transaction and wire-format contracts",
-            "fileCount": 1,
+            "id": "covenant-lineage",
+            "label": "Covenants and UTXO lineage",
+            "fileCount": 3,
             "commitCount": 0,
             "matchedFiles": [
+              "debugger/cli/src/main.rs",
+              "debugger/cli/tests/cli_tests.rs",
               "debugger/session/tests/debug_session_tests.rs"
             ],
             "matchedCommits": [],
-            "builderImpact": "RPC, protobuf, miner, pool, wallet, and indexer models must preserve v1 transaction fields without lossy renaming."
-          },
-          {
-            "id": "covenant-lineage",
-            "label": "Covenants and UTXO lineage",
-            "fileCount": 61,
-            "commitCount": 4,
-            "matchedFiles": [
-              "UNDEFINED-BEHAVIOUR.md",
-              "debugger/cli/src/main.rs",
-              "debugger/cli/tests/cli_tests.rs",
-              "debugger/session/src/covenant.rs",
-              "debugger/session/src/session.rs",
-              "debugger/session/tests/debug_session_tests.rs",
-              "docs/DECL.md",
-              "docs/TUTORIAL.md"
-            ],
-            "matchedCommits": [
-              "Harden entrypoints in covenant declaration leader contracts (#154)",
-              "Generate one shared delegate entrypoint per covenant leader contract (#195)",
-              "Add shared covenant delegate policies and configurable ABI names (#219)",
-              "  Reject contracts that could produce runtime-dependent initial state, exceed covenant expansion bounds, or violate Kaspa script limits. (#246)"
-            ],
             "builderImpact": "UTXO-first applications must preserve covenant bindings, authorizing inputs, covenant IDs, and successor lineage."
           },
           {
             "id": "fees-mass-mempool",
             "label": "Fee, mass, and mempool policy",
-            "fileCount": 4,
-            "commitCount": 0,
-            "matchedFiles": [
-              "Cargo.lock",
-              "debugger/session/tests/debug_session_tests.rs",
-              "docs/DECL.md",
-              "docs/TUTORIAL.md"
-            ],
-            "matchedCommits": [],
-            "builderImpact": "Fee estimation must distinguish consensus validity from node relay policy and use current mass dimensions."
-          },
-          {
-            "id": "rpc-wasm-sdk",
-            "label": "RPC, WASM, and SDK surface",
             "fileCount": 1,
             "commitCount": 0,
             "matchedFiles": [
-              "Cargo.lock"
+              "debugger/cli/src/main.rs"
             ],
             "matchedCommits": [],
-            "builderImpact": "Integrators must regenerate or update client bindings and test required arguments, aliases, and serialization behavior."
-          },
-          {
-            "id": "zk-verification",
-            "label": "ZK verification and pricing",
-            "fileCount": 10,
-            "commitCount": 1,
-            "matchedFiles": [
-              "Cargo.lock",
-              "docs/TUTORIAL.md",
-              "silverscript-lang/Cargo.toml",
-              "silverscript-lang/src/ast/mod.rs",
-              "silverscript-lang/src/compiler/builtin_types.rs",
-              "silverscript-lang/src/compiler/compile/expression/builtin.rs",
-              "silverscript-lang/src/compiler/compile/stack_analysis.rs",
-              "silverscript-lang/tests/examples/r0_succinct.sil"
-            ],
-            "matchedCommits": [
-              "Add g16.verify Groth16 verifier builtin (#138)"
-            ],
-            "builderImpact": "Proof-system dependencies, verifier hardening, script-unit pricing, proof size, and failure behavior remain security-critical."
-          },
-          {
-            "id": "sequencing-smt",
-            "label": "Sequencing commitments and SMT state",
-            "fileCount": 8,
-            "commitCount": 0,
-            "matchedFiles": [
-              "Cargo.lock",
-              "docs/DECL.md",
-              "extensions/silverscript.nvim/queries/silverscript/highlights.scm",
-              "extensions/vscode/queries/highlights.scm",
-              "extensions/zed/languages/silverscript/highlights.scm",
-              "silverscript-lang/src/compiler/builtin_types.rs",
-              "silverscript-lang/src/compiler/compile/expression/builtin.rs",
-              "silverscript-lang/src/compiler/compile/stack_analysis.rs"
-            ],
-            "matchedCommits": [],
-            "builderImpact": "Lane-aware indexers and proof services must handle reorgs, pruning, inactivity shortcuts, and witness availability."
+            "builderImpact": "Fee estimation must distinguish consensus validity from node relay policy and use current mass dimensions."
           },
           {
             "id": "node-storage-ibd",
@@ -7018,48 +4788,27 @@
             "fileCount": 1,
             "commitCount": 0,
             "matchedFiles": [
-              "Cargo.lock"
+              "debugger/cli/README.md"
             ],
             "matchedCommits": [],
             "builderImpact": "Operators must plan database migrations, resync cost, retention, pruning compatibility, and recovery procedures."
           },
           {
-            "id": "security-hardening",
-            "label": "Security hardening",
-            "fileCount": 3,
-            "commitCount": 3,
-            "matchedFiles": [
-              "README.md",
-              "SECURITY.md",
-              "silverscript-lang/tests/covenant_declaration_security_tests.rs"
-            ],
-            "matchedCommits": [
-              "Template hash hardening (breaking change) (#143)",
-              "Add security policy (#208)",
-              "Compiler hardening: validate dynamic struct-array ABI cardinality (#221)"
-            ],
-            "builderImpact": "Consensus and network-facing fixes require adversarial regression tests and careful version-boundary review."
-          },
-          {
             "id": "tests-docs",
             "label": "Tests, benchmarks, and operator docs",
-            "fileCount": 161,
+            "fileCount": 4,
             "commitCount": 0,
             "matchedFiles": [
+              "README.md",
               "debugger/cli/tests/cli_tests.rs",
               "debugger/session/tests/debug_session_tests.rs",
-              "docs/CONSTRUCTOR_ARGS.md",
-              "docs/DECL.md",
-              "docs/TUTORIAL.md",
-              "docs/kcc20-book/src/kcc20-contract.md",
-              "docs/kcc20-book/src/kcc20-minter-contract.md",
-              "docs/kcc20-book/src/kcc20-overview.md"
+              "tree-sitter/tests/examples_parse_smoke_test.rs"
             ],
             "matchedCommits": [],
             "builderImpact": "Changed examples, tests, and guides should become reproducible compatibility checks in downstream projects."
           }
         ],
-        "url": "https://github.com/kaspanet/silverscript/compare/d25bd3427a093c17327ca3d6b9e1aa5f7688c863...a0dd7448ccc7bad5b99140f2c8edbbd0b2a874f1"
+        "url": "https://github.com/kaspanet/silverscript/compare/a0dd7448ccc7bad5b99140f2c8edbbd0b2a874f1...15b7bc27680bdf0d83b294fbbfda55ecb59958ca"
       },
       {
         "repo": "kaspanet/vprogs",
@@ -7068,7 +4817,7 @@
         "beforeSha": "252ff51f5467b73be75bc58ae84e5b22e90e3022",
         "afterSha": "f9b84a863a7c7c20586a9cf947550475e894f72e",
         "ok": true,
-        "status": "ahead",
+        "status": "last_observed_change",
         "aheadBy": 19,
         "behindBy": 0,
         "totalCommits": 19,
@@ -9053,49 +6802,28 @@
           {
             "id": "activation-p2p",
             "label": "Activation and P2P compatibility",
-            "fileCount": 4,
+            "fileCount": 1,
             "commitCount": 0,
             "matchedFiles": [
-              "l1/wallet/src/build/pricing.rs",
-              "node/cli/src/l1_bridge_params.rs",
-              "runner/tests/two_provers_contend.rs",
-              "sim/src/driver/l2_driver.rs"
+              "node/cli/src/l1_bridge_params.rs"
             ],
             "matchedCommits": [],
             "builderImpact": "Node operators must track the activation DAA, release line, P2P version cutoff, and one-way upgrade constraints."
           },
           {
-            "id": "transaction-wire-format",
-            "label": "Transaction and wire-format contracts",
-            "fileCount": 13,
-            "commitCount": 0,
-            "matchedFiles": [
-              "examples/tn10-runtime/src/deposit.rs",
-              "l1/bridge/tests/malformed_response.rs",
-              "l1/wallet/src/build.rs",
-              "l1/wallet/src/build/activity.rs",
-              "l1/wallet/src/build/bootstrap.rs",
-              "l1/wallet/src/build/carrier.rs",
-              "l1/wallet/src/build/funding.rs",
-              "l1/wallet/src/build/payout.rs"
-            ],
-            "matchedCommits": [],
-            "builderImpact": "RPC, protobuf, miner, pool, wallet, and indexer models must preserve v1 transaction fields without lossy renaming."
-          },
-          {
             "id": "covenant-lineage",
             "label": "Covenants and UTXO lineage",
-            "fileCount": 53,
+            "fileCount": 10,
             "commitCount": 2,
             "matchedFiles": [
-              "Cargo.lock",
-              "Cargo.toml",
-              "docs/proving-pipeline.md",
-              "examples/tn10-flow/Cargo.toml",
-              "examples/tn10-flow/scripts/README.md",
-              "examples/tn10-flow/scripts/monitor.sh",
-              "examples/tn10-flow/scripts/run-demo.sh",
-              "examples/tn10-flow/src/config.rs"
+              "l1/types/src/l1_transaction_covenant_ext.rs",
+              "zk/backend/risc0/covenant/src/script.rs",
+              "zk/backend/risc0/covenant/src/settlement.rs",
+              "zk/backend/risc0/covenant/src/settlement/settlement_dev_input.rs",
+              "zk/backend/risc0/covenant/src/settlement/settlement_input.rs",
+              "zk/backend/risc0/covenant/src/settlement/settlement_witness.rs",
+              "zk/backend/risc0/covenant/src/settlement/succinct_witness.rs",
+              "zk/backend/risc0/settler/src/covenant.rs"
             ],
             "matchedCommits": [
               "Settle covenants in dev mode and under competing provers (#85)",
@@ -9106,66 +6834,28 @@
           {
             "id": "fees-mass-mempool",
             "label": "Fee, mass, and mempool policy",
-            "fileCount": 31,
+            "fileCount": 0,
             "commitCount": 1,
-            "matchedFiles": [
-              "docs/proving-pipeline.md",
-              "examples/tn10-flow/scripts/README.md",
-              "examples/tn10-flow/scripts/run-demo.sh",
-              "examples/tn10-flow/src/config.rs",
-              "examples/tn10-flow/src/main.rs",
-              "examples/tn10-runtime/scripts/README.md",
-              "examples/tn10-runtime/src/deposit.rs",
-              "examples/tn10-runtime/src/main.rs"
-            ],
+            "matchedFiles": [],
             "matchedCommits": [
               "Price wallet fees on the node's floor and fee estimate; fund from candidate-UTXO prefixes (#122)"
             ],
             "builderImpact": "Fee estimation must distinguish consensus validity from node relay policy and use current mass dimensions."
           },
           {
-            "id": "rpc-wasm-sdk",
-            "label": "RPC, WASM, and SDK surface",
-            "fileCount": 5,
-            "commitCount": 0,
-            "matchedFiles": [
-              "Cargo.lock",
-              "Cargo.toml",
-              "node/test-utils/src/l1_node.rs",
-              "runner/src/start.rs",
-              "runner/tests/two_provers_contend.rs"
-            ],
-            "matchedCommits": [],
-            "builderImpact": "Integrators must regenerate or update client bindings and test required arguments, aliases, and serialization behavior."
-          },
-          {
-            "id": "wallet-pskt",
-            "label": "Wallet and PSKT construction",
-            "fileCount": 4,
-            "commitCount": 0,
-            "matchedFiles": [
-              "l1/wallet/src/build.rs",
-              "l1/wallet/src/build/carrier.rs",
-              "l1/wallet/src/build/settlement.rs",
-              "sim/src/driver/l2_driver.rs"
-            ],
-            "matchedCommits": [],
-            "builderImpact": "Wallet construction and signing previews must preserve covenant fields, compute commitments, storage mass, and explicit fees."
-          },
-          {
             "id": "zk-verification",
             "label": "ZK verification and pricing",
-            "fileCount": 110,
+            "fileCount": 82,
             "commitCount": 0,
             "matchedFiles": [
-              "Cargo.lock",
-              "Cargo.toml",
-              "docs/proving-pipeline.md",
-              "examples/tn10-flow/Cargo.toml",
-              "examples/tn10-flow/scripts/README.md",
-              "examples/tn10-flow/scripts/run-demo.sh",
-              "examples/tn10-flow/src/config.rs",
-              "examples/tn10-flow/src/daemon.rs"
+              "zk/backend/risc0/api/Cargo.toml",
+              "zk/backend/risc0/api/build.rs",
+              "zk/backend/risc0/api/src/backend.rs",
+              "zk/backend/risc0/api/src/lib.rs",
+              "zk/backend/risc0/api/src/permission_script.rs",
+              "zk/backend/risc0/api/src/permission_tags.rs",
+              "zk/backend/risc0/api/src/permission_tree.rs",
+              "zk/backend/risc0/api/src/witness.rs"
             ],
             "matchedCommits": [],
             "builderImpact": "Proof-system dependencies, verifier hardening, script-unit pricing, proof size, and failure behavior remain security-critical."
@@ -9173,17 +6863,11 @@
           {
             "id": "sequencing-smt",
             "label": "Sequencing commitments and SMT state",
-            "fileCount": 35,
+            "fileCount": 2,
             "commitCount": 0,
             "matchedFiles": [
-              "Cargo.lock",
-              "Cargo.toml",
-              "docs/proving-pipeline.md",
-              "examples/tn10-flow/Cargo.toml",
-              "examples/tn10-flow/scripts/README.md",
-              "examples/tn10-flow/scripts/run-demo.sh",
-              "examples/tn10-flow/src/config.rs",
-              "examples/tn10-flow/src/daemon.rs"
+              "runner/src/lane.rs",
+              "sim/src/lane_source.rs"
             ],
             "matchedCommits": [],
             "builderImpact": "Lane-aware indexers and proof services must handle reorgs, pruning, inactivity shortcuts, and witness availability."
@@ -9191,17 +6875,17 @@
           {
             "id": "node-storage-ibd",
             "label": "Node storage, pruning, and IBD",
-            "fileCount": 88,
+            "fileCount": 26,
             "commitCount": 1,
             "matchedFiles": [
-              "Cargo.lock",
-              "Cargo.toml",
-              "core/atomics/src/atomic_ring.rs",
-              "core/smt/src/tree.rs",
-              "core/smt/tests/e2e.rs",
-              "docs/proving-pipeline.md",
-              "examples/tn10-flow/Cargo.toml",
-              "examples/tn10-flow/src/config.rs"
+              "scheduling/scheduler/src/pruning_worker.rs",
+              "scheduling/scheduler/src/storage_cmd.rs",
+              "storage/README.md",
+              "storage/canonical-chain/Cargo.toml",
+              "storage/canonical-chain/src/append_outcome.rs",
+              "storage/canonical-chain/src/bucket.rs",
+              "storage/canonical-chain/src/chain.rs",
+              "storage/canonical-chain/src/hot_zone.rs"
             ],
             "matchedCommits": [
               "Fix: Speed up the storage write path"
@@ -9211,17 +6895,17 @@
           {
             "id": "tests-docs",
             "label": "Tests, benchmarks, and operator docs",
-            "fileCount": 30,
+            "fileCount": 27,
             "commitCount": 0,
             "matchedFiles": [
               "core/atomics/tests/wait_cell.rs",
               "core/smt/tests/e2e.rs",
               "docs/proving-pipeline.md",
-              "examples/tn10-runtime/src/actions.rs",
-              "examples/tn10-runtime/src/lib.rs",
               "examples/tn10-runtime/tests/runtime_actions.rs",
               "l1/bridge/tests/integration.rs",
-              "l1/bridge/tests/malformed_response.rs"
+              "l1/bridge/tests/malformed_response.rs",
+              "runner/tests/two_provers_contend.rs",
+              "scheduling/scheduler/tests/e2e.rs"
             ],
             "matchedCommits": [],
             "builderImpact": "Changed examples, tests, and guides should become reproducible compatibility checks in downstream projects."
@@ -9239,22 +6923,19 @@
       "ok": true,
       "status": 200,
       "networkName": "kaspa-mainnet",
-      "virtualDaaScore": "570318708",
-      "blockCount": "1497831",
-      "headerCount": "1497831",
+      "virtualDaaScore": "580467104",
+      "blockCount": "1257791",
+      "headerCount": "1257791",
       "tipHashes": [
-        "c2ef87d68c24a59dcc427151a8a8ed028e34d5887edfdb5d41b659f156b8a4c7",
-        "5a144dd9db991e0c9e909d08dbf2e5e2d899665b316987a683b89de415783405",
-        "7d1e412171dd13c8cef04b788bb0f01ee60951c00a1da70f8b80c9526e332ef4",
-        "11ccfe4ff3bebfc3d87c9649d2b810a5d7e6e623df538c474eec05b2c0b0a1ef",
-        "e27795a4c476940d400b83fd886e81b60b1eb9ffdb7fe6e91084213d045b5163",
-        "652ce3cabe80a5664fe53971d3278d241fc67123e15d01bd10806fbc551d5060",
-        "adf7eef540c49984dd83b72dac6e817835f6d49730709fc21b34083dece71fe1",
-        "b7663c54c271116c8a704e9f7aaa32c0f06eb65e04ddd2c062b258dcdc400f3f",
-        "4deeded5a24a426230efddcf7f2db6bb8a4d78504e5c96be25e7c0b8316d4db1",
-        "86286c27060000866505ff2827e6752566ceecc22eeb010b67df3733e5035619",
-        "33a644acbe5a7e7baab20fd672f650d47cc087c0fc96d729e757e49539100446",
-        "8d659fbcbb6f8bb5da040e84063cdfebbe3ba156d857859e69b6005ef94bfc65"
+        "140f2aca1b06aa5103217b478cbe75d7c011a6e72be79ffd83d124cfe87425d9",
+        "ae84e7139012d276dd372e98a42af9ac22f4394192ab2abd527d656c468c2d8f",
+        "72b8e7634375d45cf5b16ce3a720a08cfabfa339c19c7b3f156b476b3ac8d146",
+        "de0fde384c22fd2996d96ac2b73cc1a15b18e06f04b8004d9766aa7680bac21c",
+        "446a954ccbf345b7aef61893a1e8cd5482c84219df32048ca87c24fd7495d35b",
+        "734a68968e4c5854363e84181df42bd9cff29dd2a1043ac46a1551191decbc05",
+        "eaf0a3f3172a46cf553f41374e3bcad80788c3be78451522ac28ad330abb404f",
+        "972c3677706d3afd17bdb3b371aff6f266c92f19ac0022b1f17eb5d422b1e913",
+        "f9e1e94c3a7bfddca8e9bcba90f20f2ba6a1d0e44fa6682236d859f65c268325"
       ]
     },
     {
@@ -9264,12 +6945,12 @@
       "ok": true,
       "status": 200,
       "networkName": "kaspa-testnet-10",
-      "virtualDaaScore": "601168244",
-      "blockCount": "1203153",
-      "headerCount": "1204917",
+      "virtualDaaScore": "611320430",
+      "blockCount": "1366911",
+      "headerCount": "1366911",
       "tipHashes": [
-        "f1dd6a7941189bd9b4fa432f65b5d969aabc54813867304bcc8fa605c6a9b1c1",
-        "0267b2ef1886466d492555891ab5c5429a42805ff4426585b9b77bd47ad56ae3"
+        "491bb998904a9b7c44605701b8957e8a1667163fe1b4b611585c9d142101dc53",
+        "74cfd42613c514eef4a0fac7324e18d0ed1b237a1aeca816c284597a94fbbbaf"
       ]
     },
     {
@@ -9362,7 +7043,7 @@
       "etag": null,
       "lastModified": "Tue, 19 Aug 2025 21:04:05 GMT",
       "contentLength": 46722,
-      "contentSha256": "7c59f5c5dac45d467bd8a7b4bec7d5e08229c15cc0adbf54ba045d4fdfe0fd01",
+      "contentSha256": "9787577d2ae3de9af16e5817cfc35815281301fefb0b2a3f6df51149bb197c77",
       "fingerprintBasis": "last-modified:Tue, 19 Aug 2025 21:04:05 GMT;bytes:46722",
       "sourceFingerprint": "0d01364b7b4050414ae64384d32e51f11cb58b186bb7e78fc3ee1e90c29eaff6"
     },
@@ -9374,7 +7055,7 @@
       "etag": null,
       "lastModified": "Fri, 26 Sep 2025 01:10:08 GMT",
       "contentLength": 24937,
-      "contentSha256": "8a68e465acf55cfcae63c6e9aea96bc97f877b599c3e2fdf19eb075ceaa61d8d",
+      "contentSha256": "573defeca14af03ed7784b06584e8dd28eb3d80f03ec03a99dac05f390a7490c",
       "fingerprintBasis": "last-modified:Fri, 26 Sep 2025 01:10:08 GMT;bytes:24937",
       "sourceFingerprint": "647b4d92432f01cb389d744c3c0ffa74e2e64b0cb27228bdb488fd708f2d4b57"
     },
@@ -9386,7 +7067,7 @@
       "etag": null,
       "lastModified": "Sun, 24 Aug 2025 16:16:12 GMT",
       "contentLength": 32618,
-      "contentSha256": "5df8aafcc24d6177e1c178ce5f454cc721bb4bfb7576e09e68706049dae9f2f3",
+      "contentSha256": "95cfd64aeff5b616d59adad7091efa6c3617640f94c2073d1ae822b344e55c25",
       "fingerprintBasis": "last-modified:Sun, 24 Aug 2025 16:16:12 GMT;bytes:32618",
       "sourceFingerprint": "cc44adf3732df5175a21643170a28cd7192daaec27c4e995d9ac4efecd489b0b"
     },
@@ -9398,21 +7079,21 @@
       "etag": null,
       "lastModified": "Sun, 23 Feb 2025 15:17:32 GMT",
       "contentLength": 56014,
-      "contentSha256": "8cb231ce88ab62acbf42ae6c1dcf30d81fa805f1c1185533bc94f00a940f4d91",
+      "contentSha256": "c49af86b6209562dab5d22008d1497f2b2de7e8857254ceb9d11c0e5b3f58f36",
       "fingerprintBasis": "last-modified:Sun, 23 Feb 2025 15:17:32 GMT;bytes:56014",
       "sourceFingerprint": "57a1692460057531288a423923221b10db000ae774f0c41a69256278d4a0dd98"
     }
   ],
   "fetchWarnings": [],
   "verdict": {
-    "mainnetActivation": "verified active at mainnet DAA 570318708, activation threshold 474165565",
+    "mainnetActivation": "verified active at mainnet DAA 580467104, activation threshold 474165565",
     "activation": {
       "state": "active",
       "releaseTag": "v2.0.0",
       "releasePublishedAt": "2026-06-05T12:09:13Z",
       "daaScore": 474165565,
       "scheduleText": "June 30, 2026, at 16:15 UTC",
-      "currentDaaScore": 570318708,
+      "currentDaaScore": 580467104,
       "remainingDaaScore": 0,
       "endpointVerified": true
     },
@@ -9424,41 +7105,29 @@
       "Separate protocol activation from wallet, pool, indexer, explorer, and application readiness."
     ]
   },
-  "factsHash": "bb4eed3df96e3af84cfa254779474315eb5f0c4525f2eb0788a9729161df7433",
-  "previousFactsHash": "4713fa066387bd080e9e30bcac80de0b8b41c77544cdce96555ac3c2702acb36",
+  "factsHash": "a90e9c707bffdfc7ae0895a15fcc52d2e97b6fc266a3ff62c6f8a730f6f0de87",
+  "previousFactsHash": "bb4eed3df96e3af84cfa254779474315eb5f0c4525f2eb0788a9729161df7433",
   "changedSincePrevious": true,
   "changeSummary": {
-    "previousCheckedAt": "2026-06-30T22:39:08.670Z",
-    "currentCheckedAt": "2026-10-19T23:21:28.356Z",
-    "previousFactsHash": "4713fa066387bd080e9e30bcac80de0b8b41c77544cdce96555ac3c2702acb36",
-    "currentFactsHash": "bb4eed3df96e3af84cfa254779474315eb5f0c4525f2eb0788a9729161df7433",
+    "previousCheckedAt": "2026-10-19T23:21:28.356Z",
+    "currentCheckedAt": "2026-10-31T17:15:34.995Z",
+    "previousFactsHash": "bb4eed3df96e3af84cfa254779474315eb5f0c4525f2eb0788a9729161df7433",
+    "currentFactsHash": "a90e9c707bffdfc7ae0895a15fcc52d2e97b6fc266a3ff62c6f8a730f6f0de87",
     "changedSincePrevious": true,
     "sections": {
       "facts": [
-        "factsHash 4713fa066387bd080e9e30bcac80de0b8b41c77544cdce96555ac3c2702acb36 -> bb4eed3df96e3af84cfa254779474315eb5f0c4525f2eb0788a9729161df7433"
+        "factsHash bb4eed3df96e3af84cfa254779474315eb5f0c4525f2eb0788a9729161df7433 -> a90e9c707bffdfc7ae0895a15fcc52d2e97b6fc266a3ff62c6f8a730f6f0de87"
       ],
-      "githubPulls": [
-        "KIP-22: updated 2026-06-28T07:43:08Z -> 2026-07-13T14:58:49Z."
-      ],
+      "githubPulls": [],
       "releases": [],
       "refs": [
-        "kaspanet/rusty-kaspa heads/master: sha 98a4ccd8d200 -> 4edcbbccb449.",
-        "kaspanet/kips heads/master: sha 1aba3b8321c1 -> e4ae2332117b.",
-        "kaspanet/docs heads/main: sha c3fb0fded5f1 -> 0ac77d043a80.",
-        "kaspanet/silverscript heads/master: sha d25bd3427a09 -> a0dd7448ccc7.",
-        "kaspanet/vprogs heads/master: sha 252ff51f5467 -> f9b84a863a7c."
+        "kaspanet/silverscript heads/master: sha a0dd7448ccc7 -> 15b7bc27680b."
       ],
       "network": [
-        "Mainnet blockdag: virtualDaaScore 474391519 -> 570318708; blockCount 1192067 -> 1497831; headerCount 1192067 -> 1497831.",
-        "TN10 blockdag: virtualDaaScore 505007593 -> 601168244; blockCount 6478083 -> 1203153; headerCount 6478083 -> 1204917."
+        "Mainnet blockdag: virtualDaaScore 570318708 -> 580467104; blockCount 1497831 -> 1257791; headerCount 1497831 -> 1257791.",
+        "TN10 blockdag: virtualDaaScore 601168244 -> 611320430; blockCount 1203153 -> 1366911; headerCount 1204917 -> 1366911."
       ],
-      "webSources": [
-        "Kaspa programmability overview: fingerprint 827354d83526 -> 2d297e5e8700.",
-        "Kaspa covenants docs: fingerprint 36a08457415b -> 88da98e43f8e.",
-        "Kaspa inline ZK docs: fingerprint 210ed25efc9d -> 5f7613bba3a5.",
-        "Kaspa based apps docs: fingerprint cdf59d146dd2 -> c85ac243bbff.",
-        "Kaspa full vProgs docs: fingerprint b5fe92cd4213 -> 7bb6b932a67d."
-      ]
+      "webSources": []
     }
   }
 }
