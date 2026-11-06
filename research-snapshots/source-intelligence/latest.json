@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-19T23:21:28.358Z",
-  "previousFactsHash": "5087a6525acc46b49891e42e6075195f13e95e2e3796ad0878caa0fbbdc19547",
+  "checkedAt": "2026-11-06T19:42:21.402Z",
+  "previousFactsHash": "e429be67a4cfec7a2bb6a632d2b2c4228afb4f5a955a11fadef3baecc6678c1f",
   "github": {
     "repos": [
       {
@@ -14,10 +14,10 @@
         "defaultBranch": "master",
         "archived": false,
         "disabled": false,
-        "pushedAt": "2026-10-19T15:05:13Z",
-        "updatedAt": "2026-10-19T15:05:21Z",
-        "openIssuesCount": 216,
-        "stargazersCount": 874,
+        "pushedAt": "2026-11-04T15:01:48Z",
+        "updatedAt": "2026-11-05T06:28:22Z",
+        "openIssuesCount": 218,
+        "stargazersCount": 878,
         "visibility": "public"
       },
       {
@@ -30,9 +30,9 @@
         "defaultBranch": "master",
         "archived": false,
         "disabled": false,
-        "pushedAt": "2026-10-19T12:28:50Z",
-        "updatedAt": "2026-09-22T22:41:26Z",
-        "openIssuesCount": 19,
+        "pushedAt": "2026-11-01T15:38:36Z",
+        "updatedAt": "2026-11-01T15:38:41Z",
+        "openIssuesCount": 21,
         "stargazersCount": 58,
         "visibility": "public"
       },
@@ -48,7 +48,7 @@
         "disabled": false,
         "pushedAt": "2026-07-02T14:51:32Z",
         "updatedAt": "2026-09-10T07:29:16Z",
-        "openIssuesCount": 17,
+        "openIssuesCount": 18,
         "stargazersCount": 69,
         "visibility": "public"
       },
@@ -95,8 +95,8 @@
         "defaultBranch": "master",
         "archived": false,
         "disabled": false,
-        "pushedAt": "2026-10-10T17:16:18Z",
-        "updatedAt": "2026-10-10T17:16:22Z",
+        "pushedAt": "2026-11-01T17:38:21Z",
+        "updatedAt": "2026-11-06T05:08:03Z",
         "openIssuesCount": 41,
         "stargazersCount": 58,
         "visibility": "public"
@@ -112,9 +112,9 @@
         "defaultBranch": "master",
         "archived": false,
         "disabled": false,
-        "pushedAt": "2026-10-08T14:53:44Z",
+        "pushedAt": "2026-11-06T15:53:13Z",
         "updatedAt": "2026-09-02T02:15:40Z",
-        "openIssuesCount": 55,
+        "openIssuesCount": 60,
         "stargazersCount": 53,
         "visibility": "public"
       },
@@ -129,9 +129,9 @@
         "defaultBranch": "master",
         "archived": false,
         "disabled": false,
-        "pushedAt": "2026-10-19T13:04:09Z",
-        "updatedAt": "2026-10-19T13:04:15Z",
-        "openIssuesCount": 3,
+        "pushedAt": "2026-11-06T07:59:14Z",
+        "updatedAt": "2026-11-06T07:59:19Z",
+        "openIssuesCount": 1,
         "stargazersCount": 28,
         "visibility": "public"
       },
@@ -146,10 +146,10 @@
         "defaultBranch": "main",
         "archived": false,
         "disabled": false,
-        "pushedAt": "2026-10-14T13:11:39Z",
-        "updatedAt": "2026-10-16T08:26:20Z",
+        "pushedAt": "2026-10-21T14:50:49Z",
+        "updatedAt": "2026-10-24T06:13:51Z",
         "openIssuesCount": 8,
-        "stargazersCount": 12,
+        "stargazersCount": 13,
         "visibility": "public"
       },
       {
@@ -163,9 +163,9 @@
         "defaultBranch": "main",
         "archived": false,
         "disabled": false,
-        "pushedAt": "2026-10-19T19:06:23Z",
-        "updatedAt": "2026-10-19T13:54:33Z",
-        "openIssuesCount": 19,
+        "pushedAt": "2026-10-20T21:46:13Z",
+        "updatedAt": "2026-10-23T03:47:26Z",
+        "openIssuesCount": 18,
         "stargazersCount": 7,
         "visibility": "public"
       }
@@ -176,7 +176,7 @@
         "kind": "heads",
         "name": "master",
         "ok": true,
-        "sha": "4edcbbccb449f84832afb1ca157904b35f37d006",
+        "sha": "4863866fce8439d0305b410fc4d802e7261d54d0",
         "objectType": "commit",
         "url": "https://github.com/kaspanet/rusty-kaspa/tree/master"
       },
@@ -212,7 +212,7 @@
         "kind": "heads",
         "name": "master",
         "ok": true,
-        "sha": "e4ae2332117b5cb68bd6188e065ef885b6d17939",
+        "sha": "d832dbd89347dcb16d3d83bf6755b081714cbcb2",
         "objectType": "commit",
         "url": "https://github.com/kaspanet/kips/tree/master"
       },
@@ -230,7 +230,7 @@
         "kind": "heads",
         "name": "master",
         "ok": true,
-        "sha": "a0dd7448ccc7bad5b99140f2c8edbbd0b2a874f1",
+        "sha": "443d519e6688fa03d24c69432763b13e6abe4486",
         "objectType": "commit",
         "url": "https://github.com/kaspanet/silverscript/tree/master"
       },
@@ -248,7 +248,7 @@
         "kind": "heads",
         "name": "master",
         "ok": true,
-        "sha": "5b544364d9b470e7433f5be54b5fc78a84a56f7d",
+        "sha": "dc7637eff6f9d0877bc701acb600bc345395b89f",
         "objectType": "commit",
         "url": "https://github.com/argent-lang/argent/tree/master"
       },
@@ -257,7 +257,7 @@
         "kind": "heads",
         "name": "main",
         "ok": true,
-        "sha": "1516a6c4cef59940fc3af3096dbcdd9c08690254",
+        "sha": "1ed87aef59faff8354061aee30f734a3b8b2c3d2",
         "objectType": "commit",
         "url": "https://github.com/kaspanet/kccs/tree/main"
       },
@@ -266,7 +266,7 @@
         "kind": "heads",
         "name": "main",
         "ok": true,
-        "sha": "05ea24a5cdb89ba5dd2cfec1041b1e69fa8de68d",
+        "sha": "7ffe8353437604322f8bdd6e8d0c4f5b15a55ee1",
         "objectType": "commit",
         "url": "https://github.com/olafweller/kaspa-privacy-initiative/tree/main"
       }
@@ -364,8 +364,8 @@
       "etag": null,
       "lastModified": null,
       "contentLength": 12157,
-      "contentSha256": "90fd39e8965b9f25f22541627f9ee7185b24432ae562fa00fdc12ca48358843f",
-      "sourceFingerprint": "a17bd95504eeb62ddea59d91418049cbf8a8fcb3310d94065d38c2fe9e030eb7"
+      "contentSha256": "3115c200c5b8dc7d41156a3bb506541610db6439c84e74b1732bbd8576bf5aa7",
+      "sourceFingerprint": "8932454af8bba545f78209c61905555ee7a66f6a86e681c65d84a7a52a10345f"
     },
     {
       "label": "vProgs architecture proposal",
@@ -376,8 +376,8 @@
       "etag": null,
       "lastModified": "Sun, 17 Aug 2025 07:11:16 GMT",
       "contentLength": 28982,
-      "contentSha256": "cdae7f1d88b5bd742c8cc7d7979b3e669d81f23a3d98110f622a452d4d9f6479",
-      "sourceFingerprint": "5c09294d256cb0276f42e216714ed38e9ae5a1e08c4c3c91a28ba96ee72f4efd"
+      "contentSha256": "bab981265ef2e4c382b5c921fefdf43d21ff1b63b58b0beaf058cb391432de3a",
+      "sourceFingerprint": "5473b878435d4c8d0602eafafb4621dea7718f1835f577ff7c36b28d8ed0e77b"
     }
   ],
   "kaspaNetwork": [
@@ -388,10 +388,10 @@
       "ok": true,
       "status": 200,
       "networkName": "kaspa-mainnet",
-      "virtualDaaScore": "570318708",
-      "blockCount": "1497831",
-      "headerCount": "1497831",
-      "sourceFingerprint": "5e50004f8c37283487a65db320abf61315e487cc84d653db7039691ea5ab0128"
+      "virtualDaaScore": "585738258",
+      "blockCount": "1334874",
+      "headerCount": "1334874",
+      "sourceFingerprint": "017b7e8e4855203bb1a889ef56f1d86e3bfe857db8d42e25a0086d36992be2b9"
     },
     {
       "label": "TN10 blockDAG",
@@ -400,10 +400,10 @@
       "ok": true,
       "status": 200,
       "networkName": "kaspa-testnet-10",
-      "virtualDaaScore": "601168244",
-      "blockCount": "1203153",
-      "headerCount": "1204917",
-      "sourceFingerprint": "f2f88c35be27fbf42df4929adf344b1f9540a46b3f94fe15ae219f0c868614a3"
+      "virtualDaaScore": "616592318",
+      "blockCount": "1454539",
+      "headerCount": "1454539",
+      "sourceFingerprint": "df14ca6c8e155bd1281f8fd067c7921471dcdb4608edef030e3e073d689a0065"
     },
     {
       "label": "TN12 blockDAG",
@@ -592,7 +592,7 @@
         "ok": true,
         "status": 200,
         "url": "https://github.com/kaspanet/kips/blob/master/kip-0021.md",
-        "contentSha256": "ce1606e74e20a9652a0c67ddd349d84b8b2ab8265df5a1d10b27d35f7a95cf26"
+        "contentSha256": "dfad1bd3953a1ab80e03ea7f52c529e9cba7b9ee513206a402206062c408c783"
       }
     ]
   },
@@ -631,7 +631,7 @@
       "Always record source URL, checkedAt, release tag or commit, and network identity for current claims."
     ]
   },
-  "factsHash": "e429be67a4cfec7a2bb6a632d2b2c4228afb4f5a955a11fadef3baecc6678c1f",
+  "factsHash": "e5aebc0fea27769ea6c343a737d20e4d164c223b861de425ec98900880bbe1b5",
   "changedSincePrevious": true,
   "validationErrors": []
 }
