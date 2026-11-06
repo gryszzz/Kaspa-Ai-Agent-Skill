@@ -1,7 +1,7 @@
 # Kaspa Live Source Intelligence
 
-Checked: 2026-10-19T23:21:28.358Z
-Facts hash: `e429be67a4cfec7a2bb6a632d2b2c4228afb4f5a955a11fadef3baecc6678c1f`
+Checked: 2026-11-06T19:42:21.402Z
+Facts hash: `e5aebc0fea27769ea6c343a737d20e4d164c223b861de425ec98900880bbe1b5`
 Source health: **healthy_with_warnings**
 
 ## Primary Evidence
@@ -45,24 +45,24 @@ Source health: **healthy_with_warnings**
 
 | Source | Ref | SHA | Status |
 | --- | --- | --- | --- |
-| kaspanet/rusty-kaspa | heads/master | `4edcbbccb449` | ok |
+| kaspanet/rusty-kaspa | heads/master | `4863866fce84` | ok |
 | kaspanet/rusty-kaspa | heads/toccata | `0ae28f939e61` | ok |
 | kaspanet/rusty-kaspa | heads/tn10 | `e5f6d1f7c86f` | ok |
 | kaspanet/rusty-kaspa | heads/tn12 | `ab4c51afde90` | ok |
-| kaspanet/kips | heads/master | `e4ae2332117b` | ok |
+| kaspanet/kips | heads/master | `d832dbd89347` | ok |
 | kaspanet/docs | heads/main | `0ac77d043a80` | ok |
-| kaspanet/silverscript | heads/master | `a0dd7448ccc7` | ok |
+| kaspanet/silverscript | heads/master | `443d519e6688` | ok |
 | kaspanet/vprogs | heads/master | `f9b84a863a7c` | ok |
-| argent-lang/argent | heads/master | `5b544364d9b4` | ok |
-| kaspanet/kccs | heads/main | `1516a6c4cef5` | ok |
-| olafweller/kaspa-privacy-initiative | heads/main | `05ea24a5cdb8` | ok |
+| argent-lang/argent | heads/master | `dc7637eff6f9` | ok |
+| kaspanet/kccs | heads/main | `1ed87aef59fa` | ok |
+| olafweller/kaspa-privacy-initiative | heads/main | `7ffe83534376` | ok |
 
 ## Network Identity
 
 | Endpoint | Expected | Observed | DAA | Status |
 | --- | --- | --- | ---: | --- |
-| [Mainnet blockDAG](https://api.kaspa.org/info/blockdag) | kaspa-mainnet | kaspa-mainnet | 570318708 | ok |
-| [TN10 blockDAG](https://api-tn10.kaspa.org/info/blockdag) | kaspa-testnet-10 | kaspa-testnet-10 | 601168244 | ok |
+| [Mainnet blockDAG](https://api.kaspa.org/info/blockdag) | kaspa-mainnet | kaspa-mainnet | 585738258 | ok |
+| [TN10 blockDAG](https://api-tn10.kaspa.org/info/blockdag) | kaspa-testnet-10 | kaspa-testnet-10 | 616592318 | ok |
 | [TN12 blockDAG](https://api-tn12.kaspa.org/info/blockdag) | kaspa-testnet-12 |  |  | failed 503 |
 
 ## KIP Index
