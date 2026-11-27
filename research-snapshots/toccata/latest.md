@@ -1,32 +1,32 @@
 # Toccata Source Snapshot
 
-Generated: 2026-10-19T23:21:28.356Z
+Generated: 2026-11-27T21:21:51.227Z
 
-Facts hash: `bb4eed3df96e3af84cfa254779474315eb5f0c4525f2eb0788a9729161df7433`
+Facts hash: `11e32aadffa11149dedfb7dc954fc8bc70624336aaa309c0f676b4435942b0a0`
 
 ## Verdict
 
-- Mainnet activation: verified active at mainnet DAA 570318708, activation threshold 474165565
-- Mainnet DAA observed: 570318708
+- Mainnet activation: verified active at mainnet DAA 603940167, activation threshold 474165565
+- Mainnet DAA observed: 603940167
 - Activation DAA: 474165565
 - Implementation status: PR #1000 is closed and merged against master.
-- Branch status: rusty-kaspa master 4edcbbccb449, toccata 0ae28f939e61.
+- Branch status: rusty-kaspa master 68bd2e91cddb, toccata 0ae28f939e61.
 - Caution: Do not equate open PRs with merged production behavior. A final release and activation schedule do not mean the activation DAA has been reached. Separate protocol activation from wallet, pool, indexer, explorer, and application readiness.
 
 
 ## Changes Since Previous Snapshot
 
-Previous snapshot: 2026-06-30T22:39:08.670Z
+Previous snapshot: 2026-10-19T23:21:28.356Z
 
-Current snapshot: 2026-10-19T23:21:28.356Z
+Current snapshot: 2026-11-27T21:21:51.227Z
 
 ### Stable Facts
 
-- factsHash 4713fa066387bd080e9e30bcac80de0b8b41c77544cdce96555ac3c2702acb36 -> bb4eed3df96e3af84cfa254779474315eb5f0c4525f2eb0788a9729161df7433
+- factsHash bb4eed3df96e3af84cfa254779474315eb5f0c4525f2eb0788a9729161df7433 -> 11e32aadffa11149dedfb7dc954fc8bc70624336aaa309c0f676b4435942b0a0
 
 ### GitHub Pull Requests and KIP PR States
 
-- KIP-22: updated 2026-06-28T07:43:08Z -> 2026-07-13T14:58:49Z.
+- No changes detected.
 
 ### GitHub Releases
 
@@ -34,24 +34,24 @@ Current snapshot: 2026-10-19T23:21:28.356Z
 
 ### GitHub References
 
-- kaspanet/rusty-kaspa heads/master: sha 98a4ccd8d200 -> 4edcbbccb449.
-- kaspanet/kips heads/master: sha 1aba3b8321c1 -> e4ae2332117b.
-- kaspanet/docs heads/main: sha c3fb0fded5f1 -> 0ac77d043a80.
-- kaspanet/silverscript heads/master: sha d25bd3427a09 -> a0dd7448ccc7.
-- kaspanet/vprogs heads/master: sha 252ff51f5467 -> f9b84a863a7c.
+- kaspanet/rusty-kaspa heads/master: sha 4edcbbccb449 -> 68bd2e91cddb.
+- kaspanet/kips heads/master: sha e4ae2332117b -> d832dbd89347.
+- kaspanet/docs heads/main: sha 0ac77d043a80 -> b20836bd1798.
+- kaspanet/silverscript heads/master: sha a0dd7448ccc7 -> 7eb04634bfba.
+- kaspanet/vprogs heads/master: sha f9b84a863a7c -> b8d6de02c754.
 
 ### Network Signals
 
-- Mainnet blockdag: virtualDaaScore 474391519 -> 570318708; blockCount 1192067 -> 1497831; headerCount 1192067 -> 1497831.
-- TN10 blockdag: virtualDaaScore 505007593 -> 601168244; blockCount 6478083 -> 1203153; headerCount 6478083 -> 1204917.
+- Mainnet blockdag: virtualDaaScore 570318708 -> 603940167; blockCount 1497831 -> 1350312; headerCount 1497831 -> 1350312.
+- TN10 blockdag: virtualDaaScore 601168244 -> 634789562; blockCount 1203153 -> 1488200; headerCount 1204917 -> 1488200.
 
 ### Web Source Fingerprints
 
-- Kaspa programmability overview: fingerprint 827354d83526 -> 2d297e5e8700.
-- Kaspa covenants docs: fingerprint 36a08457415b -> 88da98e43f8e.
-- Kaspa inline ZK docs: fingerprint 210ed25efc9d -> 5f7613bba3a5.
-- Kaspa based apps docs: fingerprint cdf59d146dd2 -> c85ac243bbff.
-- Kaspa full vProgs docs: fingerprint b5fe92cd4213 -> 7bb6b932a67d.
+- Kaspa programmability overview: fingerprint 2d297e5e8700 -> e4019ea1da36; bytes 62234 -> 121429.
+- Kaspa covenants docs: fingerprint 88da98e43f8e -> 70d2cdd8bedb; bytes 60844 -> 171051.
+- Kaspa inline ZK docs: fingerprint 5f7613bba3a5 -> 1caae9eb031d; bytes 60046 -> 96469.
+- Kaspa based apps docs: fingerprint c85ac243bbff -> 538312e1b347; bytes 58177 -> 128780.
+- Kaspa full vProgs docs: fingerprint 7bb6b932a67d -> 04f7317df76b; bytes 51910 -> 82429.
 
 
 ## GitHub Pull Requests
@@ -94,7 +94,7 @@ Current snapshot: 2026-10-19T23:21:28.356Z
 
 | Reference | SHA | Type |
 | --- | --- | --- |
-| kaspanet/rusty-kaspa heads/master | 4edcbbccb449 | commit |
+| kaspanet/rusty-kaspa heads/master | 68bd2e91cddb | commit |
 | kaspanet/rusty-kaspa heads/toccata | 0ae28f939e61 | commit |
 | kaspanet/rusty-kaspa heads/tn10 | e5f6d1f7c86f | commit |
 | kaspanet/rusty-kaspa heads/tn12 | ab4c51afde90 | commit |
@@ -103,53 +103,50 @@ Current snapshot: 2026-10-19T23:21:28.356Z
 | kaspanet/rusty-kaspa tags/v1.3.0-toc.5 | 04b0d135f8c8 | commit |
 | kaspanet/rusty-kaspa tags/v2.0.0 | 90dbf074275d | commit |
 | kaspanet/rusty-kaspa tags/v1.1.0 | e97070faa382 | commit |
-| kaspanet/kips heads/master | e4ae2332117b | commit |
-| kaspanet/docs heads/main | 0ac77d043a80 | commit |
-| kaspanet/silverscript heads/master | a0dd7448ccc7 | commit |
-| kaspanet/vprogs heads/master | f9b84a863a7c | commit |
+| kaspanet/kips heads/master | d832dbd89347 | commit |
+| kaspanet/docs heads/main | b20836bd1798 | commit |
+| kaspanet/silverscript heads/master | 7eb04634bfba | commit |
+| kaspanet/vprogs heads/master | b8d6de02c754 | commit |
 
 ## Upstream Branch Deltas
 
 | Source | Status | Range | Commits | Files | Engineering impact | Link |
 | --- | --- | --- | --- | --- | --- | --- |
-| kaspanet/rusty-kaspa master | ahead | 98a4ccd8d200 -> 4edcbbccb449 | 26 | 300+ | Activation and P2P compatibility, Transaction and wire-format contracts, Covenants and UTXO lineage, Fee, mass, and mempool policy, RPC, WASM, and SDK surface, Wallet and PSKT construction, ZK verification and pricing, Sequencing commitments and SMT state, Node storage, pruning, and IBD, Tests, benchmarks, and operator docs | [compare](https://github.com/kaspanet/rusty-kaspa/compare/98a4ccd8d200853787f227bd4536ac540cf34957...4edcbbccb449f84832afb1ca157904b35f37d006) |
+| kaspanet/rusty-kaspa master | ahead | 4edcbbccb449 -> 68bd2e91cddb | 8 | 110 | Activation and P2P compatibility, Transaction and wire-format contracts, Covenants and UTXO lineage, Fee, mass, and mempool policy, RPC, WASM, and SDK surface, Wallet and PSKT construction, ZK verification and pricing, Sequencing commitments and SMT state, Node storage, pruning, and IBD, Security hardening, Tests, benchmarks, and operator docs | [compare](https://github.com/kaspanet/rusty-kaspa/compare/4edcbbccb449f84832afb1ca157904b35f37d006...68bd2e91cddbdcdca5e59357344c7e26f2d6d97b) |
 | kaspanet/rusty-kaspa toccata | unchanged | 0ae28f939e61 -> 0ae28f939e61 | 0 | 0 |  |  |
 | kaspanet/rusty-kaspa tn10 | last_observed_change | 6899ea75384c -> e5f6d1f7c86f | 27 | 126 | Activation and P2P compatibility, Transaction and wire-format contracts, Covenants and UTXO lineage, Fee, mass, and mempool policy, RPC, WASM, and SDK surface, Wallet and PSKT construction, ZK verification and pricing, Node storage, pruning, and IBD, Security hardening, Tests, benchmarks, and operator docs | [compare](https://github.com/kaspanet/rusty-kaspa/compare/6899ea75384c1f422fe4ab0e47c439442da3f4fa...e5f6d1f7c86f3a3afbe97dbb75e72a0a3ff66a57) |
 | kaspanet/rusty-kaspa tn12 | unchanged | ab4c51afde90 -> ab4c51afde90 | 0 | 0 |  |  |
-| kaspanet/kips master | ahead | 1aba3b8321c1 -> e4ae2332117b | 1 | 5 | Covenants and UTXO lineage, Node storage, pruning, and IBD | [compare](https://github.com/kaspanet/kips/compare/1aba3b8321c1d27e00b7d87bd7c74ef879efabdc...e4ae2332117b5cb68bd6188e065ef885b6d17939) |
-| kaspanet/docs main | ahead | c3fb0fded5f1 -> 0ac77d043a80 | 1 | 5 | Transaction and wire-format contracts, Covenants and UTXO lineage, Fee, mass, and mempool policy, Wallet and PSKT construction, ZK verification and pricing, Sequencing commitments and SMT state, Node storage, pruning, and IBD | [compare](https://github.com/kaspanet/docs/compare/c3fb0fded5f13d6fbb9a37c5a1f561ad732a421f...0ac77d043a802fc8196abfd5812ac2afbd97a2b9) |
-| kaspanet/silverscript master | ahead | d25bd3427a09 -> a0dd7448ccc7 | 65 | 250 | Transaction and wire-format contracts, Covenants and UTXO lineage, Fee, mass, and mempool policy, RPC, WASM, and SDK surface, ZK verification and pricing, Sequencing commitments and SMT state, Node storage, pruning, and IBD, Security hardening, Tests, benchmarks, and operator docs | [compare](https://github.com/kaspanet/silverscript/compare/d25bd3427a093c17327ca3d6b9e1aa5f7688c863...a0dd7448ccc7bad5b99140f2c8edbbd0b2a874f1) |
-| kaspanet/vprogs master | ahead | 252ff51f5467 -> f9b84a863a7c | 19 | 265 | Activation and P2P compatibility, Transaction and wire-format contracts, Covenants and UTXO lineage, Fee, mass, and mempool policy, RPC, WASM, and SDK surface, Wallet and PSKT construction, ZK verification and pricing, Sequencing commitments and SMT state, Node storage, pruning, and IBD, Tests, benchmarks, and operator docs | [compare](https://github.com/kaspanet/vprogs/compare/252ff51f5467b73be75bc58ae84e5b22e90e3022...f9b84a863a7c7c20586a9cf947550475e894f72e) |
+| kaspanet/kips master | ahead | e4ae2332117b -> d832dbd89347 | 1 | 1 | Activation and P2P compatibility, Sequencing commitments and SMT state | [compare](https://github.com/kaspanet/kips/compare/e4ae2332117b5cb68bd6188e065ef885b6d17939...d832dbd89347dcb16d3d83bf6755b081714cbcb2) |
+| kaspanet/docs main | ahead | 0ac77d043a80 -> b20836bd1798 | 16 | 41 | Activation and P2P compatibility, Transaction and wire-format contracts, Covenants and UTXO lineage, Fee, mass, and mempool policy, RPC, WASM, and SDK surface, Wallet and PSKT construction, ZK verification and pricing, Sequencing commitments and SMT state, Node storage, pruning, and IBD, Security hardening, Tests, benchmarks, and operator docs | [compare](https://github.com/kaspanet/docs/compare/0ac77d043a802fc8196abfd5812ac2afbd97a2b9...b20836bd179861ccb2b6c9337af6d72e33d145f4) |
+| kaspanet/silverscript master | ahead | a0dd7448ccc7 -> 7eb04634bfba | 4 | 47 | Covenants and UTXO lineage, Fee, mass, and mempool policy, RPC, WASM, and SDK surface, ZK verification and pricing, Sequencing commitments and SMT state, Node storage, pruning, and IBD, Security hardening, Tests, benchmarks, and operator docs | [compare](https://github.com/kaspanet/silverscript/compare/a0dd7448ccc7bad5b99140f2c8edbbd0b2a874f1...7eb04634bfbae5350c1808efc7e34c4efa7f93af) |
+| kaspanet/vprogs master | ahead | f9b84a863a7c -> b8d6de02c754 | 30 | 202 | Activation and P2P compatibility, Transaction and wire-format contracts, Covenants and UTXO lineage, Fee, mass, and mempool policy, RPC, WASM, and SDK surface, Wallet and PSKT construction, ZK verification and pricing, Sequencing commitments and SMT state, Node storage, pruning, and IBD, Tests, benchmarks, and operator docs | [compare](https://github.com/kaspanet/vprogs/compare/f9b84a863a7c7c20586a9cf947550475e894f72e...b8d6de02c754180a66c350e6d882acbfdf4279a3) |
 
 ### kaspanet/rusty-kaspa master
 
 Commits:
 
-- `c7d73f258831` fix(wallet/bip32): xprv eq (#1072)
-- `78257f273a26` fix(windows): enable export-syscalls in kaspa-txscript to resolve LNK2019 (#1071)
-- `7de0d4ac4013` fix(bridge/web): keep dashboard available under load & bound /metrics cardinality (#1079)
-- `a41a333b0884` Add append_r0_groth16_verifier_dynamic_image_id (#1067)
-- `34ff1e4bebf0` Toccata Cleanup - Part 1 (#1082)
-- `887fd5f6206d` Toccata Cleanup - Part 2 (#1083)
-- `3563f06ba484` fix(wasm): sighash type mapping (#1085)
-- `bbf12cd67e12` Toccata Cleanup - Part 3 (#1084)
-- `02dcf442e6a3` Toccata Cleanup - Part 4 (#1086)
-- `059d61ec093d` Toccata Cleanup - Part 5 (#1087)
-- `593399eb0187` Toccata Cleanup - Part 6 (#1089)
-- `c338d495bec2` Toccata cleanup - P2P follow-ups (#1101)
+- `b85380d16514` docs(rpc): get utxos by addresses v2 cursor comment reflects reality (#1159)
+- `af6ff23a0b3e` UtxoIndex: covenant id index, adds paginated GetUtxosByCovenantIds RPC (#1152)
+- `4863866fce84` rpc: add GetTransactionsByAcceptingBlock (#1164)
+- `da2a3d137a37` test(math): exercise overflowing_shr instead of overflowing_shl twice (#1161)
+- `bb738ee0d789` fix(mempool): remove the actually-spent outpoint in add_transaction (#1160)
+- `5417ed03f473` Update locked chacha20 dependency to 0.10.2 (#1169)
+- `338d13c13826` Add SECURITY.md (#1171)
+- `68bd2e91cddb` Update the R0 G16 SDK while preserving native STARK consensus behavior (#1176)
 
 Engineering impact:
 
-- **Activation and P2P compatibility:** Node operators must track the activation DAA, release line, P2P version cutoff, and one-way upgrade constraints. Matched: `Cargo.toml`, `consensus/core/src/config/params.rs`, `consensus/src/consensus/mod.rs`, `consensus/src/consensus/services.rs`, `consensus/src/model/services/seq_commit_accessor.rs`, `consensus/src/model/stores/virtual_state.rs`, `consensus/src/pipeline/header_processor/processor.rs`, `consensus/src/pipeline/pruning_processor/processor.rs`.
-- **Transaction and wire-format contracts:** RPC, protobuf, miner, pool, wallet, and indexer models must preserve v1 transaction fields without lossy renaming. Matched: `compute commit, mass calculation and generator fixes (#1074)`, `consensus/client/src/compute_commit.rs`, `consensus/client/src/lib.rs`, `consensus/core/Cargo.toml`, `consensus/core/src/config/params.rs`, `consensus/core/src/hashing/tx.rs`, `consensus/core/src/mass/mod.rs`, `consensus/core/src/tx.rs`.
-- **Covenants and UTXO lineage:** UTXO-first applications must preserve covenant bindings, authorizing inputs, covenant IDs, and successor lineage. Matched: `UtxoIndex: Key UTXOs by DAA score, adds pagnated and cursor-based api, exposes this via `get_utxos_by_addresses_v2` RPC (#991)`, `Cargo.toml`, `bridge/src/kaspaapi.rs`, `cli/src/modules/pskb.rs`, `cli/src/modules/rpc.rs`, `consensus/benches/check_scripts.rs`, `consensus/client/src/utxo.rs`, `consensus/core/src/config/mod.rs`.
-- **Fee, mass, and mempool policy:** Fee estimation must distinguish consensus validity from node relay policy and use current mass dimensions. Matched: `Explicitly reject coinbase transactions from mempool (#1137)`, `compute commit, mass calculation and generator fixes (#1074)`, `bridge/src/share_handler.rs`, `cli/src/modules/pskb.rs`, `clippy.toml`, `consensus/client/src/compute_commit.rs`, `consensus/core/Cargo.toml`, `consensus/core/src/api/args.rs`.
-- **RPC, WASM, and SDK surface:** Integrators must regenerate or update client bindings and test required arguments, aliases, and serialization behavior. Matched: `fix(wasm): sighash type mapping (#1085)`, `.cargo/config.toml`, `.github/workflows/ci.yaml`, `Cargo.toml`, `bridge/src/kaspaapi.rs`, `check`, `consensus/client/Cargo.toml`, `consensus/client/src/compute_commit.rs`.
-- **Wallet and PSKT construction:** Wallet construction and signing previews must preserve covenant fields, compute commitments, storage mass, and explicit fees. Matched: `Add --allow-non-sighashall flag to pskb signing (#1135)`, `compute commit, mass calculation and generator fixes (#1074)`, `Cargo.toml`, `check`, `cli/src/modules/pskb.rs`, `consensus/core/Cargo.toml`, `consensus/core/src/hashing/sighash.rs`.
-- **ZK verification and pricing:** Proof-system dependencies, verifier hardening, script-unit pricing, proof size, and failure behavior remain security-critical. Matched: `Add append_r0_groth16_verifier_dynamic_image_id (#1067)`, `Cargo.toml`, `crypto/txscript/Cargo.toml`, `crypto/txscript/benches/pricing.rs`, `crypto/txscript/benches/zk_precompiles.rs`, `crypto/txscript/src/opcodes/mod.rs`, `crypto/txscript/src/zk_precompiles/fields/mod.rs`, `crypto/txscript/src/zk_precompiles/groth16/mod.rs`.
-- **Sequencing commitments and SMT state:** Lane-aware indexers and proof services must handle reorgs, pruning, inactivity shortcuts, and witness availability. Matched: `consensus: replace accepted_id_digests Vec with SeqCommit (#1099) (#1142)`, `.github/workflows/ci.yaml`, `Cargo.toml`, `consensus/Cargo.toml`, `consensus/core/src/config/params.rs`, `consensus/seq-commit/src/lib.rs`, `consensus/seq-commit/tests/example_block.rs`, `consensus/seq-commit/tests/prove_lane_activity.rs`.
-- **Node storage, pruning, and IBD:** Operators must plan database migrations, resync cost, retention, pruning compatibility, and recovery procedures. Matched: `Split headers to 20 MiB chunks during IBD (#1136)`, `Add lowio RocksDB preset (#1148)`, `Cargo.toml`, `consensus/Cargo.toml`, `consensus/core/src/config/params.rs`, `consensus/core/src/errors/pruning.rs`, `consensus/core/src/lib.rs`, `consensus/core/src/mass/mod.rs`.
-- **Tests, benchmarks, and operator docs:** Changed examples, tests, and guides should become reproducible compatibility checks in downstream projects. Matched: `consensus/benches/check_scripts.rs`, `consensus/benches/parallel_muhash.rs`, `consensus/core/benches/serde_benchmark.rs`, `consensus/core/benches/tx_id_bench.rs`, `consensus/core/tests/db_compat.rs`, `consensus/core/tests/tx_field_order.rs`, `consensus/pow/benches/bench.rs`, `consensus/seq-commit/tests/example_block.rs`.
+- **Activation and P2P compatibility:** Node operators must track the activation DAA, release line, P2P version cutoff, and one-way upgrade constraints. Matched: `simpa/src/main.rs`.
+- **Transaction and wire-format contracts:** RPC, protobuf, miner, pool, wallet, and indexer models must preserve v1 transaction fields without lossy renaming. Matched: `rpc/core/src/convert/tx.rs`, `rpc/core/src/model/accepting_block.rs`, `rpc/grpc/core/proto/messages.proto`, `rpc/grpc/core/proto/rpc.proto`, `rpc/grpc/core/src/convert/message.rs`, `rpc/grpc/core/src/convert/tx.rs`, `testing/integration/src/rpc_tests.rs`.
+- **Covenants and UTXO lineage:** UTXO-first applications must preserve covenant bindings, authorizing inputs, covenant IDs, and successor lineage. Matched: `docs(rpc): get utxos by addresses v2 cursor comment reflects reality (#1159)`, `UtxoIndex: covenant id index, adds paginated GetUtxosByCovenantIds RPC (#1152)`, `cli/src/modules/rpc.rs`, `consensus/core/src/config/mod.rs`, `consensus/core/src/utxo/utxo_inquirer.rs`, `consensus/src/pipeline/virtual_processor/tests.rs`, `consensus/src/pipeline/virtual_processor/utxo_inquirer.rs`, `crypto/txscript/zk-sdk/src/zk_to_script/fragments/prepare/succinct.rs`.
+- **Fee, mass, and mempool policy:** Fee estimation must distinguish consensus validity from node relay policy and use current mass dimensions. Matched: `fix(mempool): remove the actually-spent outpoint in add_transaction (#1160)`, `SECURITY.md`, `consensus/src/pipeline/virtual_processor/tests.rs`, `crypto/txscript/src/zk_precompiles/mod.rs`, `indexes/utxoindex/src/index.rs`, `mining/src/mempool/model/transactions_pool.rs`, `mining/src/mempool/model/utxo_set.rs`, `rpc/core/src/convert/tx.rs`.
+- **RPC, WASM, and SDK surface:** Integrators must regenerate or update client bindings and test required arguments, aliases, and serialization behavior. Matched: `Cargo.lock`, `crypto/txscript/zk-sdk/src/lib.rs`, `crypto/txscript/zk-sdk/src/zk_to_script/mod.rs`, `crypto/txscript/zk-sdk/src/zk_to_script/wasm/commit/mod.rs`, `crypto/txscript/zk-sdk/src/zk_to_script/wasm/commit/succinct.rs`, `crypto/txscript/zk-sdk/src/zk_to_script/wasm/fragments.rs`, `crypto/txscript/zk-sdk/src/zk_to_script/wasm/mod.rs`, `crypto/txscript/zk-sdk/src/zk_to_script/wasm/proof/mod.rs`.
+- **Wallet and PSKT construction:** Wallet construction and signing previews must preserve covenant fields, compute commitments, storage mass, and explicit fees. Matched: `wallet/core/src/tests/rpc_core_mock.rs`.
+- **ZK verification and pricing:** Proof-system dependencies, verifier hardening, script-unit pricing, proof size, and failure behavior remain security-critical. Matched: `Cargo.lock`, `Cargo.toml`, `crypto/txscript/Cargo.toml`, `crypto/txscript/benches/pricing.rs`, `crypto/txscript/src/lib.rs`, `crypto/txscript/src/zk_precompiles/mod.rs`, `crypto/txscript/src/zk_precompiles/risc0/error.rs`, `crypto/txscript/src/zk_precompiles/risc0/mod.rs`.
+- **Sequencing commitments and SMT state:** Lane-aware indexers and proof services must handle reorgs, pruning, inactivity shortcuts, and witness availability. Matched: `rpc/core/src/api/ops.rs`, `rpc/grpc/client/src/lib.rs`, `rpc/grpc/core/proto/messages.proto`, `rpc/grpc/core/src/convert/kaspad.rs`, `rpc/grpc/core/src/ops.rs`, `rpc/grpc/server/src/request_handler/factory.rs`, `rpc/wrpc/server/src/router.rs`, `testing/integration/src/rpc_tests.rs`.
+- **Node storage, pruning, and IBD:** Operators must plan database migrations, resync cost, retention, pruning compatibility, and recovery procedures. Matched: `consensus/src/pipeline/virtual_processor/tests.rs`, `database/src/registry.rs`, `indexes/utxoindex/Cargo.toml`, `indexes/utxoindex/src/core/api.rs`, `indexes/utxoindex/src/index.rs`, `indexes/utxoindex/src/stores.rs`, `indexes/utxoindex/src/stores/covenant_ids.rs`, `indexes/utxoindex/src/stores/script_public_keys.rs`.
+- **Security hardening:** Consensus and network-facing fixes require adversarial regression tests and careful version-boundary review. Matched: `Add SECURITY.md (#1171)`, `SECURITY.md`.
+- **Tests, benchmarks, and operator docs:** Changed examples, tests, and guides should become reproducible compatibility checks in downstream projects. Matched: `crypto/txscript/benches/pricing.rs`, `crypto/txscript/src/zk_precompiles/tests/helpers.rs`, `crypto/txscript/src/zk_precompiles/tests/mod.rs`, `crypto/txscript/zk-sdk/tests/data/zk_builder_tests/groth.rcpt.hex`, `crypto/txscript/zk-sdk/tests/data/zk_builder_tests/succinct.image.hex`, `crypto/txscript/zk-sdk/tests/data/zk_builder_tests/succinct.journal.hex`, `crypto/txscript/zk-sdk/tests/data/zk_builder_tests/succinct.rcpt.hex`, `crypto/txscript/zk-sdk/tests/r0_script_builder.rs`.
 
 ### kaspanet/rusty-kaspa tn10
 
@@ -185,94 +182,100 @@ Engineering impact:
 
 Commits:
 
-- `e4ae2332117b` Mark kips 16,17,20,21 as active (#45)
+- `d832dbd89347` Fix KIP-21 lane inactivity boundary (#52)
 
 Engineering impact:
 
-- **Covenants and UTXO lineage:** UTXO-first applications must preserve covenant bindings, authorizing inputs, covenant IDs, and successor lineage. Matched: `README.md`, `kip-0017.md`, `kip-0020.md`, `kip-0021.md`.
-- **Node storage, pruning, and IBD:** Operators must plan database migrations, resync cost, retention, pruning compatibility, and recovery procedures. Matched: `README.md`.
+- **Activation and P2P compatibility:** Node operators must track the activation DAA, release line, P2P version cutoff, and one-way upgrade constraints. Matched: `kip-0021.md`.
+- **Sequencing commitments and SMT state:** Lane-aware indexers and proof services must handle reorgs, pruning, inactivity shortcuts, and witness availability. Matched: `Fix KIP-21 lane inactivity boundary (#52)`, `kip-0021.md`.
 
 ### kaspanet/docs main
 
 Commits:
 
-- `0ac77d043a80` Toccata book - second iteration  (#53)
+- `0bac01054dc7` docs: deprecate native RISC Zero STARK (0x21) and fix broken links and typos (#57)
+- `06d113027e6a` docs: unify /toccata and /programmability under /programmability (#58)
+- `a4ef00d5a357` docs: update Silverscript and rewrite Argent around actor model and ICC (#59)
+- `ffbd282db74a` docs: add Conventions (KCCs) section and KCC-20 fungible token showcase
+- `d684ab2372c1` Fix technical accuracy across integration, programmability, and KCC-20 docs
+- `7bfad1750346` Address follow-up review notes on script pricing, KCC-20, and Java example
+- `320408303d7f` Add Covenant Composability guide and PatternSnippet callout component
+- `4ff6f125cd96` Rename to Inter-Covenant Communication (ICC) and add 3-tier payload/dynamic-dispatch snippets
+- `97fa56fb162a` Polish ICC snippets, Diagram 2 layout, and PatternSnippet badge specificity
+- `45fb1346559d` Clarify state_0 -> state_1 labels in ICC overview diagram
+- `598fa5d5563b` Simplify ICC overview diagram labels and fix clipped inspection edge
+- `9f352cd1cc4c` Consolidate ICC into four patterns: capsules for open observation vs payload dynamic dispatch
 
 Engineering impact:
 
-- **Transaction and wire-format contracts:** RPC, protobuf, miner, pool, wallet, and indexer models must preserve v1 transaction fields without lossy renaming. Matched: `content/docs/toccata/transaction-v1.mdx`.
-- **Covenants and UTXO lineage:** UTXO-first applications must preserve covenant bindings, authorizing inputs, covenant IDs, and successor lineage. Matched: `content/docs/toccata/agent-brief.mdx`, `content/docs/toccata/covenant-state.mdx`, `content/docs/toccata/decision-guide.mdx`, `content/docs/toccata/index.mdx`, `content/docs/toccata/transaction-v1.mdx`.
-- **Fee, mass, and mempool policy:** Fee estimation must distinguish consensus validity from node relay policy and use current mass dimensions. Matched: `content/docs/toccata/agent-brief.mdx`, `content/docs/toccata/transaction-v1.mdx`.
-- **Wallet and PSKT construction:** Wallet construction and signing previews must preserve covenant fields, compute commitments, storage mass, and explicit fees. Matched: `content/docs/toccata/transaction-v1.mdx`.
-- **ZK verification and pricing:** Proof-system dependencies, verifier hardening, script-unit pricing, proof size, and failure behavior remain security-critical. Matched: `content/docs/toccata/agent-brief.mdx`, `content/docs/toccata/index.mdx`.
-- **Sequencing commitments and SMT state:** Lane-aware indexers and proof services must handle reorgs, pruning, inactivity shortcuts, and witness availability. Matched: `content/docs/toccata/agent-brief.mdx`, `content/docs/toccata/covenant-state.mdx`, `content/docs/toccata/decision-guide.mdx`, `content/docs/toccata/index.mdx`, `content/docs/toccata/transaction-v1.mdx`.
-- **Node storage, pruning, and IBD:** Operators must plan database migrations, resync cost, retention, pruning compatibility, and recovery procedures. Matched: `content/docs/toccata/transaction-v1.mdx`.
+- **Activation and P2P compatibility:** Node operators must track the activation DAA, release line, P2P version cutoff, and one-way upgrade constraints. Matched: `content/docs/integrate/transaction-payload.mdx`, `content/docs/programmability/references.mdx`, `content/docs/toccata/references.mdx`.
+- **Transaction and wire-format contracts:** RPC, protobuf, miner, pool, wallet, and indexer models must preserve v1 transaction fields without lossy renaming. Matched: `content/docs/integrate/transaction-payload.mdx`, `content/docs/programmability/references.mdx`, `content/docs/programmability/silverscript.mdx`, `content/docs/toccata/references.mdx`, `content/docs/toccata/silverscript.mdx`.
+- **Covenants and UTXO lineage:** UTXO-first applications must preserve covenant bindings, authorizing inputs, covenant IDs, and successor lineage. Matched: `Add Covenant Composability guide and PatternSnippet callout component`, `Rename to Inter-Covenant Communication (ICC) and add 3-tier payload/dynamic-dispatch snippets`, `app/llms.txt/route.ts`, `content/docs/index.mdx`, `content/docs/integrate/kaspa-node.mdx`, `content/docs/programmability/agent-brief.mdx`, `content/docs/programmability/argent.mdx`, `content/docs/programmability/based-apps.mdx`.
+- **Fee, mass, and mempool policy:** Fee estimation must distinguish consensus validity from node relay policy and use current mass dimensions. Matched: `content/docs/integrate/transaction-payload.mdx`, `content/docs/programmability/agent-brief.mdx`, `content/docs/programmability/based-apps.mdx`, `content/docs/programmability/composability.mdx`, `content/docs/programmability/index.mdx`, `content/docs/programmability/kccs/kcc20.mdx`, `content/docs/programmability/references.mdx`, `content/docs/programmability/script-pricing.mdx`.
+- **RPC, WASM, and SDK surface:** Integrators must regenerate or update client bindings and test required arguments, aliases, and serialization behavior. Matched: `examples/java/README.md`.
+- **Wallet and PSKT construction:** Wallet construction and signing previews must preserve covenant fields, compute commitments, storage mass, and explicit fees. Matched: `content/docs/programmability/inline-zk.mdx`.
+- **ZK verification and pricing:** Proof-system dependencies, verifier hardening, script-unit pricing, proof size, and failure behavior remain security-critical. Matched: `content/docs/programmability/agent-brief.mdx`, `content/docs/programmability/based-apps.mdx`, `content/docs/programmability/composability.mdx`, `content/docs/programmability/index.mdx`, `content/docs/programmability/inline-zk.mdx`, `content/docs/programmability/references.mdx`, `content/docs/programmability/script-pricing.mdx`, `content/docs/programmability/silverscript.mdx`.
+- **Sequencing commitments and SMT state:** Lane-aware indexers and proof services must handle reorgs, pruning, inactivity shortcuts, and witness availability. Matched: `app/llms.txt/route.ts`, `content/docs/programmability/agent-brief.mdx`, `content/docs/programmability/based-apps.mdx`, `content/docs/programmability/full-vprogs.mdx`, `content/docs/programmability/index.mdx`, `content/docs/programmability/inline-zk.mdx`, `content/docs/programmability/references.mdx`, `content/docs/toccata/based-apps.mdx`.
+- **Node storage, pruning, and IBD:** Operators must plan database migrations, resync cost, retention, pruning compatibility, and recovery procedures. Matched: `content/docs/integrate/transaction-payload.mdx`, `content/docs/integrate/wallet.mdx`, `content/docs/programmability/argent.mdx`, `content/docs/programmability/composability.mdx`, `content/docs/programmability/silverscript.mdx`, `content/docs/toccata/silverscript.mdx`.
+- **Security hardening:** Consensus and network-facing fixes require adversarial regression tests and careful version-boundary review. Matched: `content/docs/programmability/agent-brief.mdx`, `content/docs/programmability/argent.mdx`, `content/docs/programmability/based-apps.mdx`, `content/docs/programmability/index.mdx`, `content/docs/programmability/inline-zk.mdx`, `content/docs/programmability/kccs/kcc20.mdx`, `content/docs/programmability/references.mdx`, `content/docs/programmability/script-pricing.mdx`.
+- **Tests, benchmarks, and operator docs:** Changed examples, tests, and guides should become reproducible compatibility checks in downstream projects. Matched: `content/docs/programmability/silverscript.mdx`, `content/docs/toccata/references.mdx`, `content/docs/toccata/silverscript.mdx`.
 
 ### kaspanet/silverscript master
 
 Commits:
 
-- `77ebf01a381a` docs(readme): remove tn12 mention (#141)
-- `956868ea63a2` Template hash hardening (breaking change) (#143)
-- `9aa70b0d0215` Fix lexical scoping and inferred-array scope bugs (#147)
-- `26e3b9f94821` Expose keyed Blake2b and Blake3 hash builtins (#150)
-- `2ed2343019db` Enforce exact type equality during static checking (#160)
-- `6e403041de95` Add blake2/3 builtins to highlights (#161)
-- `2a3961cadc76` Harden entrypoints in covenant declaration leader contracts (#154)
-- `bfc5a4565f90` compile.rs refactor (#178)
-- `8372e96efe2a` Remove OpSha256 and fix license on Cargo.toml (#181)
-- `e8a7762a1e53` Remove explicit uses of OpEqual OpVerify (#182)
-- `447c91e828ca` Add more accurate builtin types (#183)
-- `f516b11fa94c` Fix ternary both branch execution bug (#184)
+- `acae66a5a245` Add silverscript- prefix to crates (#261)
+- `15b7bc27680b` Fix tree-sitter crate name (#262)
+- `443d519e6688` Remove mentions of kcc20 (#263)
+- `7eb04634bfba` Fix r0 groth16 verification key and temporarily disable RISC Zero Succinct verification with an advisory … (#265)
 
 Engineering impact:
 
-- **Transaction and wire-format contracts:** RPC, protobuf, miner, pool, wallet, and indexer models must preserve v1 transaction fields without lossy renaming. Matched: `debugger/session/tests/debug_session_tests.rs`.
-- **Covenants and UTXO lineage:** UTXO-first applications must preserve covenant bindings, authorizing inputs, covenant IDs, and successor lineage. Matched: `Harden entrypoints in covenant declaration leader contracts (#154)`, `Generate one shared delegate entrypoint per covenant leader contract (#195)`, `Add shared covenant delegate policies and configurable ABI names (#219)`, `  Reject contracts that could produce runtime-dependent initial state, exceed covenant expansion bounds, or violate Kaspa script limits. (#246)`, `UNDEFINED-BEHAVIOUR.md`, `debugger/cli/src/main.rs`, `debugger/cli/tests/cli_tests.rs`, `debugger/session/src/covenant.rs`.
-- **Fee, mass, and mempool policy:** Fee estimation must distinguish consensus validity from node relay policy and use current mass dimensions. Matched: `Cargo.lock`, `debugger/session/tests/debug_session_tests.rs`, `docs/DECL.md`, `docs/TUTORIAL.md`.
+- **Covenants and UTXO lineage:** UTXO-first applications must preserve covenant bindings, authorizing inputs, covenant IDs, and successor lineage. Matched: `README.md`, `debugger/cli/src/main.rs`, `debugger/cli/tests/cli_tests.rs`, `debugger/session/tests/debug_session_tests.rs`, `docs/DECL.md`, `docs/fungible-token-book/src/fungible-token-contract.md`, `docs/fungible-token-book/src/fungible-token-minter-contract.md`, `docs/fungible-token-book/src/fungible-token-overview.md`.
+- **Fee, mass, and mempool policy:** Fee estimation must distinguish consensus validity from node relay policy and use current mass dimensions. Matched: `debugger/cli/src/main.rs`, `docs/DECL.md`.
 - **RPC, WASM, and SDK surface:** Integrators must regenerate or update client bindings and test required arguments, aliases, and serialization behavior. Matched: `Cargo.lock`.
-- **ZK verification and pricing:** Proof-system dependencies, verifier hardening, script-unit pricing, proof size, and failure behavior remain security-critical. Matched: `Add g16.verify Groth16 verifier builtin (#138)`, `Cargo.lock`, `docs/TUTORIAL.md`, `silverscript-lang/Cargo.toml`, `silverscript-lang/src/ast/mod.rs`, `silverscript-lang/src/compiler/builtin_types.rs`, `silverscript-lang/src/compiler/compile/expression/builtin.rs`, `silverscript-lang/src/compiler/compile/stack_analysis.rs`.
-- **Sequencing commitments and SMT state:** Lane-aware indexers and proof services must handle reorgs, pruning, inactivity shortcuts, and witness availability. Matched: `Cargo.lock`, `docs/DECL.md`, `extensions/silverscript.nvim/queries/silverscript/highlights.scm`, `extensions/vscode/queries/highlights.scm`, `extensions/zed/languages/silverscript/highlights.scm`, `silverscript-lang/src/compiler/builtin_types.rs`, `silverscript-lang/src/compiler/compile/expression/builtin.rs`, `silverscript-lang/src/compiler/compile/stack_analysis.rs`.
-- **Node storage, pruning, and IBD:** Operators must plan database migrations, resync cost, retention, pruning compatibility, and recovery procedures. Matched: `Cargo.lock`.
-- **Security hardening:** Consensus and network-facing fixes require adversarial regression tests and careful version-boundary review. Matched: `Template hash hardening (breaking change) (#143)`, `Add security policy (#208)`, `Compiler hardening: validate dynamic struct-array ABI cardinality (#221)`, `README.md`, `SECURITY.md`, `silverscript-lang/tests/covenant_declaration_security_tests.rs`.
-- **Tests, benchmarks, and operator docs:** Changed examples, tests, and guides should become reproducible compatibility checks in downstream projects. Matched: `debugger/cli/tests/cli_tests.rs`, `debugger/session/tests/debug_session_tests.rs`, `docs/CONSTRUCTOR_ARGS.md`, `docs/DECL.md`, `docs/TUTORIAL.md`, `docs/kcc20-book/src/kcc20-contract.md`, `docs/kcc20-book/src/kcc20-minter-contract.md`, `docs/kcc20-book/src/kcc20-overview.md`.
+- **ZK verification and pricing:** Proof-system dependencies, verifier hardening, script-unit pricing, proof size, and failure behavior remain security-critical. Matched: `Fix r0 groth16 verification key and temporarily disable RISC Zero Succinct verification with an advisory … (#265)`, `Cargo.lock`, `silverscript-lang/src/compiler/builtin_types.rs`, `silverscript-lang/src/compiler/compile/expression/builtin.rs`, `silverscript-lang/src/compiler/compile/stack_analysis.rs`, `silverscript-lang/src/compiler/type_check.rs`, `silverscript-lang/tests/common.rs`, `silverscript-lang/tests/compiler_tests.rs`.
+- **Sequencing commitments and SMT state:** Lane-aware indexers and proof services must handle reorgs, pruning, inactivity shortcuts, and witness availability. Matched: `Cargo.lock`.
+- **Node storage, pruning, and IBD:** Operators must plan database migrations, resync cost, retention, pruning compatibility, and recovery procedures. Matched: `debugger/cli/README.md`.
+- **Security hardening:** Consensus and network-facing fixes require adversarial regression tests and careful version-boundary review. Matched: `silverscript-lang/tests/covenant_declaration_security_tests.rs`.
+- **Tests, benchmarks, and operator docs:** Changed examples, tests, and guides should become reproducible compatibility checks in downstream projects. Matched: `README.md`, `debugger/cli/tests/cli_tests.rs`, `debugger/session/tests/debug_session_tests.rs`, `docs/DECL.md`, `docs/fungible-token-book/README.md`, `docs/fungible-token-book/book.toml`, `docs/fungible-token-book/mermaid-init.js`, `docs/fungible-token-book/mermaid.min.js`.
 
 ### kaspanet/vprogs master
 
 Commits:
 
-- `74433fca25fb` Chore: Disable jemalloc on Windows (#84)
-- `e3c56761a51e` Fix: Speed up the storage write path
-- `efa7291b98bd` Feat: Align resource state versions with the writing batch index (#89)
-- `ea96d1c87042` Feat: Fork-aware canonical chain tracking (#82)
-- `d863b5ef6df0` Cache proof receipts across the proving pipeline (#83)
-- `18c26020b32d` Feat: Resume committed batches on reorg-back (#93)
-- `f9fc168bb913` Settle covenants in dev mode and under competing provers (#85)
-- `4805f0ea67a8` Re-aggregate a superseded suffix in the aggregate prover (#90)
-- `f3b750e97d1c` Runtime poc (#42)
-- `c8f2bcfc7369` Runtime: L1-backed deposits, single creation policy, within-tx double-deposit fix (#96)
-- `c391111e5cf0` Fix reorg settlement stalls: wake parked waiters on rollback cancellation (#98-#101) (#102)
-- `bb9e3302bd33` Deposit/transfer/withdraw runtime flow test (+ self-authorizing config Init) (#95)
+- `8c31f4655811` deps: pin kaspa to rusty-kaspa rev eb0a856d (#149)
+- `958cc7065932` runtime-processor: reusable battery for guest apps (#131)
+- `2ab6d73158cc` app-kit: host-only issuer crate for app drivers (#134)
+- `64f062b97ac2` bridge/settler/aggregate-prover: reorg-flapped-fork survival + keyless observers (#136)
+- `36947de205de` scheduler, storage: ResourceIndexer hooks for app secondary indexes (#140)
+- `9a71a0ef707b` zk-abi, aggregate-prover, app-kit: permission claim builder and per-bundle exit feed (#139)
+- `b20938486018` bridge-lane-anchor bridge: anchor first lane activation at the parent seq commit (#142)
+- `9b5d01f493f4` runner, bridge: exit index with permission spend watcher and settlement pairing (#138)
+- `3f9321db89e3` bridge, settler: join an already-live lane (authoritative tip seeding + pinned bootstrap deploy) (#144)
+- `8672f3f6e7b9` bridge: busy-DAG mergeset lane-tip integration test (#145)
+- `18f00b1c0841` runner, bridge, l1/types: reorg-safe claim exits (chain-idx journal revert) (#146)
+- `334a85dfc388` storage: drain write worker on shutdown; bridge: adaptive-filter disable option (#147)
 
 Engineering impact:
 
-- **Activation and P2P compatibility:** Node operators must track the activation DAA, release line, P2P version cutoff, and one-way upgrade constraints. Matched: `l1/wallet/src/build/pricing.rs`, `node/cli/src/l1_bridge_params.rs`, `runner/tests/two_provers_contend.rs`, `sim/src/driver/l2_driver.rs`.
-- **Transaction and wire-format contracts:** RPC, protobuf, miner, pool, wallet, and indexer models must preserve v1 transaction fields without lossy renaming. Matched: `examples/tn10-runtime/src/deposit.rs`, `l1/bridge/tests/malformed_response.rs`, `l1/wallet/src/build.rs`, `l1/wallet/src/build/activity.rs`, `l1/wallet/src/build/bootstrap.rs`, `l1/wallet/src/build/carrier.rs`, `l1/wallet/src/build/funding.rs`, `l1/wallet/src/build/payout.rs`.
-- **Covenants and UTXO lineage:** UTXO-first applications must preserve covenant bindings, authorizing inputs, covenant IDs, and successor lineage. Matched: `Settle covenants in dev mode and under competing provers (#85)`, `Price wallet fees on the node's floor and fee estimate; fund from candidate-UTXO prefixes (#122)`, `Cargo.lock`, `Cargo.toml`, `docs/proving-pipeline.md`, `examples/tn10-flow/Cargo.toml`, `examples/tn10-flow/scripts/README.md`, `examples/tn10-flow/scripts/monitor.sh`.
-- **Fee, mass, and mempool policy:** Fee estimation must distinguish consensus validity from node relay policy and use current mass dimensions. Matched: `Price wallet fees on the node's floor and fee estimate; fund from candidate-UTXO prefixes (#122)`, `docs/proving-pipeline.md`, `examples/tn10-flow/scripts/README.md`, `examples/tn10-flow/scripts/run-demo.sh`, `examples/tn10-flow/src/config.rs`, `examples/tn10-flow/src/main.rs`, `examples/tn10-runtime/scripts/README.md`, `examples/tn10-runtime/src/deposit.rs`.
-- **RPC, WASM, and SDK surface:** Integrators must regenerate or update client bindings and test required arguments, aliases, and serialization behavior. Matched: `Cargo.lock`, `Cargo.toml`, `node/test-utils/src/l1_node.rs`, `runner/src/start.rs`, `runner/tests/two_provers_contend.rs`.
-- **Wallet and PSKT construction:** Wallet construction and signing previews must preserve covenant fields, compute commitments, storage mass, and explicit fees. Matched: `l1/wallet/src/build.rs`, `l1/wallet/src/build/carrier.rs`, `l1/wallet/src/build/settlement.rs`, `sim/src/driver/l2_driver.rs`.
-- **ZK verification and pricing:** Proof-system dependencies, verifier hardening, script-unit pricing, proof size, and failure behavior remain security-critical. Matched: `Cargo.lock`, `Cargo.toml`, `docs/proving-pipeline.md`, `examples/tn10-flow/Cargo.toml`, `examples/tn10-flow/scripts/README.md`, `examples/tn10-flow/scripts/run-demo.sh`, `examples/tn10-flow/src/config.rs`, `examples/tn10-flow/src/daemon.rs`.
-- **Sequencing commitments and SMT state:** Lane-aware indexers and proof services must handle reorgs, pruning, inactivity shortcuts, and witness availability. Matched: `Cargo.lock`, `Cargo.toml`, `docs/proving-pipeline.md`, `examples/tn10-flow/Cargo.toml`, `examples/tn10-flow/scripts/README.md`, `examples/tn10-flow/scripts/run-demo.sh`, `examples/tn10-flow/src/config.rs`, `examples/tn10-flow/src/daemon.rs`.
-- **Node storage, pruning, and IBD:** Operators must plan database migrations, resync cost, retention, pruning compatibility, and recovery procedures. Matched: `Fix: Speed up the storage write path`, `Cargo.lock`, `Cargo.toml`, `core/atomics/src/atomic_ring.rs`, `core/smt/src/tree.rs`, `core/smt/tests/e2e.rs`, `docs/proving-pipeline.md`, `examples/tn10-flow/Cargo.toml`.
-- **Tests, benchmarks, and operator docs:** Changed examples, tests, and guides should become reproducible compatibility checks in downstream projects. Matched: `core/atomics/tests/wait_cell.rs`, `core/smt/tests/e2e.rs`, `docs/proving-pipeline.md`, `examples/tn10-runtime/src/actions.rs`, `examples/tn10-runtime/src/lib.rs`, `examples/tn10-runtime/tests/runtime_actions.rs`, `l1/bridge/tests/integration.rs`, `l1/bridge/tests/malformed_response.rs`.
+- **Activation and P2P compatibility:** Node operators must track the activation DAA, release line, P2P version cutoff, and one-way upgrade constraints. Matched: `bridge-lane-anchor bridge: anchor first lane activation at the parent seq commit (#142)`, `l1/bridge/src/worker.rs`, `l1/wallet/src/build/pricing.rs`, `node/cli/src/l1_bridge_params.rs`, `node/cli/src/params.rs`, `sim/src/config.rs`.
+- **Transaction and wire-format contracts:** RPC, protobuf, miner, pool, wallet, and indexer models must preserve v1 transaction fields without lossy renaming. Matched: `l1/bridge/tests/malformed_response.rs`, `l1/wallet/src/build/carrier.rs`, `l1/wallet/src/build/funding.rs`, `l1/wallet/src/build/payout.rs`, `l1/wallet/src/build/pricing.rs`, `l1/wallet/src/build/settlement.rs`, `l1/wallet/src/build/testing.rs`, `zk/backend/risc0/app-kit/src/lane.rs`.
+- **Covenants and UTXO lineage:** UTXO-first applications must preserve covenant bindings, authorizing inputs, covenant IDs, and successor lineage. Matched: `Cargo.lock`, `Cargo.toml`, `examples/tn10-flow/src/config.rs`, `examples/tn10-flow/src/main.rs`, `examples/tn10-runtime/src/config.rs`, `examples/tn10-runtime/src/main.rs`, `l1/bridge/src/config.rs`, `l1/bridge/src/permission_watch.rs`.
+- **Fee, mass, and mempool policy:** Fee estimation must distinguish consensus validity from node relay policy and use current mass dimensions. Matched: `zk-abi, aggregate-prover, app-kit: permission claim builder and per-bundle exit feed (#139)`, `prover: survive receipt gaps and mass-capped settlement funding (#169)`, `Cargo.toml`, `examples/tn10-runtime/src/main.rs`, `l1/bridge/src/permission_watch.rs`, `l1/bridge/src/worker.rs`, `l1/bridge/tests/malformed_response.rs`, `l1/wallet/src/build/carrier.rs`.
+- **RPC, WASM, and SDK surface:** Integrators must regenerate or update client bindings and test required arguments, aliases, and serialization behavior. Matched: `Cargo.lock`, `Cargo.toml`, `l1/bridge/tests/integration.rs`, `sim/src/lane_source.rs`.
+- **Wallet and PSKT construction:** Wallet construction and signing previews must preserve covenant fields, compute commitments, storage mass, and explicit fees. Matched: `zk/backend/risc0/app-kit/src/lane.rs`.
+- **ZK verification and pricing:** Proof-system dependencies, verifier hardening, script-unit pricing, proof size, and failure behavior remain security-critical. Matched: `.github/workflows/ci.yml`, `Cargo.lock`, `Cargo.toml`, `examples/tn10-runtime/src/actions.rs`, `examples/tn10-runtime/tests/runtime_actions.rs`, `l1/bridge/Cargo.toml`, `l1/bridge/src/permission_watch.rs`, `l1/bridge/src/worker.rs`.
+- **Sequencing commitments and SMT state:** Lane-aware indexers and proof services must handle reorgs, pruning, inactivity shortcuts, and witness availability. Matched: `bridge-lane-anchor bridge: anchor first lane activation at the parent seq commit (#142)`, `bridge, settler: join an already-live lane (authoritative tip seeding + pinned bootstrap deploy) (#144)`, `bridge: busy-DAG mergeset lane-tip integration test (#145)`, `zk: cancel the aggregate prover's lane-proof fetch on shutdown (#153)`, `storage, zk: reorg-safe store restore + deferred dead lane proofs (#152)`, `aggregate-prover: drain an unmapped-boundary settlement's prefix by lane tip (#170)`, `Cargo.lock`, `Cargo.toml`.
+- **Node storage, pruning, and IBD:** Operators must plan database migrations, resync cost, retention, pruning compatibility, and recovery procedures. Matched: `scheduler, storage: ResourceIndexer hooks for app secondary indexes (#140)`, `storage: drain write worker on shutdown; bridge: adaptive-filter disable option (#147)`, `storage, zk: reorg-safe store restore + deferred dead lane proofs (#152)`, `bridge: finalize below the header-cited pruning point after a confirmation window (#157)`, `storage: canonical reads below the restore base and after a rollback to genesis (#158)`, `Cargo.lock`, `Cargo.toml`, `core/smt/Cargo.toml`.
+- **Tests, benchmarks, and operator docs:** Changed examples, tests, and guides should become reproducible compatibility checks in downstream projects. Matched: `core/smt/tests/e2e.rs`, `examples/tn10-runtime/tests/runtime_actions.rs`, `l1/bridge/tests/integration.rs`, `l1/bridge/tests/malformed_response.rs`, `runner/tests/two_provers_contend.rs`, `scheduling/scheduler/tests/e2e.rs`, `scheduling/scheduler/tests/indexer.rs`, `scheduling/scheduler/tests/reorg_id_gap.rs`.
 
 ## Network Signals
 
 | Source | Status | Network | Virtual DAA | Block count |
 | --- | --- | --- | --- | --- |
-| Mainnet blockdag | ok | kaspa-mainnet | 570318708 | 1497831 |
-| TN10 blockdag | ok | kaspa-testnet-10 | 601168244 | 1203153 |
+| Mainnet blockdag | ok | kaspa-mainnet | 603940167 | 1350312 |
+| TN10 blockdag | ok | kaspa-testnet-10 | 634789562 | 1488200 |
 | TN12 blockdag | error |  | Invalid JSON: Unexpected token '<', "<html><bod"... is not valid JSON |  |
 
 ## Web Source Fingerprints
@@ -280,11 +283,11 @@ Engineering impact:
 | Source | HTTP | Bytes | Fingerprint | Link |
 | --- | --- | --- | --- | --- |
 | Rusty Kaspa Toccata node guide | 200 | 8267 | 3d09ed0027e1 | [source](https://raw.githubusercontent.com/kaspanet/rusty-kaspa/v2.0.0/docs/toccata-guide.md) |
-| Kaspa programmability overview | 200 | 62234 | 2d297e5e8700 | [source](https://docs.kaspa.org/programmability) |
-| Kaspa covenants docs | 200 | 60844 | 88da98e43f8e | [source](https://docs.kaspa.org/programmability/covenants) |
-| Kaspa inline ZK docs | 200 | 60046 | 5f7613bba3a5 | [source](https://docs.kaspa.org/programmability/inline-zk) |
-| Kaspa based apps docs | 200 | 58177 | c85ac243bbff | [source](https://docs.kaspa.org/programmability/based-apps) |
-| Kaspa full vProgs docs | 200 | 51910 | 7bb6b932a67d | [source](https://docs.kaspa.org/programmability/full-vprogs) |
+| Kaspa programmability overview | 200 | 121429 | e4019ea1da36 | [source](https://docs.kaspa.org/programmability) |
+| Kaspa covenants docs | 200 | 171051 | 70d2cdd8bedb | [source](https://docs.kaspa.org/programmability/covenants) |
+| Kaspa inline ZK docs | 200 | 96469 | 1caae9eb031d | [source](https://docs.kaspa.org/programmability/inline-zk) |
+| Kaspa based apps docs | 200 | 128780 | 538312e1b347 | [source](https://docs.kaspa.org/programmability/based-apps) |
+| Kaspa full vProgs docs | 200 | 82429 | 04f7317df76b | [source](https://docs.kaspa.org/programmability/full-vprogs) |
 | Formal vProg computation DAG model | 200 | 46722 | 0d01364b7b40 | [source](https://research.kas.pa/t/zoom-in-a-formal-backbone-model-for-the-vprog-computation-dag/407) |
 | vProgs pruning safety | 200 | 24937 | 647b4d92432f | [source](https://research.kas.pa/t/pruning-safety-in-the-vprogs-architecture/411) |
 | Proof stitching framework | 200 | 32618 | cc44adf3732d | [source](https://research.kas.pa/t/a-basic-framework-for-proofs-stitching/323) |
