@@ -1,7 +1,7 @@
 # Kaspa Live Source Intelligence
 
-Checked: 2026-10-19T23:21:28.358Z
-Facts hash: `e429be67a4cfec7a2bb6a632d2b2c4228afb4f5a955a11fadef3baecc6678c1f`
+Checked: 2026-11-27T21:39:06.747Z
+Facts hash: `aec42dd7c76772eaad77106ad8554ca705beda1b526c66cca104d4023efe6f06`
 Source health: **healthy_with_warnings**
 
 ## Primary Evidence
@@ -39,30 +39,30 @@ Source health: **healthy_with_warnings**
 ## Tracked Releases
 
 - [kaspanet/rusty-kaspa v2.1.0](https://github.com/kaspanet/rusty-kaspa/releases/tag/v2.1.0), published 2026-09-22T13:55:36Z; prerelease: no.
-- [kaspanet/silverscript v1.0.0](https://github.com/kaspanet/silverscript/releases/tag/v1.0.0), published 2026-09-09T16:48:31Z; prerelease: no.
+- [kaspanet/silverscript v1.0.2](https://github.com/kaspanet/silverscript/releases/tag/v1.0.2), published 2026-11-23T22:03:13Z; prerelease: no.
 
 ## Ref Pins
 
 | Source | Ref | SHA | Status |
 | --- | --- | --- | --- |
-| kaspanet/rusty-kaspa | heads/master | `4edcbbccb449` | ok |
+| kaspanet/rusty-kaspa | heads/master | `68bd2e91cddb` | ok |
 | kaspanet/rusty-kaspa | heads/toccata | `0ae28f939e61` | ok |
 | kaspanet/rusty-kaspa | heads/tn10 | `e5f6d1f7c86f` | ok |
 | kaspanet/rusty-kaspa | heads/tn12 | `ab4c51afde90` | ok |
-| kaspanet/kips | heads/master | `e4ae2332117b` | ok |
-| kaspanet/docs | heads/main | `0ac77d043a80` | ok |
-| kaspanet/silverscript | heads/master | `a0dd7448ccc7` | ok |
-| kaspanet/vprogs | heads/master | `f9b84a863a7c` | ok |
-| argent-lang/argent | heads/master | `5b544364d9b4` | ok |
-| kaspanet/kccs | heads/main | `1516a6c4cef5` | ok |
-| olafweller/kaspa-privacy-initiative | heads/main | `05ea24a5cdb8` | ok |
+| kaspanet/kips | heads/master | `d832dbd89347` | ok |
+| kaspanet/docs | heads/main | `b20836bd1798` | ok |
+| kaspanet/silverscript | heads/master | `7eb04634bfba` | ok |
+| kaspanet/vprogs | heads/master | `b8d6de02c754` | ok |
+| argent-lang/argent | heads/master | `b66ff11d8008` | ok |
+| kaspanet/kccs | heads/main | `1ed87aef59fa` | ok |
+| olafweller/kaspa-privacy-initiative | heads/main | `7ffe83534376` | ok |
 
 ## Network Identity
 
 | Endpoint | Expected | Observed | DAA | Status |
 | --- | --- | --- | ---: | --- |
-| [Mainnet blockDAG](https://api.kaspa.org/info/blockdag) | kaspa-mainnet | kaspa-mainnet | 570318708 | ok |
-| [TN10 blockDAG](https://api-tn10.kaspa.org/info/blockdag) | kaspa-testnet-10 | kaspa-testnet-10 | 601168244 | ok |
+| [Mainnet blockDAG](https://api.kaspa.org/info/blockdag) | kaspa-mainnet | kaspa-mainnet | 603950607 | ok |
+| [TN10 blockDAG](https://api-tn10.kaspa.org/info/blockdag) | kaspa-testnet-10 | kaspa-testnet-10 | 634799867 | ok |
 | [TN12 blockDAG](https://api-tn12.kaspa.org/info/blockdag) | kaspa-testnet-12 |  |  | failed 503 |
 
 ## KIP Index
